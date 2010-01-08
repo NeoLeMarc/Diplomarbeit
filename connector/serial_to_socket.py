@@ -3,7 +3,7 @@
 # for Java to ZigBit connector 
 
 PORT = 4711
-import serial, socket, select, sys, SocketServer
+import serial, socket, select, sys, SocketServer, time
 
 class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
 
@@ -27,23 +27,23 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
             readylist = select.select((self.request, self.serial), (), ())
 
             for readysocket in readylist[0]:
-                try:
-                    if readysocket == self.serial:
-                        self.request.send(self.serial.read(1024))
+                if readysocket == self.serial:
+                    self.request.send(self.serial.read(1024))
+                elif readysocket == self.request:
+                    data = self.request.recv(1024)
+                    if data:
+                        self.serial.write(data)
                     else:
-                        self.serial.write(self.request.recv(1024))
-
-                    sys.stdout.write(".")
-                    sys.stdout.flush()
-
-
-                except (socket.error):
+                        end = True
+                else:
                     end = True
 
+                sys.stdout.write(".")
+                sys.stdout.flush()
 
         ## Close serial port
-        self.shutdown()
-
+        self.serial.close()
+        self.request.close()
         print "Leaving tunnel mode"
 
 class ReusableServer(SocketServer.TCPServer):
