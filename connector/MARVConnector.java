@@ -47,16 +47,30 @@ class MARVEvent extends MARVPrioritized {
     MARVEvent(String raw){
         this.raw = raw;
     }
+
+    public static MARVEvent fromString(String raw){
+        if(raw.matches("EVENT:CHILD_JOINED .*"))
+            return new MARVChildJoined(raw);
+        else
+            return new MARVEvent(raw);
+    }
 }
+
+class MARVChildJoined extends MARVEvent {
+
+    MARVChildJoined(String raw){
+        super(raw);
+    }
+};
 
 class ZigBit {
     int panID;
-    SocketAdapter socket;
+    BlockingQueue<MARVCommand> commandQueue;
     int[] gpio = {0, 0, 0, 0};
 
-    ZigBit(SocketAdapter socket, int panID){
-        this.socket = socket;
-        this.panID  = panID;
+    ZigBit(BlockingQueue<MARVCommand> commandQueue, int panID){
+        this.commandQueue = commandQueue;
+        this.panID        = panID;
     }
 
     public void GPIOenable(int nr){
@@ -68,58 +82,19 @@ class ZigBit {
     }
 
     public void update() throws java.io.IOException{
-        this.socket.write("ATR " + this.panID + ",0,");
+        String commandString = "";
+        commandString += "ATR " + this.panID + ",0,";
+
         for(int i = 0; i < gpio.length; i++)
-            this.socket.write(" S13" + i + "=" + this.gpio[i]);
-        this.socket.writeLine("");
-        this.waitForStatus();
-    }
+            commandString += " S13" + i + "=" + this.gpio[i];
 
-    public boolean waitForStatus() throws java.io.IOException{
-        String data = this.socket.readLine();
-
-        while(!data.equals("OK") && !data.equals("ERROR")){
-            System.out.println(data);
-            data = this.socket.readLine();
+        try{
+            this.commandQueue.put(new MARVCommand(commandString, 1));
+        } catch (InterruptedException e) {
         }
 
-
-        if(data.equals("OK"))
-            return true;
-        else
-            return false;
     }
 }
-/*
-class SocketAdapter {
-    private BufferedReader serialIn;
-    private PrintWriter    serialOut;
-    private Socket         socket;
-
-    public SocketAdapter(Socket serialSocket) throws java.io.IOException{
-        this.serialIn  = new BufferedReader(new InputStreamReader(serialSocket.getInputStream()));
-        this.serialOut = new PrintWriter(serialSocket.getOutputStream(), true);
-        this.socket    = serialSocket;
-    }
-
-    public void write(String in){
-        this.serialOut.print(in);
-    }
-
-    public void writeLine(String line){
-        this.serialOut.print(line + "\r\n");
-        this.serialOut.flush();
-    }
-
-    public String readLine() throws java.io.IOException {
-        return serialIn.readLine();
-    }
-
-    protected void finalize() throws java.io.IOException{
-        this.socket.close();
-    }
-}
-*/
 
 class SocketReader extends Thread{
     private BlockingQueue<MARVEvent> eventQueue;
@@ -146,6 +121,7 @@ class SocketReader extends Thread{
     @Override public void run(){
         System.out.println("Starting SocketReader with BufferedReader: " + this.serialIn);
         String line;
+        Boolean successful;
 
         try {
             while((line = this.serialIn.readLine()) != null){
@@ -154,9 +130,23 @@ class SocketReader extends Thread{
                 if(line.equals("OK")){
                     System.out.println("Got result");
                     this.setLastResult(true);
-                }else if (line.equals("ERROR")){
+                } else if (line.equals("ERROR")){
                     System.out.println("Got result");
                     this.setLastResult(false);
+                } else if (line.matches("EVENT:.*")){
+                    System.out.println("** EVENT **: " + line);
+
+                    // Do not lose events!
+                    do {
+                        successful = false;
+
+                        try {
+                            eventQueue.put(MARVEvent.fromString(line));
+                            successful = true;
+                        } catch (InterruptedException e) {
+                            successful = false;
+                        }
+                    } while (!successful);
                 }
             }
         } catch (IOException e) {
@@ -246,72 +236,36 @@ public class MARVConnector {
         socketReader.start();
         socketWriter.start();
 
-        // Create some commands
-        try { 
-            Thread.currentThread().sleep(15000);
-        } catch(InterruptedException e){
-        };
+        // Wait for childs to join
+        int count = 0;
 
-        commandQueue.put(new MARVCommand("ATR 5,0,S130=1", 6));
-        commandQueue.put(new MARVCommand("ATR 5,0,S131=1", 4));
-        commandQueue.put(new MARVCommand("ATR 5,0,S130=0", 5));
-        commandQueue.put(new MARVCommand("ATR 5,0,S131=0", 7));
-
-        // Fetch results
-        MARVCommand result;
-        while(true){
-            result = resultQueue.take();
-            System.out.println("Got Result for command " + result.id + ": " + result.result);
-        }
-    }
-}
-
-/*
-public class MARVConnector {
-    public static void main(String[] args) throws IOException {
-
-        Socket serialSocket = null;
-        String input;
-       
-        try {
-            serialSocket = new Socket("localhost", 4711);
-
-        } catch (IOException e){
-            System.err.println("Error while creating socket: I/O-Error!");
-            System.exit(1);
+        MARVEvent   event;
+        while (count < 2) {
+            event = eventQueue.take();
+            if(event.getClass().getName() == "MARVChildJoined")
+                count++;
         }
 
-        SocketAdapter sa = new SocketAdapter(serialSocket);
-        sa.writeLine("AT+WAUTONET=1 +WWAIT=100 Z");
-        sa.writeLine("ATS30=1");
-
-        while(!(input = sa.readLine()).equals("EVENT:CHILD_JOINED 0000000000000003")){
-            System.out.println(input);
-        }
-
-        System.out.println("Initialisatzion complete, entering test loop....");
-
-        try { 
-            Thread.currentThread().sleep(1000);
-        } catch(InterruptedException e){
-        };
-
-        ZigBit z1 = new ZigBit(sa, 5);
-        ZigBit z2 = new ZigBit(sa, 6);
-
-        z1.GPIOdisable(1);
-        z1.update();
-
-        try { 
-            Thread.currentThread().sleep(1000);
-        } catch(InterruptedException e){
-        };
+        ZigBit z1 = new ZigBit(commandQueue, 5);
+        ZigBit z2 = new ZigBit(commandQueue, 6);
 
         z1.GPIOenable(1);
         z1.update();
+        z1.GPIOenable(2);
+        z1.update();
+        z1.GPIOdisable(2);
+        z1.update();
+        z1.GPIOdisable(1);
+        z1.update();
 
+
+        // Fetch results
+        MARVCommand result;
+
+        for(int i = 0; i < 4; i++){
+            result = resultQueue.take();
+            System.out.println("Got Result for command " + result.id + ": " + result.result);
+        }
 
     }
 }
-*/
-
