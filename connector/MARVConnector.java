@@ -122,14 +122,25 @@ class SocketAdapter {
 */
 
 class SocketReader extends Thread{
-    private Queue<MARVEvent> eventQueue;
-    private boolean            lastStatus;
-    private Semaphore          statusSemaphore = new Semaphore(1, true);
-    private BufferedReader     serialIn; 
+    private BlockingQueue<MARVEvent> eventQueue;
+    private boolean                  lastResult;
+    private Semaphore                resultSemaphore = new Semaphore(1, true);
+    private BufferedReader           serialIn; 
 
-    SocketReader(BufferedReader serialIn, Queue<MARVEvent> eventQueue){
+    SocketReader(BufferedReader serialIn, BlockingQueue<MARVEvent> eventQueue){
         this.serialIn   = serialIn;
         this.eventQueue = eventQueue;
+        this.resultSemaphore.acquireUninterruptibly();
+    }
+
+    private void setLastResult(boolean result){
+        this.lastResult = result; 
+        resultSemaphore.release();
+    }
+
+    public boolean getLastResult(){
+        this.resultSemaphore.acquireUninterruptibly();
+        return this.lastResult;
     }
 
     @Override public void run(){
@@ -139,6 +150,14 @@ class SocketReader extends Thread{
         try {
             while((line = this.serialIn.readLine()) != null){
                 System.out.println("SocketReader: " + line);
+
+                if(line.equals("OK")){
+                    System.out.println("Got result");
+                    this.setLastResult(true);
+                }else if (line.equals("ERROR")){
+                    System.out.println("Got result");
+                    this.setLastResult(false);
+                }
             }
         } catch (IOException e) {
             System.err.println("IOException in SocketReader");
@@ -149,43 +168,61 @@ class SocketReader extends Thread{
 }
 
 class SocketWriter extends Thread{
-    private Queue<MARVCommand> commandQueue;
-    private Queue<MARVCommand> resultQueue;
-    private PrintWriter        serialOut;
+    private BlockingQueue<MARVCommand> commandQueue;
+    private BlockingQueue<MARVCommand> resultQueue;
+    private PrintWriter                serialOut;
+    private SocketReader               reader;
+    boolean lastResult; 
 
-    SocketWriter(PrintWriter serialOut, Queue<MARVCommand> commandQueue, Queue<MARVCommand> resultQueue){
+    SocketWriter(PrintWriter serialOut, BlockingQueue<MARVCommand> commandQueue, BlockingQueue<MARVCommand> resultQueue, SocketReader reader){
         this.serialOut    = serialOut;
         this.commandQueue = commandQueue;
         this.resultQueue  = resultQueue;
+        this.reader       = reader;
     }
 
-    private void writeLine(String line) throws IOException{
+    private void writeLine(String line){
         this.serialOut.print(line + "\r\n");
         this.serialOut.flush();
+        this.lastResult = this.reader.getLastResult();
     }
 
     @Override public void run(){
+        MARVCommand command;
         System.out.println("Starting SocketWriter with PrintWriter: " + this.serialOut);
 
-        try {
-            // Initialize ZigBee adapter
-            this.writeLine("AT+WAUTONET=1 +WWAIT=100 Z");
-            this.writeLine("ATS30=1");
-        } catch (IOException e) {
-            System.err.println("IOException in SocketReader");
-            System.exit(1);
+        // Initialize ZigBee adapter
+        this.writeLine("AT+WAUTONET=1 +WWAIT=100 Z");
+        this.writeLine("ATS30=1");
+
+        // Serve command Queue
+        while(true){
+            try {
+                // Get next command & execute
+                command = this.commandQueue.take();
+                this.writeLine(command.command);
+
+                // Get result
+                command.setResult(this.lastResult);
+
+                // Write back to result queue
+                resultQueue.put(command);
+
+            } catch (InterruptedException e){
+            }
+
         }
 
     }
 }
 
 public class MARVConnector {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException, InterruptedException{
 
         // Create Queues
-        Queue<MARVCommand> commandQueue = new PriorityBlockingQueue<MARVCommand>();
-        Queue<MARVEvent>   eventQueue   = new PriorityBlockingQueue<MARVEvent>();
-        Queue<MARVCommand> resultQueue  = new PriorityBlockingQueue<MARVCommand>();
+        BlockingQueue<MARVCommand> commandQueue = new PriorityBlockingQueue<MARVCommand>();
+        BlockingQueue<MARVEvent>   eventQueue   = new PriorityBlockingQueue<MARVEvent>();
+        BlockingQueue<MARVCommand> resultQueue  = new PriorityBlockingQueue<MARVCommand>();
 
         // Create Socket Adapter & Connect
         Socket serialSocket = null;
@@ -203,11 +240,29 @@ public class MARVConnector {
         SocketReader socketReader = new SocketReader(new BufferedReader(new InputStreamReader(serialSocket.getInputStream())), eventQueue);
 
         // Create Writer
-        SocketWriter socketWriter = new SocketWriter(new PrintWriter(serialSocket.getOutputStream(), true), commandQueue, resultQueue);
+        SocketWriter socketWriter = new SocketWriter(new PrintWriter(serialSocket.getOutputStream(), true), commandQueue, resultQueue, socketReader);
 
         // Start Threads
         socketReader.start();
         socketWriter.start();
+
+        // Create some commands
+        try { 
+            Thread.currentThread().sleep(15000);
+        } catch(InterruptedException e){
+        };
+
+        commandQueue.put(new MARVCommand("ATR 5,0,S130=1", 6));
+        commandQueue.put(new MARVCommand("ATR 5,0,S131=1", 4));
+        commandQueue.put(new MARVCommand("ATR 5,0,S130=0", 5));
+        commandQueue.put(new MARVCommand("ATR 5,0,S131=0", 7));
+
+        // Fetch results
+        MARVCommand result;
+        while(true){
+            result = resultQueue.take();
+            System.out.println("Got Result for command " + result.id + ": " + result.result);
+        }
     }
 }
 
