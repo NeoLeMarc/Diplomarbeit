@@ -28,7 +28,8 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
 
             for readysocket in readylist[0]:
                 if readysocket == self.serial:
-                    self.request.send(self.serial.read(1024))
+                    data = self.serial.read(1024)
+                    self.request.send(data)
                 elif readysocket == self.request:
                     data = self.request.recv(1024)
                     if data:
@@ -36,10 +37,10 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
                     else:
                         end = True
                 else:
+                    data = ""
                     end = True
 
-                sys.stdout.write(".")
-                sys.stdout.flush()
+                print data
 
         ## Close serial port
         self.serial.close()

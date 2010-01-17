@@ -3,6 +3,7 @@ import java.net.*;
 import java.util.concurrent.*;
 import java.util.*;
 
+/* ** Meta classes ** */
 class MARVPrioritized implements Comparable {
     protected int priority;
 
@@ -16,11 +17,13 @@ class MARVPrioritized implements Comparable {
 
 }
 
+/* ** Commands ** */
 class MARVCommand extends MARVPrioritized {
     protected String command;
-    protected boolean result;
+    private MARVResult result;
     protected int id = 0;
     static int maxId;
+    private CountDownLatch resultLatch = new CountDownLatch(1);
 
     MARVCommand(String command, int priority){
         this.command  = command;
@@ -35,12 +38,32 @@ class MARVCommand extends MARVPrioritized {
         return this.id;
     }
 
-    public void setResult(boolean result){
+    public void setResult(MARVResult result){
         this.result = result;
+
+        // Open latch, so status can be fetched
+        this.resultLatch.countDown();
+    }
+
+    public MARVResult getResult(){
+        // Wait for result to become available
+        boolean successful = false;
+        while(!successful){
+            try{
+                this.resultLatch.await();
+                successful = true;
+            } catch (InterruptedException e){
+                // Try again
+            }
+        }
+
+        return this.result;
     }
 
 }
 
+
+/* *** Events *** **/
 class MARVEvent extends MARVPrioritized {
     protected String raw;
     
@@ -48,9 +71,28 @@ class MARVEvent extends MARVPrioritized {
         this.raw = raw;
     }
 
+    public boolean isResult(){
+        return false;
+    }
+
+    public boolean isImportant(){
+        return false;
+    }
+
+
+    public String toString(){
+        return this.raw;
+    }
+
     public static MARVEvent fromString(String raw){
-        if(raw.matches("EVENT:CHILD_JOINED .*"))
+        if(raw.equals("OK"))
+            return new MARVResult(raw, true);
+        else if(raw.equals("ERROR"))
+            return new MARVResult(raw, false);
+        else if(raw.matches("EVENT:CHILD_JOINED .*"))
             return new MARVChildJoined(raw);
+        else if (raw.matches("\\+WCHILDREN:.*"))
+            return new MARVChildrenList(raw);
         else
             return new MARVEvent(raw);
     }
@@ -61,16 +103,95 @@ class MARVChildJoined extends MARVEvent {
     MARVChildJoined(String raw){
         super(raw);
     }
+
+    public boolean isImportant(){
+        return true;
+    }
 };
 
+/* ** Results ** */
+class MARVResult extends MARVEvent {
+    protected boolean status;
+    protected MARVResult subResult;
+
+    MARVResult(String raw, boolean status){
+        super(raw);
+        this.status = status;
+    }
+
+    public boolean isResult(){
+        return true;
+    }
+
+    public boolean isImportant(){
+        return true;
+    }
+
+    public boolean isComposite(){
+        return false;
+    }
+
+    public ZigBit[] getChildList(BlockingQueue<MARVCommand> commandQueue){
+        return null;
+    }
+
+    public void addSubResult(MARVResult result){
+        this.subResult = result;
+    }
+
+};
+
+class MARVChildrenList extends MARVResult {
+
+    MARVChildrenList(String raw){
+        super(raw, true);
+    }
+
+    public boolean isComposite(){
+        // Expecting an OK or ERROR to follow
+        return true;
+    }
+
+    public ZigBit[] getChildList(BlockingQueue<MARVCommand> commandQueue){
+        // Parse return value
+        String[] panIdList = this.raw.split(":")[1].split(",");
+        ZigBit[] childList = new ZigBit[panIdList.length];
+
+        for(int pos = 0; pos < panIdList.length; pos++)
+            childList[pos] = ZigBit.get(commandQueue, Integer.parseInt(panIdList[pos])); 
+
+        return childList;
+    }
+
+    public void addSubResult(MARVResult result){
+        this.status    = result.status;
+        this.subResult = result;
+    }
+}
+
+/* *** Entities ** */
 class ZigBit {
     int panID;
     BlockingQueue<MARVCommand> commandQueue;
     int[] gpio = {0, 0, 0, 0};
 
+    // Singleton
+    private static HashMap<Integer, ZigBit> zigBitMap = new HashMap<Integer, ZigBit>();
+
     ZigBit(BlockingQueue<MARVCommand> commandQueue, int panID){
         this.commandQueue = commandQueue;
         this.panID        = panID;
+    }
+
+    public static ZigBit get(BlockingQueue<MARVCommand> commandQueue, int panID){
+        ZigBit z = zigBitMap.get(panID);
+        if(z != null)
+            return z;
+        else {
+            z = new ZigBit(commandQueue, panID);
+            zigBitMap.put(panID, z);
+            return z;
+        }
     }
 
     public void GPIOenable(int nr){
@@ -82,23 +203,41 @@ class ZigBit {
     }
 
     public void update() throws java.io.IOException{
+        boolean successful   = false;
         String commandString = "";
         commandString += "ATR " + this.panID + ",0,";
 
         for(int i = 0; i < gpio.length; i++)
             commandString += " S13" + i + "=" + this.gpio[i];
 
-        try{
-            this.commandQueue.put(new MARVCommand(commandString, 1));
-        } catch (InterruptedException e) {
-        }
+        // Do not lose commands!
+        do {
+            successful = false;
 
+            try {
+                this.commandQueue.put(new MARVCommand(commandString, 1));
+                successful = true;
+            } catch (InterruptedException e) {
+                successful = false;
+            }
+        } while (!successful);
+    }
+
+    public static ZigBit[] discover(BlockingQueue<MARVCommand> commandQueue) throws InterruptedException{
+        // Send discovery command
+        MARVCommand command = new MARVCommand("ATS30=1+WCHILDREN?", 0);
+        commandQueue.put(command);
+
+        // Get result & return childList
+        MARVResult result = command.getResult();
+        return result.getChildList(commandQueue);
     }
 }
 
+/* ** Threads ** */
 class SocketReader extends Thread{
     private BlockingQueue<MARVEvent> eventQueue;
-    private boolean                  lastResult;
+    private MARVResult               lastResult;
     private Semaphore                resultSemaphore = new Semaphore(1, true);
     private BufferedReader           serialIn; 
 
@@ -108,12 +247,17 @@ class SocketReader extends Thread{
         this.resultSemaphore.acquireUninterruptibly();
     }
 
-    private void setLastResult(boolean result){
-        this.lastResult = result; 
-        resultSemaphore.release();
+    private void setLastResult(MARVResult result){
+        if(this.lastResult != null && this.lastResult.isComposite())
+            this.lastResult.addSubResult(result);
+        else
+            this.lastResult = result; 
+
+        if(!result.isComposite())
+            resultSemaphore.release();
     }
 
-    public boolean getLastResult(){
+    public MARVResult getLastResult(){
         this.resultSemaphore.acquireUninterruptibly();
         return this.lastResult;
     }
@@ -122,18 +266,20 @@ class SocketReader extends Thread{
         System.out.println("Starting SocketReader with BufferedReader: " + this.serialIn);
         String line;
         Boolean successful;
+        MARVEvent event;
 
         try {
             while((line = this.serialIn.readLine()) != null){
-                System.out.println("SocketReader: " + line);
+                // Skip empty lines
+                if(line.equals(""))
+                    continue;
 
-                if(line.equals("OK")){
-                    System.out.println("Got result");
-                    this.setLastResult(true);
-                } else if (line.equals("ERROR")){
-                    System.out.println("Got result");
-                    this.setLastResult(false);
-                } else if (line.matches("EVENT:.*")){
+                event = MARVEvent.fromString(line);
+
+                if(event.isResult()){
+                    System.out.println("** RESULT **: " + line);
+                    this.setLastResult((MARVResult)event);
+                } else if(event.isImportant()) {
                     System.out.println("** EVENT **: " + line);
 
                     // Do not lose events!
@@ -141,12 +287,14 @@ class SocketReader extends Thread{
                         successful = false;
 
                         try {
-                            eventQueue.put(MARVEvent.fromString(line));
+                            eventQueue.put(event);
                             successful = true;
                         } catch (InterruptedException e) {
                             successful = false;
                         }
                     } while (!successful);
+                } else {
+                    System.out.println("Discarding unimportant event: " + event);
                 }
             }
         } catch (IOException e) {
@@ -162,7 +310,7 @@ class SocketWriter extends Thread{
     private BlockingQueue<MARVCommand> resultQueue;
     private PrintWriter                serialOut;
     private SocketReader               reader;
-    boolean lastResult; 
+    private MARVResult lastResult; 
 
     SocketWriter(PrintWriter serialOut, BlockingQueue<MARVCommand> commandQueue, BlockingQueue<MARVCommand> resultQueue, SocketReader reader){
         this.serialOut    = serialOut;
@@ -174,7 +322,9 @@ class SocketWriter extends Thread{
     private void writeLine(String line){
         this.serialOut.print(line + "\r\n");
         this.serialOut.flush();
+        System.out.println("Waiting for result");
         this.lastResult = this.reader.getLastResult();
+        System.out.println("Got result");
     }
 
     @Override public void run(){
@@ -199,6 +349,7 @@ class SocketWriter extends Thread{
                 resultQueue.put(command);
 
             } catch (InterruptedException e){
+                // Try again
             }
 
         }
@@ -206,6 +357,7 @@ class SocketWriter extends Thread{
     }
 }
 
+/* ** Main class ** */
 public class MARVConnector {
     public static void main(String[] args) throws IOException, InterruptedException{
 
@@ -242,30 +394,33 @@ public class MARVConnector {
         MARVEvent   event;
         while (count < 2) {
             event = eventQueue.take();
-            if(event.getClass().getName() == "MARVChildJoined")
+            if(event instanceof MARVChildJoined)
                 count++;
         }
 
-        ZigBit z1 = new ZigBit(commandQueue, 5);
-        ZigBit z2 = new ZigBit(commandQueue, 6);
+        ZigBit[] zigBitList = ZigBit.discover(commandQueue);
 
-        z1.GPIOenable(1);
-        z1.update();
-        z1.GPIOenable(2);
-        z1.update();
-        z1.GPIOdisable(2);
-        z1.update();
-        z1.GPIOdisable(1);
-        z1.update();
+        while(true){
+            for(ZigBit zigBit: zigBitList){
+                zigBit.GPIOdisable(0);
+                zigBit.GPIOenable(1);
+                zigBit.update();
+            }
 
+            for(ZigBit zigBit: zigBitList){
+                zigBit.GPIOenable(0);
+                zigBit.GPIOdisable(1);
+                zigBit.update();
+            }
+        }
 
         // Fetch results
-        MARVCommand result;
+        //MARVCommand result;
 
-        for(int i = 0; i < 4; i++){
-            result = resultQueue.take();
-            System.out.println("Got Result for command " + result.id + ": " + result.result);
-        }
+        //for(int i = 0; i < 4; i++){
+        //    result = resultQueue.take();
+        //    System.out.println("Got Result for command " + result.id + ": " + result.result);
+       // }
 
     }
 }
