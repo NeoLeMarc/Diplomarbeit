@@ -1,0 +1,7 @@
+(gerbv-file-version! "2.0A")
+(define-layer! 3 (cons 'filename "Gerber/Soldmask TOP.gbr")(cons 'visible #t)(cons 'color #(65535 65535 65535)))
+(define-layer! 2 (cons 'filename "Gerber/TOP.gbr")(cons 'visible #t)(cons 'color #(30069 62194 26471)))
+(define-layer! 1 (cons 'filename "Gerber/Mechanical Outline.gbr")(cons 'visible #t)(cons 'color #(65535 32639 29555)))
+(define-layer! 0 (cons 'filename "Gerber/Excellon Drill file.DRL")(cons 'visible #t)(cons 'color #(65535 65535 65535))(cons 'attribs (list (list 'autodetect 'Boolean 1) (list 'zero_supression 'Enum 0) (list 'units 'Enum 0) (list 'digits 'Integer 4))))
+(define-layer! -1 (cons 'filename "/home/marcel/dokumente/uni/diplomarbeit/platine/Gerber")(cons 'visible #f)(cons 'color #(0 0 0)))
+(set-render-type! 3)
