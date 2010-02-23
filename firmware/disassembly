@@ -1,0 +1,231 @@
+   	003C       lsls r4, r7, #0x00
+   	0001       lsls r1, r0, #0x00
+   	0040       lsls r0, r0, #0x01
+   	0001       lsls r1, r0, #0x00
+   	0270       lsls r0, r6, #0x09
+   	0008       lsls r0, r1, #0x00
+   	0270       lsls r0, r6, #0x09
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	11A4       asrs r4, r4, #0x06
+   	0008       lsls r0, r1, #0x00
+   	003C       lsls r4, r7, #0x00
+   	0001       lsls r1, r0, #0x00
+   	003C       lsls r4, r7, #0x00
+   	0001       lsls r1, r0, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	1020       asrs r0, r4, #0x00
+   	0008       lsls r0, r1, #0x00
+   	11A4       asrs r4, r4, #0x06
+   	0008       lsls r0, r1, #0x00
+   	0040       lsls r0, r0, #0x01
+   	0001       lsls r1, r0, #0x00
+   	00AC       lsls r4, r5, #0x02
+   	0001       lsls r1, r0, #0x00
+   	00AC       lsls r4, r5, #0x02
+   	0001       lsls r1, r0, #0x00
+   	04AC       lsls r4, r5, #0x12
+   	0001       lsls r1, r0, #0x00
+   	02AD       lsls r5, r5, #0x0A
+   	0008       lsls r0, r1, #0x00
+   	0000       lsls r0, r0, #0x00
+   	E1A0       b 0x0008054A
+   	0000       lsls r0, r0, #0x00
+   	E1A0       b 0x0008054E
+   	0000       lsls r0, r0, #0x00
+   	E1A0       b 0x00080552
+  <reset_handler>:
+   	A102       add r1, pc, #0x008
+   	E3A0       b 0x00080956
+   	A7CA       add r7, pc, #0x328
+   	E1A0       b 0x0008055A
+   	0001       lsls r1, r0, #0x00
+   	E3A0       b 0x0008095E
+   	0220       lsls r0, r4, #0x08
+   	E5CA       b 0x0007FDB6
+   	8000       strh r0, [r0, #0x00]
+   	E3A0       b 0x00080966
+   	9040       str r0, [sp, #0x100]
+   	E59F       b 0x0007FD68
+   	00FF       lsls r7, r7, #0x03
+   	E8B900FF   ldmia r9!, {r0-r7}
+   	E8A8007F   stmia r8!, {r0-r6}
+   	E8B9007F   ldmia r9!, {r0-r6}
+   	E8A80001   stmia r8!, {r0}
+   	E3A0       b 0x0008097E
+   	0404       lsls r4, r0, #0x10
+   	E58A       b 0x0007FD56
+   	0078       lsls r0, r7, #0x01
+   	E3A0       b 0x00080986
+   	0408       lsls r0, r1, #0x10
+   	E58A       b 0x0007FD5E
+   	00F4       lsls r4, r6, #0x03
+   	E3A0       b 0x0008098E
+   	040C       lsls r4, r1, #0x10
+   	E58A       b 0x0007FD66
+   	FF7AEAFF   undefined opcode
+  <undef_handler>:
+   	FFFEEAFF   undefined opcode
+  <swi_handler>:
+   	FFFEEAFF   undefined opcode
+  <pabort_handler>:
+   	FFFEEAFF   undefined opcode
+  <dabort_handler>:
+   	FFFEEAFF   undefined opcode
+   	00DE       lsls r6, r3, #0x03
+   	EA00FFFE   and.w pc, r0, lr, ror #0x1F
+   	EAFF0000   ????.w r0, pc, r0
+   	0008       lsls r0, r1, #0x00
+  <__text_start__>:
+  <UARTWriteChar>:
+   	0600       lsls r0, r0, #0x18
+   	0E00       lsrs r0, r0, #0x18
+   	4903       ldr r1, [pc, #0x00C]
+   	2220       movs r2, #0x20
+   	780B       ldrb r3, [r1, #0x00]
+   	4213       tst r3, r2
+   	D0FC       beq 0x00080278
+   	4B02       ldr r3, [pc, #0x008]
+   	7018       strb r0, [r3, #0x00]
+   	4770       bx lr
+   	0714       lsls r4, r2, #0x1C
+   	FFFF0700   undefined opcode
+   	FFFFB510   undefined opcode
+   	1C04       adds r4, r0, #0x0
+   	280A       cmp r0, #0x0A
+   	D102       bne 0x0008029A
+   	200D       movs r0, #0x0D
+   	F7FFFFEB   bl 0x00080270 <__text_start__>
+   	0620       lsls r0, r4, #0x18
+   	0E00       lsrs r0, r0, #0x18
+   	F7FFFFE7   bl 0x00080270 <__text_start__>
+   	BC10       pop {r4}
+   	BC01       pop {r0}
+   	4700       bx r0
+  <waitForStatus>:
+   	4770       bx lr
+   	0000       lsls r0, r0, #0x00
+  <main>:
+   	B510       push {r4, lr}
+   	B081       sub sp, #0x004
+   	2400       movs r4, #0x00
+   	4B21       ldr r3, [pc, #0x084]
+   	601C       str r4, [r3, #0x00]
+   	4B21       ldr r3, [pc, #0x084]
+   	601C       str r4, [r3, #0x00]
+   	F000FA5B   bl 0x00080774 <ctl_board_init>
+   	4B20       ldr r3, [pc, #0x080]
+   	9400       str r4, [sp, #0x000]
+   	200F       movs r0, #0x0F
+   	2101       movs r1, #0x01
+   	2200       movs r2, #0x00
+   	F000FE92   bl 0x00080FF0 <__ctl_set_isr_from_thumb>
+   	200F       movs r0, #0x0F
+   	F000FE93   bl 0x00080FF8 <__ctl_unmask_isr_from_thumb>
+   	2001       movs r0, #0x01
+   	F000FE94   bl 0x00081000 <__libarm_set_irq_from_thumb>
+   	2211       movs r2, #0x11
+   	4B1A       ldr r3, [pc, #0x068]
+   	601A       str r2, [r3, #0x00]
+   	491A       ldr r1, [pc, #0x068]
+   	2380       movs r3, #0x80
+   	425B       negs r3, r3
+   	700B       strb r3, [r1, #0x00]
+   	2222       movs r2, #0x22
+   	4B18       ldr r3, [pc, #0x060]
+   	701A       strb r2, [r3, #0x00]
+   	3304       adds r3, #0x04
+   	701C       strb r4, [r3, #0x00]
+   	2307       movs r3, #0x07
+   	700B       strb r3, [r1, #0x00]
+   	4816       ldr r0, [pc, #0x058]
+   	F000FB75   bl 0x000809E4 <printf>
+   	4816       ldr r0, [pc, #0x058]
+   	F000FB72   bl 0x000809E4 <printf>
+   	4B15       ldr r3, [pc, #0x054]
+   	9400       str r4, [sp, #0x000]
+   	2002       movs r0, #0x02
+   	2100       movs r1, #0x00
+   	2200       movs r2, #0x00
+   	F000FE71   bl 0x00080FF0 <__ctl_set_isr_from_thumb>
+   	2002       movs r0, #0x02
+   	F000FE72   bl 0x00080FF8 <__ctl_unmask_isr_from_thumb>
+   	2201       movs r2, #0x01
+   	4B11       ldr r3, [pc, #0x044]
+   	801A       strh r2, [r3, #0x00]
+   	4911       ldr r1, [pc, #0x044]
+   	2308       movs r3, #0x08
+   	800B       strh r3, [r1, #0x00]
+   	880B       ldrh r3, [r1, #0x00]
+   	2240       movs r2, #0x40
+   	4013       ands r3, r2
+   	800B       strh r3, [r1, #0x00]
+   	880B       ldrh r3, [r1, #0x00]
+   	2280       movs r2, #0x80
+   	4013       ands r3, r2
+   	800B       strh r3, [r1, #0x00]
+   	B001       add sp, #0x004
+   	BC10       pop {r4}
+   	BC02       pop {r1}
+   	4708       bx r1
+   	F460FFFF   bl 0xFFCE133A
+   	0040       lsls r0, r0, #0x01
+   	0001       lsls r1, r0, #0x00
+   	03AD       lsls r5, r5, #0x0E
+   	0008       lsls r0, r1, #0x00
+   	F404FFFF   bl 0xFFC85346
+   	070C       lsls r4, r1, #0x1C
+   	FFFF0700   undefined opcode
+   	FFFF1020   undefined opcode
+   	0008       lsls r0, r1, #0x00
+   	1028       asrs r0, r5, #0x00
+   	0008       lsls r0, r1, #0x00
+   	0365       lsls r5, r4, #0x0D
+   	0008       lsls r0, r1, #0x00
+   	0300       lsls r0, r0, #0x0C
+   	FFFF0308   undefined opcode
+   	FFFFB500   undefined opcode
+   	2000       movs r0, #0x00
+   	F000FE4A   bl 0x00081000 <__libarm_set_irq_from_thumb>
+   	4B0A       ldr r3, [pc, #0x028]
+   	681B       ldr r3, [r3, #0x00]
+   	2B00       cmp r3, #0x00
+   	D103       bne 0x0008037C
+   	4809       ldr r0, [pc, #0x024]
+   	F000FB35   bl 0x000809E4 <printf>
+   	E002       b 0x00080382
+   	4808       ldr r0, [pc, #0x020]
+   	F000FB31   bl 0x000809E4 <printf>
+   	4808       ldr r0, [pc, #0x020]
+   	F000FB2E   bl 0x000809E4 <printf>
+   	2200       movs r2, #0x00
+   	4B07       ldr r3, [pc, #0x01C]
+   	701A       strb r2, [r3, #0x00]
+   	2001       movs r0, #0x01
+   	F000FE36   bl 0x00081000 <__libarm_set_irq_from_thumb>
+   	BC01       pop {r0}
+   	4700       bx r0
+   	0040       lsls r0, r0, #0x01
+   	0001       lsls r1, r0, #0x00
+   	1038       asrs r0, r7, #0x00
+   	0008       lsls r0, r1, #0x00
+   	104C       asrs r4, r1, #0x01
+   	0008       lsls r0, r1, #0x00
+   	1070       asrs r0, r6, #0x01
+   	0008       lsls r0, r1, #0x00
+   	030C       lsls r4, r1, #0x0C
+   	FFFF73D0   undefined opcode

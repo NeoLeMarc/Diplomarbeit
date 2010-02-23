@@ -1,0 +1,50 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="MANVFirmware" version="1">
+  <project Name="MANVFirmware">
+    <configuration Name="Common" Target="ADuC7026" arm_simulator_memory_simulation_filename="$(StudioDir)/targets/Analog_ADuC7000/ADuC7000SimulatorMemory.dll" arm_simulator_memory_simulation_parameter="0xF800;0x2000" link_include_startup_code="No" linker_memory_map_file="$(StudioDir)/targets/Analog_ADuC7000/Analog_ADuC7026_MemoryMap.xml" project_directory="" project_type="Executable" property_groups_file_path="$(StudioDir)/targets/Analog_ADuC7000/propertyGroups.xml"/>
+    <configuration Name="RAM" Placement="RAM" linker_section_placement_file="$(StudioDir)/targets/sram_placement.xml" target_reset_script="SRAMReset()"/>
+    <configuration Name="Flash" Placement="Flash" arm_target_flash_loader_file_path="$(StudioDir)/targets/Analog_ADuC7000/Release/ADuC7000_Loader.elf" arm_target_flash_loader_type="LIBMEM RPC Loader" linker_section_placement_file="$(StudioDir)/targets/flash_placement.xml" target_reset_script="FLASHReset()"/>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
+      <file Name="main.c" file_name="main.c">
+        <configuration Name="ARM Flash Debug" build_exclude_from_build="No"/>
+      </file>
+      <file Name="serial_example.c" file_name="serial_example.c">
+        <configuration Name="ARM Flash Debug" build_exclude_from_build="Yes"/>
+        <configuration Name="ARM Flash Release" build_exclude_from_build="Yes"/>
+        <configuration Name="THUMB Flash Release" build_exclude_from_build="Yes"/>
+      </file>
+      <file Name="serial_shell.c" file_name="serial_shell.c">
+        <configuration Name="ARM Flash Debug" build_exclude_from_build="Yes"/>
+        <configuration Name="ARM Flash Release" build_exclude_from_build="Yes"/>
+        <configuration Name="THUMB Flash Release" build_exclude_from_build="Yes"/>
+      </file>
+    </folder>
+    <folder Name="System Files">
+      <file Name="crt0.s" file_name="$(StudioDir)/source/crt0.s"/>
+      <file Name="Analog_ADuC7000_Startup.s" file_name="$(StudioDir)/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s"/>
+      <file Name="Analog_ADuC7000_Target.js" file_name="$(StudioDir)/targets/Analog_ADuC7000/Analog_ADuC7000_Target.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+      <file Name="Analog_ADuC7000.c" file_name="$(StudioDir)/targets/Analog_ADuC7000/Analog_ADuC7000.c">
+        <configuration Name="Common" arm_instruction_set="ARM" gcc_optimization_level="None"/>
+      </file>
+      <file Name="Analog_ADuC702x_Eval_Board.c" file_name="$(StudioDir)/targets/Analog_ADuC7026_EVAL/Analog_ADuC702x_Eval_Board.c"/>
+    </folder>
+    <configuration Name="ARM Flash Release" linker_output_format="hex"/>
+  </project>
+  <configuration Name="ARM RAM Debug" inherited_configurations="ARM;RAM;Debug"/>
+  <configuration Name="ARM" arm_instruction_set="ARM" arm_library_instruction_set="ARM" c_preprocessor_definitions="__ARM" hidden="Yes"/>
+  <configuration Name="RAM" c_preprocessor_definitions="__RAM_BUILD" hidden="Yes"/>
+  <configuration Name="Debug" build_debug_information="Yes" c_preprocessor_definitions="DEBUG" gcc_optimization_level="None" hidden="Yes" link_include_startup_code="No"/>
+  <configuration Name="ARM RAM Release" inherited_configurations="ARM;RAM;Release"/>
+  <configuration Name="Release" build_debug_information="No" c_preprocessor_definitions="NDEBUG" gcc_optimization_level="Level 1" hidden="Yes" link_include_startup_code="No"/>
+  <configuration Name="THUMB RAM Debug" inherited_configurations="THUMB;RAM;Debug"/>
+  <configuration Name="THUMB" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" c_preprocessor_definitions="__THUMB" hidden="Yes"/>
+  <configuration Name="THUMB RAM Release" inherited_configurations="THUMB;RAM;Release"/>
+  <configuration Name="ARM Flash Debug" inherited_configurations="ARM;Flash;Debug"/>
+  <configuration Name="Flash" c_preprocessor_definitions="__FLASH_BUILD" hidden="Yes"/>
+  <configuration Name="ARM Flash Release" inherited_configurations="ARM;Flash;Release" linker_output_format="hex"/>
+  <configuration Name="THUMB Flash Debug" inherited_configurations="THUMB;Flash;Debug"/>
+  <configuration Name="THUMB Flash Release" inherited_configurations="THUMB;Flash;Release" linker_output_format="hex"/>
+</solution>
