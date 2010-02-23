@@ -3,7 +3,8 @@
 // based on UART example by Rowley Associates Limited.
 
 // Comments by Marcel Noe <marcel@marcel-noe.de>
-#include <targets/ADuC7000.h>
+#include <ctl_api.h>
+#include <targets/ADuC7026.h>
 
 // Analog Devices rename common peripherals between ADuC7000 and ADuC7100...
 #ifndef COMCON0
@@ -16,10 +17,21 @@
 #endif
 
 #define PROCESSOR_CLOCK_FREQUENCY 41780000
+#define IRQ0_INT IRQSTA_External_IRQ0_BIT
+#define TIMER0_INT IRQSTA_Timer_0_BIT
 
 // Maximum size of line
 #define MAXLINE 255 
 #define MAXARGS 10  // The maximal number of arguments we support
+#define CLOCKMULTIPLIER 10;
+
+// Global Variables
+int alertStatus = 0;
+int clock0Count = 0;
+int clock0Multiplier = CLOCKMULTIPLIER;
+
+// Signatures
+void waitForStatus();
 
 static void
 UARTInitialize(unsigned int baud)
@@ -66,9 +78,7 @@ UARTInitialize(unsigned int baud)
 
 }
 
-static void
-UARTWriteChar(unsigned char ch)
-{
+static void UARTWriteChar(unsigned char ch){
 
   // 0x20 == Bit 5 set
   // This means: "THRE": - Bit is set if there is no Data in 
@@ -81,9 +91,7 @@ UARTWriteChar(unsigned char ch)
   COMTX = ch;
 }
 
-static unsigned char
-UARTReadChar(void)
-{
+static unsigned char UARTReadChar(void){
   // Spinlock waiting for DR, meaning: data to become ready.
   while ((COMSTA0 & 0x01) == 0);
 
@@ -91,17 +99,13 @@ UARTReadChar(void)
   return COMRX;
 }
 
-static int
-UARTReadAvailable(void)
-{
+static int UARTReadAvailable(void){
   // Check DR, returns true if a byte can be fetch from
   // COMRX.
   return COMSTA0 & 0x01;
 }
 
-void 
-__putchar(int ch)
-{
+void __putchar(int ch){
   // __putchar is called by printf. Defining it enables us
   // to use printf to write to serial line.
 
@@ -146,56 +150,94 @@ void parseCommand(char * commandline){
       printf("Argument %i: %s\n", i, argv[i]);
 }
 
-int
-main(void)
-{
+/* Interrupt service Routines */
+void buttonISR(){
   int i;
-  int linepos = 0;
-  char ch;
-  char ch0;
-  char commandline[MAXLINE + 1];
-  int status = 0;
 
+  // Mask interrupt
+  ctl_mask_isr(IRQ0_INT);
+
+  // Toggle alert status
+  alertStatus ^= 1;
+
+  // Use LED to display alert Status
+  GP4DAT = (alertStatus << 26);
+
+  // Spin some time to give user the chance to release button
+  for(i = PROCESSOR_CLOCK_FREQUENCY * 4; i > 0; i--);
+
+  // Unmask interrupt
+  ctl_unmask_isr(IRQ0_INT);
+}
+
+void timerISR(){
+  if(clock0Multiplier-- > 0){ 
+    // Clear interrupt
+    T0CLRI = 0;
+    return;
+
+  } else
+    clock0Multiplier = CLOCKMULTIPLIER;
+
+  // Send status update
+  // Second parameter can be set to Zero:
+  // This will improve the performance but will lead to less reliable communication
+  if(!alertStatus)
+    printf("ATD 0,1\rSTATUS: OK\r");
+  else
+    printf("ATD 0,1\rSTATUS: IN ALERT STATUS\r");
+
+  waitForStatus();
+
+  // Clear interrupt
+  T0CLRI = 0;
+}
+
+void waitForStatus(){
+  int linepos = 0;
+  char commandline[MAXLINE + 1];
+  char ch;
+
+  // Read character -- Spinlock              
+  do {
+    commandline[0] = '\0';
+    linepos        = 0;
+
+    do{        
+      ch = UARTReadChar();    
+      commandline[linepos] = ch;
+    } while (linepos++ < MAXLINE && ch != '\n');
+        
+    commandline[linepos] = '\0';      
+  } while(strcmp("OK\r\n", commandline) != 0 && strcmp("ERROR\r\n", commandline) != 0);
+}
+
+int main(void){
+  // Set Alert Status off
+  alertStatus = 0;
+
+  // Initialize Boards & turn the damn LED off
+  ctl_board_init();
+  GP4DAT = 0;
+
+  // Enable Interrupts
+  ctl_set_isr(IRQ0_INT, 1, CTL_ISR_TRIGGER_FIXED, buttonISR, 0);
+  ctl_unmask_isr(IRQ0_INT);
+  
   // Set serial port to 38400 baud
-  GP4DAT = 0x04000000;
   UARTInitialize(38400);
-  GP4DAT ^= 0x04000000;
 
   // Begin read loop
-  /*
-  printf("ATZ\n");
-  printf("ATR 0,0,s120=3\n");
-  */
-  
-  while(1) {
-      status = (status + 1) % 2;
+  printf("ATZ\r\n");
+  waitForStatus();
+    
+  // Enable periodic sending of status
+  ctl_set_isr(TIMER0_INT, 0, CTL_ISR_TRIGGER_FIXED, timerISR, 0);
+  ctl_unmask_isr(TIMER0_INT);
 
-      // Toggle status
-      //printf("ATR 2,0,s120=3 s130=%i\n", status);
-      // Second parameter can be set to Zero:
-      // This will improve the performance but will lead to less reliable communication
-      printf("ATD 0,1\rTest\r");
+  T0LD   = 189000; // Every 10 seconds
+  T0CON  = 0xc8;   // Set prescaler to CoreClock / 256 + Periodic mode
 
-      if(status == 1){
-        GP4DAT = 0x04000000;        
-      } else {
-        GP4DAT ^= 0x04000000;
-      }
-
-      // Read character -- Spinlock              
-      do {
-        commandline[0] = '\0';
-        linepos        = 0;
-
-        do{        
-          //while(!UARTReadAvailable());                    
-            ch = UARTReadChar();    
-            commandline[linepos] = ch;
-        } while (linepos++ < MAXLINE && ch != '\n');
-        
-        commandline[linepos] = '\0';      
-      } while(strcmp("OK\r\n", commandline) != 0 && strcmp("ERROR\r\n", commandline) != 0);
-
-      GP4DAT ^= 0x04000000;    
-  }
+  // Enable all interrupts
+  ctl_global_interrupts_enable();
 }
