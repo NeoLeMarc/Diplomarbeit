@@ -75,11 +75,8 @@
   <Watches active="0" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="9" debugPath="/home/marcel/Ubuntu One/diplomarbeit/firmware/serial_example.c" y="157" path="/home/marcel/Ubuntu One/diplomarbeit/firmware/serial_example.c" left="0" selected="0" name="unnamed" top="89" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/Ubuntu One/diplomarbeit/firmware/serial_shell.c" y="149" path="/home/marcel/Ubuntu One/diplomarbeit/firmware/serial_shell.c" left="0" selected="0" name="unnamed" top="122" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" y="94" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" left="0" selected="0" name="unnamed" top="29" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="21" debugPath="/home/marcel/Ubuntu One/diplomarbeit/firmware/main.c" y="253" path="/home/marcel/Ubuntu One/diplomarbeit/firmware/main.c" left="0" selected="1" name="unnamed" top="215" />
-  <SessionOpenFile useTextEdit="0" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="0x801ac-0x803ab THUMB" y="122" path="disassembly" left="0" selected="0" name="unnamed" top="122" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" y="94" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" left="0" selected="0" name="unnamed" top="47" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="0" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="1" name="unnamed" top="0" />
  </Files>
  <ARMCrossStudioWindow activeProject="MANVFirmware" autoConnectTarget="/Generic FT2232 Device" debugSearchFileMap="" fileDialogInitialDirectory="/home/marcel/crossworks/examples/UART" fileDialogDefaultFilter="*.cpp;*.cxx;*.cc;*.c;*.h;*.hpp;*.hxx" autoConnectCapabilities="1407" debugSearchPath="" buildConfiguration="THUMB Flash Release" />
 </session>
