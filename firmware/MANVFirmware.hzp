@@ -8,16 +8,19 @@
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
       <file Name="main.c" file_name="main.c">
         <configuration Name="ARM Flash Debug" build_exclude_from_build="No"/>
+        <configuration Name="ARM Flash Release" arm_keep_assembly="Yes"/>
       </file>
       <file Name="serial_example.c" file_name="serial_example.c">
         <configuration Name="ARM Flash Debug" build_exclude_from_build="Yes"/>
         <configuration Name="ARM Flash Release" build_exclude_from_build="Yes"/>
         <configuration Name="THUMB Flash Release" build_exclude_from_build="Yes"/>
+        <configuration Name="ARM RAM Release" build_exclude_from_build="Yes"/>
       </file>
       <file Name="serial_shell.c" file_name="serial_shell.c">
         <configuration Name="ARM Flash Debug" build_exclude_from_build="Yes"/>
         <configuration Name="ARM Flash Release" build_exclude_from_build="Yes"/>
         <configuration Name="THUMB Flash Release" build_exclude_from_build="Yes"/>
+        <configuration Name="ARM RAM Release" build_exclude_from_build="Yes"/>
       </file>
     </folder>
     <folder Name="System Files">
@@ -31,7 +34,7 @@
       </file>
       <file Name="Analog_ADuC702x_Eval_Board.c" file_name="$(StudioDir)/targets/Analog_ADuC7026_EVAL/Analog_ADuC702x_Eval_Board.c"/>
     </folder>
-    <configuration Name="ARM Flash Release" linker_output_format="hex"/>
+    <configuration Name="ARM Flash Release" build_quietly="No" linker_output_format="hex"/>
   </project>
   <configuration Name="ARM RAM Debug" inherited_configurations="ARM;RAM;Debug"/>
   <configuration Name="ARM" arm_instruction_set="ARM" arm_library_instruction_set="ARM" c_preprocessor_definitions="__ARM" hidden="Yes"/>

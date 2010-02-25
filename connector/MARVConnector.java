@@ -89,11 +89,13 @@ class MARVEvent extends MARVPrioritized {
             return new MARVResult(raw, true);
         else if(raw.equals("ERROR"))
             return new MARVResult(raw, false);
+        else if(raw.matches("DATA .*:.*"))
+            return new MARVDataReceived(raw);
         else if(raw.matches("EVENT:CHILD_JOINED .*"))
             return new MARVChildJoined(raw);
         else if (raw.matches("\\+WCHILDREN:.*"))
             return new MARVChildrenList(raw);
-        else
+        else 
             return new MARVEvent(raw);
     }
 }
@@ -106,6 +108,30 @@ class MARVChildJoined extends MARVEvent {
 
     public boolean isImportant(){
         return true;
+    }
+};
+
+class MARVDataReceived extends MARVEvent {
+    protected ZigBit source;
+    protected String data;
+
+
+    MARVDataReceived(String raw){
+        super(raw);
+
+        // parse data
+        this.parseRaw(raw);
+    }
+
+    public boolean isImportant(){
+        return true;
+    }
+
+    private void parseRaw(String raw){
+        String[] splitedRaw = raw.split(":", 2);
+        this.data   = splitedRaw[1];
+        this.source = ZigBit.get(Integer.parseInt(splitedRaw[0].split(" ")[1].split(",")[0]));
+        System.out.println("Data received: Source: " + this.source + " - " + this.data);
     }
 };
 
@@ -158,7 +184,7 @@ class MARVChildrenList extends MARVResult {
         ZigBit[] childList = new ZigBit[panIdList.length];
 
         for(int pos = 0; pos < panIdList.length; pos++)
-            childList[pos] = ZigBit.get(commandQueue, Integer.parseInt(panIdList[pos])); 
+            childList[pos] = ZigBit.get(Integer.parseInt(panIdList[pos])); 
 
         return childList;
     }
@@ -172,23 +198,29 @@ class MARVChildrenList extends MARVResult {
 /* *** Entities ** */
 class ZigBit {
     int panID;
-    BlockingQueue<MARVCommand> commandQueue;
     int[] gpio = {0, 0, 0, 0};
 
     // Singleton
     private static HashMap<Integer, ZigBit> zigBitMap = new HashMap<Integer, ZigBit>();
 
-    ZigBit(BlockingQueue<MARVCommand> commandQueue, int panID){
+    // Command queue
+    private static BlockingQueue<MARVCommand> commandQueue;
+
+    ZigBit(int panID){
         this.commandQueue = commandQueue;
         this.panID        = panID;
     }
 
-    public static ZigBit get(BlockingQueue<MARVCommand> commandQueue, int panID){
+    public static void setCommandQueue(BlockingQueue<MARVCommand> commandQueue){
+        ZigBit.commandQueue = commandQueue;
+    }
+
+    public static ZigBit get(int panID){
         ZigBit z = zigBitMap.get(panID);
         if(z != null)
             return z;
         else {
-            z = new ZigBit(commandQueue, panID);
+            z = new ZigBit(panID);
             zigBitMap.put(panID, z);
             return z;
         }
@@ -223,14 +255,23 @@ class ZigBit {
         } while (!successful);
     }
 
-    public static ZigBit[] discover(BlockingQueue<MARVCommand> commandQueue) throws InterruptedException{
+    public static ZigBit[] discover() throws InterruptedException{
         // Send discovery command
         MARVCommand command = new MARVCommand("ATS30=1+WCHILDREN?", 0);
         commandQueue.put(command);
 
         // Get result & return childList
         MARVResult result = command.getResult();
-        return result.getChildList(commandQueue);
+        return result.getChildList(ZigBit.commandQueue);
+    }
+
+    public MARVResult sendData(String data) throws InterruptedException{
+        // Send data command
+        MARVCommand command = new MARVCommand("ATD " + this.panID + "\r" + data + "\r", 10);
+        commandQueue.put(command);
+
+        // Get result & return status
+        return command.getResult();
     }
 }
 
@@ -277,7 +318,7 @@ class SocketReader extends Thread{
                 event = MARVEvent.fromString(line);
 
                 if(event.isResult()){
-                    System.out.println("** RESULT **: " + line);
+                    //System.out.println("** RESULT **: " + line);
                     this.setLastResult((MARVResult)event);
                 } else if(event.isImportant()) {
                     System.out.println("** EVENT **: " + line);
@@ -294,7 +335,7 @@ class SocketReader extends Thread{
                         }
                     } while (!successful);
                 } else {
-                    System.out.println("Discarding unimportant event: " + event);
+                    //System.out.println("Discarding unimportant event: " + event);
                 }
             }
         } catch (IOException e) {
@@ -322,9 +363,9 @@ class SocketWriter extends Thread{
     private void writeLine(String line){
         this.serialOut.print(line + "\r\n");
         this.serialOut.flush();
-        System.out.println("Waiting for result");
+//        System.out.println("Waiting for result");
         this.lastResult = this.reader.getLastResult();
-        System.out.println("Got result");
+//        System.out.println("Got result");
     }
 
     @Override public void run(){
@@ -366,6 +407,9 @@ public class MARVConnector {
         BlockingQueue<MARVEvent>   eventQueue   = new PriorityBlockingQueue<MARVEvent>();
         BlockingQueue<MARVCommand> resultQueue  = new PriorityBlockingQueue<MARVCommand>();
 
+        // Initialize ZigBit class with commandQueue
+        ZigBit.setCommandQueue(commandQueue);
+
         // Create Socket Adapter & Connect
         Socket serialSocket = null;
         String input;
@@ -398,21 +442,13 @@ public class MARVConnector {
                 count++;
         }
 
-        ZigBit[] zigBitList = ZigBit.discover(commandQueue);
+        ZigBit[] zigBitList = ZigBit.discover();
 
-        while(true){
+/*        while(true){
             for(ZigBit zigBit: zigBitList){
-                zigBit.GPIOdisable(0);
-                zigBit.GPIOenable(1);
-                zigBit.update();
+                zigBit.sendData("The quick brown fox jumps over the lazy dog!");
             }
-
-            for(ZigBit zigBit: zigBitList){
-                zigBit.GPIOenable(0);
-                zigBit.GPIOdisable(1);
-                zigBit.update();
-            }
-        }
+        }*/
 
         // Fetch results
         //MARVCommand result;

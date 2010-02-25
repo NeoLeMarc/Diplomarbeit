@@ -163,8 +163,11 @@ void buttonISR(){
   // Use LED to display alert Status
   GP4DAT = (alertStatus << 26);
 
+  // immediatly signal change in alert status
+  timerISR();
+
   // Spin some time to give user the chance to release button
-  for(i = PROCESSOR_CLOCK_FREQUENCY * 4; i > 0; i--);
+  //for(i = PROCESSOR_CLOCK_FREQUENCY * 10; i > 0; i--);
 
   // Unmask interrupt
   ctl_unmask_isr(IRQ0_INT);
@@ -179,18 +182,22 @@ void timerISR(){
   } else
     clock0Multiplier = CLOCKMULTIPLIER;
 
+  sendAlertStatus();
+
+  // Clear interrupt
+  T0CLRI = 0;
+}
+
+void sendAlertStatus(){
   // Send status update
   // Second parameter can be set to Zero:
   // This will improve the performance but will lead to less reliable communication
   if(!alertStatus)
     printf("ATD 0,1\rSTATUS: OK\r");
   else
-    printf("ATD 0,1\rSTATUS: IN ALERT STATUS\r");
+    printf("ATD 0,1\rSTATUS: ALERT\r");
 
   waitForStatus();
-
-  // Clear interrupt
-  T0CLRI = 0;
 }
 
 void waitForStatus(){
@@ -216,7 +223,7 @@ int main(void){
   // Set Alert Status off
   alertStatus = 0;
 
-  // Initialize Boards & turn the damn LED off
+  // Initialize Boards & turn the darn LED off
   ctl_board_init();
   GP4DAT = 0;
 
@@ -229,13 +236,6 @@ int main(void){
 
   // Begin read loop
   printf("ATZ\r\n");
-  waitForStatus();
-
-  // Push the second board around
-  printf("ATR 2,0,s120=3 s130=0\r\n");
-  waitForStatus();
-
-  printf("ATR 2,0,s130=0\r\n");
   waitForStatus();
     
   // Enable periodic sending of status

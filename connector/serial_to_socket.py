@@ -14,7 +14,7 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
         self.tunnel()
 
     def openSerial(self):
-        self.serial = serial.Serial('/dev/ttyUSB1', 38400, timeout=1)
+        self.serial = serial.Serial('/dev/ttyUSB2', 38400, timeout=1)
 
     def shutdown(self):
         self.serial.close()
