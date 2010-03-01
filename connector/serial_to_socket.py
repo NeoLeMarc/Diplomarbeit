@@ -14,7 +14,10 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
         self.tunnel()
 
     def openSerial(self):
-        self.serial = serial.Serial('/dev/ttyUSB1', 38400, timeout=1)
+        try:
+            self.serial = serial.Serial('/dev/ttyUSB1', 38400, timeout=1)
+        except:
+            self.serial = serial.Serial('COM5:', 38400, timeout=1)
 
     def shutdown(self):
         self.serial.close()
