@@ -2,6 +2,11 @@ import java.io.*;
 import java.net.*;
 import java.util.concurrent.*;
 import java.util.*;
+import CORBA_Server.*;
+import Common.*;
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
 
 /* ** Meta classes ** */
 class MARVPrioritized implements Comparable {
@@ -93,6 +98,8 @@ class MARVEvent extends MARVPrioritized {
             return new MARVDataReceived(raw);
         else if(raw.matches("EVENT:CHILD_JOINED .*"))
             return new MARVChildJoined(raw);
+        else if(raw.matches("EVENT:CHILD_LOST .*"))
+            return new MARVChildLost(raw);
         else if (raw.matches("\\+WCHILDREN:.*"))
             return new MARVChildrenList(raw);
         else 
@@ -101,15 +108,31 @@ class MARVEvent extends MARVPrioritized {
 }
 
 class MARVChildJoined extends MARVEvent {
+    protected ZigBit source;
 
     MARVChildJoined(String raw){
         super(raw);
+        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1]));
     }
 
     public boolean isImportant(){
         return true;
     }
 };
+
+class MARVChildLost extends MARVEvent {
+    protected ZigBit source;
+
+    MARVChildLost(String raw){
+        super(raw);
+        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1]));
+    }
+
+    public boolean isImportant(){
+        return true;
+    }
+};
+
 
 class MARVDataReceived extends MARVEvent {
     protected ZigBit source;
@@ -335,7 +358,7 @@ class SocketReader extends Thread{
                         }
                     } while (!successful);
                 } else {
-                    //System.out.println("Discarding unimportant event: " + event);
+                    System.out.println("Discarding unimportant event: " + event);
                 }
             }
         } catch (IOException e) {
@@ -400,6 +423,8 @@ class SocketWriter extends Thread{
 
 /* ** Main class ** */
 public class MARVConnector {
+    private static Incoming serverIncoming;
+
     public static void main(String[] args) throws IOException, InterruptedException{
 
         // Create Queues
@@ -428,35 +453,108 @@ public class MARVConnector {
         // Create Writer
         SocketWriter socketWriter = new SocketWriter(new PrintWriter(serialSocket.getOutputStream(), true), commandQueue, resultQueue, socketReader);
 
+        // Initizalize CORBA connection
+        System.out.println("Classpath: " + System.getProperty("java.class.path"));
+        Properties properties = new Properties();
+        //properties.put("org.omg.CORBA.ORBClass", "org.jacorb.orb.ORB");
+        //properties.put("org.omg.CORBA.ORBSingletonClass", "org.jacorb.orb.ORBSingletonClass");
+        initCORBA(args, properties);
+        System.out.println("Corba initialized...");
+
         // Start Threads
         socketReader.start();
         socketWriter.start();
 
         // Wait for childs to join
         int count = 0;
-
+/*
         MARVEvent   event;
-        while (count < 2) {
+        while (count < 1) {
             event = eventQueue.take();
             if(event instanceof MARVChildJoined)
                 count++;
         }
 
         ZigBit[] zigBitList = ZigBit.discover();
+  */      
 
-/*        while(true){
-            for(ZigBit zigBit: zigBitList){
-                zigBit.sendData("The quick brown fox jumps over the lazy dog!");
+        // Send events to corba
+        MARVEvent   event;
+        while((event = eventQueue.take()) != null){
+            if(event instanceof MARVDataReceived){
+                System.out.println("Received data!");
+                MARVDataReceived message = (MARVDataReceived)event;
+                CORBA_DataMessage dataMessage = new CORBA_DataMessage();
+                dataMessage.groupID = 1;
+                dataMessage.nodeID  = String.valueOf(message.source.panID);
+                if(message.data.equals("STATUS: OK")){
+                    dataMessage.pulse     = 80;
+                    dataMessage.breathing = 20;
+                } else {
+                    dataMessage.pulse     = 0;
+                    dataMessage.breathing = 0;
+
+                    // Create alert message
+                    CORBA_EventMessage cevent = new CORBA_EventMessage();
+                    cevent.groupID   = 1;
+                    cevent.nodeID    = String.valueOf(message.source.panID);
+                    cevent.eventType = event_alarm_breathing.value;
+                    cevent.connectorTimestamp = System.currentTimeMillis();
+                    serverIncoming.notify_event(cevent);
+                }
+                dataMessage.connectorTimestamp = System.currentTimeMillis();
+                serverIncoming.notify_data(dataMessage);
+            } else if(event instanceof MARVChildJoined) {
+                // Create join message 
+                MARVChildJoined message = (MARVChildJoined)event;
+                CORBA_EventMessage cevent = new CORBA_EventMessage();
+                cevent.groupID   = 1;
+                cevent.nodeID    = String.valueOf(message.source.panID);
+                cevent.eventType = event_join.value;
+                cevent.connectorTimestamp = System.currentTimeMillis();
+                serverIncoming.notify_event(cevent);
+            } else if(event instanceof MARVChildLost) {
+                // Create lost message 
+                MARVChildLost message = (MARVChildLost)event;
+                CORBA_EventMessage cevent = new CORBA_EventMessage();
+                cevent.groupID   = 1;
+                cevent.nodeID    = String.valueOf(message.source.panID);
+                cevent.eventType = event_lost.value;
+                cevent.connectorTimestamp = System.currentTimeMillis();
+                serverIncoming.notify_event(cevent);
+            } else {
+                System.out.println("Other event");
             }
-        }*/
-
-        // Fetch results
-        //MARVCommand result;
-
-        //for(int i = 0; i < 4; i++){
-        //    result = resultQueue.take();
-        //    System.out.println("Got Result for command " + result.id + ": " + result.result);
-       // }
-
+        }
     }
+
+	/* Von Jan:
+	 * CORBA initialisieren.
+	 * Nachdem diese Prozedur ausgeführt wurde ist der Server bereit Nachrichten zu empfangen. 
+	 */
+	private static void initCORBA(String[] args, Properties properties)
+	{
+		System.err.println("initialisiere CORBA...");
+		try
+		{
+	        // create and initialize the ORB
+			ORB orb = ORB.init(args, properties);
+		
+	        // get the root naming context
+	        org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+	        // Use NamingContextExt instead of NamingContext. This is 
+	        // part of the Interoperable naming Service.  
+	        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+	 
+	        // resolve the Object Reference in Naming
+	        String name = "Server_Incoming";
+	        serverIncoming = IncomingHelper.narrow(ncRef.resolve_str(name));
+	        System.err.println("Obtained a handle on server object: " + serverIncoming);
+	        System.err.println("...CORBA erfolgreich gestartet");
+
+		} catch (Exception e) {
+			System.err.println("Fehler bei der CORBA-Initialisierung!\n" + e.toString());
+            System.exit(1);
+		}
+	}
 }
