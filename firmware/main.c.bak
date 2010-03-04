@@ -29,13 +29,23 @@
 int alertStatus = 0;
 int clock0Count = 0;
 int clock0Multiplier = CLOCKMULTIPLIER;
+unsigned long currentRandomNumber = 12345;
 
 // Signatures
 void waitForStatus();
 
-static void
-UARTInitialize(unsigned int baud)
-{
+int randint(int min, int max){
+    unsigned long m = 4294967291;
+    unsigned long a = 3141592653;
+    unsigned long b = 56985;
+
+    currentRandomNumber = (a * currentRandomNumber + b) % m;
+
+    return (int)min + (currentRandomNumber % (max - min));
+}
+
+// Functions
+static void UARTInitialize(unsigned int baud){
   // Divisor: The baud rate of the serial interface is generated
   // by dividing the processor clock. This is the reason why it
   // is not possible to use all available baud-rates without the
@@ -164,7 +174,7 @@ void buttonISR(){
   GP4DAT = (alertStatus << 26);
 
   // immediatly signal change in alert status
-  timerISR();
+  sendAlertStatus();
 
   // Spin some time to give user the chance to release button
   //for(i = PROCESSOR_CLOCK_FREQUENCY * 10; i > 0; i--);
@@ -192,10 +202,18 @@ void sendAlertStatus(){
   // Send status update
   // Second parameter can be set to Zero:
   // This will improve the performance but will lead to less reliable communication
-  if(!alertStatus)
-    printf("ATD 0,1\rSTATUS: OK\r");
-  else
-    printf("ATD 0,1\rSTATUS: ALERT\r");
+  int puls   = 0;
+  int atmung = 0;
+
+  if(!alertStatus){
+    puls   = randint(60, 120);
+    atmung = randint(10, 20);
+    printf("ATD 0,1\rSTATUS:OK:%i:%i\r", puls, atmung);
+  } else {
+    puls   = randint(0, 10);
+    atmung = randint(0, 5);
+    printf("ATD 0,1\rSTATUS:ALERT:%i\r", puls, atmung);
+  }
 
   waitForStatus();
 }
