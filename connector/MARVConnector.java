@@ -67,6 +67,37 @@ class MARVCommand extends MARVPrioritized {
 
 }
 
+/* *** Corba message handling ****/
+abstract class CorbaMessageContainer {
+    public abstract void send(Incoming serverIncoming);
+}
+
+class CorbaDataMessageContainer extends CorbaMessageContainer{
+    private CORBA_DataMessage message;
+
+    CorbaDataMessageContainer (CORBA_DataMessage message){
+        this.message = message;
+    }
+
+    public void send(Incoming serverIncoming){
+        serverIncoming.notify_data(this.message);
+    }
+
+}
+
+class CorbaEventMessageContainer extends CorbaMessageContainer{
+    private CORBA_EventMessage message;
+
+    CorbaEventMessageContainer (CORBA_EventMessage message){
+        this.message = message;
+    }
+
+    public void send(Incoming serverIncoming){
+        serverIncoming.notify_event(this.message);
+    }
+}
+
+
 
 /* *** Events *** **/
 class MARVEvent extends MARVPrioritized {
@@ -94,6 +125,8 @@ class MARVEvent extends MARVPrioritized {
             return new MARVResult(raw, true);
         else if(raw.equals("ERROR"))
             return new MARVResult(raw, false);
+        else if(raw.matches("DATA .*:STATUS:.*:.*"))
+            return new MARVStatusMessage(raw);
         else if(raw.matches("DATA .*:.*"))
             return new MARVDataReceived(raw);
         else if(raw.matches("EVENT:CHILD_JOINED .*"))
@@ -104,6 +137,10 @@ class MARVEvent extends MARVPrioritized {
             return new MARVChildrenList(raw);
         else 
             return new MARVEvent(raw);
+    }
+
+    public AbstractList<CorbaMessageContainer> createCorbaMessages(){
+        return null; 
     }
 }
 
@@ -118,6 +155,20 @@ class MARVChildJoined extends MARVEvent {
     public boolean isImportant(){
         return true;
     }
+
+    public AbstractList<CorbaMessageContainer> createCorbaMessages(){
+        ArrayList<CorbaMessageContainer> ret = new ArrayList<CorbaMessageContainer>();
+
+        // Create join message 
+        CORBA_EventMessage eventMessage = new CORBA_EventMessage();
+        eventMessage.groupID   = 1;
+        eventMessage.nodeID    = String.valueOf(this.source.panID);
+        eventMessage.eventType = event_join.value;
+        eventMessage.connectorTimestamp = System.currentTimeMillis();
+
+        ret.add(new CorbaEventMessageContainer(eventMessage));
+        return ret;
+    }
 };
 
 class MARVChildLost extends MARVEvent {
@@ -130,6 +181,20 @@ class MARVChildLost extends MARVEvent {
 
     public boolean isImportant(){
         return true;
+    }
+
+    public AbstractList<CorbaMessageContainer> createCorbaMessages(){
+        ArrayList<CorbaMessageContainer> ret = new ArrayList<CorbaMessageContainer>();
+
+        // Create lost message 
+        CORBA_EventMessage eventMessage = new CORBA_EventMessage();
+        eventMessage.groupID   = 1;
+        eventMessage.nodeID    = String.valueOf(this.source.panID);
+        eventMessage.eventType = event_lost.value;
+        eventMessage.connectorTimestamp = System.currentTimeMillis();
+
+        ret.add(new CorbaEventMessageContainer(eventMessage));
+        return ret;
     }
 };
 
@@ -157,6 +222,52 @@ class MARVDataReceived extends MARVEvent {
         System.out.println("Data received: Source: " + this.source + " - " + this.data);
     }
 };
+
+class MARVStatusMessage extends MARVDataReceived {
+    protected short pulse;
+    protected short breathing;
+
+    MARVStatusMessage(String raw){
+        super(raw);
+
+        // parse data
+        this.parseRaw(raw);
+    }
+
+    private void parseRaw(String raw){
+        String[] splitedRaw = raw.split(":", 5);
+        this.pulse     = Short.parseShort(splitedRaw[3]);
+        this.breathing = Short.parseShort(splitedRaw[4]);
+        System.out.println("Pulse is: " + this.pulse + " - Breathing is: " + this.breathing);
+    }
+
+    public AbstractList<CorbaMessageContainer> createCorbaMessages(){
+        ArrayList<CorbaMessageContainer> ret = new ArrayList<CorbaMessageContainer>();
+
+        // Create Data Message
+        CORBA_DataMessage dataMessage  = new CORBA_DataMessage();
+        dataMessage.groupID            = 1;
+        dataMessage.nodeID             = String.valueOf(this.source.panID);
+        dataMessage.pulse              = this.pulse;
+        dataMessage.breathing          = this.breathing; 
+        dataMessage.connectorTimestamp = System.currentTimeMillis();
+        ret.add(new CorbaDataMessageContainer(dataMessage));
+
+        // If Status is error, we also have to create an event message
+        if(this.data.matches("STATUS: ERROR:.*")){
+            // Create alert message
+            CORBA_EventMessage eventMessage = new CORBA_EventMessage();
+            eventMessage.groupID            = 1;
+            eventMessage.nodeID             = String.valueOf(this.source.panID);
+            eventMessage.eventType          = event_alarm_breathing.value;
+            eventMessage.connectorTimestamp = System.currentTimeMillis();
+
+            ret.add(new CorbaEventMessageContainer(eventMessage));
+         }
+
+         return ret;
+    }
+}
 
 /* ** Results ** */
 class MARVResult extends MARVEvent {
@@ -465,65 +576,12 @@ public class MARVConnector {
         socketReader.start();
         socketWriter.start();
 
-        // Wait for childs to join
-        int count = 0;
-/*
-        MARVEvent   event;
-        while (count < 1) {
-            event = eventQueue.take();
-            if(event instanceof MARVChildJoined)
-                count++;
-        }
-
-        ZigBit[] zigBitList = ZigBit.discover();
-  */      
-
         // Send events to corba
         MARVEvent   event;
         while((event = eventQueue.take()) != null){
-            if(event instanceof MARVDataReceived){
-                System.out.println("Received data!");
-                MARVDataReceived message = (MARVDataReceived)event;
-                CORBA_DataMessage dataMessage = new CORBA_DataMessage();
-                dataMessage.groupID = 1;
-                dataMessage.nodeID  = String.valueOf(message.source.panID);
-                if(message.data.equals("STATUS: OK")){
-                    dataMessage.pulse     = 80;
-                    dataMessage.breathing = 20;
-                } else {
-                    dataMessage.pulse     = 0;
-                    dataMessage.breathing = 0;
-
-                    // Create alert message
-                    CORBA_EventMessage cevent = new CORBA_EventMessage();
-                    cevent.groupID   = 1;
-                    cevent.nodeID    = String.valueOf(message.source.panID);
-                    cevent.eventType = event_alarm_breathing.value;
-                    cevent.connectorTimestamp = System.currentTimeMillis();
-                    serverIncoming.notify_event(cevent);
-                }
-                dataMessage.connectorTimestamp = System.currentTimeMillis();
-                serverIncoming.notify_data(dataMessage);
-            } else if(event instanceof MARVChildJoined) {
-                // Create join message 
-                MARVChildJoined message = (MARVChildJoined)event;
-                CORBA_EventMessage cevent = new CORBA_EventMessage();
-                cevent.groupID   = 1;
-                cevent.nodeID    = String.valueOf(message.source.panID);
-                cevent.eventType = event_join.value;
-                cevent.connectorTimestamp = System.currentTimeMillis();
-                serverIncoming.notify_event(cevent);
-            } else if(event instanceof MARVChildLost) {
-                // Create lost message 
-                MARVChildLost message = (MARVChildLost)event;
-                CORBA_EventMessage cevent = new CORBA_EventMessage();
-                cevent.groupID   = 1;
-                cevent.nodeID    = String.valueOf(message.source.panID);
-                cevent.eventType = event_lost.value;
-                cevent.connectorTimestamp = System.currentTimeMillis();
-                serverIncoming.notify_event(cevent);
-            } else {
-                System.out.println("Other event");
+            for(CorbaMessageContainer corbaMessage : event.createCorbaMessages()){
+                corbaMessage.send(serverIncoming);
+                System.out.println("!! Sent corba message !!");
             }
         }
     }
