@@ -83,6 +83,9 @@ class CorbaDataMessageContainer extends CorbaMessageContainer{
         serverIncoming.notify_data(this.message);
     }
 
+    public String toString(){
+        return this.message.toString();
+    }
 }
 
 class CorbaEventMessageContainer extends CorbaMessageContainer{
@@ -94,6 +97,10 @@ class CorbaEventMessageContainer extends CorbaMessageContainer{
 
     public void send(Incoming serverIncoming){
         serverIncoming.notify_event(this.message);
+    }
+
+    public String toString(){
+        return this.message.toString();
     }
 }
 
@@ -116,10 +123,6 @@ class MARVEvent extends MARVPrioritized {
     }
 
 
-    public String toString(){
-        return this.raw;
-    }
-
     public static MARVEvent fromString(String raw){
         if(raw.equals("OK"))
             return new MARVResult(raw, true);
@@ -141,6 +144,10 @@ class MARVEvent extends MARVPrioritized {
 
     public AbstractList<CorbaMessageContainer> createCorbaMessages(){
         return null; 
+    }
+
+    public String toString(){
+        return "MARVEvent(" + this.raw + ")";
     }
 }
 
@@ -169,6 +176,10 @@ class MARVChildJoined extends MARVEvent {
         ret.add(new CorbaEventMessageContainer(eventMessage));
         return ret;
     }
+
+    public String toString(){
+        return "MARVRChildJoind(" + this.raw + ")";
+    }
 };
 
 class MARVChildLost extends MARVEvent {
@@ -196,6 +207,11 @@ class MARVChildLost extends MARVEvent {
         ret.add(new CorbaEventMessageContainer(eventMessage));
         return ret;
     }
+
+    public String toString(){
+        return "MARVRChildLost(" + this.raw + ")";
+    }
+
 };
 
 
@@ -267,6 +283,11 @@ class MARVStatusMessage extends MARVDataReceived {
 
          return ret;
     }
+
+    public String toString(){
+        return "MARVRStatusMessage(" + this.raw + ")";
+    }
+
 }
 
 /* ** Results ** */
@@ -297,6 +318,10 @@ class MARVResult extends MARVEvent {
 
     public void addSubResult(MARVResult result){
         this.subResult = result;
+    }
+
+    public String toString(){
+        return "MARVREsult(" + this.raw + ")";
     }
 
 };
@@ -437,7 +462,8 @@ class SocketReader extends Thread{
         return this.lastResult;
     }
 
-    @Override public void run(){
+    @Override 
+    public void run(){
         System.out.println("Starting SocketReader with BufferedReader: " + this.serialIn);
         String line;
         Boolean successful;
@@ -579,10 +605,11 @@ public class MARVConnector {
         // Send events to corba
         MARVEvent   event;
         while((event = eventQueue.take()) != null){
-            for(CorbaMessageContainer corbaMessage : event.createCorbaMessages()){
-                corbaMessage.send(serverIncoming);
-                System.out.println("!! Sent corba message !!");
-            }
+            if(event.isImportant())
+                for(CorbaMessageContainer corbaMessage : event.createCorbaMessages()){
+                    corbaMessage.send(serverIncoming);
+                    System.out.println("!! Sent corba message: " + corbaMessage + " !!");
+                }
         }
     }
 

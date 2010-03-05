@@ -207,7 +207,7 @@ void sendAlertStatus(){
 
   if(!alertStatus){
     puls   = randint(60, 120);
-    atmung = randint(10, 20);
+    atmung = randint(30, 50);
     printf("ATD 0,1\rSTATUS:OK:%i:%i\r", puls, atmung);
   } else {
     puls   = randint(0, 10);
@@ -237,7 +237,7 @@ void waitForStatus(){
   } while(strcmp("OK\r\n", commandline) != 0 && strcmp("ERROR\r\n", commandline) != 0);
 }
 
-int main(void){
+yint main(void){
   // Set Alert Status off
   alertStatus = 0;
 
