@@ -1,0 +1,320 @@
+\documentclass[12pt]{report} \textheight 23.0cm \textwidth 15.5cm
+\topmargin0cm \evensidemargin0cm \oddsidemargin0cm
+\setlength{\parindent}{0pt}
+\usepackage{a4,ngerman}
+%\usepackage[a4paper, left=2.7cm, right=2.3cm, top=3.8cm, bottom=2.6cm]{geometry}
+%\usepackage[a4paper, left=2.8cm, right=1.7cm, top=3.5cm, bottom=2.4cm]{geometry}
+% ORG zum 11.08.05 \usepackage[a4paper, left=2.4cm, right=2.0cm, top=3.7cm, bottom=2.6cm]{geometry}
+% ORG zum 18.07.05 \usepackage[a4paper, left=2.4cm, right=2cm, top=3.8cm, bottom=2.6cm]{geometry}
+% ORG zum 06.07.05 \usepackage[a4paper, left=2.5cm, right=2.1cm, top=3.8cm, bottom=2.6cm]{geometry}
+% ORG \usepackage[a4paper, left=3.6cm, right=3.2cm, top=3.8cm, bottom=2.6cm]{geometry}
+%\usepackage[a4paper, left=2.5cm, right=2.5cm, top=1.2cm, bottom=2.3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{float}
+\usepackage[latin1]{inputenc}
+\usepackage{url}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage[dvips]{color}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage{rotating}
+\usepackage[footnotesize,bf]{caption2}
+\usepackage{eurosym}
+\makeatletter \renewcommand{\fps@figure}{htbp} \makeatother
+\renewcommand{\textfraction}{.1} 
+\setlength{\parindent}{0em}
+\renewcommand{\baselinestretch}{1.2}
+\pagestyle{headings}
+
+%%%-----------------------------------
+\begin{document} 
+%%%-------------------------
+\begin{center}
+%\subsubsection*{}%\vspace{3cm}
+{\epsfig{file=Grafik/unilogo.eps, scale=0.25}}
+\end{center}
+\begin{center}
+\textsf{\normalsize UNIVERSITÄT KARLSRUHE (TH) - FORSCHUNGSUNIVERSITÄT}\\
+			\vspace{0.2cm}
+\textsf{\normalsize FAKULTÄT FÜR ELEKTRO- UND INFORMATIONSTECHNIK}\\
+			\vspace{0.2cm}
+\textsf{\normalsize INSTITUT FÜR BIOMEDIZINISCHE TECHNIK}\\
+			\vspace{1.8cm}
+\textsf{{\huge DIPLOMARBEIT\\}}
+			\vspace{1.0cm}
+\textsf{\Large Neuartige Verfahren der bewegungslosen\vspace{0.25cm}\\\Large Respirationsdetektion anhand des Elektrokardigramm}\\
+			\vspace{1.5cm}
+\textsf{\normalsize zur Erlangung des akademischen Grades eines}\\
+			\vspace{0.8cm}
+\textsf{\huge Diplom-Ingenieurs}
+			\vspace{3cm}
+\begin{table}[ht]
+\centering
+	\begin{tabular}{p{0cm} p{5.1cm} l}
+		& \textsf{\normalsize vorgelegt von} 								& \textsf{\normalsize cand. el. Philipp Scheidel}\vspace{0.3cm}\\
+
+		& \textsf{\normalsize Referent}  & \textsf{\normalsize Prof. Dr. Armin Bolz}\vspace{0.3cm}\\
+		
+		& \textsf{\normalsize Betreuer}	& \textsf{\normalsize Dipl.-Ing. Marc Jäger}\vspace{0.3cm}\\
+		
+		& \textsf{\normalsize Abgabetermin}				& \textsf{\normalsize 31.09.2005}\\
+	\end{tabular}	
+\end{table}
+\end{center}
+\thispagestyle{empty}
+\clearpage
+
+%\thispagestyle{empty}
+\chapter*{} 
+\pagenumbering{Roman}% Seitennummerierung durch arabische Ziffern
+\vspace*{12.5cm} {\setlength{\parindent}{0pt}\textbf{Eidesstattliche Erklärung}\\
+Hiermit erkläre ich an Eides Statt, dass ich die vorliegende Diplomarbeit selb\-ständig und ohne unzulässige fremde Hilfsmittel angefertigt habe. Die verwendeten Literaturquellen sind im Literaturverzeichnis vollständig angegeben. Die Arbeit wurde in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde zur Erlangung eines akademischen Grades vorgelegt.\\ 
+
+Karlsruhe, 31.09.2005\\
+
+%%%------------------------------------------------VORWORT----------------------------------------------------------------------------
+%\thispagestyle{empty}
+\chapter*{Vorwort} 
+Diese Arbeit entstand am..... in Koopeartion mit... blabla
+
+\vspace{3cm}
+Noch was zum Titel:\\
+Es ist oft sinnvoll, zunächst einen vorläufigen Arbeitstitel zu formulieren. Mit ihm legen Sie
+für sich fest, was Sie beschreiben wollen. Der endgültige Titel sollte einerseits so kurz wie
+möglich sein, andererseits aber auch möglichst viele Informationen über den Gegenstand der
+Arbeit enthalten. Beachten Sie, daß die meisten Leser der wissenschaftlichen Zeitschrift, in
+der Sie Ihre Arbeit veröffentlichen wollen, nur deren Titel lesen. Der Titel soll den Leser kurz
+und präzise über den Inhalt der Arbeit informieren. Abkürzungen sollten vermieden werden.
+Aus dem Titel muß ersichtlich sein, ob es sich um eine experimentelle oder um eine
+theoretische Arbeit handelt. Sie sollten viel Mühe darauf verwenden, den treffenden Titel zu
+wählen. Ich empfehle, zunächst die Wörter aufzuschreiben, die Ihrer Meinung nach in dem
+Titel unbedingt vorkommen müssen, um den Inhalt zu charakterisieren. Dann sollten Sie diese
+Wörter geschickt zu einem Titel zusammenfügen. Beachten Sie aber immer, daß der Titel auch nicht zu lang sein darf.
+
+
+%%%------------------------------------------------DANKSAGUNG-------------------------------------------------------------------------
+\chapter*{Danksagung}
+An dieser Stelle möchte ich den Personen danken, ohne die diese Arbeit so nicht entstanden und auch nicht möglich gewesen wäre. Ein herzliches Dankeschön gilt...
+\begin{itemize}
+\item ... 
+\item ... 
+\item ...  
+\item ... 
+\item ... 
+\item ... 
+\end{itemize}
+
+Die Danksagung ist ein wichtiger Teil der Arbeit. Hier sollten Sie sich
+bei all denen bedanken, die Ihnen bei den beschriebenen Forschungen behilflich waren. Es ist
+zwingend erforderlich, daß in der Danksagung steht, welche Institutionen Ihnen evtl. Daten
+kostenlos zur Verfügung gestellt haben und von welchen Institutionen Ihre Arbeit finanziert
+wurde. Allgemein ist zu sagen, daß
+man in der Danksagung nicht geizen sollte. Durch das Erwähnen von Hilfen, die man erhalten
+hat, kann man sich Türen öffnen, die später eventuell von großem Nutzen sein können. Ein
+weiterer Tip: Schicken Sie jedem/jeder, der/die in der Danksagung erwähnt wird, ein
+Exemplar Ihrer Arbeit (am besten mit Widmung). Er/sie wird sich freuen.
+
+
+%%%------------------------------------------------ZUSAMMENFASSUNG/ABSTRACT-----------------------------------------------------------
+\chapter*{Abstract}
+%\begin{small} -- Falls es nicht auf eine Seite passt darf die Schrift im Abstract kleiner gemacht werden, aber nur beim Abstract!
+... Die Zusammenfassung ("`Abstract"') ist nach dem Titel der zweitwichtigste Bestandteil einer
+wissenschaftlichen Arbeit. Sie sollten deshalb für die Zusammenfassung, ebenso wie für den
+Titel, besonders viel Mühe und Zeit verwenden, da die gesamte wissenschaftliche Arbeit nur
+von sehr wenigen Wissenschaftlern gelesen wird, die Zusammenfassung aber von vielen. Aus
+der Zusammenfassung muß hervorgehen, wovon die Arbeit handelt, worauf sie aufbaut, und
+vor allen Dingen, welche neuen Erkenntnisse gewonnen wurden. Die wichtigsten Ergebnisse
+der Arbeit müssen kurz und präzise aufgezählt werden. Es genügt nicht zu schreiben, daß dies
+und jenes in der Arbeit behandelt werden. Wichtig ist, daß die "`harten Fakten"', welche sich
+aus den Untersuchungen ergeben haben, aufgelistet sind.
+Handelt es sich um eine theoretische Arbeit, dann müssen Sie erwähnen, von welchen
+Gleichungen Sie ausgegangen sind und welche Näherungen Sie verwendet haben; bei einer
+experimentellen Arbeit müssen Sie erwähnen, welche Experimente Sie durchgeführt haben
+und eventuell auch, welche Auswertemethoden (falls nicht Standardmethoden) Sie verwendet
+haben.Beachten Sie, daß Ihre Arbeit von Wissenschaftlern unterschiedlicher Herkunft und
+Ausbildung gelesen wird. Bedenken Sie, daß sich auch Wissenschaftler für Ihre Arbeit
+interessieren können, die aus benachbarten Disziplinen stammen und nicht mit dem von Ihnen
+verwendeten wissenschaftlichen "`Jargon"' vertraut sind, oder solche, welche die in Ihrem Fach
+üblichen Abkürzungen nicht kennen. Deshalb soll die Zusammenfassung für alle
+(natur-)wissenschaftlich gebildeten Leser verständlich sein. Das bedingt, daß eventuell
+benutzte Abkürzungen erklärt werden müssen, und daß nur solche Begriffe vorkommen
+dürfen, die ein "`normaler"' Wissenschaftler üblicherweise kennt oder die er notfalls in einem
+Lexikon nachschlagen kann. 
+Die Zusammenfassung sollte keine Literaturhinweise enthalten. Die Zusammenfassung ist ein
+selbständiger Teil der Arbeit. Das bedeutet, daß die in der Zusammenfassung erklärten
+Abkürzungen im Hauptteil noch einmal erklärt werden müssen.
+Einerseits darf die Zusammenfassung nicht zu lang sein (max eine Seite), andererseits muß sie aber auch alle wichtigen
+Informationen über Ihre Untersuchungen enthalten. Auf präzise Formulierungen ist größten
+Wert zu legen. 
+%\end{small}
+
+
+
+%%%------------------------------------------------INHALTS-,ABBILDUNGS-,TABELLENVERZEICHNIS-------------------------------------------
+\tableofcontents 
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoftables
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+
+
+
+%%%------------------------------------------------EINLEITUNG-------------------------------------------------------------------------
+\chapter{Einleitung}
+\pagenumbering{arabic} % Seitennummerierung durch arabische Ziffern
+\section{Motivation der Arbeit}
+...
+
+\section{Aufgaben und Ziele der Arbeit}
+...
+\section{Gliederung und Vorgehensweise der Arbeit}
+...
+
+%%%------------------------------------------------STAND DER TECHNIK------------------------------------------------------------------
+\chapter{Stand der Technik}\label{Stand der Technik}
+Standardverfahren der Atmungsdetektion mit Nachteilen, Problemen etc. aufzeigen...
+
+
+%%%------------------------------------------------FORTSCHRITT DER ARBEIT-------------------------------------------------------------
+\chapter{Fortschritt der Arbeit}
+So Sachen wie, dass es nicht mehr von der Bewegung am Brustkorb abhängt (indirekt bei QRS), dass die HRV-Methode auch Messungen der Atmung Beispielsweise am Handgeleng zulässt, also weit weg von der Lunge...
+
+
+%%%-----------------------------------------------UMSETZUNG/VORBEREITUNGEN-------------------------------------------------------------
+\chapter{Praktische Realisierung der Respirationsdetektion}
+\section{Baselinewandering}
+\subsection{Vorbereiten der Hardware}
+\subsubsection{Anforderung an die Hardware}
+... 24 bit, kein HP etc....
+\subsubsection{Realisierung der Anforderungen}
+... hier kann ein Schaltplan eines 24bit-EKG verstärker rein, oder auch ein Bild von dem Gerät
+
+\subsection{Datenerfassung}
+... wie kommen die Daten an, wie müssen sie konvertiert werden...
+
+\subsection{Signalverarbeitung in Matlab}
+... eben das Matlabprog. mit evtl. Auszügen aus dem Quelltext (diese, wenn möglich in den Anhang verfrachten und einen Hinweis darauf geben)
+
+
+\section{HRV-Variation}
+\subsection{Anforderung an die Hardware}
+... hier gibts nicht viele, und gerade das dann sagen, dass es mit fast jedem Gerät möglich wäre...
+
+\subsection{Datenerfassung}
+...
+
+\subsection{Signalverarbeitung in Matlab}
+...
+
+\section{QRS-Komplexe}
+\subsection{Anforderung an die Hardware}
+... wie oben
+
+\subsection{Datenerfassung}
+...
+
+\subsection{Signalverarbeitung in Matlab}
+
+\section{Referenzmessung}
+Hier nur kurze Erläuterung des Verfahrens
+
+
+%%%------------------------------------------------ERGEBNISSE(KEINE BEWERTUNG)----------------------------------------------------
+
+\chapter{Ergebnisse}
+\section{Baselinewandering}
+\subsection{Messungen unter verschiedenen Bedingungen}
+... nur die reinen Messergebnisse kommen hier rein mit Erläuterung/Begründung etc...
+Bilder von den Messungen und Fakten
+
+\subsection{Vergleichende Messung mit Refenzgerät}
+... Ebenfalls nur Bilder und Zahlen im Vergleich zu der Referenzmethode (am Besten Bilder, in denen die Atmungskurve von der neuen Methode und der Refernzmethode gleichzeitig zu sehen sind)
+
+\section{HRV-Variation}
+\subsection{Messungen unter verschiedenen Bedingungen}
+... wie oben
+\subsection{Vergleichende Messung mit Refenzgerät}
+... wie oben
+
+\section{QRS-Komplexe}
+\subsection{Messungen unter verschiedenen Bedingungen}
+... wie oben
+\subsection{Vergleichende Messung mit Refenzgerät}
+... wie oben
+
+
+\section{Vergleiche der Verfahren zueinander}
+Hier nur Grafiken, Fakten, Zahlen etc. reinmachen, die die verschiedenen Verfahren überlappend zeigen und kurz erläutern, aber nicht bewerten.
+
+\vspace{5cm}
+Der Ergebnisteil (Ergebnisse, results) sollte die wesentlichen Befunde der aktuellen Arbeit in
+nachvollziehbarer, durch geeignete Präsentation (Tabellen, Grafiken) unterstützter Weise darbieten.
+Die Auswahl der dargebotenen Ergebnisse ist nach der Relevanz im Hinblick auf die
+Fragestellung zu treffen. Dies gilt gleichermaßen für Positivergebnisse, welche die Argumentation
+der Autoren stützen, wie auch für Negativergebnisse und Probleme bei der Durchführung
+der Untersuchung, sofern diese einen Einfluss auf das Ergebnis gehabt haben könnten. Die
+Datenpräsentation sollte einen unverfälschten, aber durch geeignete Aufarbeitung der Daten
+(Mittelwertbildung, andere zusammenfassende deskriptive Statistik, etc.) fokussierten Überblick
+geben. Außerdem sollte der Ergebnisteil verschiedene Teilergebnisse nicht isoliert präsentieren,
+sondern den Leser in einer zusammenhängenden Beschreibung durch die Resultate führen.
+Dies schließt eine Beschreibung der wichtigsten Befunde aus Tabellen und Grafiken ein.
+--------
+
+%%%------------------------------------------------DISKUSSION(BEWERTUNG DER ERGEBNISSE)---------------------------------------------
+
+\chapter{Diskussion} 
+Bewertung (auch subjektive Meinung) der einzelnen Verfahren. Vor- und Nachteile. Wo gibt es Probleme (z.B. bei HRV nur im unteren Frequenzbereich einsetzbar?? etc.), wie ist die Abweichung zu Referenzmessungen...
+\section{Baselinewandering}
+...
+\section{HRV-Variation}
+...
+\section{QRS-Komplexe}
+...
+\section{Vergleich der Verfahren zueinander}
+
+\vspace{2cm}
+In der Diskussion (discussion) stellen die Autoren ihre Schlussfolgerungen aus den Ergebnissen
+vor. Dabei ist eine Wiederholung der Ergebnisdarstellung zu vermeiden. Das diskutierte
+Ergebnis braucht nur noch erwähnt, nicht aber erneut dargestellt zu werden. Inwieweit konnte
+eine in der Einleitung vorgestellte Hypothese gestützt oder widerlegt werden? Inwiefern sind
+die Ergebnisse in Übereinstimmung mit bisherigen publizierten Befunden und Hypothesen oder
+stehen im Gegensatz zu diesen? Neben der Einleitung ist die Diskussion derjenige Teil des
+Artikels, in dem ein Schwerpunkt darauf liegt, die gerade ausgeführte Studie in die sonstige
+Fachliteratur einzuordnen.
+
+
+%%%------------------------------------------------ZUSAMMENFASSUNG UND AUSBLICK------------------------------------------------------
+
+\chapter{Zusammenfassung und Ausblick}
+***Beispiel wie ein Zitat auf Armins~\citep{Bolz} Buch funktioniert***
+
+\begin{appendix}
+...
+\end{appendix}
+
+
+%%%------------------------------------------------ANHANG---------------------------------------------------------------------------
+\begin{appendix}
+\chapter{...Anhang1}
+
+\chapter{...Anhang2}
+
+\end{appendix}
+
+%%%------------------------------------------------GLOSSAR-----------------------------------------------------------------------------
+
+\chapter*{Glossar}
+\addcontentsline{toc}{chapter}{Glossar}
+
+
+
+%%%------------------------------------------------KOMPLETTES LITERATURVERZEICHNIS NACH NORM------------------------------------------
+\clearpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{VorlageDiplomarbeit}
+\bibliographystyle{natdin}
+
+\end{document}
+
