@@ -1,5 +1,6 @@
 // Interface for ZigBit Device
 #include "ringbuffer.h"
+#include "isr.h"
 #include "zigbit.h"
 
 // Global Variables
@@ -43,6 +44,14 @@ void zigBitLoop(){
   initRingbuffer(commandBufferPointer);
 
   int  status;
+
+  // Send ATZ
+  printf("ATZ\r\n");
+  debug_printf("SENT ATZ...");
+
+  // Wait for ZigBit Device to come ready
+  waitForStatus(&commandBuffer);
+  debug_printf("... ready!\n");
  
   while(1){
     int puls = 0;

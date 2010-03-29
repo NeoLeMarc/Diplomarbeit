@@ -29,9 +29,12 @@ int waitForStatus(ringbuffer * commandBuffer){
     if(status == -1 && line[0] != '\0'){
       // We've encountered an command,
       // that we put into the commandbuffer
-      ringbufferPutLine(commandBuffer, line);
-      debug_printf("Got command: %s\n", line);
-      debug_printf("Char: %i", line[0]);
+      if(strlen(line) > 4 && line[0] == 'D' && line[1] == 'A' && line[2] == 'T' && line[3] == 'A'){
+        ringbufferPutLine(commandBuffer, line);
+        debug_printf("Got command: %s\n", line);
+      } else {
+        debug_printf("Discaring line: %s\n", line);
+      }
     }
   } while (status == -1);
   return status;
@@ -44,6 +47,14 @@ void zigBitLoop(){
   initRingbuffer(commandBufferPointer);
 
   int  status;
+
+  // Send ATZ
+  printf("ATZ\r\n");
+  debug_printf("SENT ATZ...");
+
+  // Wait for ZigBit Device to come ready
+  waitForStatus(&commandBuffer);
+  debug_printf("... ready!\n");
  
   while(1){
     int puls = 0;
