@@ -432,6 +432,23 @@ class ZigBit {
         // Get result & return status
         return command.getResult();
     }
+
+    public MARVResult toggleAlertStatus(){
+        String  data = "t 123";
+        boolean successful = false;
+        MARVResult result = null;
+
+        do {
+            try {
+                result = this.sendData(data);
+                successful = true;
+            } catch (InterruptedException e) {
+                successful = false;
+            }
+        } while(!successful);
+
+        return result;
+    }
 }
 
 /* ** Threads ** */
@@ -533,6 +550,7 @@ class SocketWriter extends Thread{
         System.out.println("Starting SocketWriter with PrintWriter: " + this.serialOut);
 
         // Initialize ZigBee adapter
+        this.writeLine("AT+WLEAVE");
         this.writeLine("AT+WAUTONET=1 +WWAIT=100 Z");
         this.writeLine("ATS30=1");
 
@@ -605,11 +623,12 @@ public class MARVConnector {
         // Send events to corba
         MARVEvent   event;
         while((event = eventQueue.take()) != null){
-            if(event.isImportant())
+            if(event.isImportant()){
                 for(CorbaMessageContainer corbaMessage : event.createCorbaMessages()){
                     corbaMessage.send(serverIncoming);
                     System.out.println("!! Sent corba message: " + corbaMessage + " !!");
                 }
+            }
         }
     }
 
