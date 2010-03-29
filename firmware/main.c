@@ -23,8 +23,16 @@ extern ringbuffer * outBufferRing;
 int main(void){
 
   // Buffer for Serial interface
-  inBufferRing  = newRingbuffer();
-  outBufferRing = newRingbuffer();
+  //inBufferRing  = newRingbuffer();
+  //outBufferRing = newRingbuffer();
+
+  // Create ringbuffers statically to save some heap space
+  ringbuffer inBufferReal;
+  ringbuffer outBufferReal;
+  inBufferRing = &inBufferReal;
+  outBufferRing = &outBufferReal;
+  initRingbuffer(inBufferRing);
+  initRingbuffer(outBufferRing);
 
   // Initialize UART
   UARTInitialize(BAUDRATE);
