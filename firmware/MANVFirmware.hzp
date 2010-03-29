@@ -24,10 +24,11 @@
       </file>
       <file Name="ringbuffer.c" file_name="ringbuffer.c"/>
       <file Name="isr.c" file_name="isr.c">
-        <configuration Name="ARM Flash Debug" build_exclude_from_build="Yes"/>
+        <configuration Name="ARM Flash Debug" build_exclude_from_build="No"/>
       </file>
       <file Name="random.c" file_name="random.c"/>
       <file Name="uart.c" file_name="uart.c"/>
+      <file Name="zigbit.c" file_name="zigbit.c"/>
     </folder>
     <folder Name="System Files">
       <file Name="crt0.s" file_name="$(StudioDir)/source/crt0.s"/>

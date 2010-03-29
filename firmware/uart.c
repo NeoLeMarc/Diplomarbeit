@@ -1,6 +1,14 @@
 #include <ctl_api.h>
 #include <targets/ADuC7026.h>
+#include "ringbuffer.h"
+#include "isr.h"
 #include "uart.h"
+
+// Global variables
+extern char outBuffer[outBuffSize];
+extern int outBuffPos;
+extern ringbuffer * outBufferRing;
+extern ringbuffer * inBufferRing;
 
 void UARTInitialize(unsigned int baud){
   // Divisor: The baud rate of the serial interface is generated
@@ -45,43 +53,42 @@ void UARTInitialize(unsigned int baud){
 
 }
 
-void UARTWriteChar(unsigned char ch){
+// Helper function to put characters in outputbuffer
+// Enables sending interrupt if outbuffer contains complete line
+void putInOutbuffer(char ch){
+  if(outBuffPos < outBuffSize - 1){
+    outBuffer[outBuffPos++] = ch;
+    outBuffer[outBuffPos]   = '\0';
 
-  // 0x20 == Bit 5 set
-  // This means: "THRE": - Bit is set if there is no Data in 
-  // COMTX and COMRX, it is unset ("0") otherwise.
+    if(ch == '\n'){
+      // Put data in Ringbuffer
+      ringbufferPutLine(outBufferRing, outBuffer);
 
-  // This is a spinlock, which waits until COMTX is empty
-  while ((COMSTA0 & 0x20) == 0);
+      // Reset outBuffer_*
+      outBuffer[0] = '\0';
+      outBuffPos   = 0;
 
-  // Write ch to comtx.
-  COMTX = ch;
+      // Enable sending interrupt
+      COMIEN0 |= (1 << COMIEN0_ETBEI_BIT);
+    }
+  } else {    
+    outBuffer[0] = '\0';
+    outBuffPos   = 0;
+  }
 }
 
-unsigned char UARTReadChar(void){
-  // Spinlock waiting for DR, meaning: data to become ready.
-  while ((COMSTA0 & 0x01) == 0);
-
-  // Read & return data from COMRX.
-  return COMRX;
-}
-
-int UARTReadAvailable(void){
-  // Check DR, returns true if a byte can be fetch from
-  // COMRX.
-  return COMSTA0 & 0x01;
-}
-
-/*
+// Define __putchar, to be able to use 
+// printf to write to serial line
 void __putchar(int ch){
-  // __putchar is called by printf. Defining it enables us
-  // to use printf to write to serial line.
-
-  // \n has to be replaced by \r\n
+  // Put characters in buffer
   if (ch == '\n')
-    UARTWriteChar('\r');
+    putInOutbuffer('\r');
 
-  // Call UARTWrite to write character
-  UARTWriteChar(ch);
+  if(ch != '\0')
+    putInOutbuffer(ch);
 }
-*/
+
+// Read a single line from buffer
+int readLine(char * line){
+  return ringbufferGetLine(inBufferRing, line);
+}

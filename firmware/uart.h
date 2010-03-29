@@ -12,7 +12,6 @@
 
 // Function signatures
 void UARTInitialize(unsigned int baud);
-void UARTWriteChar(unsigned char ch);
-unsigned char UARTReadChar(void);
-int UARTReadAvailable(void);
-
+void putInOutbuffer(char ch);
+void __putchar(int ch);
+int readLine(char *);

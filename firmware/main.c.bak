@@ -1,4 +1,4 @@
-// Serial Test
+// MANVFirmware
 // (C) Copyright 2010 by Marcel Noe <marcel@marcel-noe.de>
 // based on UART example by Rowley Associates Limited.
 
@@ -6,56 +6,50 @@
 #include <ctl_api.h>
 #include <targets/ADuC7026.h>
 #include <cross_studio_io.h>
-#include "ringbuffer.h"
 #include "uart.h"
 #include "isr.h"
+#include "ringbuffer.h"
+#include "random.h"
+#include "zigbit.h"
 
 // Defines 
-#define BAUDRATE        38400   // Baudrate of serial interface
+#define BAUDRATE    38400   // Baudrate of serial interface
 
 // Global variables
-int           alertStatus;
-ringbuffer *  outBuffer;         // Buffer for outgoing data
-
-void dabort_handler(){
-  debug_printf("ABORT HANDLER!\n");
-}
+extern ringbuffer * inBufferRing;
+extern ringbuffer * outBufferRing;
+extern int;
+extern int;
 
 // Functions
 int main(void){
-  // Create a ringbuffer for incoming data 
-  outBuffer  = newRingbuffer();
 
-  // Set Alert Status off
-  alertStatus = 0;
+  // Buffer for Serial interface
+  inBufferRing  = newRingbuffer();
+  outBufferRing = newRingbuffer();
 
-  // Initialize Boards & turn the darn LED off
-  ctl_board_init();
-  GP4DAT = 0;
-
-  // Enable Interrupts
-  ctl_set_isr(IRQ0_INT, 1, CTL_ISR_TRIGGER_FIXED, buttonISR, 0);
-  ctl_unmask_isr(IRQ0_INT);
-  
-  // Set serial port to 38400 baud
+  // Initialize UART
   UARTInitialize(BAUDRATE);
 
-  // Begin read loop
-  printf("ATZ\r\n");
-  waitForStatus();
-    
-  // Enable periodic sending of status
-  ctl_set_isr(TIMER0_INT, 0, CTL_ISR_TRIGGER_FIXED, timerISR, 0);
-  ctl_unmask_isr(TIMER0_INT);
-
-  T0LD   = 189000; // Every 10 seconds
-  T0CON  = 0xc8;  // Set prescaler to CoreClock / 256 + Periodic mode
-
   // Enable UART Interrupt
-  COMIEN0 = 0x03; // enable ERBFI & ETBEI
+  COMIEN0 = 0x01; // enable ERBFI & ETBEI
   ctl_set_isr(UART_INT, 0, CTL_ISR_TRIGGER_FIXED, uartISR, 0);
   ctl_unmask_isr(UART_INT);
 
+  // Enable Button Interrupt
+  ctl_set_isr(IRQ0_INT, 1, CTL_ISR_TRIGGER_FIXED, buttonISR, 0);
+  ctl_unmask_isr(IRQ0_INT);
+
+  // Enable Timer Interrupt
+  ctl_set_isr(TIMER0_INT, 0, CTL_ISR_TRIGGER_FIXED, timerISR, 0);
+  ctl_unmask_isr(TIMER0_INT);
+
+  T0LD  = 0xFFFF;
+  T0CON = 0xc8;
+
   // Enable all interrupts
   ctl_global_interrupts_enable();
+
+  // Start ZigBit Loop
+  zigBitLoop();
 }
