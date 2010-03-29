@@ -72,6 +72,7 @@ int UARTReadAvailable(void){
   return COMSTA0 & 0x01;
 }
 
+/*
 void __putchar(int ch){
   // __putchar is called by printf. Defining it enables us
   // to use printf to write to serial line.
@@ -83,3 +84,4 @@ void __putchar(int ch){
   // Call UARTWrite to write character
   UARTWriteChar(ch);
 }
+*/

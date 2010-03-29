@@ -5,25 +5,25 @@
  </Autos>
  <Bookmarks/>
  <Breakpoints>
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="D_Abort" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="D_Abort" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="FIQ" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="IRQ" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="P_Abort" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="P_Abort" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="Reset" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="SWI" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="Undef" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="BusFault" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="ExceptionEntryReturnFault" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="HardFault" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="MemManage" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="Undef" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="BusFault" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="ExceptionEntryReturnFault" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="HardFault" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="MemManage" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="Reset" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="UsageFault_CheckingError" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="UsageFault_Coprocessor" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="2" mask="0" comparison="0" expression="UsageFault_StateError" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="UsageFault_CheckingError" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="UsageFault_Coprocessor" filename="" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="UsageFault_StateError" filename="" />
  </Breakpoints>
  <ExecutionCountWindow/>
  <Memory1>
-  <MemoryWindow autoEvaluate="0" addressText="" numColumns="8" sizeText="" dataSize="1" radix="16" addressSpace="" />
+  <MemoryWindow autoEvaluate="0" addressText="0xffff0714" numColumns="8" sizeText="1" dataSize="1" radix="16" addressSpace="" />
  </Memory1>
  <Memory2>
   <MemoryWindow autoEvaluate="0" addressText="" numColumns="8" sizeText="" dataSize="1" radix="16" addressSpace="" />
@@ -47,7 +47,7 @@
   <ProjectSessionItem path="MANVFirmware;MANVFirmware;System Files" name="unnamed" />
  </Project>
  <Register1>
-  <RegisterWindow openNodes="" binaryNodes="" unsignedNodes="" visibleGroups="" decimalNodes="" octalNodes="" asciiNodes="" />
+  <RegisterWindow openNodes="IRQ/IRQEN;System Control;System Control/REMAP;System Control/RSTCLR;UART0;UART0/COMIEN0;UART0/COMCON1;UART0/COMSTA0" binaryNodes="" unsignedNodes="" visibleGroups="UART0;System Control;CPU - Current Mode;IRQ" decimalNodes="" octalNodes="" asciiNodes="" />
  </Register1>
  <Register2>
   <RegisterWindow openNodes="" binaryNodes="" unsignedNodes="" visibleGroups="" decimalNodes="" octalNodes="" asciiNodes="" />
@@ -75,12 +75,13 @@
   <Watches active="0" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" y="94" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" left="0" selected="0" name="unnamed" top="47" />
-  <SessionOpenFile useTextEdit="0" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/ARM Flash Debug/main.o" y="0" path="/home/marcel/diplomarbeit/firmware/ARM Flash Debug/main.o" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" y="0" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="13" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="323" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="1" name="unnamed" top="312" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/ringbuffer.c" y="0" path="/home/marcel/diplomarbeit/firmware/ringbuffer.c" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="0" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="" y="0" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/flash_placement.xml" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="24" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="1" name="unnamed" top="3" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="12" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" y="132" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" left="0" selected="0" name="unnamed" top="103" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="22" debugPath="/home/marcel/diplomarbeit/firmware/isr.c" y="115" path="/home/marcel/diplomarbeit/firmware/isr.c" left="0" selected="0" name="unnamed" top="85" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" y="80" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" left="0" selected="0" name="unnamed" top="82" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/ringbuffer.c" y="5" path="/home/marcel/diplomarbeit/firmware/ringbuffer.c" left="0" selected="0" name="unnamed" top="3" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/source/crt0.s" y="279" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/source/crt0.s" left="0" selected="0" name="unnamed" top="236" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/uart.c" y="62" path="/home/marcel/diplomarbeit/firmware/uart.c" left="0" selected="0" name="unnamed" top="48" />
  </Files>
- <ARMCrossStudioWindow activeProject="MANVFirmware" autoConnectTarget="/Generic FT2232 Device" debugSearchFileMap="" fileDialogInitialDirectory="/home/marcel/diplomarbeit/firmware" fileDialogDefaultFilter="*.cpp;*.cxx;*.cc;*.c;*.h;*.hpp;*.hxx" autoConnectCapabilities="1407" debugSearchPath="" buildConfiguration="ARM Flash Debug" />
+ <ARMCrossStudioWindow activeProject="MANVFirmware" autoConnectTarget="/Generic FT2232 Device" debugSearchFileMap="" fileDialogInitialDirectory="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectCapabilities="1407" debugSearchPath="" buildConfiguration="ARM Flash Debug" />
 </session>

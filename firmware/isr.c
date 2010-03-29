@@ -1,5 +1,6 @@
 #include <ctl_api.h>
 #include <targets/ADuC7026.h>
+#include <cross_studio_io.h>
 #include "ringbuffer.h"
 #include "isr.h"
 #include "uart.h"
@@ -40,87 +41,84 @@ void timerISR(){
     T0CLRI = 0;
     return;
 
-  } else
+  } else {
     clock0Multiplier = CLOCKMULTIPLIER;
 
-  sendAlertStatus();
+    sendAlertStatus();
 
-  // Clear interrupt
-  T0CLRI = 0;
+    // Clear interrupt
+    T0CLRI = 0;
+  }
 }
 
 void uartISR(){
   // This interrupt could either be "ready to send" or "data received"
-  if((COMSTA0 && COMSTA0_DR_MASK) == COMSTA0_DR_MASK){
+  //ctl_mask_isr(UART_INT);
+
+  if (COMSTA0 & 0x01){
     doReceive();
-  } else if ((COMSTA0 && COMSTA0_TEMT_MASK) == COMSTA0_TEMT_MASK){
-    doSend();
   }
+
+  //ctl_unmask_isr(UART_INT);
 }
 
 void doReceive(){
   // Try to acquire readlock:
-  ctl_global_interrupts_disable();
+  debug_printf("Call to doReceive\n");
+  while(UARTReadChar()!= '\n')
+    sendLock = 0;
+  debug_printf("Leaving doReceive\n");
+  char ch = COMRX;
+  /*
   if(!recvLock){
     recvLock = 1;
-    ctl_global_interrupts_enable();
-
     char line[RINGBUFFERMAXLEN + 1];
     char ch;
     int linepos = 0;
     
-    // Read a line
-    do{        
-      ch = UARTReadChar();    
-      line[linepos] = ch;
-    } while (linepos++ < RINGBUFFERMAXLEN && ch != '\n');
+    // Read first char
+    ch = COMRX;
+    line[linepos++] = ch;
+
+    if(ch != '\n'){
+      do{        
+        ch = UARTReadChar();    
+        line[linepos] = ch;
+      } while (linepos++ < RINGBUFFERMAXLEN && ch != '\n');
+    }
         
     line[linepos] = '\0';      
 
     // Release lock
     recvLock = 0;
 
-    // If line is status, we do callback
+    // If line is status, we unlock send
     int status;
-    if(((status = parseStatus(line)) > -1) && callback != NULL)
-      callback(status);
+    if(((status = parseStatus(line)) > -1)){
+      sendLock = 0;
+    }
     // TODO: Else-Case: Parse command
-  } else {
-      ctl_global_interrupts_enable();
   }
+  */
 }
 
 void doSend(){
   // Try to acquire sendlock:
-  ctl_global_interrupts_disable();
   if(!sendLock){
     sendLock = 1;
-    ctl_global_interrupts_enable();
 
     char line[RINGBUFFERMAXLEN + 1];
 
     // Fetch data from ringBuffer
-    if(ringbufferGetLine(outBuffer, line) > 0){
-      // Set callback
-      callback = &resumeSend;
-
+    while(ringbufferGetLine(outBuffer, line) > 0){
       // Write to serial
       printf(line);
-    }
+      waitForStatus();
+    } 
 
-    // Release sendLock
+    // Unset sendlock
     sendLock = 0;
-  } else {
-    ctl_global_interrupts_enable();
-  }
-}
-
-void resumeSend(int status){
-  // Clear sendLock
-  sendLock = 0;
-
-  // reEnter doSend
-  doSend();
+  } 
 }
 
 void sendAlertStatus(){
@@ -142,7 +140,9 @@ void sendAlertStatus(){
   }
 
   // Schedule for sending
-  ringbufferPutLine(outBuffer, line);
+  ringbufferPutLine(outBuffer, line); 
+  debug_printf("PUT LINE IN Ringbuffer\n");
+  doSend();
 }
 
 void waitForStatus(){
@@ -161,13 +161,13 @@ void waitForStatus(){
     } while (linepos++ < MAXLINE && ch != '\n');
         
     commandline[linepos] = '\0';      
-  } while(strcmp("OK\r\n", commandline) != 0 && strcmp("ERROR\r\n", commandline) != 0);
+  } while(parseStatus(commandline) < 0);
 }
 
 int parseStatus(char * commandline){
-  if(strcmp("OK\r\n", commandline) == 0)
+  if( (strcmp("OK\r\n", commandline) == 0) || (strcmp("OK\n", commandline) == 0) )
     return 1;
-  else if(strcmp("ERROR\r\n", commandline) == 0)
+  else if( (strcmp("ERROR\r\n", commandline) == 0) || (strcmp("ERROR\n", commandline) == 0))
     return 0;
   else
     return -1;

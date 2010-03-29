@@ -5,6 +5,7 @@
 // Comments by Marcel Noe <marcel@marcel-noe.de>
 #include <ctl_api.h>
 #include <targets/ADuC7026.h>
+#include <cross_studio_io.h>
 #include "ringbuffer.h"
 #include "uart.h"
 #include "isr.h"
@@ -13,13 +14,17 @@
 #define BAUDRATE        38400   // Baudrate of serial interface
 
 // Global variables
-extern int           alertStatus;
-extern ringbuffer *  outBuffer;         // Buffer for outgoing data
+int           alertStatus;
+ringbuffer *  outBuffer;         // Buffer for outgoing data
+
+void dabort_handler(){
+  debug_printf("ABORT HANDLER!\n");
+}
 
 // Functions
 int main(void){
   // Create a ringbuffer for incoming data 
-  ringbuffer * outBuffer  = newRingbuffer();
+  outBuffer  = newRingbuffer();
 
   // Set Alert Status off
   alertStatus = 0;
@@ -47,12 +52,9 @@ int main(void){
   T0CON  = 0xc8;  // Set prescaler to CoreClock / 256 + Periodic mode
 
   // Enable UART Interrupt
+  COMIEN0 = 0x03; // enable ERBFI & ETBEI
   ctl_set_isr(UART_INT, 0, CTL_ISR_TRIGGER_FIXED, uartISR, 0);
-  ctl_unmask_ist(UART_INT);
-
-  COMIEN0 |= (1 << COMIEN0_ETBEI_BIT); // Enable "transmit buffer empty interrupt"
-  COMIEN0 |= (1 << COMIEN0_ERBFI);     // Enable "receive buffer full interrupt"
-
+  ctl_unmask_isr(UART_INT);
 
   // Enable all interrupts
   ctl_global_interrupts_enable();

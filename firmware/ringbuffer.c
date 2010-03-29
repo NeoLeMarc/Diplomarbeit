@@ -4,6 +4,10 @@
 #include "ringbuffer.h"
 ringbuffer * newRingbuffer(){
     ringbuffer * bufferPointer = (ringbuffer *)malloc(sizeof(ringbuffer));
+    return initRingbuffer(bufferPointer);
+}
+
+ringbuffer * initRingbuffer(ringbuffer * bufferPointer){
     int i = 0;
 
     // Set lines to \0
@@ -25,22 +29,24 @@ void debugRingbuffer(ringbuffer * bufferPointer){
 }
 
 void ringbufferPutLine(ringbuffer * bufferPointer, char * line){
+    if(line[0] != '\0'){
+      // Get pointer for line to put string at
+      ringbufferLine * destline = bufferPointer->in;    
 
-    // Get pointer for line to put string at
-    ringbufferLine * destline = bufferPointer->in;
-
-    // Copy string to ringbuffer
-    snprintf((char *)destline, RINGBUFFERMAXLEN, "%s", line);
-
-    // Set in pointer to next line
-    bufferPointer->in = ringbufferGetNextPointer(bufferPointer, destline);
+      // Copy string to ringbuffer
+      snprintf((char *)*destline, RINGBUFFERMAXLEN, "%s", line);
+ 
+      // Set in pointer to next line
+      bufferPointer->in = ringbufferGetNextPointer(bufferPointer, destline);
+  }
 }
 
 int ringbufferGetLine(ringbuffer * bufferPointer, char * line){
     // Check if element is valid
-    if(bufferPointer->out[0] == '\0')
-        return -1;
-    else {
+    if(*bufferPointer->out[0] == '\0'){
+        line[0] = '\0';
+        return 0;
+    } else {
         // Copy line
         int size = snprintf(line, RINGBUFFERMAXLEN, "%s", *bufferPointer->out);
 

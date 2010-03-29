@@ -23,7 +23,9 @@
         <configuration Name="ARM RAM Release" build_exclude_from_build="Yes"/>
       </file>
       <file Name="ringbuffer.c" file_name="ringbuffer.c"/>
-      <file Name="isr.c" file_name="isr.c"/>
+      <file Name="isr.c" file_name="isr.c">
+        <configuration Name="ARM Flash Debug" build_exclude_from_build="Yes"/>
+      </file>
       <file Name="random.c" file_name="random.c"/>
       <file Name="uart.c" file_name="uart.c"/>
     </folder>
