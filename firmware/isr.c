@@ -25,8 +25,70 @@ char sendBuffer[sendBuffSize];
 int  sendBuffPos = 0;
 int  sendBuffEnd = 0;
 
+// Mute alert
+int mute = 0;
+
 // ISRs
 void timerISR(){
+  // If red button is pressed => alert (P0.0)
+  if(!(GP0DAT & 0x02)){
+    enableAlert();
+    debug_printf("Red button pressed!\n");
+  } 
+  
+  // If Green button is pressed => no alert (P0.1)
+  else if(!(GP0DAT & 0x04)){
+    disableAlert();
+    debug_printf("Green button pressed!\n");
+  }
+
+  // If Blue button is pressed => mute (P0.5)
+  else if(!(GP0DAT & 0x20)){
+    mute = 1;
+    debug_printf("Blue button pressed!\n");
+  }
+
+  // Beeping
+  static int beep = 0;
+  static int beepDelay = BEEPDELAY;
+
+  if(alertStatus){  
+    if(beepDelay-- == 0){
+      beepDelay = BEEPDELAY;
+
+      if(!beep){
+
+        // Disable green led
+        GP2DAT &= ~(1 << 18);
+
+        // Blink red led
+        GP2DAT |= (1 << 16);
+
+        // Enable beep if not muted
+        if(!mute)
+          GP0DAT |= (1 << 16);      
+      } else {
+        // Blink red led
+        GP2DAT &= ~(1 << 16);
+
+        // Disable beep
+        GP0DAT &= ~(1 << 16);
+      }
+  
+      beep = !beep;
+    } 
+  } else {
+    // Disable beep
+    GP0DAT &= ~(1 << 16);
+
+    // Disable red led
+    GP2DAT &= ~(1 << 16);
+
+    // Enable green led
+    GP2DAT |= (1 << 18);
+  }
+
+  // Sending of commands
   static int counter = 25;
 
   if(counter-- <= 0){
@@ -40,19 +102,41 @@ void timerISR(){
   T0CLRI = 0;
 }
 
-void buttonISR(){
-  // Mask interrupt
-  ctl_mask_isr(IRQ0_INT);
-
+void enableAlert(){
   // Toggle alert status
-  alertStatus ^= 1; 
-  sendStatus  = 1;
+  alertStatus = 1; 
 
-  // Use LED to display alert Status
-  GP4DAT = (alertStatus << 26);
+  // Set LED
+  GP4DAT |= (1 << 26);
+
+  // Unmute
+  mute = 0;
 
   // immediatly signal change in alert status
   sendStatus  = 1;
+}
+
+void disableAlert(){
+  // Toggle alert status
+  alertStatus = 0; 
+
+  // Disable LED
+  GP4DAT &= ~(1 << 26);
+
+  // immediatly signal change in alert status
+  sendStatus  = 1;
+}
+
+void buttonISR(){
+  // Mask interrupt
+  ctl_mask_isr(IRQ0_INT);
+  
+  if(alertStatus){
+    disableAlert();
+  } else {
+    // Disable LED
+    enableAlert();
+  }
 
   // Unmask interrupt
   ctl_unmask_isr(IRQ0_INT);

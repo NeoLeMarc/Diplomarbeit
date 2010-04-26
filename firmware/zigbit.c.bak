@@ -31,7 +31,7 @@ int waitForStatus(ringbuffer * commandBuffer){
       // that we put into the commandbuffer
       if(isCommand(line)){
         ringbufferPutLine(commandBuffer, line);
-        debug_printf("Got command: %s\n", line);
+        //debug_printf("Got command: %s\n", line);
       } 
     }
   } while (status == -1);
@@ -46,7 +46,7 @@ int isCommand(char * line){
 }
 
 void parseCommand(char * commandline){
-    debug_printf("Entering parseCommand(%s)\n", commandline);
+    //debug_printf("Entering parseCommand(%s)\n", commandline);
 
     // Count number of arguments
     int argc = 0;
