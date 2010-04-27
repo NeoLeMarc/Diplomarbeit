@@ -50,16 +50,16 @@ int main(void){
   ctl_set_isr(TIMER0_INT, 0, CTL_ISR_TRIGGER_FIXED, timerISR, 0);
   ctl_unmask_isr(TIMER0_INT);
 
-  T0LD  = (unsigned long)0xAFFF;
+  T0LD  = (unsigned long)0x0FFF;
   T0CON = 0xc8;
 
   // Set GPIO 0.0 to output, GPIO 0.1 as input
   GP0CON = 0x0;
   GP0DAT = 0x01000000;
 
-  // Use GIO 2.0, 2.1, 2.2 as output
+  // Use GIO 2.0, 2.1, 2.2, 2.3, 2.6 as output
   GP2CON = 0x0;
-  GP2DAT = 0x07000000;
+  GP2DAT = 0x4f000000;
 
   // Use 4.2 as Output
   GP4DAT = 0x0;

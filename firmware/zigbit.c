@@ -6,6 +6,7 @@
 // Global Variables
 int sendStatus = 0;
 int alertStatus = 0;
+extern int yellowCode;
 
 // Functions
 int extractStatus(char * commandline){
@@ -130,9 +131,17 @@ void zigBitLoop(){
     // If sendStatus is true, we have to send our status
     if(sendStatus){
         if(!alertStatus){
-          puls   = randint(60, 120);
-          atmung = randint(30, 50);
+          if(yellowCode){
+            // Simulate critical patient:
+            puls   = randint(120, 180);
+            atmung = randint(10, 30);
+          } else {
+            puls   = randint(60, 120);
+            atmung = randint(30, 50);
+          }
+
           printf("ATD 0,1\rSTATUS:OK:%i:%i\r\n", puls, atmung);
+
         } else {
           puls   = randint(0, 10);
           atmung = randint(0, 5);

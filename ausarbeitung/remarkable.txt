@@ -1,0 +1,2 @@
+- "define Startup From Reset"
+- Pin 0.0 ist reset, pin 0.4 IRQ

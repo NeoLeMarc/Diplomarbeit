@@ -2,24 +2,47 @@ Archive member included because of file (symbol)
 
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
                               ARM Flash Release/main.o (libarm_set_irq)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+                              ARM Flash Release/random.o (__umodsi3)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+                              ARM Flash Release/uart.o (__udivsi3)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+                              ARM Flash Release/zigbit.o (strlen)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
-                              ARM Flash Release/main.o (strcmp)
+                              ARM Flash Release/zigbit.o (strcmp)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
-                              ARM Flash Release/main.o (snprintf)
+                              ARM Flash Release/ringbuffer.o (snprintf)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
-                              ARM Flash Release/main.o (malloc)
+                              ARM Flash Release/ringbuffer.o (malloc)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
                               /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o) (memcpy)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
                               /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o) (memset)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+                              ARM Flash Release/isr.o (debug_printf)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
-                              ARM Flash Release/main.o (printf)
+                              ARM Flash Release/ringbuffer.o (printf)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
                               /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o) (__vfprintf)
-/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
-                              /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o) (strlen)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+                              /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o) (__do_debug_operation)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+                              /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o) (libarm_dcc_write)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+                              /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o) (libarm_run_dcc_port_server)
+/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+                              /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o) (libarm_dcc_read)
 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
                               /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o) (__hex_uc)
+
+Allocating common symbols
+Common symbol       size              file
+
+sendBuffer          0x50              ARM Flash Release/isr.o
+outBuffer           0x50              ARM Flash Release/isr.o
+outBufferRing       0x4               ARM Flash Release/isr.o
+inBufferRing        0x4               ARM Flash Release/isr.o
+inBuffer            0x50              ARM Flash Release/isr.o
 
 Memory Configuration
 
@@ -74,141 +97,218 @@ Linker script and memory map
                 0x00080040                _start
  .init          0x00080210       0x60 ARM Flash Release/Analog_ADuC7000_Startup.o
                 0x00080210                reset_handler
-                0x00080254                undef_handler
                 0x0008025c                pabort_handler
-                0x00080260                dabort_handler
                 0x00080258                swi_handler
                 0x00080268                fiq_handler
                 0x00080270                __init_end__ = (__init_start__ + SIZEOF (.init))
                 0x00000001                . = ASSERT (((__init_end__ >= __FLASH_segment_start__) && (__init_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .init is too large to fit in FLASH memory segment)
                 0x00080270                __text_load_start__ = (__init_end__ ALIGN 0x4)
 
-.text           0x00080270     0x1330
+.text           0x00080270     0x1e10
                 0x00080270                __text_start__ = .
  *(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table)
- .text          0x00080270      0x354 ARM Flash Release/main.o
-                0x0008028c                __putchar
-                0x000804e0                parseCommand
-                0x00080354                main
-                0x000804a4                buttonISR
-                0x00080424                timerISR
-                0x000802b0                waitForStatus
- .glue_7        0x000805c4        0x0 ARM Flash Release/main.o
- .glue_7t       0x000805c4        0x0 ARM Flash Release/main.o
- .text          0x000805c4        0x0 ARM Flash Release/crt0.o
- .glue_7        0x000805c4        0x0 ARM Flash Release/crt0.o
- .glue_7t       0x000805c4        0x0 ARM Flash Release/crt0.o
- .text          0x000805c4        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .glue_7        0x000805c4        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .glue_7t       0x000805c4        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .text          0x000805c4      0x2ec ARM Flash Release/Analog_ADuC7000.o
-                0x00080744                ctl_unmask_isr
-                0x00080890                ctl_get_ticks_per_second
-                0x00080684                ctl_set_isr
-                0x00080814                ctl_start_timer
-                0x00080720                irq_handler
-                0x00080784                ctl_mask_isr
- .glue_7        0x000808b0        0x0 ARM Flash Release/Analog_ADuC7000.o
- .glue_7t       0x000808b0        0x0 ARM Flash Release/Analog_ADuC7000.o
- .text          0x000808b0       0xa4 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
-                0x00080910                ctl_board_on_button_pressed
-                0x000808b0                ctl_board_init
-                0x000808f0                ctl_board_set_leds
- .glue_7        0x00080954        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .glue_7t       0x00080954        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .text          0x00080954        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- *fill*         0x00080954        0xc 00
- .text.libc     0x00080960       0x30 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
-                0x00080960                ctl_global_interrupts_set
-                0x00080960                libarm_set_irq
- .glue_7        0x00080990        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- .glue_7t       0x00080990        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- .text          0x00080990        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
- .text.libc     0x00080990       0x70 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
-                0x00080990                strcmp
- .glue_7        0x00080a00        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
- .glue_7t       0x00080a00        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
- .text          0x00080a00        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .text.libc     0x00080a00       0x40 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
-                0x00080a00                snprintf
- .glue_7        0x00080a40        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .glue_7t       0x00080a40        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .text          0x00080a40        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .text.libc     0x00080a40      0x228 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
-                0x00080a40                malloc
-                0x00080c3c                calloc
-                0x00080bf8                realloc
-                0x00080b08                free
- .glue_7        0x00080c68        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .glue_7t       0x00080c68        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .text          0x00080c68        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
- *fill*         0x00080c68        0x8 00
- .text.libc     0x00080c70       0x60 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
-                0x00080c70                memcpy
- .glue_7        0x00080cd0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
- .glue_7t       0x00080cd0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
- .text          0x00080cd0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
- .text.libc     0x00080cd0       0xa0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
-                0x00080cd0                memset
- .glue_7        0x00080d70        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
- .glue_7t       0x00080d70        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
- .text          0x00080d70        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .text.libc     0x00080d70       0x4c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
-                0x00080d70                printf
- .glue_7        0x00080dbc        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .glue_7t       0x00080dbc        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .text          0x00080dbc        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .text.libc     0x00080dbc      0x780 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
-                0x00080e78                __vfprintf
- .glue_7        0x0008153c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .glue_7t       0x0008153c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .text          0x0008153c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
- *fill*         0x0008153c        0x4 00
- .text.libc     0x00081540       0x60 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
-                0x00081540                strlen
- .glue_7        0x000815a0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
- .glue_7t       0x000815a0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
- .text          0x000815a0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
- .text.libc     0x000815a0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
- .glue_7        0x000815a0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
- .glue_7t       0x000815a0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
-                0x000815a0                __text_end__ = (__text_start__ + SIZEOF (.text))
+ .text          0x00080270      0x104 ARM Flash Release/main.o
+                0x00080270                main
+ .glue_7        0x00080374        0x0 ARM Flash Release/main.o
+ .glue_7t       0x00080374        0x0 ARM Flash Release/main.o
+ .text          0x00080374      0x128 ARM Flash Release/ringbuffer.o
+                0x000803b0                ringbufferGetLine
+                0x00080484                newRingbuffer
+                0x0008039c                ringbufferGetNextPointer
+                0x0008045c                debugRingbuffer
+                0x00080374                initRingbuffer
+                0x00080410                ringbufferPutLine
+ .glue_7        0x0008049c        0x0 ARM Flash Release/ringbuffer.o
+ .glue_7t       0x0008049c        0x0 ARM Flash Release/ringbuffer.o
+ .text          0x0008049c      0x3b4 ARM Flash Release/isr.o
+                0x000806b4                undef_handler
+                0x000806cc                dabort_handler
+                0x000806e4                uartISR
+                0x000804e8                disableAlert
+                0x0008049c                enableAlert
+                0x00080814                buttonISR
+                0x0008051c                timerISR
+ .glue_7        0x00080850        0x0 ARM Flash Release/isr.o
+ .glue_7t       0x00080850        0x0 ARM Flash Release/isr.o
+ .text          0x00080850       0x50 ARM Flash Release/random.o
+                0x00080850                randint
+ .glue_7        0x000808a0        0x0 ARM Flash Release/random.o
+ .glue_7t       0x000808a0        0x0 ARM Flash Release/random.o
+ .text          0x000808a0      0x134 ARM Flash Release/uart.o
+                0x000809a0                __putchar
+                0x00080914                putInOutbuffer
+                0x000808a0                UARTInitialize
+                0x000808f4                readLine
+ .glue_7        0x000809d4        0x0 ARM Flash Release/uart.o
+ .glue_7t       0x000809d4        0x0 ARM Flash Release/uart.o
+ .text          0x000809d4      0x394 ARM Flash Release/zigbit.o
+                0x000809d4                parseCommand
+                0x00080c48                zigBitLoop
+                0x00080b34                extractStatus
+                0x00080adc                isCommand
+                0x00080be8                waitForStatus
+ .glue_7        0x00080d68        0x0 ARM Flash Release/zigbit.o
+ .glue_7t       0x00080d68        0x0 ARM Flash Release/zigbit.o
+ .text          0x00080d68        0x0 ARM Flash Release/crt0.o
+ .glue_7        0x00080d68        0x0 ARM Flash Release/crt0.o
+ .glue_7t       0x00080d68        0x0 ARM Flash Release/crt0.o
+ .text          0x00080d68        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .glue_7        0x00080d68        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .glue_7t       0x00080d68        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .text          0x00080d68      0x2ec ARM Flash Release/Analog_ADuC7000.o
+                0x00080ee8                ctl_unmask_isr
+                0x00081034                ctl_get_ticks_per_second
+                0x00080e28                ctl_set_isr
+                0x00080fb8                ctl_start_timer
+                0x00080ec4                irq_handler
+                0x00080f28                ctl_mask_isr
+ .glue_7        0x00081054        0x0 ARM Flash Release/Analog_ADuC7000.o
+ .glue_7t       0x00081054        0x0 ARM Flash Release/Analog_ADuC7000.o
+ .text          0x00081054       0xa4 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+                0x000810b4                ctl_board_on_button_pressed
+                0x00081054                ctl_board_init
+                0x00081094                ctl_board_set_leds
+ .glue_7        0x000810f8        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .glue_7t       0x000810f8        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .text          0x000810f8        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
+ *fill*         0x000810f8        0x8 00
+ .text.libc     0x00081100       0x30 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
+                0x00081100                ctl_global_interrupts_set
+                0x00081100                libarm_set_irq
+ .glue_7        0x00081130        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
+ .glue_7t       0x00081130        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
+ .text          0x00081130        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+ .text.libc     0x00081130       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+                0x00081130                __umodsi3
+                0x00081130                __int32_umod
+ .glue_7        0x00081150        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+ .glue_7t       0x00081150        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+ .text          0x00081150        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+ .text.libc     0x00081150       0x30 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+                0x00081150                __int32_udiv
+                0x00081150                __int32_udivmod
+                0x00081150                __udivsi3
+ .glue_7        0x00081180        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+ .glue_7t       0x00081180        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+ .text          0x00081180        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .text.libc     0x00081180       0x60 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+                0x00081180                strlen
+ .glue_7        0x000811e0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .glue_7t       0x000811e0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .text          0x000811e0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+ .text.libc     0x000811e0       0x70 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+                0x000811e0                strcmp
+ .glue_7        0x00081250        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+ .glue_7t       0x00081250        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+ .text          0x00081250        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .text.libc     0x00081250       0x40 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+                0x00081250                snprintf
+ .glue_7        0x00081290        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .glue_7t       0x00081290        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .text          0x00081290        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .text.libc     0x00081290      0x228 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+                0x00081290                malloc
+                0x0008148c                calloc
+                0x00081448                realloc
+                0x00081358                free
+ .glue_7        0x000814b8        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .glue_7t       0x000814b8        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .text          0x000814b8        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+ *fill*         0x000814b8        0x8 00
+ .text.libc     0x000814c0       0x60 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+                0x000814c0                memcpy
+ .glue_7        0x00081520        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+ .glue_7t       0x00081520        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+ .text          0x00081520        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+ .text.libc     0x00081520       0xa0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+                0x00081520                memset
+ .glue_7        0x000815c0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+ .glue_7t       0x000815c0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+ .text          0x000815c0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .text.libc     0x000815c0       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+                0x000815c0                debug_printf
+ .glue_7        0x000815e0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .glue_7t       0x000815e0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .text          0x000815e0        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .text.libc     0x000815e0       0x4c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+                0x000815e0                printf
+ .glue_7        0x0008162c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .glue_7t       0x0008162c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .text          0x0008162c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .text.libc     0x0008162c      0x780 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+                0x000816e8                __vfprintf
+ .glue_7        0x00081dac        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .glue_7t       0x00081dac        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .text          0x00081dac        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .text.libc     0x00081dac       0x84 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+                0x00081df4                __do_nvdebug_operation
+                0x00081dac                __do_debug_operation
+ .glue_7        0x00081e30        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .glue_7t       0x00081e30        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .text          0x00081e30        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+ .text.libc     0x00081e30       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+                0x00081e30                libarm_dcc_write
+ .glue_7        0x00081e50        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+ .glue_7t       0x00081e50        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+ .text          0x00081e50        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .text.libc     0x00081e50      0x204 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+                0x00081e50                libarm_run_dcc_port_server
+ .glue_7        0x00082054        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .glue_7t       0x00082054        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .text          0x00082054        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+ *fill*         0x00082054        0xc 00
+ .text.libc     0x00082060       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+                0x00082060                libarm_dcc_read
+ .glue_7        0x00082080        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+ .glue_7t       0x00082080        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+ .text          0x00082080        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .text.libc     0x00082080        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .glue_7        0x00082080        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .glue_7t       0x00082080        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+                0x00082080                __text_end__ = (__text_start__ + SIZEOF (.text))
                 0x00000001                . = ASSERT (((__text_end__ >= __FLASH_segment_start__) && (__text_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .text is too large to fit in FLASH memory segment)
-                0x000815a0                __dtors_load_start__ = (__text_end__ ALIGN 0x4)
+                0x00082080                __dtors_load_start__ = (__text_end__ ALIGN 0x4)
 
-.dtors          0x000815a0        0x0
-                0x000815a0                __dtors_start__ = .
+.dtors          0x00082080        0x0
+                0x00082080                __dtors_start__ = .
  *(SORT(.dtors.*))
  *(.dtors)
-                0x000815a0                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
+                0x00082080                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
                 0x00000001                . = ASSERT (((__dtors_end__ >= __FLASH_segment_start__) && (__dtors_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .dtors is too large to fit in FLASH memory segment)
-                0x000815a0                __ctors_load_start__ = (__dtors_end__ ALIGN 0x4)
+                0x00082080                __ctors_load_start__ = (__dtors_end__ ALIGN 0x4)
 
-.ctors          0x000815a0        0x0
-                0x000815a0                __ctors_start__ = .
+.ctors          0x00082080        0x0
+                0x00082080                __ctors_start__ = .
  *(SORT(.ctors.*))
  *(.ctors)
-                0x000815a0                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
+                0x00082080                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
                 0x00000001                . = ASSERT (((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .ctors is too large to fit in FLASH memory segment)
-                0x000815a0                __rodata_load_start__ = (__ctors_end__ ALIGN 0x4)
+                0x00082080                __rodata_load_start__ = (__ctors_end__ ALIGN 0x4)
 
-.rodata         0x000815a0       0xac
-                0x000815a0                __rodata_start__ = .
+.rodata         0x00082080       0xf4
+                0x00082080                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x000815a0       0x8c ARM Flash Release/main.o
- .rodata.libc   0x0008162c       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
-                0x0008162c                __hex_uc
-                0x0008163c                __hex_lc
-                0x0008164c                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x00082080       0x3a ARM Flash Release/ringbuffer.o
+                                 0x3c (size before relaxing)
+ *fill*         0x000820ba        0x2 00
+ .rodata.str1.4
+                0x000820bc       0x20 ARM Flash Release/isr.o
+ .rodata.str1.4
+                0x000820dc       0x78 ARM Flash Release/zigbit.o
+                                 0x7c (size before relaxing)
+ .rodata.libc   0x00082154       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+                0x00082154                __hex_uc
+                0x00082164                __hex_lc
+                0x00082174                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
                 0x00000001                . = ASSERT (((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .rodata is too large to fit in FLASH memory segment)
-                0x0008164c                __fast_load_start__ = (__rodata_end__ ALIGN 0x4)
+                0x00082174                __fast_load_start__ = (__rodata_end__ ALIGN 0x4)
 
-.fast           0x0001003c        0x0 load address 0x0008164c
+.fast           0x0001003c        0x0 load address 0x00082174
                 0x0001003c                __fast_start__ = .
  *(.fast .fast.*)
                 0x0001003c                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
-                0x0008164c                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x00082174                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                . = ASSERT ((((__fast_load_start__ + SIZEOF (.fast)) >= __FLASH_segment_start__) && ((__fast_load_start__ + SIZEOF (.fast)) <= (__FLASH_segment_start__ + 0xf800))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x0001003c        0x0
@@ -216,134 +316,174 @@ Linker script and memory map
                 0x0001003c                . = ((__fast_run_start__ + SIZEOF (.fast)) MAX_K .)
                 0x0001003c                __fast_run_end__ = (__fast_run_start__ + SIZEOF (.fast_run))
                 0x00000001                . = ASSERT (((__fast_run_end__ >= __SRAM_segment_start__) && (__fast_run_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .fast_run is too large to fit in SRAM memory segment)
-                0x0008164c                __data_load_start__ = ((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4)
+                0x00082174                __data_load_start__ = ((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4)
 
-.data           0x0001003c        0x8 load address 0x0008164c
+.data           0x0001003c       0x10 load address 0x00082174
                 0x0001003c                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x0001003c        0x4 ARM Flash Release/main.o
-                0x0001003c                clock0Multiplier
- .data          0x00010040        0x0 ARM Flash Release/crt0.o
- .data          0x00010040        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .data          0x00010040        0x0 ARM Flash Release/Analog_ADuC7000.o
- .data          0x00010040        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .data          0x00010040        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- .data          0x00010040        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
- .data          0x00010040        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .data          0x00010040        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .data.libc     0x00010040        0x4 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .data          0x00010044        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
- .data          0x00010044        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
- .data          0x00010044        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .data          0x00010044        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .data          0x00010044        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
- .data          0x00010044        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
-                0x00010044                __data_end__ = (__data_start__ + SIZEOF (.data))
-                0x00081654                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
-                0x00081654                __FLASH_segment_used_end__ = (((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4) + SIZEOF (.data))
+ .data          0x0001003c        0x0 ARM Flash Release/main.o
+ .data          0x0001003c        0x0 ARM Flash Release/ringbuffer.o
+ .data          0x0001003c        0x8 ARM Flash Release/isr.o
+ .data          0x00010044        0x4 ARM Flash Release/random.o
+                0x00010044                currentRandomNumber
+ .data          0x00010048        0x0 ARM Flash Release/uart.o
+ .data          0x00010048        0x0 ARM Flash Release/zigbit.o
+ .data          0x00010048        0x0 ARM Flash Release/crt0.o
+ .data          0x00010048        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .data          0x00010048        0x0 ARM Flash Release/Analog_ADuC7000.o
+ .data          0x00010048        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .data          0x00010048        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .data.libc     0x00010048        0x4 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+ .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+                0x0001004c                __data_end__ = (__data_start__ + SIZEOF (.data))
+                0x00082184                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x00082184                __FLASH_segment_used_end__ = (((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4) + SIZEOF (.data))
                 0x00000001                . = ASSERT ((((__data_load_start__ + SIZEOF (.data)) >= __FLASH_segment_start__) && ((__data_load_start__ + SIZEOF (.data)) <= (__FLASH_segment_start__ + 0xf800))), error: .data is too large to fit in FLASH memory segment)
 
-.data_run       0x0001003c        0x8
+.data_run       0x0001003c       0x10
                 0x0001003c                __data_run_start__ = .
-                0x00010044                . = ((__data_run_start__ + SIZEOF (.data)) MAX_K .)
- *fill*         0x0001003c        0x8 00
-                0x00010044                __data_run_end__ = (__data_run_start__ + SIZEOF (.data_run))
+                0x0001004c                . = ((__data_run_start__ + SIZEOF (.data)) MAX_K .)
+ *fill*         0x0001003c       0x10 00
+                0x0001004c                __data_run_end__ = (__data_run_start__ + SIZEOF (.data_run))
                 0x00000001                . = ASSERT (((__data_run_end__ >= __SRAM_segment_start__) && (__data_run_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .data_run is too large to fit in SRAM memory segment)
-                0x00010044                __bss_load_start__ = (__data_run_end__ ALIGN 0x4)
+                0x0001004c                __bss_load_start__ = (__data_run_end__ ALIGN 0x4)
 
-.bss            0x00010044       0x70
-                0x00010044                __bss_start__ = .
+.bss            0x0001004c      0x180
+                0x0001004c                __bss_start__ = .
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x00010044        0x8 ARM Flash Release/main.o
-                0x00010048                clock0Count
-                0x00010044                alertStatus
- .bss           0x0001004c        0x0 ARM Flash Release/crt0.o
- .bss           0x0001004c        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .bss           0x0001004c       0x64 ARM Flash Release/Analog_ADuC7000.o
- .bss           0x000100b0        0x4 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
- .bss           0x000100b4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .bss           0x0001004c        0x0 ARM Flash Release/main.o
+ .bss           0x0001004c        0x0 ARM Flash Release/ringbuffer.o
+ .bss           0x0001004c       0x18 ARM Flash Release/isr.o
+                0x0001004c                inBuffPos
+                0x0001005c                mute
+                0x00010058                sendBuffEnd
+                0x00010050                outBuffPos
+                0x00010054                sendBuffPos
+ .bss           0x00010064        0x0 ARM Flash Release/random.o
+ .bss           0x00010064        0x0 ARM Flash Release/uart.o
+ .bss           0x00010064        0x8 ARM Flash Release/zigbit.o
+                0x00010064                sendStatus
+                0x00010068                alertStatus
+ .bss           0x0001006c        0x0 ARM Flash Release/crt0.o
+ .bss           0x0001006c        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .bss           0x0001006c       0x64 ARM Flash Release/Analog_ADuC7000.o
+ .bss           0x000100d0        0x4 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
+ .bss           0x000100d4        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
  *(COMMON)
-                0x000100b4                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
+ COMMON         0x000100d4       0xf8 ARM Flash Release/isr.o
+                0x000100d4                sendBuffer
+                0x00010124                outBuffer
+                0x00010174                outBufferRing
+                0x00010178                inBufferRing
+                0x0001017c                inBuffer
+                0x000101cc                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
                 0x00000001                . = ASSERT (((__bss_end__ >= __SRAM_segment_start__) && (__bss_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .bss is too large to fit in SRAM memory segment)
-                0x000100b4                __non_init_load_start__ = (__bss_end__ ALIGN 0x4)
+                0x000101cc                __non_init_load_start__ = (__bss_end__ ALIGN 0x4)
 
-.non_init       0x000100b4        0x0
-                0x000100b4                __non_init_start__ = .
+.non_init       0x000101cc        0x0
+                0x000101cc                __non_init_start__ = .
  *(.non_init .non_init.*)
-                0x000100b4                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
+                0x000101cc                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
                 0x00000001                . = ASSERT (((__non_init_end__ >= __SRAM_segment_start__) && (__non_init_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .non_init is too large to fit in SRAM memory segment)
-                0x000100b4                __heap_load_start__ = (__non_init_end__ ALIGN 0x4)
+                0x000101cc                __heap_load_start__ = (__non_init_end__ ALIGN 0x4)
 
-.heap           0x000100b4      0x400
-                0x000100b4                __heap_start__ = .
+.heap           0x000101cc      0x400
+                0x000101cc                __heap_start__ = .
  *(.heap)
-                0x000104b4                . = (((__heap_start__ + __HEAPSIZE__) MAX_K .) ALIGN 0x4)
- *fill*         0x000100b4      0x400 00
-                0x000104b4                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
+                0x000105cc                . = (((__heap_start__ + __HEAPSIZE__) MAX_K .) ALIGN 0x4)
+ *fill*         0x000101cc      0x400 00
+                0x000105cc                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
                 0x00000001                . = ASSERT (((__heap_end__ >= __SRAM_segment_start__) && (__heap_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .heap is too large to fit in SRAM memory segment)
-                0x000104b4                __stack_load_start__ = (__heap_end__ ALIGN 0x4)
+                0x000105cc                __stack_load_start__ = (__heap_end__ ALIGN 0x4)
 
-.stack          0x000104b4      0x400
-                0x000104b4                __stack_start__ = .
+.stack          0x000105cc      0x400
+                0x000105cc                __stack_start__ = .
  *(.stack)
-                0x000108b4                . = (((__stack_start__ + __STACKSIZE__) MAX_K .) ALIGN 0x4)
- *fill*         0x000104b4      0x400 00
-                0x000108b4                __stack_end__ = (__stack_start__ + SIZEOF (.stack))
+                0x000109cc                . = (((__stack_start__ + __STACKSIZE__) MAX_K .) ALIGN 0x4)
+ *fill*         0x000105cc      0x400 00
+                0x000109cc                __stack_end__ = (__stack_start__ + SIZEOF (.stack))
                 0x00000001                . = ASSERT (((__stack_end__ >= __SRAM_segment_start__) && (__stack_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .stack is too large to fit in SRAM memory segment)
-                0x000108b4                __stack_irq_load_start__ = (__stack_end__ ALIGN 0x4)
+                0x000109cc                __stack_irq_load_start__ = (__stack_end__ ALIGN 0x4)
 
-.stack_irq      0x000108b4      0x100
-                0x000108b4                __stack_irq_start__ = .
+.stack_irq      0x000109cc      0x100
+                0x000109cc                __stack_irq_start__ = .
  *(.stack_irq)
-                0x000109b4                . = (((__stack_irq_start__ + __STACKSIZE_IRQ__) MAX_K .) ALIGN 0x4)
- *fill*         0x000108b4      0x100 00
-                0x000109b4                __stack_irq_end__ = (__stack_irq_start__ + SIZEOF (.stack_irq))
+                0x00010acc                . = (((__stack_irq_start__ + __STACKSIZE_IRQ__) MAX_K .) ALIGN 0x4)
+ *fill*         0x000109cc      0x100 00
+                0x00010acc                __stack_irq_end__ = (__stack_irq_start__ + SIZEOF (.stack_irq))
                 0x00000001                . = ASSERT (((__stack_irq_end__ >= __SRAM_segment_start__) && (__stack_irq_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .stack_irq is too large to fit in SRAM memory segment)
-                0x000109b4                __stack_fiq_load_start__ = (__stack_irq_end__ ALIGN 0x4)
+                0x00010acc                __stack_fiq_load_start__ = (__stack_irq_end__ ALIGN 0x4)
 
-.stack_fiq      0x000109b4      0x100
-                0x000109b4                __stack_fiq_start__ = .
+.stack_fiq      0x00010acc      0x100
+                0x00010acc                __stack_fiq_start__ = .
  *(.stack_fiq)
-                0x00010ab4                . = (((__stack_fiq_start__ + __STACKSIZE_FIQ__) MAX_K .) ALIGN 0x4)
- *fill*         0x000109b4      0x100 00
-                0x00010ab4                __stack_fiq_end__ = (__stack_fiq_start__ + SIZEOF (.stack_fiq))
+                0x00010bcc                . = (((__stack_fiq_start__ + __STACKSIZE_FIQ__) MAX_K .) ALIGN 0x4)
+ *fill*         0x00010acc      0x100 00
+                0x00010bcc                __stack_fiq_end__ = (__stack_fiq_start__ + SIZEOF (.stack_fiq))
                 0x00000001                . = ASSERT (((__stack_fiq_end__ >= __SRAM_segment_start__) && (__stack_fiq_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .stack_fiq is too large to fit in SRAM memory segment)
-                0x00010ab4                __stack_svc_load_start__ = (__stack_fiq_end__ ALIGN 0x4)
+                0x00010bcc                __stack_svc_load_start__ = (__stack_fiq_end__ ALIGN 0x4)
 
-.stack_svc      0x00010ab4        0x0
-                0x00010ab4                __stack_svc_start__ = .
+.stack_svc      0x00010bcc        0x0
+                0x00010bcc                __stack_svc_start__ = .
  *(.stack_svc)
-                0x00010ab8                . = (((__stack_svc_start__ + __STACKSIZE_SVC__) MAX_K .) ALIGN 0x4)
-                0x00010ab4                __stack_svc_end__ = (__stack_svc_start__ + SIZEOF (.stack_svc))
+                0x00010bd0                . = (((__stack_svc_start__ + __STACKSIZE_SVC__) MAX_K .) ALIGN 0x4)
+                0x00010bcc                __stack_svc_end__ = (__stack_svc_start__ + SIZEOF (.stack_svc))
                 0x00000001                . = ASSERT (((__stack_svc_end__ >= __SRAM_segment_start__) && (__stack_svc_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .stack_svc is too large to fit in SRAM memory segment)
-                0x00010ab4                __stack_abt_load_start__ = (__stack_svc_end__ ALIGN 0x4)
+                0x00010bcc                __stack_abt_load_start__ = (__stack_svc_end__ ALIGN 0x4)
 
-.stack_abt      0x00010ab4        0x0
-                0x00010ab4                __stack_abt_start__ = .
+.stack_abt      0x00010bcc        0x0
+                0x00010bcc                __stack_abt_start__ = .
  *(.stack_abt)
-                0x00010ab8                . = (((__stack_abt_start__ + __STACKSIZE_ABT__) MAX_K .) ALIGN 0x4)
-                0x00010ab4                __stack_abt_end__ = (__stack_abt_start__ + SIZEOF (.stack_abt))
+                0x00010bd0                . = (((__stack_abt_start__ + __STACKSIZE_ABT__) MAX_K .) ALIGN 0x4)
+                0x00010bcc                __stack_abt_end__ = (__stack_abt_start__ + SIZEOF (.stack_abt))
                 0x00000001                . = ASSERT (((__stack_abt_end__ >= __SRAM_segment_start__) && (__stack_abt_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .stack_abt is too large to fit in SRAM memory segment)
-                0x00010ab4                __stack_und_load_start__ = (__stack_abt_end__ ALIGN 0x4)
+                0x00010bcc                __stack_und_load_start__ = (__stack_abt_end__ ALIGN 0x4)
 
-.stack_und      0x00010ab4        0x0
-                0x00010ab4                __stack_und_start__ = .
+.stack_und      0x00010bcc        0x0
+                0x00010bcc                __stack_und_start__ = .
  *(.stack_und)
-                0x00010ab8                . = (((__stack_und_start__ + __STACKSIZE_UND__) MAX_K .) ALIGN 0x4)
-                0x00010ab4                __stack_und_end__ = (__stack_und_start__ + SIZEOF (.stack_und))
-                0x00010ab4                __SRAM_segment_used_end__ = ((__stack_abt_end__ ALIGN 0x4) + SIZEOF (.stack_und))
+                0x00010bd0                . = (((__stack_und_start__ + __STACKSIZE_UND__) MAX_K .) ALIGN 0x4)
+                0x00010bcc                __stack_und_end__ = (__stack_und_start__ + SIZEOF (.stack_und))
+                0x00010bcc                __SRAM_segment_used_end__ = ((__stack_abt_end__ ALIGN 0x4) + SIZEOF (.stack_und))
                 0x00000001                . = ASSERT (((__stack_und_end__ >= __SRAM_segment_start__) && (__stack_und_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .stack_und is too large to fit in SRAM memory segment)
 START GROUP
 LOAD ARM Flash Release/main.o
+LOAD ARM Flash Release/ringbuffer.o
+LOAD ARM Flash Release/isr.o
+LOAD ARM Flash Release/random.o
+LOAD ARM Flash Release/uart.o
+LOAD ARM Flash Release/zigbit.o
 LOAD ARM Flash Release/crt0.o
 LOAD ARM Flash Release/Analog_ADuC7000_Startup.o
 LOAD ARM Flash Release/Analog_ADuC7000.o
@@ -359,80 +499,123 @@ LOAD /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfscanf_long_
 END GROUP
 OUTPUT(ARM Flash Release/MANVFirmware.elf elf32-littlearm)
 
-.comment        0x00000000       0x90
+.comment        0x00000000      0x120
  .comment       0x00000000       0x12 ARM Flash Release/main.o
- .comment       0x00000012       0x12 ARM Flash Release/Analog_ADuC7000.o
- .comment       0x00000024       0x12 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .comment       0x00000036       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .comment       0x00000048       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .comment       0x0000005a       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .comment       0x0000006c       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .comment       0x0000007e       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .comment       0x00000012       0x12 ARM Flash Release/ringbuffer.o
+ .comment       0x00000024       0x12 ARM Flash Release/isr.o
+ .comment       0x00000036       0x12 ARM Flash Release/random.o
+ .comment       0x00000048       0x12 ARM Flash Release/uart.o
+ .comment       0x0000005a       0x12 ARM Flash Release/zigbit.o
+ .comment       0x0000006c       0x12 ARM Flash Release/Analog_ADuC7000.o
+ .comment       0x0000007e       0x12 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .comment       0x00000090       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .comment       0x000000a2       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .comment       0x000000b4       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .comment       0x000000c6       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .comment       0x000000d8       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .comment       0x000000ea       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .comment       0x000000fc       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .comment       0x0000010e       0x12 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
 
-.debug_frame    0x00000000      0x240
+.debug_frame    0x00000000      0x39c
  .debug_frame   0x00000000       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- .debug_frame   0x00000020       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
- .debug_frame   0x00000040       0x3c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
- .debug_frame   0x0000007c       0x88 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .debug_frame   0x00000104       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
- .debug_frame   0x00000124       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
- .debug_frame   0x00000144       0x40 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .debug_frame   0x00000184       0x9c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .debug_frame   0x00000220       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .debug_frame   0x00000020       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_umod.o)
+ .debug_frame   0x00000040       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__int32_udivmod.o)
+ .debug_frame   0x00000060       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strlen.o)
+ .debug_frame   0x00000080       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(strcmp.o)
+ .debug_frame   0x000000a0       0x3c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
+ .debug_frame   0x000000dc       0x88 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
+ .debug_frame   0x00000164       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memcpy.o)
+ .debug_frame   0x00000184       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(memset.o)
+ .debug_frame   0x000001a4       0x38 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .debug_frame   0x000001dc       0x40 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_frame   0x0000021c       0x9c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_frame   0x000002b8       0x70 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_frame   0x00000328       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_write.o)
+ .debug_frame   0x00000348       0x34 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .debug_frame   0x0000037c       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
 
-.debug_abbrev   0x00000000       0x9e
+.debug_abbrev   0x00000000      0x107
  .debug_abbrev  0x00000000       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_abbrev  0x00000023       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .debug_abbrev  0x00000046       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .debug_abbrev  0x00000069       0x34 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .debug_abbrev  0x0000009d        0x1 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .debug_abbrev  0x00000046       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .debug_abbrev  0x00000069       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_abbrev  0x0000008c       0x34 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_abbrev  0x000000c0       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_abbrev  0x000000e3       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .debug_abbrev  0x00000106        0x1 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
 
-.debug_info     0x00000000      0x13d
+.debug_info     0x00000000      0x263
  .debug_info    0x00000000       0x32 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_info    0x00000032       0x6e /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .debug_info    0x000000a0       0x32 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .debug_info    0x000000d2       0x6b /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .debug_info    0x0000013d        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .debug_info    0x000000a0       0x32 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .debug_info    0x000000d2       0x32 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_info    0x00000104       0x6b /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_info    0x0000016f       0xc2 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_info    0x00000231       0x32 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .debug_info    0x00000263        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
 
-.debug_line     0x00000000      0x1c3
+.debug_line     0x00000000      0x325
  .debug_line    0x00000000       0x6a /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_line    0x0000006a       0x68 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .debug_line    0x000000d2       0x68 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .debug_line    0x0000013a       0x6c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
- .debug_line    0x000001a6       0x1d /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+ .debug_line    0x000000d2       0x6e /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .debug_line    0x00000140       0x68 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_line    0x000001a8       0x6c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_line    0x00000214       0x74 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_line    0x00000288       0x80 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+ .debug_line    0x00000308       0x1d /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
 
-.debug_loc      0x00000000      0x172
+.debug_loc      0x00000000      0x210
  .debug_loc     0x00000000       0x37 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_loc     0x00000037       0x7c /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
- .debug_loc     0x000000b3       0x37 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
- .debug_loc     0x000000ea       0x88 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_loc     0x000000b3       0x2b /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+ .debug_loc     0x000000de       0x37 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_loc     0x00000115       0x88 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_loc     0x0000019d       0x54 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_loc     0x000001f1       0x1f /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
 
 .debug_pubnames
-                0x00000000       0x9a
+                0x00000000      0x134
  .debug_pubnames
                 0x00000000       0x1f /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_pubnames
                 0x0000001f       0x3d /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
  .debug_pubnames
-                0x0000005c       0x1d /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+                0x0000005c       0x23 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
  .debug_pubnames
-                0x00000079       0x21 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+                0x0000007f       0x1d /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_pubnames
+                0x0000009c       0x21 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_pubnames
+                0x000000bd       0x46 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_pubnames
+                0x00000103       0x31 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
 
-.debug_aranges  0x00000000       0x80
+.debug_aranges  0x00000000       0xe0
  .debug_aranges
                 0x00000000       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_aranges
                 0x00000020       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
  .debug_aranges
-                0x00000040       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+                0x00000040       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
  .debug_aranges
-                0x00000060       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+                0x00000060       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_aranges
+                0x00000080       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_aranges
+                0x000000a0       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(__debug_operations.o)
+ .debug_aranges
+                0x000000c0       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
 
-.debug_str      0x00000000      0x17f
+.debug_str      0x00000000      0x255
  .debug_str     0x00000000       0x5f /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(snprintf.o)
  .debug_str     0x0000005f       0x63 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(malloc.o)
                                  0x6f (size before relaxing)
- .debug_str     0x000000c2       0x48 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
+ .debug_str     0x000000c2       0x5b /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libdebugio_v4t_a_le.a(debug_printf.o)
+                                 0x67 (size before relaxing)
+ .debug_str     0x0000011d       0x48 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_targetio_impl_v4t_a_le.a(printf.o)
                                  0x5b (size before relaxing)
- .debug_str     0x0000010a       0x75 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
+ .debug_str     0x00000165       0x75 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/lib_vfprintf_long_v4t_a_le.a(__vfprintf_long.o)
                                  0x81 (size before relaxing)
+ .debug_str     0x000001da       0x7b /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_run_dcc_port_server.o)
+                                 0x87 (size before relaxing)

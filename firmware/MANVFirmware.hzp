@@ -52,7 +52,7 @@
   <configuration Name="THUMB RAM Debug" inherited_configurations="THUMB;RAM;Debug"/>
   <configuration Name="THUMB" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" c_preprocessor_definitions="__THUMB" hidden="Yes"/>
   <configuration Name="THUMB RAM Release" inherited_configurations="THUMB;RAM;Release"/>
-  <configuration Name="ARM Flash Debug" inherited_configurations="ARM;Flash;Debug"/>
+  <configuration Name="ARM Flash Debug" inherited_configurations="ARM;Flash;Debug" linker_output_format="hex"/>
   <configuration Name="Flash" c_preprocessor_definitions="__FLASH_BUILD" hidden="Yes"/>
   <configuration Name="ARM Flash Release" inherited_configurations="ARM;Flash;Release" linker_output_format="hex"/>
   <configuration Name="THUMB Flash Debug" inherited_configurations="THUMB;Flash;Debug"/>

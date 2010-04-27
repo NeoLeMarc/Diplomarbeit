@@ -28,24 +28,40 @@ int  sendBuffEnd = 0;
 // Mute alert
 int mute = 0;
 
+// Simulate critical patient?
+int yellowCode = 0;
+
 // ISRs
 void timerISR(){
   // If red button is pressed => alert (P0.0)
   if(!(GP0DAT & 0x02)){
     enableAlert();
-    debug_printf("Red button pressed!\n");
   } 
   
   // If Green button is pressed => no alert (P0.1)
   else if(!(GP0DAT & 0x04)){
     disableAlert();
-    debug_printf("Green button pressed!\n");
   }
 
   // If Blue button is pressed => mute (P0.5)
   else if(!(GP0DAT & 0x20)){
+    // Enable blue LED + Mute
+    GP2DAT |= (1 << 19);
+
     mute = 1;
-    debug_printf("Blue button pressed!\n");
+  }
+
+  // If yellow button is pressed => simulate bad patient status (P0.3)
+  else if(!(GP0DAT & 0x80)){
+    disableAlert();
+
+    // Enable yellow led & disable green
+    GP2DAT = (GP2DAT & ~(1 << 18)) | (1 << 17);
+
+    // Yellow Code: If this is true,
+    // then the patient stats will be "not so good"
+    yellowCode = 1;
+
   }
 
   // Beeping
@@ -66,33 +82,34 @@ void timerISR(){
 
         // Enable beep if not muted
         if(!mute)
-          GP0DAT |= (1 << 16);      
+          GP2DAT |= (1 << 22);      
       } else {
         // Blink red led
         GP2DAT &= ~(1 << 16);
 
         // Disable beep
-        GP0DAT &= ~(1 << 16);
+        GP2DAT &= ~(1 << 22);
       }
   
       beep = !beep;
     } 
   } else {
     // Disable beep
-    GP0DAT &= ~(1 << 16);
+    GP2DAT &= ~(1 << 22);
 
     // Disable red led
     GP2DAT &= ~(1 << 16);
 
-    // Enable green led
-    GP2DAT |= (1 << 18);
+    if(!yellowCode)
+      // Enable green led
+      GP2DAT |= (1 << 18);
   }
 
   // Sending of commands
-  static int counter = 25;
+  static int counter = CLOCKMULTIPLIER;
 
   if(counter-- <= 0){
-    counter = 25;
+    counter = CLOCKMULTIPLIER;
 
     // Schedule sending of command status
     sendStatus = 1;
@@ -112,6 +129,13 @@ void enableAlert(){
   // Unmute
   mute = 0;
 
+  // Disable blue LED
+  GP2DAT &= ~(1 << 19);
+
+  // Disable yellow code
+  GP2DAT &= ~(1 << 17);
+  yellowCode = 0;
+
   // immediatly signal change in alert status
   sendStatus  = 1;
 }
@@ -122,6 +146,16 @@ void disableAlert(){
 
   // Disable LED
   GP4DAT &= ~(1 << 26);
+
+  // Disable yellow code
+  GP2DAT &= ~(1 << 17);
+  yellowCode = 0;
+
+  // Unmute
+  mute = 0;
+
+  // Disable blue LED
+  GP2DAT &= ~(1 << 19);
 
   // immediatly signal change in alert status
   sendStatus  = 1;

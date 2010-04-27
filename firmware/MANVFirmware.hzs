@@ -5,6 +5,8 @@
  </Autos>
  <Bookmarks/>
  <Breakpoints>
+  <BreakpointListItem actiontype="0" chainFrom="" line="32" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Breakpoints" breakdatatype="1" value="0" name="unnamed" counter="0" state="4" mask="0" comparison="0" expression="void" filename="/home/marcel/diplomarbeit/firmware/isr.c" />
+  <BreakpointListItem actiontype="0" chainFrom="" line="32" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Breakpoints" breakdatatype="1" value="0" name="unnamed" counter="0" state="4" mask="0" comparison="0" expression="void" filename="/home/marcel/diplomarbeit/firmware/isr.c" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="D_Abort" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="FIQ" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="IRQ" filename="" />
@@ -12,8 +14,6 @@
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="Reset" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="SWI" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="ARM Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="Undef" filename="" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="32" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Breakpoints" breakdatatype="1" value="0" name="unnamed" counter="0" state="4" mask="0" comparison="0" expression="void" filename="/home/marcel/diplomarbeit/firmware/isr.c" />
-  <BreakpointListItem actiontype="0" chainFrom="" line="32" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Breakpoints" breakdatatype="1" value="0" name="unnamed" counter="0" state="4" mask="0" comparison="0" expression="void" filename="/home/marcel/diplomarbeit/firmware/isr.c" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="BusFault" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="ExceptionEntryReturnFault" filename="" />
   <BreakpointListItem actiontype="0" chainFrom="" line="-1" defaultBreakType="true" length="0" triggertype="0" useHWbreakpoint="false" group="Cortex-M3 Exceptions" breakdatatype="5" value="0" name="unnamed" counter="0" state="3" mask="0" comparison="0" expression="HardFault" filename="" />
@@ -49,7 +49,7 @@
   <ProjectSessionItem path="MANVFirmware;MANVFirmware;System Files" name="unnamed" />
  </Project>
  <Register1>
-  <RegisterWindow openNodes="IRQ/IRQEN;System Control/REMAP;System Control/RSTCLR;UART0/COMIEN0;UART0/COMCON1;UART0/COMSTA0;GPIO;GPIO/GP0DAT;GPIO/GP0SET;GPIO/GP1DAT;GPIO/GP4DAT" binaryNodes="" unsignedNodes="" visibleGroups="UART0;System Control;CPU - Current Mode;IRQ;GPIO" decimalNodes="" octalNodes="" asciiNodes="" />
+  <RegisterWindow openNodes="IRQ/IRQEN;System Control/REMAP;System Control/RSTCLR;UART0/COMIEN0;UART0/COMCON1;UART0/COMSTA0;GPIO;GPIO/GP0SET;GPIO/GP1DAT;GPIO/GP2DAT;GPIO/GP4DAT" binaryNodes="" unsignedNodes="" visibleGroups="UART0;System Control;CPU - Current Mode;IRQ;GPIO" decimalNodes="" octalNodes="" asciiNodes="" />
  </Register1>
  <Register2>
   <RegisterWindow openNodes="" binaryNodes="" unsignedNodes="" visibleGroups="" decimalNodes="" octalNodes="" asciiNodes="" />
@@ -77,13 +77,13 @@
   <Watches active="0" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="2" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" y="0" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" left="0" selected="1" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="2" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" y="0" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" y="79" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" left="0" selected="0" name="unnamed" top="79" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/source/crt0.s" y="279" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/source/crt0.s" left="0" selected="0" name="unnamed" top="236" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="24" debugPath="/home/marcel/diplomarbeit/firmware/isr.c" y="87" path="/home/marcel/diplomarbeit/firmware/isr.c" left="0" selected="0" name="unnamed" top="59" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="22" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="20" debugPath="/home/marcel/diplomarbeit/firmware/zigbit.c" y="7" path="/home/marcel/diplomarbeit/firmware/zigbit.c" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="31" debugPath="/home/marcel/diplomarbeit/firmware/isr.h" y="16" path="/home/marcel/diplomarbeit/firmware/isr.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="26" debugPath="/home/marcel/diplomarbeit/firmware/isr.c" y="54" path="/home/marcel/diplomarbeit/firmware/isr.c" left="0" selected="0" name="unnamed" top="24" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="22" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="1" name="unnamed" top="22" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="10" debugPath="/home/marcel/diplomarbeit/firmware/zigbit.c" y="143" path="/home/marcel/diplomarbeit/firmware/zigbit.c" left="0" selected="0" name="unnamed" top="108" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="52" debugPath="/home/marcel/diplomarbeit/firmware/isr.h" y="3" path="/home/marcel/diplomarbeit/firmware/isr.h" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/uart.c" y="36" path="/home/marcel/diplomarbeit/firmware/uart.c" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/zigbit.h" y="0" path="/home/marcel/diplomarbeit/firmware/zigbit.h" left="0" selected="0" name="unnamed" top="0" />
  </Files>

@@ -57,9 +57,9 @@ int main(void){
   GP0CON = 0x0;
   GP0DAT = 0x01000000;
 
-  // Use GIO 2.0, 2.1, 2.2 as output
+  // Use GIO 2.0, 2.1, 2.2, 2.3, 2.6 as output
   GP2CON = 0x0;
-  GP2DAT = 0x07000000;
+  GP2DAT = 0x4f000000;
 
   // Use 4.2 as Output
   GP4DAT = 0x0;

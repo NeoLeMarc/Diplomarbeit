@@ -1,5 +1,5 @@
 // Settings 
-#define CLOCKMULTIPLIER 10      // Multiplier for clock
+#define CLOCKMULTIPLIER 400     // Multiplier for clock
 #define MAXARGS         10      // The maximal number of arguments we support
 #define BEEPDELAY        2      // Delay for beeping
 
