@@ -27,7 +27,7 @@ class MARVCommand extends MARVPrioritized {
     protected String command;
     private MARVResult result;
     protected int id = 0;
-    static int maxId;
+    protected static int maxId;
     private CountDownLatch resultLatch = new CountDownLatch(1);
 
     MARVCommand(String command, int priority){
@@ -356,8 +356,8 @@ class MARVChildrenList extends MARVResult {
 
 /* *** Entities ** */
 class ZigBit {
-    int panID;
-    int[] gpio = {0, 0, 0, 0};
+    protected int panID;
+    private int[] gpio = {0, 0, 0, 0};
 
     // Singleton
     private static HashMap<Integer, ZigBit> zigBitMap = new HashMap<Integer, ZigBit>();
@@ -634,7 +634,7 @@ public class MARVConnector {
 
 	/* Von Jan:
 	 * CORBA initialisieren.
-	 * Nachdem diese Prozedur ausgeführt wurde ist der Server bereit Nachrichten zu empfangen. 
+	 * Nachdem diese Methode ausgeführt wurde ist der Server bereit Nachrichten zu empfangen. 
 	 */
 	private static void initCORBA(String[] args, Properties properties)
 	{
