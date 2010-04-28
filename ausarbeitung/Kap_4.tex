@@ -1,38 +1,94 @@
 
 %%%-----------------------------------------------UMSETZUNG/VORBEREITUNGEN-------------------------------------------------------------
-\chapter{Praktische Realisierung der Respirationsdetektion}
-\section{Baselinewandering}
-\subsection{Vorbereiten der Hardware}
-\subsubsection{Anforderung an die Hardware}
-... 24 bit, kein HP etc....
-\subsubsection{Realisierung der Anforderungen}
-... hier kann ein Schaltplan eines 24bit-EKG verstärker rein, oder auch ein Bild von dem Gerät
+\chapter{Praktische Realisierung des Sensornetzes}
 
-\subsection{Datenerfassung}
-... wie kommen die Daten an, wie müssen sie konvertiert werden...
+\section{Entwurf}
 
-\subsection{Signalverarbeitung in Matlab}
-... eben das Matlabprog. mit evtl. Auszügen aus dem Quelltext (diese, wenn möglich in den Anhang verfrachten und einen Hinweis darauf geben)
+\subsection{Hardware}
+\subsubsection{MANVNode}
+
+\subsubsection{ADuC}
+Beim MANVNode handelt es sich um ein Prototyp des späteren Erste-Hilfe-Sensor für den MANV-Einsatz. Zwar exisitert der 
+Erste-Hilfe-Sensor bereits, allerdings hat dieser noch keinerlei Netzwerkfähigkeit. Der Erste-Hilfe-Sensor basiert
+auf einem ADuC7019 Microcontroller und ergänzt diesen durch Detektionskomponeten, zur Patientenüberwachung.
+
+Für die Entwicklung der Netzwerkanbindung sind diese Detektionskomponenten nur insofern relevant, dass es zu keiner
+Gegenseitigen Störung zwischen Detetion- und Netzwerkkomponeten kommen darf. Daher wurde im ersten Schritt alle nicht
+benötigten Komponenten weggelassen, und lediglich der reine Mikrocontroller verwendet. Später wurden die hierbei
+entwickelte Netzwerkkomponenten zusammengefasst und in die Hardware des Erste-Hilfe-Sensors integriert.
+
+Die eigentliche Entwicklung fand mit Hilfe eines ADuC7026 Evaluations-Board statt. Dieses Board hat den Vorteil, 
+dass alle Anschlüsse des Mikrocontrollers auf Steckerleisten geführt, und damit leicht zugänglich sind. Ausserdem
+ist eine JTAG-Schnittstelle vorhanden, die ein einfaches Debuggen des Mikrocontrollers ermöglicht.
+
+\subsubsection{ZigBee-Schnittstelle}
+Für die Anbindung des Erste-Hilfe-Sensors an das Sensornetz wird ein ZigBit-Modul der Firma Atmel verwendet. 
+Dieses Modul bietet den Vorteil, dass es bereits über einen kompletten ZigBee-Stack verfügt, der einfach über
+AT-Befehle gesteuert werden kann, die per UART gesendet werden.
+
+Der ZigBee-Stack auf dem ZigBit Modul ist austauschbar und kann durch eine eigene Firmware ersetzt werden.
+Hierzu wird von der Firma Atmel ein umfangreiches SDK\footnote{Software-Development-Kit: Eine Art Baukasten für
+Software, die viele benötigte Teile bereits fertig zur Verfügung stellt} angeboten. Für den Rahmen dieser Diplomarbeit
+ist die vorgefertigte Serial-Net-Firmware allerdings ausreichend. Einziger Wermutstropfen ist die fehlende
+Verschlüsselung, welche für den Serieneinsatz natürlich erforderlich wäre.
 
 
-\section{HRV-Variation}
-\subsection{Anforderung an die Hardware}
-... hier gibts nicht viele, und gerade das dann sagen, dass es mit fast jedem Gerät möglich wäre...
+\subsubsection{MANV-USB-Connector}
+Der MANV-USB-Connector ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
+ZigBit-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das ZigBit-Modul mit Strom versorgen, sowie eine
+Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. Für die Stromversorgung ist es notwendig, die 5V der
+USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
 
-\subsection{Datenerfassung}
-...
+\subsection{Firmware}
 
-\subsection{Signalverarbeitung in Matlab}
-...
+\subsection{Software}
 
-\section{QRS-Komplexe}
-\subsection{Anforderung an die Hardware}
-... wie oben
+In dieser Arbeit wurde ein Java-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die Anbindung an
+die von Herrn Tepelmann in \cite{Jan} entworfene MANVSuite.
 
-\subsection{Datenerfassung}
-...
+\section{Implementierung}
 
-\subsection{Signalverarbeitung in Matlab}
+\subsection{Hardware}
 
-\section{Referenzmessung}
-Hier nur kurze Erläuterung des Verfahrens
+\subsection{Firmware}
+
+\subsection{Software}
+
+
+
+%\chapter{Praktische Realisierung der Respirationsdetektion}
+%\section{Baselinewandering}
+%\subsection{Vorbereiten der Hardware}
+%\subsubsection{Anforderung an die Hardware}
+%... 24 bit, kein HP etc....
+%\subsubsection{Realisierung der Anforderungen}
+%... hier kann ein Schaltplan eines 24bit-EKG verstärker rein, oder auch ein Bild von dem Gerät
+%
+%\subsection{Datenerfassung}
+%... wie kommen die Daten an, wie müssen sie konvertiert werden...
+%
+%\subsection{Signalverarbeitung in Matlab}
+%... eben das Matlabprog. mit evtl. Auszügen aus dem Quelltext (diese, wenn möglich in den Anhang verfrachten und einen Hinweis darauf geben)
+%
+%
+%\section{HRV-Variation}
+%\subsection{Anforderung an die Hardware}
+%... hier gibts nicht viele, und gerade das dann sagen, dass es mit fast jedem Gerät möglich wäre...
+%
+%\subsection{Datenerfassung}
+%...
+%
+%\subsection{Signalverarbeitung in Matlab}
+%...
+%
+%\section{QRS-Komplexe}
+%\subsection{Anforderung an die Hardware}
+%... wie oben
+%
+%\subsection{Datenerfassung}
+%...
+%
+%\subsection{Signalverarbeitung in Matlab}
+%
+%\section{Referenzmessung}
+%Hier nur kurze Erläuterung des Verfahrens
