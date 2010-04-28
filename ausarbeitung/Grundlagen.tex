@@ -2,7 +2,7 @@
 %%%------------------------------------------------Grundlagen------------------------------------------------------------------
 \chapter{Grundlagen}\label{Grundlagen}
 
-\section{Kabellose Übertragungsprotokolle}
+\section{Kabellose übertragungsprotokolle}
 \subsection{Einführung}
 In diesem Abschnitt werden die gängisten Funkprotokolle kurz vorgestellt. Insbesondere wird erläutert,
 inwieweit das entsprechende Protokoll als Grundlage für das zu entwickelnde Sensornetz geeignet ist.
@@ -19,7 +19,7 @@ jedoch auch weitere Anwendungen wie z.B. Babyfone.}.
 In Europa wird einn eigenes Frequenzband im Bereich von 1800 bis 1900 MHz verwendet, in dem 10 
 Kanäle zur Verfügung stehen. Pro Kanal können maximal 32kbit Nutzdaten pro Sekunde übertragen
 werden. Die maximal zulässige Sendeleistung beträgt 250mW, womit eine Reichweite von ca. 30-50
-Metern in Gebäuden und ca. 300m im Freien realisiert werden können. Jede Basisstation kann
+Metern in Gebäuden und ca. 300m im Freien realisiert werden kann. Jede Basisstation kann
 bis zu 6 Geräte anbinden.
 
 Beim Einsatz außerhalb Europas muss bedacht werden, dass die Verwendung der Frequenzen von
@@ -39,10 +39,79 @@ WLAN oder Wi-Fi bezeichnet den heute gängigen Standard eines Funkprotokolls zum
 von kabellosen lokalen Netzwerken. Es gibt mehrere Versionen des Standards, die verbreitetsten
 sind IEEE 802.11a, IEEE 802.11b/g und IEEE 802.11n. 
 
-Allen Standards ist gemein...
+Es sind zwei Betriebsmodi möglich:
+
+\begin{itemize}
+    \item{Infrastruktur-Modus:} Eine zentrale Station ("`Access-Point"') dient als Basisstation
+                                für alle weitere Stationen. Jede Station, die am Netzwerk
+                                teilnimmt, muss hierzu die Signale des \textsl{Access-Points} 
+                                empfangen können.
+    \item{Ad-hoc-Modus:} Diese Betriebsmodus kommt ohne zentrale Komponente aus. Es wird eine
+                         Peer-to-Peer-Verbindung zwischen allen am Netzwerk teilnehmenden 
+                         Stationen aufgebaut. Hierzu ist es notwendig, dass alle Stationen
+                         sich gegenseitig empfangen können.
+\end{itemize}
+
+Der Infrastruktur-Modus bietet gegenüber des Ad-Hoc-Modus' klare Vorteile: Im Gegensatz
+zum Ad-hoc-Modus ist es nicht notwendig, dass alle Stationen sich gegenseitig empfangen
+müssen, es reicht aus, wenn der Acces-Point empfangen werden kann. Hierdurch ist eine
+größere Ausbreitung des Netzwerks möglich als im Ad-Hoc-Modus. 
+
+Es werden verschiedene Datenübertragungsraten unterstützt. Standardmässig wird
+immer die größtmögliche Übertragungsrate gewählt, die Störungsfrei verwendet
+werden kann. Je weiter sich die Stationen voneinander entfernen, desto geringer
+wird die Übertragungsrate, bis schliesslich die niedrigst mögliche Übertragungsrate von
+1MBit/sec erreicht wird.
+
+Es gibt eine ganze Menge von Unterstandards, die sich durch zulässige Frequenzen, 
+Übertragungsraten und Sendeleistung unterscheiden. Teilweise ist auch Kanalbündelung 
+vorgesehen. Nicht jeder Standard kann in jedem Land eingesetzt werden, und die meisten
+Endgeräte unterstützen nur eine Teilmenge dieser Stanrdards. Hier sollen nur die
+wichtigsten drei Standards erwähnt werden.
 
 \subsubsection{IEEE 802.11b}
+Bei IEEE 802.11b handelt es sich um den ältesten WLAN-Standard, der bereits 1999 
+spezifiziert wurde. Dieser Standard wird praktisch von jedem WLAN fähigen 
+Endgerät unterstützt. Die Kommunikation findet im ISM-Band im Bereich von 2.4GHz
+statt. Je nach Land sind 11-14 Kanäle möglich, die sich jedoch teilweise überlappen.
+Dies führt dazu, dass maximal 3 Netzwerke ohne Störungen gleichzeitig betrieben werden
+können. Die maximale Sendeleistung beträgt 100mW. Es sind Übertragungsraten von 
+5,5 bis 11 MBit (brutto) möglich. Die Nettoübertragungsrate beträgt ca. 50\% der
+Bruttorate. Es sind Reichweiten bis 40m (Innen) bzw. 100m (Außen) möglich.
+
+\subsubsection{IEEE 802.11g}
+Der IEEE 802.11g Standard stellt eine Erweiterung des IEEE 802.11b Standards da.
+Wesentliche Neuerung ist eine Erhöhung der Bruttodatenrate von 11 auf 54MBit/sec,
+von denen netto ca. 40\% zur Verfügung stehen. Erwähnenswert ist, dass die
+beiden Standards Interoperabel sind, d.h. ein 802.11b Gerät kann einem
+802.11g Netzwerk beitreten und umgekehrt. Dies ist auch der Grund, weshalb
+dieser Standard momentan am weitesten verbreitet ist.
+
+\subsubsection{IEEE 802.11a}
+Der IEEE 802.11a-Standard verwendet Frequenzen im 5GHz Bereich. Er ist daher
+inkompatibel zum IEEE-802.11b/g-Standard. Je nach Frequenzband sind 
+Sendeleistungen zwischen 30 und 1000mW zulässig. Mit dem passenden Frequenzband
+sind daher höhere Reichweiten als mit dem IEEE-802.11b/g-Standard möglich.
+Die Bruttodatenrate beträgt bis zu 54MBit/sec. 
+Ein Vorteil des IEEE-802.11a Standards ist die Kommunikation im 5GHz Bereich.
+Aktuell ist dieser Bereich noch wenig genutzt, so dass in diesem
+Bereich oft ein störungsärmerer Betrieb als im 2,4GHz-Bereich möglich ist.
+Es ist jedoch zu erwarten, dass sich dies in Zukunft ändern wird.
+
+\subsubsection{Leistungsaufnahme}
+Der Energiebedarf für WLAN ist relativ hoch. Beispielsweise benötigt der
+vom Hersteller Broadcom als besonders energiesparend bezeichnete Chip
+BCM4326 bis zu 100mA zum Empfangen und zwischen 141 und 190mA zum Senden.
+\footnote{BCM4326 Datasheet}. 
+
+\subsubsection{Anzahl Teilnehmer}
+
 \subsection{Bluetooth}
+\subsubsection{Reichweite}
+\subsubsection{Übertragungsrate}
+\subsubsection{Leistungsaufnahme}
+\subsubsection{Anzahl Teilnehmer}
+
 \subsection{ZigBee}
 
 \section{Der Analog Devices ADuC702X Mikrocontroller}

@@ -8,104 +8,104 @@
 \subsubsection{MANVNode}
 
 \subsubsection{ADuC}
-Beim MANVNode handelt es sich um ein Prototyp des späteren Erste-Hilfe-Sensor für den MANV-Einsatz. Zwar exisitert der 
-Erste-Hilfe-Sensor bereits, allerdings hat dieser noch keinerlei Netzwerkfähigkeit. Der Erste-Hilfe-Sensor basiert
-auf einem ADuC7019 Microcontroller und ergänzt diesen durch Detektionskomponeten, zur Patientenüberwachung.
+Beim MANVNode handelt es sich um ein Prototyp des spÃ¤teren Erste-Hilfe-Sensor fÃ¼r den MANV-Einsatz. Zwar exisitert der 
+Erste-Hilfe-Sensor bereits, allerdings hat dieser noch keinerlei NetzwerkfÃ¤higkeit. Der Erste-Hilfe-Sensor basiert
+auf einem ADuC7019 Microcontroller und ergÃ¤nzt diesen durch Detektionskomponeten, zur PatientenÃ¼berwachung.
 
-Für die Entwicklung der Netzwerkanbindung sind diese Detektionskomponenten nur insofern relevant, dass es zu keiner
-Gegenseitigen Störung zwischen Detetion- und Netzwerkkomponeten kommen darf. Daher wurde im ersten Schritt alle nicht
-benötigten Komponenten weggelassen, und lediglich der reine Mikrocontroller verwendet. Später wurden die hierbei
+FÃ¼r die Entwicklung der Netzwerkanbindung sind diese Detektionskomponenten nur insofern relevant, dass es zu keiner
+Gegenseitigen StÃ¶rung zwischen Detetion- und Netzwerkkomponeten kommen darf. Daher wurde im ersten Schritt alle nicht
+benÃ¶tigten Komponenten weggelassen, und lediglich der reine Mikrocontroller verwendet. SpÃ¤ter wurden die hierbei
 entwickelte Netzwerkkomponenten zusammengefasst und in die Hardware des Erste-Hilfe-Sensors integriert.
 
 Die eigentliche Entwicklung fand mit Hilfe eines ADuC7026 Evaluations-Board statt. Dieses Board hat den Vorteil, 
-dass alle Anschlüsse des Mikrocontrollers auf Steckerleisten geführt, und damit leicht zugänglich sind. Ausserdem
-ist eine JTAG-Schnittstelle vorhanden, die ein einfaches Debuggen des Mikrocontrollers ermöglicht.
+dass alle AnschlÃ¼sse des Mikrocontrollers auf Steckerleisten gefÃ¼hrt, und damit leicht zugÃ¤nglich sind. Ausserdem
+ist eine JTAG-Schnittstelle vorhanden, die ein einfaches Debuggen des Mikrocontrollers ermÃ¶glicht.
 
 \subsubsection{ZigBee-Schnittstelle}
-Für die Anbindung des Erste-Hilfe-Sensors an das Sensornetz wird ein ZigBit-Modul der Firma Atmel verwendet. 
-Dieses Modul bietet den Vorteil, dass es bereits über einen kompletten ZigBee-Stack verfügt, der einfach über
+FÃ¼r die Anbindung des Erste-Hilfe-Sensors an das Sensornetz wird ein ZigBit-Modul der Firma Atmel verwendet. 
+Dieses Modul bietet den Vorteil, dass es bereits Ã¼ber einen kompletten ZigBee-Stack verfÃ¼gt, der einfach Ã¼ber
 AT-Befehle gesteuert werden kann, die per UART gesendet werden.
 
 Der ZigBee-Stack auf dem ZigBit Modul ist austauschbar und kann durch eine eigene Firmware ersetzt werden.
-Hierzu wird von der Firma Atmel ein umfangreiches SDK\footnote{Software-Development-Kit: Eine Art Baukasten für
-Software, die viele benötigte Teile bereits fertig zur Verfügung stellt} angeboten. Für den Rahmen dieser Diplomarbeit
+Hierzu wird von der Firma Atmel ein umfangreiches SDK\footnote{Software-Development-Kit: Eine Art Baukasten fÃ¼r
+Software, die viele benÃ¶tigte Teile bereits fertig zur VerfÃ¼gung stellt} angeboten. FÃ¼r den Rahmen dieser Diplomarbeit
 ist die vorgefertigte Serial-Net-Firmware allerdings ausreichend. Einziger Wermutstropfen ist die fehlende
-Verschlüsselung, welche für den Serieneinsatz natürlich erforderlich wäre.
+VerschlÃ¼sselung, welche fÃ¼r den Serieneinsatz natÃ¼rlich erforderlich wÃ¤re.
 
-Die Kommunikation mit dem ZigBit Modul erfolgt grundsätzlich synchron. Jeder AT-Befehl wird entweder mit 
-"`OK"', "`ERROR"' oder einer Ergebnisszeile quittiert. Der Treiber für das ZigBit-Modul kann also prinzipiell
-als endlicher Automat mit zwei Zuständen implementiert werden. Zu beachten ist jedoch, dass prinzipiell
-jederzeit Ereignisse vom Typ "`Data Received"' auftreten können. Es ist also notwendig, die Antwort des 
+Die Kommunikation mit dem ZigBit Modul erfolgt grundsÃ¤tzlich synchron. Jeder AT-Befehl wird entweder mit 
+"`OK"', "`ERROR"' oder einer Ergebnisszeile quittiert. Der Treiber fÃ¼r das ZigBit-Modul kann also prinzipiell
+als endlicher Automat mit zwei ZustÃ¤nden implementiert werden. Zu beachten ist jedoch, dass prinzipiell
+jederzeit Ereignisse vom Typ "`Data Received"' auftreten kÃ¶nnen. Es ist also notwendig, die Antwort des 
 ZigBit Moduls zu parsen, und zu entscheiden, ob es sich um eine Antwort auf einen zuvor gesendeten Befehl
-oder aber um ein Data-Ereigniss handelt. Wichtig ist, dass diese Ereignisse nicht verloren gehen dürfen,
+oder aber um ein Data-Ereigniss handelt. Wichtig ist, dass diese Ereignisse nicht verloren gehen dÃ¼rfen,
 da es sich um Befehle handelt, die von der MANVSuite an den Sensor gesendet wurden, und von diesem 
-abgearbeitet werden müssen. 
+abgearbeitet werden mÃ¼ssen. 
 
 
 \subsection{Firmware}
-Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das ZigBit-Modul ergänzt. Die Firware wurde in der
+Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber fÃ¼r das ZigBit-Modul ergÃ¤nzt. Die Firware wurde in der
 Programmiersprache C geschrieben, und setzt direkt auf die Hardware des ADuC auf. Es wurde lediglich die von 
 Rowley Crossworks angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie Stringmanipulation,
 einen Interrupthandler und einen fertigen Startup-Code bietet.
 
-Die Entwicklung von Software für einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
-aus. Ein Großteil der Funktionalität, die man von der Entwicklung von Software für einen standard Mikrocomputer 
+Die Entwicklung von Software fÃ¼r einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
+aus. Ein GroÃŸteil der FunktionalitÃ¤t, die man von der Entwicklung von Software fÃ¼r einen standard Mikrocomputer 
 gewohnt ist, ist schlichtweg nicht vorhanden. Hier sind insbesondere eine automatische Speicherverwaltung sowie
-Threads und Prozesse zu erwähnen. Da der Erste-Hilfe-Sensor viele Aufgaben gleichzeitig erfüllen muss, stellt 
+Threads und Prozesse zu erwÃ¤hnen. Da der Erste-Hilfe-Sensor viele Aufgaben gleichzeitig erfÃ¼llen muss, stellt 
 dies eine ernst zu nehmende Herausforderung dar. Das Problem wurde durch ein Interrupt getriebenes Programmiermodell
-gelöst.
+gelÃ¶st.
 
 Es werden folgende Interrupts verwendet:
 
-Timer0: Dieser Timer-Interrupt führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
-und eine Analyse der empfangenen Daten wird durchgeführt.
+Timer0: Dieser Timer-Interrupt fÃ¼hrt die PatientenÃ¼berwachung durch. Die einzelnen Sensoren werden abgefragt,
+und eine Analyse der empfangenen Daten wird durchgefÃ¼hrt.
 
-Timer1: Dieser Interrupt führt einige periodische Aufgaben durch. Zunächst werden die am Sensor vorhandenen
-Taster abgefragt (Alarm Stummschalten, Alarm manuell auslösen etc.). Danach wird überprüft, in welchem Zustand
+Timer1: Dieser Interrupt fÃ¼hrt einige periodische Aufgaben durch. ZunÃ¤chst werden die am Sensor vorhandenen
+Taster abgefragt (Alarm Stummschalten, Alarm manuell auslÃ¶sen etc.). Danach wird Ã¼berprÃ¼ft, in welchem Zustand
 der Sensor sich aktuell befindet, also z.B. ob ein Alarm aufgetreten ist, oder ob der Patient sich in einem
-guten Zustand befindet. Abhängig hiervon werden nun LEDs und ein angeschlossener Piezzo-Summer geschaltet,
-um den Zustand nach aussen zu signalisieren. Zu letzt wird noch überprüft, wann zuletzt eine Übertragung
-des Zustands des Sensors an die MANVSuite erfolgt ist. Liegt dies länger als einen konfiguriertes Zeitintervall
-zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
+guten Zustand befindet. AbhÃ¤ngig hiervon werden nun LEDs und ein angeschlossener Piezzo-Summer geschaltet,
+um den Zustand nach aussen zu signalisieren. Zu letzt wird noch Ã¼berprÃ¼ft, wann zuletzt eine Ãœbertragung
+des Zustands des Sensors an die MANVSuite erfolgt ist. Liegt dies lÃ¤nger als einen konfiguriertes Zeitintervall
+zurÃ¼ck, so wird eine Ãœbertragung des aktuellen Zustands veranlasst.
 
-Ein weiteres Problem sind die sehr beschränkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
+Ein weiteres Problem sind die sehr beschrÃ¤nkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
 mit 16kB sehr knapp bemessen. 
 
 \subsubsection{UART}
-Der ADuC verfügt über einen UART Interrupt, welcher eine Statusänderung des UARTs signalisiert. Im Register 
-\textsl{COMIEN0} wird konfiguriert, welche Zustände über den Interrupt singnalisiert werden sollen. Tritt
-nun einer dieser Zustände auf, so wird der UART Interrupt ausgelöst. Im Interrupthandler muss nun überprüft
-werden, welches Ereigniss zum Auslösen des Interrupts geführt hat. Dies ist im Register \textsl{COMSTA0} 
-gespeichert. Wichtig ist an dieser Stelle, dass auch mehrere Ereignisse gleichzeitig auftreten können. 
-Dies muss im Interrupthandler berücksichtigt werden, da sonst Ereignisse verloren gehen können.
+Der ADuC verfÃ¼gt Ã¼ber einen UART Interrupt, welcher eine StatusÃ¤nderung des UARTs signalisiert. Im Register 
+\textsl{COMIEN0} wird konfiguriert, welche ZustÃ¤nde Ã¼ber den Interrupt singnalisiert werden sollen. Tritt
+nun einer dieser ZustÃ¤nde auf, so wird der UART Interrupt ausgelÃ¶st. Im Interrupthandler muss nun Ã¼berprÃ¼ft
+werden, welches Ereigniss zum AuslÃ¶sen des Interrupts gefÃ¼hrt hat. Dies ist im Register \textsl{COMSTA0} 
+gespeichert. Wichtig ist an dieser Stelle, dass auch mehrere Ereignisse gleichzeitig auftreten kÃ¶nnen. 
+Dies muss im Interrupthandler berÃ¼cksichtigt werden, da sonst Ereignisse verloren gehen kÃ¶nnen.
 
-Das eigentliche Senden und Empfangen erfolgt über die beiden Register \textsl{COMRX} und \textsl{COMTX}.
+Das eigentliche Senden und Empfangen erfolgt Ã¼ber die beiden Register \textsl{COMRX} und \textsl{COMTX}.
 Zum Senden wird hierzu ein einzelnes Zeichen in \textsl{COMTX} gelegt. Nun muss eine gewisse Zeit gewartet
-werden, bis das Zeichen gesendet wurde, und das nächste Zeichen in \textsl{COMTX} gelegt werden kann.
-FÜr das Empfangen wird das Register \textsl{COMRX} in analoger Weise verwendet werden. Ob das nächste
+werden, bis das Zeichen gesendet wurde, und das nÃ¤chste Zeichen in \textsl{COMTX} gelegt werden kann.
+FÃœr das Empfangen wird das Register \textsl{COMRX} in analoger Weise verwendet werden. Ob das nÃ¤chste
 Zeichen empfangen bzw. gesendet werden kann, kann mit Hilfe der Bits \textsl{DR} ("`Data Ready"' - Daten liegen vor)
-bzw. \textsl{TEMT} ("`Transmit Buffer empty"' - Daten können gesendet werden) bestimmt werden.
+bzw. \textsl{TEMT} ("`Transmit Buffer empty"' - Daten kÃ¶nnen gesendet werden) bestimmt werden.
 
-Die einfachste Methode wäre hierbei, in einer Schleife Busy-Waiting zu betreiben, und so lange zu warten,
-bis sich eins der beiden Bits verändert. Dies wäre jedoch sehr aufwendig und würde den Mikrocontroller 
-unnötig lange blockieren. Statt dessen wird der Zustand der beiden Register nur dann überprüft, wenn ein 
+Die einfachste Methode wÃ¤re hierbei, in einer Schleife Busy-Waiting zu betreiben, und so lange zu warten,
+bis sich eins der beiden Bits verÃ¤ndert. Dies wÃ¤re jedoch sehr aufwendig und wÃ¼rde den Mikrocontroller 
+unnÃ¶tig lange blockieren. Statt dessen wird der Zustand der beiden Register nur dann Ã¼berprÃ¼ft, wenn ein 
 UART-Interrupt aufgetreten ist.
 
-Zum Senden und Empfangen von Daten werden zwei Ringpuffer verwendet. Möchte ein Unterprogramm Daten senden,
+Zum Senden und Empfangen von Daten werden zwei Ringpuffer verwendet. MÃ¶chte ein Unterprogramm Daten senden,
 so greift es nicht direkt auf die UART-Schnittstelle zu sondern legt diese Daten lediglich in den Sendepuffer.
-Das eigentliche Senden wird nun vom UART-Interrupthandler durchgeführt; das Unterprogramm kann weiter arbeiten,
-ohne auf das fertige Senden der Daten warten zu müssen.
+Das eigentliche Senden wird nun vom UART-Interrupthandler durchgefÃ¼hrt; das Unterprogramm kann weiter arbeiten,
+ohne auf das fertige Senden der Daten warten zu mÃ¼ssen.
 
 Das Empfangen von Daten erfolgt analog. Jedesmal wenn ein Zeichen von der seriellen Schnitstelle empfangen
 wurde, wird dieses in den Empfangspuffer gelegt. Das Abarbeiten des Empfangspuffer erfolgt nun als Idle-Task:
-Immer dann, wenn der Mikrocontroller gerade keine anderen Aufgaben erfüllen muss, wird der Empfangspuffer
-abgearbeitet und eventuell empfangene Befehle werden abgearbeitet. Dies kann natürlich jederzeit durch 
+Immer dann, wenn der Mikrocontroller gerade keine anderen Aufgaben erfÃ¼llen muss, wird der Empfangspuffer
+abgearbeitet und eventuell empfangene Befehle werden abgearbeitet. Dies kann natÃ¼rlich jederzeit durch 
 die Abarbeitung von Interrupts unterbrochen werden.
 
 \subsubsection{MANV-USB-Connector}
 Der MANV-USB-Connector ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
-ZigBit-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das ZigBit-Modul mit Strom versorgen, sowie eine
-Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. Für die Stromversorgung ist es notwendig, die 5V der
+ZigBit-Modul beinhaltet. ZusÃ¤tzlich sind zwei weitere Bauteile enthalten, die das ZigBit-Modul mit Strom versorgen, sowie eine
+Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. FÃ¼r die Stromversorgung ist es notwendig, die 5V der
 USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
 
 \subsection{Software}
@@ -114,12 +114,12 @@ In dieser Arbeit wurde ein Java-Treiber (MANVConnector) entworfen und implemtier
 die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite.
 
 Der MANVConnector hat einerseits die Aufgabe, Daten die von dem MANV-USB-Connector empfangen wurden in Corba-Events 
-umzusetzen, und an den MANVServer weiterzuleiten. Andererseits empfängt sie Corba-Events vom MANVServer, dekodiert
-diese und sendet diese in Form von Sensornetz Befehlen an die zuständigen MANVNodes weiter.
+umzusetzen, und an den MANVServer weiterzuleiten. Andererseits empfÃ¤ngt sie Corba-Events vom MANVServer, dekodiert
+diese und sendet diese in Form von Sensornetz Befehlen an die zustÃ¤ndigen MANVNodes weiter.
 
-Bei der Kommunikation mit dem auf dem USB-Stick aufgebrachten ZigBee-Modul stellen sich grundsätzlich die selben 
-Synchronisierungsprobleme wie in der MANVFirmware. Da der MANVConnector jedoch alle Möglichkeiten der Java-Virtual-Machine
-nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen.
+Bei der Kommunikation mit dem auf dem USB-Stick aufgebrachten ZigBee-Modul stellen sich grundsÃ¤tzlich die selben 
+Synchronisierungsprobleme wie in der MANVFirmware. Da der MANVConnector jedoch alle MÃ¶glichkeiten der Java-Virtual-Machine
+nutzen kann, lassen sich diese deutlich einfacher und eleganter lÃ¶sen.
 
 Analog zu den Sende- und Empfangspuffern in der Firmware gibt es im MANVConnector drei Queues:
 
@@ -130,28 +130,28 @@ Analog zu den Sende- und Empfangspuffern in der Firmware gibt es im MANVConnecto
                              Resultat, das dieser Befehl hatte, gespeichert.
 \end{itemize}
 
-Jedes Element der einzelnen Queues verfügt über eine Priorität; die Queues sorgen dafür, dass der
-Zugriff nach Priotität sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
+Jedes Element der einzelnen Queues verfÃ¼gt Ã¼ber eine PrioritÃ¤t; die Queues sorgen dafÃ¼r, dass der
+Zugriff nach PriotitÃ¤t sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
 wie z.B. ein Alarm bevorzugt ausgeliefert werden.
 
 Der MANVConnector ist in drei Threads aufgeteilt:
 
 \begin{itemize}
     \item{SocketWriter:} Dieser Thread entnimmt Befehle aus der \textsl{CommandQueue} und sendet
-                         diese über den MANV-USB-Connector an das Sensornetz. Nun blockiert der
-                         Thread so lange, bis das Ergebnis des Befehls zur Verfügung steht.
+                         diese Ã¼ber den MANV-USB-Connector an das Sensornetz. Nun blockiert der
+                         Thread so lange, bis das Ergebnis des Befehls zur VerfÃ¼gung steht.
                          Sobald dies der Fall ist, wird der Befehl zusammen mit dem Ergebnis in
-                         die \textsl{ResultQueue} eingefügt.
-    \item{SocketReader:} Dieser Thread empfängt Daten aus dem Sensornetz. Handelt es sich um ein
+                         die \textsl{ResultQueue} eingefÃ¼gt.
+    \item{SocketReader:} Dieser Thread empfÃ¤ngt Daten aus dem Sensornetz. Handelt es sich um ein
                          Ergebnis, so wird dies dem \textsl{SocketWrite} signalisiert, und das
-                         Ergebnis zur Abholung durch den \textsl{SocketWriter} zur Verfügung
+                         Ergebnis zur Abholung durch den \textsl{SocketWriter} zur VerfÃ¼gung
                          gestellt. Handelt es sich hingegen um einen Ereignis, so wird dieses
-                         in die \textsl{EventQueue} eingefügt.
-    \item{Haupt-Thread:} Dieser Thread ist für die Kommunikation mit MANVServer zuständig.
-                         Befehle, die vom MANVServer empfangen werden, werden für das 
+                         in die \textsl{EventQueue} eingefÃ¼gt.
+    \item{Haupt-Thread:} Dieser Thread ist fÃ¼r die Kommunikation mit MANVServer zustÃ¤ndig.
+                         Befehle, die vom MANVServer empfangen werden, werden fÃ¼r das 
                          Sensornetz aufbereitet und in die CommandQueue eingestellt.
                          Ausserdem werden Ereignisse aus der \textsl{EventQueue} entnommen,
-                         in Corba-Events übersetzt und an den MANVServer zugestellt.
+                         in Corba-Events Ã¼bersetzt und an den MANVServer zugestellt.
 \end{itemize}                          
 
 \section{Implementierung}
@@ -170,18 +170,18 @@ Der MANVConnector ist in drei Threads aufgeteilt:
 %\subsubsection{Anforderung an die Hardware}
 %... 24 bit, kein HP etc....
 %\subsubsection{Realisierung der Anforderungen}
-%... hier kann ein Schaltplan eines 24bit-EKG verstärker rein, oder auch ein Bild von dem Gerät
+%... hier kann ein Schaltplan eines 24bit-EKG verstÃ¤rker rein, oder auch ein Bild von dem GerÃ¤t
 %
 %\subsection{Datenerfassung}
-%... wie kommen die Daten an, wie müssen sie konvertiert werden...
+%... wie kommen die Daten an, wie mÃ¼ssen sie konvertiert werden...
 %
 %\subsection{Signalverarbeitung in Matlab}
-%... eben das Matlabprog. mit evtl. Auszügen aus dem Quelltext (diese, wenn möglich in den Anhang verfrachten und einen Hinweis darauf geben)
+%... eben das Matlabprog. mit evtl. AuszÃ¼gen aus dem Quelltext (diese, wenn mÃ¶glich in den Anhang verfrachten und einen Hinweis darauf geben)
 %
 %
 %\section{HRV-Variation}
 %\subsection{Anforderung an die Hardware}
-%... hier gibts nicht viele, und gerade das dann sagen, dass es mit fast jedem Gerät möglich wäre...
+%... hier gibts nicht viele, und gerade das dann sagen, dass es mit fast jedem GerÃ¤t mÃ¶glich wÃ¤re...
 %
 %\subsection{Datenerfassung}
 %...
@@ -199,4 +199,4 @@ Der MANVConnector ist in drei Threads aufgeteilt:
 %\subsection{Signalverarbeitung in Matlab}
 %
 %\section{Referenzmessung}
-%Hier nur kurze Erläuterung des Verfahrens
+%Hier nur kurze ErlÃ¤uterung des Verfahrens
