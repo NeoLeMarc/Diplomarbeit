@@ -2,18 +2,20 @@
 %%%------------------------------------------------Grundlagen------------------------------------------------------------------
 \chapter{Grundlagen}\label{Grundlagen}
 
-\section{Kabellose übertragungsprotokolle}
-\subsection{Einführung}
-In diesem Abschnitt werden die gängisten Funkprotokolle kurz vorgestellt. Insbesondere wird erläutert,
-inwieweit das entsprechende Protokoll als Grundlage für das zu entwickelnde Sensornetz geeignet ist.
+\section{Scatternet}
 
-Mit Ausnahme von DECT und GSM bzw. UMTS ist diesen Protokollen gemein, dass sie sich alle im ISM-Band 
-befinden. 
+\section{Kabellose Übertragungsprotokolle}
+    \subsection{Einführung}
+    In diesem Abschnitt werden die gängisten Funkprotokolle kurz vorgestellt. Insbesondere wird erläutert,
+    inwieweit das entsprechende Protokoll als Grundlage für das zu entwickelnde Sensornetz geeignet ist.
+
+    Mit Ausnahme von DECT und GSM bzw. UMTS ist diesen Protokollen gemein, dass sie sich alle im ISM-Band 
+    befinden. 
 
 \subsection{DECT}
 
 Bei DECT ("`Digital Enhanced Cordless Telecommunications"') handelt es sich um einen Standard, 
-der vor allem zur Anbindung von Schnurlostelefonen an eine Basisstation gedacht ist\textsl{Es gibt
+der vor allem zur Anbindung von Schnurlostelefonen an eine Basisstation gedacht ist\footnote{Es gibt
 jedoch auch weitere Anwendungen wie z.B. Babyfone.}. 
 
 In Europa wird einn eigenes Frequenzband im Bereich von 1800 bis 1900 MHz verwendet, in dem 10 
@@ -33,8 +35,10 @@ Aufgrund der geringen Nutzdatenmenge sowie der Einschränkung auf 6 Teilnehmer i
 DECT für den Einsatz als Sensornetz-Protokoll nicht geeignet.
 
 \subsection{GSM/UMTS}
-\subsection{WLAN}
 
+
+\subsection{WLAN}\label{wlan}
+\subsection{Übersicht}
 WLAN oder Wi-Fi bezeichnet den heute gängigen Standard eines Funkprotokolls zum Aufbau
 von kabellosen lokalen Netzwerken. Es gibt mehrere Versionen des Standards, die verbreitetsten
 sind IEEE 802.11a, IEEE 802.11b/g und IEEE 802.11n. 
@@ -77,7 +81,7 @@ statt. Je nach Land sind 11-14 Kanäle möglich, die sich jedoch teilweise über
 Dies führt dazu, dass maximal 3 Netzwerke ohne Störungen gleichzeitig betrieben werden
 können. Die maximale Sendeleistung beträgt 100mW. Es sind Übertragungsraten von 
 5,5 bis 11 MBit (brutto) möglich. Die Nettoübertragungsrate beträgt ca. 50\% der
-Bruttorate. Es sind Reichweiten bis 40m (Innen) bzw. 100m (Außen) möglich.
+Bruttorate. Es sind Reichweiten bis 40m (Innen) bzw. 100m (Außen) möglich\cite{WirelessNetworking}.
 
 \subsubsection{IEEE 802.11g}
 Der IEEE 802.11g Standard stellt eine Erweiterung des IEEE 802.11b Standards da.
@@ -106,16 +110,79 @@ BCM4326 bis zu 100mA zum Empfangen und zwischen 141 und 190mA zum Senden.
 
 \subsubsection{Anzahl Teilnehmer}
 
-\subsection{Bluetooth}
-\subsubsection{Reichweite}
-\subsubsection{Übertragungsrate}
-\subsubsection{Leistungsaufnahme}
-\subsubsection{Anzahl Teilnehmer}
+\subsection{WPAN: Wireless Personal Area Networks}
+    \subsubsection{Übersicht}
+        Als WPANs ("`Wireless Personal Area Networks"') werden kabellose Kleinnetzwerke bezeichnet, die dazu dienen,
+        wenige Geräte über kurze Entfernungen (mehrere Meter) miteinander zu verbinden. Sie dienen als Ersatz 
+        von Kabelverbindungen zur Anbindung von Peripherie an Computergeräte (z.B. zur Verbindung von
+        Headsets mit Mobiltelefonen oder von Tastatur und Maus mit einem PC).
+        
 
-\subsection{ZigBee}
+    \subsubsection{IEEE 802.15}
+        Der IEEE 802.15-Standard behandelt \textsl{Wireless Personal Area Networks}. Er ist in mehrere Unterstandards
+        aufgeteilt:
+
+         \begin{itemize}
+            \item{IEEE 802.15.1:} Bluetooth 1.2
+            \item{IEEE 802.15.2:} Zusammenarbeit zwischen IEEE 802.15 (WPAN) und IEEE 802.11 (WLAN)
+            \item{IEEE 802.15.3:} WPANs mit hohen Datenübertragungsraten (20MBit/sec und höher)
+            \item{IEEE 802.15.4:} WPANs mit niedriger Datenübertragungsraten
+        \end{itemize}
+
+        Für diese Arbeit sind vor allem der Bluetooth und der ZigBee Standard interessant. 
+
+    \subsubsection{IEEE 802.15.1: Bluetooth}
+        \paragraph{Überblick}
+            Bluetooth wurde ursprünglich von dem Mobilfunkhersteller Ericcson als Ersatz für
+            RS-232 Verbindungen entwickelt. Die Entwicklung des Bluetooth Standards erfolgt
+            heute unter der Regie der \textsl{Bluetooth Special Interest Group} ("`SIG"').
+            Version 1.1 des Bluetooth Standard wurde 
+            von der IEEE als IEEE 802.15.1-2002 übernommen. Nach Veröffentlichen einer
+            weiteren Version IEEE 802.15.1-2005, die dem Bluetooth 1.2 Standard entspricht,
+            wurde von der IEEE jedoch beschlossen, nicht weiter mit der \textsl{Bluetooth SIG}
+            zu kooperiern, so dass es keine weiteren Versionen des IEEE 802.15.1 Standards 
+            geben wird. Aktuell ist Version 4.0 des Bluetooth Standard, wobei jedoch die
+            meisten Geräte nur geringere Standards (Typischerweise 2.0 oder 2.1) unterstützen.
+            Für den Bluetooth 4.0 Standard existiert zum Zeitpunkt dieser Arbeit keine 
+            Implementierung auf dem Markt.\\
+            Die wichtigsten Meilensteine der Bluetooth-Entwicklung kann folgendermaßen
+            zusammengefasst werden:
+
+            \begin{itemize}
+                \item{Bluetooth 1.1:} Erste Version von praktischer Relevanz. Entspricht 
+                                      IEEE 802.15.1-2002.
+                \item{Bluetooth 1.2:} Entspricht IEEE 802.15.2-2005. Bringt einige Verbesserungen
+                                      gegenüber der Version 1.1 wie z.B. schnelleres Finden
+                                      von Endgeräten (Discovery), höhere Störsicherheit durch
+                                      die Verwendung von AFH\footnote{Frequency-hopping spread spectrum},
+                                      Übertragungsraten bis 721kbit/sec.
+                \item{Bluetooth 2.0:} Einführung des EDR\footnote{Enhanced Data Rate}-Modus mit bis zu
+                                      3.0 MBit/sec (2.1 MBit/sec netto).
+                \item{Bluetooth 2.1:} Vereinfachung des Pairings (vgl. \ref{BlueetoothPairing}) durch 
+                                      Einführung von SSP\footnote{Secure Simple Pairing}, Verbesserung
+                                      der Sicherheit durch explizite Aushandlung der Verschlüsselung.
+                \item{Bluetooth 3.0:} Einführung eines Hochgeschwindigkeits-Datenkanals auf Basis von
+                                      IEEE 802.11 (vgl. \ref{wlan}) mit bis zu 24MBit/sec., verbessertes
+                                      Powermanagement, Einführung von Verbindungslosen Datentelegrammen
+                                      (Unicasts).
+                \item{Bluetooth 4.0:} Einführung des \textsl{Blueetooth Low Energy} Standards (vgl. \ref{wibree}).
+            \end{itemize}
+
+        \paragraph{Pairing}\label{BluetoothPairing}
+        \paragraph{Reichweite}
+        \paragraph{Übertragungsrate}
+        \paragraph{Leistungsaufnahme}
+        \paragraph{Anzahl Teilnehmer}
+    \subsubsection{IEEE-802.15.4: ZigBee}
+    \subsubsection{Wibree: Bluetooth Low Energy}\label{wibree}
+    \subsection{Weitere Protokolle}
+        - WiMAX
+        - Mikrowellen-Richtfunk
+        - Z-Wave
+        - Wireless USB
+
+    \subsection{Diskussion}
 
 \section{Der Analog Devices ADuC702X Mikrocontroller}
-
 \section{Java}
-
 \section{Corba}
