@@ -77,6 +77,19 @@
 %% Dokumentbeginn
 %% **************
 
+%%% Überschrift 4ter Ordnung
+\setcounter{secnumdepth}{4}
+
+\usepackage[noindentafter]{titlesec}
+
+% paragraphs sehen aus wie subsubsubsections
+\titleformat{\paragraph}[hang]{\bf}{\thetitle\quad}{0pt}{}                      
+\titlespacing{\paragraph}{0pt}{1em}{0.5em} 
+
+% subparagraphs sehen aus wie vorher paragraphs
+\titleformat{\subparagraph}[runin]{\bf}{}{0.5em}{}
+\titlespacing{\subparagraph}{0pt}{1em}{1em}
+
 
 %%%-----------------------------------
 \begin{document} 
@@ -99,6 +112,7 @@ Karlsruhe, 31.10.2010\\
 
 
 %%%------------------------------------------------INHALTS-,ABBILDUNGS-,TABELLENVERZEICHNIS-------------------------------------------
+\setcounter{tocdepth}{4}
 \tableofcontents 
 \listoffigures
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
