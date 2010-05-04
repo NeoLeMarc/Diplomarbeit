@@ -165,6 +165,7 @@
             Collision Avoidance. Zu deutsch: Gemeinsamer Medienzugriff mit Kollisionsvermeidung}-Algorithmus
             zur Störungsbehandlung. Möchte ein Station senden, so muss diese zunächst
             für einige Zeit lauschen, ob der zu verwendende Kanal auch wirklich frei ist.
+            (Energy Detection).
             Ist der Kanal belegt, so wartet sie eine zufällige Zeit, bis sie erneut versucht,
             auf den Kanal zuzugreifen. Wichtig hierbei ist, dass es bei Funkprotokollen nicht
             möglich ist, eine Kollision zu erkennen um eine bestehende Übertragung abzubrechen,
@@ -500,6 +501,108 @@
                 Anzahl an Routern vorrausgesetzt). Problematisch ist jedoch der Ausfall des
                 Koordinators. Prinzipiell kann jeder Router die Aufgabe des Koordinators übernehmen,
                 jedoch geschieht dies nicht automatisch und muss in der Anwendungslogik erfolgen.
+
+            \paragraph{Störsicherheit}
+                ZigBee verwendet zur funkübertragung von Paketen den IEEE 802.15.4 Standard.
+                Dieser weisst große Ähnlichkeiten mit dem IEE 802.11b Standard (WLAN, vgl. 
+                Abschnitt~\ref{WlanStoersicherheit}) auf: Es werden mehrere Kanäle im
+                2.4GHz Band spezifiziert. In Nordamerika stehen 10 weitere Kanäle im 900MHz-Band
+                zur Verfügung, die allerdings eine reduzierte Datenrate von 40KBit/sec besitzen. 
+                Darüber hinaus gibt es noch einen Kanal im 868MHz-Band, der allerdings nur in Europa
+                verwendet werden darf, und auch nur über 20KBit/sec verfügt.  Zur Übertragung wird auch bei 
+                IEEE 802.15.4 Frequenzspreizung nach dem DSSS-Verfahren betrieben. Zum Medienzugriff
+                wird das CSMA/CA-Verfahren verwendet.\\
+                \\
+                Zusätzlich spezifiziert ZigBee auf höherer Ebene eine Reihe von Fehlerbehandlungsroutinen:
+                So wird jedes empfangene Paket -- mit der Ausnahme von Broadcasts\footnote{Rundrufe, also
+                Pakete, die an alle Stationen gleichzeitig verschickt werden.} -- mit einer Antwort
+                an den Sender quittiert. Erhält der Sender innerhalb einer bestimmten Zeitspanne
+                keine Antwort, so sendet er das verlorene Paket erneut. Darüber hinaus gibt es in jedem
+                Datenpaket eine CRC-Prüfsumme, mit Hilfe derer einfache Bitfehler erkannt werden können.
+                Auch in diesem Fall wird das Paket erneut übertragen. Hierbei sollte jedoch bemerkt werden,
+                dass eine CRC-Verfahren keinen Schutz gegen absichtliche Manipulation bietet. Diese können
+                mit Hilfe der in Abschnitt~\ref{ZigBee Sicherheit} beschriebenen kryptographischen Verfahren
+                verhindert werden.\\
+                \\
+                Ein ZigBee-Netzwerk kann optional ein sogenanntes Beacon (dt. Leuchtfeuer) verwenden. Hierbei
+                handelt es sich um ein Signal, dass Periodisch vom Koordinator ausgesendet wird. Mithilfe
+                dieses Signals wird die Sendezeit in feste Zeitschlitze eingeteilt. Hiermit ist es möglich, 
+                einzelnen Stationen einen garantierten Zeitschlitz (GTS) zuzuweisen, in denen niemand anderes
+                senden darf. Dies ist insbesondere für Echtzeitanwendungen interessant. Da zum Zeitpunkt des
+                versenden des Beacons jedoch alle Stationen empfangsbereit sein müssen, ergeben sich 
+                Einschränkungen für die Batterielaufzeit. Die Verwendung von Beacons schützt nicht gegen
+                Störungen durch nicht ZigBee Geräte wie WLANS oder Bluetooth.\\
+                \\
+                Da die Kanäle ausserhalb des 2,4GHz Bandes eine für diese Arbeit zu geringe Übertragungsrate
+                besitzen, sollen im folgenden nur die 15 Kanäle im 2,4 GHz Band betrachtet werden:\\
+                \\
+                Von den 15 zur Verfügung stehenden Kanälen überschneiden sich 11 mit den 3 überschneidungsfreien 
+                IEEE 802.11b 1, 6 und 11 in Nordamerika bzw. 13 mit den Kanälen 1, 7 und 13 in Europa. Es ist zu 
+                erwarten, dass die Störungen auf den Kanälen im Randbereich der IEEE 802.11b Kanäle am geringsten --
+                wenn auch nicht komplett ausgeschlossen -- ist.
+                Ausserdem gibt es auf 4 Kanälen Überschneidungen mit Bluetooth. Der genaue Zusammenhang ist
+                in Tabelle~\ref{ZigBee_Kanaele_Ueberschneidung} dargestellt.
+
+                \begin{tabular}{lll}
+                    ZigBee Kanal & WLAN Kanal & Bluetooth Frequenz \\
+                    11           & 1          & -\\
+                    12           & 1          & -\\
+                    13           & 1          & -\\
+                    14           & 1          & 2420 GHz\\
+                    15           & -          & -\\
+                    16           & 7          & -\\
+                    17           & 7          & -\\
+                    18           & 7          & 2439 GHz\\
+                    19           & 7          & -\\
+                    20           & 7          & -\\
+                    21           & -          & -\\
+                    22           & 13         & -\\
+                    23           & 13         & -\\
+                    24           & 13         & 2471 GHz\\
+                    25           & 13         & -\\
+                    26           & 13         & -\\
+                \end{tabular}
+
+                Ein ZigBee Netzwerk ist in der Lage, dynamisch den verwendeten Kanl zu wechseln, sobald die
+                Störungen auf einem Kanal zu groß werden. Hierzu wird im EEPROM des ZigBee Gerätes kein fester
+                Kanal sondern eine Liste aller erlaubten Kanäle eingestellt. Dies bedeutet, dass bei der
+                richtigen Konfiguration des ZigBee Netzwerkes ein einzelnes WLAN durch einen einfachen Signalwechsel
+                umgangen werden kann. Problematisch wird es jedoch, wenn mehrere WLANs auf mehrere verschiedenen
+                Kanälen gleichzeitig auftreten. Hierdurch kann es zu einer signifikaten Abnahme der im ZigBee-Netzwerk
+                möglichen Übertragungsrate kommen. Eine mögliche Lösung wäre in diesem Falle, die WLANs auf
+                die WLAN-Kanäle 1, 7 und 13 einzuschränken, so dass für das ZigBee Netzwerk die ZigBee-Kanäle
+                15 und 21 zur ungestörten Verwendung zur Verfügung stehen. Alternativ können an Stelle der WLAN-Kanäle 7 
+                und 13 die WLAN-Kanäle 6 und 11 verwendet werden, so dass für das ZigBee-Netzwerk die Kanäle 25 und
+                26 frei werden.\\
+                Wenn für das ZigBee-Netzwerk sowieso nur ein Teil der zur Verfügung stehenden Übertragungsrate benutzt
+                wird und auch das WLAN nur teilweise ausgelastet ist, ist zu Erwarten, dass durch die Verwendung
+                des CSMA/CA-Verfahrens genügend freie Zeitschlitze gefunden werden können, um selbst bei einer
+                hoher WLAN-Dichte noch erfolgreich senden zu können.\\
+                \\
+                Die Störungen durch Bluetooth sind als weniger Problematisch zu bewerten. Durch das von Bluetooth
+                verwendeten FHSS-Verfahren besteht selbst im Worstcase-Fall (Verwendung von sich überschneidenden
+                Kanälen im ZigBee-Netz, volle Ausschöpfung der Übertragungsrate im ZigBee-Netz) nur eine maximale
+                Kollisionswahrscheinlichkeit von ca. 4\% (3 von 79 Frequenzsprüngen -- unter der Annahme, dass auch
+                das ZigBee Netzwerk in dieser Zeit drei mal den Kanal wechselt). Dies kann durch die Fehlerbehandlung
+                von ZigBee durch eine Neuübertragung des kollidierten Paketes einfach behandelt werden. Verwendet
+                das Bluetooth Netzwerk darüber hinaus das AFH-Verfahren, und ist in der Lage, die Kollision zu
+                erkennen, wird es diese Störung erkennen und den betroffenen Kanel im weiteren Verlauf meiden.\\
+                \\
+                Eine weitere Quelle von Störungen sind Mikrowellen Öfen. Diese arbeiten typischerweise
+                auf 2540MHz und können Störungen mit einer Bandbreite von bis zu 80MHz und einer Signalstärke
+                von bis zu 30dBm verursachen. Hierdurch ergeben sich mögliche Störungen auf den
+                oberen ZigBee Kanälen. Da gewöhnliche Mikrowellenöfen für den Haushaltsgebrauch einen 
+                Auslastungsgrad von bis zu 50\% haben, ergäbe sich schlimmstenfalls eine halbierung der
+                zur Verfügung stehenden Übertragungsrate.\\
+                \\
+                Die letzte zu erwartende Quelle von Störungen geht von DECT Telefonen aus. Da diese in Europa
+                jedoch nicht im 2,4GHz sondern im 1,8GHz-Band arbeiten, stellt dies nur ausserhalb der EU ein
+                Problem dar. Hierbei sind schmallbandige Störungen mit einer Signalstärke von bis zu 30dBm 
+                zu erwarten. Diese können einfach durch den automatischen Kanalwechsel des ZigBee-Netzwerkes
+                umgangen werden.\\
+
+            \paragraph{Leistungsaufnahme}
+                -> Polling
                
 
         \subsubsection{Wibree: Bluetooth Low Energy}\label{wibree}
