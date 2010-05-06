@@ -5,32 +5,35 @@ import java.util.*;
 import CORBA_Server.*;
 import Common.*;
 import org.omg.CORBA.ORB;
+import org.omg.PortableServer.POA;
+import org.omg.PortableServer.POAHelper;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
+import org.omg.CosNaming.NameComponent;
 
 /* ** Meta classes ** */
-class MARVPrioritized implements Comparable {
+class MANVPrioritized implements Comparable {
     protected int priority;
 
     public int compareTo(Object o){
         return 0;
     }
 
-    public int compareTo(MARVPrioritized o){
+    public int compareTo(MANVPrioritized o){
         return this.priority - o.priority;
     }
 
 }
 
 /* ** Commands ** */
-class MARVCommand extends MARVPrioritized {
+class MANVCommand extends MANVPrioritized {
     protected String command;
-    private MARVResult result;
+    private MANVResult result;
     protected int id = 0;
     protected static int maxId;
     private CountDownLatch resultLatch = new CountDownLatch(1);
 
-    MARVCommand(String command, int priority){
+    MANVCommand(String command, int priority){
         this.command  = command;
         this.priority = priority;
         getUniqueId();
@@ -43,14 +46,14 @@ class MARVCommand extends MARVPrioritized {
         return this.id;
     }
 
-    public void setResult(MARVResult result){
+    public void setResult(MANVResult result){
         this.result = result;
 
         // Open latch, so status can be fetched
         this.resultLatch.countDown();
     }
 
-    public MARVResult getResult(){
+    public MANVResult getResult(){
         // Wait for result to become available
         boolean successful = false;
         while(!successful){
@@ -107,10 +110,10 @@ class CorbaEventMessageContainer extends CorbaMessageContainer{
 
 
 /* *** Events *** **/
-class MARVEvent extends MARVPrioritized {
+class MANVEvent extends MANVPrioritized {
     protected String raw;
     
-    MARVEvent(String raw){
+    MANVEvent(String raw){
         this.raw = raw;
     }
 
@@ -123,23 +126,23 @@ class MARVEvent extends MARVPrioritized {
     }
 
 
-    public static MARVEvent fromString(String raw){
+    public static MANVEvent fromString(String raw){
         if(raw.equals("OK"))
-            return new MARVResult(raw, true);
+            return new MANVResult(raw, true);
         else if(raw.equals("ERROR"))
-            return new MARVResult(raw, false);
+            return new MANVResult(raw, false);
         else if(raw.matches("DATA .*:STATUS:.*:.*"))
-            return new MARVStatusMessage(raw);
+            return new MANVStatusMessage(raw);
         else if(raw.matches("DATA .*:.*"))
-            return new MARVDataReceived(raw);
+            return new MANVDataReceived(raw);
         else if(raw.matches("EVENT:CHILD_JOINED .*"))
-            return new MARVChildJoined(raw);
+            return new MANVChildJoined(raw);
         else if(raw.matches("EVENT:CHILD_LOST .*"))
-            return new MARVChildLost(raw);
+            return new MANVChildLost(raw);
         else if (raw.matches("\\+WCHILDREN:.*"))
-            return new MARVChildrenList(raw);
+            return new MANVChildrenList(raw);
         else 
-            return new MARVEvent(raw);
+            return new MANVEvent(raw);
     }
 
     public AbstractList<CorbaMessageContainer> createCorbaMessages(){
@@ -147,14 +150,14 @@ class MARVEvent extends MARVPrioritized {
     }
 
     public String toString(){
-        return "MARVEvent(" + this.raw + ")";
+        return "MANVEvent(" + this.raw + ")";
     }
 }
 
-class MARVChildJoined extends MARVEvent {
+class MANVChildJoined extends MANVEvent {
     protected ZigBit source;
 
-    MARVChildJoined(String raw){
+    MANVChildJoined(String raw){
         super(raw);
         this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1]));
     }
@@ -169,7 +172,7 @@ class MARVChildJoined extends MARVEvent {
         // Create join message 
         CORBA_EventMessage eventMessage = new CORBA_EventMessage();
         eventMessage.groupID   = 1;
-        eventMessage.nodeID    = String.valueOf(this.source.panID);
+        eventMessage.nodeID    = String.valueOf(this.source.nodeID);
         eventMessage.eventType = event_join.value;
         eventMessage.connectorTimestamp = System.currentTimeMillis();
 
@@ -178,14 +181,14 @@ class MARVChildJoined extends MARVEvent {
     }
 
     public String toString(){
-        return "MARVRChildJoind(" + this.raw + ")";
+        return "MANVRChildJoind(" + this.raw + ")";
     }
 };
 
-class MARVChildLost extends MARVEvent {
+class MANVChildLost extends MANVEvent {
     protected ZigBit source;
 
-    MARVChildLost(String raw){
+    MANVChildLost(String raw){
         super(raw);
         this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1]));
     }
@@ -200,7 +203,7 @@ class MARVChildLost extends MARVEvent {
         // Create lost message 
         CORBA_EventMessage eventMessage = new CORBA_EventMessage();
         eventMessage.groupID   = 1;
-        eventMessage.nodeID    = String.valueOf(this.source.panID);
+        eventMessage.nodeID    = String.valueOf(this.source.nodeID);
         eventMessage.eventType = event_lost.value;
         eventMessage.connectorTimestamp = System.currentTimeMillis();
 
@@ -209,18 +212,18 @@ class MARVChildLost extends MARVEvent {
     }
 
     public String toString(){
-        return "MARVRChildLost(" + this.raw + ")";
+        return "MANVRChildLost(" + this.raw + ")";
     }
 
 };
 
 
-class MARVDataReceived extends MARVEvent {
+class MANVDataReceived extends MANVEvent {
     protected ZigBit source;
     protected String data;
 
 
-    MARVDataReceived(String raw){
+    MANVDataReceived(String raw){
         super(raw);
 
         // parse data
@@ -239,11 +242,11 @@ class MARVDataReceived extends MARVEvent {
     }
 };
 
-class MARVStatusMessage extends MARVDataReceived {
+class MANVStatusMessage extends MANVDataReceived {
     protected short pulse;
     protected short breathing;
 
-    MARVStatusMessage(String raw){
+    MANVStatusMessage(String raw){
         super(raw);
 
         // parse data
@@ -263,7 +266,7 @@ class MARVStatusMessage extends MARVDataReceived {
         // Create Data Message
         CORBA_DataMessage dataMessage  = new CORBA_DataMessage();
         dataMessage.groupID            = 1;
-        dataMessage.nodeID             = String.valueOf(this.source.panID);
+        dataMessage.nodeID             = String.valueOf(this.source.nodeID);
         dataMessage.pulse              = this.pulse;
         dataMessage.breathing          = this.breathing; 
         dataMessage.connectorTimestamp = System.currentTimeMillis();
@@ -274,7 +277,7 @@ class MARVStatusMessage extends MARVDataReceived {
             // Create alert message
             CORBA_EventMessage eventMessage = new CORBA_EventMessage();
             eventMessage.groupID            = 1;
-            eventMessage.nodeID             = String.valueOf(this.source.panID);
+            eventMessage.nodeID             = String.valueOf(this.source.nodeID);
             eventMessage.eventType          = event_alarm_breathing.value;
             eventMessage.connectorTimestamp = System.currentTimeMillis();
 
@@ -285,17 +288,17 @@ class MARVStatusMessage extends MARVDataReceived {
     }
 
     public String toString(){
-        return "MARVRStatusMessage(" + this.raw + ")";
+        return "MANVRStatusMessage(" + this.raw + ")";
     }
 
 }
 
 /* ** Results ** */
-class MARVResult extends MARVEvent {
+class MANVResult extends MANVEvent {
     protected boolean status;
-    protected MARVResult subResult;
+    protected MANVResult subResult;
 
-    MARVResult(String raw, boolean status){
+    MANVResult(String raw, boolean status){
         super(raw);
         this.status = status;
     }
@@ -312,23 +315,23 @@ class MARVResult extends MARVEvent {
         return false;
     }
 
-    public ZigBit[] getChildList(BlockingQueue<MARVCommand> commandQueue){
+    public ZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
         return null;
     }
 
-    public void addSubResult(MARVResult result){
+    public void addSubResult(MANVResult result){
         this.subResult = result;
     }
 
     public String toString(){
-        return "MARVREsult(" + this.raw + ")";
+        return "MANVREsult(" + this.raw + ")";
     }
 
 };
 
-class MARVChildrenList extends MARVResult {
+class MANVChildrenList extends MANVResult {
 
-    MARVChildrenList(String raw){
+    MANVChildrenList(String raw){
         super(raw, true);
     }
 
@@ -337,7 +340,7 @@ class MARVChildrenList extends MARVResult {
         return true;
     }
 
-    public ZigBit[] getChildList(BlockingQueue<MARVCommand> commandQueue){
+    public ZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
         // Parse return value
         String[] panIdList = this.raw.split(":")[1].split(",");
         ZigBit[] childList = new ZigBit[panIdList.length];
@@ -348,7 +351,7 @@ class MARVChildrenList extends MARVResult {
         return childList;
     }
 
-    public void addSubResult(MARVResult result){
+    public void addSubResult(MANVResult result){
         this.status    = result.status;
         this.subResult = result;
     }
@@ -356,31 +359,31 @@ class MARVChildrenList extends MARVResult {
 
 /* *** Entities ** */
 class ZigBit {
-    protected int panID;
+    protected int nodeID;
     private int[] gpio = {0, 0, 0, 0};
 
     // Singleton
     private static HashMap<Integer, ZigBit> zigBitMap = new HashMap<Integer, ZigBit>();
 
     // Command queue
-    private static BlockingQueue<MARVCommand> commandQueue;
+    private static BlockingQueue<MANVCommand> commandQueue;
 
-    ZigBit(int panID){
+    ZigBit(int nodeID){
         this.commandQueue = commandQueue;
-        this.panID        = panID;
+        this.nodeID        = nodeID;
     }
 
-    public static void setCommandQueue(BlockingQueue<MARVCommand> commandQueue){
+    public static void setCommandQueue(BlockingQueue<MANVCommand> commandQueue){
         ZigBit.commandQueue = commandQueue;
     }
 
-    public static ZigBit get(int panID){
-        ZigBit z = zigBitMap.get(panID);
+    public static ZigBit get(int nodeID){
+        ZigBit z = zigBitMap.get(nodeID);
         if(z != null)
             return z;
         else {
-            z = new ZigBit(panID);
-            zigBitMap.put(panID, z);
+            z = new ZigBit(nodeID);
+            zigBitMap.put(nodeID, z);
             return z;
         }
     }
@@ -396,7 +399,7 @@ class ZigBit {
     public void update() throws java.io.IOException{
         boolean successful   = false;
         String commandString = "";
-        commandString += "ATR " + this.panID + ",0,";
+        commandString += "ATR " + this.nodeID + ",0,";
 
         for(int i = 0; i < gpio.length; i++)
             commandString += " S13" + i + "=" + this.gpio[i];
@@ -406,7 +409,7 @@ class ZigBit {
             successful = false;
 
             try {
-                this.commandQueue.put(new MARVCommand(commandString, 1));
+                this.commandQueue.put(new MANVCommand(commandString, 1));
                 successful = true;
             } catch (InterruptedException e) {
                 successful = false;
@@ -416,27 +419,27 @@ class ZigBit {
 
     public static ZigBit[] discover() throws InterruptedException{
         // Send discovery command
-        MARVCommand command = new MARVCommand("ATS30=1+WCHILDREN?", 0);
+        MANVCommand command = new MANVCommand("ATS30=1+WCHILDREN?", 0);
         commandQueue.put(command);
 
         // Get result & return childList
-        MARVResult result = command.getResult();
+        MANVResult result = command.getResult();
         return result.getChildList(ZigBit.commandQueue);
     }
 
-    public MARVResult sendData(String data) throws InterruptedException{
+    public MANVResult sendData(String data) throws InterruptedException{
         // Send data command
-        MARVCommand command = new MARVCommand("ATD " + this.panID + "\r" + data + "\r", 10);
+        MANVCommand command = new MANVCommand("ATD " + this.nodeID + "\r" + data + "\r", 10);
         commandQueue.put(command);
 
         // Get result & return status
         return command.getResult();
     }
 
-    public MARVResult toggleAlertStatus(){
+    public MANVResult toggleAlertStatus(){
         String  data = "t 123";
         boolean successful = false;
-        MARVResult result = null;
+        MANVResult result = null;
 
         do {
             try {
@@ -453,18 +456,18 @@ class ZigBit {
 
 /* ** Threads ** */
 class SocketReader extends Thread{
-    private BlockingQueue<MARVEvent> eventQueue;
-    private MARVResult               lastResult;
+    private BlockingQueue<MANVEvent> eventQueue;
+    private MANVResult               lastResult;
     private Semaphore                resultSemaphore = new Semaphore(1, true);
     private BufferedReader           serialIn; 
 
-    SocketReader(BufferedReader serialIn, BlockingQueue<MARVEvent> eventQueue){
+    SocketReader(BufferedReader serialIn, BlockingQueue<MANVEvent> eventQueue){
         this.serialIn   = serialIn;
         this.eventQueue = eventQueue;
         this.resultSemaphore.acquireUninterruptibly();
     }
 
-    private void setLastResult(MARVResult result){
+    private void setLastResult(MANVResult result){
         if(this.lastResult != null && this.lastResult.isComposite())
             this.lastResult.addSubResult(result);
         else
@@ -474,7 +477,7 @@ class SocketReader extends Thread{
             resultSemaphore.release();
     }
 
-    public MARVResult getLastResult(){
+    public MANVResult getLastResult(){
         this.resultSemaphore.acquireUninterruptibly();
         return this.lastResult;
     }
@@ -484,7 +487,7 @@ class SocketReader extends Thread{
         System.out.println("Starting SocketReader with BufferedReader: " + this.serialIn);
         String line;
         Boolean successful;
-        MARVEvent event;
+        MANVEvent event;
 
         try {
             while((line = this.serialIn.readLine()) != null){
@@ -492,11 +495,11 @@ class SocketReader extends Thread{
                 if(line.equals(""))
                     continue;
 
-                event = MARVEvent.fromString(line);
+                event = MANVEvent.fromString(line);
 
                 if(event.isResult()){
                     //System.out.println("** RESULT **: " + line);
-                    this.setLastResult((MARVResult)event);
+                    this.setLastResult((MANVResult)event);
                 } else if(event.isImportant()) {
                     System.out.println("** EVENT **: " + line);
 
@@ -524,13 +527,13 @@ class SocketReader extends Thread{
 }
 
 class SocketWriter extends Thread{
-    private BlockingQueue<MARVCommand> commandQueue;
-    private BlockingQueue<MARVCommand> resultQueue;
+    private BlockingQueue<MANVCommand> commandQueue;
+    private BlockingQueue<MANVCommand> resultQueue;
     private PrintWriter                serialOut;
     private SocketReader               reader;
-    private MARVResult lastResult; 
+    private MANVResult lastResult; 
 
-    SocketWriter(PrintWriter serialOut, BlockingQueue<MARVCommand> commandQueue, BlockingQueue<MARVCommand> resultQueue, SocketReader reader){
+    SocketWriter(PrintWriter serialOut, BlockingQueue<MANVCommand> commandQueue, BlockingQueue<MANVCommand> resultQueue, SocketReader reader){
         this.serialOut    = serialOut;
         this.commandQueue = commandQueue;
         this.resultQueue  = resultQueue;
@@ -546,7 +549,7 @@ class SocketWriter extends Thread{
     }
 
     @Override public void run(){
-        MARVCommand command;
+        MANVCommand command;
         System.out.println("Starting SocketWriter with PrintWriter: " + this.serialOut);
 
         // Initialize ZigBee adapter
@@ -576,16 +579,45 @@ class SocketWriter extends Thread{
     }
 }
 
+class CorbaSender extends Thread {
+    private BlockingQueue<MANVEvent> eventQueue;
+    private Incoming serverIncoming;
+
+    public CorbaSender(BlockingQueue<MANVEvent> eventQueue, Incoming serverIncoming){
+        this.eventQueue     = eventQueue;
+        this.serverIncoming = serverIncoming;
+    }
+
+    @Override public void run(){
+        // Send events to corba
+        MANVEvent   event;
+        try {
+            while((event = this.eventQueue.take()) != null){
+                if(event.isImportant()){
+                    for(CorbaMessageContainer corbaMessage : event.createCorbaMessages()){
+                        corbaMessage.send(this.serverIncoming);
+                        System.out.println("!! Sent corba message: " + corbaMessage + " !!");
+                    }
+                }
+            }
+        } catch (InterruptedException e){
+            System.out.println("Interrupted while processing event... discarding");
+        }
+    }
+}
+
+
 /* ** Main class ** */
-public class MARVConnector {
+public class MANVConnector {
     private static Incoming serverIncoming;
+
+    // Create Queues
+    private static BlockingQueue<MANVCommand> commandQueue = new PriorityBlockingQueue<MANVCommand>();
+    private static BlockingQueue<MANVEvent>   eventQueue   = new PriorityBlockingQueue<MANVEvent>();
+    private static BlockingQueue<MANVCommand> resultQueue  = new PriorityBlockingQueue<MANVCommand>();
 
     public static void main(String[] args) throws IOException, InterruptedException{
 
-        // Create Queues
-        BlockingQueue<MARVCommand> commandQueue = new PriorityBlockingQueue<MARVCommand>();
-        BlockingQueue<MARVEvent>   eventQueue   = new PriorityBlockingQueue<MARVEvent>();
-        BlockingQueue<MARVCommand> resultQueue  = new PriorityBlockingQueue<MARVCommand>();
 
         // Initialize ZigBit class with commandQueue
         ZigBit.setCommandQueue(commandQueue);
@@ -613,23 +645,14 @@ public class MARVConnector {
         Properties properties = new Properties();
         //properties.put("org.omg.CORBA.ORBClass", "org.jacorb.orb.ORB");
         //properties.put("org.omg.CORBA.ORBSingletonClass", "org.jacorb.orb.ORBSingletonClass");
-        initCORBA(args, properties);
-        System.out.println("Corba initialized...");
+
 
         // Start Threads
         socketReader.start();
         socketWriter.start();
 
-        // Send events to corba
-        MARVEvent   event;
-        while((event = eventQueue.take()) != null){
-            if(event.isImportant()){
-                for(CorbaMessageContainer corbaMessage : event.createCorbaMessages()){
-                    corbaMessage.send(serverIncoming);
-                    System.out.println("!! Sent corba message: " + corbaMessage + " !!");
-                }
-            }
-        }
+        // Start corba server loop
+        initCORBA(args, properties);
     }
 
 	/* Von Jan:
@@ -644,17 +667,54 @@ public class MARVConnector {
 	        // create and initialize the ORB
 			ORB orb = ORB.init(args, properties);
 		
-	        // get the root naming context
-	        org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+			// get reference to rootpoa & activate the POAManager
+			POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
+			rootpoa.the_POAManager().activate();
+			
+			// get the root naming context
+			org.omg.CORBA.Object objRefNaming = orb.resolve_initial_references("NameService");
+
 	        // Use NamingContextExt instead of NamingContext. This is 
 	        // part of the Interoperable naming Service.  
-	        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-	 
-	        // resolve the Object Reference in Naming
+	        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRefNaming);
+	
+			// Use NamingContextExt which is part of the Interoperable
+			// Naming Service (INS) specification.
+			NamingContextExt refNaming = null;
+
+			try {
+				refNaming = NamingContextExtHelper.narrow(objRefNaming);
+			} catch (Exception e) {
+				System.err.println("NameService wurde nicht gefunden");
+				System.exit(1);
+			}
+
+            // resolve the Object Reference in Naming
 	        String name = "Server_Incoming";
 	        serverIncoming = IncomingHelper.narrow(ncRef.resolve_str(name));
 	        System.err.println("Obtained a handle on server object: " + serverIncoming);
 	        System.err.println("...CORBA erfolgreich gestartet");
+
+            // Servants erstellen
+            CommandsPOA commands = new CommandsImpl();
+            commands._this(orb);
+
+            // References erstellen
+            org.omg.CORBA.Object objRefCommands = rootpoa.servant_to_reference(commands);
+			Commands refCommands = CommandsHelper.narrow(objRefCommands);
+
+            // Im Nameservice registrieren
+            String nameCommands = "Connector_Commands";
+            NameComponent pathCommands[] = refNaming.to_name(nameCommands);
+            refNaming.rebind(pathCommands, refCommands);
+
+            // CorbaSender
+            CorbaSender corbaSender = new CorbaSender(eventQueue, serverIncoming);
+            corbaSender.start();
+
+            // Auf Aufrufe warten
+            System.out.println("... Server bereit.");
+            orb.run();
 
 		} catch (Exception e) {
 			System.err.println("Fehler bei der CORBA-Initialisierung!\n" + e.toString());
