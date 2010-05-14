@@ -90,6 +90,16 @@ void parseCommand(char * commandline){
     if(argc){
       //debug_printf("Command is: %s\n", argv[0]);
       switch(argv[0][0]){
+        case 'e':
+          // Enable alert
+          enableAlert();
+          break;
+
+        case 'd':
+          // Disable alert
+          disableAlert();
+          break;
+
         case 't':
           // Simulate button request
           buttonISR();
@@ -118,11 +128,11 @@ void zigBitLoop(){
 
   // Send ATZ
   printf("ATZ\r\n");
-  debug_printf("SENT ATZ...");
+  //debug_printf("SENT ATZ...");
 
   // Wait for ZigBit Device to come ready
   waitForStatus(&commandBuffer);
-  debug_printf("... ready!\n");
+  //debug_printf("... ready!\n");
  
   while(1){
     int puls = 0;

@@ -118,11 +118,11 @@ void zigBitLoop(){
 
   // Send ATZ
   printf("ATZ\r\n");
-  debug_printf("SENT ATZ...");
+  //debug_printf("SENT ATZ...");
 
   // Wait for ZigBit Device to come ready
   waitForStatus(&commandBuffer);
-  debug_printf("... ready!\n");
+  //debug_printf("... ready!\n");
  
   while(1){
     int puls = 0;
@@ -141,6 +141,7 @@ void zigBitLoop(){
           }
 
           printf("ATD 0,1\rSTATUS:OK:%i:%i\r\n", puls, atmung);
+
         } else {
           puls   = randint(0, 10);
           atmung = randint(0, 5);
