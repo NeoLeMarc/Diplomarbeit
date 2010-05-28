@@ -7,12 +7,18 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
+UsedLibrary="/opt/eagle-5.9.0/lbr/crystal.lbr"
 UsedLibrary="/opt/eagle-5.9.0/lbr/diode.lbr"
+UsedLibrary="/opt/eagle-5.9.0/lbr/led.lbr"
 UsedLibrary="/opt/eagle-5.9.0/lbr/marcel.lbr"
 UsedLibrary="/opt/eagle-5.9.0/lbr/resistor.lbr"
 UsedLibrary="/opt/eagle-5.9.0/lbr/supply1.lbr"
+UsedLibrary="/opt/eagle-5.9.0/lbr/supply2.lbr"
+UsedLibrary="/opt/eagle-5.9.0/lbr/switch-omron.lbr"
+UsedLibrary="/opt/eagle-5.9.0/lbr/switch.lbr"
 UsedLibrary="/opt/eagle-5.9.0/lbr/zigbit.lbr"
 UsedLibrary="/home/marcel/.eagle/lbr/aduc-arm7.lbr"
+UsedLibrary="/home/marcel/Downloads/Ergaenzung.lbr"
 
 [Win_1]
 Type="Control Panel"
@@ -22,11 +28,11 @@ Number=0
 
 [Win_2]
 Type="Schematic Editor"
-Loc="1447 426 2046 825"
+Loc="2827 343 3426 742"
 State=1
 Number=1
 File="/home/marcel/diplomarbeit/platine/MANVNode/manvnode.sch"
-View="-1256977 -936835 3745063 1374981"
+View="-1173334 -650510 1084690 1607514"
 WireWidths=" 0 3048 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 4064 1524"
 PadDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
 PadDrills=" 5000 6000 7000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 8000"
@@ -58,10 +64,50 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 1: -1256977 -936835 3745063 1374981"
+Views=" 1: -1173334 -650510 1084690 1607514"
 Sheet=1
+
+[Win_3]
+Type="Board Editor"
+Loc="2508 392 3492 1028"
+State=1
+Number=2
+File="/home/marcel/diplomarbeit/platine/MANVNode/manvnode.brd"
+View="-340270 3191 1387102 835195"
+WireWidths=" 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0 2540 6096 4064 8128 3048"
+PadDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
+PadDrills=" 5000 6000 7000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 8000"
+ViaDiameters=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
+ViaDrills=" 5000 7000 8000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 6000"
+HoleDrills=" 5000 7000 8000 9000 10000 11000 12000 13000 14000 15000 16000 20000 22000 28000 32000 6000"
+TextSizes=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 19304 21844 25400 38100 50800 64516 17780"
+PolygonSpacings=" 2540 3048 4064 6096 8128 10160 14224 16764 17780 19304 21844 25400 38100 50800 64516 12700"
+PolygonIsolates=" 2540 3048 4064 6096 8128 10160 12700 14224 16764 17780 19304 21844 25400 38100 64516 0"
+MiterRadiuss=" 6350 12700 10000 20000 25000 50000 75000 0 2540 3175 100000 2540000 254000 25400"
+SmdSizes=" 3048 1524 4064 2032 6096 3048 8128 4064 10160 5080 12700 6604 14224 7112 16764 8128 17780 9144 19304 9652 21844 10668 25400 12700 38100 19304 50800 25400 64516 32512 12700 6350"
+WireBend=0
+WireBendSet=0
+WireCap=1
+MiterStyle=1
+PadShape=0
+ViaShape=0
+PolygonPour=0
+PolygonRank=1
+PolygonThermals=1
+PolygonOrphans=0
+TextRatio=8
+PinDirection=3
+PinFunction=0
+PinLength=2
+PinVisible=3
+SwapLevel=0
+ArcDirection=0
+AddLevel=2
+PadsSameType=0
+Layer=1
 
 [Desktop]
 Screen="4096 1152"
 Window="Win_1"
 Window="Win_2"
+Window="Win_3"
