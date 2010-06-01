@@ -1,4 +1,7 @@
 // Interface for ZigBit Device
+#include <ctl_api.h>
+#include <targets/ADuC7026.h>
+#include <cross_studio_io.h>
 #include "ringbuffer.h"
 #include "isr.h"
 #include "zigbit.h"
@@ -117,6 +120,46 @@ void parseCommand(char * commandline){
     }
 }
 
+void sleep(int seconds){
+  int i;
+  while(seconds--)
+    for(i = 0x2c0000; i > 0; i--);
+}
+
+void initZigBit(){
+  // Inizialize ZigBit
+  debug_printf("Entering initializeZigBit...\n");
+  
+  // 1. Pull Reset line (Port 2.7)
+  GP2DAT &= ~(1 << 23);
+
+  // Sleep a little bit
+  sleep(2);
+
+  // 2. Release Reset line
+  GP2DAT |= (1 << 23);
+
+  // Wait for ZigBit to become ready
+  sleep(5);
+
+  debug_printf("ZigBit has been resetted...\n");
+
+  // Now write settings to serial port
+  char outBuffer[80];
+  debug_printf("Configuring ZigBit...");
+  putStringRaw("AT+WAUTONET=0 +WLEAVE\n\r");
+  readStringRaw(outBuffer);
+  readStringRaw(outBuffer);
+  putStringRaw("AT+WPWR=50,510 +IFC=2,0\n\r");
+  readStringRaw(outBuffer);
+  readStringRaw(outBuffer);
+  putStringRaw("AT+WAUTONET=1 Z\n\r");
+  readStringRaw(outBuffer);
+  readStringRaw(outBuffer);
+  debug_printf("... done!\n");
+  // ZigBit should now be initialized
+}
+
 void zigBitLoop(){
   // Commandbuffer
   ringbuffer commandBuffer;
@@ -125,14 +168,6 @@ void zigBitLoop(){
 
   int  status;
   char line[inBuffSize];
-
-  // Send ATZ
-  printf("ATZ\r\n");
-  //debug_printf("SENT ATZ...");
-
-  // Wait for ZigBit Device to come ready
-  waitForStatus(&commandBuffer);
-  //debug_printf("... ready!\n");
  
   while(1){
     int puls = 0;

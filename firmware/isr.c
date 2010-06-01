@@ -124,7 +124,7 @@ void enableAlert(){
   alertStatus = 1; 
 
   // Set LED
-  GP4DAT |= (1 << 26);
+  //GP4DAT |= (1 << 26);
 
   // Unmute
   mute = 0;
@@ -145,7 +145,7 @@ void disableAlert(){
   alertStatus = 0; 
 
   // Disable LED
-  GP4DAT &= ~(1 << 26);
+  //GP4DAT &= ~(1 << 26);
 
   // Disable yellow code
   GP2DAT &= ~(1 << 17);
@@ -201,12 +201,13 @@ void uartISR(){
     }
 
     //debug_printf("Read character from COMRX: %i\n", ch);
-  } else if(COMSTA0 & COMSTA0_TEMT_MASK) {
-
+  } else if((COMSTA0 & COMSTA0_TEMT_MASK) && (COMSTA1 & COMSTA1_CTS_MASK)) {    
+    
     // Send a char from sendBuff
-    if(sendBuffPos < sendBuffEnd)
-      COMTX = sendBuffer[sendBuffPos++];
-    else {
+    if(sendBuffPos < sendBuffEnd){  
+      char ch = sendBuffer[sendBuffPos++];
+      COMTX = ch;
+    } else {
       // Reset sendBuffPos
       sendBuffPos = 0;
 
@@ -222,6 +223,13 @@ void uartISR(){
       }
     }
 
+  }
+
+  if(COMSTA1 & COMSTA1_CTS_MASK){
+    GP4DAT |= (1 << 26);
+  } else {
+    // Disable LED
+    GP4DAT &= ~(1 << 26);
   }
 
 }

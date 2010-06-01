@@ -33,8 +33,9 @@ void UARTInitialize(unsigned int baud){
   // Set bis 0 and 4: This disables Pull-Up for P1.0 and P1.1.
   // All ports are configured for GPIO. It is not clear
   // at this moment why serial port communication works here,
-  // because this port shoul be configured to UART mode.
-  GP1CON = 0x11;
+  // because this port should be configured to UART mode.
+  // Also enable CTS + RTS 
+  GP1CON = 0x1111;
 
   // Set bit 7 in COMCON 0. This is "DLAB": Divisor latch access:
   // "Set by user to enable access to COMDIV0 and COMDIV1).
@@ -87,6 +88,25 @@ void __putchar(int ch){
   if(ch != '\0')
     putInOutbuffer(ch);
 }
+
+// Write to serial port without interrupts
+void putStringRaw(char * ch){
+  while(*ch != '\0'){
+    while(!(COMSTA0 & COMSTA0_THRE_MASK)); // Wait for serial port to become ready
+    COMTX = *(ch++); // Write char
+  }    
+};
+
+// Read a line without interrupts
+void readStringRaw(char * out){
+  char ch;
+  do {
+    while(!(COMSTA0 & COMSTA0_DR_MASK)); // Wait for character to arrive
+    ch = COMRX;
+    *(out++) = ch;
+  } while(ch != '\n');
+  *out = '\0';
+};
 
 // Read a single line from buffer
 int readLine(char * line){

@@ -38,7 +38,7 @@ int main(void){
   UARTInitialize(BAUDRATE);
 
   // Enable UART Interrupt
-  COMIEN0 = 0x01; // enable ERBFI & ETBEI
+  COMIEN0 = 0x0b; // enable ERBFI & ETBEI & EDSSI
   ctl_set_isr(UART_INT, 0, CTL_ISR_TRIGGER_FIXED, uartISR, 0);
   ctl_unmask_isr(UART_INT);
 
@@ -57,12 +57,15 @@ int main(void){
   GP0CON = 0x0;
   GP0DAT = 0x01000000;
 
-  // Use GIO 2.0, 2.1, 2.2, 2.3, 2.6 as output
+  // Use GIO 2.0, 2.1, 2.2, 2.3, 2.6, 2.7 as output
   GP2CON = 0x0;
-  GP2DAT = 0x4f000000;
+  GP2DAT = 0xcf000000;
 
   // Use 4.2 as Output
   GP4DAT = 0x0;
+
+  // Initialize ZigBit
+  initZigBit();
 
   // Enable all interrupts
   ctl_global_interrupts_enable();
