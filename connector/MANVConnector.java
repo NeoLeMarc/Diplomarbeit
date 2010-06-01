@@ -708,6 +708,11 @@ public class MANVConnector {
             NameComponent pathCommands[] = refNaming.to_name(nameCommands);
             refNaming.rebind(pathCommands, refCommands);
 
+            // Register to server
+            String nameControl = "Server_Control";
+            Control serverControl = ControlHelper.narrow(ncRef.resolve_str(nameControl));
+            serverControl.registerConnector();
+
             // CorbaSender
             CorbaSender corbaSender = new CorbaSender(eventQueue, serverIncoming);
             corbaSender.start();
