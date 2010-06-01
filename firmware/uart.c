@@ -106,6 +106,7 @@ void readStringRaw(char * out){
     *(out++) = ch;
   } while(ch != '\n');
   *out = '\0';
+  debug_printf("Read: %s\n", out);
 };
 
 // Read a single line from buffer

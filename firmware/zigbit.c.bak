@@ -98,6 +98,11 @@ void parseCommand(char * commandline){
           enableAlert();
           break;
 
+        case 'y':
+          // Emulate Yellow code
+          yellowCode();
+          break;
+
         case 'd':
           // Disable alert
           disableAlert();
@@ -123,7 +128,7 @@ void parseCommand(char * commandline){
 void sleep(int seconds){
   int i;
   while(seconds--)
-    for(i = 0x2c0000; i > 0; i--);
+    for(i = 0x1c0000; i > 0; i--);
 }
 
 void initZigBit(){
@@ -134,29 +139,60 @@ void initZigBit(){
   GP2DAT &= ~(1 << 23);
 
   // Sleep a little bit
-  sleep(2);
+  GP2DAT |= (1 << 18);
+  sleep(1);
+  GP2DAT &= ~(1 << 18);
 
   // 2. Release Reset line
   GP2DAT |= (1 << 23);
 
   // Wait for ZigBit to become ready
-  sleep(5);
+  sleep(1);
+  GP2DAT |= (1 << 18);
+  sleep(1);
+  GP2DAT &= ~(1 << 18);
+  sleep(1);
+  GP2DAT |= (1 << 18);
+  sleep(1);
+  GP2DAT &= ~(1 << 18);
 
   debug_printf("ZigBit has been resetted...\n");
 
   // Now write settings to serial port
   char outBuffer[80];
   debug_printf("Configuring ZigBit...");
-  putStringRaw("AT+WAUTONET=0 +WLEAVE\n\r");
+  putStringRaw("ATX\r\n");
+  GP2DAT |= (1 << 17);
   readStringRaw(outBuffer);
+  GP2DAT &= ~(1 << 17);
   readStringRaw(outBuffer);
-  putStringRaw("AT+WPWR=10,110 +IFC=2,0\n\r");
+  GP2DAT |= (1 << 17);
+  putStringRaw("AT+GSN=3 +WROLE=2 +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
+  GP2DAT &= ~(1 << 17);
   readStringRaw(outBuffer);
+  GP2DAT |= (1 << 17);
   readStringRaw(outBuffer);
-  putStringRaw("AT+WAUTONET=1 Z\n\r");
+  GP2DAT &= ~(1 << 17);
+  putStringRaw("AT+WPANID=1620 +WCHMASK=07FF800\r\n");
+  GP2DAT |= (1 << 17);
   readStringRaw(outBuffer);
+  GP2DAT &= ~(1 << 17);
   readStringRaw(outBuffer);
-  debug_printf("... done!\n");
+  GP2DAT |= (1 << 17);
+  putStringRaw("AT+WPWR=35,0\r\n");
+  GP2DAT &= ~(1 << 17);
+  readStringRaw(outBuffer);
+  GP2DAT |= (1 << 17);
+  readStringRaw(outBuffer);
+  GP2DAT &= ~(1 << 17);
+  putStringRaw("AT+WJOIN\r\n");
+  GP2DAT |= (1 << 17);
+  readStringRaw(outBuffer);
+  GP2DAT &= ~(1 << 17);
+  readStringRaw(outBuffer);  
+  GP2DAT |= (1 << 17);
+  debug_printf("... done!\r\n");
+  GP2DAT &= ~(1 << 17);
   // ZigBit should now be initialized
 }
 
@@ -168,10 +204,11 @@ void zigBitLoop(){
 
   int  status;
   char line[inBuffSize];
- 
+
   while(1){
     int puls = 0;
     int atmung = 0;
+
 
     // If sendStatus is true, we have to send our status
     if(sendStatus){
@@ -185,29 +222,34 @@ void zigBitLoop(){
             atmung = randint(30, 50);
           }
 
-          printf("ATD 0,1\rSTATUS:OK:%i:%i\r\n", puls, atmung);
+          printf("ATD 0,0\rSTATUS:OK:%i:%i\r\n", puls, atmung);
 
         } else {
           puls   = randint(0, 10);
           atmung = randint(0, 5);
-          printf("ATD 0,1\rSTATUS:ALERT:%i:%i\r\n", puls, atmung);
+          printf("ATD 0,0\rSTATUS:ALERT:%i:%i\r\n", puls, atmung);
         }
     
       sendStatus = 0;
       status = waitForStatus(&commandBuffer);
       //debug_printf("Got status, leaving loop!\n");
-    }
+    } 
 
-    // Further fetch commands
+    // Fetch commands
     while(readLine(line)){
       if(isCommand(line))
         ringbufferPutLine(&commandBuffer, line);
     }
+     
 
-    // Now we execute all received commands
+    // Now we execute all remaining commands
     while(ringbufferGetLine(&commandBuffer, line)){
       parseCommand(line);
     }
+
+    // End of Duty cycle, put ZigBit Module to sleep
+    printf("AT+WSLEEP\r\n");
+    waitForStatus(&commandBuffer);
   }
 }
 

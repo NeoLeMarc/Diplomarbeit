@@ -31,6 +31,17 @@ int mute = 0;
 // Simulate critical patient?
 int yellowCode = 0;
 
+void yellowButton(){
+  disableAlert();
+
+  // Enable yellow led & disable green
+  GP2DAT = (GP2DAT & ~(1 << 18)) | (1 << 17);
+
+  // Yellow Code: If this is true,
+    // then the patient stats will be "not so good"
+  yellowCode = 1;
+}
+
 // ISRs
 void timerISR(){
   // If red button is pressed => alert (P0.0)
@@ -53,15 +64,7 @@ void timerISR(){
 
   // If yellow button is pressed => simulate bad patient status (P0.3)
   else if(!(GP0DAT & 0x80)){
-    disableAlert();
-
-    // Enable yellow led & disable green
-    GP2DAT = (GP2DAT & ~(1 << 18)) | (1 << 17);
-
-    // Yellow Code: If this is true,
-    // then the patient stats will be "not so good"
-    yellowCode = 1;
-
+    yellowButton();
   }
 
   // Beeping
@@ -201,7 +204,7 @@ void uartISR(){
     }
 
     //debug_printf("Read character from COMRX: %i\n", ch);
-  } else if((COMSTA0 & COMSTA0_TEMT_MASK) && (COMSTA1 & COMSTA1_CTS_MASK)) {    
+  } else if((COMSTA0 & COMSTA0_THRE_MASK) && (COMSTA1 & COMSTA1_CTS_MASK)) {    
     
     // Send a char from sendBuff
     if(sendBuffPos < sendBuffEnd){  

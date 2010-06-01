@@ -1,5 +1,5 @@
 // Settings 
-#define CLOCKMULTIPLIER 400     // Multiplier for clock
+#define CLOCKMULTIPLIER 200     // Multiplier for clock
 #define MAXARGS         10      // The maximal number of arguments we support
 #define BEEPDELAY        2      // Delay for beeping
 
@@ -20,5 +20,6 @@
 void buttonISR();
 void timerISR();
 void uartISR();
+void yellowButton();
 void dabort_handler();
 void undef_handler();

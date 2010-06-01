@@ -64,6 +64,9 @@ int main(void){
   // Use 4.2 as Output
   GP4DAT = 0x0;
 
+  // Initialize ZigBit
+  initZigBit();
+
   // Enable all interrupts
   ctl_global_interrupts_enable();
 
