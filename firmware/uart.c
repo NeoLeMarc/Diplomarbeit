@@ -98,15 +98,18 @@ void putStringRaw(char * ch){
 };
 
 // Read a line without interrupts
-void readStringRaw(char * out){
+void readStringRaw(){
   char ch;
+  char line[80];
+  char * pline = line;
   do {
-    while(!(COMSTA0 & COMSTA0_DR_MASK)); // Wait for character to arrive
-    ch = COMRX;
-    *(out++) = ch;
-  } while(ch != '\n');
-  *out = '\0';
-  debug_printf("Read: %s\n", out);
+    pline = line;
+    do {
+      while(!(COMSTA0 & COMSTA0_DR_MASK)); // Wait for character to arrive
+      ch = COMRX;
+      *(pline++) = ch;
+    } while(ch != '\n' && ch != '\r');
+  } while(line[0] != 'O' && line[0] != 'E');
 };
 
 // Read a single line from buffer

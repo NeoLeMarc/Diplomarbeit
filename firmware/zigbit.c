@@ -126,15 +126,18 @@ void parseCommand(char * commandline){
 }
 
 void sleep(int seconds){
-  int i;
+  volatile long i;
+  volatile long y;
   while(seconds--)
-    for(i = 0x1c0000; i > 0; i--);
+    for(i = 250000; i > 0; i--){    
+        y = i - i;        
+    }
 }
 
 void initZigBit(){
   // Inizialize ZigBit
-  debug_printf("Entering initializeZigBit...\n");
-  
+  //debug_printf("Entering initializeZigBit...\n");
+  /*
   // 1. Pull Reset line (Port 2.7)
   GP2DAT &= ~(1 << 23);
 
@@ -142,56 +145,47 @@ void initZigBit(){
   GP2DAT |= (1 << 18);
   sleep(1);
   GP2DAT &= ~(1 << 18);
-
+*/
   // 2. Release Reset line
   GP2DAT |= (1 << 23);
 
   // Wait for ZigBit to become ready
-  sleep(1);
+  sleep(4);
   GP2DAT |= (1 << 18);
-  sleep(1);
+  sleep(4);
   GP2DAT &= ~(1 << 18);
-  sleep(1);
+  sleep(4);
   GP2DAT |= (1 << 18);
-  sleep(1);
+  sleep(4);
   GP2DAT &= ~(1 << 18);
 
-  debug_printf("ZigBit has been resetted...\n");
+  //debug_printf("ZigBit has been resetted...\n");
 
   // Now write settings to serial port
-  char outBuffer[80];
-  debug_printf("Configuring ZigBit...");
   putStringRaw("ATX\r\n");
   GP2DAT |= (1 << 17);
-  readStringRaw(outBuffer);
+  readStringRaw();
   GP2DAT &= ~(1 << 17);
-  readStringRaw(outBuffer);
-  GP2DAT |= (1 << 17);
+  sleep(4);
   putStringRaw("AT+GSN=3 +WROLE=2 +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
-  GP2DAT &= ~(1 << 17);
-  readStringRaw(outBuffer);
   GP2DAT |= (1 << 17);
-  readStringRaw(outBuffer);
+  readStringRaw();
   GP2DAT &= ~(1 << 17);
-  putStringRaw("AT+WPANID=1620 +WCHMASK=07FF800\r\n");
+  sleep(4);
+  putStringRaw("AT+WPANID=1620 +WCHMASK=07FF800 +WPWR=35,0\r\n");
   GP2DAT |= (1 << 17);
-  readStringRaw(outBuffer);
+  readStringRaw();
   GP2DAT &= ~(1 << 17);
-  readStringRaw(outBuffer);
-  GP2DAT |= (1 << 17);
-  putStringRaw("AT+WPWR=35,0\r\n");
-  GP2DAT &= ~(1 << 17);
-  readStringRaw(outBuffer);
-  GP2DAT |= (1 << 17);
-  readStringRaw(outBuffer);
-  GP2DAT &= ~(1 << 17);
+  sleep(4);
+  GP2DAT |= (1 << 18);
   putStringRaw("AT+WJOIN\r\n");
+  GP2DAT |= (1 << 16);
+  readStringRaw();
+  GP2DAT &= ~(1 << 18);
+  sleep(1);
   GP2DAT |= (1 << 17);
-  readStringRaw(outBuffer);
-  GP2DAT &= ~(1 << 17);
-  readStringRaw(outBuffer);  
-  GP2DAT |= (1 << 17);
-  debug_printf("... done!\r\n");
+  GP2DAT &= ~(1 << 16);
+  sleep(1);
   GP2DAT &= ~(1 << 17);
   // ZigBit should now be initialized
 }

@@ -49,7 +49,7 @@
   <ProjectSessionItem path="MANVFirmware;MANVFirmware;System Files" name="unnamed" />
  </Project>
  <Register1>
-  <RegisterWindow openNodes="IRQ/IRQEN;System Control/REMAP;System Control/RSTCLR;UART0/COMIEN0;UART0/COMCON1;UART0/COMSTA0;GPIO;GPIO/GP0SET;GPIO/GP1DAT;GPIO/GP2DAT;GPIO/GP4DAT" binaryNodes="" unsignedNodes="" visibleGroups="UART0;System Control;CPU - Current Mode;IRQ;GPIO" decimalNodes="" octalNodes="" asciiNodes="" />
+  <RegisterWindow openNodes="IRQ/IRQEN;System Control/REMAP;System Control/RSTCLR;UART0;UART0/COMIEN0;UART0/COMCON0;UART0/COMCON1;UART0/COMSTA0;GPIO;GPIO/GP0SET;GPIO/GP1DAT;GPIO/GP2DAT;GPIO/GP4DAT" binaryNodes="" unsignedNodes="" visibleGroups="UART0;System Control;CPU - Current Mode;IRQ;GPIO" decimalNodes="" octalNodes="" asciiNodes="" />
  </Register1>
  <Register2>
   <RegisterWindow openNodes="UART0;UART0/COMSTA0;UART0/COMSTA1" binaryNodes="" unsignedNodes="" visibleGroups="IRQ;CPU - All;UART0;System Control;PLA;GPIO" decimalNodes="" octalNodes="" asciiNodes="" />
@@ -77,16 +77,16 @@
   <Watches active="0" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="1" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" y="0" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" y="79" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000.c" left="0" selected="0" name="unnamed" top="79" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/source/crt0.s" y="279" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/source/crt0.s" left="0" selected="0" name="unnamed" top="236" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="22" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="0" name="unnamed" top="22" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="27" debugPath="/home/marcel/diplomarbeit/firmware/zigbit.c" y="157" path="/home/marcel/diplomarbeit/firmware/zigbit.c" left="0" selected="1" name="unnamed" top="135" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="52" debugPath="/home/marcel/diplomarbeit/firmware/isr.h" y="3" path="/home/marcel/diplomarbeit/firmware/isr.h" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="34" debugPath="/home/marcel/diplomarbeit/firmware/uart.c" y="108" path="/home/marcel/diplomarbeit/firmware/uart.c" left="0" selected="0" name="unnamed" top="64" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/main.c" y="22" path="/home/marcel/diplomarbeit/firmware/main.c" left="0" selected="0" name="unnamed" top="19" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="9" debugPath="/home/marcel/diplomarbeit/firmware/zigbit.c" y="184" path="/home/marcel/diplomarbeit/firmware/zigbit.c" left="0" selected="0" name="unnamed" top="146" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="20" debugPath="/home/marcel/diplomarbeit/firmware/isr.h" y="22" path="/home/marcel/diplomarbeit/firmware/isr.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="44" debugPath="/home/marcel/diplomarbeit/firmware/uart.c" y="111" path="/home/marcel/diplomarbeit/firmware/uart.c" left="0" selected="0" name="unnamed" top="72" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="26" debugPath="/home/marcel/diplomarbeit/firmware/zigbit.h" y="0" path="/home/marcel/diplomarbeit/firmware/zigbit.h" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/home/marcel/diplomarbeit/firmware/isr.c" y="179" path="/home/marcel/diplomarbeit/firmware/isr.c" left="0" selected="0" name="unnamed" top="179" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="26" debugPath="/home/marcel/diplomarbeit/firmware/uart.h" y="18" path="/home/marcel/diplomarbeit/firmware/uart.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="20" debugPath="/home/marcel/diplomarbeit/firmware/isr.c" y="82" path="/home/marcel/diplomarbeit/firmware/isr.c" left="0" selected="0" name="unnamed" top="46" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="19" debugPath="/home/marcel/diplomarbeit/firmware/uart.h" y="17" path="/home/marcel/diplomarbeit/firmware/uart.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="26" debugPath="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" y="0" path="/opt/Rowley Associates Limited/CrossWorks for ARM 1.7/targets/Analog_ADuC7000/Analog_ADuC7000_Startup.s" left="0" selected="1" name="unnamed" top="0" />
  </Files>
- <ARMCrossStudioWindow activeProject="MANVFirmware" autoConnectTarget="/Generic FT2232 Device" debugSearchFileMap="" fileDialogInitialDirectory="/home/marcel/diplomarbeit/firmware" fileDialogDefaultFilter="*.cpp;*.cxx;*.cc;*.c;*.h;*.hpp;*.hxx" autoConnectCapabilities="1407" debugSearchPath="" buildConfiguration="ARM Flash Debug" />
+ <ARMCrossStudioWindow activeProject="MANVFirmware" autoConnectTarget="/Generic FT2232 Device" debugSearchFileMap="" fileDialogInitialDirectory="/home/marcel/diplomarbeit/firmware" fileDialogDefaultFilter="*.cpp;*.cxx;*.cc;*.c;*.h;*.hpp;*.hxx" autoConnectCapabilities="1407" debugSearchPath="" buildConfiguration="ARM Flash Release" />
 </session>

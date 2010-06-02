@@ -15,5 +15,5 @@ void UARTInitialize(unsigned int baud);
 void putInOutbuffer(char ch);
 void __putchar(int ch);
 int readLine(char *);
-void readStringRaw(char *);
+void readStringRaw();
 void putStringRaw(char *);
