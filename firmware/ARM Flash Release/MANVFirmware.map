@@ -289,7 +289,7 @@ Linker script and memory map
                 0x00000001                . = ASSERT (((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .ctors is too large to fit in FLASH memory segment)
                 0x00082410                __rodata_load_start__ = (__ctors_end__ ALIGN 0x4)
 
-.rodata         0x00082410      0x164
+.rodata         0x00082410      0x170
                 0x00082410                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
@@ -299,20 +299,20 @@ Linker script and memory map
  .rodata.str1.4
                 0x0008244c       0x20 ARM Flash Release/isr.o
  .rodata.str1.4
-                0x0008246c       0xe8 ARM Flash Release/zigbit.o
-                                 0xec (size before relaxing)
- .rodata.libc   0x00082554       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
-                0x00082554                __hex_uc
-                0x00082564                __hex_lc
-                0x00082574                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x0008246c       0xf4 ARM Flash Release/zigbit.o
+                                 0xf8 (size before relaxing)
+ .rodata.libc   0x00082560       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+                0x00082560                __hex_uc
+                0x00082570                __hex_lc
+                0x00082580                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
                 0x00000001                . = ASSERT (((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .rodata is too large to fit in FLASH memory segment)
-                0x00082574                __fast_load_start__ = (__rodata_end__ ALIGN 0x4)
+                0x00082580                __fast_load_start__ = (__rodata_end__ ALIGN 0x4)
 
-.fast           0x0001003c        0x0 load address 0x00082574
+.fast           0x0001003c        0x0 load address 0x00082580
                 0x0001003c                __fast_start__ = .
  *(.fast .fast.*)
                 0x0001003c                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
-                0x00082574                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x00082580                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                . = ASSERT ((((__fast_load_start__ + SIZEOF (.fast)) >= __FLASH_segment_start__) && ((__fast_load_start__ + SIZEOF (.fast)) <= (__FLASH_segment_start__ + 0xf800))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x0001003c        0x0
@@ -320,9 +320,9 @@ Linker script and memory map
                 0x0001003c                . = ((__fast_run_start__ + SIZEOF (.fast)) MAX_K .)
                 0x0001003c                __fast_run_end__ = (__fast_run_start__ + SIZEOF (.fast_run))
                 0x00000001                . = ASSERT (((__fast_run_end__ >= __SRAM_segment_start__) && (__fast_run_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .fast_run is too large to fit in SRAM memory segment)
-                0x00082574                __data_load_start__ = ((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4)
+                0x00082580                __data_load_start__ = ((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4)
 
-.data           0x0001003c       0x10 load address 0x00082574
+.data           0x0001003c       0x10 load address 0x00082580
                 0x0001003c                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data          0x0001003c        0x0 ARM Flash Release/main.o
@@ -355,8 +355,8 @@ Linker script and memory map
  .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
  .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
                 0x0001004c                __data_end__ = (__data_start__ + SIZEOF (.data))
-                0x00082584                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
-                0x00082584                __FLASH_segment_used_end__ = (((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4) + SIZEOF (.data))
+                0x00082590                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x00082590                __FLASH_segment_used_end__ = (((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4) + SIZEOF (.data))
                 0x00000001                . = ASSERT ((((__data_load_start__ + SIZEOF (.data)) >= __FLASH_segment_start__) && ((__data_load_start__ + SIZEOF (.data)) <= (__FLASH_segment_start__ + 0xf800))), error: .data is too large to fit in FLASH memory segment)
 
 .data_run       0x0001003c       0x10

@@ -178,7 +178,7 @@ void initZigBit(){
   GP2DAT &= ~(1 << 17);
   sleep(4);
   GP2DAT |= (1 << 18);
-  putStringRaw("AT+WJOIN\r\n");
+  putStringRaw("AT+WJOIN +WAUTONET=1\r\n");
   GP2DAT |= (1 << 16);
   readStringRaw();
   GP2DAT &= ~(1 << 18);
