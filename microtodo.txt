@@ -1,0 +1,3 @@
+- Kondensator für ZigBit auf Platine
+- LED für CTS auf Platine
+- RTS per Firmware auf GND legen.
