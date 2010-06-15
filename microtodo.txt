@@ -1,3 +1,7 @@
 - Kondensator für ZigBit auf Platine
 - LED für CTS auf Platine
 - RTS per Firmware auf GND legen.
+- ADC 0, 1, 2 für Erste Hilfe Sensor auf Pins
+- Bestellliste (rs-components.de / reichelt)
+- Bauteile 0805 (E12er Reihe), (Kondensatoren: E6, Sortiment gibt's bei Reichelt)
+- Keine Runden Leitungen
