@@ -1,0 +1,74 @@
+Der Erste-Hilfe-Sensor wurde ursprünglich zur Unterstützung von Ersthelfern
+entwickelt. Er analysiert automatisch den Kreislaufzustand eines
+Patienten und gibt eine klare Reanimierungsempfehlung. Durch die Ergänzung
+einer Funkschnittstelle wurde das System zur Überwachung von Patienten während
+eines Massenanfalls von Verletzen erweitert. Hierbei erfolgt die Alarmierung
+nicht nur am Sensor selbst, sondern auch an einer zentralen Basisstation.
+
+Der Sensor überwacht Vitalparameter wie Puls und Atmung. Hierzu wird ein
+speziell entwickeltes kapazitives Verfahren verwendet. Dieses Verfahren
+hat den Vorteil, dass es zum einen kostengünstig umzusetzen ist, und
+zum anderen in der Lage ist, sogar eine pulslose elektrische Aktivität
+zu erkennen, was einen Vorteil gegenüber der gängigen EKG-Überwachung bietet.
+
+Darüber hinaus verfügt der Sensor über die Möglichkeit, Beschleunigungen zu
+messen. Hiermit können Stürze zuverlässig erkannt werden. Ausserdem können
+Bewegungsartefakte der Vitaldatenmessung ausgefiltert, und somit Fehlalarme
+vermieden werden.
+
+Die Vernetzung der Sensoren mit der Basistation erfolgt mit Hilfe von ZigBee.
+Dies ermöglicht einen kostengünstigen und batteriesparenden Betrieb, ist aber
+zugleich auch Robust gegenüber Störungen und zuverlässig beim Übertragen
+von Nachrichten. Durch eine automatische Senderwahl ist der parallele Betrieb 
+zu bereits vorhandenen DECT Telefonen, Wlans sowie Bluetooth Geräten möglich.
+
+Eine Erweiterung des Netzwerkes kann durch das Hinzufügen von Routern einfach
+und kostengünstig erweitert werden. Der Betrieb der Router ist wartungsfrei. 
+Ein Router muss einmalig auf das Netzwerk konfiguriert werden; 
+dannach ist lediglich eine freie Steckdose für den Betrieb notwendig.
+
+Zur Überwachung kann ein Desktop-PC oder ein Notebook mit USB-Schnittstelle 
+verwendet werden. Die Überwachungssoftware wird in einer virtuellen Maschine 
+betrieben und ist somit mit Windows (XP, Vista, Windows 7), MacOSX, Linux 
+sowie vielen anderen UNIX-Systemen kompatibel. Das Überwachungssystem bietet
+sowohl eine CORBA- als auch eine SQL-Schnittstelle, worüber eine Anbindung
+an die bereits vorhandene Computer Infrastruktur möglich wird. 
+
+Die Software verfügt über einen Aufzeichnungsmodus, welche eine 
+Langzeitüberwachung von Patienten ermöglicht.
+
+Als besonderes Feature ist eine mobile Variante der Überwachungssoftware für
+das Symbian Betriebssystem (NOKIA-Telefone) verfügbar. Diese kommuniziert über
+UMTS oder GPRS mit dem Hauptsystem. So können vor Ort per Handy alle 
+Informationen zu einem Patienten aufgerufen werden. Ausserdem bietet die 
+Software einen Pager-Modus, wodurch eine automatische Alarmierung via Handy
+möglich ist.
+
+Beim Entwurfe wurde beonders auf eine kosteneffiziente und Energiesparende
+Lösung geachtet. Die Erste-Hilfe-Sensoren können zu einem attraktiven 
+Stückpreis hergestellt werden, und das Netzwerk kann bereits mit einem 
+einzelnen Notebook und einem Sensor betrieben werden. Das Netzwerk kann
+sowohl in der räumlichen Größe als auch in der Anzahl der Sensoren erweitert
+werden. Ein einzelnes Netzwerk unterstützt bis zu 200 Teilnehmer. Werden mehr
+Teilnehmer benötigt, ist der Parallelbetrieb mehrere Netzwerke möglich. 
+Zentrale Komponenten des Netzwerkes können redundant vorgehalten werden, 
+so dass eine besonders hohe Verfügbarkeit erreicht wird.
+
+Das Gesamtsystem kann auch für den Betrieb im häusslichen Umfeld verwendet
+werden. In diesem Szenario überwacht ein speziell konfigurierter DSL-Router
+bis zu vier Sensoren. Der Router meldet regelmäßig seinen Zustand an einen
+Server im Internet. Angehörige können sich per Webbrowser oder Handy
+jederzeit über den Zustand der überwachten Person informieren. Tritt ein 
+Notfall ein, ist die Benachrichtigung von Rettungs- oder Pflegedienst sowie
+Angehöriger möglich. Zur Steigerung der Zuverlässigkeit kann der DSL-Router
+auch zusätzlich mittels Telefon sowie Fax einen Notruf auslösen. 
+
+Ziel des Systems ist es, die Unabhängigkeit von Menschen bis ins hohe Alter
+zu ermöglichen, ohne ihre Sicherheit einzuschränken. Die automatische
+Überwachung ermöglicht es für ältere Menschen, möglichst lange in ihrem
+gewohnten Umfeld zu wohnen. 
+
+Aber auch für den Einsatz in Betreuungs- und Pflegeeinrichtungen ist das 
+System geeignet, und dient hier zu Unterstützung und Entlastung der
+Pflegekräfte und soll auch hier die Mobilität und Unabhängkeit der Patienten
+so weit wie möglich sicherstellen.
