@@ -1,41 +1,57 @@
-Der Erste-Hilfe-Sensor wurde ursprünglich zur Unterstützung von Ersthelfern
-entwickelt. Er analysiert automatisch den Kreislaufzustand eines
-Patienten und gibt eine klare Reanimierungsempfehlung. Durch die Ergänzung
-einer Funkschnittstelle wurde das System zur Überwachung von Patienten während
-eines Massenanfalls von Verletzen erweitert. Hierbei erfolgt die Alarmierung
-nicht nur am Sensor selbst, sondern auch an einer zentralen Basisstation.
+Dem Wunsch, bis ins hohe Alter zuhause zu wohnen steht oft die Angst
+entgegen, im Notfall ohne rasche Hilfe dazustehen. Bestehende Systeme,
+wie der Hausnotruf, sind darauf angewiesen, dass der Anwender noch in der
+Lage ist, den Notrufknopf zu bedienen. Bei einem überraschend eintretenden
+Ereigniss wie einem schweren Sturz oder einem Herzeinfarkt kann es aber
+passieren, dass der Anwender hierzu nichtmehr in der Lage ist. Es ist
+daher wünschenswert, ein System zu haben, dass automatisch einen Notfall
+erkennt, und selbsttätig um Hilfe ruft. 
 
-Der Sensor überwacht Vitalparameter wie Puls und Atmung. Hierzu wird ein
-speziell entwickeltes kapazitives Verfahren verwendet. Dieses Verfahren
-hat den Vorteil, dass es zum einen kostengünstig umzusetzen ist, und
-zum anderen in der Lage ist, sogar eine pulslose elektrische Aktivität
-zu erkennen, was einen Vorteil gegenüber der gängigen EKG-Überwachung bietet.
+An dieser Stelle setzt der Erste-Hilfe-Sensor an: Der Sensor wurde ursprünglich 
+zur unterstützung von Ersthelfern entwickelt. Er analysiert automatisch den 
+Kreislaufzustand eines Patienten; stellt er ein Problem fest, kann er selbsttätig 
+über eine Funkschnittstelle einen Hilferuf aussenden.
 
-Darüber hinaus verfügt der Sensor über die Möglichkeit, Beschleunigungen zu
-messen. Hiermit können Stürze zuverlässig erkannt werden. Ausserdem können
-Bewegungsartefakte der Vitaldatenmessung ausgefiltert, und somit Fehlalarme
-vermieden werden.
+Im häusslichen Umfeld wird hierzu ein speziell konfigurierter DSL-Router 
+als Basisstation verwendet. An die Basisstation können bis zu vier
+Sensoren angeschlossen werden.
+
+Das System überträgt regelmäßig den Zustand aller überwachten Sensoren
+an einen zentralen Server im Internet. Diese Daten können von einer
+zentralen Stelle überwacht werden. Zusätzlich können sich Angehörige
+jederzeit via Webbrowser über den Zustand des Überwachten informieren. 
+Der DSL-Router kann im Notfall über FAX oder Telefon Rettungs- oder Pflegedienste,
+bzw. Mitarbeiter in einem Callcenter benachrichtigen, und bereits eine Kurzdiagnose
+mitteilen (Sturz ja/nein, Pulsrate, Atemfrequenz).
+
+Zur Überwachung von Puls und Atmung wird ein speziell entwickeltes kapazitives 
+Verfahren verwendet. Dieses Verfahren hat den Vorteil, dass es zum einen 
+kostengünstig umzusetzen ist, und zum anderen in der Lage ist, sogar eine 
+pulslose elektrische Aktivität zu erkennen, was einen Vorteil gegenüber der 
+gängigen EKG-Überwachung bietet.  Weiterhin verfügt der Sensor über die 
+Möglichkeit, Beschleunigungen zu messen. Hiermit können Stürze zuverlässig 
+erkannt werden. Ausserdem können Bewegungsartefakte der Vitaldatenmessung 
+ausgefiltert, und somit Fehlalarme vermieden werden.
 
 Die Vernetzung der Sensoren mit der Basistation erfolgt mit Hilfe von ZigBee.
 Dies ermöglicht einen kostengünstigen und batteriesparenden Betrieb, ist aber
 zugleich auch Robust gegenüber Störungen und zuverlässig beim Übertragen
 von Nachrichten. Durch eine automatische Senderwahl ist der parallele Betrieb 
-zu bereits vorhandenen DECT Telefonen, Wlans sowie Bluetooth Geräten möglich.
+zu bereits vorhandenen DECT Telefonen, Wlans sowie Bluetooth-Geräten möglich.
 
-Eine Erweiterung des Netzwerkes kann durch das Hinzufügen von Routern einfach
-und kostengünstig erweitert werden. Der Betrieb der Router ist wartungsfrei. 
+Mit dem System lassen sich aber auch größere Netzwerke mit bis zu 200 
+Teilnehmern verwalten. Dies bietet sich z.B. für den Einsatz in Seniorenheimen
+an. Hierzu wird das durch Hinzufügen von Routern einfach
+und kostengünstig erweitert. Der Betrieb der Router ist wartungsfrei. 
 Ein Router muss einmalig auf das Netzwerk konfiguriert werden; 
 dannach ist lediglich eine freie Steckdose für den Betrieb notwendig.
 
-Zur Überwachung kann ein Desktop-PC oder ein Notebook mit USB-Schnittstelle 
-verwendet werden. Die Überwachungssoftware wird in einer virtuellen Maschine 
+Die Überwachung kann dann von einem PC oder Notebook mit USB-Schnittstelle 
+aus erfolgen. Die Überwachungssoftware wird in einer virtuellen Maschine 
 betrieben und ist somit mit Windows (XP, Vista, Windows 7), MacOSX, Linux 
 sowie vielen anderen UNIX-Systemen kompatibel. Das Überwachungssystem bietet
 sowohl eine CORBA- als auch eine SQL-Schnittstelle, worüber eine Anbindung
 an die bereits vorhandene Computer Infrastruktur möglich wird. 
-
-Die Software verfügt über einen Aufzeichnungsmodus, welche eine 
-Langzeitüberwachung von Patienten ermöglicht.
 
 Als besonderes Feature ist eine mobile Variante der Überwachungssoftware für
 das Symbian Betriebssystem (NOKIA-Telefone) verfügbar. Diese kommuniziert über
@@ -47,28 +63,14 @@ möglich ist.
 Beim Entwurfe wurde beonders auf eine kosteneffiziente und Energiesparende
 Lösung geachtet. Die Erste-Hilfe-Sensoren können zu einem attraktiven 
 Stückpreis hergestellt werden, und das Netzwerk kann bereits mit einem 
-einzelnen Notebook und einem Sensor betrieben werden. Das Netzwerk kann
-sowohl in der räumlichen Größe als auch in der Anzahl der Sensoren erweitert
-werden. Ein einzelnes Netzwerk unterstützt bis zu 200 Teilnehmer. Werden mehr
-Teilnehmer benötigt, ist der Parallelbetrieb mehrere Netzwerke möglich. 
-Zentrale Komponenten des Netzwerkes können redundant vorgehalten werden, 
-so dass eine besonders hohe Verfügbarkeit erreicht wird.
+einzelnen Notebook oder DSL-Route sowie einem Sensor betrieben werden. 
+Das Netzwerk ist sowohl in der räumlichen Größe als auch in der Anzahl 
+der Sensoren erweiterbar. Es werben bis zu 200 Teilnehmer in einem Netzwerk
+untersützt. Werden mehr Teilnehmer benötigt, ist der Parallelbetrieb mehrere 
+Netzwerke möglich. Zentrale Komponenten des Netzwerkes können redundant 
+vorgehalten werden, so dass eine besonders hohe Verfügbarkeit erreicht wird.
 
-Das Gesamtsystem kann auch für den Betrieb im häusslichen Umfeld verwendet
-werden. In diesem Szenario überwacht ein speziell konfigurierter DSL-Router
-bis zu vier Sensoren. Der Router meldet regelmäßig seinen Zustand an einen
-Server im Internet. Angehörige können sich per Webbrowser oder Handy
-jederzeit über den Zustand der überwachten Person informieren. Tritt ein 
-Notfall ein, ist die Benachrichtigung von Rettungs- oder Pflegedienst sowie
-Angehöriger möglich. Zur Steigerung der Zuverlässigkeit kann der DSL-Router
-auch zusätzlich mittels Telefon sowie Fax einen Notruf auslösen. 
-
-Ziel des Systems ist es, die Unabhängigkeit von Menschen bis ins hohe Alter
-zu ermöglichen, ohne ihre Sicherheit einzuschränken. Die automatische
-Überwachung ermöglicht es für ältere Menschen, möglichst lange in ihrem
-gewohnten Umfeld zu wohnen. 
-
-Aber auch für den Einsatz in Betreuungs- und Pflegeeinrichtungen ist das 
-System geeignet, und dient hier zu Unterstützung und Entlastung der
-Pflegekräfte und soll auch hier die Mobilität und Unabhängkeit der Patienten
-so weit wie möglich sicherstellen.
+Ursprünglich wurde das System zur Überwachung von Patienten in während eines
+Massenanfalls von Verletzten entwickelt. Daher zeichnet es sich durch seine
+geringe Kosten sowohl in der Anschaffung als auch im Betrieb, sowie seiner
+Robustheit aus.
