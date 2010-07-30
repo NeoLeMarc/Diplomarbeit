@@ -7,22 +7,10 @@ passieren, dass der Anwender hierzu nichtmehr in der Lage ist. Es ist
 daher wünschenswert, ein System zu haben, dass automatisch einen Notfall
 erkennt, und selbsttätig um Hilfe ruft. 
 
-An dieser Stelle setzt der Erste-Hilfe-Sensor an: Der Sensor wurde ursprünglich 
-zur unterstützung von Ersthelfern entwickelt. Er analysiert automatisch den 
-Kreislaufzustand eines Patienten; stellt er ein Problem fest, kann er selbsttätig 
-über eine Funkschnittstelle einen Hilferuf aussenden.
-
-Im häusslichen Umfeld wird hierzu ein speziell konfigurierter DSL-Router 
-als Basisstation verwendet. An die Basisstation können bis zu vier
-Sensoren angeschlossen werden.
-
-Das System überträgt regelmäßig den Zustand aller überwachten Sensoren
-an einen zentralen Server im Internet. Diese Daten können von einer
-zentralen Stelle überwacht werden. Zusätzlich können sich Angehörige
-jederzeit via Webbrowser über den Zustand des Überwachten informieren. 
-Der DSL-Router kann im Notfall über FAX oder Telefon Rettungs- oder Pflegedienste,
-bzw. Mitarbeiter in einem Callcenter benachrichtigen, und bereits eine Kurzdiagnose
-mitteilen (Sturz ja/nein, Pulsrate, Atemfrequenz).
+An dieser Stelle setzt der Erste-Hilfe-Sensor an: Der Sensor wurde zur 
+einfachen und zuverlässigen Überwachung von Patienten entwickelt. Er analysiert 
+automatisch den Kreislaufzustand eines Patienten; stellt er ein Problem fest, 
+kann er selbsttätig über eine Funkschnittstelle einen Hilferuf aussenden.
 
 Zur Überwachung von Puls und Atmung wird ein speziell entwickeltes kapazitives 
 Verfahren verwendet. Dieses Verfahren hat den Vorteil, dass es zum einen 
@@ -39,6 +27,19 @@ zugleich auch Robust gegenüber Störungen und zuverlässig beim Übertragen
 von Nachrichten. Durch eine automatische Senderwahl ist der parallele Betrieb 
 zu bereits vorhandenen DECT Telefonen, Wlans sowie Bluetooth-Geräten möglich.
 
+Im häusslichen Umfeld wird hierzu ein speziell konfigurierter DSL-Router 
+als Basisstation verwendet. An die Basisstation können bis zu vier
+Sensoren angeschlossen werden.
+
+Das System überträgt regelmäßig den Zustand aller überwachten Sensoren
+an einen zentralen Server im Internet. Diese Daten können von einer
+zentralen Stelle überwacht werden. Zusätzlich ist es möglich, Angehörigen
+des Überwachten mittels einen geschützten Webzugang zu dem System zu
+geben, damit sie sich jederzeit über dessen Zustand informieren können.
+Der DSL-Router kann im Notfall über FAX oder Telefon Rettungs- oder Pflegedienste,
+bzw. Mitarbeiter in einem Callcenter benachrichtigen, und bereits eine Kurzdiagnose
+mitteilen (Sturz ja/nein, Pulsrate, Atemfrequenz).
+
 Mit dem System lassen sich aber auch größere Netzwerke mit bis zu 200 
 Teilnehmern verwalten. Dies bietet sich z.B. für den Einsatz in Seniorenheimen
 an. Hierzu wird das durch Hinzufügen von Routern einfach
@@ -52,25 +53,44 @@ betrieben und ist somit mit Windows (XP, Vista, Windows 7), MacOSX, Linux
 sowie vielen anderen UNIX-Systemen kompatibel. Das Überwachungssystem bietet
 sowohl eine CORBA- als auch eine SQL-Schnittstelle, worüber eine Anbindung
 an die bereits vorhandene Computer Infrastruktur möglich wird. 
+Über diese Schnittstelle ist auch die Anbindung von Mobiletelefonen 
+möglich. Auf diesen wird eine mobile Variante der Überwachungssoftware
+ausgeführt Diese Variante ermöglicht es, von jedem Ort aus auf die
+Vitaldaten der überwachten Patienten zuzugreifen. So kann z.B. ein
+Arzt direkt vor Ort mit seinem Handy auf die Daten des Patienten
+zugreifen, ohne dass er dafür ein spezielles Gerät verwenden müsste.
+Zusätzlich bietet das System einen Pager-Modus, wodurch eine automatische
+Alarmierung via Handy möglich ist.
 
-Als besonderes Feature ist eine mobile Variante der Überwachungssoftware für
-das Symbian Betriebssystem (NOKIA-Telefone) verfügbar. Diese kommuniziert über
-UMTS oder GPRS mit dem Hauptsystem. So können vor Ort per Handy alle 
-Informationen zu einem Patienten aufgerufen werden. Ausserdem bietet die 
-Software einen Pager-Modus, wodurch eine automatische Alarmierung via Handy
-möglich ist.
+Das System unterscheidet sich in vielerlei Hinsicht von bestehenden Lösungen.
+Die meisten existierenden Monitor-Lösungen sind nicht dafür entwickelt,
+permanent vom Patienten getragen zu werden. Betrachtet man z.B. ein 
+Langzeit-EKG, so wird schnell klar, dass auf Grund der Vielzahl der Elektroden
+sowie das Gewicht des Gerätes eine längere Tragedauer unzumutbar ist.
+Ein System, dass eine ähnlichen Ansatz wie der Erste-Hilfe-Sensor verfolgt,
+ist der CORBelt der Firma Corscience. Hierbei handelt es sich um ein 
+1-Kanal EKG mit integriertem Beschleunigungssensor in Form eines 
+Brustgurtes. Das System ist in der Lage, eine Vielzahl von Herzproblemen
+zu erkennen, und eignet sich daher besonders für Patienten mit bekannten
+Herzerkranungen. Der Erste-Hilfe-Sensor hingegen ist für einen breiteren
+Anwendungsfall ausgelegt, da er an Stelle des EKGs eine Überwachung
+von Puls und Atmung durchführt. Hiermit können Ergeinisse (z.B. 
+Atemstillstand, Pulslose Elektrische Aktivität, Sturz) erkannt werden,
+die auf einem klassischen EKG nicht zu erkennen währen. Damit bietet
+das System eine umfassende Überwachung, die sich nicht nur auf das 
+Herz beschränkt, sondern sich über den kompletten Kreislauf des
+Patienten erstreckt. Zusätzlich unterscheidet sich der Erste-Hilfe-Sensor
+durch seine Netzwerkfähigkeit. Die Überwachung beschränkt sich nicht
+auf einen einzelnen Patienten, da bereits in der einfachsten Variante
+bis zu vier Sensoren angeschlossen werden kann. 
 
-Beim Entwurfe wurde beonders auf eine kosteneffiziente und Energiesparende
-Lösung geachtet. Die Erste-Hilfe-Sensoren können zu einem attraktiven 
-Stückpreis hergestellt werden, und das Netzwerk kann bereits mit einem 
-einzelnen Notebook oder DSL-Route sowie einem Sensor betrieben werden. 
-Das Netzwerk ist sowohl in der räumlichen Größe als auch in der Anzahl 
-der Sensoren erweiterbar. Es werben bis zu 200 Teilnehmer in einem Netzwerk
-untersützt. Werden mehr Teilnehmer benötigt, ist der Parallelbetrieb mehrere 
+Durch den Austausch der Basisstation kann das bestehende System jederzeit
+auf bis zu 200 Teilnehmer erweitert werden. Bereits angeschaffte Sensoren
+können weiterverwendet werden, was einen hohen Invesitiontsschutz bietet.
+Insgesamt werden bis zu 200 Teilnehmer in einem Netzwerk untersützt. 
+Werden mehr Teilnehmer benötigt, ist der Parallelbetrieb mehrere 
 Netzwerke möglich. Zentrale Komponenten des Netzwerkes können redundant 
 vorgehalten werden, so dass eine besonders hohe Verfügbarkeit erreicht wird.
-
-Ursprünglich wurde das System zur Überwachung von Patienten in während eines
-Massenanfalls von Verletzten entwickelt. Daher zeichnet es sich durch seine
-geringe Kosten sowohl in der Anschaffung als auch im Betrieb, sowie seiner
-Robustheit aus.
+Insgesammt bietet der Erste-Hilfe-Sensor somit ein skalierbares, komfortables
+und kosteneffizientes Überwachungssystem, das auch älteren Menschen eine
+hohe Lebensqualität ohne Einschränkungen in der Sicherheit bietet.
