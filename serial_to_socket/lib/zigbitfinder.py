@@ -30,7 +30,8 @@ class ZigBitFinder:
                     self.ui.printStatus("Found on USB-Bus: Bus: %s Device: %s ID: %04x:%04x" % (bus.dirname, dev.filename, dev.idVendor, dev.idProduct))
 
                     return (bus.dirname, dev.filename)
-        
+       
+        self.ui.printStatus("No devices found on USB-Bus.")
         return False
 
 
@@ -47,33 +48,39 @@ class ZigBitFinder:
         return devices
 
 
-    def testDevice(self, name):
+    def testDevice(self, deviceName):
         ret = []
 
         # Open with python serial and test device-identification
-        self.ui.printStatus("Testing device %s" % name)
-        ser = serial.Serial("/dev/%s" % name, 38400, timeout=1)
-        ser.write("ATI\r\n")
-        out = ser.read(74)
-        
-        ## Compare return value for matching vendor strings etc.
-        if out:
+        try:
+            self.ui.printStatus("Testing device %s" % deviceName)
+            ser = serial.Serial("/dev/%s" % deviceName, 38400, timeout=3)
+            ser.write("ATI\r\n")
+            out = ser.read(74)
+            
+            ## Compare return value for matching vendor strings etc.
+            if out:
 
-            formatedOut = out.split("\r\n")
+                formatedOut = out.split("\r\n")
 
-            if len(formatedOut) == 5:
-                vendor  = formatedOut[1]
-                name    = formatedOut[2]
-                version = formatedOut[3]
-                mac     = formatedOut[4]
+                if len(formatedOut) == 5:
+                    vendor  = formatedOut[1]
+                    name    = formatedOut[2]
+                    version = formatedOut[3]
+                    mac     = formatedOut[4]
 
-                if vendor == 'ATMEL' and name == 'ZIGBIT':
-                    self.ui.printStatus("Successfully tested device %s" % name)
-                    return (vendor, name, version, mac)
-                else:
-                    self.ui.printStatus("Device %s does not match identification string" % name)
-                    return False
-        else:
+                    if vendor == 'ATMEL' and name == 'ZIGBIT':
+                        self.ui.printStatus("Successfully tested device %s" % deviceName)
+                        return (vendor, name, version, mac)
+                    else:
+                        self.ui.printStatus("Device %s does not match identification string" % name)
+                        return False
+            else:
+                self.ui.printStatus("No response from device %s" % deviceName)
+                return False
+
+        except serial.SerialException:
+            self.ui.printStatus("SerialException while opening device: %s", deviceName)
             return False
 
     def findDevices(self):
