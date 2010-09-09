@@ -1,0 +1,53 @@
+module Common
+{
+    // alarm_pulse:     Puls ist kritisch
+    const long event_alarm_pulse = 1;
+    
+    // alarm_breathing: Atmung ist kritsch
+    const long event_alarm_breathing = 2;
+    
+    // low_battery:     Ladezustand der Batterie ist niedrig
+    const long event_low_battery = 4;
+    
+    // join:            eine (ZigBee)Node wurde dem Connector hinzugefügt (eingeschaltet)
+    const long event_join = 8;
+    
+    // left:            eine (ZigBee)Node wurde vom Connector entfern (ausgeschaltet)
+    const long event_left = 16;
+    
+    // lost:            der Connector hat den Kontakt zur (ZigBee)Node verloren
+    const long event_lost = 32;
+    
+    // data:			wird nur in FilterImpl.java benötigt
+    const long event_data = 64;
+    
+    typedef long CORBA_EventType;
+    
+	typedef wstring<10> NodeID_t;
+  	typedef short GroupID_t;
+  	typedef short Pulse_t;
+  	typedef short Breathing_t;
+  	typedef long long Timestamp_t;
+  	
+    struct CORBA_Node {
+        NodeID_t node_id;
+        GroupID_t group_id;
+    };
+    
+    struct CORBA_EventMessage {
+        NodeID_t nodeID;
+        GroupID_t groupID;
+        CORBA_EventType eventType;
+        Timestamp_t connectorTimestamp;
+        Timestamp_t serverTimestamp;
+    };
+    
+    struct CORBA_DataMessage {
+        NodeID_t nodeID;
+        GroupID_t groupID;
+        Pulse_t pulse;
+        Breathing_t breathing;
+        Timestamp_t connectorTimestamp;
+        Timestamp_t serverTimestamp;
+    };
+};

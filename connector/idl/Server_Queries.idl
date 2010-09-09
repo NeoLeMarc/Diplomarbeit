@@ -1,0 +1,43 @@
+#include "Common.idl"
+
+module CORBA_Server
+{
+  interface Queries
+  {	
+   	// --- Abfragefunktionen ---
+  	// Mithilfe dieser Funktionen kann die GUI Daten des Servers abfragen.
+  	
+  	typedef sequence<Common::CORBA_Node> NodeSeq;
+  	
+  	// Gibt alle Nodes zurück die zum aktuellen Zeitpunkt im Netz bekannt sind.
+  	NodeSeq getAllNodes();
+  	
+  	// Gibt alle Nodes der entsprechenden Gruppe zurück die zum aktuellen Zeitpunkt bekannt sind.
+  	NodeSeq getAllNodesFromGroup(in Common::GroupID_t group_id);
+  	
+  	// --- Data-Abfragen ---
+  	typedef sequence<Common::CORBA_DataMessage> DataSeq;
+  	
+  	// Gibt alle Daten die ab dem übergebenen Zeitpunkt im Netz angefallen sind zurück.
+  	DataSeq getData(in Common::Timestamp_t starting_from);
+  	
+  	// Gibt alle Daten die ab dem übergebenen Zeitpunkt in der Gruppe angefallen sind zurück.
+  	DataSeq getDataFromGroup(in Common::Timestamp_t starting_from, in Common::GroupID_t group_id);
+  	
+  	// Gibt alle Daten die ab dem übergebenen Zeitpunkt bei der Node angefallen sind zurück.
+  	DataSeq getDataFromNode(in Common::Timestamp_t starting_from, in Common::CORBA_Node node);
+  	
+  	
+  	// --- Event-Abfragen ---
+  	typedef sequence<Common::CORBA_EventMessage> EventSeq;
+  	
+  	// Gibt alle Ereignisse die ab dem übergebenen Zeitpunkt im Netz angefallen sind zurück.
+  	EventSeq getEvents(in Common::Timestamp_t starting_from);
+  	
+  	// Gibt alle Ereignisse die ab dem übergebenen Zeitpunkt in der Gruppe angefallen sind zurück.
+  	EventSeq getEventsFromGroup(in Common::Timestamp_t starting_from, in Common::GroupID_t group_id);
+  	
+  	// Gibt alle Ereignisse die ab dem übergebenen Zeitpunkt bei der Node angefallen sind zurück.
+  	EventSeq getEventsFromNode(in Common::Timestamp_t starting_from, in Common::CORBA_Node node);
+  };
+};

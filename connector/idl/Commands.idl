@@ -1,0 +1,15 @@
+#include "Common.idl"
+
+module CORBA_Server
+{
+  interface Commands
+  {   
+    void mute(in Common::CORBA_Node node);
+    
+    void enableAlert(in Common::CORBA_Node node);
+    
+    void disableAlert(in Common::CORBA_Node node);
+    
+    void toggleAlert(in Common::CORBA_Node node);
+  };
+};
