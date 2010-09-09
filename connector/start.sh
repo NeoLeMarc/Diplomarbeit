@@ -1,7 +1,7 @@
 #javac -Xlint:unchecked -cp ~/diplomarbeit/jan/manv/MANVServer/lib/jacorb.jar:idl/ MANVConnector.java CommandsImpl.java
 case $1 in 
     build) 
-        javac -cp ~/diplomarbeit/jan/manv/MANVServer/lib/jacorb.jar:idl/ -d ~/diplomarbeit/connector edu/kit/ibt/manv/connector/MANVConnector.java edu/kit/ibt/manv/connector/CommandsImpl.java
+        javac -cp ~/diplomarbeit/jan/manv/MANVServer/lib/jacorb.jar:idl/ edu/kit/ibt/manv/connector/MANVConnector.java  edu/kit/ibt/manv/connector/**/*.java 
     ;;
 
     start)

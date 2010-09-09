@@ -1,4 +1,4 @@
-package edu.kit.ibt.manv.connector;;
+package edu.kit.ibt.manv.connector.corba;
 import CORBA_Server.CommandsPOA;
 import Common.CORBA_Node;
 
