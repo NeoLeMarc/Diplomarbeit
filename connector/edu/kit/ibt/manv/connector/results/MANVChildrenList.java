@@ -14,10 +14,10 @@ public class MANVChildrenList extends MANVResult {
         return true;
     }
 
-    public ZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
+    public iZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
         // Parse return value
         String[] panIdList = this.raw.split(":")[1].split(",");
-        ZigBit[] childList = new ZigBit[panIdList.length];
+        iZigBit[] childList = new iZigBit[panIdList.length];
 
         for(int pos = 0; pos < panIdList.length; pos++)
             childList[pos] = ZigBit.get(Integer.parseInt(panIdList[pos])); 

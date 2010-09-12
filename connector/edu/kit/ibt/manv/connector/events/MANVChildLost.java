@@ -13,7 +13,7 @@ import org.omg.CosNaming.NameComponent;
 
 
 public class MANVChildLost extends MANVEvent {
-    protected ZigBit source;
+    protected iZigBit source;
 
     public MANVChildLost(String raw){
         super(raw);

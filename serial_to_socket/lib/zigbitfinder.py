@@ -80,7 +80,7 @@ class ZigBitFinder:
                 return False
 
         except serial.SerialException:
-            self.ui.printStatus("SerialException while opening device: %s", deviceName)
+            self.ui.printStatus("SerialException while opening device: %s" % deviceName)
             return False
 
     def findDevices(self):

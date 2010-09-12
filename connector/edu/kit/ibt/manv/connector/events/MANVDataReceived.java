@@ -2,7 +2,7 @@ package edu.kit.ibt.manv.connector.events;
 import edu.kit.ibt.manv.connector.lib.*;
 
 public class MANVDataReceived extends MANVEvent {
-    protected ZigBit source;
+    protected iZigBit source;
     protected String data;
 
 

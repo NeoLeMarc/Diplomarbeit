@@ -31,7 +31,7 @@ public class MANVResult extends MANVEvent {
         return false;
     }
 
-    public ZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
+    public iZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
         return null;
     }
 

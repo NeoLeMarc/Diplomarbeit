@@ -1,10 +1,11 @@
 package edu.kit.ibt.manv.connector.lib;
+import edu.kit.ibt.manv.connector.lib.*;
 import edu.kit.ibt.manv.connector.commands.*;
 import edu.kit.ibt.manv.connector.results.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class ZigBit {
+public class ZigBit implements iZigBit {
     private int nodeID  = 0;
     private int macID   = 0;
 
@@ -36,7 +37,7 @@ public class ZigBit {
         ZigBit.commandQueue = commandQueue;
     }
 
-    public static ZigBit get(int nodeID){
+    public static iZigBit get(int nodeID){
         ZigBit z = zigBitMap.get(nodeID);
         if(z != null)
             return z;
@@ -47,7 +48,7 @@ public class ZigBit {
         }
     }
 
-
+    /*
     public void GPIOenable(int nr){
         this.gpio[nr] = 1;
     }
@@ -76,8 +77,9 @@ public class ZigBit {
             }
         } while (!successful);
     }
+    */
 
-    public static ZigBit[] discover() throws InterruptedException{
+    public static iZigBit[] discover() throws InterruptedException{
         // Send discovery command
         MANVCommand command = new MANVCommand("ATS30=1+WCHILDREN?", 0);
         commandQueue.put(command);
@@ -113,7 +115,7 @@ public class ZigBit {
         return result;
     }
 
-    public void requestMacID(){
+    private void requestMacID(){
         // If we only have the short ID but need to have the MAC 
         // address, we have to ask the node
         //

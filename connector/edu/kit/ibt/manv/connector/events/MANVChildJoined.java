@@ -12,15 +12,15 @@ import org.omg.CosNaming.NamingContextExtHelper;
 import org.omg.CosNaming.NameComponent;
 
 public class MANVChildJoined extends MANVEvent {
-    protected ZigBit source;
+    protected iZigBit source;
 
     public MANVChildJoined(String raw){
         super(raw);
-        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1], 16));
+        this.source = new readonlyZigBit(Integer.parseInt(raw.split(" ")[1], 16));
     }
 
     public boolean isImportant(){
-        return false; 
+        return true; 
     }
 
     public AbstractList<CorbaMessageContainer> createCorbaMessages(){
