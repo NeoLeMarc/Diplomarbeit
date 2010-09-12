@@ -29,6 +29,7 @@ public class MANVCommand extends MANVPrioritized {
     }
 
     public void setResult(MANVResult result){
+        System.out.println("setResult called!");
         this.result = result;
 
         // Open latch, so status can be fetched
@@ -40,10 +41,12 @@ public class MANVCommand extends MANVPrioritized {
         boolean successful = false;
         while(!successful){
             try{
+                System.out.println("Waiting for latch...");
                 this.resultLatch.await();
                 successful = true;
+                System.out.println("... got latch!");
             } catch (InterruptedException e){
-                // Try again
+                System.out.println("Interrupted while waiting for latch...");
             }
         }
 

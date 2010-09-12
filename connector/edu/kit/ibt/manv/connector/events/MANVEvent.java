@@ -36,6 +36,9 @@ public class MANVEvent extends MANVPrioritized {
             return new MANVChildLost(raw);
         else if (raw.matches("\\+WCHILDREN:.*"))
             return new MANVChildrenList(raw);
+        else if (raw.matches("\\+GSN:.*")){
+            return new MANVGsn(raw);
+        }
         else 
             return new MANVEvent(raw);
     }
@@ -46,6 +49,10 @@ public class MANVEvent extends MANVPrioritized {
 
     public String toString(){
         return "MANVEvent(" + this.raw + ")";
+    }
+
+    public String getRaw(){
+        return this.raw;
     }
 }
 

@@ -5,7 +5,9 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class ZigBit {
-    protected int nodeID;
+    private int nodeID  = 0;
+    private int macID   = 0;
+
     private int[] gpio = {0, 0, 0, 0};
 
     // Singleton
@@ -23,6 +25,13 @@ public class ZigBit {
         return this.nodeID;
     }
 
+    public int getMacID(){
+        if(this.macID == 0)
+            this.requestMacID();
+
+        return this.macID;
+    }
+
     public static void setCommandQueue(BlockingQueue<MANVCommand> commandQueue){
         ZigBit.commandQueue = commandQueue;
     }
@@ -37,6 +46,7 @@ public class ZigBit {
             return z;
         }
     }
+
 
     public void GPIOenable(int nr){
         this.gpio[nr] = 1;
@@ -101,5 +111,35 @@ public class ZigBit {
         } while(!successful);
 
         return result;
+    }
+
+    public void requestMacID(){
+        // If we only have the short ID but need to have the MAC 
+        // address, we have to ask the node
+        //
+        boolean successful = false;
+        
+        do {
+            try {
+                System.out.println("Requesting MAC-Addr for Node " + this.nodeID);
+                MANVCommand command = new MANVCommand("ATR " + Integer.toHexString(this.nodeID) + ",0,+GSN?\r", 0);
+                commandQueue.put(command);
+                MANVResult result = command.getResult();
+                String data = result.getData();
+
+                if(result.isComposite() && data != "0"){
+                    this.macID = Integer.parseInt(data);
+                }
+
+                this.macID = 3;
+                successful = true;
+                System.out.println("Got MAC-Addr for Node " + this.nodeID + ": " + this.macID);
+
+            } catch (InterruptedException e) {
+                successful = false;
+                System.err.println("Interrupted exception while requesting mac ID");
+            }
+
+        } while(!successful);
     }
 }

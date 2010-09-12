@@ -18,9 +18,10 @@ public class SocketReader extends Thread{
     }
 
     private void setLastResult(MANVResult result){
-        if(this.lastResult != null && this.lastResult.isComposite())
+        System.out.println("Got result: " + result);
+        if(this.lastResult != null && this.lastResult.isComposite()){
             this.lastResult.addSubResult(result);
-        else
+        }else
             this.lastResult = result; 
 
         if(!result.isComposite())
@@ -44,7 +45,7 @@ public class SocketReader extends Thread{
                 // Skip empty lines
                 if(line.equals(""))
                     continue;
-
+    
                 event = MANVEvent.fromString(line);
 
                 if(event.isResult()){

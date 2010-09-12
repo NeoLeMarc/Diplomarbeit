@@ -1,5 +1,6 @@
 package edu.kit.ibt.manv.connector.lib;
 import edu.kit.ibt.manv.connector.commands.*;
+import edu.kit.ibt.manv.connector.events.*;
 import edu.kit.ibt.manv.connector.results.*;
 import java.util.concurrent.*;
 import java.io.*;

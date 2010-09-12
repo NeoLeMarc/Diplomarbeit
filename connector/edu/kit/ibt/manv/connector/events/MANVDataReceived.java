@@ -1,5 +1,4 @@
-package edu.kit.ibt.manv.connector.results;
-import edu.kit.ibt.manv.connector.events.*;
+package edu.kit.ibt.manv.connector.events;
 import edu.kit.ibt.manv.connector.lib.*;
 
 public class MANVDataReceived extends MANVEvent {
@@ -21,8 +20,8 @@ public class MANVDataReceived extends MANVEvent {
     private void parseRaw(String raw){
         String[] splitedRaw = raw.split(":", 2);
         this.data   = splitedRaw[1];
-        this.source = ZigBit.get(Integer.parseInt(splitedRaw[0].split(" ")[1].split(",")[0]));
-        System.out.println("Data received: Source: " + this.source + " - " + this.data);
+        this.source = ZigBit.get(Integer.parseInt(splitedRaw[0].split(" ")[1].split(",")[0], 16));
+        System.out.println("Data received: Source: " + this.source.getNodeID() + " - " + this.data);
     }
 };
 

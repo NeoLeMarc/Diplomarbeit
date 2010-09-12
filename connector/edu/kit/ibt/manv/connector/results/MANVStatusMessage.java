@@ -1,5 +1,6 @@
 package edu.kit.ibt.manv.connector.results;
 import edu.kit.ibt.manv.connector.corba.*;
+import edu.kit.ibt.manv.connector.events.*;
 import java.util.*;
 import CORBA_Server.*;
 import Common.*;
@@ -35,7 +36,7 @@ public class MANVStatusMessage extends MANVDataReceived {
         // Create Data Message
         CORBA_DataMessage dataMessage  = new CORBA_DataMessage();
         dataMessage.groupID            = 1;
-        dataMessage.nodeID             = String.valueOf(this.source.getNodeID());
+        dataMessage.nodeID             = String.valueOf(this.source.getMacID());
         dataMessage.pulse              = this.pulse;
         dataMessage.breathing          = this.breathing; 
         dataMessage.connectorTimestamp = System.currentTimeMillis();
@@ -46,7 +47,7 @@ public class MANVStatusMessage extends MANVDataReceived {
             // Create alert message
             CORBA_EventMessage eventMessage = new CORBA_EventMessage();
             eventMessage.groupID            = 1;
-            eventMessage.nodeID             = String.valueOf(this.source.getNodeID());
+            eventMessage.nodeID             = String.valueOf(this.source.getMacID());
             eventMessage.eventType          = event_alarm_breathing.value;
             eventMessage.connectorTimestamp = System.currentTimeMillis();
 

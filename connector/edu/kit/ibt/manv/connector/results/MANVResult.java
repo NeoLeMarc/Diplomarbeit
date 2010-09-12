@@ -15,6 +15,10 @@ public class MANVResult extends MANVEvent {
         this.status = status;
     }
 
+    public String getData(){
+        return this.raw;
+    }
+
     public boolean isResult(){
         return true;
     }

@@ -16,11 +16,11 @@ public class MANVChildJoined extends MANVEvent {
 
     public MANVChildJoined(String raw){
         super(raw);
-        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1]));
+        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1], 16));
     }
 
     public boolean isImportant(){
-        return true;
+        return false; 
     }
 
     public AbstractList<CorbaMessageContainer> createCorbaMessages(){
@@ -29,7 +29,7 @@ public class MANVChildJoined extends MANVEvent {
         // Create join message 
         CORBA_EventMessage eventMessage = new CORBA_EventMessage();
         eventMessage.groupID   = 1;
-        eventMessage.nodeID    = String.valueOf(this.source.getNodeID());
+        eventMessage.nodeID    = String.valueOf(this.source.getMacID());
         eventMessage.eventType = event_join.value;
         eventMessage.connectorTimestamp = System.currentTimeMillis();
 
