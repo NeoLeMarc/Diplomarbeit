@@ -31,7 +31,7 @@ public class MANVChildLost extends MANVEvent {
         CORBA_EventMessage eventMessage = new CORBA_EventMessage();
         eventMessage.groupID   = 1;
         eventMessage.nodeID    = String.valueOf(this.source.getMacID());
-        eventMessage.eventType = event_lost.value;
+        eventMessage.eType = event_lost.value;
         eventMessage.connectorTimestamp = System.currentTimeMillis();
 
         ret.add(new CorbaEventMessageContainer(eventMessage));

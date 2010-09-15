@@ -13,6 +13,7 @@ public class ZigBit implements iZigBit {
 
     // Singleton
     private static HashMap<Integer, ZigBit> zigBitMap = new HashMap<Integer, ZigBit>();
+    private static HashMap<Integer, Integer> macMap = new HashMap<Integer, Integer>();
 
     // Command queue
     private static BlockingQueue<MANVCommand> commandQueue;
@@ -46,6 +47,14 @@ public class ZigBit implements iZigBit {
             zigBitMap.put(nodeID, z);
             return z;
         }
+    }
+
+    public static iZigBit getByMacID(int macID){
+        int nodeID = macMap.get(macID);
+        if(nodeID != 0)
+            return ZigBit.get(nodeID);
+        else
+            return new readonlyZigBit(nodeID); 
     }
 
     /*
@@ -91,16 +100,15 @@ public class ZigBit implements iZigBit {
 
     public MANVResult sendData(String data) throws InterruptedException{
         // Send data command
-        MANVCommand command = new MANVCommand("ATD " + this.nodeID + "\r" + data + "\r", 10);
+        MANVCommand command = new MANVCommand("ATD " + Integer.toHexString(this.nodeID) + "\r" + data + "\r", 10);
         commandQueue.put(command);
 
         // Get result & return status
         return command.getResult();
     }
 
-    public MANVResult toggleAlertStatus(){
-        String  data = "t 123";
-        boolean successful = false;
+    private MANVResult sendUntilSuccess(String data){
+        boolean successful;
         MANVResult result = null;
 
         do {
@@ -113,6 +121,22 @@ public class ZigBit implements iZigBit {
         } while(!successful);
 
         return result;
+    }
+
+    public MANVResult toggleAlertStatus(){
+        return this.sendUntilSuccess("t 1"); 
+    }
+
+    public MANVResult enableAlert(){
+        return this.sendUntilSuccess("e 1"); 
+    }
+
+    public MANVResult disableAlert(){
+        return this.sendUntilSuccess("d 1"); 
+    }
+
+    public MANVResult muteAlert(){
+        return this.sendUntilSuccess("m 1"); 
     }
 
     private void requestMacID(){
@@ -143,5 +167,8 @@ public class ZigBit implements iZigBit {
             }
 
         } while(!successful);
+
+        // Update Hashmap
+        macMap.put(this.macID, this.nodeID);
     }
 }

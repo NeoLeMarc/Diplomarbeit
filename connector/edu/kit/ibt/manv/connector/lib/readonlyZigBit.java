@@ -23,4 +23,16 @@ public class readonlyZigBit implements iZigBit{
     public MANVResult toggleAlertStatus(){
         return new MANVResult("ERROR", false);
     }
+
+    public MANVResult disableAlert(){
+        return new MANVResult("ERROR", false);
+    }
+
+    public MANVResult enableAlert(){
+        return new MANVResult("ERROR", false);
+    }
+
+    public MANVResult muteAlert(){
+        return new MANVResult("ERROR", false);
+    }
 }

@@ -31,6 +31,14 @@ int mute = 0;
 // Simulate critical patient?
 int yellowCode = 0;
 
+void muteAlert(){
+  // Enable blue led
+  GP2DAT |= (1 << 19);
+
+  // Mute alert
+  mute = 1;
+}
+
 void yellowButton(){
   disableAlert();
 
@@ -57,9 +65,7 @@ void timerISR(){
   // If Blue button is pressed => mute (P0.5)
   else if(!(GP0DAT & 0x20)){
     // Enable blue LED + Mute
-    GP2DAT |= (1 << 19);
-
-    mute = 1;
+    muteAlert();
   }
 
   // If yellow button is pressed => simulate bad patient status (P0.3)

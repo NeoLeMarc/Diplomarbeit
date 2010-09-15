@@ -17,6 +17,7 @@
 #define RED_BUTTON_MASK = 0x01;
 
 // Signatures
+void muteAlert();
 void buttonISR();
 void timerISR();
 void uartISR();

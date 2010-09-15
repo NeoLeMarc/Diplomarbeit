@@ -112,6 +112,10 @@ void parseCommand(char * commandline){
           // Simulate button request
           buttonISR();
           break;
+
+        case 'm':
+          // Mute
+          muteAlert();
         default:
           ;
           //debug_printf("Unsupported command!\n");
@@ -242,8 +246,10 @@ void zigBitLoop(){
     }
 
     // End of Duty cycle, put ZigBit Module to sleep
-    printf("AT+WSLEEP\r\n");
-    waitForStatus(&commandBuffer);
+    if(POWERSAVE){
+      printf("AT+WSLEEP\r\n");
+      waitForStatus(&commandBuffer);
+    }
   }
 }
 

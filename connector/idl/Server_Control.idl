@@ -1,9 +1,0 @@
-#include "Common.idl"
-
-module CORBA_Server
-{
-  interface Control
-  {   
-    void registerConnector();
-  };
-};

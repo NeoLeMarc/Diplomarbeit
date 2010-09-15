@@ -9,5 +9,8 @@ public interface iZigBit {
     public int getMacID();
     public MANVResult sendData(String data) throws InterruptedException;
     public MANVResult toggleAlertStatus();
+    public MANVResult disableAlert();
+    public MANVResult enableAlert();
+    public MANVResult muteAlert();
 }
 
