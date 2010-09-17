@@ -616,4 +616,38 @@
 
 \section{Der Analog Devices ADuC702X Mikrocontroller}
 \section{Java}
+    \subsection{Übersicht}
+
+        Java ist eine von Sun Microsystems entwickelte Technologie zur platformunabhängigen 
+        Erstellung von Programmen. Sie besteht aus einer Programmiersprache, die ebenfalls den Namen
+        Java trägt, einem Compiler (javac) sowie der Java-Laufzeitumgebung (Java-Runtime-Environment - JRE).
+        Die Java-Laufzeitumgebung besteht aus einer virtuellen Maschine, die die kompilierten Programme ausführt.
+        Dies bietet den Vorteil, dass bei einem Wechsel der Host-Platform (also z.B. von Windows auf Linux oder MacOS) 
+        bestehende Programme nicht neu Übersetzt werden müssen.\\
+
+    \subsection{Programmiersprache}
+        Java ist eine moderne, statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von C entlehnten 
+        Syntax erinnert Java auf den ersten Blick an C++. Bei genauerer Betrachtung unterscheiden sich diese beiden 
+        Sprachen jedoch stark. So bietet Java im Gegensatz zu C++ keine Mehrfachvererbung sondern verwendet sogenannte
+        Interfaces. Java wird mit einer großen Standardbibliothek ausgeliefert, die für sehr viele Standardaufgaben
+        (z.B. Threadverwaltung, Netzwerkkommunikation, GUI-Entwicklung\footnote{GUI: Graphical-User-Interface, dt. 
+        graphische Benutzerschnittstelle.} oder typische Datenstrukturen wie Listen und Hashmaps) bereits eine
+        passende Lösung mitbringt. Durch den integrierten Packaging-Macheanismus wird darüber hinaus die übersichtliche
+        Gliederung des Quelltextes in Unterdateien ermöglicht.\\
+        Aufgrund der statischen Typisierung und der genau definierten Laufzeitumgebung eignet sich Java besonders
+        gut zur Erstellung von zuverlässigen und fehlerarmen Programmen. Werden konsequent Interfaces verwendet und
+        typunsichere Downcasts vermieden, so können die meisten Fehler bereits durch den Compiler erkannt und abgefangen 
+        werden. Kann ein solches Programm ohne Fehler und Warnungen kompiliert werden, besteht eine hohe Chance,
+        dass auch Laufzeitfehler vermieden werden.\\
+        Insbeonsdere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt wird, 
+        ist die Verwendung von klar definierten Schnittstellen (Interfaces) besonders wichtig, da nur so eine korrekte
+        Funktionalität nach dem Zusammensetzen der einzelnen Teile gewährleistet werden kann.
+        
 \section{Corba}
+    Corba (Common Object Request Broker Architecture) ist eine objektorientierte Middleware zur Verteilung von 
+    Objekten auf verschiedenen Rechnern innerhalb eines Netzwerkes. Das besondere hierbei ist, dass Corba
+    nicht an eine bestimmte Programmiersprache gebunden ist. Die einzelnen Objekte bzw. komponenten können
+    hierbei in jeder beliebigen Programmiersprache implementiert werden, die eine Corba-Anbindung besitzt.
+    Im Rahmen dieser Diplomarbeit ist diese Programmiersprachenunabhängigkeit sehr wichtig, da bestimmte
+    Teile (z.B. die Graphische Oberfläche für Mobiltelefone oder die Ansteuerung des USB-Sticks) nicht in 
+    Java realisiert werden können, und statt dessen auf C++ sowie Python ausgewichen werden musste.
