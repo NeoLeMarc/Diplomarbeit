@@ -4,7 +4,7 @@
 ## MANV-Node Simulator
 ## (C) Copyright 2010 by Marcel Noe
 
-import serial, sys, random
+import serial, sys, random, time, select
 
 
 class MANVNodeSimulator(object):
@@ -30,6 +30,7 @@ class MANVNodeSimulator(object):
 
         # 1. ZigBit Modul initialisieren
         print "Beginnning Initialization..."
+        self.sendline("ATZ")
         self.sendline("AT+WCHMASK=07FF800")             ## Alle Kanäle
         self.sendline("AT+IFC=0,0")                     ## RTS/CTS deaktivieren
         self.sendline("AT+GSN=%x" % int(self.nodeID))   ## GSN == Global Subscriber Number ~= Mac-Adresse
@@ -47,9 +48,9 @@ class MANVNodeSimulator(object):
             print "Sending Status..."
 
             if self.alertStatus:
-                self.sendline("ATD 0\rSTATUS:ALERT:%i:%i\r\n" % (random.randint(190, 220), random.randint(1, 5)))
+                self.sendline("ATD 0,0\rSTATUS:ALERT:%i:%i\r\n" % (random.randint(0, 10), random.randint(0, 5)))
             else:
-                self.sendline("ATD 0\rSTATUS:OK:%i:%i\r\n" % (random.randint(50, 110), random.randint(5, 15)))
+                self.sendline("ATD 0,0\rSTATUS:OK:%i:%i\r\n" % (random.randint(60, 120), random.randint(30, 50)))
 
     def sendline(self, line):
         self.serial.write(line + "\r\n")
@@ -66,9 +67,13 @@ class MANVNodeSimulator(object):
             except:
                 self.linebuffer += self.serial.readline()
 
+                if self.linebuffer.find('\n') == -1:
+                    ## Warten, bis wirklich Daten vorliegen
+                    select.select((self.serial,), (), ())
 
     def getStatus(self):
         while True:
+
             line = self.recvline()
 
             if line:
