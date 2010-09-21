@@ -38,7 +38,7 @@ public class MANVChildJoined extends MANVEvent {
     }
 
     public String toString(){
-        return "MANVRChildJoind(" + this.raw + ")";
+        return "MANVRChildJoind(" + this.getRaw() + ")";
     }
 };
 

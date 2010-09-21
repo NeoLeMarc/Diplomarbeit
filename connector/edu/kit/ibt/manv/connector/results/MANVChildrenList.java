@@ -16,7 +16,7 @@ public class MANVChildrenList extends MANVResult {
 
     public iZigBit[] getChildList(BlockingQueue<MANVCommand> commandQueue){
         // Parse return value
-        String[] panIdList = this.raw.split(":")[1].split(",");
+        String[] panIdList = this.getRaw().split(":")[1].split(",");
         iZigBit[] childList = new iZigBit[panIdList.length];
 
         for(int pos = 0; pos < panIdList.length; pos++)

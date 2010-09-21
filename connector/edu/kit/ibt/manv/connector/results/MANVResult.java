@@ -16,7 +16,7 @@ public class MANVResult extends MANVEvent {
     }
 
     public String getData(){
-        return this.raw;
+        return this.getRaw();
     }
 
     public boolean isResult(){
@@ -40,7 +40,7 @@ public class MANVResult extends MANVEvent {
     }
 
     public String toString(){
-        return "MANVResult(" + this.raw + ")";
+        return "MANVResult(" + this.getRaw() + ")";
     }
 
 };

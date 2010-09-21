@@ -6,7 +6,7 @@ import java.util.*;
 
 /* *** Events *** **/
 public class MANVEvent extends MANVPrioritized {
-    protected String raw;
+    private String raw;
     
     public MANVEvent(String raw){
         this.raw = raw;
@@ -48,7 +48,7 @@ public class MANVEvent extends MANVPrioritized {
     }
 
     public String toString(){
-        return "MANVEvent(" + this.raw + ")";
+        return "MANVEvent(" + this.getRaw() + ")";
     }
 
     public String getRaw(){

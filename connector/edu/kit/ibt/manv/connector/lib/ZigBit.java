@@ -155,10 +155,9 @@ public class ZigBit implements iZigBit {
 
                 if(result.isComposite() && data != "0"){
                     this.macID = Integer.parseInt(data);
+                    successful = true;
                 }
 
-                this.macID = 3;
-                successful = true;
                 System.out.println("Got MAC-Addr for Node " + this.nodeID + ": " + this.macID);
 
             } catch (InterruptedException e) {

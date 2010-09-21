@@ -4,9 +4,11 @@ import edu.kit.ibt.manv.connector.lib.*;
 import java.util.concurrent.*;
 
 public class MANVGsn extends MANVResult {
+    String myRaw;
 
     public MANVGsn(String raw){
         super(raw, true);
+        this.myRaw = raw;
     }
 
     public boolean isComposite(){
@@ -16,7 +18,7 @@ public class MANVGsn extends MANVResult {
 
     public String getData(){
         // Extract gsn from raw data
-        String[] splited = this.raw.split(":");
+        String[] splited = this.getRaw().split(":");
 
         if(splited.length == 2)
             return splited[1];

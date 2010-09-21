@@ -24,7 +24,7 @@ public class SocketWriter extends Thread{
         this.serialOut.flush();
 //        System.out.println("Waiting for result");
         this.lastResult = this.reader.getLastResult();
-//        System.out.println("Got result");
+        System.out.println("Last Result: " + this.lastResult + " - " + this.lastResult.hashCode());
     }
 
     @Override 
@@ -46,6 +46,7 @@ public class SocketWriter extends Thread{
 
                 // Get result
                 command.setResult(this.lastResult);
+                this.lastResult = null;
 
                 // Write back to result queue
                 resultQueue.put(command);

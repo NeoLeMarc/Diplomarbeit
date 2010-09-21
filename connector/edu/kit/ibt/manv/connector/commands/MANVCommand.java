@@ -29,7 +29,7 @@ public class MANVCommand extends MANVPrioritized {
     }
 
     public void setResult(MANVResult result){
-        System.out.println("setResult called!");
+        System.out.println("setResult(" + result + "-" + result.hashCode() + ")");
         this.result = result;
 
         // Open latch, so status can be fetched

@@ -48,7 +48,7 @@ public class MANVStatusMessage extends MANVDataReceived {
             CORBA_EventMessage eventMessage = new CORBA_EventMessage();
             eventMessage.groupID            = 1;
             eventMessage.nodeID             = String.valueOf(this.source.getMacID());
-            eventMessage.eventType          = event_alarm_breathing.value;
+            eventMessage.eType              = event_alarm_breathing.value;
             eventMessage.connectorTimestamp = System.currentTimeMillis();
 
             ret.add(new CorbaEventMessageContainer(eventMessage));
@@ -58,7 +58,7 @@ public class MANVStatusMessage extends MANVDataReceived {
     }
 
     public String toString(){
-        return "MANVRStatusMessage(" + this.raw + ")";
+        return "MANVRStatusMessage(" + this.getRaw() + ")";
     }
 
 }

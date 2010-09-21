@@ -18,19 +18,26 @@ public class SocketReader extends Thread{
     }
 
     private void setLastResult(MANVResult result){
-        System.out.println("Got result: " + result);
+
         if(this.lastResult != null && this.lastResult.isComposite()){
             this.lastResult.addSubResult(result);
-        }else
+        } else {
             this.lastResult = result; 
+        }
 
         if(!result.isComposite())
             resultSemaphore.release();
     }
 
-    public MANVResult getLastResult(){
+    synchronized public MANVResult getLastResult(){
         this.resultSemaphore.acquireUninterruptibly();
-        return this.lastResult;
+        MANVResult result = this.lastResult;
+
+        // Wenn man diese Zeile weglässt, dann führt das auftreten
+        // eines Compsite Events zu einer Endlosverkettung von Events.
+        this.lastResult = new MANVResult("ERROR", false);
+
+        return result; 
     }
 
     @Override 
@@ -51,6 +58,8 @@ public class SocketReader extends Thread{
                 if(event.isResult()){
                     //System.out.println("** RESULT **: " + line);
                     this.setLastResult((MANVResult)event);
+                    System.out.println("** RESULT **: " + line);
+
                 } else if(event.isImportant()) {
                     System.out.println("** EVENT **: " + line);
 

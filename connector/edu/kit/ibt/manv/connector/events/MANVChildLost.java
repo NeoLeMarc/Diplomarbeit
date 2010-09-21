@@ -39,7 +39,7 @@ public class MANVChildLost extends MANVEvent {
     }
 
     public String toString(){
-        return "MANVRChildLost(" + this.raw + ")";
+        return "MANVRChildLost(" + this.getRaw() + ")";
     }
 
 };
