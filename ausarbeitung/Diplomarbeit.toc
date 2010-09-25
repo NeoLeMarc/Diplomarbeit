@@ -54,34 +54,34 @@
 \contentsline {section}{\numberline {4.2}Hardware}{25}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}MANVNode}{25}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}ADuC}{25}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}ZigBee-Schnittstelle}{27}{subsection.4.2.3}
-\contentsline {subsubsection}{\numberline {4.2.3.1}UART}{27}{subsubsection.4.2.3.1}
-\contentsline {subsubsection}{\numberline {4.2.3.2}MANV-USB-Connector}{28}{subsubsection.4.2.3.2}
-\contentsline {subsection}{\numberline {4.2.4}Software}{29}{subsection.4.2.4}
-\contentsline {subsubsection}{\numberline {4.2.4.1}Firmware}{29}{subsubsection.4.2.4.1}
-\contentsline {subsubsection}{\numberline {4.2.4.2}MANV-Suite}{30}{subsubsection.4.2.4.2}
-\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{33}{chapter.5}
-\contentsline {chapter}{\numberline {6}Ergebnisse}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}Baselinewandering}{35}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{35}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{35}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}HRV-Variation}{35}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{35}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{35}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}QRS-Komplexe}{36}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{36}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{36}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{36}{section.6.4}
-\contentsline {chapter}{\numberline {7}Diskussion}{37}{chapter.7}
-\contentsline {section}{\numberline {7.1}Baselinewandering}{37}{section.7.1}
-\contentsline {section}{\numberline {7.2}HRV-Variation}{37}{section.7.2}
-\contentsline {section}{\numberline {7.3}QRS-Komplexe}{37}{section.7.3}
-\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{37}{section.7.4}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{39}{chapter.8}
-\contentsline {section}{\numberline {8.1}Verbesserung der Sicherheit}{39}{section.8.1}
-\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{39}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{39}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{39}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{39}{subsection.8.2.3}
-\contentsline {chapter}{Glossar}{41}{appendix*.8}
-\contentsline {chapter}{Literaturverzeichnis}{42}{appendix*.8}
+\contentsline {subsection}{\numberline {4.2.3}ZigBee-Schnittstelle}{28}{subsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.3.1}UART}{29}{subsubsection.4.2.3.1}
+\contentsline {subsubsection}{\numberline {4.2.3.2}MANV-USB-Connector}{30}{subsubsection.4.2.3.2}
+\contentsline {subsection}{\numberline {4.2.4}Software}{30}{subsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.4.1}Firmware}{30}{subsubsection.4.2.4.1}
+\contentsline {subsubsection}{\numberline {4.2.4.2}MANV-Suite}{32}{subsubsection.4.2.4.2}
+\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{35}{chapter.5}
+\contentsline {chapter}{\numberline {6}Ergebnisse}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Baselinewandering}{37}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{37}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{37}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}HRV-Variation}{37}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{37}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{37}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}QRS-Komplexe}{38}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{38}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{38}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{38}{section.6.4}
+\contentsline {chapter}{\numberline {7}Diskussion}{39}{chapter.7}
+\contentsline {section}{\numberline {7.1}Baselinewandering}{39}{section.7.1}
+\contentsline {section}{\numberline {7.2}HRV-Variation}{39}{section.7.2}
+\contentsline {section}{\numberline {7.3}QRS-Komplexe}{39}{section.7.3}
+\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{39}{section.7.4}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{41}{chapter.8}
+\contentsline {section}{\numberline {8.1}Verbesserung der Sicherheit}{41}{section.8.1}
+\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{41}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{41}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{41}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{41}{subsection.8.2.3}
+\contentsline {chapter}{Glossar}{43}{appendix*.8}
+\contentsline {chapter}{Literaturverzeichnis}{44}{appendix*.8}
