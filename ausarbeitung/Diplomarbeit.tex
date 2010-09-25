@@ -8,8 +8,8 @@
 %                               %
 %-------------------------------%
 
-\documentclass[12pt]{book} \textheight 23.0cm \textwidth 15.5cm
-\topmargin0cm \evensidemargin0cm \oddsidemargin0cm
+\documentclass[12pt]{wissdoc} %\textheight 23.0cm \textwidth 15.5cm
+%\topmargin0cm \evensidemargin0cm \oddsidemargin0cm
 \setlength{\parindent}{0pt}
 \usepackage{a4,ngerman}
 %\usepackage[a4paper, left=2.7cm, right=2.3cm, top=3.8cm, bottom=2.6cm]{geometry}
@@ -26,17 +26,27 @@
 \usepackage{url}
 \usepackage{makeidx}
 \usepackage{natbib}
-\usepackage[dvips]{color}
+% \usepackage[dvips]{color}
 \usepackage{fancyhdr}
 \usepackage{color}
 \usepackage{pstricks}
 \usepackage{rotating}
 \usepackage[footnotesize,bf]{caption2}
 \usepackage{eurosym}
+\usepackage{pdfpages}
 \makeatletter \renewcommand{\fps@figure}{htbp} \makeatother
 \renewcommand{\textfraction}{.1} 
 \setlength{\parindent}{0em}
 \renewcommand{\baselinestretch}{1.2}
+
+% Macros, nicht unbedingt notwendig
+\input{macros}
+
+\newcommand{\blankpage}{% Leerseite ohne Seitennummer, nächste Seite rechts
+ \clearpage{\pagestyle{empty}\cleardoublepage}
+}
+
+
 \pagestyle{headings}
 
 %% *********************************
@@ -101,7 +111,7 @@
 %\thispagestyle{empty}
 \chapter*{} 
 \pagenumbering{Roman}% Seitennummerierung durch arabische Ziffern
-\vspace*{12.5cm} {\setlength{\parindent}{0pt}\textbf{Eidesstattliche Erklärung}\\
+\vspace*{11.5cm} {\setlength{\parindent}{0pt}\textbf{Eidesstattliche Erklärung}\\
 Hiermit erkläre ich an Eides Statt, dass ich die vorliegende Diplomarbeit selbständig und ohne unzulässige fremde Hilfsmittel angefertigt habe. Die verwendeten Literaturquellen sind im Literaturverzeichnis vollständig angegeben. Die Arbeit wurde in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde zur Erlangung eines akademischen Grades vorgelegt.\\ 
 
 Karlsruhe, 31.10.2010\\

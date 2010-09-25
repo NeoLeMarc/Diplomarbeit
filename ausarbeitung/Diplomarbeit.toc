@@ -1,0 +1,87 @@
+\contentsline {chapter}{Abbildungsverzeichnis}{XIII}{chapter*.6}
+\contentsline {chapter}{Tabellenverzeichnis}{XV}{chapter*.7}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation der Arbeit}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Aufgaben und Ziele der Arbeit}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Gliederung und Vorgehensweise der Arbeit}{1}{section.1.3}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Grundlagen der kabellosen \IeC {\"U}betragung}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Paketorientierte \IeC {\"U}bertragung}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Frequenzspreizung}{3}{subsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.2.1}\IeC {\"U}bersicht}{3}{subsubsection.2.1.2.1}
+\contentsline {subsubsection}{\numberline {2.1.2.2}FHSS: Frequency Hoping Spread Spectrum}{4}{subsubsection.2.1.2.2}
+\contentsline {subsubsection}{\numberline {2.1.2.3}DSSS: Direct Sequene Spred Spectrum}{4}{subsubsection.2.1.2.3}
+\contentsline {subsubsection}{\numberline {2.1.2.4}FHSS vs. DSSS}{4}{subsubsection.2.1.2.4}
+\contentsline {section}{\numberline {2.2}Kabellose \IeC {\"U}bertragungsprotokolle}{5}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Einf\IeC {\"u}hrung}{5}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}DECT}{5}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}GSM/UMTS}{5}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}WLAN}{6}{subsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.4.1}\IeC {\"U}bersicht}{6}{subsubsection.2.2.4.1}
+\contentsline {subsubsection}{\numberline {2.2.4.2}IEEE 802.11b}{7}{subsubsection.2.2.4.2}
+\contentsline {subsubsection}{\numberline {2.2.4.3}IEEE 802.11g}{7}{subsubsection.2.2.4.3}
+\contentsline {subsubsection}{\numberline {2.2.4.4}IEEE 802.11a}{7}{subsubsection.2.2.4.4}
+\contentsline {subsubsection}{\numberline {2.2.4.5}St\IeC {\"o}rsicherheit}{8}{subsubsection.2.2.4.5}
+\contentsline {subsubsection}{\numberline {2.2.4.6}Leistungsaufnahme}{9}{subsubsection.2.2.4.6}
+\contentsline {subsubsection}{\numberline {2.2.4.7}Anzahl Teilnehmer}{9}{subsubsection.2.2.4.7}
+\contentsline {subsection}{\numberline {2.2.5}WPAN: Wireless Personal Area Networks}{9}{subsection.2.2.5}
+\contentsline {subsubsection}{\numberline {2.2.5.1}\IeC {\"U}bersicht}{9}{subsubsection.2.2.5.1}
+\contentsline {subsubsection}{\numberline {2.2.5.2}IEEE 802.15}{10}{subsubsection.2.2.5.2}
+\contentsline {subsubsection}{\numberline {2.2.5.3}IEEE 802.15.1: Bluetooth}{10}{subsubsection.2.2.5.3}
+\contentsline {paragraph}{\numberline {2.2.5.3.1}\IeC {\"U}berblick}{10}{paragraph.2.2.5.3.1}
+\contentsline {paragraph}{\numberline {2.2.5.3.2}Pairing}{11}{paragraph.2.2.5.3.2}
+\contentsline {paragraph}{\numberline {2.2.5.3.3}Reichweite}{12}{paragraph.2.2.5.3.3}
+\contentsline {paragraph}{\numberline {2.2.5.3.4}\IeC {\"U}bertragungsrate}{13}{paragraph.2.2.5.3.4}
+\contentsline {paragraph}{\numberline {2.2.5.3.5}St\IeC {\"o}rsicherheit}{13}{paragraph.2.2.5.3.5}
+\contentsline {paragraph}{\numberline {2.2.5.3.6}Anzahl Teilnehmer}{13}{paragraph.2.2.5.3.6}
+\contentsline {paragraph}{\numberline {2.2.5.3.7}Leistungsaufnahme}{14}{paragraph.2.2.5.3.7}
+\contentsline {subsubsection}{\numberline {2.2.5.4}IEEE 802.15.4: ZigBee}{15}{subsubsection.2.2.5.4}
+\contentsline {paragraph}{\numberline {2.2.5.4.1}\IeC {\"U}bersicht}{15}{paragraph.2.2.5.4.1}
+\contentsline {paragraph}{\numberline {2.2.5.4.2}Netzstruktur}{15}{paragraph.2.2.5.4.2}
+\contentsline {paragraph}{\numberline {2.2.5.4.3}St\IeC {\"o}rsicherheit}{17}{paragraph.2.2.5.4.3}
+\contentsline {paragraph}{\numberline {2.2.5.4.4}Leistungsaufnahme}{20}{paragraph.2.2.5.4.4}
+\contentsline {subsubsection}{\numberline {2.2.5.5}Wibree: Bluetooth Low Energy}{20}{subsubsection.2.2.5.5}
+\contentsline {subsection}{\numberline {2.2.6}Weitere Protokolle}{20}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}Diskussion}{20}{subsection.2.2.7}
+\contentsline {section}{\numberline {2.3}Der Analog Devices ADuC702X Mikrocontroller}{20}{section.2.3}
+\contentsline {section}{\numberline {2.4}Java}{20}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}\IeC {\"U}bersicht}{20}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Programmiersprache}{21}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Corba}{21}{section.2.5}
+\contentsline {chapter}{\numberline {3}Stand der Technik}{23}{chapter.3}
+\contentsline {chapter}{\numberline {4}Entwurf}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Gesamtsystem}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Hardware}{25}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}MANVNode}{25}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}ADuC}{25}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}ZigBee-Schnittstelle}{27}{subsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.3.1}UART}{27}{subsubsection.4.2.3.1}
+\contentsline {subsubsection}{\numberline {4.2.3.2}MANV-USB-Connector}{28}{subsubsection.4.2.3.2}
+\contentsline {subsection}{\numberline {4.2.4}Software}{29}{subsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.4.1}Firmware}{29}{subsubsection.4.2.4.1}
+\contentsline {subsubsection}{\numberline {4.2.4.2}MANV-Suite}{30}{subsubsection.4.2.4.2}
+\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{33}{chapter.5}
+\contentsline {chapter}{\numberline {6}Ergebnisse}{35}{chapter.6}
+\contentsline {section}{\numberline {6.1}Baselinewandering}{35}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{35}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{35}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}HRV-Variation}{35}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{35}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{35}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}QRS-Komplexe}{36}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{36}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{36}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{36}{section.6.4}
+\contentsline {chapter}{\numberline {7}Diskussion}{37}{chapter.7}
+\contentsline {section}{\numberline {7.1}Baselinewandering}{37}{section.7.1}
+\contentsline {section}{\numberline {7.2}HRV-Variation}{37}{section.7.2}
+\contentsline {section}{\numberline {7.3}QRS-Komplexe}{37}{section.7.3}
+\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{37}{section.7.4}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{39}{chapter.8}
+\contentsline {section}{\numberline {8.1}Verbesserung der Sicherheit}{39}{section.8.1}
+\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{39}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{39}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{39}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{39}{subsection.8.2.3}
+\contentsline {chapter}{Glossar}{41}{appendix*.8}
+\contentsline {chapter}{Literaturverzeichnis}{42}{appendix*.8}

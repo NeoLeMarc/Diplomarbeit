@@ -4,11 +4,7 @@
 \chapter{Entwurf}
 
 \section{Gesamtsystem}
-\begin{center}
-%\subsubsection*{}%\vspace{3cm}
-{\epsfig{file=diagramme/gesamtuebersicht.eps, scale=0.25}}
-\end{center}
-
+\Abbildungps{!htb}{1}{diagramme/Gesamtuebersicht.pdf}{label}{Überblick über das Gesamtsystem}
 
 \section{Hardware}
 \subsection{MANVNode}
@@ -48,35 +44,6 @@ da es sich um Befehle handelt, die von der MANVSuite an den Sensor gesendet wurd
 abgearbeitet werden müssen. 
 
 
-\subsection{Firmware}
-Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das ZigBit-Modul ergänzt. Die Firware wurde in der
-Programmiersprache C geschrieben, und setzt direkt auf die Hardware des ADuC auf. Es wurde lediglich die von 
-Rowley Crossworks angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie Stringmanipulation,
-einen Interrupthandler und einen fertigen Startup-Code bietet.
-
-Die Entwicklung von Software für einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
-aus. Ein Großteil der Funktionalität, die man von der Entwicklung von Software für einen standard Mikrocomputer 
-gewohnt ist, ist schlichtweg nicht vorhanden. Hier sind insbesondere eine automatische Speicherverwaltung sowie
-Threads und Prozesse zu erwähnen. Da der Erste-Hilfe-Sensor viele Aufgaben gleichzeitig erfüllen muss, stellt 
-dies eine ernst zu nehmende Herausforderung dar. Das Problem wurde durch ein Interrupt getriebenes Programmiermodell
-gelöst.
-
-Es werden folgende Interrupts verwendet:
-
-Timer0: Dieser Timer-Interrupt führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
-und eine Analyse der empfangenen Daten wird durchgeführt.
-
-Timer1: Dieser Interrupt führt einige periodische Aufgaben durch. Zunächst werden die am Sensor vorhandenen
-Taster abgefragt (Alarm Stummschalten, Alarm manuell auslösen etc.). Danach wird überprüft, in welchem Zustand
-der Sensor sich aktuell befindet, also z.B. ob ein Alarm aufgetreten ist, oder ob der Patient sich in einem
-guten Zustand befindet. Abhängig hiervon werden nun LEDs und ein angeschlossener Piezzo-Summer geschaltet,
-um den Zustand nach aussen zu signalisieren. Zu letzt wird noch überprüft, wann zuletzt eine Übertragung
-des Zustands des Sensors an die MANVSuite erfolgt ist. Liegt dies länger als einen konfiguriertes Zeitintervall
-zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
-
-Ein weiteres Problem sind die sehr beschränkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
-mit 16kB sehr knapp bemessen. 
-
 \subsubsection{UART}
 Der ADuC verfügt über einen UART Interrupt, welcher eine Statusänderung des UARTs signalisiert. Im Register 
 \textsl{COMIEN0} wird konfiguriert, welche Zustände über den Interrupt singnalisiert werden sollen. Tritt
@@ -109,7 +76,7 @@ abgearbeitet und eventuell empfangene Befehle werden abgearbeitet. Dies kann nat
 die Abarbeitung von Interrupts unterbrochen werden.
 
 \subsubsection{MANV-USB-Connector}
-{\epsfig{file=diagramme/manvconnector.eps, scale=0.5}}
+\Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
 Der MANV-USB-Connector ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
 ZigBit-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das ZigBit-Modul mit Strom versorgen, sowie eine
 Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. Für die Stromversorgung ist es notwendig, die 5V der
@@ -117,6 +84,36 @@ USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
 
 \subsection{Software}
 
+\subsubsection{Firmware}
+Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das ZigBit-Modul ergänzt. Die Firware wurde in der
+Programmiersprache C geschrieben, und setzt direkt auf die Hardware des ADuC auf. Es wurde lediglich die von 
+Rowley Crossworks angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie Stringmanipulation,
+einen Interrupthandler und einen fertigen Startup-Code bietet.
+
+Die Entwicklung von Software für einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
+aus. Ein Großteil der Funktionalität, die man von der Entwicklung von Software für einen standard Mikrocomputer 
+gewohnt ist, ist schlichtweg nicht vorhanden. Hier sind insbesondere eine automatische Speicherverwaltung sowie
+Threads und Prozesse zu erwähnen. Da der Erste-Hilfe-Sensor viele Aufgaben gleichzeitig erfüllen muss, stellt 
+dies eine ernst zu nehmende Herausforderung dar. Das Problem wurde durch ein Interrupt getriebenes Programmiermodell
+gelöst.
+
+Es werden folgende Interrupts verwendet:
+
+Timer0: Dieser Timer-Interrupt führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
+und eine Analyse der empfangenen Daten wird durchgeführt.
+
+Timer1: Dieser Interrupt führt einige periodische Aufgaben durch. Zunächst werden die am Sensor vorhandenen
+Taster abgefragt (Alarm Stummschalten, Alarm manuell auslösen etc.). Danach wird überprüft, in welchem Zustand
+der Sensor sich aktuell befindet, also z.B. ob ein Alarm aufgetreten ist, oder ob der Patient sich in einem
+guten Zustand befindet. Abhängig hiervon werden nun LEDs und ein angeschlossener Piezzo-Summer geschaltet,
+um den Zustand nach aussen zu signalisieren. Zu letzt wird noch überprüft, wann zuletzt eine Übertragung
+des Zustands des Sensors an die MANVSuite erfolgt ist. Liegt dies länger als einen konfiguriertes Zeitintervall
+zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
+
+Ein weiteres Problem sind die sehr beschränkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
+mit 16kB sehr knapp bemessen. 
+
+\subsubsection{MANV-Suite}
 In dieser Arbeit wurde ein Java-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die Anbindung an
 die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite.
 
@@ -160,15 +157,4 @@ Der MANVConnector ist in drei Threads aufgeteilt:
                          Ausserdem werden Ereignisse aus der \textsl{EventQueue} entnommen,
                          in Corba-Events übersetzt und an den MANVServer zugestellt.
 \end{itemize}                          
-
-\subsection{Automatisches Failover für den ZigBee Coordinator}
-
-\section{Implementierung}
-
-\subsection{Hardware}
-
-\subsection{Firmware}
-
-\subsection{Software}
-
 

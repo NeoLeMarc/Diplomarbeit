@@ -1,0 +1,88 @@
+\BOOKMARK [0][]{Inhaltsverzeichnis.0}{Inhaltsverzeichnis}{}
+\BOOKMARK [0][]{chapter*.6}{Abbildungsverzeichnis}{}
+\BOOKMARK [0][]{chapter*.7}{Tabellenverzeichnis}{}
+\BOOKMARK [0][]{chapter.1}{1 Einleitung}{}
+\BOOKMARK [1][-]{section.1.1}{1.1 Motivation der Arbeit}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{1.2 Aufgaben und Ziele der Arbeit}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{1.3 Gliederung und Vorgehensweise der Arbeit}{chapter.1}
+\BOOKMARK [0][]{chapter.2}{2 Grundlagen}{}
+\BOOKMARK [1][-]{section.2.1}{2.1 Grundlagen der kabellosen \334betragung}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Paketorientierte \334bertragung}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Frequenzspreizung}{section.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.2.1}{2.1.2.1 \334bersicht}{subsection.2.1.2}
+\BOOKMARK [3][-]{subsubsection.2.1.2.2}{2.1.2.2 FHSS: Frequency Hoping Spread Spectrum}{subsection.2.1.2}
+\BOOKMARK [3][-]{subsubsection.2.1.2.3}{2.1.2.3 DSSS: Direct Sequene Spred Spectrum}{subsection.2.1.2}
+\BOOKMARK [3][-]{subsubsection.2.1.2.4}{2.1.2.4 FHSS vs. DSSS}{subsection.2.1.2}
+\BOOKMARK [1][-]{section.2.2}{2.2 Kabellose \334bertragungsprotokolle}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Einf\374hrung}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 DECT}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 GSM/UMTS}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 WLAN}{section.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.4.1}{2.2.4.1 \334bersicht}{subsection.2.2.4}
+\BOOKMARK [3][-]{subsubsection.2.2.4.2}{2.2.4.2 IEEE 802.11b}{subsection.2.2.4}
+\BOOKMARK [3][-]{subsubsection.2.2.4.3}{2.2.4.3 IEEE 802.11g}{subsection.2.2.4}
+\BOOKMARK [3][-]{subsubsection.2.2.4.4}{2.2.4.4 IEEE 802.11a}{subsection.2.2.4}
+\BOOKMARK [3][-]{subsubsection.2.2.4.5}{2.2.4.5 St\366rsicherheit}{subsection.2.2.4}
+\BOOKMARK [3][-]{subsubsection.2.2.4.6}{2.2.4.6 Leistungsaufnahme}{subsection.2.2.4}
+\BOOKMARK [3][-]{subsubsection.2.2.4.7}{2.2.4.7 Anzahl Teilnehmer}{subsection.2.2.4}
+\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 WPAN: Wireless Personal Area Networks}{section.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.5.1}{2.2.5.1 \334bersicht}{subsection.2.2.5}
+\BOOKMARK [3][-]{subsubsection.2.2.5.2}{2.2.5.2 IEEE 802.15}{subsection.2.2.5}
+\BOOKMARK [3][-]{subsubsection.2.2.5.3}{2.2.5.3 IEEE 802.15.1: Bluetooth}{subsection.2.2.5}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.1}{2.2.5.3.1 \334berblick}{subsubsection.2.2.5.3}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.2}{2.2.5.3.2 Pairing}{subsubsection.2.2.5.3}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.3}{2.2.5.3.3 Reichweite}{subsubsection.2.2.5.3}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.4}{2.2.5.3.4 \334bertragungsrate}{subsubsection.2.2.5.3}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.5}{2.2.5.3.5 St\366rsicherheit}{subsubsection.2.2.5.3}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.6}{2.2.5.3.6 Anzahl Teilnehmer}{subsubsection.2.2.5.3}
+\BOOKMARK [4][-]{paragraph.2.2.5.3.7}{2.2.5.3.7 Leistungsaufnahme}{subsubsection.2.2.5.3}
+\BOOKMARK [3][-]{subsubsection.2.2.5.4}{2.2.5.4 IEEE 802.15.4: ZigBee}{subsection.2.2.5}
+\BOOKMARK [4][-]{paragraph.2.2.5.4.1}{2.2.5.4.1 \334bersicht}{subsubsection.2.2.5.4}
+\BOOKMARK [4][-]{paragraph.2.2.5.4.2}{2.2.5.4.2 Netzstruktur}{subsubsection.2.2.5.4}
+\BOOKMARK [4][-]{paragraph.2.2.5.4.3}{2.2.5.4.3 St\366rsicherheit}{subsubsection.2.2.5.4}
+\BOOKMARK [4][-]{paragraph.2.2.5.4.4}{2.2.5.4.4 Leistungsaufnahme}{subsubsection.2.2.5.4}
+\BOOKMARK [3][-]{subsubsection.2.2.5.5}{2.2.5.5 Wibree: Bluetooth Low Energy}{subsection.2.2.5}
+\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Weitere Protokolle}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Diskussion}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{2.3 Der Analog Devices ADuC702X Mikrocontroller}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{2.4 Java}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 \334bersicht}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Programmiersprache}{section.2.4}
+\BOOKMARK [1][-]{section.2.5}{2.5 Corba}{chapter.2}
+\BOOKMARK [0][]{chapter.3}{3 Stand der Technik}{}
+\BOOKMARK [0][]{chapter.4}{4 Entwurf}{}
+\BOOKMARK [1][-]{section.4.1}{4.1 Gesamtsystem}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{4.2 Hardware}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 MANVNode}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 ADuC}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 ZigBee-Schnittstelle}{section.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.3.1}{4.2.3.1 UART}{subsection.4.2.3}
+\BOOKMARK [3][-]{subsubsection.4.2.3.2}{4.2.3.2 MANV-USB-Connector}{subsection.4.2.3}
+\BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Software}{section.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.4.1}{4.2.4.1 Firmware}{subsection.4.2.4}
+\BOOKMARK [3][-]{subsubsection.4.2.4.2}{4.2.4.2 MANV-Suite}{subsection.4.2.4}
+\BOOKMARK [0][]{chapter.5}{5 Praktische Realisierung des Sensornetzes}{}
+\BOOKMARK [0][]{chapter.6}{6 Ergebnisse}{}
+\BOOKMARK [1][-]{section.6.1}{6.1 Baselinewandering}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 Messungen unter verschiedenen Bedingungen}{section.6.1}
+\BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Vergleichende Messung mit Refenzger\344t}{section.6.1}
+\BOOKMARK [1][-]{section.6.2}{6.2 HRV-Variation}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 Messungen unter verschiedenen Bedingungen}{section.6.2}
+\BOOKMARK [2][-]{subsection.6.2.2}{6.2.2 Vergleichende Messung mit Refenzger\344t}{section.6.2}
+\BOOKMARK [1][-]{section.6.3}{6.3 QRS-Komplexe}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.3.1}{6.3.1 Messungen unter verschiedenen Bedingungen}{section.6.3}
+\BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Vergleichende Messung mit Refenzger\344t}{section.6.3}
+\BOOKMARK [1][-]{section.6.4}{6.4 Vergleiche der Verfahren zueinander}{chapter.6}
+\BOOKMARK [0][]{chapter.7}{7 Diskussion}{}
+\BOOKMARK [1][-]{section.7.1}{7.1 Baselinewandering}{chapter.7}
+\BOOKMARK [1][-]{section.7.2}{7.2 HRV-Variation}{chapter.7}
+\BOOKMARK [1][-]{section.7.3}{7.3 QRS-Komplexe}{chapter.7}
+\BOOKMARK [1][-]{section.7.4}{7.4 Vergleich der Verfahren zueinander}{chapter.7}
+\BOOKMARK [0][]{chapter.8}{8 Zusammenfassung und Ausblick}{}
+\BOOKMARK [1][-]{section.8.1}{8.1 Verbesserung der Sicherheit}{chapter.8}
+\BOOKMARK [1][-]{section.8.2}{8.2 Verbesserung der Reichweite und St\366rsicherheit}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.2.1}{8.2.1 Anderer Frequenzbereich}{section.8.2}
+\BOOKMARK [2][-]{subsection.8.2.2}{8.2.2 Richtantennen f\374r Router}{section.8.2}
+\BOOKMARK [2][-]{subsection.8.2.3}{8.2.3 Adaptive Pfadkosten f\374r Meshrouting}{section.8.2}
+\BOOKMARK [0][]{appendix*.8}{Glossar}{}
+\BOOKMARK [0][]{appendix*.8}{Literaturverzeichnis}{}
