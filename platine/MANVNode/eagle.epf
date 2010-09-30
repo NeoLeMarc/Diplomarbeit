@@ -1,5 +1,5 @@
 [Eagle]
-Version="05 10 00"
+Version="05 09 00"
 Platform="Linux"
 Serial="62191E841E-LSR-WLM-1EL"
 Globals="Globals"
@@ -10,18 +10,18 @@ AutoSaveProject=1
 
 [Win_1]
 Type="CAM Processor"
-Loc="423 173 1022 735"
+Loc="5 221 604 783"
 State=2
 Number=1
 File="/home/marcel/diplomarbeit/platine/MANVNode/manvnode.brd"
 
 [Win_2]
 Type="Control Panel"
-Loc="1 27 1022 761"
+Loc="5 49 1026 783"
 State=2
 Number=0
 
 [Desktop]
-Screen="1024 768"
+Screen="4096 1152"
 Window="Win_1"
 Window="Win_2"

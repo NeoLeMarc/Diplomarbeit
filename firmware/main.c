@@ -43,8 +43,8 @@ int main(void){
   ctl_unmask_isr(UART_INT);
 
   // Enable Button Interrupt
-  ctl_set_isr(IRQ0_INT, 1, CTL_ISR_TRIGGER_FIXED, buttonISR, 0);
-  ctl_unmask_isr(IRQ0_INT);
+  //ctl_set_isr(IRQ0_INT, 1, CTL_ISR_TRIGGER_FIXED, buttonISR, 0);
+  //ctl_unmask_isr(IRQ0_INT);
 
   // Enable Timer Interrupt
   ctl_set_isr(TIMER0_INT, 0, CTL_ISR_TRIGGER_FIXED, timerISR, 0);

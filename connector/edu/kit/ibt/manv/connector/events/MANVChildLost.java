@@ -17,7 +17,7 @@ public class MANVChildLost extends MANVEvent {
 
     public MANVChildLost(String raw){
         super(raw);
-        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1]));
+        this.source = ZigBit.get(Integer.parseInt(raw.split(" ")[1], 16));
     }
 
     public boolean isImportant(){

@@ -20,7 +20,7 @@ public class MANVChildrenList extends MANVResult {
         iZigBit[] childList = new iZigBit[panIdList.length];
 
         for(int pos = 0; pos < panIdList.length; pos++)
-            childList[pos] = ZigBit.get(Integer.parseInt(panIdList[pos])); 
+            childList[pos] = ZigBit.get(Integer.parseInt(panIdList[pos], 16)); 
 
         return childList;
     }

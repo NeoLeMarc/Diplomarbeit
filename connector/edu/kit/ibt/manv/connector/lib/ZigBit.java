@@ -100,7 +100,7 @@ public class ZigBit implements iZigBit {
 
     public MANVResult sendData(String data) throws InterruptedException{
         // Send data command
-        MANVCommand command = new MANVCommand("ATD " + Integer.toHexString(this.nodeID) + "\r" + data + "\r", 10);
+        MANVCommand command = new MANVCommand("ATD " + Integer.toHexString(this.nodeID) + ",0\r" + data + "\r", 10);
         commandQueue.put(command);
 
         // Get result & return status
@@ -154,7 +154,7 @@ public class ZigBit implements iZigBit {
                 String data = result.getData();
 
                 if(result.isComposite() && data != "0"){
-                    this.macID = Integer.parseInt(data);
+                    this.macID = Integer.parseInt(data, 16);
                     successful = true;
                 }
 

@@ -171,12 +171,14 @@ void initZigBit(){
   readStringRaw();
   GP2DAT &= ~(1 << 17);
   sleep(4);
-  putStringRaw("AT+GSN=3 +WROLE=2 +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
+  putStringRaw("AT+WLEAVE +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
+  //putStringRaw("AT+WLEAVE WROLE=2 +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
   GP2DAT |= (1 << 17);
   readStringRaw();
   GP2DAT &= ~(1 << 17);
   sleep(4);
-  putStringRaw("AT+WPANID=1620 +WCHMASK=07FF800 +WPWR=35,0\r\n");
+  //putStringRaw("AT+WPANID=1620 +GSN=C +WSRC=C +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
+  putStringRaw("AT+WPANID=1620 +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
   GP2DAT |= (1 << 17);
   readStringRaw();
   GP2DAT &= ~(1 << 17);
