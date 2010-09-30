@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class ZigBit implements iZigBit {
+    private boolean macDetection = false;
     private int nodeID  = 0;
     private int macID   = 0;
 
@@ -28,8 +29,13 @@ public class ZigBit implements iZigBit {
     }
 
     public int getMacID(){
-        if(this.macID == 0)
-            this.requestMacID();
+        if(!this.macDetection){
+            macMap.put(this.nodeID, this.nodeID);
+            return this.nodeID;
+        } else {
+            if(this.macID == 0)
+                this.requestMacID();
+        }
 
         return this.macID;
     }
@@ -56,37 +62,6 @@ public class ZigBit implements iZigBit {
         else
             return new readonlyZigBit(nodeID); 
     }
-
-    /*
-    public void GPIOenable(int nr){
-        this.gpio[nr] = 1;
-    }
-
-    public void GPIOdisable(int nr){
-        this.gpio[nr] = 0;
-    }
-
-    public void update() throws java.io.IOException{
-        boolean successful   = false;
-        String commandString = "";
-        commandString += "ATR " + this.nodeID + ",0,";
-
-        for(int i = 0; i < gpio.length; i++)
-            commandString += " S13" + i + "=" + this.gpio[i];
-
-        // Do not lose commands!
-        do {
-            successful = false;
-
-            try {
-                this.commandQueue.put(new MANVCommand(commandString, 1));
-                successful = true;
-            } catch (InterruptedException e) {
-                successful = false;
-            }
-        } while (!successful);
-    }
-    */
 
     public static iZigBit[] discover() throws InterruptedException{
         // Send discovery command
