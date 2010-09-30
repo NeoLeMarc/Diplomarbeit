@@ -107,6 +107,16 @@ public class ZigBit implements iZigBit {
         return command.getResult();
     }
 
+    public void isendData(String data){
+        // Send data command and do not fetch result
+        try {
+            MANVCommand command = new MANVCommand("ATD " + Integer.toHexString(this.nodeID) + ",0\r" + data + "\r", 10);
+            commandQueue.put(command);
+        } catch (InterruptedException e) {
+        }
+    }
+
+
     private MANVResult sendUntilSuccess(String data){
         boolean successful;
         MANVResult result = null;
@@ -138,6 +148,24 @@ public class ZigBit implements iZigBit {
     public MANVResult muteAlert(){
         return this.sendUntilSuccess("m 1"); 
     }
+
+    public void itoggleAlertStatus(){
+        this.isendData("t 1"); 
+    }
+
+    public void ienableAlert(){
+        this.isendData("e 1"); 
+    }
+
+    public void idisableAlert(){
+        this.isendData("d 1"); 
+    }
+
+    public void imuteAlert(){
+        this.isendData("m 1"); 
+    }
+
+
 
     private void requestMacID(){
         // If we only have the short ID but need to have the MAC 

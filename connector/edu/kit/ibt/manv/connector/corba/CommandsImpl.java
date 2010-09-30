@@ -10,28 +10,28 @@ public class CommandsImpl extends CommandsPOA {
     public void disableAlert(CORBA_Node node){
         System.out.println("*** CORBA Event received: disableAlert(" + node.node_id + ")");
         iZigBit zigBit = ZigBit.getByMacID(Integer.parseInt(node.node_id));
-        zigBit.disableAlert();
+        zigBit.idisableAlert();
     }
 
     @Override
     public void enableAlert(CORBA_Node node){
         System.out.println("*** CORBA Event received: enableAlert(" + node + ")");
         iZigBit zigBit = ZigBit.getByMacID(Integer.parseInt(node.node_id));
-        zigBit.enableAlert();
+        zigBit.ienableAlert();
     }
 
     @Override
     public void toggleAlert(CORBA_Node node){
         System.out.println("*** CORBA Event received: toggleAlert()");
         iZigBit zigBit = ZigBit.getByMacID(Integer.parseInt(node.node_id));
-        zigBit.toggleAlertStatus();
+        zigBit.itoggleAlertStatus();
     }
 
     @Override
     public void mute(CORBA_Node node){
         System.out.println("*** CORBA Event received: mute()");
         iZigBit zigBit = ZigBit.getByMacID(Integer.parseInt(node.node_id));
-        zigBit.muteAlert();
+        zigBit.imuteAlert();
     }
 }
 

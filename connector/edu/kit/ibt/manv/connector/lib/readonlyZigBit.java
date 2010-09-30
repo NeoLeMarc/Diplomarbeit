@@ -35,4 +35,20 @@ public class readonlyZigBit implements iZigBit{
     public MANVResult muteAlert(){
         return new MANVResult("ERROR", false);
     }
+
+    public void isendData(String data){
+    }
+
+    public void itoggleAlertStatus(){
+    }
+
+    public void idisableAlert(){
+    }
+
+    public void ienableAlert(){
+    }
+
+    public void imuteAlert(){
+    }
+
 }
