@@ -177,7 +177,7 @@ void initZigBit(){
   readStringRaw();
   GP2DAT &= ~(1 << 17);
   sleep(4);
-  //putStringRaw("AT+WPANID=1620 +GSN=C +WSRC=C +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
+  //putStringRaw("AT+WPANID=1620 +GSN=B +WSRC=B +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
   putStringRaw("AT+WPANID=1620 +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
   GP2DAT |= (1 << 17);
   readStringRaw();
@@ -216,17 +216,17 @@ void zigBitLoop(){
           if(yellowCode){
             // Simulate critical patient:
             puls   = randint(120, 180);
-            atmung = randint(10, 30);
+            atmung = randint(30, 60);
           } else {
             puls   = randint(60, 120);
-            atmung = randint(30, 50);
+            atmung = randint(12, 15);
           }
 
           printf("ATD 0,0\rSTATUS:OK:%i:%i\r\n", puls, atmung);
 
         } else {
           puls   = randint(0, 10);
-          atmung = randint(0, 5);
+          atmung = randint(0, 2);
           printf("ATD 0,0\rSTATUS:ALERT:%i:%i\r\n", puls, atmung);
         }
     

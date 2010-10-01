@@ -614,7 +614,40 @@
 
     \subsection{Diskussion}
 
-\section{Der Analog Devices ADuC702X Mikrocontroller}
+\section{ADuC7019/2X-Mikrocontroller}
+    \subsection{Beschreibung}
+        Mit der ADuC7019/2X-Serie bietet die Firma Analog Devices eine Familie von voll integrierten Mikrocontroller 
+        auf Basis der ARM7-Architektur an. Diese Mikrocontroller zeichnen sich insbesondere durch ihre hohe Anzahl
+        an A/D-Wandler-Kanälen an. So verfügt das Modell ADuC7026 beispielsweise über einen 16 A/D-Wandler-Kanäle
+        mit einer Abtastrate von einer Million Samples pro Sekunde bei einer Auflösung von 12-Bit. Damit bietet jeder
+        der 16 Kanäle eine Datenrate, die etwa dem 17fachen einer gewöhnlichen Audio-CD entspricht.
+        Der Mikrocontroller selbst bietet bei einer Frequenz von 41.78 MHz eine maximale Leistung von 41 Millionen
+        Befehlen pro Sekunde (MIPS). Zusätzlich ist on-Chip 8 kB SRAM sowie 62kB-Flashspeicher vorhanden. Bei den Modellen
+        ADuC7026 und ADuC7027 ist zusätzlich ein externen Speicherbus vorhanden, über bis zu 512kB zusätzlicher SRAM
+        angeschlossen werden kann. Bei größerem Speicherbedarf besteht die Möglichkeit, über SPI oder $I^2C$ weiteren SRAM oder
+        Flash-Speicher anzuschliessen.
+
+    \subsection{Peripherie}
+        Die Mikrocontroller der ADuC-7019/2X-Familie bieten standardmäßig folgende Peripherie:
+
+        \begin{itemize}
+            \item{AD-Wandler:} Bis zu 16 Kanäle mit einer maximalen Abtastrate von 1MSPS bei einer Auflösung von 12-Bit.
+            \item{DA-Wandler:} Je nach Typ 2, 3 oder vier Kanäle, mit einer Ausgansspannung zwischen 0 und 2,5V mit einer
+                               Auflösung von 12-Bit.
+            \item{PWM-Generator:} Flexibler, 3-Phasen Pulsweitenmodulator der bis zu 3 Signalpaare gleichzeitig generieren kann.
+            \item{UART-Interface:} Serielle Schnittstelle mit TTL-Pegel.
+            \item{SPI-Bus:} Schnittstelle zum Anbinden von bis zu 255 weiteren Peripheriekomponenten.
+            \item{$I^2C-Bus$:} 2 $I^2C$-Schnittstellen zur Anbindung weiterer Peripherie.
+            \item{PLA:} 2 Blöcke mit jeweils 8 PLA\footnote{Programmierbare Logische Anwendung}-Elementen 
+            \item{Timer:} 4 Allzwecktimer/Zähler.
+        \end{itemize}
+        
+        Die einzelnen Modelle der ADuC-7019/2X-Familie unterscheiden sich vor allem durch die Anzahl vorhandener Pins (Bei dem
+        kleinsten Modell ADuC-7019 stehen lediglich 40 Pins, beim größten 80 Pins zur Verfügung), die zudemm mehrfach belegt
+        sind. Dies bedeutet, dass es nicht Möglich ist, die gesamte Peripherie gleichzeitig zu verwenden. Je nach Anforderung
+        ist ggf. die Verwendung eines größeren Modells notwendig. 
+        
+
 \section{Java}
     \subsection{Übersicht}
 

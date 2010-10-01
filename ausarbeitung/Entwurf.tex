@@ -11,6 +11,100 @@
 \Abbildungps{!htb}{0.75}{diagramme/schaltplan_manvnode.png}{label}{Schaltplan der MANVNode}
 \Abbildungps{!htb}{1}{diagramme/platine_manvnode.png}{label}{Platine der MANVNode}
 
+\subsubsection{Beschreibung}
+Die MANVNode ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein ADuC-7026-Mikrocontroller
+der Firma Analog Devices sowie ein Atmel ZigBit-Funkmodul des Typs ATZB-24-A2. Die Platine dient zur Simulation 
+des Erste-Hilfe-Sensors. An Stelle einer echten Messung generiert die Platine Messwerte mit Hilfe eines Zufallszahlen-Generators.
+Dier Generator kann in drei Zuständen beschrieben werden:
+
+\begin{itemize}
+    \item{Grün:} Simulation eines Patienten mit gutem Kreislaufzustand. Puls zwischen 60 und 120 Schlägen pro Minute, 
+                 Atemzüge pro Minute zwischen 12 und 15. Periodischer Versand der Meldung "`Zustand OK"'.
+    \item{Gelb:} Simulation eines Patienten mit beginnend kritischem aber noch nicht akut Lebensbedrohlichem 
+                 Kreislaufzustand. Puls zwischen 120 und 180 Schlägen pro Minute, Atmung zwischen 60 und 80
+                 Zügen pro Minute (Hyperventilation).
+    \item{Rot:}  Simulation eines Patienten in kritischem Zustand mit Puls zwischen 0 und 10 (entsprechend
+                 Kammerflimmern oder Kreislaufstillstand) sowie Atmung zwischen (0 und 2) mit bestehndem
+                 akutem Handlungsbedarf. Priorisierte Generierung eienr Alarmmeldung.
+\end{itemize}
+
+Zur Einstellung und Wechsel der Zustände befinden sich 3 Schalter an der Platine. Der Zustand wird mit Hilfe von
+drei farbigen LEDs visualisiert. Zusätzlich kann über einen Piezzo-Summer ein Alarm auch akustisch wiedergegeben werden.
+Durch die Kombination der drei LEDs werden zusätzlich Status- und Fehlerinformationen der Platine während des 
+Initialisierungsvorgangs ausgegeben.
+
+\subsection{Spannungsversorgung}
+Um die Platine möglichst vielseitig einzusetzen wurde wert auf eine möglichst flexible Spannungsversorgung gelegt. Diese
+soll möglichst Robust gegenüber Spannungsschwankungen sein. Kern der Spannungsversorgung ist ein 
+Low-Dropout-Spannungsregler des Typs LP2980-3.3 der Firma National Semiconductor. Dieser liefert eine stabile
+3,3V Spannung bei einem maximalen Strom von 50mA. Die Eingangsspannung kann zwischen 2.1V bis 16V variiert werden.
+Die Spannungsversorgung kann damit z.B. über USB (5V-Versorgungsspannung), ein externes Netzteil oder eine 
+9V-Blockbatterie gespeist werden. Durch die hohe maximale Versorgungsspannung von 9V sind Schäden durch versehentliches
+anschließen eines falschen Netzteils weitestgehend ausgeschlossen. Die Spannungsversorgung ist zusätzlich mit einem 10mF 
+Kondensator stabilisiert.
+
+Zusätzlich wurde die die Spannungsversorgung weiter stabilisiert. Hierzu wurde jeder Spannungseingang aller Bauteile der
+Platine mit einem 100nF Kondensator gepuffert. Diese sind möglichst nahe an den entsprechenden Versorgungspins angebracht.
+Kurzzeitige Spannungsabfälle, wie sie z.B. beim Schalten von LEDs, des Piezzo-Summers oder des Aufwachsens des ZigBee-Moduls
+aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
+
+\subsection{Programmierschnittstellen}
+
+\subsubsection{Serielle Schnittstellen}
+Die MANV-Node-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
+Schnittstelle (JP1) vorhanden, welche der Standardbelegung des Programmierkabels des ADuC-7026-Evaluationsboards besitzt.
+Bereits vorhandene Programmierkabel können somit ohne weiteres zur Programmierung des Mikrocontrollers verwendet werden.
+Zusätzlich besthet die Möglichkeit, auf die serielle Schnittstelle des ZigBit-Moduls zuzugreifen, worüber das Herunterladen 
+von Firmware auf das Modul, sowie der Einstellung bestimmter Parameter wie der Netzwerkkennung des Gerätes möglich ist.
+Der Zugriff erfolgt ebenfalls über die Stiftleiste JP1, allerdings muss hierfür RX- und TX-Leitung des Programmierkabels 
+verdreht, und alle Jumper des Schalters S1 unterbrochen werden. 
+
+\subsubsection{JTAG}
+Die MANV-Node-Platine verfügt neben seriellen auch über eine JTAG-Schnittstelle. Diese ermöglich einen Zugriff mit
+gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder Kyle $\mu{}$Vision. Über die Schnittstelle kann sowohl 
+Programmierung als auch Debugging des ADuC-7026-Mikrocontrollers durchgeführt werden. Ein Zugriff auf das ZigBit
+Modul ist allerdings nur indirekt möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Consolenverbindung
+über den UART des ADuC-7026-Mikrocontrollers zu öffnen, so direkt mit dem ZigBit-Modul kommunikation möglich ist.}.
+Ein Zugriff über JTAG ist nicht vorgesehen.
+
+\subsection{LEDs}
+
+\subsubsection{Beschreibung der einzelnen LEDs}
+Die MANV-Node-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen.
+\begin{itemize}
+    \item{PWR:} Diese LED befindet sich direkt in der Spannungsversorgung der Platine. Diese LED leuchtet, sobald
+                die Platine mit Spannung versorgt wird. 
+    \item{GREEN, YELLOW, RED}: Diese LEDs sind direkt an den Mikrocontroller angeschlossen und visualisieren den Zustand des
+                               Zufallszahlengenrators entweder durch dauerhaftes Leuchten (GREEN, YELLOW) oder im Alarmzustand
+                               durch schnelles Blinken (RED). 
+    \item{BLUE}: Diese LED signalisiert, ob eine Alarmunterdrückung ("`Mute"') besteht.
+    \item{ZIGBIT-STATUS}: Diese LED leuchtet, sobald das ZigBit-Modul über das CTS-Signal ("`Clear to send"') die Bereitschaft, 
+                          Daten zu empfangen, signalisiert.
+\end{itemize}
+                 
+    
+
+\subsubsection{Diagnosecodes}
+Neben den oben dargestellten einfachen Signalisierungen hat die Firmware der MANV-Node-Platine die Möglichkeit, über die
+Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgende Codierung:
+
+\begin{itemize}
+    \item{Led GREEN blinkt in 1-Sekunden-Perioden:} Der ADuC-7026-Mikrocontroller befindet sich im Bootmodus. Ein Reset des
+                                                    ZigBit-Moduls wurde durchgeführt und es wird nun auf Bereitschaft des Moduls
+                                                    gewartet.
+    \item{Zweimaliges Blinken von YELLOW:} Eine Verbindung mit dem ZigBit-Modul wurde erfolgreich aufgebaut, es wird nun eine 
+                                           Initialisierung vorgenommen.
+    \item{RED, GREEN leuchten gleichzeitig:} Das ZigBit-Modul wurde erfolgreich initalisiert, auf die Verbindung mit dem 
+                                                Funknetzwerk wird gewartet.
+    \item{YELLOW leuchtet dauerhaft länger als 10 Sekunden und
+          ZIGBIT-STATUS leuchtet dauerhaft:} Es kann keine Verbindung mit dem Funktnetzwerk aufgebaut werden.
+    \item{YELLOW leuchtet dauerhaft länger als 10 Sekunden und ZIGBIT-STATUS leuchte nicht:} Es liegt eine Funktionsstörung des
+          ZigBit-Moduls vor.
+    \item{ZIGBIT-STATUS leuchtet dauerhaft:} Verbindung mit Funknetzwerk wurde verloren oder Powersafe-Modus ist deaktiviert.
+    \item{ZIGBIT-STATUS blinkt im 2 Sekunden Interval:} Die Platine arbeitet Ordnungsgemäß, es besteht eine Verbindung mit dem
+                                                        Funknetzwerk und der Powersafe-Modus ist aktiv.
+\end{itemize}
+                                                        
 
 \subsection{ADuC}
 Beim MANVNode handelt es sich um ein Prototyp des späteren Erste-Hilfe-Sensor für den MANV-Einsatz. Zwar exisitert der 

@@ -1,5 +1,5 @@
-\contentsline {chapter}{Abbildungsverzeichnis}{XIII}{chapter*.6}
-\contentsline {chapter}{Tabellenverzeichnis}{XV}{chapter*.7}
+\contentsline {chapter}{Abbildungsverzeichnis}{XV}{chapter*.6}
+\contentsline {chapter}{Tabellenverzeichnis}{XVII}{chapter*.7}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation der Arbeit}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Aufgaben und Ziele der Arbeit}{1}{section.1.2}
@@ -43,45 +43,55 @@
 \contentsline {subsubsection}{\numberline {2.2.5.5}Wibree: Bluetooth Low Energy}{20}{subsubsection.2.2.5.5}
 \contentsline {subsection}{\numberline {2.2.6}Weitere Protokolle}{20}{subsection.2.2.6}
 \contentsline {subsection}{\numberline {2.2.7}Diskussion}{20}{subsection.2.2.7}
-\contentsline {section}{\numberline {2.3}Der Analog Devices ADuC702X Mikrocontroller}{20}{section.2.3}
-\contentsline {section}{\numberline {2.4}Java}{20}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}\IeC {\"U}bersicht}{20}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Programmiersprache}{21}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Corba}{21}{section.2.5}
-\contentsline {chapter}{\numberline {3}Stand der Technik}{23}{chapter.3}
-\contentsline {chapter}{\numberline {4}Entwurf}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Gesamtsystem}{25}{section.4.1}
-\contentsline {section}{\numberline {4.2}Hardware}{25}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}MANVNode}{25}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}ADuC}{25}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}ZigBee-Schnittstelle}{28}{subsection.4.2.3}
-\contentsline {subsubsection}{\numberline {4.2.3.1}UART}{29}{subsubsection.4.2.3.1}
-\contentsline {subsubsection}{\numberline {4.2.3.2}MANV-USB-Connector}{30}{subsubsection.4.2.3.2}
-\contentsline {subsection}{\numberline {4.2.4}Software}{30}{subsection.4.2.4}
-\contentsline {subsubsection}{\numberline {4.2.4.1}Firmware}{30}{subsubsection.4.2.4.1}
-\contentsline {subsubsection}{\numberline {4.2.4.2}MANV-Suite}{32}{subsubsection.4.2.4.2}
-\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{37}{chapter.5}
-\contentsline {chapter}{\numberline {6}Ergebnisse}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Baselinewandering}{39}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{39}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{39}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}HRV-Variation}{39}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{39}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{39}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}QRS-Komplexe}{40}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{40}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{40}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{40}{section.6.4}
-\contentsline {chapter}{\numberline {7}Diskussion}{41}{chapter.7}
-\contentsline {section}{\numberline {7.1}Baselinewandering}{41}{section.7.1}
-\contentsline {section}{\numberline {7.2}HRV-Variation}{41}{section.7.2}
-\contentsline {section}{\numberline {7.3}QRS-Komplexe}{41}{section.7.3}
-\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{41}{section.7.4}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{43}{chapter.8}
-\contentsline {section}{\numberline {8.1}Verbesserung der Sicherheit}{43}{section.8.1}
-\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{43}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{43}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{43}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{43}{subsection.8.2.3}
-\contentsline {chapter}{Glossar}{45}{appendix*.8}
-\contentsline {chapter}{Literaturverzeichnis}{46}{appendix*.8}
+\contentsline {section}{\numberline {2.3}ADuC7019/2X-Mikrocontroller}{20}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Beschreibung}{20}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Peripherie}{21}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Java}{21}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}\IeC {\"U}bersicht}{21}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Programmiersprache}{22}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Corba}{22}{section.2.5}
+\contentsline {chapter}{\numberline {3}Stand der Technik}{25}{chapter.3}
+\contentsline {chapter}{\numberline {4}Entwurf}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Gesamtsystem}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}Hardware}{27}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}MANVNode}{27}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Beschreibung}{27}{subsubsection.4.2.1.1}
+\contentsline {subsection}{\numberline {4.2.2}Spannungsversorgung}{31}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Programmierschnittstellen}{31}{subsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.3.1}Serielle Schnittstellen}{31}{subsubsection.4.2.3.1}
+\contentsline {subsubsection}{\numberline {4.2.3.2}JTAG}{32}{subsubsection.4.2.3.2}
+\contentsline {subsection}{\numberline {4.2.4}LEDs}{32}{subsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.4.1}Beschreibung der einzelnen LEDs}{32}{subsubsection.4.2.4.1}
+\contentsline {subsubsection}{\numberline {4.2.4.2}Diagnosecodes}{32}{subsubsection.4.2.4.2}
+\contentsline {subsection}{\numberline {4.2.5}ADuC}{33}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.6}ZigBee-Schnittstelle}{34}{subsection.4.2.6}
+\contentsline {subsubsection}{\numberline {4.2.6.1}UART}{34}{subsubsection.4.2.6.1}
+\contentsline {subsubsection}{\numberline {4.2.6.2}MANV-USB-Connector}{35}{subsubsection.4.2.6.2}
+\contentsline {subsection}{\numberline {4.2.7}Software}{36}{subsection.4.2.7}
+\contentsline {subsubsection}{\numberline {4.2.7.1}Firmware}{36}{subsubsection.4.2.7.1}
+\contentsline {subsubsection}{\numberline {4.2.7.2}MANV-Suite}{39}{subsubsection.4.2.7.2}
+\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{43}{chapter.5}
+\contentsline {chapter}{\numberline {6}Ergebnisse}{45}{chapter.6}
+\contentsline {section}{\numberline {6.1}Baselinewandering}{45}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{45}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{45}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}HRV-Variation}{45}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{45}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{45}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}QRS-Komplexe}{46}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{46}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{46}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{46}{section.6.4}
+\contentsline {chapter}{\numberline {7}Diskussion}{47}{chapter.7}
+\contentsline {section}{\numberline {7.1}Baselinewandering}{47}{section.7.1}
+\contentsline {section}{\numberline {7.2}HRV-Variation}{47}{section.7.2}
+\contentsline {section}{\numberline {7.3}QRS-Komplexe}{47}{section.7.3}
+\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{47}{section.7.4}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{49}{chapter.8}
+\contentsline {section}{\numberline {8.1}Verbesserung der Sicherheit}{49}{section.8.1}
+\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{49}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{49}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{49}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{49}{subsection.8.2.3}
+\contentsline {chapter}{Glossar}{51}{appendix*.8}
+\contentsline {chapter}{Literaturverzeichnis}{52}{appendix*.8}

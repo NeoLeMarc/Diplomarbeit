@@ -44,7 +44,9 @@
 \BOOKMARK [3][-]{subsubsection.2.2.5.5}{2.2.5.5 Wibree: Bluetooth Low Energy}{subsection.2.2.5}
 \BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Weitere Protokolle}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Diskussion}{section.2.2}
-\BOOKMARK [1][-]{section.2.3}{2.3 Der Analog Devices ADuC702X Mikrocontroller}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{2.3 ADuC7019/2X-Mikrocontroller}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Beschreibung}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Peripherie}{section.2.3}
 \BOOKMARK [1][-]{section.2.4}{2.4 Java}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 \334bersicht}{section.2.4}
 \BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Programmiersprache}{section.2.4}
@@ -54,13 +56,21 @@
 \BOOKMARK [1][-]{section.4.1}{4.1 Gesamtsystem}{chapter.4}
 \BOOKMARK [1][-]{section.4.2}{4.2 Hardware}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 MANVNode}{section.4.2}
-\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 ADuC}{section.4.2}
-\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 ZigBee-Schnittstelle}{section.4.2}
-\BOOKMARK [3][-]{subsubsection.4.2.3.1}{4.2.3.1 UART}{subsection.4.2.3}
-\BOOKMARK [3][-]{subsubsection.4.2.3.2}{4.2.3.2 MANV-USB-Connector}{subsection.4.2.3}
-\BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Software}{section.4.2}
-\BOOKMARK [3][-]{subsubsection.4.2.4.1}{4.2.4.1 Firmware}{subsection.4.2.4}
-\BOOKMARK [3][-]{subsubsection.4.2.4.2}{4.2.4.2 MANV-Suite}{subsection.4.2.4}
+\BOOKMARK [3][-]{subsubsection.4.2.1.1}{4.2.1.1 Beschreibung}{subsection.4.2.1}
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Spannungsversorgung}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 Programmierschnittstellen}{section.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.3.1}{4.2.3.1 Serielle Schnittstellen}{subsection.4.2.3}
+\BOOKMARK [3][-]{subsubsection.4.2.3.2}{4.2.3.2 JTAG}{subsection.4.2.3}
+\BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 LEDs}{section.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.4.1}{4.2.4.1 Beschreibung der einzelnen LEDs}{subsection.4.2.4}
+\BOOKMARK [3][-]{subsubsection.4.2.4.2}{4.2.4.2 Diagnosecodes}{subsection.4.2.4}
+\BOOKMARK [2][-]{subsection.4.2.5}{4.2.5 ADuC}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 ZigBee-Schnittstelle}{section.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.6.1}{4.2.6.1 UART}{subsection.4.2.6}
+\BOOKMARK [3][-]{subsubsection.4.2.6.2}{4.2.6.2 MANV-USB-Connector}{subsection.4.2.6}
+\BOOKMARK [2][-]{subsection.4.2.7}{4.2.7 Software}{section.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.7.1}{4.2.7.1 Firmware}{subsection.4.2.7}
+\BOOKMARK [3][-]{subsubsection.4.2.7.2}{4.2.7.2 MANV-Suite}{subsection.4.2.7}
 \BOOKMARK [0][]{chapter.5}{5 Praktische Realisierung des Sensornetzes}{}
 \BOOKMARK [0][]{chapter.6}{6 Ergebnisse}{}
 \BOOKMARK [1][-]{section.6.1}{6.1 Baselinewandering}{chapter.6}
