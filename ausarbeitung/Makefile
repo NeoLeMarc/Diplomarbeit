@@ -1,10 +1,10 @@
-Diplomarbeit.pdf: Diplomarbeit.tex Titel.tex Vorwort.tex Danksagung.tex Abstract.tex Einleitung.tex Grundlagen.tex Stand_der_Technik.tex Entwurf.tex Praktische_Realisierung.tex Ergebnisse.tex Diskussion.tex Ausblick.tex
-	pdflatex  Diplomarbeit Titel.tex Vorwort.tex Danksagung.tex Abstect.tex Einleitung.tex Grundlagen.tex Stand_der_Technik.tex Entwurf.tex Praktische_Realisierung.tex Ergebnisse.tex Diskussion.tex Ausblick.tex Diplomarbeit.bib
-	bibtex Diplomarbeit
-	pdflatex  Diplomarbeit Titel.tex Vorwort.tex Danksagung.tex Abstect.tex Einleitung.tex Grundlagen.tex Stand_der_Technik.tex Entwurf.tex Praktische_Realisierung.tex Ergebnisse.tex Diskussion.tex Ausblick.tex Diplomarbeit.bib
-	pdflatex  Diplomarbeit Titel.tex Vorwort.tex Danksagung.tex Abstect.tex Einleitung.tex Grundlagen.tex Stand_der_Technik.tex Entwurf.tex Praktische_Realisierung.tex Ergebnisse.tex Diskussion.tex Ausblick.tex Diplomarbeit.bib
+NAME=Diplomarbeit
+#OTHER+=kapitel/*.tex
+#OTHER+=bibliography/*.bib
+#OTHER+=bilder/*.*
+CLEAN_FILES+=kapitel/*.aux
 
-clean:
-	rm -f Diplomarbeit.pdf *.aux *.bbl *.dvi
+USE_PDFLATEX=1
+VIEWPDF=evince
 
-all: Diplomarbeit.pdf
+include /usr/share/latex-mk/latex.gmk
