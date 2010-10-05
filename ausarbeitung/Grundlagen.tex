@@ -3,7 +3,34 @@
 \chapter{Grundlagen}\label{Grundlagen}
 
 \section{Grundlagen der kabellosen Übetragung}
-    \subsection{Paketorientierte Übertragung}
+    \subsection{Paketvermittelte Übertragung}
+        Bei der Übertragung von Daten kann grundsätzlich zwischen der Paket- und der Leitungsvermittlung unterschieden 
+        werden. Bei der Leitungsvermittlung wird für jeden Kommunikationsvorgang eine eigene Leitung verwendet. 
+        Meist wird diesee Leitung zu Beginn der Kommunikation auf- und beim Ende wieder abgebaut. Hierbei wird
+        meist ein fester Weg vorgegeben, den die zu sendenden Daten zwischen zwei Partnern zurücklegen. Über diesen Kanal
+        gesendete Daten kommen beim Empfänger in genau der selben Reihenfolge an, wie sie vom Sender gesendet wurden.
+        Auch steht meist eine garantierte Mindestübertragungsrate zur Verfügung. \\
+        Diesen Vorteilen stehen eine Reihe von Nachteilen gegenüber. Für Aufbau und Betrieb der Leitung muss ein gewisser
+        Aufwand betrieben werden. Wenn Übertragungsraten garantiert werden, stehen diese ggf. nicht für andere 
+        Anwendungen zur Verfügung. Wird die Kapazität der Leitung nicht ausgeschöpft, so bleiben diese Reserven 
+        ungenutzt und verfallen.\\
+        \\
+        Anders verhält sich die Paketvermittlung. In diesem Szenario teilen sich alle Teilnehmer eine gemeinsame
+        Leitung. Möchte nun ein Teilnehmer Daten senden, so teilt er diese in kleine Pakete auf, und versieht diese
+        mit der Adresse des Empfängers. Nun wird jedes Paket einzeln über die Leitung verschickt. Hierbei landet
+        es ggf. bei Zwischenempfängern, dies es jeweils zum nächsten Zwischenempfänger weiterleiten, bis der
+        endgültige Empfänger erreicht ist. Da sich nun viele Empfänger eine Leitung teilen, kann eine deutlich bessere
+        Auslastung erziehlt werden. Jedoch können nun keine Garantieren mehr über die Reihenfolge, Zuverlässigkeit
+        sowie der einem Teilnehmer zur Verfügung stehenden Übertragungsrate getroffen werden.\\
+        Diese Probleme können jedoch teilweise in höheren Protokollschichten (z.B. durch Nummerierung und Umsortieren 
+        der Pakete beim Empfänger) behandetl werden.
+
+        Bei der kabellosen Datenübertragung teilen sich alle Teilnehmer ein gemeinsames Medium, nämlich die 
+        Trägerfrequenzen des verwendeten Funkprotokolls. Eine Vermittlung von einzelnen Leitungen scheidet 
+        prinzipbedingt aus, da es nicht möglich ist, einzelne Teilnehmer am senden auf einer Frequenz zu 
+        hindern, daher bietet sich die Verwendung eines paketvermittelten Übertragungsprotokolls für kabellose
+        Netzwerke besonders an.
+        
     \subsection{Frequenzspreizung}
         \subsubsection{Übersicht}
             Bei der Verwendung von kabellosen Übertragungsprotokollen kann es zu einer Vielzahl von 
