@@ -1,5 +1,5 @@
 NAME=Diplomarbeit
-#OTHER+=kapitel/*.tex
+OTHER+=*.tex
 #OTHER+=bibliography/*.bib
 #OTHER+=bilder/*.*
 CLEAN_FILES+=kapitel/*.aux

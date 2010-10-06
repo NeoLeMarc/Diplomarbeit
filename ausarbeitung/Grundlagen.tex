@@ -615,7 +615,7 @@
                 das Bluetooth Netzwerk darüber hinaus das AFH-Verfahren, und ist in der Lage, die Kollision zu
                 erkennen, wird es diese Störung erkennen und den betroffenen Kanel im weiteren Verlauf meiden.\\
                 \\
-                Eine weitere Quelle von Störungen sind Mikrowellen Öfen. Diese arbeiten typischerweise
+                Eine weitere Quelle von Störungen sind Mikrowellenöfen. Diese arbeiten typischerweise
                 auf 2540MHz und können Störungen mit einer Bandbreite von bis zu 80MHz und einer Signalstärke
                 von bis zu 30dBm verursachen. Hierdurch ergeben sich mögliche Störungen auf den
                 oberen ZigBee Kanälen. Da gewöhnliche Mikrowellenöfen für den Haushaltsgebrauch einen 
@@ -629,17 +629,54 @@
                 umgangen werden.\\
 
             \paragraph{Leistungsaufnahme}
-                -> Polling
-               
+                Zur Bewertung der Leistungsaufnahme eines ZigBee-Netzwerkes wird exemplarisch ein ZigBee-Modul
+                vom Typ ATZB-24-A2R der Firma Atmel betrachtet. Diese Modul verfügt über einen Energiesparmodus.
+                In diesem Modus wird lediglich der interne Speicher mit Energie versorgt, alle weitere Hardware
+                wird abgeschaltet. In diesem Modus hat das Gerät (laut Hersteller) einen Strombedarf von weniger als
+                6 $\mu{}A$. Befindet sich das Gerät nicht im Energiesparmodus und ist empfangsbereit werden 19 mA
+                benötigt, sendet das Gerät sind 18 mA notwendig.\\
+                Durch den Energiesparmodus lassen sich große Einsparungen erreichen, allerdings kann dieser nur von 
+                RFDs verwendet werden, da FFDs immer empfangsbereit sein müssen. Zur Übertragung von Nachrichten
+                wird in diesem Fall von den RFDs ein Polling-Verfahren verwendet: Der Parent des FFDs (in den meisten
+                Fällen also der nächstgelegene Router) speichert eine an das RFD gesendete Nachricht so lange zwischen,
+                bis dieses die Nachricht abruft. So ist sichergestellt, dass keine Nachrichten verloren gehen, wenn
+                sich der Empfänger gerade im Energiesparmodus befindet.
+           
 
-        \subsubsection{Wibree: Bluetooth Low Energy}\label{wibree}
+        \subsubsection{Bluetooth Low Energy (ehemals Wibree)}\label{wibree}
+            Bluetooth Low Energy ist ein neuer Standard für WPANs, der mit dem Bluetooth 4.0 Standard eingeführt
+            wurde. Er definiert eine Datenübertragung mit bis zu 1 MBit/s (netto 0.26 MBit/s) bei einem Strombedarf,
+            der unter 20mA liegen soll, wobei eine Reichweite von bis zu 100m realisierbar sein soll.\\
+            Zum Zeitpunkt dieser Diplomarbeit befanden sich Funkchips des Bluetooth-Low-Energy-Standards noch in 
+            der frühen Testphase und waren auf dem Markt nicht erhältlich, so dass dieser Standard bei der Auswahl
+            eines geeigneten Funkprotokolls leider nicht in die engere Betrachtung gezogen werden konnte.
+            
+
     \subsection{Weitere Protokolle}
-        - WiMAX
-        - Mikrowellen-Richtfunk
-        - Z-Wave
-        - Wireless USB
+        Neben den oben erwähnten Protokollen gibt es viele weitere kabellose Übertragungsprotokolle wie beispielsweise 
+        der kommende Wireless USB-Standards, WiMax, oder Mikrowellen-Richtfunk. Diese Protokolle sind jedoch für die
+        Übertragung mit hohen Datenraten ausgelegt (was in der Regel mit einer dementsprechend hohen Leisuntsaufnahme
+        einhergeht), und liegen damit ausserhalb des Fokus dieser Arbeit.
+
 
     \subsection{Diskussion}
+        Von den oben genannten Standards scheidet GSM/UMTS von vorne herein aufgrund der hohen Betriebskosten aus.
+        Auch der DECT-Standard kommt nicht in Frage, da die Teilnehmerzahl auf 6 Geräte pro Basisstation beschränkt ist.
+        Der WLAN Standard ist zwar grundsätzlich für eine solche Aufgabe geeignet, allerdings fällt der Strombedarf mit
+        über 100mA für den Einsatz im Erste-Hilfe-Sensor zu hoch aus. Von der Leistungsaufnahme prinzipiell möglich wäre
+        der Einsatz von Bluetooth, wobei insbesondere der kommende Bluetooth Low Energy Standard interessant ist. Auch die
+        hohe Störsicherheit wäre ein weitere Punkt, der für Bluetooth spräche. Problematisch ist jedoch die Einschränkung,
+        dass pro Bluetooth-Piconetz immer nur 7 Slaves aktiv sein können, dies ist für die Anforderungen dieser Diplomarbeit
+        deutlich zu wenig.\\
+        \\
+        Letztendlich erweist sich der ZigBee-Standard als am besten für die gewünschte Anwendung geeignet. Die erreichte
+        Datenrate ist für die Übertragung einiger Messwerte und Alarme mehr als ausreichend. Auch die hohe Störsicherheit,
+        die moderaten Stückkosten sowie die vergleichsweise hohe Reichweite sprechen für diese Lösung. 
+        Die beiden entscheidenden Kriterien sind jedoch die Fähigkeit von ZigBee, dynamische Meshnetzwerke zu bilden sowie
+        die sehr niedrige Leistungsaufname:\\
+        Durch die dynamische Vernetzung mit Routern lassen sich auch große Netzwerke realisieren. Das Routing wird komplett
+        durch die Firmware der ZigBee-Module übernommen, so dass dieses nicht erst implementiert werden muss. Der Strombedarf
+        der Module ist mit maximal 19mA so gering, dass eine Versorgung über Batterien ohne weiteres möglich ist.
 
 \section{ADuC7019/2X-Mikrocontroller}
     \subsection{Beschreibung}
@@ -651,8 +688,8 @@
         Der Mikrocontroller selbst bietet bei einer Frequenz von 41.78 MHz eine maximale Leistung von 41 Millionen
         Befehlen pro Sekunde (MIPS). Zusätzlich ist on-Chip 8 kB SRAM sowie 62kB-Flashspeicher vorhanden. Bei den Modellen
         ADuC7026 und ADuC7027 ist zusätzlich ein externen Speicherbus vorhanden, über bis zu 512kB zusätzlicher SRAM
-        angeschlossen werden kann. Bei größerem Speicherbedarf besteht die Möglichkeit, über SPI oder $I^2C$ weiteren SRAM oder
-        Flash-Speicher anzuschliessen.
+        angeschlossen werden kann. Bei größerem Speicherbedarf besteht die Möglichkeit, über SPI oder $I^2C$ weiteren SRAM 
+        oder Flash-Speicher anzuschliessen.
 
     \subsection{Peripherie}
         Die Mikrocontroller der ADuC-7019/2X-Familie bieten standardmäßig folgende Peripherie:
