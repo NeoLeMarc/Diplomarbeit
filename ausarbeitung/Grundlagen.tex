@@ -628,6 +628,16 @@
                 zu erwarten. Diese können einfach durch den automatischen Kanalwechsel des ZigBee-Netzwerkes
                 umgangen werden.\\
 
+            \paragraph{Verschlüsselung}
+                % http://www.willhackforsushi.com/presentations/toorcon11-wright.pdf 
+                ZigBee unterstützt 128-Bit AES Verschlüsselung. Hiermit können gesendete Nachrichten 
+                gegen Manipulation sowie unberechtigter Kenntnisnahme geschützt werden. Aufgrund von Designschwächen 
+                im Standard ist dieser Schutz jedoch nur als rudimentär zu bewerten. Beispielsweise ist
+                kein Schutz gegen Replay-Attacken vorgesehen, so dass z.B. Befehle abgefangen und beliebig oft
+                wieder in der Netzwerk eingeschleust werden können. Es ist daher sinnvoll, auf höherer 
+                Protokollebene weitere Schutzmaßnahmen vorzusehen, um sich erfolgreich gegen Angriffe zu
+                schützen.
+
             \paragraph{Leistungsaufnahme}
                 Zur Bewertung der Leistungsaufnahme eines ZigBee-Netzwerkes wird exemplarisch ein ZigBee-Modul
                 vom Typ ATZB-24-A2R der Firma Atmel betrachtet. Diese Modul verfügt über einen Energiesparmodus.

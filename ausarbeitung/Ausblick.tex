@@ -2,9 +2,80 @@
 
 \chapter{Zusammenfassung und Ausblick}
 ***Beispiel wie ein Zitat auf Armins~\citep{Bolz} Buch funktioniert***
-\section{Verbesserung der Sicherheit}
--> Eigene Firmware für ZigBit
 
+\section{Sicherheit des Netzwerkes}
+\subsection{Aktueller Stand}
+Grundsätzlich unterstützt ZigBee eine 128-Bit AES-Verschlüsselung. Die SerialNet-Firmware der in dieser Diplomarbeit
+eingesetzten ZigBee-Module der Firma Atmel bietet jedoch in der aktuell vorliegenden Version (1.8.0) keine Möglichkeit,
+diese Verschlüsselung zu verwenden. Laut Auskunft des E-Mail Supportes der Firma Atmel ist dieses Feature auch für
+zukünftige Versionen nicht geplant.\\
+\\
+Da das Thema Sicherheit -- gerade für ein medizinisches Netzwerk -- natürlich eine nicht zu vernachlässigende Rolle spielt,
+An dieser Stelle sollen einigen Anregungen gegeben werden, wie eine Sicherheitskonzept für das entworfene Netzwerk aussehen 
+könnte.
+
+\subsection{Angriffsszenarien}
+
+\subsubsection{Ausspähen von Patientendaten}
+Aktuell werden über das Netzwerk Vitaldaten von Patienten (Puls und Atmung) pseudonym versendet. Als Pseudonym dient 
+hierbei die Hardware-Adresse des versendenden ZigBee-Moduls. Passives Mitschneiden der Daten ist so lange kein Problem,
+so lange sich keine Zuordnung zwischen der Identität des Patienten und der Hardware-Adresse des verwendeten Moduls
+herstellen lässt. Hierfür ist eine direkte räumliche Nähe zwischen Patient und Angreifer notwendig. 
+Während eines MANV-Szenarios sollte dies jedoch aktiv durch die Rettungskräftem, insbesondere durch die Absperrung durch
+die Polizei vor Ort verhindert werden. Sollte es einem Angreifer gelingen, nahe genug an das entsprechende Modul
+heranzukommen, um eine Zuordnung vorzunehmen, ist sowieso davon auszugehen, dass er auch in der Lage wäre, Bild oder
+Videoaufnahmen des Patienten herzustellen, was im Zweifelsfall eine deutlich größeren Eingriff in die Privatsphäre 
+darstellen würde.
+
+\subsubsection{Aktiver Angriff gegen das Netzwerk}
+Ein größeres Problem als durch das passive Belauschen des Datenverkehrs geht von aktiven Angriffen gegen das Netzwerk
+aus. Innerhalb eines unverschlüsselten Netzwerkes kann ein Angreifer die Identität eines beliebigen ZigBee-Moduls 
+übernehmen; er hat somit die Möglichkeit entweder falsche Vitaldaten oder aber Befehle an die einzelne Sensoren zu
+versenden. Dies könnte im schlimmsten Falle bedeuten, dass Alarme im Netzwerk verloren gehen, und somit Patienten
+zu Schaden kommen. Da selbst bei aktivierter ZigBee-Verschlüsselung kein Schutz gegenüber Replay-Attacken besteht hätte
+ein Angreifer weiterhin die Möglichkeit, eine aufgefangene Statusnachricht oder einen aufgegangen Befehl beliebig oft
+wieder in das Netzwerk einzubringen und so eine Störung zu erreichen.
+
+\subsubsection{Störung des Netzwerkes}
+Ein Angreifer hat mehrere Möglichkeiten, ein bestehendes Netzwerk empfindlich zu stören oder sogar jegliche Kommunikation
+zum erliegen zu bringen. Im Falle eines unverschlüsselten Netzwerkes kann des einfach dadurch geschehen, in dem
+der Angreifer die Identität des Netzwerkkoordinators anzunehmen, und somit die Statusnachrichten ins Leere zu leiten. Eine
+andere Möglichkeit besteht darin, das Netzwerk mit Paketen zu überfluten, und so den Datenverkehr der anderen Teilnehmer
+zu blockieren. Aber auch bei Einsatz von Verschlüsselung ist eine Störung des Netzwerkes möglich. Hierzu muss ein Angreifer
+einfach mit sehr großer Sendeleistung auf allen ZigBee-Frequenzen senden, um diese somit zu blockieren. 
+
+\subsection{Abwehrmaßnahmen}
+
+\subsubsection{ZigBee-Verschlüsselung}
+Die verwendeten ZigBee-Module der Firma Atmel unterstützen hardwareseitig die im ZigBee-Standard definierte 128-Bit 
+AES-Verschlüsselung. Um diese einsetzen zu können, muss die momentan verwendete SerialNet-Firmware gegen eine eigene
+Firmware ausgetauscht werden. Atmel stellt hierzu einen ZigBee Pro basiertes SDK zur Verfügung, mit Hilfe dessen
+eine entsprechende Firmware mit vertretbarem Aufwand entwickelt werden kann. Hierbei bietet es sich an, einen an die
+SerialNet-Firmware angelehnten AT-Befehlssatz zu implementieren, um alle bestehenden Komponenten wie den MANV-Connector
+und die Firmware des ADuC-Mikrocontrollers weiterverwenden zu können.
+
+\subsubsection{Befehlszähler}
+Die ZigBee-Verschlüsselung schützt nicht gegen Replay-Attacken. Eine einfache aber effektive Methode zur Abwehr solcher
+Angriffe ist die Verwendung einer Sequenznummer. Hierbei wird jeder Nachricht eine fortlaufende Nummer hinzugefügt. 
+Der Empfänger führt nun eine Liste, in der für jeden Absender die zuletzt verwendete Sequenznummer enthalten ist.
+Nachrichten, die eine niedrigere Sequenznummer enthalten werden verworfen. Diese Methode lässt sich mit geringem
+Speicheraufwand ( O(N) für den Coordinator, O(1) für einen Endknoten) implementieren. Als Ort der Implementierung
+bietet sich entweder die Firmware des ADuC-Mikrocontrollers sowie der MANV-Connector oder aber direkt die ZigBit-Firmware
+an.
+
+\subsubsection{Schutz auf Applikationsebene}
+Alternativ zur Modifikation der ZigBit-Firmware besteht auch die Möglichkeit, auf Applikationsebene zu Verschlüsseln.
+Sowohl für Java (OpenSSL) als auch für den ADuC-Mikrocontroller (WAKAN-Crypto-Toolkit) sind entsprechende Bibliotheken
+verfügbar. Eine Implementierung auf Applikationsebene hätte den Vorteil, dass keine Änderung an der ZigBit-Firmware
+notwendig wären, und daher ggf. einfacher durchzuführen ist. Von Nachteil ist jedoch, dass diese Lösung keinen Schutz
+gegen den Beitritt fremder Teilnehmer in das Netzwerk bietet. Zwar können diese keine Befehle schicken oder Daten ausspähen,
+allerdings ist es immer noch möglich, durch die Verwendung von gefälschten Absenderadressen eine Denial-Of-Service-Attacke
+gegen das Netzwerk durchzuführen. 
+
+\subsubsection{Schutz gegen Störsender}
+
+
+    
 \section{Verbesserung der Reichweite und Störsicherheit}
 \subsection{Anderer Frequenzbereich}
 \subsection{Richtantennen für Router}
