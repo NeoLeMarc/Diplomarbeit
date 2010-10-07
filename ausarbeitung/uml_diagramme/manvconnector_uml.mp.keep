@@ -66,14 +66,85 @@ beginfig(1);
     link(inheritance)(pathStepY(readonlyZigBit.n, iZigBit.s, 20));
     link(inheritance)(pathStepY(ZigBit.n, iZigBit.s, 20));
 
+
+    Class.CORBA_Node("CORBA_Node")
+            ()
+            ();
+
+    Class.CommandsImpl("CommandsImpl")
+            ()
+            ("+disableAlert(node: CORBA_Node)",
+            "+enableAlert(node: CORBA_Node)",
+            "+toggleAlert(node: CORBA_Node)",
+            "+mute(node: CORBA_Node)");
+
+    leftToRight.top(45)(ZigBit, CORBA_Node);
+    topToBottom(90)(CORBA_Node, CommandsImpl);
+    drawObjects(CORBA_Node, CommandsImpl);
+    link(inheritance)(pathStepY(CommandsImpl.n, CORBA_Node.s, 20));
+
+    Class.BlockingQueueMANVEvent("BlockingQueue<MANVEvent>")
+            ()
+            ();
+
+    Class.BlockingQueueMANVCommand("BlockingQueue<MANVCommand>")
+            ()
+            ();
+
+    topToBottom(45)(BlockingQueueMANVEvent, MANVConnector);
+    leftToRight.top(45)(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
+    drawObjects(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
+
+    % Threads
+    Class.Thread("Thread")
+            ()
+            ("run: void");
+
+%    leftToRight.top(500)(Comparable, Thread);
+
+
+    Class.SocketReader("SocketReader")
+            ("-eventQueue: BlockingQueue<MANVEvent>",
+            "-lastResult: MANVResult",
+            "-resultSemaphore: Semaphore",
+            "-serialIn: BufferReader")
+            ("+SocketReader(serialIn: BufferedReader, eventQueue: BlockingQueue<MANVEvent>)",
+            "+setLastResult(MANVResult: result)",
+            "+getLastResult(MANVResult: result)",
+            "run: void");
+
+    Class.SocketWriter("SocketWriter")
+            ("-commandQueue: BlockingQueue<MANVCommand>",
+            "-resultQueue: BlockingQueue<MANVCommand>",
+            "-serialOut: PrintWriter",
+            "-reader: SocketReader",
+            "-lastResult: MANVResult")
+            ("+SocketWriter(serialOut: PrintWriter, commandQueue: <MANVCommand>, reader: SocketReader)",
+            "+writeLine(line: String)",
+            "+run: void");
+
+    Class.CorbaSender("CorbaSender")
+            ("-eventQueue: BlockingQueue<MANVEvent>",
+            "-serverIncoming: Incoming")
+            ("+CorbaSender(eventQueue: BlockingQueue<MANVEvent>, serverIncoming: Incoming)",
+            "+run: void");
+
+    topToBottom(45)(Thread, SocketWriter);
+    topToBottom(45)(SocketWriter, BlockingQueueMANVEvent);
+    leftToRight.top(45)(SocketReader, SocketWriter, CorbaSender);
+    drawObjects(Thread, SocketReader, SocketWriter, CorbaSender);
+    link(inheritance)(pathStepY(SocketReader.n, Thread.s, 20));
+    link(inheritance)(pathStepY(SocketWriter.n, Thread.s, 20));
+    link(inheritance)(pathStepY(CorbaSender.n, Thread.s, 20));
+
     % Events
     Class.Comparable("Comparable")
             ()
             ("+compareTo(o: object): int");
     classStereotypes.Comparable("<<interface>>");
-
-    leftToRight.top(245)(MANVConnector, Comparable);
+    leftToRight(45)(Comparable, readonlyZigBit);
     drawObjects(Comparable);
+
 
     Class.MANVPrioritized("MANVPrioritized")
             ("#priority: int")
@@ -173,47 +244,7 @@ beginfig(1);
     link(inheritance)(pathStepY(MANVGsn.n, MANVResult.s, 20));
     link(inheritance)(pathStepY(MANVChildrenList.n, MANVResult.s, 20));
 
-    % Threads
-    Class.Thread("Thread")
-            ()
-            ("run: void");
 
-%    leftToRight.top(500)(Comparable, Thread);
-
-
-    Class.SocketReader("SocketReader")
-            ("-eventQueue: BlockingQueue<MANVEvent>",
-            "-lastResult: MANVResult",
-            "-resultSemaphore: Semaphore",
-            "-serialIn: BufferReader")
-            ("+SocketReader(serialIn: BufferedReader, eventQueue: BlockingQueue<MANVEvent>)",
-            "+setLastResult(MANVResult: result)",
-            "+getLastResult(MANVResult: result)",
-            "run: void");
-
-    Class.SocketWriter("SocketWriter")
-            ("-commandQueue: BlockingQueue<MANVCommand>",
-            "-resultQueue: BlockingQueue<MANVCommand>",
-            "-serialOut: PrintWriter",
-            "-reader: SocketReader",
-            "-lastResult: MANVResult")
-            ("+SocketWriter(serialOut: PrintWriter, commandQueue: <MANVCommand>, reader: SocketReader)",
-            "+writeLine(line: String)",
-            "+run: void");
-
-    Class.CorbaSender("CorbaSender")
-            ("-eventQueue: BlockingQueue<MANVEvent>",
-            "-serverIncoming: Incoming")
-            ("+CorbaSender(eventQueue: BlockingQueue<MANVEvent>, serverIncoming: Incoming)",
-            "+run: void");
-
-    topToBottom(45)(Thread, SocketWriter);
-    leftToRight.top(90)(MANVPrioritized, SocketReader);
-    leftToRight.top(45)(SocketReader, SocketWriter, CorbaSender);
-    drawObjects(Thread, SocketReader, SocketWriter, CorbaSender);
-    link(inheritance)(pathStepY(SocketReader.n, Thread.s, 20));
-    link(inheritance)(pathStepY(SocketWriter.n, Thread.s, 20));
-    link(inheritance)(pathStepY(CorbaSender.n, Thread.s, 20));
 
     % Corba
     Class.CorbaMessageContainer("CorbaMessageContainer")
@@ -237,35 +268,53 @@ beginfig(1);
     link(inheritance)(pathStepY(CorbaDataMessageContainer.n, CorbaMessageContainer.s, 20));
     link(inheritance)(pathStepY(CorbaEventMessageContainer.n, CorbaMessageContainer.s, 20));
 
-           
-    Class.CORBA_Node("CORBA_Node")
-            ()
-            ();
 
-    Class.CommandsImpl("CommandsImpl")
-            ()
-            ("+disableAlert(node: CORBA_Node)",
-            "+enableAlert(node: CORBA_Node)",
-            "+toggleAlert(node: CORBA_Node)",
-            "+mute(node: CORBA_Node)");
 
-    topToBottom(45)(readonlyZigBit, CORBA_Node, CommandsImpl);
-    drawObjects(CORBA_Node, CommandsImpl);
-    link(inheritance)(pathStepY(CommandsImpl.n, CORBA_Node.s, 20));
+    % Assoziationen
+%    link(composition)(BlockingQueueMANVEvent.s -- MANVConnector.n);
+%    link(composition)(BlockingQueueMANVCommand.s -- MANVConnector.e);
+    clink(composition)(BlockingQueueMANVEvent, MANVConnector);
+    item(iGuard)("eventQueue")(obj.nw = BlockingQueueMANVEvent.s + (0, -12));
 
-    Class.BlockingQueueMANVEvent("BlockingQueue<MANVEvent>")
-            ()
-            ();
+    clink(composition)(BlockingQueueMANVCommand, MANVConnector);
+    item(iGuard)("commandQueue")(obj.nw = BlockingQueueMANVCommand.sw + (29, -12));
 
-    Class.BlockingQueueMANVCommand("BlockingQueue<MANVCommand>")
-            ()
-            ();
-
-    topToBottom(45)(CommandsImpl, BlockingQueueMANVEvent);
-    lefttoRight.top(45)(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
-    drawObjects(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
+            
 endfig;
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
