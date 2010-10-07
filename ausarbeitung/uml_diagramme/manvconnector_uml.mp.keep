@@ -78,8 +78,8 @@ beginfig(1);
             "+toggleAlert(node: CORBA_Node)",
             "+mute(node: CORBA_Node)");
 
-    leftToRight.top(45)(ZigBit, CORBA_Node);
-    topToBottom(90)(CORBA_Node, CommandsImpl);
+    leftToRight.top(90)(ZigBit, CORBA_Node);
+    topToBottom(45)(CORBA_Node, CommandsImpl);
     drawObjects(CORBA_Node, CommandsImpl);
     link(inheritance)(pathStepY(CommandsImpl.n, CORBA_Node.s, 20));
 
@@ -181,9 +181,23 @@ beginfig(1);
             "+getChildList(commandQueue: BlockingQueue<MANVCommand>): AbstractList<CorbaMessageContainer>",
             "+getSubResult(result: MANVResult, toString: String): MANVResult");
 
+    Class.MANVCommand("MANVCommand")
+            ("#command: String",
+            "-result: MANVResult",
+            "#id: int",
+            "#maxId: static int",
+            "-resultLatch: CountDownLatch")
+            ("+MANVCommand(command: String, priority: int)",
+            "+getCommand: String",
+            "-getUniqueId: int",
+            "+setResult(result: MANVResult)",
+            "+getResult: MANVResult");
+
     topToBottom(45)(MANVEvent, MANVResult);
-    drawObject(MANVResult);
+    leftToRight.top(45)(MANVCommand, MANVEvent);
+    drawObjects(MANVResult, MANVCommand);
     link(inheritance)(pathStepY(MANVResult.n, MANVEvent.s, 20));
+    link(inheritance)(pathStepY(MANVCommand.n, MANVPrioritized.s, 20));
 
     Class.MANVDataReceived("MANVDataReceived")
             ("-source: iZigBit",
@@ -279,49 +293,25 @@ beginfig(1);
     clink(composition)(BlockingQueueMANVCommand, MANVConnector);
     item(iGuard)("commandQueue")(obj.nw = BlockingQueueMANVCommand.sw + (29, -12));
 
+    link(composition)(pathStepY(MANVResult.sw, MANVCommand.s, 20));
+    item(iGuard)("result")(obj.e = MANVResult.nw + (-60, -10));
+
+    link(composition)(pathStepY(MANVResult.se, SocketWriter.sw + (20, 0), 20));
+    item(iGuard)("result")(obj.n = SocketWriter.sw + (30, -60));
+
+    link(composition)(pathStepY(BlockingQueueMANVCommand.n, SocketWriter.se + (-12, 0), 20));
+    item(iGuard)("commandQueue")(obj.n = SocketWriter.se + (15, -30));
+
+    clink(composition)(CommandsImpl, MANVConnector);
+    item(iGuard)("commandsImpl")(obj.n = MANVConnector.e + (10, -140));
+
+    % TBD
+    clink(composition)(MANVResult.nw, SocketReader.sw);
+    clink(composition)(MANVDataReceived, iZigBit);
+    clink(composition)(MANVChildLost, iZigBit);
             
 endfig;
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
