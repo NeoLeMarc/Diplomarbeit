@@ -237,10 +237,39 @@ beginfig(1);
     link(inheritance)(pathStepY(CorbaDataMessageContainer.n, CorbaMessageContainer.s, 20));
     link(inheritance)(pathStepY(CorbaEventMessageContainer.n, CorbaMessageContainer.s, 20));
 
-            
+           
+    Class.CORBA_Node("CORBA_Node")
+            ()
+            ();
 
+    Class.CommandsImpl("CommandsImpl")
+            ()
+            ("+disableAlert(node: CORBA_Node)",
+            "+enableAlert(node: CORBA_Node)",
+            "+toggleAlert(node: CORBA_Node)",
+            "+mute(node: CORBA_Node)");
+
+    topToBottom(45)(readonlyZigBit, CORBA_Node, CommandsImpl);
+    drawObjects(CORBA_Node, CommandsImpl);
+    link(inheritance)(pathStepY(CommandsImpl.n, CORBA_Node.s, 20));
+
+    Class.BlockingQueueMANVEvent("BlockingQueue<MANVEvent>")
+            ()
+            ();
+
+    Class.BlockingQueueMANVCommand("BlockingQueue<MANVCommand>")
+            ()
+            ();
+
+    topToBottom(45)(CommandsImpl, BlockingQueueMANVEvent);
+    leftToRight.top(45)(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
+    drawObjects(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
 endfig;
 end
+
+
+
+
 
 
 
