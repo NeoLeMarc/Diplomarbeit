@@ -1,0 +1,267 @@
+input metauml;
+beginfig(1);
+
+    % Hauptklasse
+    Class.MANVConnector("MANVConnector")
+            ("-commandQueue: BlockingQueue<MANVCommand>",
+             "-eventQueue: BlockingQueue<MANVEvent>",
+             "-resultQueue: BlockingQueue<MANVCommand>",
+             "-corbaSender: CorbaSender",
+             "-commandsImpl: CommandsImpl")
+            ("+main(args: String[]): void");
+
+    % ZigBee Krempel
+    Class.iZigBit("iZigBit")
+            ()
+            ("+getNodeID: int",
+             "+getMacID: int",
+             "+sendData(data: String): MANVResult",
+             "+isendData(data: String)",
+             "+toggleAlertStatus: MANVResult",
+             "+disableAlert: MANVResult",
+             "+enableAlert: MANVResult",
+             "+muteAlert: MANVResult",
+             "+itoggleAlertStatus: void",
+             "+idisableAlert: void",
+             "+ienableAlert: void",
+             "+imuteAlert: void");
+    classStereotypes.iZigBit("<<Interface>>");
+
+    Class.readonlyZigBit("readonlyZigBit")
+            ("-id: int")
+            ("+readOnlyZigBit(nodeID: int",
+            "+getNodeID: int",
+            "+getMacID: int",
+            "+sendData(data: String): MANVResult",
+            "+toggleAlertStatus: void",
+            "+enableAlertStatus: void",
+            "+disableAlert: void",
+            "+muteAlert: void");
+
+    Class.ZigBit("ZigBit")
+            ("-zigBitMap: HashMap<Integer, ZigBit>",
+             "-macMap: HashMap<Integer, Integer>")
+            ("+ZigBit(nodeID : int)",
+            "+getNodeID: int",
+            "+getMacID: int",
+            "+setCommandQueue(commandQueue: BlockingQueue<MANVCommand>)",
+            "+get(id: int): iZigBit",
+            "+getByMacID(macID: int): iZigBit",
+            "+discover: iZigBit",
+            "+sendData(data: String): MANVResult",
+            "+sendUntilSuccess(data: String): MANVResult",
+            "+toggleAlertStatus: MANVResult",
+            "+enableAlertStatus: MANVResult",
+            "+disableAlert: MANVResult",
+            "+mutAlert: MANVResult",
+            "-requestMacID: int");
+
+
+    
+    leftToRight.top(100)(iZigBit, MANVConnector);
+    topToBottom(45)(iZigBit, readonlyZigBit);
+    leftToRight.top(45)(readonlyZigBit, ZigBit);
+
+    drawObjects(MANVConnector, iZigBit, readonlyZigBit, ZigBit);
+    link(inheritance)(pathStepY(readonlyZigBit.n, iZigBit.s, 20));
+    link(inheritance)(pathStepY(ZigBit.n, iZigBit.s, 20));
+
+    % Events
+    Class.Comparable("Comparable")
+            ()
+            ("+compareTo(o: object): int");
+    classStereotypes.Comparable("<<interface>>");
+
+    leftToRight.top(245)(MANVConnector, Comparable);
+    drawObjects(Comparable);
+
+    Class.MANVPrioritized("MANVPrioritized")
+            ("#priority: int")
+            ("+compareTo(o: MANVPrioritized): int",
+            "+compareTo(o: object): int");
+
+    topToBottom(45)(Comparable, MANVPrioritized);
+    drawObject(MANVPrioritized);
+    link(inheritance)(pathStepY(MANVPrioritized.n, Comparable.s, 20));
+
+    Class.MANVEvent("MANVEvent")
+            ("-raw: String")
+            ("+MANVEvent(raw: String)",
+            "+isResult: boolean",
+            "+isImportant: boolean",
+            "+fromString(raw: String): MANVEvent",
+            "+createCorbaMessages: AbstractList<CorbaMessageContainer>",
+            "+toString: String",
+            "+getRaw: String");
+
+    topToBottom(45)(MANVPrioritized, MANVEvent);
+    drawObject(MANVEvent);
+    link(inheritance)(pathStepY(MANVEvent.n, MANVPrioritized.s, 20));
+
+    
+    Class.MANVResult("MANVResult")
+            ("#status: boolean",
+            "#subResult: MANVResult")
+            ("+MANVResult(raw: String, subResult: MANVResult)",
+            "+getData: String",
+            "+isResult: boolean",
+            "+isImportant: boolean",
+            "+isComposite: boolean",
+            "+getChildList(commandQueue: BlockingQueue<MANVCommand>): AbstractList<CorbaMessageContainer>",
+            "+getSubResult(result: MANVResult, toString: String): MANVResult");
+
+    topToBottom(45)(MANVEvent, MANVResult);
+    drawObject(MANVResult);
+    link(inheritance)(pathStepY(MANVResult.n, MANVEvent.s, 20));
+
+    Class.MANVDataReceived("MANVDataReceived")
+            ("-source: iZigBit",
+            "-data: String")
+            ("+MANVDataReceived(raw: String)",
+            "+isImportant: boolean",
+            "+parseRaw(raw: String)");
+
+    Class.MANVChildLost("MANVChildLost")
+            ("#source: iZigBit")
+            ("+MANVChildLost(raw: String)",
+            "+isImportant: boolean",
+            "+createCorbaMessages: AbstractList<CorbaMessageContainer>");
+
+    Class.MANVChildJoined("MANVChildJoined")
+            ("#source: iZigBit")
+            ("+MANVChildLost(raw: String)",
+            "+isImportant: boolean",
+            "+createCorbaMessages: AbstractList<CorbaMessageContainer>");
+
+    leftToRight.top(90)(MANVResult, MANVDataReceived);
+    leftToRight.top(45)(MANVDataReceived, MANVChildLost, MANVChildJoined);
+    drawObjects(MANVDataReceived, MANVChildLost, MANVChildJoined);
+    link(inheritance)(pathStepY(MANVDataReceived.n, MANVEvent.s, 20));
+    link(inheritance)(pathStepY(MANVChildLost.n, MANVEvent.s, 20));
+    link(inheritance)(pathStepY(MANVChildJoined.n, MANVEvent.s, 20));
+
+
+    Class.MANVStatusMessage("MANVStatusMessage")
+            ("#pulse: short",
+            "#breathing: short",
+            "-alertStatus: HashMap<Integer, Integer>")
+            ("+MANVStatusMessage(raw: String)",
+            "+parseRaw(raw: String)",
+            "+createCorbaMessages: AbstractList<CorbaMessageContainer>",
+            "+toString: String");
+
+    topToBottom(110)(MANVDataReceived, MANVStatusMessage);
+    drawObject(MANVStatusMessage);
+    link(inheritance)(pathStepY(MANVStatusMessage.n, MANVDataReceived.s, 20));
+
+    Class MANVGsn("MANVGsn")
+            ("-myRaw: String")
+            ("+MANVGsn(raw: String)",
+            "+isCcomposite: boolean",
+            "+getData: String",
+            "+addSubResult(result: MANVResult)");
+
+    Class MANVChildrenList("MANVChildrenList")
+            ()
+            ("+MANVChildrenList(raw: String)",
+            "+isComposite: boolean",
+            "+getChildList(commandQueue: BlockingQueue<MANVCommand>",
+            "+addSubResult(result: MANVResult)");
+
+    leftToRight.top(45)(MANVChildrenList, MANVGsn, MANVStatusMessage);
+    drawObjects(MANVGsn, MANVChildrenList);
+    link(inheritance)(pathStepY(MANVGsn.n, MANVResult.s, 20));
+    link(inheritance)(pathStepY(MANVChildrenList.n, MANVResult.s, 20));
+
+    % Threads
+    Class.Thread("Thread")
+            ()
+            ("run: void");
+
+%    leftToRight.top(500)(Comparable, Thread);
+
+
+    Class.SocketReader("SocketReader")
+            ("-eventQueue: BlockingQueue<MANVEvent>",
+            "-lastResult: MANVResult",
+            "-resultSemaphore: Semaphore",
+            "-serialIn: BufferReader")
+            ("+SocketReader(serialIn: BufferedReader, eventQueue: BlockingQueue<MANVEvent>)",
+            "+setLastResult(MANVResult: result)",
+            "+getLastResult(MANVResult: result)",
+            "run: void");
+
+    Class.SocketWriter("SocketWriter")
+            ("-commandQueue: BlockingQueue<MANVCommand>",
+            "-resultQueue: BlockingQueue<MANVCommand>",
+            "-serialOut: PrintWriter",
+            "-reader: SocketReader",
+            "-lastResult: MANVResult")
+            ("+SocketWriter(serialOut: PrintWriter, commandQueue: <MANVCommand>, reader: SocketReader)",
+            "+writeLine(line: String)",
+            "+run: void");
+
+    Class.CorbaSender("CorbaSender")
+            ("-eventQueue: BlockingQueue<MANVEvent>",
+            "-serverIncoming: Incoming")
+            ("+CorbaSender(eventQueue: BlockingQueue<MANVEvent>, serverIncoming: Incoming)",
+            "+run: void");
+
+    topToBottom(45)(Thread, SocketWriter);
+    leftToRight.top(90)(MANVPrioritized, SocketReader);
+    leftToRight.top(45)(SocketReader, SocketWriter, CorbaSender);
+    drawObjects(Thread, SocketReader, SocketWriter, CorbaSender);
+    link(inheritance)(pathStepY(SocketReader.n, Thread.s, 20));
+    link(inheritance)(pathStepY(SocketWriter.n, Thread.s, 20));
+    link(inheritance)(pathStepY(CorbaSender.n, Thread.s, 20));
+
+    % Corba
+    Class.CorbaMessageContainer("CorbaMessageContainer")
+            ()
+            ("+send(serverIncoming: Incoming)");
+
+    Class.CorbaDataMessageContainer("CorbaDataMessageContainer")
+            ("-message: CORBA_DataMessage")
+            ("+CorbaDataMessageContainer(message: CORBA_DataMessage)",
+            "+send(serverIncoming: Incoming)",
+            "+toString: String");
+
+    Class.CorbaEventMessageContainer("CorbaEventMessageContainer")
+            ("-message: CORBA_EventMessage")
+            ("+send(serverIncoming: Incoming)",
+            "+toString: String)");
+
+    topToBottom(45)(CorbaMessageContainer, CorbaDataMessageContainer);
+    leftToRight.top(45)(MANVStatusMessage, CorbaDataMessageContainer, CorbaEventMessageContainer);
+    drawObjects(CorbaMessageContainer, CorbaDataMessageContainer, CorbaEventMessageContainer);
+    link(inheritance)(pathStepY(CorbaDataMessageContainer.n, CorbaMessageContainer.s, 20));
+    link(inheritance)(pathStepY(CorbaEventMessageContainer.n, CorbaMessageContainer.s, 20));
+
+            
+
+endfig;
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
