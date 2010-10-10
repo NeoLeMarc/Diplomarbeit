@@ -312,7 +312,7 @@ beginfig(1);
     link(composition)(pathStepX(MANVResult.sw + (0, 20), SocketReader.w, -200));
 
     % Crossing Lines is a little bit... nasty
-    pair al, bl, ol;
+    pair al, bl, ol, startingPoint;
     path crossingLine, b, c, d;
 
     % Create the crossing-Arc
@@ -323,18 +323,30 @@ beginfig(1);
 
     % Parts before and after crossing
     b := pathManhattanX(MANVDataReceived.w, al);
-    c := pathManhattanY(bl, iZigBit.se + (0, 20));
+    startingPoint = bl + (0, 345);
+    c := bl --startingPoint;
 
     % Combine all of above
     d := b -- crossingLine -- c;
+
+    % Another crossing
+    bl := startingPoint + (0, 25);
+    al := startingPoint + (0, 15);
+    ol := startingPoint + (5, 18);
+    crossingLine := al .. ol .. bl;
+
+    % Parts before and after crossing
+    b := startingPoint -- al;
+    c := pathManhattanY(bl, iZigBit.se + (0, 20));
+
+    d := d -- b -- crossingLine -- c; 
 
     %%%%%%%% Draw Link
     link(composition)(d);
 
 
     % Create the crossing-Arc
-    pair startingPoint;
-    startingPoint = MANVChildLost.n + (8, 0);
+    startingPoint := MANVChildLost.n + (8, 0);
 
     bl := startingPoint + (0, 25);
     al := startingPoint + (0, 15);
@@ -354,6 +366,27 @@ beginfig(1);
             
 endfig;
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
