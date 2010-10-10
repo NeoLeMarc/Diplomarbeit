@@ -78,7 +78,7 @@ beginfig(1);
             "+toggleAlert(node: CORBA_Node)",
             "+mute(node: CORBA_Node)");
 
-    leftToRight.top(90)(ZigBit, CORBA_Node);
+    leftToRight.top(200)(MANVConnector, CommandsImpl);
     topToBottom(45)(CORBA_Node, CommandsImpl);
     drawObjects(CORBA_Node, CommandsImpl);
     link(inheritance)(pathStepY(CommandsImpl.n, CORBA_Node.s, 20));
@@ -92,7 +92,7 @@ beginfig(1);
             ();
 
     topToBottom(45)(BlockingQueueMANVEvent, MANVConnector);
-    leftToRight.top(45)(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
+    leftToRight.top(60)(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
     drawObjects(BlockingQueueMANVEvent, BlockingQueueMANVCommand);
 
     % Threads
@@ -291,7 +291,7 @@ beginfig(1);
     item(iGuard)("eventQueue")(obj.nw = BlockingQueueMANVEvent.s + (0, -12));
 
 %    clink(composition)(BlockingQueueMANVCommand, MANVConnector);
-    link(composition)(pathStepX(BlockingQueueMANVCommand.s + (15, 0), MANVConnector.e, 20));
+    link(composition)(pathStepX(BlockingQueueMANVCommand.s, MANVConnector.ne - (0, 20), 20));
     item(iGuard)("commandQueue")(obj.nw = BlockingQueueMANVCommand.sw + (24, -12));
 
     link(composition)(pathManhattanX(MANVResult.w, MANVCommand.s));
@@ -302,10 +302,10 @@ beginfig(1);
     link(composition)(a);
     item(iGuard)("result")(obj.n = SocketWriter.sw + (30, -60));
 
-    link(composition)(pathManhattanY(BlockingQueueMANVCommand.n + (35, 0), SocketWriter.e));
+    link(composition)(pathManhattanY(BlockingQueueMANVCommand.n + (20, 0), SocketWriter.e));
     item(iGuard)("commandQueue")(obj.n = SocketWriter.se + (15, -30));
 
-    link(composition)(pathManhattanY(CommandsImpl.nw + (35, 0), MANVConnector.se + (0, 20)));
+    link(composition)(pathHorizontal(CommandsImpl.w - (0, 20), MANVConnector.right));
     item(iGuard)("commandsImpl")(obj.n = MANVConnector.e + (10, -140));
 
     % TBD
@@ -346,7 +346,7 @@ beginfig(1);
 
 
     % Create the crossing-Arc
-    startingPoint := MANVChildLost.n + (8, 0);
+    startingPoint := MANVChildLost.ne + (20, 0);
 
     bl := startingPoint + (0, 25);
     al := startingPoint + (0, 15);
@@ -354,202 +354,37 @@ beginfig(1);
     crossingLine := al .. ol .. bl;
 
     % Parts before and after crossing
-    b := pathManhattanX(startingPoint, al);
+    b := pathManhattanX(MANVChildLost.e, startingPoint) -- pathManhattanX(startingPoint, al);
     c := pathManhattanY(bl, iZigBit.se + (0, 40));
 
     % Combine all of above
     d := b -- crossingLine -- c;
 
-
     %%% Draw Link
     link(composition)(d);
+
+    %% SocketReader -> MANVConnector
+    % Create the crossing-Arc
+    startingPoint := SocketReader.s - (0, 60);
+
+    bl := startingPoint + (0, 25);
+    al := startingPoint + (0, 15);
+    ol := startingPoint + (5, 18);
+    crossingLine := al .. ol .. bl;
+
+    % Parts before and after crossing
+    b := rpathManhattanX(SocketReader.s, bl);
+    c := rpathManhattanY(al, MANVConnector.w + (-40, 60));
+
+    % Combine all of above
+    d := pathManhattanX(MANVConnector.w, MANVConnector.w + (-40, 60)) -- c -- crossingLine -- b;
+
+    link(composition)(d);
+
+
             
 endfig;
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
