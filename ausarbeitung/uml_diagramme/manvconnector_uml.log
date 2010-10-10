@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=mptopdf 2010.10.6)  11 OCT 2010 00:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=mptopdf 2010.10.6)  11 OCT 2010 01:15
  restricted \write18 enabled.
  %&-line parsing enabled.
 **\relax manvconnector_uml.1
@@ -7,14 +7,14 @@ This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=mptopdf
 Here is how much of TeX's memory you used:
  100 strings out of 496733
  796 string characters out of 1201903
- 4121980 words of memory out of 7107217
+ 4122192 words of memory out of 7107429
  1745 multiletter control sequences out of 15000+50000
  2163 words of font info for 2 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  10i,3n,7p,116b,271s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive
 /fonts/type1/urw/times/utmr8a.pfb>
-Output written on manvconnector_uml.pdf (1 page, 32802 bytes).
+Output written on manvconnector_uml.pdf (1 page, 32840 bytes).
 PDF statistics:
  13 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

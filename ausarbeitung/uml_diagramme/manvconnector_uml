@@ -369,22 +369,24 @@ beginfig(1);
 
     bl := startingPoint + (0, 25);
     al := startingPoint + (0, 15);
-    ol := startingPoint + (5, 18);
+    ol := startingPoint + (-5, 18);
     crossingLine := al .. ol .. bl;
 
     % Parts before and after crossing
     b := rpathManhattanX(SocketReader.s, bl);
-    c := rpathManhattanY(al, MANVConnector.w + (-40, 60));
+    c := rpathManhattanY(al, BlockingQueueMANVEvent.w);
 
     % Combine all of above
-    d := pathManhattanX(MANVConnector.w, MANVConnector.w + (-40, 60)) -- c -- crossingLine -- b;
+    d := c -- crossingLine -- b;
 
     link(composition)(d);
 
-
+    % BlockingQueueMANVEvent -> CorbaSender
+    link(composition)(pathStepX(BlockingQueueMANVEvent.e, CorbaSender.s + (0, -60), 40) -- CorbaSender.s);
             
 endfig;
 end
+
 
 
 
