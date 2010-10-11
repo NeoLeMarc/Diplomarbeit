@@ -48,10 +48,15 @@
 \BOOKMARK [1][-]{section.2.3}{2.3 ADuC7019/2X-Mikrocontroller}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Beschreibung}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Peripherie}{section.2.3}
-\BOOKMARK [1][-]{section.2.4}{2.4 Java}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 \334bersicht}{section.2.4}
-\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Programmiersprache}{section.2.4}
-\BOOKMARK [1][-]{section.2.5}{2.5 Corba}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{2.4 Das Atmel ZigBitATZB-24-A2R ZigBee-Modul}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 Hardware}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Firmware}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.3}{2.4.3 Bitcloud}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.4}{2.4.4 SerialNet}{section.2.4}
+\BOOKMARK [1][-]{section.2.5}{2.5 Java}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.5.1}{2.5.1 \334bersicht}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.2}{2.5.2 Programmiersprache}{section.2.5}
+\BOOKMARK [1][-]{section.2.6}{2.6 Corba}{chapter.2}
 \BOOKMARK [0][]{chapter.3}{3 Stand der Technik}{}
 \BOOKMARK [0][]{chapter.4}{4 Entwurf}{}
 \BOOKMARK [1][-]{section.4.1}{4.1 Gesamtsystem}{chapter.4}
@@ -69,9 +74,12 @@
 \BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 ZigBee-Schnittstelle}{section.4.2}
 \BOOKMARK [3][-]{subsubsection.4.2.6.1}{4.2.6.1 UART}{subsection.4.2.6}
 \BOOKMARK [3][-]{subsubsection.4.2.6.2}{4.2.6.2 MANV-USB-Connector}{subsection.4.2.6}
-\BOOKMARK [2][-]{subsection.4.2.7}{4.2.7 Software}{section.4.2}
-\BOOKMARK [3][-]{subsubsection.4.2.7.1}{4.2.7.1 Firmware}{subsection.4.2.7}
-\BOOKMARK [3][-]{subsubsection.4.2.7.2}{4.2.7.2 MANV-Suite}{subsection.4.2.7}
+\BOOKMARK [1][-]{section.4.3}{4.3 Software}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Firmware}{section.4.3}
+\BOOKMARK [3][-]{subsubsection.4.3.1.1}{4.3.1.1 Synchronisation mit dem ZigBit-Modul}{subsection.4.3.1}
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 MANVSuite}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 MANVConnector}{section.4.3}
+\BOOKMARK [3][-]{subsubsection.4.3.3.1}{4.3.3.1 Synchronisation der Befehls\374bertragung}{subsection.4.3.3}
 \BOOKMARK [0][]{chapter.5}{5 Praktische Realisierung des Sensornetzes}{}
 \BOOKMARK [0][]{chapter.6}{6 Ergebnisse}{}
 \BOOKMARK [1][-]{section.6.1}{6.1 Baselinewandering}{chapter.6}

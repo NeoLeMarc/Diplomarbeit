@@ -14,9 +14,10 @@
 \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_bottom.pdf}{label}{Unterseite der Platine der MANVNode}
 
 \subsubsection{Beschreibung}
-Die MANVNode ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein ADuC-7026-Mikrocontroller
-der Firma Analog Devices sowie ein Atmel ZigBit-Funkmodul des Typs ATZB-24-A2. Die Platine dient zur Simulation 
-des Erste-Hilfe-Sensors. An Stelle einer echten Messung generiert die Platine Messwerte mit Hilfe eines Zufallszahlen-Generators.
+Die MANVNode ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
+ADuC-7026-Mikrocontroller der Firma Analog Devices sowie ein Atmel ZigBit-Funkmodul des Typs ATZB-24-A2. Die Platine 
+dient zur Simulation des Erste-Hilfe-Sensors. An Stelle einer echten Messung generiert die Platine Messwerte mit Hilfe 
+eines Zufallszahlen-Generators.
 Dier Generator kann in drei Zuständen beschrieben werden:
 
 \begin{itemize}
@@ -184,9 +185,9 @@ ZigBit-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die d
 Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. Für die Stromversorgung ist es notwendig, die 5V der
 USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
 
-\subsection{Software}
+\section{Software}
 
-\subsubsection{Firmware}
+\subsection{Firmware}
 \Abbildungps{!htb}{1}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{label}{Ablauf der Firmware-Mainloop.}
 Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das ZigBit-Modul ergänzt. Die Firware wurde in der
 Programmiersprache C geschrieben, und setzt direkt auf die Hardware des ADuC auf. Es wurde lediglich die von 
@@ -216,16 +217,24 @@ zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
 Ein weiteres Problem sind die sehr beschränkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
 mit 16kB sehr knapp bemessen. 
 
-\subsubsection{MANV-Suite}
-\Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{label}{Interaktion der einzelnen Threads des MANV-Connectors}
+\subsubsection{Synchronisation mit dem ZigBit-Modul}
+
+
+\subsection{MANVSuite}
+
+In dieser Arbeit wurde ein Java-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die 
+Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite. 
+
+
+\subsection{MANVConnector}
 \begin{sidewaysfigure}
         \includegraphics*[width=1\textwidth]{uml_diagramme/manvconnector_uml.pdf}
         \caption{Klassendiagramm des MANV-Connectors}
         \label{klassendiagramm_manvconnector}
 \end{sidewaysfigure}
 
-In dieser Arbeit wurde ein Java-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die Anbindung an
-die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite.
+\Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des MANV-Connectors}
+
 
 Der MANVConnector hat einerseits die Aufgabe, Daten die von dem MANV-USB-Connector empfangen wurden in Corba-Events 
 umzusetzen, und an den MANVServer weiterzuleiten. Andererseits empfängt sie Corba-Events vom MANVServer, dekodiert
@@ -233,9 +242,10 @@ diese und sendet diese in Form von Sensornetz Befehlen an die zuständigen MANVN
 
 Bei der Kommunikation mit dem auf dem USB-Stick aufgebrachten ZigBee-Modul stellen sich grundsätzlich die selben 
 Synchronisierungsprobleme wie in der MANVFirmware. Da der MANVConnector jedoch alle Möglichkeiten der Java-Virtual-Machine
-nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen.
+nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
 
-Analog zu den Sende- und Empfangspuffern in der Firmware gibt es im MANVConnector drei Queues:
+In der MANVFirmware werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Diese finden sich auch
+im MANVConnector wieder. Hierbei werden an Stelle von Ringpuffern priorisierte Warteschlangen, sogenannte Queues verwendet. 
 
 \begin{itemize}
     \item{Die Command Queue:} In dieser Queue werden alle zu sendenden Befehle gespeichert.
@@ -248,7 +258,7 @@ Jedes Element der einzelnen Queues verfügt über eine Priorität; die Queues so
 Zugriff nach Priotität sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
 wie z.B. ein Alarm bevorzugt ausgeliefert werden.
 
-Der MANVConnector ist in drei Threads aufgeteilt:
+Der MANVConnector verfügt neben dem Hauptthread über drei weitere Threads:
 
 \begin{itemize}
     \item{SocketWriter:} Dieser Thread entnimmt Befehle aus der \textsl{CommandQueue} und sendet
@@ -261,10 +271,23 @@ Der MANVConnector ist in drei Threads aufgeteilt:
                          Ergebnis zur Abholung durch den \textsl{SocketWriter} zur Verfügung
                          gestellt. Handelt es sich hingegen um einen Ereignis, so wird dieses
                          in die \textsl{EventQueue} eingefügt.
-    \item{Haupt-Thread:} Dieser Thread ist für die Kommunikation mit MANVServer zuständig.
+    \item{CorbaSender:} Dieser Thread ist für die Kommunikation mit MANVServer zuständig.
                          Befehle, die vom MANVServer empfangen werden, werden für das 
                          Sensornetz aufbereitet und in die CommandQueue eingestellt.
                          Ausserdem werden Ereignisse aus der \textsl{EventQueue} entnommen,
                          in Corba-Events übersetzt und an den MANVServer zugestellt.
 \end{itemize}                          
 
+Die Kommunikation der Threads untereinander findet komplett über die oben genannten Warteschlangen statt. Das Zusammenwirken der Threads
+ist in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt:\\
+
+Zunächst erzeugt der Hauptthread (\emph{MANVConnector.main}) die drei Warteschlangen. Dannach werden die beiden Threads
+\emph{SocketWriter} und \emph{SocketReader} erstellt. Dannach ruft der Hauptthread die Corba-Inizialisierungsroutine auf und startet
+den \emph{CorbaSender}-Thread.\\
+
+Beim Starten der Threads, wird sichergestellt, dass alle Zugriff auf alle drei Warteschlangen haben. Die Konsequente Verwendung
+der Warteschlangen zur Kommunikation der Threads untereinander löst bereits viele Synchronisationsprobleme. Grundsätzlich findet
+Kommunikation zwischen den Threads rein über die Warteschlangen statt. Einzige Ausnahme ist das Abrufen des Ergebnisses eines
+gesendeten Kommandos. 
+
+\subsubsection{Synchronisation der Befehlsübertragung}

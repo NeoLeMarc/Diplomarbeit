@@ -47,10 +47,15 @@
 \contentsline {section}{\numberline {2.3}ADuC7019/2X-Mikrocontroller}{23}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Beschreibung}{23}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Peripherie}{23}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Java}{24}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}\IeC {\"U}bersicht}{24}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Programmiersprache}{24}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Corba}{25}{section.2.5}
+\contentsline {section}{\numberline {2.4}Das Atmel ZigBitATZB-24-A2R ZigBee-Modul}{24}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Hardware}{24}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Firmware}{24}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Bitcloud}{24}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}SerialNet}{24}{subsection.2.4.4}
+\contentsline {section}{\numberline {2.5}Java}{25}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}\IeC {\"U}bersicht}{25}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Programmiersprache}{25}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Corba}{26}{section.2.6}
 \contentsline {chapter}{\numberline {3}Stand der Technik}{27}{chapter.3}
 \contentsline {chapter}{\numberline {4}Entwurf}{29}{chapter.4}
 \contentsline {section}{\numberline {4.1}Gesamtsystem}{29}{section.4.1}
@@ -68,9 +73,12 @@
 \contentsline {subsection}{\numberline {4.2.6}ZigBee-Schnittstelle}{34}{subsection.4.2.6}
 \contentsline {subsubsection}{\numberline {4.2.6.1}UART}{35}{subsubsection.4.2.6.1}
 \contentsline {subsubsection}{\numberline {4.2.6.2}MANV-USB-Connector}{36}{subsubsection.4.2.6.2}
-\contentsline {subsection}{\numberline {4.2.7}Software}{36}{subsection.4.2.7}
-\contentsline {subsubsection}{\numberline {4.2.7.1}Firmware}{36}{subsubsection.4.2.7.1}
-\contentsline {subsubsection}{\numberline {4.2.7.2}MANV-Suite}{37}{subsubsection.4.2.7.2}
+\contentsline {section}{\numberline {4.3}Software}{36}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Firmware}{36}{subsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.1.1}Synchronisation mit dem ZigBit-Modul}{37}{subsubsection.4.3.1.1}
+\contentsline {subsection}{\numberline {4.3.2}MANVSuite}{37}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}MANVConnector}{37}{subsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.3.1}Synchronisation der Befehls\IeC {\"u}bertragung}{39}{subsubsection.4.3.3.1}
 \contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{49}{chapter.5}
 \contentsline {chapter}{\numberline {6}Ergebnisse}{51}{chapter.6}
 \contentsline {section}{\numberline {6.1}Baselinewandering}{51}{section.6.1}
