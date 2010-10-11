@@ -71,38 +71,38 @@
 \contentsline {subsection}{\numberline {4.2.7}Software}{36}{subsection.4.2.7}
 \contentsline {subsubsection}{\numberline {4.2.7.1}Firmware}{36}{subsubsection.4.2.7.1}
 \contentsline {subsubsection}{\numberline {4.2.7.2}MANV-Suite}{37}{subsubsection.4.2.7.2}
-\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{47}{chapter.5}
-\contentsline {chapter}{\numberline {6}Ergebnisse}{49}{chapter.6}
-\contentsline {section}{\numberline {6.1}Baselinewandering}{49}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{49}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{49}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}HRV-Variation}{49}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{49}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{49}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}QRS-Komplexe}{50}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{50}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{50}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{50}{section.6.4}
-\contentsline {chapter}{\numberline {7}Diskussion}{51}{chapter.7}
-\contentsline {section}{\numberline {7.1}Baselinewandering}{51}{section.7.1}
-\contentsline {section}{\numberline {7.2}HRV-Variation}{51}{section.7.2}
-\contentsline {section}{\numberline {7.3}QRS-Komplexe}{51}{section.7.3}
-\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{51}{section.7.4}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{53}{chapter.8}
-\contentsline {section}{\numberline {8.1}Sicherheit des Netzwerkes}{53}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Aktueller Stand}{53}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Angriffsszenarien}{53}{subsection.8.1.2}
-\contentsline {subsubsection}{\numberline {8.1.2.1}Aussp\IeC {\"a}hen von Patientendaten}{53}{subsubsection.8.1.2.1}
-\contentsline {subsubsection}{\numberline {8.1.2.2}Aktiver Angriff gegen das Netzwerk}{54}{subsubsection.8.1.2.2}
-\contentsline {subsubsection}{\numberline {8.1.2.3}St\IeC {\"o}rung des Netzwerkes}{54}{subsubsection.8.1.2.3}
-\contentsline {subsection}{\numberline {8.1.3}Abwehrma\IeC {\ss }nahmen}{55}{subsection.8.1.3}
-\contentsline {subsubsection}{\numberline {8.1.3.1}ZigBee-Verschl\IeC {\"u}sselung}{55}{subsubsection.8.1.3.1}
-\contentsline {subsubsection}{\numberline {8.1.3.2}Befehlsz\IeC {\"a}hler}{55}{subsubsection.8.1.3.2}
-\contentsline {subsubsection}{\numberline {8.1.3.3}Schutz auf Applikationsebene}{55}{subsubsection.8.1.3.3}
-\contentsline {subsubsection}{\numberline {8.1.3.4}Schutz gegen St\IeC {\"o}rsender}{56}{subsubsection.8.1.3.4}
-\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{56}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{56}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{56}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{56}{subsection.8.2.3}
-\contentsline {chapter}{Glossar}{57}{appendix*.8}
-\contentsline {chapter}{Literaturverzeichnis}{58}{appendix*.8}
+\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{49}{chapter.5}
+\contentsline {chapter}{\numberline {6}Ergebnisse}{51}{chapter.6}
+\contentsline {section}{\numberline {6.1}Baselinewandering}{51}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{51}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{51}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}HRV-Variation}{51}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{51}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{51}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}QRS-Komplexe}{52}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{52}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{52}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{52}{section.6.4}
+\contentsline {chapter}{\numberline {7}Diskussion}{53}{chapter.7}
+\contentsline {section}{\numberline {7.1}Baselinewandering}{53}{section.7.1}
+\contentsline {section}{\numberline {7.2}HRV-Variation}{53}{section.7.2}
+\contentsline {section}{\numberline {7.3}QRS-Komplexe}{53}{section.7.3}
+\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{53}{section.7.4}
+\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{55}{chapter.8}
+\contentsline {section}{\numberline {8.1}Sicherheit des Netzwerkes}{55}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Aktueller Stand}{55}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Angriffsszenarien}{55}{subsection.8.1.2}
+\contentsline {subsubsection}{\numberline {8.1.2.1}Aussp\IeC {\"a}hen von Patientendaten}{55}{subsubsection.8.1.2.1}
+\contentsline {subsubsection}{\numberline {8.1.2.2}Aktiver Angriff gegen das Netzwerk}{56}{subsubsection.8.1.2.2}
+\contentsline {subsubsection}{\numberline {8.1.2.3}St\IeC {\"o}rung des Netzwerkes}{56}{subsubsection.8.1.2.3}
+\contentsline {subsection}{\numberline {8.1.3}Abwehrma\IeC {\ss }nahmen}{57}{subsection.8.1.3}
+\contentsline {subsubsection}{\numberline {8.1.3.1}ZigBee-Verschl\IeC {\"u}sselung}{57}{subsubsection.8.1.3.1}
+\contentsline {subsubsection}{\numberline {8.1.3.2}Befehlsz\IeC {\"a}hler}{57}{subsubsection.8.1.3.2}
+\contentsline {subsubsection}{\numberline {8.1.3.3}Schutz auf Applikationsebene}{57}{subsubsection.8.1.3.3}
+\contentsline {subsubsection}{\numberline {8.1.3.4}Schutz gegen St\IeC {\"o}rsender}{58}{subsubsection.8.1.3.4}
+\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{58}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{58}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{58}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{58}{subsection.8.2.3}
+\contentsline {chapter}{Glossar}{59}{appendix*.8}
+\contentsline {chapter}{Literaturverzeichnis}{60}{appendix*.8}
