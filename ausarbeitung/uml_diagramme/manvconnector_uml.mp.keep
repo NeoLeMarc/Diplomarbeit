@@ -29,7 +29,7 @@ beginfig(1);
 
     Class.readonlyZigBit("readonlyZigBit")
             ("-id: int")
-            ("+readOnlyZigBit(nodeID: int",
+            ("+readOnlyZigBit(nodeID: int)",
             "+getNodeID: int",
             "+getMacID: int",
             "+sendData(data: String): MANVResult",
@@ -285,45 +285,54 @@ beginfig(1);
 
 
     % Assoziationen
-%    link(composition)(BlockingQueueMANVEvent.s -- MANVConnector.n);
-%    link(composition)(BlockingQueueMANVCommand.s -- MANVConnector.e);
-    clink(composition)(BlockingQueueMANVEvent, MANVConnector);
-    item(iGuard)("eventQueue")(obj.nw = BlockingQueueMANVEvent.s + (0, -12));
+%    link(association)(BlockingQueueMANVEvent.s -- MANVConnector.n);
+%    link(association)(BlockingQueueMANVCommand.s -- MANVConnector.e);
+    clink(association)(BlockingQueueMANVEvent, MANVConnector);
 
-%    clink(composition)(BlockingQueueMANVCommand, MANVConnector);
-    link(composition)(pathStepX(BlockingQueueMANVCommand.s, MANVConnector.ne - (0, 20), 20));
-    item(iGuard)("commandQueue")(obj.nw = BlockingQueueMANVCommand.sw + (24, -12));
+%    clink(association)(BlockingQueueMANVCommand, MANVConnector);
+    link(association)(pathStepX(BlockingQueueMANVCommand.s, MANVConnector.ne - (0, 20), 20));
 
-    link(composition)(pathManhattanX(MANVResult.w, MANVCommand.s));
-    item(iGuard)("result")(obj.e = MANVResult.nw + (-60, -10));
+    link(association)(pathManhattanX(MANVResult.w, MANVCommand.s));
 
     path a;
     a := pathStepX(MANVResult.w - (0, 20), SocketWriter.sw + (20, -40), -180) -- SocketWriter.sw + (20, 0);
-    link(composition)(a);
-    item(iGuard)("result")(obj.n = SocketWriter.sw + (30, -60));
+    link(association)(a);
 
-    link(composition)(pathManhattanY(BlockingQueueMANVCommand.n + (20, 0), SocketWriter.e));
-    item(iGuard)("commandQueue")(obj.n = SocketWriter.se + (15, -30));
-
-    link(composition)(pathHorizontal(CommandsImpl.w - (0, 20), MANVConnector.right));
-    item(iGuard)("commandsImpl")(obj.n = MANVConnector.e + (10, -140));
-
-    % TBD
-    link(composition)(pathStepX(MANVResult.sw + (0, 20), SocketReader.w, -200));
-
-    % Crossing Lines is a little bit... nasty
+    % Auch hier brauchen wir einen ARC.
     pair al, bl, ol, startingPoint;
     path crossingLine, b, c, d;
 
+    startingPoint := BlockingQueueMANVCommand.n + (20, 7);
+
+    bl := startingPoint + (0, 25);
+    al := startingPoint + (0, 15);
+    ol := startingPoint + (5, 18);
+    crossingLine := al .. ol .. bl;
+
+    % Parts before and after crossing
+    b := pathManhattanX(BlockingQueueMANVCommand.n, startingPoint) -- pathManhattanX(startingPoint, al);
+    c := pathManhattanY(bl, SocketWriter.e + (0, 40));
+
+    % Combine all of above
+    d := b -- crossingLine -- c;
+
+    link(association)(d);
+
+    link(association)(pathHorizontal(CommandsImpl.w - (0, 20), MANVConnector.right));
+
+    % TBD
+    link(association)(pathStepX(MANVResult.sw + (0, 20), SocketReader.w, -200));
+
+    % Crossing Lines is a little bit... nasty
     % Create the crossing-Arc
-    bl = MANVDataReceived.nw + (-20, 25);
-    al = MANVDataReceived.nw + (-20, 15);
-    ol = MANVDataReceived.nw + (-15, 18);
+    bl := MANVDataReceived.nw + (-20, 25);
+    al := MANVDataReceived.nw + (-20, 15);
+    ol := MANVDataReceived.nw + (-15, 18);
     crossingLine := al .. ol .. bl;
 
     % Parts before and after crossing
     b := pathManhattanX(MANVDataReceived.w, al);
-    startingPoint = bl + (0, 345);
+    startingPoint := bl + (0, 345);
     c := bl --startingPoint;
 
     % Combine all of above
@@ -342,7 +351,7 @@ beginfig(1);
     d := d -- b -- crossingLine -- c; 
 
     %%%%%%%% Draw Link
-    link(composition)(d);
+    link(association)(d);
 
 
     % Create the crossing-Arc
@@ -361,7 +370,7 @@ beginfig(1);
     d := b -- crossingLine -- c;
 
     %%% Draw Link
-    link(composition)(d);
+    link(association)(d);
 
     %% SocketReader -> MANVConnector
     % Create the crossing-Arc
@@ -374,16 +383,52 @@ beginfig(1);
 
     % Parts before and after crossing
     b := rpathManhattanX(SocketReader.s, bl);
-    c := rpathManhattanY(al, BlockingQueueMANVEvent.w);
+    c := pathManhattanX(BlockingQueueMANVEvent.w, al);
 
     % Combine all of above
     d := c -- crossingLine -- b;
 
-    link(composition)(d);
+    link(association)(d);
 
     % BlockingQueueMANVEvent -> CorbaSender
-    link(composition)(pathStepX(BlockingQueueMANVEvent.e, CorbaSender.s + (0, -60), 40) -- CorbaSender.s);
-            
+    link(association)(pathStepX(BlockingQueueMANVEvent.e, CorbaSender.s + (0, -60), 40) -- CorbaSender.s);
+
+    % MANVEvent -> CorbaMessageContainer
+    pair ep; 
+    
+    startingPoint := CorbaMessageContainer.w - (216, 0);
+    bl            := startingPoint - (20, 0);
+    al            := startingPoint - (30, 0);
+    crossingLine  := startingPoint - (25, -5);
+    ep            := startingPoint - (160, 0);
+
+    d := CorbaMessageContainer.w -- startingPoint -- bl .. crossingLine .. al -- ep;
+
+    % Nächste Kreuzung...
+    startingPoint := ep + (0, 117); 
+    al            := startingPoint + (0, 20);
+    bl            := startingPoint + (0, 30);
+    crossingLine  := startingPoint + (5, 25);
+
+    d := d -- startingPoint -- al .. crossingLine .. bl -- pathManhattanY(bl, MANVEvent.e);
+    
+    link(association)(d);
+
+    % Beschriftungen
+    item(iGuard)("eventQueue")(obj.nw = BlockingQueueMANVEvent.s + (0, -15));
+    item(iGuard)("eventQueue")(obj.n  = CorbaSender.s - (80, 50));
+    item(iGuard)("eventQueue")(obj.e  = SocketReader.s - (-80, 50));
+    item(iGuard)("result")(obj.e = SocketWriter.sw - (30, 35));
+    item(iGuard)("result")(obj.e = SocketReader.w - (20, -6));
+    item(iGuard)("result")(obj.e = MANVResult.nw - (40, 0));
+    item(iGuard)("corbaMessages")(obj.w = MANVEvent.e + (20, 5));
+    item(iGuard)("source")(obj.w = MANVDataReceived.nw + (-20, 40));
+    item(iGuard)("source")(obj.e = MANVChildLost.ne + (42, 40));
+    item(iGuard)("commandQueue")(obj.w = MANVConnector.ne + (10, -16));
+    item(iGuard)("commandsImpl")(obj.w = MANVConnector.ne + (10, -48));
+    item(iGuard)("commandQueue")(obj.w = SocketWriter.se + (22, -2));
+
+
 endfig;
 end
 
