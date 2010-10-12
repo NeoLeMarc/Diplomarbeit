@@ -48,11 +48,13 @@
 \BOOKMARK [1][-]{section.2.3}{2.3 ADuC7019/2X-Mikrocontroller}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Beschreibung}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Peripherie}{section.2.3}
-\BOOKMARK [1][-]{section.2.4}{2.4 Das Atmel ZigBitATZB-24-A2R ZigBee-Modul}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{2.4 Die Atmel ZigBit Familie}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 Hardware}{section.2.4}
 \BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Firmware}{section.2.4}
-\BOOKMARK [2][-]{subsection.2.4.3}{2.4.3 Bitcloud}{section.2.4}
-\BOOKMARK [2][-]{subsection.2.4.4}{2.4.4 SerialNet}{section.2.4}
+\BOOKMARK [3][-]{subsubsection.2.4.2.1}{2.4.2.1 Bitcloud}{subsection.2.4.2}
+\BOOKMARK [3][-]{subsubsection.2.4.2.2}{2.4.2.2 SerialNet}{subsection.2.4.2}
+\BOOKMARK [4][-]{paragraph.2.4.2.2.1}{2.4.2.2.1 \334berblick}{subsubsection.2.4.2.2}
+\BOOKMARK [4][-]{paragraph.2.4.2.2.2}{2.4.2.2.2 SerialNet AT-Protokoll}{subsubsection.2.4.2.2}
 \BOOKMARK [1][-]{section.2.5}{2.5 Java}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.5.1}{2.5.1 \334bersicht}{section.2.5}
 \BOOKMARK [2][-]{subsection.2.5.2}{2.5.2 Programmiersprache}{section.2.5}
