@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/ svg10.dtd">
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="215.90738"
+   height="273.34671"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3250">
+      <stop
+         id="stop3252"
+         style="stop-color:#fa9530;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3254"
+         style="stop-color:#71a5c6;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="-158.75111"
+       y1="224.03711"
+       x2="-158.75111"
+       y2="175.54977"
+       id="linearGradient3256"
+       xlink:href="#linearGradient3250"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(544.47222,-17.172593)" />
+  </defs>
+  <g
+     transform="translate(-184.32935,-150.40367)"
+     id="layer1">
+    <rect
+       width="159.28572"
+       height="47.857143"
+       rx="1.4463766e-38"
+       x="184.82935"
+       y="150.90385"
+       id="rect2396"
+       style="opacity:1;fill:#fa9530;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="211.21048"
+       y="178.14297"
+       id="text2398"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"><tspan
+         x="211.21048"
+         y="178.14297"
+         id="tspan2400">APL (Anwendung) </tspan></text>
+    <rect
+       width="159.28572"
+       height="47.857143"
+       rx="1.4463766e-38"
+       x="184.82935"
+       y="207.02617"
+       id="rect3172"
+       style="opacity:1;fill:#fa9530;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="221.54056"
+       y="234.26529"
+       id="text3174"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"><tspan
+         x="221.54056"
+         y="234.26529"
+         id="tspan3196">SEC (Security)</tspan></text>
+    <rect
+       width="159.28572"
+       height="47.857143"
+       rx="1.4463766e-38"
+       x="184.82935"
+       y="263.1485"
+       id="rect3178"
+       style="opacity:1;fill:#fa9530;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="207.87064"
+       y="290.3876"
+       id="text3180"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"><tspan
+         x="207.87064"
+         y="290.3876"
+         id="tspan3198">NWK (Vermittlung)</tspan></text>
+    <rect
+       width="159.28572"
+       height="47.857143"
+       rx="1.4463766e-38"
+       x="184.82935"
+       y="319.27081"
+       id="rect3184"
+       style="opacity:1;fill:#71a5c6;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="214.15189"
+       y="346.50992"
+       id="text3186"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"><tspan
+         x="214.15189"
+         y="346.50992"
+         id="tspan3200">MAC (Sicherung)</tspan></text>
+    <rect
+       width="159.28572"
+       height="47.857143"
+       rx="1.4463766e-38"
+       x="184.82935"
+       y="375.39322"
+       id="rect3190"
+       style="opacity:1;fill:#71a5c6;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       x="200.3472"
+       y="402.63232"
+       id="text3192"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"><tspan
+         x="200.3472"
+         y="402.63232"
+         id="tspan3202">PHY (Bitübertragung)</tspan></text>
+    <path
+       d="M 385.66961,150.80115 L 385.78731,150.88503 L 399.83924,174.03771 L 391.77594,174.03771 L 391.77594,230.74495 L 391.77594,231.16439 L 391.77594,287.87163 L 399.83924,287.87163 L 385.78731,311.02431 L 385.66961,311.10818 L 371.60297,287.95552 L 379.68098,287.95552 L 379.68098,231.0805 L 379.68098,230.82884 L 379.68098,173.95382 L 371.60297,173.95382 L 385.66961,150.80115 z"
+       id="path3220"
+       style="fill:url(#linearGradient3256);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.7949636px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 385.66933,319.09192 L 385.78767,319.14651 L 399.91519,334.21559 L 391.80851,334.21559 L 391.80851,371.12389 L 391.80851,371.39688 L 391.80851,408.30518 L 399.91519,408.30518 L 385.78767,423.37426 L 385.66933,423.42885 L 371.52702,408.35978 L 379.64849,408.35978 L 379.64849,371.34229 L 379.64849,371.17849 L 379.64849,334.161 L 371.52702,334.161 L 385.66933,319.09192 z"
+       id="path3238"
+       style="fill:#71a5c6;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.64306515px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       x="-406.31165"
+       y="374.2373"
+       transform="matrix(0,-1,1,0,0,0)"
+       id="text3240"
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"><tspan
+         x="-406.31165"
+         y="374.2373"
+         id="tspan3242">IEEE 802.15.4</tspan></text>
+    <text
+       x="-248.48152"
+       y="373.35596"
+       transform="matrix(0,-1,1,0,0,0)"
+       id="text3244"
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"><tspan
+         x="-248.48152"
+         y="373.35596"
+         id="tspan3248">ZigBee</tspan></text>
+  </g>
+</svg>
