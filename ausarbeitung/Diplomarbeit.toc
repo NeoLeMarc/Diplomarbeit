@@ -8,8 +8,8 @@
 \contentsline {section}{\numberline {2.1}Grundlagen der kabellosen \IeC {\"U}betragung}{3}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Paketvermittelte \IeC {\"U}bertragung}{3}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Frequenzspreizung}{4}{subsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.2.1}\IeC {\"U}bersicht}{4}{subsubsection.2.1.2.1}
-\contentsline {subsubsection}{\numberline {2.1.2.2}FHSS: Frequency Hoping Spread Spectrum}{4}{subsubsection.2.1.2.2}
+\contentsline {subsubsection}{\numberline {2.1.2.1}\IeC {\"U}bersicht}{5}{subsubsection.2.1.2.1}
+\contentsline {subsubsection}{\numberline {2.1.2.2}FHSS: Frequency Hoping Spread Spectrum}{5}{subsubsection.2.1.2.2}
 \contentsline {subsubsection}{\numberline {2.1.2.3}DSSS: Direct Sequence Spred Spectrum}{5}{subsubsection.2.1.2.3}
 \contentsline {subsubsection}{\numberline {2.1.2.4}FHSS vs. DSSS}{5}{subsubsection.2.1.2.4}
 \contentsline {section}{\numberline {2.2}Kabellose \IeC {\"U}bertragungsprotokolle}{6}{section.2.2}
@@ -19,17 +19,17 @@
 \contentsline {subsection}{\numberline {2.2.4}WLAN}{7}{subsection.2.2.4}
 \contentsline {subsubsection}{\numberline {2.2.4.1}\IeC {\"U}bersicht}{7}{subsubsection.2.2.4.1}
 \contentsline {subsubsection}{\numberline {2.2.4.2}IEEE 802.11b}{8}{subsubsection.2.2.4.2}
-\contentsline {subsubsection}{\numberline {2.2.4.3}IEEE 802.11g}{8}{subsubsection.2.2.4.3}
+\contentsline {subsubsection}{\numberline {2.2.4.3}IEEE 802.11g}{9}{subsubsection.2.2.4.3}
 \contentsline {subsubsection}{\numberline {2.2.4.4}IEEE 802.11a}{9}{subsubsection.2.2.4.4}
 \contentsline {subsubsection}{\numberline {2.2.4.5}St\IeC {\"o}rsicherheit}{9}{subsubsection.2.2.4.5}
-\contentsline {subsubsection}{\numberline {2.2.4.6}Leistungsaufnahme}{10}{subsubsection.2.2.4.6}
+\contentsline {subsubsection}{\numberline {2.2.4.6}Leistungsaufnahme}{11}{subsubsection.2.2.4.6}
 \contentsline {subsubsection}{\numberline {2.2.4.7}Anzahl Teilnehmer}{11}{subsubsection.2.2.4.7}
 \contentsline {subsection}{\numberline {2.2.5}WPAN: Wireless Personal Area Networks}{11}{subsection.2.2.5}
 \contentsline {subsubsection}{\numberline {2.2.5.1}\IeC {\"U}bersicht}{11}{subsubsection.2.2.5.1}
 \contentsline {subsubsection}{\numberline {2.2.5.2}IEEE 802.15}{11}{subsubsection.2.2.5.2}
-\contentsline {subsubsection}{\numberline {2.2.5.3}IEEE 802.15.1: Bluetooth}{11}{subsubsection.2.2.5.3}
-\contentsline {paragraph}{\numberline {2.2.5.3.1}\IeC {\"U}berblick}{11}{paragraph.2.2.5.3.1}
-\contentsline {paragraph}{\numberline {2.2.5.3.2}Pairing}{12}{paragraph.2.2.5.3.2}
+\contentsline {subsubsection}{\numberline {2.2.5.3}IEEE 802.15.1: Bluetooth}{12}{subsubsection.2.2.5.3}
+\contentsline {paragraph}{\numberline {2.2.5.3.1}\IeC {\"U}berblick}{12}{paragraph.2.2.5.3.1}
+\contentsline {paragraph}{\numberline {2.2.5.3.2}Pairing}{13}{paragraph.2.2.5.3.2}
 \contentsline {paragraph}{\numberline {2.2.5.3.3}Reichweite}{13}{paragraph.2.2.5.3.3}
 \contentsline {paragraph}{\numberline {2.2.5.3.4}\IeC {\"U}bertragungsrate}{14}{paragraph.2.2.5.3.4}
 \contentsline {paragraph}{\numberline {2.2.5.3.5}St\IeC {\"o}rsicherheit}{14}{paragraph.2.2.5.3.5}
@@ -41,7 +41,7 @@
 \contentsline {paragraph}{\numberline {2.2.5.4.3}St\IeC {\"o}rsicherheit}{19}{paragraph.2.2.5.4.3}
 \contentsline {paragraph}{\numberline {2.2.5.4.4}Verschl\IeC {\"u}sselung}{22}{paragraph.2.2.5.4.4}
 \contentsline {paragraph}{\numberline {2.2.5.4.5}Leistungsaufnahme}{22}{paragraph.2.2.5.4.5}
-\contentsline {subsubsection}{\numberline {2.2.5.5}Bluetooth Low Energy (ehemals Wibree)}{22}{subsubsection.2.2.5.5}
+\contentsline {subsubsection}{\numberline {2.2.5.5}Bluetooth Low Energy (ehemals Wibree)}{23}{subsubsection.2.2.5.5}
 \contentsline {subsection}{\numberline {2.2.6}Weitere Protokolle}{23}{subsection.2.2.6}
 \contentsline {subsection}{\numberline {2.2.7}Diskussion}{23}{subsection.2.2.7}
 \contentsline {section}{\numberline {2.3}ADuC7019/2X-Mikrocontroller}{24}{section.2.3}
