@@ -59,60 +59,69 @@
 \contentsline {subsection}{\numberline {2.5.2}Programmiersprache}{30}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}Corba}{31}{section.2.6}
 \contentsline {chapter}{\numberline {3}Stand der Technik}{33}{chapter.3}
-\contentsline {chapter}{\numberline {4}Entwurf}{35}{chapter.4}
-\contentsline {section}{\numberline {4.1}Gesamtsystem}{35}{section.4.1}
-\contentsline {section}{\numberline {4.2}Hardware}{35}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}MANVNode}{35}{subsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.1.1}Beschreibung}{35}{subsubsection.4.2.1.1}
-\contentsline {subsection}{\numberline {4.2.2}Spannungsversorgung}{37}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Programmierschnittstellen}{37}{subsection.4.2.3}
-\contentsline {subsubsection}{\numberline {4.2.3.1}Serielle Schnittstellen}{37}{subsubsection.4.2.3.1}
-\contentsline {subsubsection}{\numberline {4.2.3.2}JTAG}{38}{subsubsection.4.2.3.2}
-\contentsline {subsection}{\numberline {4.2.4}LEDs}{38}{subsection.4.2.4}
-\contentsline {subsubsection}{\numberline {4.2.4.1}Beschreibung der einzelnen LEDs}{38}{subsubsection.4.2.4.1}
-\contentsline {subsubsection}{\numberline {4.2.4.2}Diagnosecodes}{39}{subsubsection.4.2.4.2}
-\contentsline {subsection}{\numberline {4.2.5}ADuC}{39}{subsection.4.2.5}
-\contentsline {subsection}{\numberline {4.2.6}ZigBee-Schnittstelle}{40}{subsection.4.2.6}
-\contentsline {subsubsection}{\numberline {4.2.6.1}UART}{41}{subsubsection.4.2.6.1}
-\contentsline {subsubsection}{\numberline {4.2.6.2}MANV-USB-Connector}{42}{subsubsection.4.2.6.2}
-\contentsline {section}{\numberline {4.3}Software}{42}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Firmware}{42}{subsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.1.1}Synchronisation mit dem ZigBit-Modul}{43}{subsubsection.4.3.1.1}
-\contentsline {subsection}{\numberline {4.3.2}MANVSuite}{43}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}MANVConnector}{43}{subsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.3.1}Synchronisation der Befehls\IeC {\"u}bertragung}{45}{subsubsection.4.3.3.1}
-\contentsline {chapter}{\numberline {5}Praktische Realisierung des Sensornetzes}{55}{chapter.5}
-\contentsline {chapter}{\numberline {6}Ergebnisse}{57}{chapter.6}
-\contentsline {section}{\numberline {6.1}Baselinewandering}{57}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Messungen unter verschiedenen Bedingungen}{57}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{57}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}HRV-Variation}{57}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Messungen unter verschiedenen Bedingungen}{57}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{57}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}QRS-Komplexe}{58}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Messungen unter verschiedenen Bedingungen}{58}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{58}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Vergleiche der Verfahren zueinander}{58}{section.6.4}
-\contentsline {chapter}{\numberline {7}Diskussion}{59}{chapter.7}
-\contentsline {section}{\numberline {7.1}Baselinewandering}{59}{section.7.1}
-\contentsline {section}{\numberline {7.2}HRV-Variation}{59}{section.7.2}
-\contentsline {section}{\numberline {7.3}QRS-Komplexe}{59}{section.7.3}
-\contentsline {section}{\numberline {7.4}Vergleich der Verfahren zueinander}{59}{section.7.4}
-\contentsline {chapter}{\numberline {8}Zusammenfassung und Ausblick}{61}{chapter.8}
-\contentsline {section}{\numberline {8.1}Sicherheit des Netzwerkes}{61}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Aktueller Stand}{61}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Angriffsszenarien}{61}{subsection.8.1.2}
-\contentsline {subsubsection}{\numberline {8.1.2.1}Aussp\IeC {\"a}hen von Patientendaten}{61}{subsubsection.8.1.2.1}
-\contentsline {subsubsection}{\numberline {8.1.2.2}Aktiver Angriff gegen das Netzwerk}{62}{subsubsection.8.1.2.2}
-\contentsline {subsubsection}{\numberline {8.1.2.3}St\IeC {\"o}rung des Netzwerkes}{62}{subsubsection.8.1.2.3}
-\contentsline {subsection}{\numberline {8.1.3}Abwehrma\IeC {\ss }nahmen}{63}{subsection.8.1.3}
-\contentsline {subsubsection}{\numberline {8.1.3.1}ZigBee-Verschl\IeC {\"u}sselung}{63}{subsubsection.8.1.3.1}
-\contentsline {subsubsection}{\numberline {8.1.3.2}Befehlsz\IeC {\"a}hler}{63}{subsubsection.8.1.3.2}
-\contentsline {subsubsection}{\numberline {8.1.3.3}Schutz auf Applikationsebene}{63}{subsubsection.8.1.3.3}
-\contentsline {subsubsection}{\numberline {8.1.3.4}Schutz gegen St\IeC {\"o}rsender}{64}{subsubsection.8.1.3.4}
-\contentsline {section}{\numberline {8.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{64}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Anderer Frequenzbereich}{64}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Richtantennen f\IeC {\"u}r Router}{64}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{64}{subsection.8.2.3}
-\contentsline {chapter}{Glossar}{65}{appendix*.8}
-\contentsline {chapter}{Literaturverzeichnis}{66}{appendix*.8}
+\contentsline {chapter}{\numberline {4}Analyse}{35}{chapter.4}
+\contentsline {section}{\numberline {4.1}Kommunikation mit dem \emph {ZigBit}-Modul}{35}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Problemstellung}{35}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Behandlung asynchron auftretender Ereignisse}{36}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Behandlung von komplexen Antworten}{38}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Kombination beider L\IeC {\"o}sungen}{38}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}Leistungsaufnahme}{38}{section.4.2}
+\contentsline {section}{\numberline {4.3}Powermanagement}{38}{section.4.3}
+\contentsline {section}{\numberline {4.4}Skalierbarkeit}{38}{section.4.4}
+\contentsline {chapter}{\numberline {5}Entwurf}{39}{chapter.5}
+\contentsline {section}{\numberline {5.1}Gesamtsystem}{39}{section.5.1}
+\contentsline {section}{\numberline {5.2}Hardware}{39}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}MANVNode}{39}{subsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Beschreibung}{39}{subsubsection.5.2.1.1}
+\contentsline {subsection}{\numberline {5.2.2}Spannungsversorgung}{41}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Programmierschnittstellen}{41}{subsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.3.1}Serielle Schnittstellen}{41}{subsubsection.5.2.3.1}
+\contentsline {subsubsection}{\numberline {5.2.3.2}JTAG}{42}{subsubsection.5.2.3.2}
+\contentsline {subsection}{\numberline {5.2.4}LEDs}{42}{subsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.4.1}Beschreibung der einzelnen LEDs}{42}{subsubsection.5.2.4.1}
+\contentsline {subsubsection}{\numberline {5.2.4.2}Diagnosecodes}{43}{subsubsection.5.2.4.2}
+\contentsline {subsection}{\numberline {5.2.5}ADuC}{43}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}ZigBee-Schnittstelle}{44}{subsection.5.2.6}
+\contentsline {subsubsection}{\numberline {5.2.6.1}UART}{45}{subsubsection.5.2.6.1}
+\contentsline {subsubsection}{\numberline {5.2.6.2}MANV-USB-Connector}{46}{subsubsection.5.2.6.2}
+\contentsline {section}{\numberline {5.3}Software}{46}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Firmware}{46}{subsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Synchronisation mit dem ZigBit-Modul}{47}{subsubsection.5.3.1.1}
+\contentsline {subsection}{\numberline {5.3.2}MANVSuite}{47}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}MANVConnector}{47}{subsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.3.1}Synchronisation der Befehls\IeC {\"u}bertragung}{49}{subsubsection.5.3.3.1}
+\contentsline {chapter}{\numberline {6}Praktische Realisierung des Sensornetzes}{59}{chapter.6}
+\contentsline {chapter}{\numberline {7}Ergebnisse}{61}{chapter.7}
+\contentsline {section}{\numberline {7.1}Baselinewandering}{61}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Messungen unter verschiedenen Bedingungen}{61}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{61}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}HRV-Variation}{61}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Messungen unter verschiedenen Bedingungen}{61}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{61}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}QRS-Komplexe}{62}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Messungen unter verschiedenen Bedingungen}{62}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{62}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Vergleiche der Verfahren zueinander}{62}{section.7.4}
+\contentsline {chapter}{\numberline {8}Diskussion}{63}{chapter.8}
+\contentsline {section}{\numberline {8.1}Baselinewandering}{63}{section.8.1}
+\contentsline {section}{\numberline {8.2}HRV-Variation}{63}{section.8.2}
+\contentsline {section}{\numberline {8.3}QRS-Komplexe}{63}{section.8.3}
+\contentsline {section}{\numberline {8.4}Vergleich der Verfahren zueinander}{63}{section.8.4}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{65}{chapter.9}
+\contentsline {section}{\numberline {9.1}Sicherheit des Netzwerkes}{65}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Aktueller Stand}{65}{subsection.9.1.1}
+\contentsline {subsection}{\numberline {9.1.2}Angriffsszenarien}{65}{subsection.9.1.2}
+\contentsline {subsubsection}{\numberline {9.1.2.1}Aussp\IeC {\"a}hen von Patientendaten}{65}{subsubsection.9.1.2.1}
+\contentsline {subsubsection}{\numberline {9.1.2.2}Aktiver Angriff gegen das Netzwerk}{66}{subsubsection.9.1.2.2}
+\contentsline {subsubsection}{\numberline {9.1.2.3}St\IeC {\"o}rung des Netzwerkes}{66}{subsubsection.9.1.2.3}
+\contentsline {subsection}{\numberline {9.1.3}Abwehrma\IeC {\ss }nahmen}{67}{subsection.9.1.3}
+\contentsline {subsubsection}{\numberline {9.1.3.1}ZigBee-Verschl\IeC {\"u}sselung}{67}{subsubsection.9.1.3.1}
+\contentsline {subsubsection}{\numberline {9.1.3.2}Befehlsz\IeC {\"a}hler}{67}{subsubsection.9.1.3.2}
+\contentsline {subsubsection}{\numberline {9.1.3.3}Schutz auf Applikationsebene}{67}{subsubsection.9.1.3.3}
+\contentsline {subsubsection}{\numberline {9.1.3.4}Schutz gegen St\IeC {\"o}rsender}{68}{subsubsection.9.1.3.4}
+\contentsline {section}{\numberline {9.2}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{68}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Anderer Frequenzbereich}{68}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Richtantennen f\IeC {\"u}r Router}{68}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}Adaptive Pfadkosten f\IeC {\"u}r Meshrouting}{68}{subsection.9.2.3}
+\contentsline {chapter}{Glossar}{69}{appendix*.8}
+\contentsline {chapter}{Literaturverzeichnis}{70}{appendix*.8}

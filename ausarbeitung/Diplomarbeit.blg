@@ -8,6 +8,7 @@ A level-1 auxiliary file: Abstract.aux
 A level-1 auxiliary file: Einleitung.aux
 A level-1 auxiliary file: Grundlagen.aux
 A level-1 auxiliary file: Stand_der_Technik.aux
+A level-1 auxiliary file: Analyse.aux
 A level-1 auxiliary file: Entwurf.aux
 A level-1 auxiliary file: Praktische_Realisierung.aux
 A level-1 auxiliary file: Ergebnisse.aux
@@ -22,7 +23,7 @@ Warning--I didn't find a database entry for "Bolz"
 Warning--empty year in BluetoothPower
 You've used 3 entries,
             4728 wiz_defined-function locations,
-            915 strings with 7094 characters,
+            916 strings with 7105 characters,
 and the built_in function-call counts, 2098 in all, are:
 = -- 201
 > -- 66

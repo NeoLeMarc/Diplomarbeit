@@ -1,0 +1,126 @@
+\chapter{Analyse}
+
+    \section{Kommunikation mit dem \emph{ZigBit}-Modul}
+        \subsection{Problemstellung}
+            Das \emph{SerialNet} Protokoll ist grundsätzlich synchron. Ein Programm, dass mit
+            einem \emph{ZigBit}-Modul kommuniziert lässt sich daher am einfachsten nach folgendem
+            Muster aufbauen:
+
+            \begin{lstlisting}{frame=analyse1}
+def sendeBefehl(befehl)
+    # Senden des Befehls
+    serialPort.send(befehl)
+
+    # Antwort vom ZigBit-Modul lesen.
+    # (Blockiert so lange, bis Antwort empfangen wurde)
+    statusString = serialPort.readLine()
+
+    # Antwort interpretieren
+    if statusString == 'OK':
+        return True
+    
+    else:
+        return False
+            \end{lstlisting}
+           
+        
+            Bei dieser Vorgehensweise ergeben sich jedoch zwei Probleme:
+
+            \begin{enumerate}
+                \item{Asynchron auftretende Ereignisse:} Die Abarbeitung eines \emph{SerialNet}-Befehls kann 
+                          bis zu einer halben Minute dauern\footnote{Dies tritt insbesondere dann auf, wenn eine
+                          synchrone Datenübertragung zu einem entfernten Knoten durchgeführt werden soll, der sich
+                          selbst gerade im Energiesparmodus befindet. Der sendende Knoten ist hierbei so lange
+                          blockiert, bis entweder der Empfang der Daten quittiert wurde, oder aber ein 
+                          Timeout aufgetreten ist}. Während das Steuerungprogramm auf die Quittierung des 
+                          Befehls mit einer Status-Meldung wartet, können asynchrone Ereignisse auftreten.
+                          Im oben abgebildeten Programm würde dieses Ereigniss fälschlicherweise als Antwort
+                          auf den gesendeten Befehl interpretiert werden. Dies hätte zur Folge, dass nun 
+                          Steurungsprogramm und \emph{ZigBit}-Modul nicht mehr synchron zueinander ("`out-of-sync"') 
+                          sind.
+
+                \item{Komplexe Rückgabewerte:} Bestimmte Befehle der \emph{SerialNet}-Firmware liefern nicht nur
+                         einen einfachen Statuscode sondern eine komplexe, Mehrzeilige Antwort zurück. Auch hier ergibt
+                         sich bei obigem Programm wieder das Problem, dass dieses bereits nach der ersten Zeile
+                         fälschlicherweise davon ausgehen würde, dass die Antwort abgeschlossen wäre, obwohl noch weitere
+                         Zeilen folgen können. Auch in diesem Falle wären Steurungsprogramm und \emph{ZigBit}-Modul nichtmehr
+                         synchron zueinander.
+            \end{enumerate}
+
+        \subsection{Behandlung asynchron auftretender Ereignisse}
+
+            Um asynchrone Ereignisse behandeln zu können, müssen diese zunächst erkannt werden. Dies kann mit
+            Hilfe einer Liste aller Ereignisse und Statuscodes geschehen. In diesem Falle wird so lange
+            von dem \emph{ZigBit}-Modul gelesen, bis ein Statuscode empfangen wurde. Zwischendurch empfangene
+            Ereignisse können entweder direkt behandelt werden, oder zunächst in einer Liste zwischengespeichert
+            werden, um sie zu einem späteren Zeitpunkt zu behandeln. Beide Verfahren haben sowohl Vor- als auch
+            Nachteile:
+
+            \begin{itemize}
+                \item{Direktes Behandeln von Events:} Dieses Verfahren hat den Vorteil, dass auf empfangene 
+                Ereignisse sofort reagiert werden kann; so lässt sich z.B. ein empfangener Alarm direkt
+                auf dem Bildschirm darstellen und es muss nicht erst auf die Beendigung des vorherigen
+                Befehls gewartet werden. Erfordert das behandelte Event den Zugriff auf das 
+                \emph{ZigBit}-Modul um z.B. den Empfang einer Nachricht zu quittieren, so ist eine
+                besondere Vorsicht erforderlich, da sonst entweder Verklemmungen ("'Deadlock"`) oder
+                ein Verlust der Synchronisierung auftreten kann\footnote{Eine mögliche Lösung ist die
+                Verwendung einer Warteschlange, in die die zu versendenden Daten eingereiht werden.}.
+                Dieses Verfahren eignet sich besonders für Systeme, in denen auf eingehende Ereignisse besonders
+                schnell reagiert werden muss.
+
+                \item{Einreihen von Ereignisse in eine Warteschlange:} Diese Verfahren hat den Vorteil, dass
+                es sehr einfach umgesetzt werden kann. Alle Ereignisse, die während der Bearbeitung eines Befehls
+                auftreten werden zunächst in eine Warteschlange eingereiht. Mit der Abarbeitung der Ereignisse
+                wird so lange gewartet, bis der laufende Befehl abgeschlossen wurde. Während der Abarbeitung der
+                Ereignisse muss dann keine Rücksicht mehr darauf genommen werden, in welchem Zustand sich das
+                \emph{ZigBit}-Modul befindet, da es sich nach Abarbeitung des Befehls sicher im Betriebsbereiten
+                Zustand befindet\footnote{Ausnahme hiervon ist, wenn zwischenzeitlich die Netzwerkverbindung verloren
+                gegangen ist, was natürlich gesondert behandelt werden muss.}. Nachteilig ist, dass Ereignisse
+                erst behandelt werden, wenn Befehle komplett abgearbeitet wurden. Bei Ereignissen, zu deren Bearbeitung
+                nicht auf das \emph{ZigBit}-Modul zugegriffen werden muss bedeutet dies eine unnötige Verzögerung.
+                Dieses Verfahren eignet sich daher eher für Systeme, in denen deutlich mehr Befehle als Ereignisse
+                auftreten.
+            \end{itemize}
+
+            Durch die Verwendung von Multithreading kann darüber hinaus eine Kombination aus beiden Verfahren
+            verwenden werden. In diesem Fall wird von einem Thread aus die Bearbeitung der Befehle, inkl. des
+            Befüllens der Ereigniswareteschlange vorgenommen, während von einem anderen Thread aus diese Warteschlange
+            parallel dazu abgearbeitet wird.\\
+            \\
+            Das folgende Pseudocode-Programm zeigt exemplarisch das Behandeln von Events über das Einreihen in
+            Warteschlangen:
+
+            \begin{lstlisting}{frame=analyse2}
+eventQueue = []
+
+def sendeBefehl(befehl)
+    # Senden des Befehls
+    serialPort.send(befehl)
+
+    # Antwort vom ZigBit-Modul lesen.
+    # (Blockiert so lange, bis Antwort empfangen wurde)
+    statusString = serialPort.readLine()
+
+    # Antwort interpretieren
+    if statusString == 'OK':
+        return True
+    
+    elif statusString == 'ERROR':
+        return False
+
+    else:
+        eventQueue.append(statusString)
+
+            \end{lstlisting}
+
+        \subsection{Behandlung von komplexen Antworten}
+
+
+        \subsection{Kombination beider Lösungen}
+                      
+
+    \section{Leistungsaufnahme}
+    
+    \section{Powermanagement}
+
+    \section{Skalierbarkeit}

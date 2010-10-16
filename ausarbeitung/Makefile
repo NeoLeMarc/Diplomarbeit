@@ -1,8 +1,9 @@
 NAME=Diplomarbeit
 OTHER+=*.tex
 #OTHER+=bibliography/*.bib
-#OTHER+=bilder/*.*
-CLEAN_FILES+=kapitel/*.aux
+OTHER+=diagramme/*.*
+OTHER+=uml_diagramme/*.*
+CLEAN_FILES+=*.aux
 
 USE_PDFLATEX=1
 VIEWPDF=evince
