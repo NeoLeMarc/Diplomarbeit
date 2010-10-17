@@ -8,12 +8,8 @@
 
 \section{Hardware}
 \subsection{MANVNode}
-\Abbildungps{!htb}{1.05}{diagramme/schaltplan_manvnode.pdf}{label}{Schaltplan der MANVNode}
-\Abbildungps{!htb}{1.25}{diagramme/platine_manvnode-crop.pdf}{label}{Entwurf der Platine der MANVNode}
-\Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_top.pdf}{label}{Oberseite der Platine der MANVNode}
-\Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_bottom.pdf}{label}{Unterseite der Platine der MANVNode}
-
 \subsubsection{Beschreibung}
+\Abbildungps{!htb}{1.25}{diagramme/platine_manvnode-crop.pdf}{label}{Entwurf der Platine der MANVNode}
 Die MANVNode ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
 ADuC-7026-Mikrocontroller der Firma Analog Devices sowie ein Atmel ZigBit-Funkmodul des Typs ATZB-24-A2. Die Platine 
 dient zur Simulation des Erste-Hilfe-Sensors. An Stelle einer echten Messung generiert die Platine Messwerte mit Hilfe 
@@ -176,8 +172,7 @@ abgearbeitet und eventuell empfangene Befehle werden abgearbeitet. Dies kann nat
 die Abarbeitung von Interrupts unterbrochen werden.
 
 \subsubsection{MANV-USB-Connector}
-\Abbildungps{!htb}{0.5}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
-\Abbildungps{!htb}{0.4}{diagramme/schaltplan_usbstick.pdf}{label}{Schaltplan des USB-Sticks}
+\Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
 \Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{label}{Platine des USB-Sticks}
 
 Der MANV-USB-Connector ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
@@ -188,7 +183,7 @@ USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
 \section{Software}
 
 \subsection{Firmware}
-\Abbildungps{!htb}{1}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{label}{Ablauf der Firmware-Mainloop.}
+\Abbildungps{!htb}{0.5}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{label}{Ablauf der Firmware-Mainloop.}
 Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das ZigBit-Modul ergänzt. Die Firware wurde in der
 Programmiersprache C geschrieben, und setzt direkt auf die Hardware des ADuC auf. Es wurde lediglich die von 
 Rowley Crossworks angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie Stringmanipulation,
@@ -227,12 +222,6 @@ Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite.
 
 
 \subsection{MANVConnector}
-\begin{sidewaysfigure}
-        \includegraphics*[width=1\textwidth]{uml_diagramme/manvconnector_uml.pdf}
-        \caption{Klassendiagramm des MANV-Connectors}
-        \label{klassendiagramm_manvconnector}
-\end{sidewaysfigure}
-
 \Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des MANV-Connectors}
 
 

@@ -48,6 +48,7 @@ def sendeBefehl(befehl)
             \end{enumerate}
 
         \subsection{Behandlung asynchron auftretender Ereignisse}
+            \label{behandlung_asynchron_auftretender_ereignisse}
 
             Um asynchrone Ereignisse behandeln zu können, müssen diese zunächst erkannt werden. Dies kann mit
             Hilfe einer Liste aller Ereignisse und Statuscodes geschehen. In diesem Falle wird so lange
@@ -101,23 +102,134 @@ def sendeBefehl(befehl)
     # (Blockiert so lange, bis Antwort empfangen wurde)
     statusString = serialPort.readLine()
 
-    # Antwort interpretieren
+    # Events behandeln 
+    while statusString not in ('OK', 'ERROR'):
+        eventQueue.append(statusString)
+        statusTring = serialPort.readLine()
+
+    # Status Code interpretieren
     if statusString == 'OK':
         return True
     
-    elif statusString == 'ERROR':
-        return False
-
     else:
-        eventQueue.append(statusString)
-
+        return False
             \end{lstlisting}
 
         \subsection{Behandlung von komplexen Antworten}
+            \label{behandlung_von_komplexen_antworten}
+            Bei der Behandlung von komplexen Antworten kommt der Umstand zur Hilfe, dass bereits
+            im Vorraus bekannt ist, welche Befehle eine komplexe Antwort erzeugen. Bei welchen Befehlen dies
+            der Fall ist kann aus Tabelle~\ref{zigbit_befehle} entnommen werden. Im Steuerprogramm kann beim
+            Parsen des Befehls daher entsprechend Rücksicht darauf genommen werden, ob eine einzeilige oder
+            eine mehrzeilige Antwort erwartet wird. Komplexe Antworten werden immer mit einem Statuscode
+            beendet, d.h. wenn eine komplexe Antwort erwartet wird, muss so lange vom \emph{ZigBit}-Modul
+            gelesen werden, biss ein Statuscode empfangen wird. Auch hierbei muss natürlich darauf geachtet
+            werden, dass zwischen einzelnen Zeilen einer Antwort Ereignisse auftreten können, die entsprechend
+            der in Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} vorgestellten Lösung behandelt 
+            werden müssen.
 
+            \begin{lstlisting}{frame=analyse3}
+def sendeBefehl(befehl)
+    ## Senden des Befehls
+    serialPort.send(befehl.getCmd())
+
+    if befehl.resultIsComplex():
+        ## Komplexe Antwort wird erwartet
+        ## So lange lesen, bis ein Status-Code empfangen wurde
+        complexResult = []
+        statusString = ''
+
+        while statusString not in ('OK', 'ERROR'):
+            statusString = serialPort.readLine()
+            complexResult.append(statusString)
+
+        return statusString
+
+    else:
+        ## Antwort vom ZigBit-Modul lesen.
+        ## (Blockiert so lange, bis Antwort empfangen wurde)
+        statusString = serialPort.readLine()
+
+        ## Antwort interpretieren
+        if statusString == 'OK':
+            return True
+        
+        else:
+            return False
+
+            \end{lstlisting}
 
         \subsection{Kombination beider Lösungen}
-                      
+
+        Kombiniert man die Lösungen aus Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} und 
+        Abschnitt~\ref{behandlung_von_komplexen_antworten} ergibt sich ein weiteres Problem: Bei der
+        Lösung aus Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} wird davon ausgegangen, 
+        dass alle Ergebnisse, bei denen es sich nicht um Statuscodes handelt, Ereignisse sind. Diese Annahme
+        ist jedoch hinfällig, sobald komplexe Antworten vom ZigBit Modul empfangen werden. Daher muss hierbei
+        jede Antwort einer genaueren Prüfung unternommen werden, ob es sich hierbei um einen Status Code, 
+        ein Event oder eine Komplexe Antwort handelt. Hierbei kann eine einfache Mustererkennung verwendet
+        werden.
+
+
+            \begin{lstlisting}{frame=analyse4}
+eventQueue = []
+
+def getResultType(input):
+    if input in ('OK', 'ERROR'):
+        return "Status code"
+    elif input[0:4]  == 'DATA' or \
+         input[0:11] == 'EVENT:JOINED' or\ 
+         input[0:10] == 'EVENT:LOST':
+        return "Event"
+    else:
+        return "Complex result"
+
+def sendeBefehl(befehl)
+    ## Senden des Befehls
+    serialPort.send(befehl.getCmd())
+
+    if befehl.resultIsComplex():
+        ## Es wird eine komplexe Antwort erwartet
+
+        ## Von seriellem Port legen
+        statusString = serialPort.readLine()
+
+        ## Komplexe Antwort wird erwartet
+        ## So lange lesen, bis ein Status-Code empfangen wurde
+        complexResult = []
+        
+        while getResultType(statusString) != 'Status code':
+            if getResultType(statusString) == 'Event':
+                eventQueue.append(statusString)
+            else:
+                complexResult.append(statusString)
+
+            statusString = serialPort.readLine()
+
+        ## Ende Erreicht. Nun noch den statusCode anhaengen und
+        ## Ergebnis zurueckliefern
+        complexResult.append(statusString)
+        return complexResult
+
+    else:
+        ## Antwort vom ZigBit-Modul lesen.
+        ## (Blockiert so lange, bis Antwort empfangen wurde)
+        statusString = serialPort.readLine()
+
+        # Events behandeln 
+        while statusString not in ('OK', 'ERROR'):
+            eventQueue.append(statusString)
+            statusTring = serialPort.readLine()
+
+        # Status Code interpretieren
+        if statusString == 'OK':
+            return True
+        
+        else:
+            return False
+
+            \end{lstlisting}
+
 
     \section{Leistungsaufnahme}
     

@@ -10,18 +10,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{40}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Schaltplan der MANVNode}}{50}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Entwurf der Platine der MANVNode}}{51}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Oberseite der Platine der MANVNode}}{52}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Unterseite der Platine der MANVNode}}{52}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{53}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Schaltplan des USB-Sticks}}{54}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Platine des USB-Sticks}}{55}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Ablauf der Firmware-Mainloop.}}{56}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Klassendiagramm des MANV-Connectors}}{57}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Interaktion der einzelnen Threads des MANV-Connectors}}{58}{figure.5.11}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{44}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Entwurf der Platine der MANVNode}}{45}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{51}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Platine des USB-Sticks}}{52}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Ablauf der Firmware-Mainloop.}}{53}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Interaktion der einzelnen Threads des MANV-Connectors}}{55}{figure.5.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Schaltplan des USB-Sticks}}{67}{figure.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Schaltplan der MANVNode}}{68}{figure.A.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Oberseite der Platine der MANVNode}}{69}{figure.B.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Unterseite der Platine der MANVNode}}{70}{figure.B.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Klassendiagramm des MANV-Connectors}}{72}{figure.C.1}
