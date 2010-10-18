@@ -162,27 +162,28 @@ void initZigBit(){
   GP2DAT |= (1 << 18);
   sleep(4);
   GP2DAT &= ~(1 << 18);
+  sleep(4);
 
   //debug_printf("ZigBit has been resetted...\n");
 
   // Now write settings to serial port
-  putStringRaw("ATX\r\n");
+  putStringRaw("ATX+WAUTONET=1\r\n");
   GP2DAT |= (1 << 17);
   readStringRaw();
   GP2DAT &= ~(1 << 17);
-  sleep(4);
+  sleep(6);
   putStringRaw("AT+WLEAVE +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
   //putStringRaw("AT+WLEAVE WROLE=2 +IFC=2,2 +WAUTONET=0 +WWAIT=100\r\n");
   GP2DAT |= (1 << 17);
   readStringRaw();
   GP2DAT &= ~(1 << 17);
-  sleep(4);
+  sleep(6);
   //putStringRaw("AT+WPANID=1620 +GSN=B +WSRC=B +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
   putStringRaw("AT+WPANID=1620 +WROLE=2 +WCHMASK=07FF800 +WPWR=35,0\r\n");
   GP2DAT |= (1 << 17);
   readStringRaw();
   GP2DAT &= ~(1 << 17);
-  sleep(4);
+  sleep(6);
   GP2DAT |= (1 << 18);
   putStringRaw("AT+WJOIN +WAUTONET=1\r\n");
   GP2DAT |= (1 << 16);

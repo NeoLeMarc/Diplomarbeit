@@ -145,39 +145,38 @@ Linker script and memory map
                 0x00080a0c                readLine
  .glue_7        0x00080aec        0x0 ARM Flash Release/uart.o
  .glue_7t       0x00080aec        0x0 ARM Flash Release/uart.o
- .text          0x00080aec      0x5ec ARM Flash Release/zigbit.o
-                0x00080cac                parseCommand
-                0x00080fa4                zigBitLoop
+ .text          0x00080aec      0x5f4 ARM Flash Release/zigbit.o
+                0x00080cb4                parseCommand
+                0x00080fac                zigBitLoop
                 0x00080aec                sleep
-                0x00080e90                extractStatus
+                0x00080e98                extractStatus
                 0x00080b48                initZigBit
-                0x00080e38                isCommand
-                0x00080f44                waitForStatus
- .glue_7        0x000810d8        0x0 ARM Flash Release/zigbit.o
- .glue_7t       0x000810d8        0x0 ARM Flash Release/zigbit.o
- .text          0x000810d8        0x0 ARM Flash Release/crt0.o
- .glue_7        0x000810d8        0x0 ARM Flash Release/crt0.o
- .glue_7t       0x000810d8        0x0 ARM Flash Release/crt0.o
- .text          0x000810d8        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .glue_7        0x000810d8        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .glue_7t       0x000810d8        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
- .text          0x000810d8      0x2ec ARM Flash Release/Analog_ADuC7000.o
-                0x00081258                ctl_unmask_isr
-                0x000813a4                ctl_get_ticks_per_second
-                0x00081198                ctl_set_isr
-                0x00081328                ctl_start_timer
-                0x00081234                irq_handler
-                0x00081298                ctl_mask_isr
- .glue_7        0x000813c4        0x0 ARM Flash Release/Analog_ADuC7000.o
- .glue_7t       0x000813c4        0x0 ARM Flash Release/Analog_ADuC7000.o
- .text          0x000813c4       0xa4 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
-                0x00081424                ctl_board_on_button_pressed
-                0x000813c4                ctl_board_init
-                0x00081404                ctl_board_set_leds
- .glue_7        0x00081468        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .glue_7t       0x00081468        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
- .text          0x00081468        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
- *fill*         0x00081468        0x8 00
+                0x00080e40                isCommand
+                0x00080f4c                waitForStatus
+ .glue_7        0x000810e0        0x0 ARM Flash Release/zigbit.o
+ .glue_7t       0x000810e0        0x0 ARM Flash Release/zigbit.o
+ .text          0x000810e0        0x0 ARM Flash Release/crt0.o
+ .glue_7        0x000810e0        0x0 ARM Flash Release/crt0.o
+ .glue_7t       0x000810e0        0x0 ARM Flash Release/crt0.o
+ .text          0x000810e0        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .glue_7        0x000810e0        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .glue_7t       0x000810e0        0x0 ARM Flash Release/Analog_ADuC7000_Startup.o
+ .text          0x000810e0      0x2ec ARM Flash Release/Analog_ADuC7000.o
+                0x00081260                ctl_unmask_isr
+                0x000813ac                ctl_get_ticks_per_second
+                0x000811a0                ctl_set_isr
+                0x00081330                ctl_start_timer
+                0x0008123c                irq_handler
+                0x000812a0                ctl_mask_isr
+ .glue_7        0x000813cc        0x0 ARM Flash Release/Analog_ADuC7000.o
+ .glue_7t       0x000813cc        0x0 ARM Flash Release/Analog_ADuC7000.o
+ .text          0x000813cc       0xa4 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+                0x0008142c                ctl_board_on_button_pressed
+                0x000813cc                ctl_board_init
+                0x0008140c                ctl_board_set_leds
+ .glue_7        0x00081470        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .glue_7t       0x00081470        0x0 ARM Flash Release/Analog_ADuC702x_Eval_Board.o
+ .text          0x00081470        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
  .text.libc     0x00081470       0x30 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarm_set_irq.o)
                 0x00081470                ctl_global_interrupts_set
                 0x00081470                libarm_set_irq
@@ -291,7 +290,7 @@ Linker script and memory map
                 0x00000001                . = ASSERT (((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .ctors is too large to fit in FLASH memory segment)
                 0x000823f0                __rodata_load_start__ = (__ctors_end__ ALIGN 0x4)
 
-.rodata         0x000823f0      0x164
+.rodata         0x000823f0      0x170
                 0x000823f0                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
@@ -301,20 +300,20 @@ Linker script and memory map
  .rodata.str1.4
                 0x0008242c       0x20 ARM Flash Release/isr.o
  .rodata.str1.4
-                0x0008244c       0xe8 ARM Flash Release/zigbit.o
-                                 0xec (size before relaxing)
- .rodata.libc   0x00082534       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
-                0x00082534                __hex_uc
-                0x00082544                __hex_lc
-                0x00082554                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x0008244c       0xf4 ARM Flash Release/zigbit.o
+                                 0xf8 (size before relaxing)
+ .rodata.libc   0x00082540       0x20 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
+                0x00082540                __hex_uc
+                0x00082550                __hex_lc
+                0x00082560                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
                 0x00000001                . = ASSERT (((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= (__FLASH_segment_start__ + 0xf800))), error: .rodata is too large to fit in FLASH memory segment)
-                0x00082554                __fast_load_start__ = (__rodata_end__ ALIGN 0x4)
+                0x00082560                __fast_load_start__ = (__rodata_end__ ALIGN 0x4)
 
-.fast           0x0001003c        0x0 load address 0x00082554
+.fast           0x0001003c        0x0 load address 0x00082560
                 0x0001003c                __fast_start__ = .
  *(.fast .fast.*)
                 0x0001003c                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
-                0x00082554                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x00082560                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                . = ASSERT ((((__fast_load_start__ + SIZEOF (.fast)) >= __FLASH_segment_start__) && ((__fast_load_start__ + SIZEOF (.fast)) <= (__FLASH_segment_start__ + 0xf800))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x0001003c        0x0
@@ -322,9 +321,9 @@ Linker script and memory map
                 0x0001003c                . = ((__fast_run_start__ + SIZEOF (.fast)) MAX_K .)
                 0x0001003c                __fast_run_end__ = (__fast_run_start__ + SIZEOF (.fast_run))
                 0x00000001                . = ASSERT (((__fast_run_end__ >= __SRAM_segment_start__) && (__fast_run_end__ <= (__SRAM_segment_start__ + 0x2000))), error: .fast_run is too large to fit in SRAM memory segment)
-                0x00082554                __data_load_start__ = ((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4)
+                0x00082560                __data_load_start__ = ((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4)
 
-.data           0x0001003c       0x10 load address 0x00082554
+.data           0x0001003c       0x10 load address 0x00082560
                 0x0001003c                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data          0x0001003c        0x0 ARM Flash Release/main.o
@@ -357,8 +356,8 @@ Linker script and memory map
  .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libarmdi_v4t_a_le.a(libarmdi_dcc_read.o)
  .data          0x0001004c        0x0 /opt/Rowley Associates Limited/CrossWorks for ARM 1.7/lib/libc_v4t_a_le.a(__hex_lc_uc.o)
                 0x0001004c                __data_end__ = (__data_start__ + SIZEOF (.data))
-                0x00082564                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
-                0x00082564                __FLASH_segment_used_end__ = (((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4) + SIZEOF (.data))
+                0x00082570                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x00082570                __FLASH_segment_used_end__ = (((__fast_load_start__ + SIZEOF (.fast)) ALIGN 0x4) + SIZEOF (.data))
                 0x00000001                . = ASSERT ((((__data_load_start__ + SIZEOF (.data)) >= __FLASH_segment_start__) && ((__data_load_start__ + SIZEOF (.data)) <= (__FLASH_segment_start__ + 0xf800))), error: .data is too large to fit in FLASH memory segment)
 
 .data_run       0x0001003c       0x10

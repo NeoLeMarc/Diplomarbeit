@@ -66,9 +66,7 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Behandlung asynchron auftretender Ereignisse}{section.4.1}
 \BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Behandlung von komplexen Antworten}{section.4.1}
 \BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Kombination beider L\366sungen}{section.4.1}
-\BOOKMARK [1][-]{section.4.2}{4.2 Leistungsaufnahme}{chapter.4}
-\BOOKMARK [1][-]{section.4.3}{4.3 Powermanagement}{chapter.4}
-\BOOKMARK [1][-]{section.4.4}{4.4 Skalierbarkeit}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{4.2 Powermanagement}{chapter.4}
 \BOOKMARK [0][]{chapter.5}{5 Entwurf}{}
 \BOOKMARK [1][-]{section.5.1}{5.1 Gesamtsystem}{chapter.5}
 \BOOKMARK [1][-]{section.5.2}{5.2 Hardware}{chapter.5}
@@ -93,21 +91,7 @@
 \BOOKMARK [3][-]{subsubsection.5.3.3.1}{5.3.3.1 Synchronisation der Befehls\374bertragung}{subsection.5.3.3}
 \BOOKMARK [0][]{chapter.6}{6 Praktische Realisierung des Sensornetzes}{}
 \BOOKMARK [0][]{chapter.7}{7 Ergebnisse}{}
-\BOOKMARK [1][-]{section.7.1}{7.1 Baselinewandering}{chapter.7}
-\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Messungen unter verschiedenen Bedingungen}{section.7.1}
-\BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Vergleichende Messung mit Refenzger\344t}{section.7.1}
-\BOOKMARK [1][-]{section.7.2}{7.2 HRV-Variation}{chapter.7}
-\BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Messungen unter verschiedenen Bedingungen}{section.7.2}
-\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Vergleichende Messung mit Refenzger\344t}{section.7.2}
-\BOOKMARK [1][-]{section.7.3}{7.3 QRS-Komplexe}{chapter.7}
-\BOOKMARK [2][-]{subsection.7.3.1}{7.3.1 Messungen unter verschiedenen Bedingungen}{section.7.3}
-\BOOKMARK [2][-]{subsection.7.3.2}{7.3.2 Vergleichende Messung mit Refenzger\344t}{section.7.3}
-\BOOKMARK [1][-]{section.7.4}{7.4 Vergleiche der Verfahren zueinander}{chapter.7}
 \BOOKMARK [0][]{chapter.8}{8 Diskussion}{}
-\BOOKMARK [1][-]{section.8.1}{8.1 Baselinewandering}{chapter.8}
-\BOOKMARK [1][-]{section.8.2}{8.2 HRV-Variation}{chapter.8}
-\BOOKMARK [1][-]{section.8.3}{8.3 QRS-Komplexe}{chapter.8}
-\BOOKMARK [1][-]{section.8.4}{8.4 Vergleich der Verfahren zueinander}{chapter.8}
 \BOOKMARK [0][]{chapter.9}{9 Zusammenfassung und Ausblick}{}
 \BOOKMARK [1][-]{section.9.1}{9.1 Sicherheit des Netzwerkes}{chapter.9}
 \BOOKMARK [2][-]{subsection.9.1.1}{9.1.1 Aktueller Stand}{section.9.1}

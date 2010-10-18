@@ -231,8 +231,46 @@ def sendeBefehl(befehl)
             \end{lstlisting}
 
 
-    \section{Leistungsaufnahme}
-    
     \section{Powermanagement}
+        Die Spannungsversorgung des Erste-Hilfe-Sensors erfolgt über Batterie. Da der Wechsel der Batterie
+        während eines MANVs umständlich und zeitraubend ist, ist eine möglichst hohe Batterielaufzeit
+        wünschenswert. Am besten wäre hierbei, wenn überhaupt kein Batteriewechsel notwendig wäre. Im
+        empfansbereiten Zustand braucht das \emph{ZigBit}-Modul laut Datenblatt einen Strom von 19mA.
+        Zur Verringerung der Leistungsaufnahme bietet das \emph{ZigBit}-Modul einen Energiesparmodus,
+        indem lediglich der interne Speicher gehalten und alle andere Hardware abgeschaltet wird. In
+        diesem Modus braucht das Modul laut Datenblatt weniger als $6\mu{}A$.\\
+        \\
+        Zum Stromsparen wird das Modul periodisch für eine bestimmte Zeit in den
+        Energiesparmodus versetzt. Während dieser Zeit kann das Modul weder von der Steurungssoftware angesprochen
+        werden, noch können Daten vom Netzwerk empfangen werden. Damit in dieser Zeit keine Informationen
+        verloren gehen, werden vom nächstgelegenen Router alle Nachrichten an dieses Modul zwischengespeichert,
+        bis dieses wieder im Empfangsbereiten Zustand ist. Bei Verwendung der \emph{SerialNet}-Firmware wird
+        die Dauer des Verweilens im Energiesparmodus über den Befehl \emph{AT+WPWR} konfiguriert. Die Konfiguration
+        erfolgt in Schritten zu 100ms.\\
+        \\
+        Zum Aufruf des Energiesparmodus bieten sich nun zwei Möglichkeiten:
 
-    \section{Skalierbarkeit}
+        \begin{itemize}
+            \item{Automatsisches Aufrufen des Energiesparmodus:} Hierbei wird über den zweiten Paramter
+            des Befehls \emph{AT+WPWR} ein Intervall angegeben, in dem der Energiesparmodus periodisch
+            aufgerufen wird. Hierbei erfolgt die Eingabe in Schritten von 10ms.
+
+            \item{Manuelles Aufrufen des Energiesparmodus:} Alternativ zum automatischen Aufrufen kann
+            der Energiesparmodus über den Befehl \emph{AT+WSLEEP} auch manuell aufgerufen werden. Dies
+            kann entweder entweder Alternativ zum automatischen Aufrufen oder als Ergänzung verwendet
+            werden.
+
+        \end{itemize}
+
+        Bei der Verwendung des Energiesparmoduses muss sichergestellt werden, dass keine Informationen,
+        die über die \emph{UART}-Schnittstelle an das Modul gesendet werden, verloren gehen. Hierzu 
+        bietet die \emph{SerialNet}-Firmware die Möglichkeit, über die \emph{CTS}-Leitung der 
+        \emph{UART}-Schnittstelle ihre Empfangsbereitschaft zu signalisieren. Die Steurungssoftware
+        auf der Gegenseite muss hierzu vor jedem Senden den Zustand der \emph{CTS}-Leitung
+        kontrollieren, und darf nur senden, wenn der Zustand den Wert 0 hat. Damit die
+        \emph{SerialNet}-Firmware diesen Zustand korrekt kommuniziert, muss über den Befehl \emph{AT+IFC}
+        die Flußkontrolle aktiviert werden. \\
+        \\
+        Zu beachten ist, dass die Konfiguration des Energiesparmodueses bei allen Teilnehmern des Netzes
+        (also auch auf Routern und Coordinator) gleich sein sollte. Der eigentliche Energeisparmodus steht
+        allerdings nur auf Endknoten, also \emph{RFD}s zur Verfügung.

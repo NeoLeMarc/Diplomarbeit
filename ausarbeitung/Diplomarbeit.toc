@@ -65,9 +65,7 @@
 \contentsline {subsection}{\numberline {4.1.2}Behandlung asynchron auftretender Ereignisse}{36}{subsection.4.1.2}
 \contentsline {subsection}{\numberline {4.1.3}Behandlung von komplexen Antworten}{38}{subsection.4.1.3}
 \contentsline {subsection}{\numberline {4.1.4}Kombination beider L\IeC {\"o}sungen}{39}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}Leistungsaufnahme}{41}{section.4.2}
-\contentsline {section}{\numberline {4.3}Powermanagement}{41}{section.4.3}
-\contentsline {section}{\numberline {4.4}Skalierbarkeit}{41}{section.4.4}
+\contentsline {section}{\numberline {4.2}Powermanagement}{41}{section.4.2}
 \contentsline {chapter}{\numberline {5}Entwurf}{43}{chapter.5}
 \contentsline {section}{\numberline {5.1}Gesamtsystem}{43}{section.5.1}
 \contentsline {section}{\numberline {5.2}Hardware}{43}{section.5.2}
@@ -92,21 +90,7 @@
 \contentsline {subsubsection}{\numberline {5.3.3.1}Synchronisation der Befehls\IeC {\"u}bertragung}{56}{subsubsection.5.3.3.1}
 \contentsline {chapter}{\numberline {6}Praktische Realisierung des Sensornetzes}{57}{chapter.6}
 \contentsline {chapter}{\numberline {7}Ergebnisse}{59}{chapter.7}
-\contentsline {section}{\numberline {7.1}Baselinewandering}{59}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Messungen unter verschiedenen Bedingungen}{59}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{59}{subsection.7.1.2}
-\contentsline {section}{\numberline {7.2}HRV-Variation}{59}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Messungen unter verschiedenen Bedingungen}{59}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{59}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}QRS-Komplexe}{60}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Messungen unter verschiedenen Bedingungen}{60}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Vergleichende Messung mit Refenzger\IeC {\"a}t}{60}{subsection.7.3.2}
-\contentsline {section}{\numberline {7.4}Vergleiche der Verfahren zueinander}{60}{section.7.4}
 \contentsline {chapter}{\numberline {8}Diskussion}{61}{chapter.8}
-\contentsline {section}{\numberline {8.1}Baselinewandering}{61}{section.8.1}
-\contentsline {section}{\numberline {8.2}HRV-Variation}{61}{section.8.2}
-\contentsline {section}{\numberline {8.3}QRS-Komplexe}{61}{section.8.3}
-\contentsline {section}{\numberline {8.4}Vergleich der Verfahren zueinander}{61}{section.8.4}
 \contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{63}{chapter.9}
 \contentsline {section}{\numberline {9.1}Sicherheit des Netzwerkes}{63}{section.9.1}
 \contentsline {subsection}{\numberline {9.1.1}Aktueller Stand}{63}{subsection.9.1.1}
