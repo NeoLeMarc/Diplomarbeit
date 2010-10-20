@@ -50,7 +50,7 @@ aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
 \subsection{Programmierschnittstellen}
 
 \subsubsection{Serielle Schnittstellen}
-Die MANV-Node-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
+Die \emph{MANVNode}-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
 Schnittstelle (JP1) vorhanden, welche der Standardbelegung des Programmierkabels des ADuC-7026-Evaluationsboards besitzt.
 Bereits vorhandene Programmierkabel können somit ohne weiteres zur Programmierung des Mikrocontrollers verwendet werden.
 Zusätzlich besthet die Möglichkeit, auf die serielle Schnittstelle des ZigBit-Moduls zuzugreifen, worüber das Herunterladen 
@@ -59,7 +59,7 @@ Der Zugriff erfolgt ebenfalls über die Stiftleiste JP1, allerdings muss hierfü
 verdreht, und alle Jumper des Schalters S1 unterbrochen werden. 
 
 \subsubsection{JTAG}
-Die MANV-Node-Platine verfügt neben seriellen auch über eine JTAG-Schnittstelle. Diese ermöglich einen Zugriff mit
+Die \emph{MANVNode}-Platine verfügt neben seriellen auch über eine JTAG-Schnittstelle. Diese ermöglich einen Zugriff mit
 gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder Kyle $\mu{}$Vision. Über die Schnittstelle kann sowohl 
 Programmierung als auch Debugging des ADuC-7026-Mikrocontrollers durchgeführt werden. Ein Zugriff auf das ZigBit
 Modul ist allerdings nur indirekt möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Consolenverbindung
@@ -69,7 +69,7 @@ Ein Zugriff über JTAG ist nicht vorgesehen.
 \subsection{LEDs}
 
 \subsubsection{Beschreibung der einzelnen LEDs}
-Die MANV-Node-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen.
+Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen.
 \begin{itemize}
     \item{PWR:} Diese LED befindet sich direkt in der Spannungsversorgung der Platine. Diese LED leuchtet, sobald
                 die Platine mit Spannung versorgt wird. 
@@ -84,7 +84,7 @@ Die MANV-Node-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktue
     
 
 \subsubsection{Diagnosecodes}
-Neben den oben dargestellten einfachen Signalisierungen hat die Firmware der MANV-Node-Platine die Möglichkeit, über die
+Neben den oben dargestellten einfachen Signalisierungen hat die Firmware der \emph{MANVNode}-Platine die Möglichkeit, über die
 Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgende Codierung:
 
 \begin{itemize}
@@ -104,116 +104,100 @@ Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgen
                                                         Funknetzwerk und der Powersafe-Modus ist aktiv.
 \end{itemize}
                                                         
-
-\subsection{ADuC}
-Beim MANVNode handelt es sich um ein Prototyp des späteren Erste-Hilfe-Sensor für den MANV-Einsatz. Zwar exisitert der 
-Erste-Hilfe-Sensor bereits, allerdings hat dieser noch keinerlei Netzwerkfähigkeit. Der Erste-Hilfe-Sensor basiert
-auf einem ADuC7019 Microcontroller und ergänzt diesen durch Detektionskomponeten, zur Patientenüberwachung.
-
-Für die Entwicklung der Netzwerkanbindung sind diese Detektionskomponenten nur insofern relevant, dass es zu keiner
-Gegenseitigen Störung zwischen Detetion- und Netzwerkkomponeten kommen darf. Daher wurde im ersten Schritt alle nicht
-benötigten Komponenten weggelassen, und lediglich der reine Mikrocontroller verwendet. Später wurden die hierbei
-entwickelte Netzwerkkomponenten zusammengefasst und in die Hardware des Erste-Hilfe-Sensors integriert.
-
-Die eigentliche Entwicklung fand mit Hilfe eines ADuC7026 Evaluations-Board statt. Dieses Board hat den Vorteil, 
-dass alle Anschlüsse des Mikrocontrollers auf Steckerleisten geführt, und damit leicht zugänglich sind. Ausserdem
-ist eine JTAG-Schnittstelle vorhanden, die ein einfaches Debuggen des Mikrocontrollers ermöglicht.
-
-\subsection{ZigBee-Schnittstelle}
-Für die Anbindung des Erste-Hilfe-Sensors an das Sensornetz wird ein ZigBit-Modul der Firma Atmel verwendet. 
-Dieses Modul bietet den Vorteil, dass es bereits über einen kompletten ZigBee-Stack verfügt, der einfach über
-AT-Befehle gesteuert werden kann, die per UART gesendet werden.
-
-Der ZigBee-Stack auf dem ZigBit Modul ist austauschbar und kann durch eine eigene Firmware ersetzt werden.
-Hierzu wird von der Firma Atmel ein umfangreiches SDK\footnote{Software-Development-Kit: Eine Art Baukasten für
-Software, die viele benötigte Teile bereits fertig zur Verfügung stellt} angeboten. Für den Rahmen dieser Diplomarbeit
-ist die vorgefertigte Serial-Net-Firmware allerdings ausreichend. Einziger Wermutstropfen ist die fehlende
-Verschlüsselung, welche für den Serieneinsatz natürlich erforderlich wäre.
-
-Die Kommunikation mit dem ZigBit Modul erfolgt grundsätzlich synchron. Jeder AT-Befehl wird entweder mit 
-"`OK"', "`ERROR"' oder einer Ergebnisszeile quittiert. Der Treiber für das ZigBit-Modul kann also prinzipiell
-als endlicher Automat mit zwei Zuständen implementiert werden. Zu beachten ist jedoch, dass prinzipiell
-jederzeit Ereignisse vom Typ "`Data Received"' auftreten können. Es ist also notwendig, die Antwort des 
-ZigBit Moduls zu parsen, und zu entscheiden, ob es sich um eine Antwort auf einen zuvor gesendeten Befehl
-oder aber um ein Data-Ereigniss handelt. Wichtig ist, dass diese Ereignisse nicht verloren gehen dürfen,
-da es sich um Befehle handelt, die von der MANVSuite an den Sensor gesendet wurden, und von diesem 
-abgearbeitet werden müssen. 
-
-
-\subsubsection{UART}
-Der ADuC verfügt über einen UART Interrupt, welcher eine Statusänderung des UARTs signalisiert. Im Register 
-\textsl{COMIEN0} wird konfiguriert, welche Zustände über den Interrupt singnalisiert werden sollen. Tritt
-nun einer dieser Zustände auf, so wird der UART Interrupt ausgelöst. Im Interrupthandler muss nun überprüft
-werden, welches Ereigniss zum Auslösen des Interrupts geführt hat. Dies ist im Register \textsl{COMSTA0} 
-gespeichert. Wichtig ist an dieser Stelle, dass auch mehrere Ereignisse gleichzeitig auftreten können. 
-Dies muss im Interrupthandler berücksichtigt werden, da sonst Ereignisse verloren gehen können.
-
-Das eigentliche Senden und Empfangen erfolgt über die beiden Register \textsl{COMRX} und \textsl{COMTX}.
-Zum Senden wird hierzu ein einzelnes Zeichen in \textsl{COMTX} gelegt. Nun muss eine gewisse Zeit gewartet
-werden, bis das Zeichen gesendet wurde, und das nächste Zeichen in \textsl{COMTX} gelegt werden kann.
-FÜr das Empfangen wird das Register \textsl{COMRX} in analoger Weise verwendet werden. Ob das nächste
-Zeichen empfangen bzw. gesendet werden kann, kann mit Hilfe der Bits \textsl{DR} ("`Data Ready"' - Daten liegen vor)
-bzw. \textsl{TEMT} ("`Transmit Buffer empty"' - Daten können gesendet werden) bestimmt werden.
-
-Die einfachste Methode wäre hierbei, in einer Schleife Busy-Waiting zu betreiben, und so lange zu warten,
-bis sich eins der beiden Bits verändert. Dies wäre jedoch sehr aufwendig und würde den Mikrocontroller 
-unnötig lange blockieren. Statt dessen wird der Zustand der beiden Register nur dann überprüft, wenn ein 
-UART-Interrupt aufgetreten ist.
-
-Zum Senden und Empfangen von Daten werden zwei Ringpuffer verwendet. Möchte ein Unterprogramm Daten senden,
-so greift es nicht direkt auf die UART-Schnittstelle zu sondern legt diese Daten lediglich in den Sendepuffer.
-Das eigentliche Senden wird nun vom UART-Interrupthandler durchgeführt; das Unterprogramm kann weiter arbeiten,
-ohne auf das fertige Senden der Daten warten zu müssen.
-
-Das Empfangen von Daten erfolgt analog. Jedesmal wenn ein Zeichen von der seriellen Schnitstelle empfangen
-wurde, wird dieses in den Empfangspuffer gelegt. Das Abarbeiten des Empfangspuffer erfolgt nun als Idle-Task:
-Immer dann, wenn der Mikrocontroller gerade keine anderen Aufgaben erfüllen muss, wird der Empfangspuffer
-abgearbeitet und eventuell empfangene Befehle werden abgearbeitet. Dies kann natürlich jederzeit durch 
-die Abarbeitung von Interrupts unterbrochen werden.
-
-\subsubsection{MANV-USB-Connector}
+\subsubsection{\emph{MANV-USB-Connector}}
 \Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
 \Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{label}{Platine des USB-Sticks}
 
-Der MANV-USB-Connector ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
+Der \emph{MANV-USB-Connector} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
 ZigBit-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das ZigBit-Modul mit Strom versorgen, sowie eine
 Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. Für die Stromversorgung ist es notwendig, die 5V der
 USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
 
 \section{Software}
+\subsection{MANVNode Firmware}
 
-\subsection{Firmware}
-\Abbildungps{!htb}{0.5}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{label}{Ablauf der Firmware-Mainloop.}
-Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das ZigBit-Modul ergänzt. Die Firware wurde in der
-Programmiersprache C geschrieben, und setzt direkt auf die Hardware des ADuC auf. Es wurde lediglich die von 
-Rowley Crossworks angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie Stringmanipulation,
-einen Interrupthandler und einen fertigen Startup-Code bietet.
+\subsubsection{Funktionalität}
+Die Firmware der \emph{MANVNode} dient dem Entwickeln und Testen eines Treibers für das \emph{ZigBit}-Modul. Dieser
+Treiber wird später in den Erste-Hilfe-Sensor integriert werden. Zusätzlich bietet die \emph{MANVNode} Funktionalität,
+die zur Simulation des Erste-Hilfe-Sensors gegenüber der \emph{MANVSuite} dient. Hierzu sollen neben dem 
+\emph{ZigBit}-Treiber folgende Funktionalitäten integriert werden:
 
-Die Entwicklung von Software für einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
-aus. Ein Großteil der Funktionalität, die man von der Entwicklung von Software für einen standard Mikrocomputer 
-gewohnt ist, ist schlichtweg nicht vorhanden. Hier sind insbesondere eine automatische Speicherverwaltung sowie
-Threads und Prozesse zu erwähnen. Da der Erste-Hilfe-Sensor viele Aufgaben gleichzeitig erfüllen muss, stellt 
-dies eine ernst zu nehmende Herausforderung dar. Das Problem wurde durch ein Interrupt getriebenes Programmiermodell
-gelöst.
+\begin{itemize}
+    \item Zufallszahlengenerator zum Senden zufälliger Messwerte
+    \item Änderung des Zustands des Zufallszahlengenerators über Tasterkj
+    \item Ansteuerung von LEDs zur Ausgabe des Zustands des Zufallszahlengenerators
+    \item Ansteuerung eines Piezzo-Summers zur Signalisierung von Alarmen
+\end{itemize}
 
-Es werden folgende Interrupts verwendet:
 
-Timer0: Dieser Timer-Interrupt führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
-und eine Analyse der empfangenen Daten wird durchgeführt.
+\subsubsection{Ansteuerung des ZigBit-Moduls}
+Das \emph{ZigBit}-Modul ist via \emph{UART} mit der \emph{MANVNode} verbunden und wird über das \emph{SerialNet}-Protokoll
+angesprochen.
 
-Timer1: Dieser Interrupt führt einige periodische Aufgaben durch. Zunächst werden die am Sensor vorhandenen
-Taster abgefragt (Alarm Stummschalten, Alarm manuell auslösen etc.). Danach wird überprüft, in welchem Zustand
-der Sensor sich aktuell befindet, also z.B. ob ein Alarm aufgetreten ist, oder ob der Patient sich in einem
-guten Zustand befindet. Abhängig hiervon werden nun LEDs und ein angeschlossener Piezzo-Summer geschaltet,
-um den Zustand nach aussen zu signalisieren. Zu letzt wird noch überprüft, wann zuletzt eine Übertragung
-des Zustands des Sensors an die MANVSuite erfolgt ist. Liegt dies länger als einen konfiguriertes Zeitintervall
-zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
+\subsubsection{Ansteuerung des UARTs}
+Zur Vermeidung von \emph{Busy-Waiting} soll der Treiber für den \emph{UART}s als Interrupt-Service-Routine (ISR)
+realisiert werden. Die Kommunikation zwischen Firmware und \emph{UART}-Treiber soll über Ringpuffer erfolgen:
+Zu sendende Daten werden von der Firmware in den Sendepuffer gelegt. Sobald der \emph{UART} sendebereit ist, 
+soll der \emph{UART}-Treiber die zu sendenden Daten Zeilenweise aus dem Ringpuffer entnehmen und an
+den \emph{UART} übertragen. Analog dazu ist das Empfangen von Daten: Diese werden vom \emph{UART}-Treiber gelesen,
+und zeilenweise in den Empfangspuffer gelegt. Die Firmware kann diese nun zeilenweise aus dem Puffer lesen.
+Dies entspricht der Semantik einer gepufferten, nicht blockierenden Ein-/Ausgabefunktion.
+% Hier Tannenbaum zitieren
 
-Ein weiteres Problem sind die sehr beschränkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
-mit 16kB sehr knapp bemessen. 
+\subsubsection{Ansteuerung des ZigBit-Modul}
+Die Ansteuerung des \emph{ZigBit}-Moduls soll in folgenden Schritten erfolgen: 
 
-\subsubsection{Synchronisation mit dem ZigBit-Modul}
+\begin{lstlisting}{frame=entwurfZigBit1}
+Uebertragen aktuellen Status
+Werte Antwort aus
+Arbeite empfangene Befehle ab
+Aktiviere den Energiesparmodus
+\end{lstlisting}
 
+Diese Schritte können entweder periodisch mittles eines Timer-Interrupts oder als Hauptprogramm in einer Endlosschleife
+ausgeführt werden. Wichtig hierbei ist die Berücksichtigung der in Abschnitt~\ref{kommunikation_mit_zigbit_modul}
+beschriebenen Synchronisationsprobleme. Hierbei soll wie folgt vorgegangen werden:
+
+\begin{itemize}
+    \item{Behandlung asynchron auftretender Ereignisse:} Hierbei ist vor allem das \emph{DATA}-Ereignis wichtig, über das
+    der Empfang von Befehlen von der \emph{MANVSuite} signalisiert wird. Alle anderen Events können zunächst vernachlässigt
+    werden. Ereignisse, die während des Wartens auf einen Statuscode auftreten, sollen zur späteren Behandlung in einen
+    Ringpuffer zwischengespeichert werden. Die Abarbeitung soll dann nach Empfang des Statuscodes erfolgen.
+
+    \item{Behandlung komplexer Rückgabewerte:} Im aktuellen Entwurf werden von der Firmware der \emph{MANVNode} keine 
+    \emph{SerialNet}-Befehle verwendet, die eine komplexe Rückgabe haben, so dass dieses Problem eigentlich auftreten 
+    sollte. Sollten trotzdem komplexe Rückgaben auftreten, so werden diese wie asynchron auftretende Ereignisse behandelt
+    und in den Befehlspuffer gelegt. Bei der späteren Auswertung des Befehlspuffers werden diese dann einfach verworfen.
+    So bleibt eine Synchronisation mit dem \emph{ZigBit}-Modul in jedem Fall gewährleistet.
+\end{itemize}
+
+Die \emph{SerialNet}-Firmware bietet die Möglichkeit, den Energiesparmodus entweder manuell oder aber in einer 
+konfigurierbaren Periode automatisch aufzurufen (Vgl. Abschnitt~\ref{analyse_powermanagement}). Für die
+\emph{MANVNode}-Firmware soll der manuelle Aufruf verwendet werden, da dieser deutlich flexibler und einfacher zu
+implementieren ist als der automatische Modus: Sobald die Übertragung der Zustandsdaten abgeschlossen ist, und
+alle empfangenen Befehle abgearbeitet wurden, soll die Firmware über den Befehl \emph{AT+WSLEEP} den Energiesparmodus
+aufrufen. Hierdurch ist gewährleistet, dass das \emph{ZigBit}-Modul nur so lange wie zur Bearbeitung aller Aufgaben
+notwendig in Betrieb ist. Nachdem das \emph{ZigBit}-Modul aus dem Energiesparmodus zurückkehrt wird die Abarbeitung
+der Ansteuerungsroutine von vorne begonnen. Das Aufwachen aus dem Energiesparmodus wird der \emph{MANVNode}-Firmware
+über eine Zustandsänderung des \emph{CTS}-Registers des \emph{UART} signalisiert. Zusätzlich wird der \emph{AT+WSLEEP}
+Befehl mit dem Statuscode \emph{OK} quittiert, sobald das \emph{ZigBit}-Modul wieder betriebsbereit ist. 
+
+
+Insgesamt ergibt sich für die Ansteuerung des ZigBit Moduls folgender Ablauf:
+
+\begin{lstlisting}{frame=entwurfZigBit2}
+Uebertrage aktuellen Status
+Wiederhole:
+    Antwort von ZigBit-Modul lesen
+    Falls Antwort != Statusnachricht:
+        Antwort in Befehlspuffer legen
+bis Antwort == Statusnachricht    
+Arbeite Befehlspuffer ab
+Aktiviere den Energiesparmodus
+\end{lstlisting}
+
+Dieser Ablauf ist in Abbildung~\ref{zigbit_mainloop} als Ablaufdiagramm dargestellt.
+\Abbildungps{!htb}{0.5}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{zigbit_mainloop}{Ablauf der Ansteuerung des \emph{ZigBit}-Moduls.}
 
 \subsection{MANVSuite}
 
@@ -222,15 +206,15 @@ Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite.
 
 
 \subsection{MANVConnector}
-\Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des MANV-Connectors}
+\Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des \emphf{MANVConnectors}}
 
 
-Der MANVConnector hat einerseits die Aufgabe, Daten die von dem MANV-USB-Connector empfangen wurden in Corba-Events 
-umzusetzen, und an den MANVServer weiterzuleiten. Andererseits empfängt sie Corba-Events vom MANVServer, dekodiert
-diese und sendet diese in Form von Sensornetz Befehlen an die zuständigen MANVNodes weiter.
+Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten die von dem \emph{MANV-USB-Connector} empfangen wurden in Corba-Events 
+umzusetzen, und an den \emph{MANVServer} weiterzuleiten. Andererseits empfängt sie Corba-Events vom \emph{MANVServer}, dekodiert
+diese und sendet diese in Form von Sensornetz Befehlen an die zuständigen \emph{MANVNodes} weiter.
 
 Bei der Kommunikation mit dem auf dem USB-Stick aufgebrachten ZigBee-Modul stellen sich grundsätzlich die selben 
-Synchronisierungsprobleme wie in der MANVFirmware. Da der MANVConnector jedoch alle Möglichkeiten der Java-Virtual-Machine
+Synchronisierungsprobleme wie in der \emph{MANVFirmware}. Da der \emph{MANVConnector} jedoch alle Möglichkeiten der Java-Virtual-Machine
 nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
 
 In der MANVFirmware werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Diese finden sich auch
