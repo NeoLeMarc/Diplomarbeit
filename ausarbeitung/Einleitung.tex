@@ -2,9 +2,79 @@
 \chapter{Einleitung}
 \pagenumbering{arabic} % Seitennummerierung durch arabische Ziffern
 \section{Motivation der Arbeit}
-...
+
+Der Begriff „Massenanfall von Verletzten“ (MANV) versteht man ein Ereignis, bei dem innerhalb
+kurzer Zeit eine große Anzahl von Verletzten versorgt werden muss. Hierbei mögen einem zuerst
+Vorfälle wie die Terroranschläge am 11. September 2001, die Reaktorkatastrophe von Tschernobyl oder
+spektakuläre Naturereignisse wie der Hurrikan Katrina, die Flutkatastrophen der letzten Jahre oder die
+Erdbeben in Haiti in den Sinn kommen.
+Doch bereits Ereignisse geringeren Ausmaßes - wie z.B. ein Auffahrunfall auf der Autobahn, ein
+Zugunglück, eine Massenpanik bei einem Konzert oder starke Schneefälle, wie sie in den letzten
+Monaten aufgetreten sind - können den Rettungsdienst einer Region sehr schnell an die Grenzen seiner
+Leistungsfähigkeit bringen.
+Beispielhaft seien hier folgende Ereignisse der letzten Jahre und Jahrzehnte genannt:
+
+\begin{itemize}
+    \item 1980 – Oktoberfestattentat: 13 Tote, 211 Schwerverletzte
+    \item 1988 – Flugtagunglück von Ramstein: 70 Tote, 1000 Verletzte
+    \item 1998 – ICE-Katastrophe von Eschede: 101 Tote, 88 Schwerverletzte
+    \item 2000 – Zugunglück von Brühl: 9 Tote, 149 Verletzte
+    \item Dazu kommen jedes Jahr ca. 400.000 Verletzte im Straßenverkehr.
+\end{itemize}
+
+Im Falle eines Massenanfalls von Verletzten treffen vor Ort viele unterschiedliche Einheiten von
+Rettungskräften aufeinander. Um die Zusammenarbeit dieser Kräfte überhaupt zu ermöglichen und ein
+geordnetes Vorgehen zu unterstützen gibt es klar definierte Abläufe und Verantwortlichkeiten. Zunächst
+versuchen die Rettungskräfte die Patienten außerhalb des unmittelbaren Gefahrenbereichs abzulegen.
+An dieser Ablagestelle werden die Patienten vom Rettungsdienst übernommen, welcher auch bereits
+Lebensrettende Sofortmaßnahmen einleitet und eine Erstversorgung durchführt. Wenn möglich erfolgt
+bereits hier eine erste Registrierung der Patienten (Fundort, Name usw.).
+Nun werden die Patienten einer Triage, also der Einordnung in verschiedene Schweregrade,
+unterzogen, um zu entscheiden, in welcher Reihenfolge diese Patienten versorgt werden.
+Diese Einordnung ist notwendig, da meist nicht genügend Ressourcen (sowohl Material als auch
+Personal) vorhanden sind, um sofort alle Patienten zu versorgen. Daher gilt das Ziel, dass möglichst
+viele Patienten den Vorfall mit einem möglichst geringen Schaden überstehen. Um eine Zuteilung der
+vorhandenen Ressourcen gemäß dieses Ziels zu gewährleisten, erfolgt eine Einordnung der Patienten in
+4 Kategorien. 
+
+Obwohl diese Vorgehensweise eine schnelle Versorgung von Schwerverletzten gewährleistet, stellen
+sich eine Reihe von Problemen:
+
+\begin{enumerate}
+    \item Patienten können in die falsche Gruppe zugeordnet werden.
+    \item Möglicherweise verschlechtert sich der Zustand eines Patienten nach seiner Einteilung in die Gruppe
+          T2 rapide, so dass dieser sofortiger Versorgung bedarf.
+    \item Es besteht ein Konflikt zwischen sorgfältiger Untersuchung und zu wenig zur Verfügung stehender
+          Zeit.  Hierbei ist zu bemerken, dass die Sichtung immer noch ohne besondere technische Hilfsmittel
+          stattfindet. Die Patienten werden mit Hilfe von einfachen Papierkarten markiert, die Überprüfung von
+          Atmung, Puls und Blutdruck erfolgt durch einfache physische Methoden wie Anfassen, Hören und
+          Beobachten.
+\end{enumerate}
+
+Insbesondere der zweite Punkt obiger Aufzählung könnte mit technischen Mitteln entschieden
+verbessert werden. Da eine dauerhafte Überwachung nur deswegen nicht erfolgt, weil nicht genügend
+Personal zur Verfügung steht, könnten diese durch ein automatisches System ersetzt werden, welches
+die Patienten überwacht, und im Falle einer Zustandsänderung eine Alarmierung durchführt.
+Zwar gibt es automatische Überwachungssysteme (sogenannte Monitore), die in Krankenhäusern oder
+Rettungsfahrzeugen zur Patientenüberwachung eingesetzt werden, allerdings sind diese Systeme für
+den Einsatz in einem MANV-Szenario ungeeignet, da sie zu groß, zu teuer und zu kompliziert sind.
 
 \section{Aufgaben und Ziele der Arbeit}
-...
+Ziel dieser Arbeit ist die Entwicklung und prototypische Implementierung eines
+kabellosen Netzwerkes zur Überwachung von Patienten während eines MANVs. Als
+Ausgangsbasis hierfür dient der von Herrn Dr. Marc Jäger in \ref{diss_marc}
+entwickelte Erste-Hilfe-Sensor. Hierbei soll der Sensor in die Lage versetzt
+werden, die Vitaldaten des angeschlossenen Patienten kabellos an eine zentrale
+Überwachungsstation zu übertragen. Die zu entwickelnde Lösung soll eine möglichst
+große Anzahl von Teilnehmern unterstützen, zu gleich aber auch möglichst kostengünstig
+sein. Darüber hinaus soll sie möglichst stromsparend sein, damit der Erste-Hilfe-Sensor
+auch längere Zeit über eine möglichst kleine Batterie betrieben werden kann.\\
+\\
+Parallel zu dieser Arbeit wird von Herrn cand. inform Jan Tepelmann eine 
+Steurungssoftware für die Überwachungsstation des Netzwerkes entwickelt. Zu dieser
+Software soll eine Schnittstelle zur Verfügung gestellt werden, über die zum einen
+die Vitaldaten ausgeliefert, zum anderen Befehle an die einzelnen Sensoren empfangen 
+werden. Diese Schnittstelle ist mittels CORBA zu realisieren.
+
 \section{Gliederung und Vorgehensweise der Arbeit}
 ...
