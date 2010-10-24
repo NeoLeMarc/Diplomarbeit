@@ -77,6 +77,9 @@ public class MANVWeb extends MANV_CORBA_Component {
         }
 
         ToQueries toQueries = new ToQueries(queries);
-            
+
+        // Starte Serverthread
+        MANVWebserver webserver = new MANVWebserver(toQueries);
+        webserver.run();
     }
 }
