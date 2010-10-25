@@ -26,6 +26,7 @@ import edu.kit.ibt.manv.common.*;
 import edu.kit.ibt.manv.client.corba.SubscriberImpl;
 import edu.kit.ibt.manv.client.util.EnvironmentImpl;
 import edu.kit.ibt.manv.client.Global;
+import edu.kit.ibt.manv.client.corba.ToCommands;
 
 
 public class MANVWeb extends MANV_CORBA_Component {
@@ -65,8 +66,9 @@ public class MANVWeb extends MANV_CORBA_Component {
     }
 
     private void resolveNeededServerInterfaces(){
-        // Wir brauchen nur das Server-Query Interface
-        Queries queries = null;
+        // Wir brauchen nur das Server-Query  und das Commands Interface
+        Queries  queries  = null;
+        Commands commands = null;
 
         try {
             org.omg.CORBA.Object objRef = resolveCORBAInterface("Server_Queries");
@@ -76,10 +78,19 @@ public class MANVWeb extends MANV_CORBA_Component {
             shutDown(1);
         }
 
-        ToQueries toQueries = new ToQueries(queries);
+        try {
+            org.omg.CORBA.Object objRef = resolveCORBAInterface("Server_Commands");
+            commands = CommandsHelper.narrow(objRef);
+        } catch (Exception e){
+            logger.fatal("Fehler beim Auflösen des 'Server_Commands' Interfaces. Beende " + getComponentName());
+            shutDown(1);
+        }
+
+        ToQueries  toQueries  = new ToQueries(queries);
+        ToCommands toCommands = new ToCommands(commands);
 
         // Starte Serverthread
-        MANVWebserver webserver = new MANVWebserver(toQueries);
+        MANVWebserver webserver = new MANVWebserver(toQueries, toCommands);
         webserver.run();
     }
 }

@@ -8,6 +8,12 @@ convertDate = function(timestamp){
     return Zeit;
 }
 
+request = function(url){
+    var req = getXMLHttpRequest();
+    req.open("GET", url, true);
+    req.send();
+}
+
 retrieveData = function(){
     var url = "/MANVWeb/";
     var req = getXMLHttpRequest();
@@ -27,6 +33,7 @@ retrieveData = function(){
             tableRows += "   <td><b>Puls</b></td>";
             tableRows += "   <td><b>Atmung</b></td>";
             tableRows += "   <td><b>Timestamp</b></td>";
+            tableRows += "   <td><b>Optionen</b></td>";
             tableRows += " </tr>";
 
             for(i in jsonData){
@@ -71,6 +78,9 @@ retrieveData = function(){
                 tableRows += "    <td id='" + nodeID + "_pulse'>" + pulse + "</td>";
                 tableRows += "    <td id='" + nodeID + "_breathing'>" + breathing + "</td>";
                 tableRows += "  <td>" + convertDate(row['serverTimestamp']) + "</td>";
+                tableRows += "  <td><a href=\"javascript:request('/MANVWeb/m/" + nodeID + "')\">M</a>";
+                tableRows += "      <a href=\"javascript:request('/MANVWeb/e/" + nodeID + "')\">E</a>";
+                tableRows += "      <a href=\"javascript:request('/MANVWeb/d/" + nodeID + "')\">D</a></td>";
                 tableRows += " </tr>";
 
             }
@@ -97,6 +107,6 @@ startUpdating = function(){
 
 
     // Refetch data after 1 Second
-    window.setTimeout("startUpdating()", 1000);
+    window.setTimeout("startUpdating()", 500);
 
 }
