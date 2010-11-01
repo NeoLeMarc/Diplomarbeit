@@ -13,18 +13,18 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{46}{figure.5.1}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Entwurf der Platine der MANVNode}}{47}{figure.5.2}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{51}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Platine des USB-Sticks}}{52}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{55}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{56}{figure.5.6}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{54}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{55}{figure.5.5}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Platine des USB-Sticks}}{60}{figure.6.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Schaltplan des USB-Sticks}}{79}{figure.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Schaltplan der MANVNode}}{80}{figure.A.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Schaltplan des USB-Sticks}}{71}{figure.A.1}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Schaltplan der MANVNode}}{72}{figure.A.2}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Oberseite der Platine der MANVNode}}{81}{figure.B.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Unterseite der Platine der MANVNode}}{82}{figure.B.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Oberseite der Platine der MANVNode}}{73}{figure.B.1}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Unterseite der Platine der MANVNode}}{74}{figure.B.2}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Klassendiagramm des MANV-Connectors}}{76}{figure.C.1}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Klassendiagramm des MANV-Connectors}}{84}{figure.C.1}

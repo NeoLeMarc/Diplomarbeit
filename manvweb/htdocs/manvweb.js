@@ -78,9 +78,9 @@ retrieveData = function(){
                 tableRows += "    <td id='" + nodeID + "_pulse'>" + pulse + "</td>";
                 tableRows += "    <td id='" + nodeID + "_breathing'>" + breathing + "</td>";
                 tableRows += "  <td>" + convertDate(row['serverTimestamp']) + "</td>";
-                tableRows += "  <td><a href=\"javascript:request('/MANVWeb/m/" + nodeID + "')\">M</a>";
-                tableRows += "      <a href=\"javascript:request('/MANVWeb/e/" + nodeID + "')\">E</a>";
-                tableRows += "      <a href=\"javascript:request('/MANVWeb/d/" + nodeID + "')\">D</a></td>";
+                tableRows += "  <td><a href='#' onclick=\"javascript:request('/MANVWeb/m/" + nodeID + "')\">M</a>";
+                tableRows += "      <a href='#' onclick=\"javascript:request('/MANVWeb/e/" + nodeID + "')\">E</a>";
+                tableRows += "      <a href='#' onclick=\"javascript:request('/MANVWeb/d/" + nodeID + "')\">D</a></td>";
                 tableRows += " </tr>";
 
             }
@@ -107,6 +107,6 @@ startUpdating = function(){
 
 
     // Refetch data after 1 Second
-    window.setTimeout("startUpdating()", 500);
+    window.setTimeout("startUpdating()", 1000);
 
 }
