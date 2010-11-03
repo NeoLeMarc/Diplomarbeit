@@ -27,8 +27,8 @@
 \contentsline {subsection}{\numberline {2.2.5}WPAN: Wireless Personal Area Networks}{13}{subsection.2.2.5}
 \contentsline {subsubsection}{\numberline {2.2.5.1}\IeC {\"U}bersicht}{13}{subsubsection.2.2.5.1}
 \contentsline {subsubsection}{\numberline {2.2.5.2}IEEE 802.15}{13}{subsubsection.2.2.5.2}
-\contentsline {subsubsection}{\numberline {2.2.5.3}IEEE 802.15.1: Bluetooth}{14}{subsubsection.2.2.5.3}
-\contentsline {paragraph}{\numberline {2.2.5.3.1}\IeC {\"U}berblick}{14}{paragraph.2.2.5.3.1}
+\contentsline {subsubsection}{\numberline {2.2.5.3}IEEE 802.15.1: Bluetooth}{13}{subsubsection.2.2.5.3}
+\contentsline {paragraph}{\numberline {2.2.5.3.1}\IeC {\"U}berblick}{13}{paragraph.2.2.5.3.1}
 \contentsline {paragraph}{\numberline {2.2.5.3.2}Pairing}{15}{paragraph.2.2.5.3.2}
 \contentsline {paragraph}{\numberline {2.2.5.3.3}Reichweite}{15}{paragraph.2.2.5.3.3}
 \contentsline {paragraph}{\numberline {2.2.5.3.4}\IeC {\"U}bertragungsrate}{16}{paragraph.2.2.5.3.4}
@@ -41,14 +41,14 @@
 \contentsline {paragraph}{\numberline {2.2.5.4.3}St\IeC {\"o}rsicherheit}{21}{paragraph.2.2.5.4.3}
 \contentsline {paragraph}{\numberline {2.2.5.4.4}Verschl\IeC {\"u}sselung}{24}{paragraph.2.2.5.4.4}
 \contentsline {paragraph}{\numberline {2.2.5.4.5}Leistungsaufnahme}{24}{paragraph.2.2.5.4.5}
-\contentsline {subsubsection}{\numberline {2.2.5.5}Bluetooth Low Energy (ehemals Wibree)}{25}{subsubsection.2.2.5.5}
+\contentsline {subsubsection}{\numberline {2.2.5.5}Bluetooth Low Energy (ehemals Wibree)}{24}{subsubsection.2.2.5.5}
 \contentsline {subsection}{\numberline {2.2.6}Weitere Protokolle}{25}{subsection.2.2.6}
 \contentsline {subsection}{\numberline {2.2.7}Diskussion}{25}{subsection.2.2.7}
 \contentsline {section}{\numberline {2.3}ADuC7019/2X-Mikrocontroller}{26}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Beschreibung}{26}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Peripherie}{27}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Die Atmel ZigBit Familie}{28}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Hardware}{28}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.4}Die Atmel ZigBit Familie}{27}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Hardware}{27}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Firmware}{29}{subsection.2.4.2}
 \contentsline {subsubsection}{\numberline {2.4.2.1}Bitcloud}{29}{subsubsection.2.4.2.1}
 \contentsline {subsubsection}{\numberline {2.4.2.2}SerialNet}{29}{subsubsection.2.4.2.2}
@@ -59,6 +59,8 @@
 \contentsline {subsection}{\numberline {2.5.2}Programmiersprache}{32}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}Corba}{33}{section.2.6}
 \contentsline {chapter}{\numberline {3}Stand der Technik}{35}{chapter.3}
+\contentsline {section}{\numberline {3.1}Allgemeine kabellose Technologien zur Patienten\IeC {\"u}berwachung}{35}{section.3.1}
+\contentsline {section}{\numberline {3.2}Spezielle Technologien zur Patienten\IeC {\"u}berwachung im MANV-Szenario}{35}{section.3.2}
 \contentsline {chapter}{\numberline {4}Analyse}{37}{chapter.4}
 \contentsline {section}{\numberline {4.1}Kommunikation mit dem \emph {ZigBit}-Modul}{37}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Problemstellung}{37}{subsection.4.1.1}
@@ -91,14 +93,14 @@
 \contentsline {chapter}{\numberline {6}Praktische Realisierung des Sensornetzes}{59}{chapter.6}
 \contentsline {section}{\numberline {6.1}Hardware}{59}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}Anbindung des ZigBit-Moduls an den USB-Port}{59}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Herstellung und Best\IeC {\"u}ckung der Platine der \emph {MANVNode}}{60}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Firmware}{60}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Implementierung}{60}{subsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.1.1}Zugriff auf UART}{61}{subsubsection.6.2.1.1}
-\contentsline {section}{\numberline {6.3}MANVConnector}{62}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Zugriff auf die serielle Schnittstelle}{62}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit}-USB-Sticks}{66}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}CORBA Anbindung}{69}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.1.2}Herstellung und Best\IeC {\"u}ckung der Platine der \emph {MANVNode}}{59}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Firmware}{61}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Implementierung}{61}{subsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.1.1}Zugriff auf UART}{62}{subsubsection.6.2.1.1}
+\contentsline {section}{\numberline {6.3}MANVConnector}{63}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Zugriff auf die serielle Schnittstelle}{63}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit}-USB-Sticks}{67}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}CORBA Anbindung}{70}{subsection.6.3.3}
 \contentsline {chapter}{\numberline {7}Ergebnisse}{71}{chapter.7}
 \contentsline {chapter}{\numberline {8}Diskussion}{73}{chapter.8}
 \contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{75}{chapter.9}

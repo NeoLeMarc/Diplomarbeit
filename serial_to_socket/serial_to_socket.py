@@ -1,4 +1,5 @@
 #!/usr/bin/env python -OO
+# -*- coding: utf-8
 # MANV-Sensor - Serial to socket
 # for Java to ZigBit connector 
 

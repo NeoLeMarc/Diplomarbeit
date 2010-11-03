@@ -16,6 +16,25 @@ Abbildung~\ref{platine_usbstick} dargestellte Platine aufgelötet. Diese Platine
 Stiftleiste huckepack auf die \emph{USB-UART-Bridge} aufgelötet werden, um die nötige Formstabilität zu erhalten.
 
 \subsection{Herstellung und Bestückung der Platine der \emph{MANVNode}}
+Die Herstellung der Platine für der \emph{MANVNode} stellte sich als problematischer heraus, als ursprünglich 
+angenommen. Zunächst wurde versucht, Prototypen der Platinen im Ätzverfahren selbst herzustellen. Aufgrund der 
+für die Durchführungen notwendigen Bohrungen war eine sehr genaue Ausrichtung der Oberseite mit der Unterseite 
+der Platine notwendig. Ausserdem war diese Platine sehr empfindlich, so dass sich Leiterbahnen beim Löten
+sehr schnell ablösten. Nach einigen ersten Fehlversuchen wurde daher die Entscheidung getroffen, die Platinen
+von einem Auftragsfertigern herstellen zu lassen. Für die Prototypen wurde hierbei auf die Aufbringung von 
+Lötstopplack verzichtet, damit eventuelle Fehler im Layout später noch korrigiert werden können. Insgesamt waren
+zwei Iterationen notwendig, bis alle Fehler beseitigt waren. Am schwerwiegendsten war ein Fehler in der 
+Stromversorgung: Der \emph{ADuC-7026}-Mikrocontroller benötigt drei 470nF-Kondensatoren zur Stabilisierung der
+Stromversorgung. Diese waren in den ersten beiden Versionen der Platine zu weit vom Mikrocontroller entfernt 
+aufgebracht worden. Dies führte dazu, dass der Mikrocontroller beim Flashvorgang, bei welchem ein Strom von fast
+40mA benötigt wird, dazu neigt, spontan abzustürzen. Besonders ärgerlich hierbei war, dass der Fehler nur manchmal
+auftrat, wodurch er sehr schwer zu reproduzieren war. Nachdem der Abstand zwischen Mikrocontroller und Kondensatoren
+verringert wurde, traten diese Abstürze nichtmehr auf, und der Mikrocontroller funktionierte zuverlässig. Zusätzlich
+wurde ab Version 1.2 ein Uhrenquarz verwendet, welches das Timingverhalten der Platine verbessert. Ein weiteres
+Problem der Versionen bis Versionsnummer 1.2 war, dass die Signalleitungen zwischen \emph{ZigBit}-Modul und
+Mikrocontroller verdreht sind. Dieses Problem lässt sich zwar mit einer einfachen Drahtbrücke beheben, ist aber
+natürlich trotzdem unschön. In der Hardwareversion 1.3 sind diese Probleme behoben. Diese Platine wurde auch bereits
+mit Lötstopplack gefertigt.  
 
 \section{Firmware}
 \subsection{Implementierung}
@@ -278,8 +297,8 @@ import serial
 def testDevice(self, deviceName):
     ret = []
 
-    ## Versuch, eine Verbindung aufzubauen und die Versionskennung
-    ## der Serialnet-Firmware abzufragen. 
+    ## Versuch, eine Verbindung aufzubauen und die 
+    ## Versionskennung der Serialnet-Firmware abzufragen. 
     try:
         ser = serial.Serial("/dev/%s" % deviceName, 38400, timeout=3)
         ser.write("ATI\r\n") ## ATI - Befehl zum Anfragen der
