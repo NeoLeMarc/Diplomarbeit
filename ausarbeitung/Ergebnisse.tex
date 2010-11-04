@@ -3,40 +3,30 @@
 %%%------------------------------------------------ERGEBNISSE(KEINE BEWERTUNG)----------------------------------------------------
 
 \chapter{Ergebnisse}
-%\section{Baselinewandering}
-%\subsection{Messungen unter verschiedenen Bedingungen}
-%... nur die reinen Messergebnisse kommen hier rein mit Erläuterung/Begründung etc...
-%Bilder von den Messungen und Fakten
-%
-%\subsection{Vergleichende Messung mit Refenzgerät}
-%... Ebenfalls nur Bilder und Zahlen im Vergleich zu der Referenzmethode (am Besten Bilder, in denen die Atmungskurve von der neuen Methode und der Refernzmethode gleichzeitig zu sehen sind)
-%
-%\section{HRV-Variation}
-%\subsection{Messungen unter verschiedenen Bedingungen}
-%... wie oben
-%\subsection{Vergleichende Messung mit Refenzgerät}
-%... wie oben
-%
-%\section{QRS-Komplexe}
-%\subsection{Messungen unter verschiedenen Bedingungen}
-%... wie oben
-%\subsection{Vergleichende Messung mit Refenzgerät}
-%... wie oben
-%
-%
-%\section{Vergleiche der Verfahren zueinander}
-%Hier nur Grafiken, Fakten, Zahlen etc. reinmachen, die die verschiedenen Verfahren überlappend zeigen und kurz erläutern, aber nicht bewerten.
-%
-%\vspace{5cm}
-%Der Ergebnisteil (Ergebnisse, results) sollte die wesentlichen Befunde der aktuellen Arbeit in
-%nachvollziehbarer, durch geeignete Präsentation (Tabellen, Grafiken) unterstützter Weise darbieten.
-%Die Auswahl der dargebotenen Ergebnisse ist nach der Relevanz im Hinblick auf die
-%Fragestellung zu treffen. Dies gilt gleichermaßen für Positivergebnisse, welche die Argumentation
-%der Autoren stützen, wie auch für Negativergebnisse und Probleme bei der Durchführung
-%der Untersuchung, sofern diese einen Einfluss auf das Ergebnis gehabt haben könnten. Die
-%Datenpräsentation sollte einen unverfälschten, aber durch geeignete Aufarbeitung der Daten
-%(Mittelwertbildung, andere zusammenfassende deskriptive Statistik, etc.) fokussierten Überblick
-%geben. Außerdem sollte der Ergebnisteil verschiedene Teilergebnisse nicht isoliert präsentieren,
-%sondern den Leser in einer zusammenhängenden Beschreibung durch die Resultate führen.
-%Dies schließt eine Beschreibung der wichtigsten Befunde aus Tabellen und Grafiken ein.
-%--------
+\section{Leistungsaufnahme}
+\Abbildungps{!htb}{0.75}{oszi/normalbetrieb_router.jpg}{oszi_normalbetrieb_router}{Router oder Koordinator im Normalbetrieb. 
+    Der Stromverbrauch beträgt hierbei konstant 23,4mA, was ca. 70mW entspricht.} 
+\Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknotens im Normalbetrieb ohne 
+    Energiesparmodus. Auffällig sind die Peaks, in denen sich der Knoten im Empfangsmodus befindet. Die Peaks haben eine 
+    Länge von 40ms und einen Betrag von 23,4mA. Ausserhalb eines Peaks beträgt der Stromverbrauch 10,7mA. Insgesamt ergibt 
+    sich ein Mittelwert von 11,18mA, was ca. 33,54mW entspricht. Dies ist weniger als die Hälfte des Stromverbrauchs
+    eines Routers oder Koordinators.} 
+\Abbildungps{!htb}{0.75}{oszi/empfangen_details.jpg}{oszi_empfangen_details}{Detailaufnahme eines Empfangsmodus-Peaks.
+    Erkennbar ist die Impulsbreite von 40ms.}
+\Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Bei diesem Client wurde der Empfangsmodus deaktiviert. Der 
+    Stromverbrauch beträgt konstant 10,7mA.}
+\Abbildungps{!htb}{0.75}{oszi/joined.jpg}{oszi_joined}{Beitrittsvorgang eines Clients in ein Netzwerk. Bevor der Client dem 
+    Netzwerk beigetreten ist, befindet er sich durchgehend im Empfangsmodus und benötigt 23,4mA. Sobald er dem Netzwerk
+    beigetreten ist, entspricht entspricht der Stromverbrauch dem in Abbildung~\ref{oszi_normalbetrieb_client} dargestellten
+    Verhalten.} 
+\Abbildungps{!htb}{0.75}{oszi/joined2.jpg}{oszi_connection_lost}{Dieser Client hat kurzzeitig die Verbindung zum Netzwerk 
+    verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4mA. benötigt.}
+\Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Dieser Client ist gerade aus dem Energiesparmodus erwacht. 
+    Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
+    wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
+    Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.}
+\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Dieser Client nutzt das periodische Aufrufen
+    des Energiesparmodus. Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
+    Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
+
+\section{Reichweite}
