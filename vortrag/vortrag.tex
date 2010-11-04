@@ -21,6 +21,7 @@
 
 \usepackage{array,paralist}
 \usepackage{tabularx}
+\usepackage{eurosym}
 
 \mode<article> % only for the article version
 {
@@ -33,7 +34,7 @@
 {
   \setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
 
-  \usetheme{Warsaw}
+  \usetheme{CambridgeUS}
   \usefonttheme[onlysmall]{structurebold}
 }
 
@@ -52,11 +53,12 @@
 \setbeamercovered{dynamic}
 
 %% Titel etc
-\title[Kabellose Sensornetzwerke für MANV-Einsatz]{Entwurf und Implementierung
+\title[MANV-Sensornetzwerk]{Entwurf und Implementierung
        eines kabellosen Sensornetzwerkes zur Überwachung von Patienten
        in einem MANV-Szenario}
 \author[Noe, Tepelmann]{Marcel Noe \and Jan Tepelmann}
-\institute[Karlsruher Institut für Technologie]{
+\logo{\includegraphics[height=1cm]{kitlogo_de_rgb.pdf}}
+\institute[KIT]{
         \inst{} Institut für Biomedizinische Technik (IBT) \\
                 Karlsruher Institut für Technologie } 
 \date[2010]
@@ -76,28 +78,50 @@
 \part<presentation>{Vortrag}
 
 
+\logo{}
 \section{Motivation}
-
 \begin{frame}
     \frametitle{Motivation}
 
-    \begin{itemize}
-        \item Item
-    \end{itemize}
+    \begin{columns}[T]
+        \begin{column}{6cm}
+            \includegraphics[width=6cm]{eschede.jpg}
+        \end{column}
 
-    \begin{center}
-    \end{center}
+        \begin{column}{6cm}
+            \begin{itemize}
+                \item Vekehrsunfall, Naturkatastrophe, Krankheit, Industrieunfall...
+                \item Zu wenig Zeit zum Reagieren 
+                \item Zu wenig Personal
+                \item Zu wenig Ausrüstung
+                \item Zu wenig Information
+                \item Situation ist unübersichtlich
+                \item Evtl. Zusammenbruch von Infrastruktur
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{0.4cm} {\bf $\Longrightarrow$ Entlastung der Rettungskräfte vor Ort dringend notwendig!}
 \end{frame}
+\logo{\includegraphics[height=1cm]{kitlogo_de_rgb.pdf}}
 
 
 \section{Analyse}
 \subsection{Anforderungen}
 
 \begin{frame}
-    \frametitle{Anforderungsanalyse}
+    \frametitle{Anforderungen}
 
     \begin{itemize}
-        \item Foo
+        \item Empfangen von Vitaldaten (Puls \& Atmung) von Sensoren
+        \item Senden von Befehlen (z.B. Alarm aus, manueller Alarm) an Sensoren
+        \item Schnelle Einsatzfähigkeit: Je weniger Kabel desto besser.
+        \item Skalierbar in Anzahl der Patienten {\bf und} Helfern
+        \item Kostengünstig
+        \item Niedriger Stromverbrauch
+        \item Robust 
+        \item Einfache Bedienbarkeit
+        \item Erweiterbar
     \end{itemize}
 \end{frame}
 
@@ -108,38 +132,195 @@
     \frametitle{Stand der Technik}
 
     \begin{itemize}
-        \item Item
+        \item Tragbare EKG-Geräte, insbesondere in Defis\\
+              $\rightarrow$ Schwer, groß, teuer 
+        \item Monitore mit Bluetooth-Technologie\\
+              $\rightarrow{}$ Maximal 8 aktive Geräte pro Netzwerk
+        \item Monitore mit WLAN-Technologie\\ 
+              $\rightarrow{}$ Störungsanfällig, hoher Stromverbrauch, teuer, kein Roaming.
+        \item Herstellerspezifische Lösungen (z.B. Z-Wave oder Polar)\\
+              $\rightarrow{}$ Proprietär, teuer
+        \item $I^2C$ basiertes Sensornetz\\
+              $\rightarrow{}$ Benötigt viele Kabel
     \end{itemize}
+
 
 \end{frame}
 
 
 \section{Lösung}
-\begin{frame}
-    \frametitle{Überblick}
 
-    \begin{itemize}
-        \item item
-    \end{itemize}
+\subsection{Hardware: Funknetzwerk}
+\begin{frame}
+    \frametitle{Funknetzwerk: ZigBee}
+
+    \begin{columns}[T]
+        \begin{column}{5cm}
+            \includegraphics[width=5cm]{../ausarbeitung/diagramme/zigbit_bild-crop.pdf}
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item Über 500 Teilnehmer möglich 
+                \item Mesh-Netzwerk: Durch Router erweiterbar 
+                \item Bis 50m (Klasse 2 Gerät) bzw. über 500m (Klasse 1 Gerät) Reichweite
+                      {\bf pro Router!}
+                \item Stromverbrauch: nur 1,8mA bei Einsatz von Energeisparmodus
+                      (Bluetooth: 16,6mA, WLAN: 180mA).
+                \item Stückpreis unter \EUR{15}
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Features}
 
-    \begin{itemize}
-        \item Item
-    \end{itemize}
+\subsection{Hardware: MANVNode}
+% Logo ausschalten
+\logo{}
+\begin{frame}
+    \frametitle{Hardware: MANVNode}
+
+    \begin{columns}[T]
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item Entwicklungsplatine zum Entwerfen und Testen von Firmware
+                \item JTAG-Schnittstelle für Debugging
+                \item ADuC-Mikroprozessor (vgl. Erste-Hilfe-Sensor)
+                \item Testpunkte für Strommessung 
+                \item Programmierbare Taster und LEDs
+                \item Piezzo-Summer
+                \item Batterie- und Netzteilbetrieb (3V-16V)
+            \end{itemize}
+        \end{column}
+   
+        \begin{column}{5.5cm}
+            \includegraphics[height=5.5cm]{platine.jpg}
+        \end{column}
+    \end{columns}
 \end{frame}
+% Logo wieder einschalten
+\logo{\includegraphics[height=1cm]{kitlogo_de_rgb.pdf}}
+
+\subsection{Software: Technische Sicht}
+\begin{frame}
+    \frametitle{Software: Technische Sicht}
+
+    \begin{columns}[T]
+        \begin{column}{6cm}
+            \includegraphics[height=7.5cm]{../ausarbeitung/diagramme/Gesamtuebersicht.pdf}
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item Kapselung von Zuständigkeiten in Komponenten
+                \item Verbindung über standardisierte Schnittstellen (CORBA, SQL, Ethernet, WLAN)
+                \item Komponenten unabhängig voneinander austauschbar
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Logo ausschalten
+\logo{}
+\subsection{Software: Logische Sicht}
+\begin{frame}
+    \frametitle{Software: Logische Sicht}
+
+    \begin{columns}[T]
+        \begin{column}{6cm}
+            \begin{itemize}
+                \item An eine Basisstation können beliebig viele weitere Sichtstationen angeschlossen werden
+                \item Verbindung über WLAN, Ethernet oder UMTS
+                \item Handyzugriff über spezielle Software (Nokia) oder Weboberfläche (iPhone, Android)
+            \end{itemize}
+        \end{column}
+   
+        \begin{column}{7cm}
+            \includegraphics[height=6cm]{vortrag_uebersicht-crop.pdf}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+
+\subsection{Weitere Features}
+\begin{frame}
+    \frametitle{Weitere Features}
+
+    \begin{block}{Schnittstellen zur Anbindung externer Software}
+        \begin{itemize}
+            \item CORBA (Industriestandard!)
+            \item Datenbankzugriff: SQL-Schnittstelle
+            \item Webservices: SOAP und JSON (Web 2.0!)
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Skalierbarkeit}
+        \begin{itemize}
+            \item Anbindung beliebig vieler Sichstationen 
+            \item ZigBee unterstützt über 500 Teilnehmer.
+            \item Lauffähig auf allen Standardbetriebssystemen durch Einsatz von Virtualisierung 
+            \item Weboberfläche für alle gängigen Browser und Handytypen 
+        \end{itemize}
+    \end{block}
+\end{frame}
+% Logo wieder einschalten
+\logo{\includegraphics[height=1cm]{kitlogo_de_rgb.pdf}}
+
 
 \section{Praktische Vorführung}
+\begin{frame}
+    \frametitle{Praktische Vorführung}
+    \begin{center}
+        \includegraphics[height=7cm]{Ausrufezeichen.jpg}
+    \end{center}
+\end{frame}
+
 
 \section{Fazit}
 
 \begin{frame}
     \frametitle{Verbesserungen gegenüber dem Stand der Technik}
     \begin{itemize}
-        \item Item
+        \item Keine Kabel mehr notwendig
+        \item Kostengünstiger als alle existierenden Lösungen
+        \item Stromsparender als alle existierenden Lösungen
+        \item Mehr Teilnehmer als in allen existierenden Lösungen
+        \item Hohe Reichweite durch Einsatz von Repeatern erreichbar
+        \item Flexible und Erweiterbare Software 
+        \item Herstellerunabhängig: Hardware-/Softwareschnittstelle austauschbar 
+        \item Unabhängig von lokaler Infrastruktur
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{AAL-Kongress: Posterbeitrag}
+
+    \begin{columns}[T]
+        \begin{column}{4cm}
+            \includegraphics[height=7.5cm]{aal_kongress.pdf}
+        \end{column}
+
+        \begin{column}{8cm}
+            \begin{itemize}
+                \item Sensornetzwerk kann auch zur Unterstützung von älteren
+                      Patienten im Alltag eingesetzt werden
+                \item Veröffentlichung im Themengebiet "Wegweisende Anwendungsbeispiele"
+                \item 25. - 26. Januar 2011 in Berlin
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Fragen?}
+
+    \begin{center}
+        \includegraphics[height=6cm]{fragezeichen.jpg}
+    \end{center}
+\end{frame}
+
 
 \end{document}
