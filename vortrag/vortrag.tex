@@ -72,7 +72,7 @@
 
 \begin{frame}
   \frametitle{Überblick}
-  \tableofcontents[part=1,pausesections]
+  \tableofcontents[part=1,hidesubsections]
 \end{frame}
 
 \part<presentation>{Vortrag}
@@ -84,39 +84,58 @@
     \frametitle{Motivation}
 
     \begin{columns}[T]
-        \begin{column}{6cm}
-            \includegraphics[width=6cm]{eschede.jpg}
+        \begin{column}{3cm}
+            \includegraphics[height=6cm]{Anhaengekarte2.JPG}
         \end{column}
 
-        \begin{column}{6cm}
+        \begin{column}{8cm}
             \begin{itemize}
-                \item Verkehrsunfall, Naturkatastrophe, Krankheit, Industrieunfall...
-                \item Zu wenig Zeit zum Reagieren 
-                \item Zu wenig Personal
-                \item Zu wenig Ausrüstung
-                \item Zu wenig Information
-                \item Situation ist unübersichtlich
-                \item Evtl. Zusammenbruch von Infrastruktur
+                \item Triage: Einteilung von Patienten in Gruppen nach Behandlungsdringlichkeit.
+                \item Grund: Beschränkte Ressourcen: Transportmittel, Medikamente, Helfer
+                \item Einfachste Hilfsmittel: "Sehen, hören, fühlen", Anhängekärtchen, etc.
+                \item Aber: Werden alle Patienten korrekt zugeordnet? Was passiert bei Verschlechterung des
+                      Zustands nach Triage? 
+                \item Fehlerquellen: Zeitdruck, zu wenig Personal, Psychische Belastung der Helfer
             \end{itemize}
         \end{column}
     \end{columns}
 
-    \vspace{0.4cm} {\bf $\Longrightarrow$ Entlastung der Rettungskräfte vor Ort dringend notwendig!}
+    \vspace{0.3cm} \begin{center}{\bf $\Longrightarrow$ Technische Hilfsmittel können Fehler verringern.}\end{center}
 \end{frame}
 \logo{\includegraphics[height=1cm]{kitlogo_de_rgb.pdf}}
 
 
 \section{Analyse}
-\subsection{Anforderungen}
+\subsection{Stand der Technik}
+\begin{frame}
+    \frametitle{Stand der Technik: Hilfsmittel für MANV-Einsatz}
 
+    \begin{itemize}
+        \item Tragbare EKG-Geräte, insbesondere in Defis\\
+              $\rightarrow$ Schwer, groß, teuer, pro Patient ein Gerät nötig
+        \item Monitore mit Bluetooth-Technologie\\
+              $\rightarrow{}$ Maximal 8 aktive Geräte pro Netzwerk
+        \item Monitore mit WLAN-Technologie\\ 
+              $\rightarrow{}$ störungsanfällig, hoher Stromverbrauch, teuer, kein Roaming.
+        \item Herstellerspezifische Lösungen (z.B. Z-Wave oder Polar)\\
+              $\rightarrow{}$ Proprietär, teuer
+        \item ZigBee Healthcare, Bluetooth Low Energy (WiBree)\\
+              $\rightarrow{}$ Bisher noch keine Geräte auf dem Markt
+        \item $I^2C$ basiertes Sensornetz\\
+              $\rightarrow{}$ Benötigt viele Kabel
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Anforderungen}
 \begin{frame}
     \frametitle{Anforderungen}
 
     \begin{itemize}
-        \item Empfangen von Vitaldaten (Puls \& Atmung) von Sensoren
+        \item Skalierbar in Anzahl der Patienten {\bf und} Helfern
+        \item Überwachung des Patientenzustands (z.B. Puls \& Atmung) durch Sensoren
         \item Senden von Befehlen (z.B. Alarm aus, manueller Alarm) an Sensoren
         \item Schnelle Einsatzfähigkeit: Je weniger Kabel desto besser.
-        \item Skalierbar in Anzahl der Patienten {\bf und} Helfern
         \item Kostengünstig
         \item Niedriger Stromverbrauch
         \item Robust 
@@ -124,29 +143,6 @@
         \item Erweiterbar
     \end{itemize}
 \end{frame}
-
-
-\subsection{Stand der Technik}
-
-\begin{frame}
-    \frametitle{Stand der Technik}
-
-    \begin{itemize}
-        \item Tragbare EKG-Geräte, insbesondere in Defis\\
-              $\rightarrow$ Schwer, groß, teuer 
-        \item Monitore mit Bluetooth-Technologie\\
-              $\rightarrow{}$ Maximal 8 aktive Geräte pro Netzwerk
-        \item Monitore mit WLAN-Technologie\\ 
-              $\rightarrow{}$ störungsanfällig, hoher Stromverbrauch, teuer, kein Roaming.
-        \item Herstellerspezifische Lösungen (z.B. Z-Wave oder Polar)\\
-              $\rightarrow{}$ Proprietär, teuer
-        \item $I^2C$ basiertes Sensornetz\\
-              $\rightarrow{}$ Benötigt viele Kabel
-    \end{itemize}
-
-
-\end{frame}
-
 
 \section{Lösung}
 
@@ -156,7 +152,8 @@
 
     \begin{columns}[T]
         \begin{column}{5cm}
-            \includegraphics[width=5cm]{../ausarbeitung/diagramme/zigbit_bild-crop.pdf}
+           % \includegraphics[width=5cm]{../ausarbeitung/diagramme/zigbit_bild-crop.pdf}
+           \includegraphics[width=5cm]{ZigBee_Netz.pdf}
         \end{column}
 
         \begin{column}{7cm}
@@ -167,7 +164,7 @@
                       {\bf pro Router!}
                 \item Stromverbrauch: nur 1,8mA bei Einsatz von Energiesparmodus
                       (Bluetooth: 16,6mA, WLAN: 180mA).
-                \item Stückpreis unter \EUR{15}
+                \item Stückpreis unter 15\EUR{}
             \end{itemize}
         \end{column}
     \end{columns}
@@ -269,7 +266,8 @@
 \logo{\includegraphics[height=1cm]{kitlogo_de_rgb.pdf}}
 
 
-\section{Praktische Vorführung}
+\section{Ergebnisse}
+\subsection{Praktische Vorführung}
 \begin{frame}
     \frametitle{Praktische Vorführung}
     \begin{center}
@@ -277,9 +275,26 @@
     \end{center}
 \end{frame}
 
+\subsection{Ergebnisse auf einen Blick}
+\begin{frame}
+    \frametitle{Ergebnisse auf einen Blick}
+    \begin{itemize}
+        \item 1,8mA Stromverbrauch bei Einsatz von Energiesparmodus
+        \item Über 50m Reichweite pro Router
+        \item Durch Router praktisch beliebig erweiterbar
+        \item Laut Standard über 500 Teilnehmer möglich.
+        \item Stabilität durch geringe Bandbreite und Frequenzspreizung 
+        \item Software durch CORBA-Schnittstelle schnell an neue Anforderungen anpassbar.
+        \item Größe wie Erste-Hilfe-Sensor. Demoplatine hat Format 50x56mm.
+        \item Preis: Erste-Hilfe-Sensor + maximal 15\EUR{} für ZigBee-Modul 
+    \end{itemize}
+\end{frame}
 
-\section{Fazit}
 
+
+
+\section{Diskussion und Ausblick}
+\subsection{Diskussion}
 \begin{frame}
     \frametitle{Verbesserungen gegenüber dem Stand der Technik}
     \begin{itemize}
@@ -294,6 +309,34 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Ausblick}
+\begin{frame}
+    \frametitle{Ausblick}
+
+    \begin{block}{Optimierung der Hardware}
+        \begin{itemize}
+            \item Einsatz von Klasse 1 Modulen und Antennen ($\Rightarrow$ Reichweite)
+            \item Tests von Modulen anderer Hersteller ($\Rightarrow$ Kosten)
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Überarbeiten der ZigBit-Firmware}
+        \begin{itemize}
+            \item Verwendung von AES-Verschlüsselung
+            \item Verringerung der Latenz
+            \item Erhöhung der Datenübertragungsrate
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Erweiterung der Software}
+        \begin{itemize}
+            \item Erweiterung der Weboberfläche
+            \item Verbesserung der Benutzerführung
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{AAL}
 \begin{frame}
     \frametitle{AAL-Kongress: Posterbeitrag}
 
@@ -313,7 +356,7 @@
     \end{columns}
 \end{frame}
 
-
+\subsection{Fragen}
 \begin{frame}
     \frametitle{Fragen?}
 
