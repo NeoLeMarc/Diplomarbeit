@@ -3,16 +3,97 @@
 %%%------------------------------------------------ERGEBNISSE(KEINE BEWERTUNG)----------------------------------------------------
 
 \chapter{Ergebnisse}
-\section{Leistungsaufnahme}
+\section{Leistungsaufnahme des ZigBit-Moduls}
+Zur Bestimmung der Leistungsaufnahme, Umgangssprachlich auch Stromverbrauch genannt, wurden mehrere Messungen durchgeführt.
+Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmoduses sehr stark schwankt, sind herkömmliche Messungen
+z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall über einem 
+Shunt-Widerstand durchgeführt. Dieser wurde in die Stromversorgung des ZigBit-Moduls eingebracht. Der Spannungsabfall
+über diesem Widerstand wurde nun sowohl mit einem Oszilloskop als auch mit einem Multimeter gemessen. Hierzu wurde zunächst
+die Form des Spannungsverlaufes analysiert. Dann wurden einzelne Messpunkte innerhalb des Spannungsverlaufs bestimmt,
+für die nun der Wert der abfallenden Spannung bestimmt wurde. Über das Ohmsche-Gesetz konnte nun aus der abfallenden
+Spannung die Stromstärke bestimmt werden. Für die einzelnen Messungen wurde ein Oszilloskop der Marke \emph{Tektronix}, 
+Modell \emph{TDS2002B} verwendet. Die Messungen wurden zusätzlich mit einem Multimeter der Marke \emph{Fluke} verifiziert,
+um Kalibrationsfehler des Oszilloskops auszuschliessen. Als Shunt wurde ein Widerstand mit einem Wert von $20,1\Omega$
+verwendet.
+
+\subsection{Leistungsaufnahme im Normalbetrieb}
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_router.jpg}{oszi_normalbetrieb_router}{Router oder Koordinator im Normalbetrieb. 
-    Der Stromverbrauch beträgt hierbei konstant 23,4mA, was ca. 70mW entspricht.} 
+    Der Stromverbrauch beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknotens im Normalbetrieb ohne 
     Energiesparmodus. Auffällig sind die Peaks, in denen sich der Knoten im Empfangsmodus befindet. Die Peaks haben eine 
-    Länge von 40ms und einen Betrag von 23,4mA. Ausserhalb eines Peaks beträgt der Stromverbrauch 10,7mA. Insgesamt ergibt 
-    sich ein Mittelwert von 11,18mA, was ca. 33,54mW entspricht. Dies ist weniger als die Hälfte des Stromverbrauchs
+    Länge von 40ms und einen Betrag von 23,4~mA. Ausserhalb eines Peaks beträgt der Stromverbrauch 10,7~mA. Insgesamt ergibt 
+    sich ein Mittelwert von 11,18~mA, was ca. 33,54~mW entspricht. Dies ist weniger als die Hälfte des Stromverbrauchs
     eines Routers oder Koordinators.} 
+\Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_normal.pdf}{spannungsverlauf_client_normal}{Analyse des 
+    Spannungsverlaufs eines Clients im Normalbetrieb.}
 \Abbildungps{!htb}{0.75}{oszi/empfangen_details.jpg}{oszi_empfangen_details}{Detailaufnahme eines Empfangsmodus-Peaks.
     Erkennbar ist die Impulsbreite von 40ms.}
+
+Als Normalbetriebn wurde der Zustand angenommen, in dem das \emph{ZigBit}-Modul einem \emph{ZigBee}-Netzwerk beigetreten
+ist, und der Energiesparmodus nicht zur Anwendung kommt. Bei der Messung wurde schnell klar, dass sich hierbei die
+Funktionsweise von eines \emph{FFD} (also Router und Connector) drastisch von der eines \emph{RFD}s (also eines Clients) 
+unterscheiden. Ein \emph{FFD} befindet sich immer im Empfangsmodus, d.h. es hat immer eine maximale Leistungsaufnahme. 
+Die entsprechende Messung ist in Abbildung~\ref{oszi_normalbetrieb_router} zu erkennen. Hier wurde ein Spannungsabfall
+von 473~mV gemessen, was bei dem verwendeten Messwiderstand einem Strom von 23,5mA oder ca. 70mW entspricht.\\
+Komplett anders ist hingegen das Verhalten eines Clients. Betrachtet man die Messung in
+Abbildung~\ref{oszi_normalbetrieb_client} ist eine Basislinie von 215~mV mit periodischen Peaks erkennbar. 
+In Abbildung~\ref{oszi_empfangen_details} ist eine Detailmessung eines solchen Peaks zu sehen.  Gut zu Erkennen ist zum 
+einen der Betrag des Spannungsabfalls von rund 473~mV sowie einer Dauer von genau 40ms. Zwischen den Peaks kehrt der 
+Spannungabfall für genau eine Sekunde auf den Wert der Basislinie, also 215~mV zurück, auf die wieder ein Peak folgt.
+Der Wert von 473~mV legt die Vermutung nahe, dass es sich bei den Peaks um einen periodischen Empfangsvorgang handelt,
+d.h. das das \emph{ZigBit}-Modul jede Sekunde für genau 40ms Empfangsbereit ist. Diese Vermutung konnte durch weitere
+Tests bestätigt werden. Zur Bestimmung des Stromverbrauchs eines Clients ergibt sich daher folgende Rechnung:
+
+\begin{align}
+    U_{Client} &= \frac{t_{Basislinie} \cdot U_{Basislinie} + t_{Peak} \cdot U_{Peak}}{t_{Basisline} + t_{Peak}}
+   \label{eqn:UClient}\\
+    I_{Client} &= \frac{U_{Client}}{R_{Shunt}}
+    \label{eqn:IClient}
+\end{align}
+
+Setzt man nun folgende Werte 
+
+\begin{center}
+    $t_{Basislinie} = 1000\,\text{ms}$,\quad
+    $t_{Peak}       = 40\,\text{ms}$,\quad
+    $U_{Basislinie} = 215\,\text{mV}$,\quad
+    $U_{Peak}       = 473\,\text{mV}$
+\end{center}
+
+in Formel~\ref{eqn:UClient} ein, folgt für den Spannungsabfall
+
+\begin{align*}
+    &U_{Client} = \frac{1000\,\text{ms} \cdot 215\,\text{mV} + 40\,\text{ms} \cdot 470\text{mV}}{1000\,\text{ms} + 40,\text{ms}} = 224,9\,\text{mV}
+\end{align*}
+
+wodurch sich mit einem Widerstand von 
+
+\begin{center}$
+    R_{Shunt} = 20,1\,\Omega
+    $
+\end{center}
+
+ein Wert von 11,19~mA für $I_{Client}$ ergibt. Dies entspricht bei einer Versorgungsspannung von 3,0~V einer Leistungsaufnahme
+von 33,57~mW.
+
+
+
+
+
+
+\subsection{Leistungsaufnahme bei Verwendung des Energiesparmodus}
+\Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Dieser Client ist gerade aus dem Energiesparmodus erwacht. 
+    Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
+    wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
+    Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.}
+\Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_energiesparmodus.pdf}{spannungsverlauf_client_energiesparmodus}{Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}
+
+\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Dieser Client nutzt das periodische Aufrufen
+    des Energiesparmodus. Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
+    Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
+
+
+\subsection{Sonderfälle}
 \Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Bei diesem Client wurde der Empfangsmodus deaktiviert. Der 
     Stromverbrauch beträgt konstant 10,7mA.}
 \Abbildungps{!htb}{0.75}{oszi/joined.jpg}{oszi_joined}{Beitrittsvorgang eines Clients in ein Netzwerk. Bevor der Client dem 
@@ -21,12 +102,7 @@
     Verhalten.} 
 \Abbildungps{!htb}{0.75}{oszi/joined2.jpg}{oszi_connection_lost}{Dieser Client hat kurzzeitig die Verbindung zum Netzwerk 
     verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4mA. benötigt.}
-\Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Dieser Client ist gerade aus dem Energiesparmodus erwacht. 
-    Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
-    wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
-    Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.}
-\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Dieser Client nutzt das periodische Aufrufen
-    des Energiesparmodus. Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
-    Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
+
+
 
 \section{Reichweite}
