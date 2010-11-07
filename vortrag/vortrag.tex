@@ -212,9 +212,11 @@
     
         \begin{column}{5.5cm}
             \begin{itemize}
+            		\item Basisstation: kennt den Zustand des Sensornetzes
                 \item An eine Basisstation können beliebig viele weitere Sichtstationen angeschlossen werden
+                \item Sichtstation: zeigt Zustand der Patienten, kann Befehle an Sensoren senden
                 \item Verbindung über WLAN, Ethernet oder UMTS
-                \item Handyzugriff über spezielle Software (Nokia) oder Weboberfläche (iPhone, Android)
+                %\item Handyzugriff über spezielle Software (Nokia) oder Weboberfläche (iPhone, Android)
             \end{itemize}
         \end{column}
     \end{columns}
@@ -229,8 +231,11 @@
         \begin{column}{6cm}
             \begin{itemize}
                 \item Kapselung von Zuständigkeiten in Komponenten
-                \item Verbindung über standardisierte Schnittstellen (CORBA, SQL, Ethernet, WLAN)
+                \item Connector: Kommunikation mit Sensornetz
+                \item Server: Speichern des Netzzustandes
+                \item GUIs: Zustand des Netzes grafisch anzeigen
                 \item Komponenten unabhängig voneinander austauschbar
+                %\item Verbindung über standardisierte Schnittstellen (CORBA, SQL, Ethernet, WLAN)
             \end{itemize}
         \end{column}
         
