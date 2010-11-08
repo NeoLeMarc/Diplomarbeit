@@ -105,8 +105,8 @@
 \contentsline {section}{\numberline {7.1}Leistungsaufnahme des ZigBit-Moduls}{71}{section.7.1}
 \contentsline {subsection}{\numberline {7.1.1}Leistungsaufnahme im Normalbetrieb}{71}{subsection.7.1.1}
 \contentsline {subsection}{\numberline {7.1.2}Leistungsaufnahme bei Verwendung des Energiesparmodus}{74}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3}Sonderf\IeC {\"a}lle}{74}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Reichweite}{74}{section.7.2}
+\contentsline {subsection}{\numberline {7.1.3}Sonderf\IeC {\"a}lle}{77}{subsection.7.1.3}
+\contentsline {section}{\numberline {7.2}Reichweite}{77}{section.7.2}
 \contentsline {chapter}{\numberline {8}Diskussion}{79}{chapter.8}
 \contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{81}{chapter.9}
 \contentsline {section}{\numberline {9.1}Sicherheit des Netzwerkes}{81}{section.9.1}

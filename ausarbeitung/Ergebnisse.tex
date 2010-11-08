@@ -4,10 +4,11 @@
 
 \chapter{Ergebnisse}
 \section{Leistungsaufnahme des ZigBit-Moduls}
-Zur Bestimmung der Leistungsaufnahme, Umgangssprachlich auch Stromverbrauch genannt, wurden mehrere Messungen durchgeführt.
+\label{ergebnis_normal}
+Zur Bestimmung der Leistungsaufnahme~-- umgangssprachlich auch Strom\-ver\-brauch genannt~-- wurden mehrere Messungen durchgeführt.
 Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmoduses sehr stark schwankt, sind herkömmliche Messungen
 z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall über einem 
-Shunt-Widerstand durchgeführt. Dieser wurde in die Stromversorgung des ZigBit-Moduls eingebracht. Der Spannungsabfall
+Shunt-Wi\-der\-stand durchgeführt. Dieser wurde in die Stromversorgung des ZigBit-Moduls eingebracht. Der Spannungsabfall
 über diesem Widerstand wurde nun sowohl mit einem Oszilloskop als auch mit einem Multimeter gemessen. Hierzu wurde zunächst
 die Form des Spannungsverlaufes analysiert. Dann wurden einzelne Messpunkte innerhalb des Spannungsverlaufs bestimmt,
 für die nun der Wert der abfallenden Spannung bestimmt wurde. Über das Ohmsche-Gesetz konnte nun aus der abfallenden
@@ -76,22 +77,57 @@ wodurch sich mit einem Widerstand von
 ein Wert von 11,19~mA für $I_{Client}$ ergibt. Dies entspricht bei einer Versorgungsspannung von 3,0~V einer Leistungsaufnahme
 von 33,57~mW.
 
-
-
-
-
-
 \subsection{Leistungsaufnahme bei Verwendung des Energiesparmodus}
 \Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Dieser Client ist gerade aus dem Energiesparmodus erwacht. 
     Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
     wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
     Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.}
 \Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_energiesparmodus.pdf}{spannungsverlauf_client_energiesparmodus}{Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}
-
 \Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Dieser Client nutzt das periodische Aufrufen
     des Energiesparmodus. Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
     Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
 
+Die Verwendung des Energiesparmodus~-- im Datenblatt auf als \emph{Sleepmode}, also Schlafmodus, bezeichnet~-- ist eine
+Möglichkeit, den Stromverbrauch eines als Client konfigurierten \emph{ZigBit}-Moduls weiter zu reduzieren. Wie in 
+Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Stromverbrauch während des Energiesparmodus auf praktisch 
+0\footnote{Im Datenblatt ist ein Stromverbrauch von weniger als $6~\mu{}A$ angegeben.}. Sobald das Modul aus dem 
+Energiesparmodus in den Normalbetrieb zurück kehrt, wird sofort ein Empfangsvorgang gestartet. Bis zum nächsten Aufrufen des 
+Energiesparmoduses verhält sich das Modul wie in Abschnitt~\ref{ergebnis_normal} beschrieben. Der Energiesparmodus kann
+entweder manuell\footnote{z.B. mit dem Befehl AT+WSLEEP bei Verwendung der Serialnet Firmware.} oder in einem 
+einstellbaren Intervall periodisch aufgerufen werden. Der Spannungsabfall während des periodischen Aufrufens ist in
+Abbildung~\ref{oszi_powersave_periodic} zu sehen. Bei der Betriebsart des periodischen Aufrufens wird über zwei Parameter,
+$t_{sleep}$ und $t_{awake}$ die Dauer der Schlaf- bzw. Wachphase angegeben. Der Parameter $t_{awake}$ darf hierbei die Dauer
+einer Empfangsphase, also 40~ms nicht unterschreiten. Für $t_{sleep}$ gilt eine Mindestdauer von 100ms.\\
+Interessant ist nun die Bestimmung des durchschnittlichen Stromverbrauchs bei Verwendung des Energiesparmoduses
+in Abhängigkeit von den Parametern $t_{awake}$ und $t_{sleep}$. In erster Näherung kann für den Stromverbrauch im Wachzustand
+Gleichung~\ref{eqn:IClient} verwendet werden\footnote{Dies ist eingentlich nicht ganz korrekt: Der Übergang zwischen 
+Basislinie und Peak ist nicht stetig. Zur genauen Bestimmung des Stromverbrauchs müssten die einzelnen Intervalle eigentlich
+diskret betrachtet werden. Allerdings ist der sich hieraus ergebende Fehler so gering, dass er in der Praxis zu 
+vernachlässigen ist.}. Insgesamt ergibt sich der Stromverbrauch zu:
+
+\begin{equation}
+   I_{Powersave} = \frac{I_{Client} \cdot t_{awake}}{t_{awake} + t_{sleep}}
+\end{equation}
+
+In Tabelle~\ref{werte_Ipowersave} ist der Stromverbrauch für einige exemplarische Werte von $t_{sleep}$ und $t_{awake}$ 
+aufgeführt.
+
+\begin{table}
+    \begin{center}
+        \begin{tabular}{lll}
+            \textbf{t\textsubscript{sleep}} & \textbf{t\textsubscript{awake}} & \textbf{I\textsubscript{Powersave}} \\
+            1~s  & 40~ms  & 0,45~mA \\
+            1~s  & 500~ms & 5,59~mA \\
+            1~s  & 1~s    & 5,59~mA \\
+            5~s  & 500~ms & 1,02~mA \\
+            5~s  & 1~s    & 1,86~mA \\
+            10~s & 500~ms & 0,54~mA \\
+            10~s & 1~s    & 1,01~mA 
+        \end{tabular}
+    \end{center}
+    \caption{Berechnung von $I_{Powersave}$ für exemplarische Werte von $t_{sleep}$ und $t_{awake}$.}
+    \label{werte_Ipowersave}
+\end{table}
 
 \subsection{Sonderfälle}
 \Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Bei diesem Client wurde der Empfangsmodus deaktiviert. Der 
