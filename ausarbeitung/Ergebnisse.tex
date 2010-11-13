@@ -139,6 +139,46 @@ aufgeführt.
 \Abbildungps{!htb}{0.75}{oszi/joined2.jpg}{oszi_connection_lost}{Dieser Client hat kurzzeitig die Verbindung zum Netzwerk 
     verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4mA. benötigt.}
 
+So lange ein Client keinem Netzwerk beigetreten ist, befindet er sich Dauerhaft im Empfangsmodus. Das selbe Verhalten liegt
+vor, wenn eine bestehende Netzwerkverbindung verloren gegangen ist. Wie in Abbildung~\ref{oszi_connection_lost} zu sehen
+ist, steigt der Stromverbrauch in diesem Fall dauerhaft auf 23,4mA an. Dazu kommt, dass so lange keine Verbidnung zu
+einem Netzwerk besteht keine Nutzung des Energiesparmmoduses möglich ist. Dies kann eine Steigerung des durchschnittlichen
+Stromverbrauchs um über Faktor 10 bedeuten, was eine entsprechend schnelle Entladung der verwendeten Stromquelle bedeuten
+kann. Es ist daher wichtig, darauf zu achten, dass alle verwendeten Sensoren möglichst selten die Verbindung zum 
+Netzwerk verlieren.
 
 
 \section{Reichweite}
+Zur Bestimmung der Reichweite wurden sowohl innerhalb von Gebäuden als auch im freien Messungen durchgeführt. 
+Es wurde schnell klar, dass die Ergebnisse sehr stark von den Gegebenheiten der Umgebung sowie der Höhe von
+Sender und Empfänger abhängig sind. Optimale Ergebnisse sind bei direkter Sichtverbindung
+sowie einer Höhe von mindestens 1m über dem Boden für Sender und Empfänger erreichen. 
+Unterhalb des Senders sollten sich möglichst keine Metalle befinden, als besonders schlecht hat sich die 
+Positionierung des Senders auf dem Dach eines PKWs erwiesen. 
+
+\subsection{Reichweite im Freien}
+Alle Tests zur Reichweite im Freien wurden auf dem Geländer der Westhochschule der Universität Karlsruhe (TH)
+durchgeführt. Hierzu wurde eine \emph{MANVNode} auf einem Pfosten in einer Höhe von einem Meter angebracht,
+und auf periodisches Senden bei maximaler Sendeleistung konfiguriert.  Nun wurde ein Notebook mit einem 
+\emph{MANV-USB-Stick} so lange von der \emph{MANVNode} entfernt, bis keine Pakete mehr empfangen wurden.
+Nun wurde der Abstand wieder so lange verringert, bis wieder 100\% der gesendeten Pakete empfangen wurde.
+Ausserdem wurde als Gegenprobe ein Befehl an die \emph{MANVNode} gesendet, und die Antwort empfangen. 
+Als maximale Reichweite wurde nun die Entfernung gewertet, bei der gerade noch alle Pakete empfangen, 
+sowie alle Befehle erfolgreich gesendet werden konnten. Die Entfernung zwischen Notebook und 
+\emph{MANVNode} wurden nun mittels GPS vermessen. Als maximale Reichweite ergaben sich hierbei eine Entfernung
+von etwas über 50m.\\
+Im nächsten Schritt wurde an die Position des Notebooks ein \emph{ZigBee}-Router aufgestellt, und sich von
+diesem wieder so weit entfernt, bis gerade noch alle Pakete empfangen werden konnten. Insgesamt konnte durch
+die Verwendung von zwei Routern eine Gesamtreichweite von ca. 180m erreicht werden, so dass sich eine 
+durchschnittliche Reichweitenverlängerung von 50-70m pro Router ausgegangen werden kann.\\
+Deutliche Einschränkungen bei der Reichweite traten auf, sobald sich Hindernisse wie Container, Häuser oder 
+PKWs in der Sichtverbindung zwischen Sender und Empfänger befanden. Diese ließen sich jedoch durch geschicktes
+Positionieren der Router sehr gut umgehen, so dass auch hier hohe Reichweiten erzielbar waren. 
+
+\subsection{Reichweite innerhalb geschlossener Räume}
+Die Reichweite innerhalb geschlossenere Räume hängt sehr stark von der Beschaffenheit dieser ab. Insbesondere
+Metallkonstruktionen wie Treppengeländer und Stahlträger in Wänden wirken sich negativ auf die
+Reichweite aus. Eine generische Aussage über die Reichweite innerhalb geschlossener Räume ist daher nur 
+sehr schwer zu treffen. Diese hängt meist auch weniger von der Entfernung als von der Anzahl der
+Wände zwischen Sender- und Empfänger ab. In diversen Tests hat sich hierbei ergeben, dass eine
+Kommunikation durch zwei nicht tragende Wände hindurch gerade noch möglich ist.
