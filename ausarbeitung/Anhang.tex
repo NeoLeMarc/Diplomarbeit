@@ -14,3 +14,230 @@
             \caption{Klassendiagramm des MANV-Connectors}
             \label{klassendiagramm_manvconnector}
     \end{sidewaysfigure}
+
+\chapter{Beschreibung der beigelegten Software}
+    \section{MANV-Connector}
+
+    Im Verzeichnis "`connector"' auf der beigelegten CD befinden sich
+    Quellcode und Binaries des \emph{MANV-Connectors}. Zum Compilieren
+    und Starten des Connectors wird das Script "`start.sh"' verwendet.
+
+    \subsection{Starten des Connectors}
+
+    Zum Starten des Connectors muss das Skript "`start.sh"' mit dem Parameter
+    "`start"' aufgerufen werden. Evtl. müssen in diesem Skript noch Pfade
+    und die IP-Adresse des \emph{MANV-Servers} angepasst werden. 
+    Dieser Server muss vor dem \emph{MANV-Connector} gestartet werden.
+
+    \subsection{Kompilieren des Connectors}
+
+    Zum Kompilieren der beigelegten Software wird ebenfalls das "`start.sh"'
+    Skript verwendet. Hierzu wird dieses mit dem Parameter "`build"' aufgerufen.
+    Zum erfolgreichen Compilieren sind die IDL-Dateien der \emph{MANV-Suite}
+    von Jan Tepelmann erforderlich, die auf der CD im Verzeichnis "`jan"'
+    mitgeliefert werden. Evtl. müssen hierfür die Pfade im "`start.sh"'
+    Skript angepasst werden.
+
+    \subsection{Verzeichnisstruktur des Quellcodes}
+
+    Die Verzeichnisstruktur des Quellcodes folgt dem Standard für \emph{Java-Packages}.
+    Der Quellcode ist auf mehrere Dateien und Unververzeichnisse aufgeteilt
+    und findet sich im Verzeichnis "`connector/edu/kit/ibt/manv/connector"'.
+    
+    \begin{table}
+        \begin{tabular}{ll}
+            \textbf{Verzeichnis} & \textbf{Beschreibung}\\
+
+           commands/ & Befehle, die an den \emph{USB-Stick} gesendet werden.\\
+           corba/    & Implementierung der \emph{CORBA}-Schnittstelle.\\
+           events/   & Ereignisse, die von dem \emph{USB-Stick} empfangen wurden.\\
+           results/  & Antworten auf gesendete Befehle.\\
+           lib/      & Klassen, die thematisch nicht in andere Pakete gepasst haben.\\
+        \end{tabular}
+        \caption{Struktur des Quellcodeverzeichnisses}
+    \end{table}
+
+    \subsubsection{Inhalt des Verzeichnises commands}
+
+    Innerhalb des \emph{commands/}-Verzeichnisses findet sich die Datei \emph{MANVCommands.java},
+    in der die Kasse \emph{MANVCommand} spezifiziert wird. Objekte dieser Klasse kapseln jeweils
+    ein \emph{SerialNet}-AT-Befehl (Vergleiche Tabelle~\ref{serialnet_befehle}), das an den
+    USB-Stick gesendet wird. Dieser Befeh wird als einfacher ASCII-String an den Konstruktor
+    übergeben. Optional kann bei wichtigen Befehlen noch eine Priorität mitgegeben werden;
+    je höher diese Priorität ist, desto eher wird dieser Befehl an den \emph{USB-Stick}
+    gesendet. Wenn der Befehl abgearbeitet wurde, wird in dem Objekt das Ergebniss
+    der Ausführung gespeichert, welches mit der Methode \emph{MANVResult getResult()}
+    abgerufen werden kann.
+
+    \subsubsection{Inhalt des Verzeichnises corba}
+
+    In dem Verzeichniss \emph{corba/} findet sich der Glue-Code der Implementierung der \emph{Corba}-Schnittstelle
+    zum \emph{MANV}-Server. Die einzelnen Dateien haben folgende Funktion:
+
+    \begin{itemize}
+        \item{CommandsImpl.java:} Definiert, wie auf vom Server empfangene Befehle reagiert werden soll.
+                                  Leitet empfangene Befehle an das \emph{ZigBee}-Netzwerk weiter.
+        \item{MessageContainer.java:} Container zur Auslieferung von \emph{ZigBee}-Nachrichten in \emph{Corba}-Nachrichten.
+                                      Für jeden Nachrichtentyp gibt es eine spezielle Unterklasse (\emph{CorbaDataMessageContainer},
+                                      \emph{CorbaEventMessageContainer}). Der Inhalt der Container wird von der Methode 
+                                      \emph{createCorbaMessages()} der Unterklassen von \emph{events/MANVEvent.java}
+                                      konstruiert.
+        \item{CobaSender.java:} Thread, der empfangene \emph{ZigBee}-Ereignisse an den \emph{MANV-Server} ausliefert.
+                                Diese Ereignisse werden aus einer Queue (\emph{eventQueue}) entnommen und sind
+                                bereits in \emph{MessageContainer} verpackt.
+    \end{itemize}
+
+    \subsubsection{Inhalt des Verzeichnisses events}
+    
+    Im Verzeichnis \emph{events/} befinden sich die Klassen, welche Ereignisse repräsentieren, die von dem \emph{ZigBee}-Netzwerk
+    empfangen wurden. Alle Ereigniss-Klassen sind von der Klasse \emph{MANVEvent} abgeleitet und besitzt damit automatisch eine
+    Priorität. Über diese Priorität kann eingestellt werden, in welcher Reihenfolge empfangene Ereignisse abgearbeitet werden
+    sollen. So ist es z.B. sinnvoll, dass Ereignisse, welche einen Alarm darstellen eine höhere Priorität haben, wie eine 
+    Mitteilung, dass ein neuer Knoten im Netzwerk vorhanden ist. Folgend eine Übersicht über die
+    Funktion der Methoden der Klasse \emph{MANVEvent}:
+
+    \begin{itemize}
+            \item{isResult():} Gibt zurück, ob es sich bei dem Ereigniss um das Ergebnis eines gesendeten Befehls handelt. 
+            \item{isImportant():} Unterscheidet wichtige von unwichtigen Ereignissen. Nur wichtige Ereignisse werden über die \emph{CORBA}-Schnittstelle
+                            an den \emph{MANV-Server} weitergeleitet. Unwichtige Ereignisse sind nur für die interne Verabreitung im 
+                            \emph{MANV-Connector} wichtig. 
+            \item{fromString():}  Factory-Methode, die aus einem \emph{SerialNet}-String ein \emph{MANVEvent} erstellt. Liefer automatisch eine
+                            Instanz einer Unterklasse von \emph{MANVEvent} zurück.
+            \item{createCorbaMessages():} Bereitet ein \emph{MANVEvent} für den Transport über die \emph{CORBA}-Schnittstelle zum \emph{MANV-Server}
+                                    vor. Hierzu werden ein oder mehrere \emph{CorbaEvent}-Objekte erstellt, die wiederrum in einen
+                                    passenden \emph{CorbaContainer} verpackt werden.
+            \item{getRaw():} Liefert den rohen \emph{SerialNet}-String zurück, auf Basis dessen das \emph{MANVEvent}-Objekt erzeugt wurde.
+                          Dies ist vor allem für Debugging-Zwecke interessant.
+    \end{itemize}
+
+    Von der Klasse \emph{MANVEvent} sind folgende Unterklassen abgeleitet:
+
+    \begin{itemize}
+        \item{MANVChildJoined:} Eine neue \emph{MANVNode} ist dem Netzwerk beigetreten.
+        \item{MANVChildLost:} Eine \emph{MANVNode} hat die Verbindung zum Netzwerk verloren.
+        \item{MANVStatusMessage:} Eine Datennachricht, die Statusinformationen (Alarmzustand, Puls, Atmung) enthält,
+                                  wurde empfangen.
+        \item{MANVDataReceived:} Eine Datennachricht, die keine Statusinformationen enthält, wurde empfangen.
+    \end{itemize}
+
+    \subsubsection{Inhalt der Verzeichnises results}
+
+    In dem Verzeichnis \emph{results/} befinden sich alle Klassen, die auf gesendete \emph{SerialNet}-Befehle empfangene Antworten
+    repräsentieren. Diese sind von der Basisklasse \emph{MANVResult} abgeleitet, welche wiederum eine Unterklasse von \emph{MANVEvent} ist.
+    Damit besitzt diese Klasse alle Eigenschaften und Methoden, die auch die Klasse \emph{MANVEvent} besitzt, insbesondere handelt es sich
+    hierbei selbst wieder um eine Priorisierte Nachricht. Zusätzlich werden folgende Methoden neu eingeführt:
+
+    \begin{itemize}
+        \item{getData:} Liefert die von der \emph{SerialNet}-Firmware empfangene Daten in Stringform zurück. 
+        \item{isComposite:} Gibt zurück, ob es sich um eine komplexe Antwort (Vgl. Abschnitt~\ref{analyse_kommunikation_mit_zigbit_modul})
+                            handelt. In diesem Fall befindet sicht in dem Attribut \emph{subResult} eine gültige Referenz
+                            auf ein Unterergebnis.
+        \item{getChildList:} Falls mit dem gesendeten \emph{SerialNet}-Befehl nach den assoziierten Kindknoten gefragt wurde,
+                             gibt diese Methode eine Liste dieser zurück.
+    \end{itemize}
+
+    Neben den beiden Statusinformationen \emph{OK} und \emph{ERROR} kann die \emph{Serialnet}-Firmware auch kompliziertere Antworten
+    zurückliefern. Diese werden von folgenden Unterklassen von \emph{MANVEvent} repräsentiert:
+        
+    \begin{itemize}
+        \item{MANVChildrenList:} Repräsentiert eine Liste von Kindknoten, die von der \emph{SerialNet}-Firmware empfangen wurde.
+        \item{MANVGsn:} Liefert die \emph{Global Subscriber Number} (GSN) einer Node zurück. Entspricht in etwas einer \emph{MAC}-Adresse.
+    \end{itemize}
+
+    \subsubsection{Inhalt des Verzeichnisses lib}
+
+    In dem Verzeichnis \emph{lib/} finden sich alle die Klasse, welche nicht in obiges Einordnungsschema passen. Hierbei handelt
+    es sich insbesondere um Helferklassen, die in den obigen Klassen verwendet werden:
+
+    \begin{itemize}
+        \item{iZigBit:} Interface für einen entfernten \emph{ZigBit}-Knoten. Diese werden nochmal weiter
+                        in vollwertige Knoten (\emph{ZigBit}, im wesentlichen also die \emph{MANV-Nodes})
+                        und Knoten, von denen nur Daten empfangen werden können (\emph{readonlyZigBit)})
+                        unterschieden.
+        \item{MANVPrioritized:} Allgemeine Oberklasse für priorisierte Entitäten wie z.B. \emph{MANVCommand},
+                                \emph{MANVEvent} oder \emph{MANVResult}. Diese Entitäten enthalten 
+                                sowohl eine numerische Priorität als auch eine \emph{compareTo()}-Operation,
+                                über die eine Sortierung vorgenommen werden kann.
+        \item{SocketReader:} Definiert einen Thread, der von dem Socket, der die Verbindung zum \emph{MANV-USB-Stick}
+                             beinhaltet liest. Dieser Thread empfangt Ereignisse und Ergebnisse, wandelt diese 
+                             in Instanzen vom Typ \emph{MANVEvent} und \emph{MANVResult} um und sortiert diese
+                             in die Ereignisswarteschlange (\emph{eventQueue}) ein. Empfangene Ergebnisse werden
+                             automatisch dem passenden Objekt vom Typ \emph{MANVCommand} zugeordnet.
+        \item{SocketWriter:} Definiert einen Thread, der zu sendende Befehle aus der Befehlswarteschlange
+                             (\emph{commandQueue}) entnimmt, und über die Socketverbindung zum \emph{MANV-USB-Stick}
+                             an das \emph{ZigBee}-Netzwerk weiterleitet. Sobald ein Befehl abgearbeitet ist,
+                             wird er von dem \emph{SocketWriter}-Thread automatisch in die Ergebniswarteschlange 
+                             (\emph{resultQueue}) einsortiert.
+    \end{itemize}
+
+
+    \paragraph{Interface eines ZigBit-Knotens}
+
+    Das Interface \emph{iZigBit} definiert folgende Methoden:
+
+    \begin{itemize}
+        \item{getNodeID():} Liefert die logische Adresse (\emph{WSRC}) eines Knotens zurück.
+        \item{getMacID():} Liefert die Hardware-Adresse (\emph{GSN}) eines Knotens zurück.
+        \item{sendData():} Senden von Daten an einen Knotens. Blockiert so lange, bis die Bearbeitung des
+                           Befehls abgeschlossen ist.
+        \item{isendData():} Senden von Daten an einen Knoten. Kehrt sofort zurück, ohne auf die Bearbeitung
+                            des Befehls zu warten.
+        \item{toggleAlertStatus():} Umschalten des Alarmstatus einer \emph{MANV-Node}.
+        \item{disableAlert():} Deaktivieren des Alarms einer \emph{MANV-Node}.
+        \item{enableAlert():} Aktivieren des Alarms einer \emph{MANV-Node}.
+        \item{muteAlert():} Alarm stummschalten.
+        \item{itoggleAlertStatus, idisableAlertStatus, ienableAlert, imuteAlert}: Selbe Funktionalität
+            wie die Versionen ohne i, jedoch ohne Warten auf Abarbeitung (analog zu sendData() / isendData()).
+    \end{itemize}
+
+    \section{Serial-To-Socket}
+
+    In dem Verzeichnis \emph{serial\_to\_socket} befinden sich eine Reihe von Python-Skripten, die die
+    Verbindung zwischen \emph{MANVConnector} und \emph{MANV-USB-Stick} herstellen. Hierzu 
+    wird zunächst mit Hilfe des Skriptes \emph{serial\_to\_socket.py} eine automatische Suche des
+    \emph{MANV-USB-Sticks} (Vgl. Abschnitt~\ref{usb_stick_erkennen}) durchgeführt. Der Status
+    dieser Suche wird graphisch Ausgegeben. Sobald ein \emph{MANV-USB-Stick} erfolgreich
+    erkannt wurde, wird das Skript \emph{serial\_to\_socket/start.sh} gestartet, und die
+    Adresse des seriellen Ports als Parameter übergeben. In diesem Skript wird
+    dann unter anderem das Pythonskript "`serial\_to\_socket.py"' gestart. Diese leitet einen
+    angegebene seriellen Port auf den Netzwerkport \emph{4711} um, über diesen dann der
+    \emph{MANVConnector} eine Verbindung zu dem \emph{USB-Stick} herstellen kann.
+    
+    \section{Firmware}
+
+    % TODO
+
+    \section{MANV-Web}
+
+    Im Verzeichnis \emph{manvweb/} befinden sich die Quelldateien des Webinterfaces der
+    \emph{MANVSuite}. Dabei verteilt sich die Funktionalität auf folgende Unterdateien:
+
+    \begin{itemize}
+        \item{MANVWeb:} Einstiegsklasse des Webservers. Stellt die \emph{CORBA}-Verbindung her
+                        und übergibt dann die Steuerung an die Klasse \emph{MANVWebserver}.
+        \item{MANVWebserver:} Implementierung des Webervers. Öffnet einen Serversocket und
+                              wartet auf eingehende Verbindungen. Für jede eingehende Verbindung
+                              wird nun ein neuer Thread gestartet. In diesem Thread
+                              wird die Eingabe geparsed, und eine entsprechende Reaktion
+                              aufgerufen. 
+        \item{ToQueries:} Adapterklasse zum \emph{CORBA}-Zugriff auf den \emph{MANV-Server}. 
+    \end{itemize}
+
+    \section{Platine}
+
+    In dem Verzeichnis \emph{platine/} befinden sich die \emph{Eagle}-Dateien, in 
+    denen Schlatplan und Platinenlayout des \emph{MANV-USB-Sticks} und der
+    \emph{MANV-Node} spezifiziert sind.
+
+    \section{Simulator}
+
+    In dem Verzeichnis \emph{simulator/} befindet sich ein in Python programmierter
+    \emph{MANVNode}-Simulator. Dieser kann dazu verwendet werden, um mit Hilfe
+    eines \emph{MANV-USB-Sticks} \emph{MANVNodes} zu simulieren. Beim Start des
+    Simulators muss diesem die Adresse des seriellen Ports, auf dem sich der
+    \emph{USB-Stick} befindet, übergeben werden.
+
+    \section{Zigbit Firmware}
+    In dem Verzeichnis \emph{ZigBit-Firmware} befindet sich eine aktuelle Kopie der
+    \emph{SerialNet}-Firmware inkl. dem zum Programmieren der \emph{ZigBit}-Module
+    nötigen Bootloader in einer Version für Windows.

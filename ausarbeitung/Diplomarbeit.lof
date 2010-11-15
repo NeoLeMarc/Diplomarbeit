@@ -2,12 +2,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Frequenzspreizung mit dem \emph {FHSS}-Verfahren}}{6}{figure.2.1}
 \contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Frequenzspreizung mit dem \emph {DSSS}-Verfahren}}{7}{figure.2.2}
-\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces \emph {ZigBee}-Stack}}{19}{figure.2.3}
-\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Blockdiagramm des \emph {ADuC7026}-Mikrocontrollers}}{26}{figure.2.4}
-\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Das ZigBit-23-A2R-Modul}}{28}{figure.2.5}
-\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Blockdiagramm des ZigBit-24-A2R-Moduls}}{28}{figure.2.6}
-\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Darstellung des SerialNet-Protokolls als Zustandsautomat}}{30}{figure.2.7}
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Blockdiagramm des \emph {ADuC7026}-Mikrocontrollers}}{8}{figure.2.3}
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Das ZigBit-23-A2R-Modul}}{10}{figure.2.4}
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Blockdiagramm des ZigBit-24-A2R-Moduls}}{11}{figure.2.5}
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Darstellung des SerialNet-Protokolls als Zustandsautomat}}{12}{figure.2.6}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces \emph {ZigBee}-Stack}}{28}{figure.3.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{46}{figure.5.1}
@@ -38,3 +38,4 @@
 \contentsline {figure}{\numberline {\relax B.2}{\ignorespaces Unterseite der Platine der MANVNode}}{90}{figure.B.2}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax C.1}{\ignorespaces Klassendiagramm des MANV-Connectors}}{92}{figure.C.1}
+\addvspace {10\p@ }
