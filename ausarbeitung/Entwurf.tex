@@ -4,12 +4,51 @@
 \chapter{Entwurf}
 
 \section{Gesamtsystem}
-\Abbildungps{!htb}{1}{diagramme/Gesamtuebersicht.pdf}{label}{Überblick über das Gesamtsystem}
+\Abbildungps{!htb}{1}{diagramme/Gesamtuebersicht.pdf}{abbildung_gesamtsystem}{Überblick über das Gesamtsystem}
+In dieser Arbeit wird ein Sensornetzwerk zur Patientenüberwachung entworfen. Dieses System besteht aus einer Kombination
+von Soft- und Hardware. Zur einfacheren Handhabung wird das System in mehrere Komponenten zerlegt, die einzeln entworfen
+und Implementiert werden. Zwischen den einzelnen Komponenten gibt es klar definierte Schnittstellen. Hierdurch ist
+gewährleistet, dass die einzelnen Komponenten unabhängig voneinander entworfen und implementiert werden können. Noch nicht
+implementierte Komponenten können durch Simulatoren ersetzt werden, so dass bereits fertige Komponenten schon getestet
+werden können, ohne dass das Gesamtsystem komplett fertig gestellt werden muss. Dies gewährleistet ein frühzeitiges
+Erkennen von Problemen und ermöglichst ein entsprechendes Gegensteuern.\\
+\\
+Abbildung~\ref{abbildung_gesamtsystem} zeigt welche Komponenten in dem Gesamtsystem existieren, und wie diese
+zusammenwirken:
+
+\begin{itemize}
+    \item{Erste-Hilfe-Sensor:} Der eigentliche Sensor, der zur Überwachung der Patienten eingesetzt wird. Dieser 
+                               wurde in \cite{Marc} entwickelt. In dieser Arbeit wird dieser Sensor um eine 
+                               \emph{ZigBee}-Schnittstelle erweitert. Zur Simulation des erweiterten Sensors
+                               wird eine Testplatine entwickelt, die sogeannte \emph{MANVNode}.
+    \item{\emph{ZigBee}-Router:} Die Router dienen zur Erweiterung der Reichweite des \emph{ZigBee}-Netzwerkes.
+                                 Hierfür wird ein fertiges \emph{ZigBee}-Modul der Firma \emph{Atmel} verwendet.
+    \item{\emph{ZigBee-USB}-Stick:} Der \emph{USB}-Stick bildet die Hardwareschnittstelle zwischen Computer und 
+                                    \emph{ZigBee}-Netzwerk. Das Design basiert auf einem \emph{ZigBee}-Router,
+                                    der um eine \emph{USB}-Schnittstelle erweitert wird.
+    \item{\emph{MANVConnector}}: Der Connector fungiert als Adapter, der eine Übersetzung zwischen der 
+                                 Hardware des \emph{USB-Sticks} und der \emph{CORBA}-Schnittstelle der \emph{MANVSuite}
+                                 vornimmt. Vereinfacht handelt es sich um einen Treiber für den 
+                                 \emph{ZigBee-USB}-Stick. Der \emph{MANVConnector} kapselt alle Hardwarespezifischen
+                                 Designentscheidungen. Soll später eine andere Funktschnittstelle wie z.B.
+                                 \emph{Bluetooth} oder \emph{WLAN} verwendet werden, so muss lediglich
+                                 der \emph{MANVConnector} ausgetauscht werden.
+    \item{\emph{MANVServer}}: Der \emph{MANVServer} verwaltet alle Informationen über das Sensornetzwerk. Hierzu
+                              wird eine relationale Datenbank verwendet. Er sorgt dafür, dass alle Informationen
+                              an den entsprechenden Empfänger zugestellt werden. Die Kommunikation zwischen
+                              \emph{MANVServer} und \emph{MANVConnector} erfolgt über \emph{CORBA}. Der 
+                              \emph{MANVServer} wurde in \cite{Jan} entwickelt.
+    \item{\emph{Client-Anwendungen}}: Die Clientanwendungen, also \emph{MANVGui} und \emph{MANVMobileGui} bilden
+                                      die Benutzerschnittstelle des Sensornetzwerkes. Diese wurden ebenfalls
+                                      in \cite{Jan} entwickelt. 
+\end{itemize}
+    
 
 \section{Hardware}
 \subsection{MANVNode}
 \subsubsection{Beschreibung}
-\Abbildungps{!htb}{1.25}{diagramme/platine_manvnode-crop.pdf}{label}{Entwurf der Platine der MANVNode}
+\Abbildungps{!htb}{1.25}{diagramme/platine_manvnode-crop.pdf}{abbildung_manvnode}{Entwurf der Platine der MANVNode.}
+\Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Entwurf der Platine des USB-Sticks.}
 Die MANVNode ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
 ADuC-7026-Mikrocontroller der Firma Analog Devices sowie ein Atmel ZigBit-Funkmodul des Typs ATZB-24-A2. Die Platine 
 dient zur Simulation des Erste-Hilfe-Sensors. An Stelle einer echten Messung generiert die Platine Messwerte mit Hilfe 
@@ -18,7 +57,7 @@ Dier Generator kann in drei Zuständen beschrieben werden:
 
 \begin{itemize}
     \item{Grün:} Simulation eines Patienten mit gutem Kreislaufzustand. Puls zwischen 60 und 120 Schlägen pro Minute, 
-                 Atemzüge pro Minute zwischen 12 und 15. Periodischer Versand der Meldung "`Zustand OK"'.
+                 Atemzüge pro Minute zwischen 12 und 15. Periodischer Versand der Meldung "`Zustand OK"'.von 
     \item{Gelb:} Simulation eines Patienten mit beginnend kritischem aber noch nicht akut Lebensbedrohlichem 
                  Kreislaufzustand. Puls zwischen 120 und 180 Schlägen pro Minute, Atmung zwischen 60 und 80
                  Zügen pro Minute (Hyperventilation).
@@ -250,16 +289,27 @@ Der MANVConnector verfügt neben dem Hauptthread über drei weitere Threads:
                          in Corba-Events übersetzt und an den MANVServer zugestellt.
 \end{itemize}                          
 
-Die Kommunikation der Threads untereinander findet komplett über die oben genannten Warteschlangen statt. Das Zusammenwirken der Threads
-ist in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt:\\
+Die Kommunikation der Threads untereinander findet komplett über die oben genannten Warteschlangen statt. Das 
+Zusammenwirken der Threads ist in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt:\\
 
 Zunächst erzeugt der Hauptthread (\emph{MANVConnector.main}) die drei Warteschlangen. Dannach werden die beiden Threads
-\emph{SocketWriter} und \emph{SocketReader} erstellt. Dannach ruft der Hauptthread die Corba-Inizialisierungsroutine auf und startet
-den \emph{CorbaSender}-Thread.\\
+\emph{SocketWriter} und \emph{SocketReader} erstellt. Dannach ruft der Hauptthread die \emph{CORBA}-Initialisierungsroutine 
+auf und startet den \emph{CorbaSender}-Thread.\\
 
-Beim Starten der Threads, wird sichergestellt, dass alle Zugriff auf alle drei Warteschlangen haben. Die Konsequente Verwendung
-der Warteschlangen zur Kommunikation der Threads untereinander löst bereits viele Synchronisationsprobleme. Grundsätzlich findet
-Kommunikation zwischen den Threads rein über die Warteschlangen statt. Einzige Ausnahme ist das Abrufen des Ergebnisses eines
-gesendeten Kommandos. 
+Beim Starten der Threads, wird sichergestellt, dass alle Zugriff auf alle drei Warteschlangen haben. Die konsequente 
+Verwendung der Warteschlangen zur Kommunikation der Threads untereinander löst bereits viele Synchronisierungsprobleme. 
+Grundsätzlich findet Kommunikation zwischen den Threads rein über die Warteschlangen statt. Einzige Ausnahme ist das 
+Abrufen des Ergebnisses eines gesendeten Kommandos. 
 
-\subsubsection{Synchronisation der Befehlsübertragung}
+\subsubsection{Synchronisierung der Befehlsübertragung}
+Bei der Befehlsübertragung muss darauf geachtet werden, dass ein Befehl erst dann gesendet werden darf,
+wenn die Abarbeitung aller vorherigen Befehle erfolgt ist, da sonst die Synchronität mit dem \emph{ZigBit}-Modul
+nicht mehr gewährleistet ist. Da innerhalb des \emph{MANVConnectors} das Senden in einem anderen Thread geschieht
+als das Empfangen, erfordert dies besondere Massnahmen:\\
+Um die Synchronisation zu gewährleisten bietet der Thread \emph{SocketReader} eine Schnittstelle, über die der
+\emph{SocketSender} das Ergebnis des letzten gesendeten Befehls abholen kann. Diese Schnittstelle verwendet ein sogenanntes
+\emph{Latch}, also eine Art von Barriere, um den abholenden Thread so lange zu blockieren, bis eine Antwort vorliegt.
+Von dem \emph{SocketSender} wird nun verlangt, dass er nach jedem gesendeten Befehl diese Schnittstelle verwendet,
+um das Ergebnis des gerade gesendeten Befehls abzuholen. Da der Sender nun so lange, bis das Ergebnis vorliegt, blockiert ist,
+kann er auch keine weiteren Befehle senden. Hierdurch wird die geforderte Synchronisierung erreicht. Durch die \emph{JVM}
+ist ein korrektes Verhalten des \emph{Latches} sowie der zur Priorisierung durch die verwendeten Warteschlangen garantiert.

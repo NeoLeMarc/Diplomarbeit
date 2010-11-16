@@ -1,21 +1,18 @@
 
 %%%------------------------------------------------STAND DER TECHNIK------------------------------------------------------------------
-\chapter{Schaltpläne}
-    \Abbildungps{!htb}{0.4}{diagramme/schaltplan_usbstick.pdf}{label}{Schaltplan des USB-Sticks}
-    \Abbildungps{!htb}{1.05}{diagramme/schaltplan_manvnode.pdf}{label}{Schaltplan der MANVNode}
-
-\chapter{Platinenlayouts}
-    \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_top.pdf}{label}{Oberseite der Platine der MANVNode}
-    \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_bottom.pdf}{label}{Unterseite der Platine der MANVNode}
-
-\chapter{Klassendiagramme}
+\chapter{Pläne und Diagramme}
+    \section{Schaltpläne}
+    \Abbildungps{!htb}{0.4}{diagramme/schaltplan_usbstick.pdf}{label}{Schaltplan des \emph{USB-Sticks}.}
+    \Abbildungps{!htb}{1.05}{diagramme/schaltplan_manvnode.pdf}{label}{Schaltplan der \emph{MANVNode}.}
+    \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_top.pdf}{label}{Oberseite der Platine der MANVNode.}
+    \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_bottom.pdf}{label}{Unterseite der Platine der MANVNode.}
     \begin{sidewaysfigure}
             \includegraphics*[width=1\textwidth]{uml_diagramme/manvconnector_uml.pdf}
-            \caption{Klassendiagramm des MANV-Connectors}
+            \caption{Klassendiagramm des MANV-Connectors.}
             \label{klassendiagramm_manvconnector}
     \end{sidewaysfigure}
 
-\chapter{Beschreibung der beigelegten Software}
+\chapter{Beschreibung der beigelegten Software}\label{anhang_beschreibung_software}
     \section{MANV-Connector}
 
     Im Verzeichnis "`connector"' auf der beigelegten CD befinden sich
@@ -78,7 +75,8 @@
         \item{CommandsImpl.java:} Definiert, wie auf vom Server empfangene Befehle reagiert werden soll.
                                   Leitet empfangene Befehle an das \emph{ZigBee}-Netzwerk weiter.
         \item{MessageContainer.java:} Container zur Auslieferung von \emph{ZigBee}-Nachrichten in \emph{Corba}-Nachrichten.
-                                      Für jeden Nachrichtentyp gibt es eine spezielle Unterklasse (\emph{CorbaDataMessageContainer},
+                                      Für jeden Nachrichtentyp gibt es eine spezielle Unterklasse 
+                                      (\emph{CorbaDataMessageContainer},
                                       \emph{CorbaEventMessageContainer}). Der Inhalt der Container wird von der Methode 
                                       \emph{createCorbaMessages()} der Unterklassen von \emph{events/MANVEvent.java}
                                       konstruiert.
@@ -89,25 +87,26 @@
 
     \subsubsection{Inhalt des Verzeichnisses events}
     
-    Im Verzeichnis \emph{events/} befinden sich die Klassen, welche Ereignisse repräsentieren, die von dem \emph{ZigBee}-Netzwerk
-    empfangen wurden. Alle Ereigniss-Klassen sind von der Klasse \emph{MANVEvent} abgeleitet und besitzt damit automatisch eine
-    Priorität. Über diese Priorität kann eingestellt werden, in welcher Reihenfolge empfangene Ereignisse abgearbeitet werden
-    sollen. So ist es z.B. sinnvoll, dass Ereignisse, welche einen Alarm darstellen eine höhere Priorität haben, wie eine 
-    Mitteilung, dass ein neuer Knoten im Netzwerk vorhanden ist. Folgend eine Übersicht über die
-    Funktion der Methoden der Klasse \emph{MANVEvent}:
+    Im Verzeichnis \emph{events/} befinden sich die Klassen, welche Ereignisse repräsentieren, die von dem 
+    \emph{ZigBee}-Netzwerk empfangen wurden. Alle Ereigniss-Klassen sind von der Klasse \emph{MANVEvent} abgeleitet 
+    und besitzt damit automatisch eine Priorität. Über diese Priorität kann eingestellt werden, in welcher Reihenfolge 
+    empfangene Ereignisse abgearbeitet werden sollen. So ist es z.B. sinnvoll, dass Ereignisse, welche einen Alarm 
+    darstellen eine höhere Priorität haben, wie eine Mitteilung, dass ein neuer Knoten im Netzwerk vorhanden ist. 
+    Folgend eine Übersicht über die Funktion der Methoden der Klasse \emph{MANVEvent}:
 
     \begin{itemize}
             \item{isResult():} Gibt zurück, ob es sich bei dem Ereigniss um das Ergebnis eines gesendeten Befehls handelt. 
-            \item{isImportant():} Unterscheidet wichtige von unwichtigen Ereignissen. Nur wichtige Ereignisse werden über die \emph{CORBA}-Schnittstelle
-                            an den \emph{MANV-Server} weitergeleitet. Unwichtige Ereignisse sind nur für die interne Verabreitung im 
-                            \emph{MANV-Connector} wichtig. 
-            \item{fromString():}  Factory-Methode, die aus einem \emph{SerialNet}-String ein \emph{MANVEvent} erstellt. Liefer automatisch eine
-                            Instanz einer Unterklasse von \emph{MANVEvent} zurück.
-            \item{createCorbaMessages():} Bereitet ein \emph{MANVEvent} für den Transport über die \emph{CORBA}-Schnittstelle zum \emph{MANV-Server}
-                                    vor. Hierzu werden ein oder mehrere \emph{CorbaEvent}-Objekte erstellt, die wiederrum in einen
-                                    passenden \emph{CorbaContainer} verpackt werden.
-            \item{getRaw():} Liefert den rohen \emph{SerialNet}-String zurück, auf Basis dessen das \emph{MANVEvent}-Objekt erzeugt wurde.
-                          Dies ist vor allem für Debugging-Zwecke interessant.
+            \item{isImportant():} Unterscheidet wichtige von unwichtigen Ereignissen. Nur wichtige Ereignisse werden über 
+                                  die \emph{CORBA}-Schnittstelle an den \emph{MANV-Server} weitergeleitet. Unwichtige 
+                                  Ereignisse sind nur für die interne Verabreitung im \emph{MANV-Connector} wichtig. 
+            \item{fromString():}  Factory-Methode, die aus einem \emph{SerialNet}-String ein \emph{MANVEvent} erstellt. 
+                                  Liefer automatisch eine Instanz einer Unterklasse von \emph{MANVEvent} zurück.
+            \item{createCorbaMessages():} Bereitet ein \emph{MANVEvent} für den Transport über die 
+                                          \emph{CORBA}-Schnittstelle zum \emph{MANV-Server} vor. Hierzu werden ein oder 
+                                          mehrere \emph{CorbaEvent}-Objekte erstellt, die wiederrum in einen
+                                          passenden \emph{CorbaContainer} verpackt werden.
+            \item{getRaw():} Liefert den rohen \emph{SerialNet}-String zurück, auf Basis dessen das \emph{MANVEvent}-Objekt 
+                             erzeugt wurde; dies ist vor allem für Debugging-Zwecke interessant.
     \end{itemize}
 
     Von der Klasse \emph{MANVEvent} sind folgende Unterklassen abgeleitet:
@@ -122,32 +121,35 @@
 
     \subsubsection{Inhalt der Verzeichnises results}
 
-    In dem Verzeichnis \emph{results/} befinden sich alle Klassen, die auf gesendete \emph{SerialNet}-Befehle empfangene Antworten
-    repräsentieren. Diese sind von der Basisklasse \emph{MANVResult} abgeleitet, welche wiederum eine Unterklasse von \emph{MANVEvent} ist.
-    Damit besitzt diese Klasse alle Eigenschaften und Methoden, die auch die Klasse \emph{MANVEvent} besitzt, insbesondere handelt es sich
-    hierbei selbst wieder um eine Priorisierte Nachricht. Zusätzlich werden folgende Methoden neu eingeführt:
+    In dem Verzeichnis \emph{results/} befinden sich alle Klassen, die auf gesendete \emph{SerialNet}-Befehle empfangene 
+    Antworten repräsentieren. Diese sind von der Basisklasse \emph{MANVResult} abgeleitet, welche wiederum eine Unterklasse 
+    von \emph{MANVEvent} ist.  Damit besitzt diese Klasse alle Eigenschaften und Methoden, die auch die 
+    Klasse \emph{MANVEvent} besitzt, insbesondere handelt es sich hierbei selbst wieder um eine Priorisierte Nachricht. 
+    Zusätzlich werden folgende Methoden neu eingeführt:
 
     \begin{itemize}
         \item{getData:} Liefert die von der \emph{SerialNet}-Firmware empfangene Daten in Stringform zurück. 
-        \item{isComposite:} Gibt zurück, ob es sich um eine komplexe Antwort (Vgl. Abschnitt~\ref{analyse_kommunikation_mit_zigbit_modul})
-                            handelt. In diesem Fall befindet sicht in dem Attribut \emph{subResult} eine gültige Referenz
-                            auf ein Unterergebnis.
+        \item{isComposite:} Gibt zurück, ob es sich um eine komplexe Antwort (Vgl. 
+                            Abschnitt~\ref{analyse_kommunikation_mit_zigbit_modul}) handelt. In diesem Fall befindet 
+                            sich in dem Attribut \emph{subResult} eine gültige Referenz auf ein Unterergebnis.
         \item{getChildList:} Falls mit dem gesendeten \emph{SerialNet}-Befehl nach den assoziierten Kindknoten gefragt wurde,
                              gibt diese Methode eine Liste dieser zurück.
     \end{itemize}
 
-    Neben den beiden Statusinformationen \emph{OK} und \emph{ERROR} kann die \emph{Serialnet}-Firmware auch kompliziertere Antworten
-    zurückliefern. Diese werden von folgenden Unterklassen von \emph{MANVEvent} repräsentiert:
+    Neben den beiden Statusinformationen \emph{OK} und \emph{ERROR} kann die \emph{SerialNet}-Firmware auch 
+    kompliziertere Antworten zurückliefern. Diese werden von folgenden Unterklassen von \emph{MANVEvent} repräsentiert:
         
     \begin{itemize}
-        \item{MANVChildrenList:} Repräsentiert eine Liste von Kindknoten, die von der \emph{SerialNet}-Firmware empfangen wurde.
-        \item{MANVGsn:} Liefert die \emph{Global Subscriber Number} (GSN) einer Node zurück. Entspricht in etwas einer \emph{MAC}-Adresse.
+        \item{MANVChildrenList:} Repräsentiert eine Liste von Kindknoten, die von der \emph{SerialNet}-Firmware 
+                                 empfangen wurde.
+        \item{MANVGsn:} Liefert die \emph{Global Subscriber Number} (GSN) einer Node zurück. Entspricht in etwas einer 
+                        \emph{MAC}-Adresse.
     \end{itemize}
 
     \subsubsection{Inhalt des Verzeichnisses lib}
 
-    In dem Verzeichnis \emph{lib/} finden sich alle die Klasse, welche nicht in obiges Einordnungsschema passen. Hierbei handelt
-    es sich insbesondere um Helferklassen, die in den obigen Klassen verwendet werden:
+    In dem Verzeichnis \emph{lib/} finden sich alle die Klasse, welche nicht in obiges Einordnungsschema passen. 
+    Hierbei handelt es sich insbesondere um Helferklassen, die in den obigen Klassen verwendet werden:
 
     \begin{itemize}
         \item{iZigBit:} Interface für einen entfernten \emph{ZigBit}-Knoten. Diese werden nochmal weiter
@@ -205,10 +207,55 @@
     
     \section{Firmware}
 
-    % TODO
+    In dem Verzeichnis \emph{firmware/} befindet sich der Quellcode der Firmware für die \emph{MANVNode}.
+    Diese besteht aus folgenden Dateien:
+
+    \begin{itemize}
+        \item{main.c:} Einstiegspunkt der Firmware. Initialisiert alle Ringpuffer, Interrupts und 
+                       die Peripherie des \emph{ADuC}-Mikrocontrollers. Ruft dannach die 
+                       Hauptscheife des \emph{ZigBit}-Treibers auf.
+        \item{isr.c:}  Definition der verwendeten \emph{Interrupt-Service-Routinen}, also Behandlungsroutinen
+                       für auftretende Interrupts. Ist unter anderem für die Ansteuerung des \emph{UART} 
+                       verantwortlich.
+        \item{random.c:} Implementierung eines sehr einfachen Pseudo-Zufallszahlengenerators.
+        \item{ringpuffer.c}: Implementierung der Datenstruktur "`Ringpuffer"'. Diese kann 5 Zeilen
+                             von jeweils 80 Zeichen Länge speichern. Werden mehr als 5 Zeilen in die
+                             Datenstruktur gelegt, dann wird das älteste Element überschrieben.
+                             Ringpuffer werden unter anderem zur Implementierung des \emph{UART}-Treibers
+                             sowie zur Zwischenspeicherung von empfangenen Befehlen zur späteren
+                             Abarbeitung verwendet.
+        \item{uart.c:} Beinhaltet die Routinen, die zur Interaktion mit dem als \emph{ISR} implementierten
+                       Treiber für den \emph{UART} notwendig sind. Im wesentlichen handelt es sich um 
+                       Routinen, die entsprechenden Ringpuffer befüllen oder auslesen.
+        \item{zigbit.c:} Beispiel einer Interaktion mit dem \emph{ZigBit}-Modul. Enthält unter anderem Routinen
+                         zur Befehlsverareitung, Extraktion von Rückgabewerden, Initialisierung des \emph{ZigBit}-Moduls
+                         sowie ein Beispiel, wie die Übertragung von Statusinformationen realisiert werden kann.
+    \end{itemize}
+
+    Bei der Firmware handelt es sich um eine Demonstration, wie die Kommunikation zwischen \emph{ADuC}-Mikrocontroller
+    und \emph{ZigBit}-Modul realisiert werden kann. Zur späteren Verwendung auf dem \emph{Erste-Hilfe-Sensor} müssen 
+    einige Anpassungen vorgenommen werden. Hierzu wird folgende Vorgehensweise vorgeschlagen:
+
+    \begin{enumerate}
+        \item Übernahme der \emph{UART} spezifischen Routinen aus "`isr.c"' und "`uart.c"'. 
+        \item Übernahme der Datenstruktur "`Ringpuffer"' aus "`ringpuffer.c"'.
+        \item Übernahme der Funktionen "`extractStatus"', "`waitForStatus"', "`isCommand"'
+              und "`parseCommand"' aus der Datei "`zigbit.c"'.
+        \item Anpassung der Funktion "`initZigBit"' aus der Datei "`zigbit.c"':
+              Wichtig: Zeile 154: Hier wird eine GPIO-Leitung des \emph{ADuC} Mikrocontrollers dazu verwendet,
+              die Resetleitung des \emph{ZigBit}-Moduls zu betätigen. Dies ist für die synchronisierung
+              zwingend erforderlich und muss im Hardwarelayout entsprechend berücksichtigt werden.
+              Nach Zeile 154 sollten alle Zeilen mit Zugriff auf \emph{GP2DAT} entfernt werden, 
+              da diese dazu dienen, die \emph{LEDs} der \emph{MANVNode} anzusteuern. Diese \emph{LEDs} sind
+              auf dem Erste-Hilfe-Sensor nicht vorhanden. Die Aufrufe von \emph{sleep()} sind zur Synchronisierung
+              zwingend erforderlich und dürfen nicht entfernt werden.
+        \item Anpassung der Funktion "`zigBitLoop"' aus der Datei "`zigbit.c"': Hier werden aktuell noch 
+              Dummy-Informaitonen übertragen, die durch einen Zufallszahlengenerator erzeugt werden. Diese
+              müssen durch die tatsächlich gemessenen Werte des Erste-Hilfe-Sensors ersetzt werden.
+    \end{enumerate}                
+
 
     \section{MANV-Web}
-
     Im Verzeichnis \emph{manvweb/} befinden sich die Quelldateien des Webinterfaces der
     \emph{MANVSuite}. Dabei verteilt sich die Funktionalität auf folgende Unterdateien:
 

@@ -4,7 +4,6 @@
 
 \section{Hardware}
 \subsection{Anbindung des ZigBit-Moduls an den USB-Port}
-\Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Platine des USB-Sticks}
 Das \emph{ZigBit}-Modul kann grundsätzlich entweder über \emph{SPI} oder \emph{UART} angesprochen werden. 
 Zur Realisierung des USB-Sticks bietet sich die Verwendung des \emph{UARTs} an, da eine breite Palette 
 von fertigen ICs zur Verfügung steht, mit deren Hilfe ein \emph{UART} an einen \emph{USB}-Bus angebunden werden 
@@ -16,6 +15,7 @@ Abbildung~\ref{platine_usbstick} dargestellte Platine aufgelötet. Diese Platine
 Stiftleiste huckepack auf die \emph{USB-UART-Bridge} aufgelötet werden, um die nötige Formstabilität zu erhalten.
 
 \subsection{Herstellung und Bestückung der Platine der \emph{MANVNode}}
+\Abbildungps{!htb}{1}{diagramme/manvnode.jpg}{manvnode}{Fertig bestückte Platine der \emph{MANVNode.}}
 Die Herstellung der Platine für der \emph{MANVNode} stellte sich als problematischer heraus, als ursprünglich 
 angenommen. Zunächst wurde versucht, Prototypen der Platinen im Ätzverfahren selbst herzustellen. Aufgrund der 
 für die Durchführungen notwendigen Bohrungen war eine sehr genaue Ausrichtung der Oberseite mit der Unterseite 
@@ -337,42 +337,29 @@ def testDevice(self, deviceName):
         return False
 \end{lstlisting}
 
-\subsection{CORBA Anbindung}
+\subsection{CORBA-Anbindung}
+Die \emph{CORBA}-Anbindung des \emph{MANVConnectors} an den \emph{MANVServer} erfolgt über
+die in \cite{Jan} spezifizierten Interfaces. Dieses muss über den \emph{Java class Path}
+eingebunden werden. Dies geschieht über den Parameter \emph{-cp} auf der Kommandozeile
+der \emph{JVM} bzw. des \emph{Java-Compilers}. Der Connector schickt über die 
+\emph{Server\_Incoming}-Schnittstelle eingehende Daten und Ereignisse an den \emph{MANVServer}.
+Damit der \emph{MANVServer} umgekehrt auch Befehle an den \emph{MANVConnector} schicken kann,
+muss dieser selbst die \emph{Connector\_Commands}-Schnittstelle implementieren. Dies
+geschieht in der Klasse \emph{edu.kit.ibt.manv.connector.corba.CommandsImpl} (Eine
+genaue Beschreibung der einzelnen Dateien, Klassen und Funktionalitäten findet sich in
+Anhang~\label{anhang_beschreibung_software}).\\
 
-
-%\chapter{Praktische Realisierung der Respirationsdetektion}
-%\section{Baselinewandering}
-%\subsection{Vorbereiten der Hardware}
-%\subsubsection{Anforderung an die Hardware}
-%... 24 bit, kein HP etc....
-%\subsubsection{Realisierung der Anforderungen}
-%... hier kann ein Schaltplan eines 24bit-EKG verstärker rein, oder auch ein Bild von dem Gerät
-%
-%\subsection{Datenerfassung}
-%... wie kommen die Daten an, wie müssen sie konvertiert werden...
-%
-%\subsection{Signalverarbeitung in Matlab}
-%... eben das Matlabprog. mit evtl. Auszügen aus dem Quelltext (diese, wenn möglich in den Anhang verfrachten und einen Hinweis darauf geben)
-%
-%
-%\section{HRV-Variation}
-%\subsection{Anforderung an die Hardware}
-%... hier gibts nicht viele, und gerade das dann sagen, dass es mit fast jedem Gerät möglich wäre...
-%
-%\subsection{Datenerfassung}
-%...
-%
-%\subsection{Signalverarbeitung in Matlab}
-%...
-%
-%\section{QRS-Komplexe}
-%\subsection{Anforderung an die Hardware}
-%... wie oben
-%
-%\subsection{Datenerfassung}
-%...
-%
-%\subsection{Signalverarbeitung in Matlab}
-%
-%\section{Referenzmessung}
-%Hier nur kurze Erläuterung des Verfahrens
+Zur Lokalisierung der einzelnen \emph{CORBA}-Schnittstellen dient der \emph{CORBA-Nameserver}.
+Die Adresse des Nameservers muss im voraus bekannt sein. Meist läuft dieser auf dem selben Rechner
+wie der \emph{MANVServer}. Die Adresse wird beim Start des \emph{MANVConnectors} als 
+Kommandozeilenparameter "`-ORBInitRef NameService"' übergeben\footnote{Wenn z.B. Nameserver, \emph{MANVServer}
+und \emph{MANVConnector} auf dem selben Rechner laufen, so lautet der entsprechende Parameter:
+"`-ORBInitRef NameService=corbaloc::localhost:1771/NameService"'.}. Die Verbindung zum Nameserver
+wird nun beim Start des \emph{MANVConnectors} in der Methode \emph{initCORBA()} aufgebaut. 
+Sobald diese hergestellt wird, wird nach der Adresse des \emph{MANVServers} gefragt. Dies geschieht über
+eine Anfrage nach den Schnittstellen des Servers, also \emph{Server\_Incoming} und \emph{Server\_Control}. 
+Zuletzt muss sich der \emph{MANVConnector} noch beim \emph{MANVServer} registrieren, damit dieser
+weiss, an wen er zu sendende Befehle zustellen muss. Hierzu wird die Methode \emph{registerConnector()}
+der \emph{Server\_Control}-Schnittstelle verwendet. Nach diesem Schritt ist die Initialisierung der
+\emph{CORBA}-Anbindung abgeschlossen, und der \emph{CorbaSender}-Thread, der eingehende Ereignisse
+an den \emph{MANVServer} sendet kann gestartet werden.
