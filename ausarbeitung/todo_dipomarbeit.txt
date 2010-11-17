@@ -6,7 +6,6 @@ Wichtig:
 - Abstract
 - Einleitung reparieren
 - Gliederung der Arbeit
-- Stand der Technik: Produkte
 - Diskussionskapitel
 - Ausblick
 - Glossar

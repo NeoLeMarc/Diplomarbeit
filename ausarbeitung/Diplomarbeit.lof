@@ -8,33 +8,36 @@
 \contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Darstellung des SerialNet-Protokolls als Zustandsautomat}}{12}{figure.2.6}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces \emph {ZigBee}-Stack}}{28}{figure.3.1}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces \emph {CorBELT} der FIrma \emph {CORScience}}}{35}{figure.3.2}
+\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Kabelloses Pulsoxymetriesystem der Firma Nonin.}}{36}{figure.3.3}
+\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Datenarmb\IeC {\"a}nder und Handger\IeC {\"a}t des \emph {SOGRO} Projektes.}}{37}{figure.3.4}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{46}{figure.5.1}
-\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Entwurf der Platine der MANVNode.}}{48}{figure.5.2}
-\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{49}{figure.5.3}
-\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{53}{figure.5.4}
-\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{56}{figure.5.5}
-\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{57}{figure.5.6}
+\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{48}{figure.5.1}
+\contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Entwurf der Platine der MANVNode.}}{50}{figure.5.2}
+\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{51}{figure.5.3}
+\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{55}{figure.5.4}
+\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{58}{figure.5.5}
+\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{59}{figure.5.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{62}{figure.6.1}
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{64}{figure.6.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Router oder Koordinator im Normalbetrieb. Der Stromverbrauch betr\IeC {\"a}gt hierbei konstant 23,4\nobreakspace {}mA, was ca. 70\nobreakspace {}mW entspricht.}}{76}{figure.7.1}
-\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Endknotens im Normalbetrieb ohne Energiesparmodus. Auff\IeC {\"a}llig sind die Peaks, in denen sich der Knoten im Empfangsmodus befindet. Die Peaks haben eine L\IeC {\"a}nge von 40ms und einen Betrag von 23,4\nobreakspace {}mA. Ausserhalb eines Peaks betr\IeC {\"a}gt der Stromverbrauch 10,7\nobreakspace {}mA. Insgesamt ergibt sich ein Mittelwert von 11,18\nobreakspace {}mA, was ca. 33,54\nobreakspace {}mW entspricht. Dies ist weniger als die H\IeC {\"a}lfte des Stromverbrauchs eines Routers oder Koordinators.}}{76}{figure.7.2}
-\contentsline {figure}{\numberline {\relax 7.3}{\ignorespaces Analyse des Spannungsverlaufs eines Clients im Normalbetrieb.}}{77}{figure.7.3}
-\contentsline {figure}{\numberline {\relax 7.4}{\ignorespaces Detailaufnahme eines Empfangsmodus-Peaks. Erkennbar ist die Impulsbreite von 40ms.}}{77}{figure.7.4}
-\contentsline {figure}{\numberline {\relax 7.5}{\ignorespaces Dieser Client ist gerade aus dem Energiesparmodus erwacht. Erkennbar ist, dass w\IeC {\"a}hrend der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen wird ein Empfangsvorgang durchgef\IeC {\"u}hrt; die danach folgende Phase ist analgo zu Abbildung\nobreakspace {}\ref {oszi_normalbetrieb_client}. Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zus\IeC {\"a}tzlichen Overhead bedeutet.}}{79}{figure.7.5}
-\contentsline {figure}{\numberline {\relax 7.6}{\ignorespaces Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}}{79}{figure.7.6}
-\contentsline {figure}{\numberline {\relax 7.7}{\ignorespaces Dieser Client nutzt das periodische Aufrufen des Energiesparmodus. Die Schlafphase hat hier eine L\IeC {\"a}nge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der Stromverbrauch betr\IeC {\"a}gt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}}{80}{figure.7.7}
-\contentsline {figure}{\numberline {\relax 7.8}{\ignorespaces Bei diesem Client wurde der Empfangsmodus deaktiviert. Der Stromverbrauch betr\IeC {\"a}gt konstant 10,7mA.}}{81}{figure.7.8}
-\contentsline {figure}{\numberline {\relax 7.9}{\ignorespaces Beitrittsvorgang eines Clients in ein Netzwerk. Bevor der Client dem Netzwerk beigetreten ist, befindet er sich durchgehend im Empfangsmodus und ben\IeC {\"o}tigt 23,4mA. Sobald er dem Netzwerk beigetreten ist, entspricht entspricht der Stromverbrauch dem in Abbildung\nobreakspace {}\ref {oszi_normalbetrieb_client} dargestellten Verhalten.}}{82}{figure.7.9}
-\contentsline {figure}{\numberline {\relax 7.10}{\ignorespaces Dieser Client hat kurzzeitig die Verbindung zum Netzwerk verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4mA. ben\IeC {\"o}tigt.}}{82}{figure.7.10}
+\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Router oder Koordinator im Normalbetrieb. Der Stromverbrauch betr\IeC {\"a}gt hierbei konstant 23,4\nobreakspace {}mA, was ca. 70\nobreakspace {}mW entspricht.}}{78}{figure.7.1}
+\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Endknotens im Normalbetrieb ohne Energiesparmodus. Auff\IeC {\"a}llig sind die Peaks, in denen sich der Knoten im Empfangsmodus befindet. Die Peaks haben eine L\IeC {\"a}nge von 40ms und einen Betrag von 23,4\nobreakspace {}mA. Ausserhalb eines Peaks betr\IeC {\"a}gt der Stromverbrauch 10,7\nobreakspace {}mA. Insgesamt ergibt sich ein Mittelwert von 11,18\nobreakspace {}mA, was ca. 33,54\nobreakspace {}mW entspricht. Dies ist weniger als die H\IeC {\"a}lfte des Stromverbrauchs eines Routers oder Koordinators.}}{78}{figure.7.2}
+\contentsline {figure}{\numberline {\relax 7.3}{\ignorespaces Analyse des Spannungsverlaufs eines Clients im Normalbetrieb.}}{79}{figure.7.3}
+\contentsline {figure}{\numberline {\relax 7.4}{\ignorespaces Detailaufnahme eines Empfangsmodus-Peaks. Erkennbar ist die Impulsbreite von 40ms.}}{79}{figure.7.4}
+\contentsline {figure}{\numberline {\relax 7.5}{\ignorespaces Dieser Client ist gerade aus dem Energiesparmodus erwacht. Erkennbar ist, dass w\IeC {\"a}hrend der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen wird ein Empfangsvorgang durchgef\IeC {\"u}hrt; die danach folgende Phase ist analgo zu Abbildung\nobreakspace {}\ref {oszi_normalbetrieb_client}. Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zus\IeC {\"a}tzlichen Overhead bedeutet.}}{81}{figure.7.5}
+\contentsline {figure}{\numberline {\relax 7.6}{\ignorespaces Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}}{81}{figure.7.6}
+\contentsline {figure}{\numberline {\relax 7.7}{\ignorespaces Dieser Client nutzt das periodische Aufrufen des Energiesparmodus. Die Schlafphase hat hier eine L\IeC {\"a}nge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der Stromverbrauch betr\IeC {\"a}gt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}}{82}{figure.7.7}
+\contentsline {figure}{\numberline {\relax 7.8}{\ignorespaces Bei diesem Client wurde der Empfangsmodus deaktiviert. Der Stromverbrauch betr\IeC {\"a}gt konstant 10,7mA.}}{83}{figure.7.8}
+\contentsline {figure}{\numberline {\relax 7.9}{\ignorespaces Beitrittsvorgang eines Clients in ein Netzwerk. Bevor der Client dem Netzwerk beigetreten ist, befindet er sich durchgehend im Empfangsmodus und ben\IeC {\"o}tigt 23,4mA. Sobald er dem Netzwerk beigetreten ist, entspricht entspricht der Stromverbrauch dem in Abbildung\nobreakspace {}\ref {oszi_normalbetrieb_client} dargestellten Verhalten.}}{84}{figure.7.9}
+\contentsline {figure}{\numberline {\relax 7.10}{\ignorespaces Dieser Client hat kurzzeitig die Verbindung zum Netzwerk verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4mA. ben\IeC {\"o}tigt.}}{84}{figure.7.10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{91}{figure.A.1}
-\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}.}}{92}{figure.A.2}
-\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Oberseite der Platine der MANVNode.}}{93}{figure.A.3}
-\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Unterseite der Platine der MANVNode.}}{93}{figure.A.4}
-\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Klassendiagramm des MANV-Connectors.}}{94}{figure.A.5}
+\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{93}{figure.A.1}
+\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}.}}{94}{figure.A.2}
+\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Oberseite der Platine der MANVNode.}}{95}{figure.A.3}
+\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Unterseite der Platine der MANVNode.}}{95}{figure.A.4}
+\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Klassendiagramm des MANV-Connectors.}}{96}{figure.A.5}
 \addvspace {10\p@ }
