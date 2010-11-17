@@ -590,7 +590,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
         \subsubsection{Bluetooth Low Energy (ehemals Wibree)}\label{wibree}
             Bluetooth Low Energy ist ein neuer Standard für WPANs, der mit dem Bluetooth 4.0 Standard eingeführt
-            wurde. Er definiert eine Datenübertragung mit bis zu 1~MBit/s (netto 0.26~MBit/s) bei einem Strombedarf,
+            wurde. Er definiert eine Datenübertragung mit bis zu 1 MBit/s (netto 0.26 MBit/s) bei einem Strombedarf,
             der unter 20~mA liegen soll, wobei eine Reichweite von bis zu 100~m realisierbar sein soll.\\
             Zum Zeitpunkt dieser Diplomarbeit befanden sich Funkchips des Bluetooth-Low-Energy-Standards noch in 
             der frühen Testphase und waren auf dem Markt nicht erhältlich, so dass dieser Standard bei der Auswahl
@@ -623,13 +623,50 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         durch die Firmware der ZigBee-Module übernommen, so dass dieses nicht erst implementiert werden muss. Der Strombedarf
         der Module ist mit maximal 19~mA so gering, dass eine Versorgung über Batterien ohne weiteres möglich ist.
 
-\section{Produkte zur Patientenüberwachung}\label{produkte_zur_patientenueberwachung}
+\section{Produkte zur kabellosen Patientenüberwachung}\label{produkte_zur_patientenueberwachung}
+\Abbildungps{!htb}{1}{diagramme/Corbelt.jpg}{corbelt}{\emph{CorBELT} der FIrma \emph{CORScience}}
+\Abbildungps{!htb}{1}{diagramme/kabellose_pulsoximetrie.jpg}{kabellose_pulsoximetrie}{Kabelloses Pulsoxymetriesystem der Firma Nonin.}
 Auf dem Markt ist eine breite Palette an kabellosen Produkten zur Patientenüberwachung vorhanden. Die meisten davon setzen
 entweder \emph{Bluetooth} oder proprietäre Protokolle wie \emph{Z-Wave} zur Funkübertragung ein, \emph{ZigBee} ist bisher in
 keinem Medizinprodukt auf dem Markt zu finden. Fast alle dieser Systeme sind dazu konzipiert, lediglich einen einzelnen 
 Patienten zu überwachen. Die Funktechnologie dient hier vor allem dazu, die Anzahl der Kabel zwischen Patient und Monitoren 
 zu reduzieren, um so die Mobilität des Patienten zu erhöhen. Besonders häufig sind kabellose EKG-Geräte, Pulsoximeter oder 
-invasive Blutdruckmessgeräte anzutreffen. 
--- FIXME: Edit here --
+invasive Blutdruckmessgeräte anzutreffen. \\
+\\             
+Ein Beispiel für ein solches Produkt ist der \emph{CorBELT} der Firma \emph{Corscience}. Es handelt sich dabei
+um ein 1-Kanal EKG mit integriertem Beschleunigungssensor in Form eines Brustgurtes. Das System ist in der
+Lage, eine Vielzahl von Herzproblemen zu erkennen, und eignet sich daher besonders für Patienten mit bekannten
+Herzerkrakungen. Das System hat einen integrierten Beschleunigungssensor, um Bewebungsartefakte auszufiltern.
+\\
+\\
+Von diversen Herstellern wie \emph{Dräger Medical}, \emph{Philips}, \emph{GE} und \emph{WelchAllyn} existieren eine 
+Reihe \emph{Bluetooth} basierten Überwachungslösungen. Diese sind allerdings meist weniger portabel, als viel mehr
+als stationäre Überwachungslösung im Krankenhaus gedacht. Die \emph{Bluetooth}-Technik dient hier vor allem dazu, 
+möglichst wenige Kabel zum Patienten zu führen, was das Handling (z.B. bei der Patientenwäsche oder beim Wenden)
+erheblich erleichter. Keine dieser Technologien ist jedoch für den Einsatz in einem \emph{MANV}-Szenario
+geeignet.
+       
 
 \section{Verwandte Projekte zum Einsatz in MANV-Szenarien}\label{verwandte_projekte}
+\Abbildungps{!htb}{1}{diagramme/sogro.jpg}{sogro}{Datenarmbänder und Handgerät des \emph{SOGRO} Projektes.}
+Neben dieser Arbeit beschäftigen sich Bundesweit mehrere verwandte Projekte ebenfalls mit der Problematik
+der effizienten Patientenversorgung während eines \emph{MANVs}.\\
+\\
+Bei dem Projekt \emph{SOGRO MANV 500} (Sofortrettung bei Großschadenslagen mit einem Massenanfall von 500 verletzten),
+an welchem unter anderem die Universität Paderborn beteiligt ist, beschäftigt man sich insbesondere mit der effizienten
+Kennzeichnung und Lokalisierung von Patienten. Hierzu wird den Patienten ein Armband mit integriertem GPS-Peilsender und
+Datenspeicher angelegt, auf dem dann die Diagnose digital gespeichert wird. Eine automatische Überwachung ist bei
+diesem Projekt allerdings derzeit nicht vorgesehen.\cite{sogro}\\
+\\            
+Eine weiteres Projekt, das sich mit der technischen Unterstützung von Rettungskräften bei einem \emph{MANV}
+beschäftigt ist \emph{A.L.A.R.M.} (Adaptive Lösungsplattform zur Aktiven technischen Unterstützung beim Retten von 
+Menschenleben) der Berliner Charité. Im Moment sind nur recht wenige Informationen zu diesem Projekt verfügbar, diese
+deuten jedoch darauf hin, dass es sich eher um die Schaffung von einheitlichen Prozessen und Ablaufplanung als um eine
+konkrete technische Lösung geht.\cite{alarm}\\
+\\
+Einen sehr ähnlichen Ansatz wie diese Diplomarbeit wird in dem \emph{AID-N} ("`AID-N: The Advanced Health and Disaster 
+Aid Network: A Light-Weight Wireless Medical System for Triage"'} verfolgt.\cite{aid-n}. Bei diesem Ansatz wird 
+intensiv auf die \emph{Tiny-OS}-Platform aufgebaut und es kommt wird eine \emph{IEEE 802.15.4} basierte Lösung eingesetzt. 
+Leider scheint dieses Projekt seit mehreren Jahren eingeschlafen sein, auf der Webseite sind seit 2007 keine Änderungen 
+mehr vorgenommen worden. Auch wurde hier nicht auf Aspekte der industriellen Fertigung der einzelnen Knoten, d.h. 
+insbesondere Kompaktheit und Kosteneffektivität eingegangen.
