@@ -21,54 +21,60 @@ Database file #1: Diplomarbeit.bib
 Warning--entry type for "alarm" isn't style-file defined
 --line 4 of file Diplomarbeit.bib
 Warning--entry type for "WPANComparison" isn't style-file defined
---line 68 of file Diplomarbeit.bib
+--line 120 of file Diplomarbeit.bib
 Warning--entry type for "BluetoothPower" isn't style-file defined
---line 105 of file Diplomarbeit.bib
+--line 157 of file Diplomarbeit.bib
+Warning--entry type for "Vorlesung_Snelting" isn't style-file defined
+--line 163 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
---line 111 of file Diplomarbeit.bib
+--line 174 of file Diplomarbeit.bib
+Warning--empty number in zigbee_specification
+Warning--empty note in zigbee_specification
+Warning--empty number in ieee_zigbee
+Warning--empty note in ieee_zigbee
 Warning--empty school in Marc
 Warning--empty number in MANET
 Warning--empty note in MANET
 Warning--empty year in BluetoothPower
-You've used 11 entries,
+You've used 16 entries,
             4728 wiz_defined-function locations,
-            963 strings with 9074 characters,
-and the built_in function-call counts, 8069 in all, are:
-= -- 768
-> -- 286
-< -- 201
-+ -- 267
-- -- 96
-* -- 637
-:= -- 1451
-add.period$ -- 14
-call.type$ -- 11
-change.case$ -- 65
-chr.to.int$ -- 11
-cite$ -- 15
-duplicate$ -- 213
-empty$ -- 543
-format.name$ -- 171
-if$ -- 1557
+            999 strings with 10079 characters,
+and the built_in function-call counts, 11080 in all, are:
+= -- 1097
+> -- 336
+< -- 267
++ -- 341
+- -- 112
+* -- 837
+:= -- 1945
+add.period$ -- 24
+call.type$ -- 16
+change.case$ -- 85
+chr.to.int$ -- 16
+cite$ -- 24
+duplicate$ -- 297
+empty$ -- 801
+format.name$ -- 201
+if$ -- 2198
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 48
-newline$ -- 77
-num.names$ -- 44
-pop$ -- 103
+missing$ -- 62
+newline$ -- 112
+num.names$ -- 64
+pop$ -- 129
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 117
 quote$ -- 0
-skip$ -- 380
+skip$ -- 544
 stack$ -- 0
-substring$ -- 573
-swap$ -- 49
-text.length$ -- 36
+substring$ -- 820
+swap$ -- 59
+text.length$ -- 43
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 127
-warning$ -- 4
-while$ -- 69
+type$ -- 184
+warning$ -- 8
+while$ -- 91
 width$ -- 0
-write$ -- 163
-(There were 8 warnings)
+write$ -- 247
+(There were 13 warnings)
