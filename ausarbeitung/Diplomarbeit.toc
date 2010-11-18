@@ -95,13 +95,13 @@
 \contentsline {section}{\numberline {6.1}Hardware}{63}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}Anbindung des ZigBit-Moduls an den USB-Port}{63}{subsection.6.1.1}
 \contentsline {subsection}{\numberline {6.1.2}Herstellung und Best\IeC {\"u}ckung der Platine der \emph {MANVNode}}{63}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Firmware}{65}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Implementierung}{65}{subsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.1.1}Zugriff auf UART}{66}{subsubsection.6.2.1.1}
-\contentsline {section}{\numberline {6.3}MANVConnector}{67}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Zugriff auf die serielle Schnittstelle}{67}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit}-USB-Sticks}{71}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}CORBA-Anbindung}{74}{subsection.6.3.3}
+\contentsline {section}{\numberline {6.2}Firmware}{66}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Implementierung}{66}{subsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.1.1}Zugriff auf UART}{67}{subsubsection.6.2.1.1}
+\contentsline {section}{\numberline {6.3}MANVConnector}{68}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Zugriff auf die serielle Schnittstelle}{68}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit}-USB-Sticks}{72}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}CORBA-Anbindung}{75}{subsection.6.3.3}
 \contentsline {chapter}{\numberline {7}Ergebnisse}{77}{chapter.7}
 \contentsline {section}{\numberline {7.1}Realisierbarkeit}{77}{section.7.1}
 \contentsline {subsection}{\numberline {7.1.1}Integrierbarkeit in Erste-Hilfe-Sensor}{77}{subsection.7.1.1}

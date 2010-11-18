@@ -20,7 +20,8 @@
 \contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{58}{figure.5.5}
 \contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{59}{figure.5.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{64}{figure.6.1}
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces \emph {MANV-USB-Stick}.}}{64}{figure.6.1}
+\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{65}{figure.6.2}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Aufbau des Integrationstests.}}{78}{figure.7.1}
 \contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Screenshot der \emph {MANVGui} w\IeC {\"a}hrend des Integrationstests.}}{78}{figure.7.2}
