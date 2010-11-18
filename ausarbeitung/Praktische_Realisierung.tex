@@ -346,11 +346,11 @@ der \emph{JVM} bzw. des \emph{Java-Compilers}. Der Connector schickt über die
 \emph{Server\_Incoming}-Schnittstelle eingehende Daten und Ereignisse an den \emph{MANVServer}.
 Damit der \emph{MANVServer} umgekehrt auch Befehle an den \emph{MANVConnector} schicken kann,
 muss dieser selbst die \emph{Connector\_Commands}-Schnittstelle implementieren. Dies
-geschieht in der Klasse \emph{edu.kit.ibt.manv.connector.corba.CommandsImpl} (Eine
+geschieht in der Klasse \emph{CommandsImpl} (Eine
 genaue Beschreibung der einzelnen Dateien, Klassen und Funktionalitäten findet sich in
 Anhang~\label{anhang_beschreibung_software}).\\
 
-Zur Lokalisierung der einzelnen \emph{CORBA}-Schnittstellen dient der \emph{CORBA-Nameserver}.
+Zur Lokalisierung der einzelnen \emph{CORBA}-Schnittstellen dient der \emph{Nameserver}.
 Die Adresse des Nameservers muss im voraus bekannt sein. Meist läuft dieser auf dem selben Rechner
 wie der \emph{MANVServer}. Die Adresse wird beim Start des \emph{MANVConnectors} als 
 Kommandozeilenparameter "`-ORBInitRef NameService"' übergeben\footnote{Wenn z.B. Nameserver, \emph{MANVServer}
