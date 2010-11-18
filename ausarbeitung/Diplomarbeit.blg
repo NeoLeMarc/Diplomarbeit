@@ -26,14 +26,13 @@ Warning--entry type for "BluetoothPower" isn't style-file defined
 --line 105 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
 --line 111 of file Diplomarbeit.bib
-Warning--I didn't find a database entry for "Bolz"
 Warning--empty school in Marc
 Warning--empty number in MANET
 Warning--empty note in MANET
 Warning--empty year in BluetoothPower
 You've used 11 entries,
             4728 wiz_defined-function locations,
-            965 strings with 9082 characters,
+            963 strings with 9074 characters,
 and the built_in function-call counts, 8069 in all, are:
 = -- 768
 > -- 286
@@ -72,4 +71,4 @@ warning$ -- 4
 while$ -- 69
 width$ -- 0
 write$ -- 163
-(There were 9 warnings)
+(There were 8 warnings)

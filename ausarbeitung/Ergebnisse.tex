@@ -3,9 +3,80 @@
 %%%------------------------------------------------ERGEBNISSE(KEINE BEWERTUNG)----------------------------------------------------
 
 \chapter{Ergebnisse}
+\section{Realisierbarkeit}
+\subsection{Integrierbarkeit in Erste-Hilfe-Sensor}
+Die \emph{MANVNode} dient neben Ihrer Funktion als Test- und Entwicklungsplatine für die Firmware zur 
+Ansteuerung der \emph{ZigBit}-Module als Nachweis der Integrierbarkeit der in dieser Arbeit vorgestellten
+Lösung in den \emph{Erste-Hilfe-Sensor}. Hierzu wurde beim Entwurf darauf geachtet, dass neben dem
+\emph{ZigBit}-Modul keine weiteren Hardwarebauteile notwendig sind, die nicht auf der Platine des
+\emph{Erste-Hilfe-Sensors} vorhanden sind. Darüber hinaus wurde die selbe Mikrocontroller-Architektur
+verwendet, die auch im \emph{Erste-Hilfe-Sensor} zum Einsatz kommt, so dass die entsprechenden
+Teile der Firmware 1:1 übernommen werden können.
+
+\subsection{Interoperabilität aller Komponenten}
+\Abbildungps{!htb}{1}{diagramme/integrationstest_setup.jpg}{intergrationstest_setup}{Aufbau des Integrationstests.}
+\Abbildungps{!htb}{1}{diagramme/integrationstest_gui.png}{intergrationstest_gui}{Screenshot der \emph{MANVGui} während des Integrationstests.}
+Da \emph{MANVSuite} und \emph{MANVConnector} in zwei verschiedenen Arbeiten (Vgl. \cite{Jan}) 
+entworfen wurden, muss die Interoperabilität zwischen allen Komponenten gezeigt werden. Hierzu
+wurde ein umfassender Integrationstest durchgeführt.
+
+\subsubsection{Durchführung}
+In einem ersten Test wurde eine \emph{MANVNode} über den \emph{MANV-USB-Stick} an den \emph{MANV-Connector}
+angeschlossen und die \emph{MANVSuite} ausgeführt. Nun wurde gezeigt, dass sowohl Übertragung von \emph{MANVNode}
+zur \emph{MANVSuite} sowie umgekehrt die Übertragung von Befehlen von der \emph{MANVSuite} zu der \emph{MANVNode}
+funktionieren.\\
+In einem zweiten Test wurde nun obiges Setup durch das Hinzufügen von 4 weiteren \emph{MANVNodes} erweitert. Hierzu
+wurden auch wieder Daten in beide Richtungen übertragen. Hierbei wurde insbesondere darauf geachtet, dass sich die
+einzelnen \emph{MANVNodes} nicht untereinander stören, sowie dass alle Daten in der \emph{MANVSuite} korrekt zugeordnet
+und dargestellt wurden.\\
+Obiges Setup wurde nun um 5 \emph{ZigBee-Router}, und alle Tests wurden erneut durchgeführt.\\
+Im letzten Schritt wurde nun noch die Skalierbarkeit des Systems überprüft. Hierzu wurde mit Hilfe zweier Notebooks
+sowie dem Einsatz von Hardwarevirtualisierung jede Komponente auf eine eigene Virtuelle Maschine installiert. Diese
+wurden nun abwechselnd über beide Notebooks verteilt, so dass jede Kommunikation zwangsläufig über das Netzwerk
+stattfinden musste. Nun wurden alle obigen Tests noch einmal wiederholt.
+
+\subsubsection{Ergebnisse}
+Alle Tests konnten erfolgreich durchgeführt werden. Die Interoperabilität aller Komponenten sowie die Verteilbarkeit
+über verschiedene Rechner konnte gezeigt werden.
+
+\subsection{Austauschbarkeit des \emph{MANVConnectors}}
+Zur Demonstation der Austauschbarkeit des \emph{MANVConnectors} wurde in \cite{Jan} ein Simulator für den 
+\emph{MANVConnector} geschrieben. Dieser Implementiert die selbe \emph{CORBA}-Schnittstelle wie der richtige
+\emph{MANVConnector}, führt jedoch keine Kommunikation über das Netzwerk durch. Statt dessen besitzt
+der Simulator eine Graphische Benutzeroberfläche, über die zum einen Ereignisse von Hand ausgelöst, zum
+anderen Empfangene Befehle in einem Fenster dargestellt werden können. Die Übertragung von Daten wurde
+in beide Richtungen erfolgreich getestet, die Austauschbarkeit des \emph{MANVConnectors} damit
+erfolgreich demonstriert.
+
+\subsection{Anbindbarkeit an externe Software}
+Zentrale Designentscheidung war die Verwendung einer offenen \emph{CORBA}-Schnittstelle zur Anbindung
+von externer Software an die \emph{MANVSuite}. Dass dies effizient Durchführbar ist zeigt der folgende
+Test.
+
+\subsubsection{Durchführung}
+Zum Nachweis der Anbindbarkeit von externer Software über die \emph{CORBA}-Schnittstelle wurde entschieden,
+eine Schnittstelle zu einem \emph{Webinterface} zu implementieren. Das \emph{Webinterface} selbst ist
+eine einfache \emph{HTML}-Seite, die über \emph{Javascript} eine Graphische Benutzeroberfläche für das
+Sensornetzwerk implementiert. Muss nun zunächst mit Daten aus dem Sensornetzwerk versorgt werden. Hierzu
+findet das sogenannte \emph{JSON}-Format Anwendung. Ausserdem muss es möglich sein, Befehle an das
+Sensornetzwerk zu senden. Dieser werden über spezielle \emph{HTTP-GET}-Anfragen kodiert. Insgesamt wird
+diese Vorgehensweise auch als \emph{AJAX} bezeichnet und bildet die Grundlage der \emph{Web-2.0}-Technologie.
+Insgesamt musste also ein Adapter von \emph{CORBA} zu \emph{AJAX} realisiert werden. Die Details dieser
+Implementierung sind in Anhang~\ref{anhang_beschreibung_software} beschrieben.\\
+Darüber hinaus wird in \cite{Jan} beschriebenen, wie ein \emph{Symbian} basiertes \emph{Nokia} Mobiltelefon 
+an die \emph{MANVSuite} angebunden wird. Hierzu wurde eine in \emph{C++} programmierte Lösung 
+eingesetzt.
+
+\subsubsection{Ergebnisse}
+Die Anbindung des \emph{Webinterfaces} an die \emph{MANVSuite} konnte erfolgreich gezeigt werden. Die
+Ergebnisse lassen sich ohne weiteres auf andere Schnittstellenformate übertragen. Über die Anbindung
+des \emph{Symbian} basierten Mobiltelefons konnte darüber hinaus gezeigt werden, dass eine solche
+Anbindung sogar über Plattform- und Programmiersprachengrenzen hinweg realisiert werden kann. 
+
 \section{Leistungsaufnahme des ZigBit-Moduls}
 \label{ergebnis_normal}
-Zur Bestimmung der Leistungsaufnahme~-- umgangssprachlich auch Strom\-ver\-brauch genannt~-- wurden mehrere Messungen durchgeführt.
+Zur Bestimmung der Leistungsaufnahme~-- umgangssprachlich auch Strom\-ver\-brauch genannt~-- wurden mehrere Messungen 
+durchgeführt.
 Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmoduses sehr stark schwankt, sind herkömmliche Messungen
 z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall über einem 
 Shunt-Wi\-der\-stand durchgeführt. Dieser wurde in die Stromversorgung des ZigBit-Moduls eingebracht. Der Spannungsabfall
@@ -17,7 +88,7 @@ Modell \emph{TDS2002B} verwendet. Die Messungen wurden zusätzlich mit einem Mul
 um Kalibrationsfehler des Oszilloskops auszuschliessen. Als Shunt wurde ein Widerstand mit einem Wert von $20,1\Omega$
 verwendet.
 
-\subsection{Leistungsaufnahme im Normalbetrieb}
+\subsection{Leistungsaufnahme im Normalbetrieb}\label{leistungsaufnahme_normalbetrieb}
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_router.jpg}{oszi_normalbetrieb_router}{Router oder Koordinator im Normalbetrieb. 
     Der Stromverbrauch beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknotens im Normalbetrieb ohne 
@@ -129,7 +200,7 @@ aufgeführt.
     \label{werte_Ipowersave}
 \end{table}
 
-\subsection{Sonderfälle}
+\subsection{Sonderfälle}\label{leistungsaufnahme_sonderfaelle}
 \Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Bei diesem Client wurde der Empfangsmodus deaktiviert. Der 
     Stromverbrauch beträgt konstant 10,7mA.}
 \Abbildungps{!htb}{0.75}{oszi/joined.jpg}{oszi_joined}{Beitrittsvorgang eines Clients in ein Netzwerk. Bevor der Client dem 

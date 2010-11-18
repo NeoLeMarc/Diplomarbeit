@@ -104,13 +104,22 @@
 \BOOKMARK [2][-]{subsection.6.3.2}{6.3.2 Automatische Erkennung des ZigBit-USB-Sticks}{section.6.3}
 \BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 CORBA-Anbindung}{section.6.3}
 \BOOKMARK [0][]{chapter.7}{7 Ergebnisse}{}
-\BOOKMARK [1][-]{section.7.1}{7.1 Leistungsaufnahme des ZigBit-Moduls}{chapter.7}
-\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Leistungsaufnahme im Normalbetrieb}{section.7.1}
-\BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Leistungsaufnahme bei Verwendung des Energiesparmodus}{section.7.1}
-\BOOKMARK [2][-]{subsection.7.1.3}{7.1.3 Sonderf\344lle}{section.7.1}
-\BOOKMARK [1][-]{section.7.2}{7.2 Reichweite}{chapter.7}
-\BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Reichweite im Freien}{section.7.2}
-\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Reichweite innerhalb geschlossener R\344ume}{section.7.2}
+\BOOKMARK [1][-]{section.7.1}{7.1 Realisierbarkeit}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Integrierbarkeit in Erste-Hilfe-Sensor}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Interoperabilit\344t aller Komponenten}{section.7.1}
+\BOOKMARK [3][-]{subsubsection.7.1.2.1}{7.1.2.1 Durchf\374hrung}{subsection.7.1.2}
+\BOOKMARK [3][-]{subsubsection.7.1.2.2}{7.1.2.2 Ergebnisse}{subsection.7.1.2}
+\BOOKMARK [2][-]{subsection.7.1.3}{7.1.3 Austauschbarkeit des MANVConnectors}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.4}{7.1.4 Anbindbarkeit an externe Software}{section.7.1}
+\BOOKMARK [3][-]{subsubsection.7.1.4.1}{7.1.4.1 Durchf\374hrung}{subsection.7.1.4}
+\BOOKMARK [3][-]{subsubsection.7.1.4.2}{7.1.4.2 Ergebnisse}{subsection.7.1.4}
+\BOOKMARK [1][-]{section.7.2}{7.2 Leistungsaufnahme des ZigBit-Moduls}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Leistungsaufnahme im Normalbetrieb}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Leistungsaufnahme bei Verwendung des Energiesparmodus}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.3}{7.2.3 Sonderf\344lle}{section.7.2}
+\BOOKMARK [1][-]{section.7.3}{7.3 Reichweite}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.3.1}{7.3.1 Reichweite im Freien}{section.7.3}
+\BOOKMARK [2][-]{subsection.7.3.2}{7.3.2 Reichweite innerhalb geschlossener R\344ume}{section.7.3}
 \BOOKMARK [0][]{chapter.8}{8 Diskussion}{}
 \BOOKMARK [0][]{chapter.9}{9 Zusammenfassung und Ausblick}{}
 \BOOKMARK [1][-]{section.9.1}{9.1 Zusammenfassung}{chapter.9}

@@ -1,21 +1,93 @@
 %%%------------------------------------------------DISKUSSION(BEWERTUNG DER ERGEBNISSE)---------------------------------------------
 
 \chapter{Diskussion} 
-%Bewertung (auch subjektive Meinung) der einzelnen Verfahren. Vor- und Nachteile. Wo gibt es Probleme (z.B. bei HRV nur im unteren Frequenzbereich einsetzbar?? etc.), wie ist die Abweichung zu Referenzmessungen...
-%\section{Baselinewandering}
-%...
-%\section{HRV-Variation}
-%...
-%\section{QRS-Komplexe}
-%...
-%\section{Vergleich der Verfahren zueinander}
-%
-%\vspace{2cm}
-%In der Diskussion (discussion) stellen die Autoren ihre Schlussfolgerungen aus den Ergebnissen
-%vor. Dabei ist eine Wiederholung der Ergebnisdarstellung zu vermeiden. Das diskutierte
-%Ergebnis braucht nur noch erwähnt, nicht aber erneut dargestellt zu werden. Inwieweit konnte
-%eine in der Einleitung vorgestellte Hypothese gestützt oder widerlegt werden? Inwiefern sind
-%die Ergebnisse in Übereinstimmung mit bisherigen publizierten Befunden und Hypothesen oder
-%stehen im Gegensatz zu diesen? Neben der Einleitung ist die Diskussion derjenige Teil des
-%Artikels, in dem ein Schwerpunkt darauf liegt, die gerade ausgeführte Studie in die sonstige
-%Fachliteratur einzuordnen.
+In Abschnitt~\ref{Ergebnisse} wurde die Leistungsfähigkeit des Funknetzwerkes untersucht.
+Es wurde gezeigt, dass sowohl Reichweite als auch Leistungsaufnahme die Anforderungen
+dieser Arbeit erfüllen. Auch wurde die Erweiterbarkeit des Netzwerkes durch Router gezeigt.\\
+\\
+Darüber hinaus wurde gezeigt, dass eine Verbindung des verwendeten \emph{ZigBee}-Modul
+mit dem \emph{ADuC}-Mikrocontroller möglich ist, und dass das so entstehende Gesamtsystem
+in der Lage ist, die zu überwachenden Vitaldaten zuverlässig an die Basistation zu übermitteln.
+Es wurde ebenfalls gezeigt, dass es möglich ist, Befehle über das \emph{ZigBee}-Netzwerk
+an den Mikrocontroller zu senden. Da der für diese Tests eingesetzt \emph{ADuC-7026}-Mikrocontroller
+der selben Familie wie der in dem Erste-Hilfe-Sensor verwendete Mikrocontroller handelt,
+können diese Ergebnisse ohne weiteres auf die Hardware des Erste-Hilfe-Sensors übertragen werden, 
+die Integrierbarkeit in diesen konnte somit gezeigt werden.\\
+Durch die erhöhte Leistungsaufnahme, insbesondere bei Lastspitzen (Peaks), muss eine Anpassung
+der Stromversorgung des Erste-Hilfe-Sensors erfolgen, wenn das \emph{ZigBee}-Modul integriert
+werden soll. Die genaue Analyse auftretender Lastspitzen findet sich in Abschnitt~\ref{leistungsaufnahme_normalbetrieb}.
+Insbesondere sollten hierbei auch die Ergebnisse in Abschnitt~\ref{leistungsaufnahem_sonderfaelle} beachtet 
+werden, die auftretende Sonderfälle beschreiben.\\
+\\
+Softwareseitig konnte gezeigt werden, dass eine vollständige Kapselung aller Hardwarespezifischen Teile
+in einer austauschbaren Komponente möglich ist. Dies bietet den Vorteil, dass alle bei einem Wechsel 
+der Technologie des Sensornetzwerk lediglich der \emph{MANVConnector} ausgewechselt werden muss,
+alle anderen Teile können ohne Änderung weiterverwendet werden.\\
+\\
+Durch die in Abschnitt~\ref{anbindbarkeit_an_externe_software} durchgeführte schnelle Umsetzung eines Adapters 
+zur Anbindung der \emph{MANVSuite} an eine Weboberfläche konnte gezeigt werden, dass durch die hohe Modularität
+und Einsatz der Komponententechnologie \emph{CORBA} ein hohes Maß an Flexibilität und Adaptierbarkeit der
+Gesamtlösung erreicht, und eine Anbindung an bestehende Systeme mit geringem Aufwand realisiert werden kann.
+Eine genauere Analyse und Evaluation der \emph{MANVSuite} inkl. der beschriebenen Schnittstellen findet sich
+in \cite{Jan}. In dieser verwandten Arbeit wird unter anderem gezeigt, wie eine Anbindung der \emph{MANVSuite}
+an ein Mobiltelefon des Herstellers Nokia erfolgen kann.\\
+\\
+Als besonders positiv ist die Skalierbarkeit der Gesamtlösung zu bewerten. Durch die konsequente Verwendung
+gängiger Standards wie \emph{ZigBee}, \emph{Java}, \emph{SQL} und \emph{CORBA} wird ein hohes Maß an Flexibilität
+erreicht. Die Anbindung der einzelnen Komponenten untereinander ist Netzwerkfähig, im Extremfall kann jede
+Komponente auf einem eigenen Rechner betrieben werden. Hierbei skaliert die Anforderung an die Hardware mit
+der Größe des zu verwaltenden Netzwerkes. Im Prinzip ist jedes linuxfähige Gerät mit mindestens 16MB Speicher
+und einer USB-Schnittstelle, für die eine Implementierung der \emph{Java Virtual Machine}\footnote{Hierbei muss
+es sich nicht zwangsläufig um die Implementierung von Oracle/Sun handeln. Die \emph{MANVSuite} kann z.B. auch
+mit der \emph{JVM} des \emph{Eclipse-Projektes} ausgeführt werden.} verfügbar ist, in der Lage, als Server
+für das Sensornetzwerk zu dienen. Dies kann z.B. ein \emph{Android} basiertes Handy oder ein offener
+\emph{DSL}-Router in Verbindung mit dem Betriebssystem \emph{OpenWRT} sein. Sollte keine \emph{JVM} für die
+Platform verfügbar sein, besteht sogar die Möglichkeit, dass nur der in \emph{Python} geschriebene,
+hardwarespezifische Teil des \emph{MANVConnectors} auf dem Gerät selbst ausgeführt wird\footnote{Die Implementierung
+in \emph{Python} erfolgte lediglich aus Gründen der Einfachheit. Sollte kein \emph{Python} verfügbar sein,
+kann dieser Teil in jeder anderen Programmiersprache, die Socketverbindungen erlaubt, neu implementiert werden.}. 
+Alle restlichen Teile der \emph{MANVSuite} können nachgelagert auf einem Server im Internet ausgeführt werden; 
+Die Verbindung der beiden Teile erfolgt über eine einfache Socketverbindung. Diese Lösung bietet sich insbesondere 
+für die Überwachung einzelner Patienten als eine Art intelligenter Hausnotruf an.\\
+\\
+Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in vielen Punkte ab:
+
+\begin{itemize}
+    \item{Konsequenter Einsatz offener Standards:} In der gesamten Arbeit wurde konsequent auf den
+          Einsatz offener Standards gesetzt. Bei der Verwendung von externen Softwarepaketen wurde
+          darauf geachtet, dass es sich um \emph{Open-Source} Produkte handelt. Zur Implementierung
+          wurde keinerlei proprietäre Technologie eingesetzt.
+
+    \item{Kapselung aller Platformspezifischen Designentscheidungen:} Alle Platformabhängige
+          Designentscheidungen wie die Ansteuerung der \emph{ZigBee}-Module oder der
+          physische Zugriff auf die serielle Schnittstelle sind bewusst austauschbar gehalten.
+          Hierzu wurden diese in Komponenten gekapselt und die Schnittstelle zwischen diesen
+          Komponenten wurde standardisiert. Bei Änderung einer dieser Entscheidung (z.B.
+          weil ein anderes Funkprotokoll oder ein anderes Betriebssystem zum Einsatz kommen soll)
+          können diese einfach ausgetauscht werden, ohne den Rest des Systems anpassen zu 
+          müssen.
+
+    \item{Geringe Stückkosten:} Bei der Auswahl des Funkprotokolls wurde insbesondere auch auf den
+          Preis der verfügbaren Hardwaremodule geachtet. Dieser bewegt sich selbst bei der
+          Einzelabnahme der Modul in einem Bereich unter 15\EUR{}. Auf den Einsatz teurer
+          Basisbauteile wie z.B. \emph{Tiny-OS} basierten Sensoren wurde konsequent verzichtet.
+
+    \item{Geringe Leistungsaufnahme ("`Stromverbrauch"'):} Durch den Einsatz des von \emph{ZigBee}
+          angebotenen Energiesparmodus konnte der mittlere Stromverbrauch auf einen Wert von ca. 
+          1,86~mA gesenkt werden.
+
+    \item{Einfache Implementierbarkeit:} Zur Anbindung des \emph{ZigBit}-Moduls an den Erste-Hilfe-Sensor
+          sind lediglich vier Signalleitungen notwendig: \emph{UART\_RX}, \emph{UART\_TX}, 
+          \emph{UART\_CTS}\footnote{UART\_RTS sollte auf Seite des \emph{ZigBit}-Moduls auf \emph{GND}
+              geführt werden.} sowie einer \emph{GPIO}-Leitung, die mit dem \emph{RESET}-Eingan des
+          \emph{ZigBit}-Moduls verbunden ist (Details zur Implementierung in die Platine kann dem
+          Schaltplan in Anhang~\ref{anhang_diagramme} entnommen werden). 
+
+    \item{Platformunabhängigkeit:} Durch den Einsatz platformunabhängiger Programmiersprachen wie \emph{Java}
+          und \emph{Python} sowie durch Hardwarevirtualisierung ist die vorgestellte Lösung auf
+          einer breiten Palette von Systemen einsatzfähig.
+
+    \item{Platzsparend und Handlich:} Die hier vorgestellte Prototyplatine besitzt eine Abmessung von nur
+          50~mm auf 56~mm und bietet noch viel Potential zur weiteren Optimierung der Größe (z.B. durch
+          die beidseitige Platzierung von Bauteilen oder der Fertigung in 4-Schicht-Bauweise).
+\end{itemize}
