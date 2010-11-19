@@ -2,6 +2,155 @@
     \section{Anforderungen an ein kabelloses System zur Überwachung von Patienten}
     Austauschbarkeit beachten!
 
+\section{Der \emph{Analog Devices ADuC702X} Mikrocontroller}
+
+    \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers}
+
+    \subsection{Beschreibung}
+        Mit der \emph{ADuC702X}-Familie bietet die Firma \emph{Analog Devices} eine Serie von voll integrierten 
+        Mikrocontroller auf Basis der \emph{ARM7}-Architektur an. Diese Mikrocontroller zeichnen sich insbesondere 
+        durch ihre hohe Anzahl an A/D-Wandler-Kanälen an. So verfügt das Modell \emph{ADuC7026} beispielsweise
+        über 16 A/D-Wandler-Kanäle mit einer Abtastrate von einer Million Samples pro Sekunde bei einer 
+        Auflösung von 12~Bit. Damit bietet jeder der 16 Kanäle eine Datenrate, die etwa dem 17fachen einer 
+        gewöhnlichen Audio-CD entspricht.  Der Mikrocontroller selbst bietet bei einer Frequenz von 
+        41.78~MHz eine maximale Leistung von 41 Millionen Befehlen pro Sekunde (\emph{MIPS}). 
+        Zusätzlich sind auf dem Chip 8 kB \emph{SRAM} sowie 62kB-\emph{Flash}-Speicher vorhanden. Bei den Modellen
+        \emph{ADuC7026} und \emph{ADuC7027} ist zusätzlich ein externen Speicherbus vorhanden, über bis zu 512kB 
+        zusätzlicher \emph{SRAM} angeschlossen werden kann. Bei größerem Speicherbedarf besteht die Möglichkeit, über 
+        \emph{SPI} oder \emph{$I^2C$} weiteren \emph{SRAM} oder \emph{Flash}-Speicher anzuschliessen.
+
+    \subsection{Peripherie}
+        Die Mikrocontroller der \emph{ADuC-702X}-Familie bieten standardmäßig folgende Peripherie:
+
+        \begin{itemize}
+            \item{AD-Wandler:} Bis zu 16 Kanäle mit einer maximalen Abtastrate von 1~\emph{MSPS} bei einer Auflösung von 
+                               12~Bit.
+            \item{DA-Wandler:} Je nach Typ 2, 3 oder vier Kanäle, mit einer Ausgansspannung zwischen 0 und 2,5~V mit einer
+                               Auflösung von 12~Bit.
+            \item{PWM-Generator:} Flexibler, 3-Phasen Pulsweitenmodulator (\emph{PWM}) der bis zu 3 Signalpaare 
+                                  gleichzeitig generieren kann.
+            \item{UART-Interface:} Serielle Schnittstelle (\emph(UART)) mit \emph{TTL}-Pegel.
+            \item{SPI-Bus:} Schnittstelle zum Anbinden von bis zu 255 weiteren Peripheriekomponenten.
+            \item{$I^2C-Bus$:} 2 \emph{$I^2C$}-Schnittstellen zur Anbindung weiterer Peripherie.
+            \item{PLA:} 2 Blöcke mit jeweils 8 \emph{PLA}\footnote{Programmierbare Logische Anwendung}-Elementen 
+            \item{Timer:} 4 Allzwecktimer/Zähler.
+        \end{itemize}
+        
+        Die einzelnen Modelle der \emph{ADuC-702X}-Familie unterscheiden sich vor allem durch die Anzahl vorhandener 
+        Pins (Bei dem kleinsten Modell \emph{ADuC-7019} stehen lediglich 40 Pins, beim größten 80 Pins zur Verfügung), 
+        die zudem mehrfach belegt sind. Dies bedeutet, dass es nicht Möglich ist, die gesamte Peripherie gleichzeitig zu 
+        verwenden. Je nach Anforderung ist ggf. die Verwendung eines größeren Modells notwendig. 
+
+
+\section{Die Atmel ZigBit Familie}
+    \subsection{Hardware}
+        \Abbildungps{!htb}{1}{diagramme/zigbit_bild.pdf}{zigbit_bild}{Das ZigBit-23-A2R-Modul}
+        \Abbildungps{!htb}{1}{diagramme/zigbit_blockdiagramm.pdf}{zigbit_blockdiagramm}{Blockdiagramm des ZigBit-24-A2R-Moduls}
+
+        Atmel bietet unter dem Namen \emph{ZigBit} eine Palette von ZigBee-Modulen an. Diese Module sind in der
+        Ansteuerung identisch, unterscheiden sich jedoch vor allem in ihrer Reichweite. Unter der Bezeichnung ATZB-24-A2R
+        wird ein Modul für kurze Reichweiten angeboten. Besonderheit an diesem Modul ist, dass es bereits über zwei 
+        integrierte Antennen verfügt, so dass es ohne weitere Anpassungen in einem Hardware-Design verwendet werden kann.
+        Die ZigBit-Module enthalten einen IEE.802.15.4-Transceiver, einen \emph{ATmega1281}-Mikrocontroller sowie einen
+        128kB großen Flash-Speicher. Das Modul kann mittels \emph{UART}, \emph{SPI} oder \emph{$I^2C$} angesteuert werden.\\
+        \\
+        Ursprünglich wurden die \emph{ZigBit}-Module von der Firma \emph{Meshnetics} entwickelt und verkauft; diese wurde 
+        2009 von der Firma \emph{Atmel} gekauft und die Produkte in das Portfolio von \emph{Atme}l integriert.
+
+    \subsection{Firmware}
+        \subsubsection{Bitcloud}
+            BitCloud ist ein ZigBee-Pro zertifizierter Softwarestack von Atmel. Es werden die Module der \emph{ZigBit}-Familie
+            sowie die \emph{RZRAVEN} Evaluationskits unterstützt. BitCloud ist hierbei keine fertige Firmware, sondern 
+            Teil eines SDK, dass dazu dient, Anwender beim schnellen und einfachen Entwickeln eigener Firmware zu
+            unterstützen. Für Anwender, die selbst keine Firmware implementieren möchten, stellt \emph{SerialNet} eine
+            Alternative dar.
+
+        \subsubsection{SerialNet}
+
+            \paragraph{Überblick}
+
+                \emph{SerialNet} ist eine \emph{BitCloud} basierte Firmware, die von Atmel als fertiges Image angeboten
+                wird. Dieses kann auf dem \emph{ZigBit}-Modul installiert werden, wodurch die Notwendigkeit der 
+                Eigenentwicklung entfällt. \emph{SerialNet} bietet ein einfaches serielles Interface, dass sich mit
+                Hilfe von AT-Befehlen\footnote{Der AT-Befehlssatz war früher zur Steuerung von Modems weit verbreitet.} 
+                steuern lässt. Der Befehelssatz bietet Zugriff auf fast alle Module des ZigBit-Moduls wie z.B. das
+                Versenden und Empfangen von Daten, das schalten von IO-Ports eines entfernten ZigBit-Moduls sowie
+                Konfiguration des Energiesparmodus. Nicht möglich ist derzeit eine Verwendung der im \emph{ZigBee}-Standard
+                definierten AES-Verschlüsselung, so dass eine Datenübertragung derzeit nur unverschlüsselt erfolgen kann.
+                Für den Fokus dieser Diplomarbeit reicht eine unverschlüsselte Verbindung, für den produktiven Einsatz
+                müssen jedoch weitere Sicherheitsmaßnahmen ergriffen werden. Wie diese aussehen können ist in 
+                Abschnitt~\ref{Sicherheit} beschrieben. 
+
+            \paragraph{SerialNet AT-Protokoll}
+
+                \Abbildungps{!htb}{1.00}{diagramme/serialnet_protokoll.pdf}{serialnet_protokoll}{Darstellung des SerialNet-Protokolls als Zustandsautomat}
+
+                Das SerialNet AT-Protokoll lässt sich vereinfacht als Zustandsautomat mit 3 Zuständen darstellen
+                (Vgl. Abbildung~\ref{serialnet_protokoll})\footnote{Zur exakten Darstellung müsste ein weitere 
+                    Zustände eingeführt werden, die das Bearbeiten von Befehlen im offline Modus repräsentieren. 
+                    Ausserdem wird der Übergang von \emph{offline} zu \emph{online} eigentlich durch eine 
+                    \emph{EVENT\_JOINED}-Ereignis ausgelöst, und müsste daher durch ein Epsilon-Übergang dargestellt
+                    werden. Diese Details sind jedoch für die Verständnis der prinzipiellen Funktionsweise des 
+                    Befehlssatzes unwesentlich.}:
+
+                \begin{itemize}
+                    \item{offline:} Es besteht keine Verbindung zu eine \emph{ZigBee}-Netzwerk. Befehle
+                                    zur Kommunikation mit anderen Knoten sind nicht verfügbar. 
+                                    Ein Zugriff zur Konfiguration der Netzwerkparameter wie 
+                                    Netzwerk- und Hardwareadresse sind verfügbar. 
+
+                    \item{online:} Das Modul ist Betriebsbereit, mit einem Netzwerk verbunden und wartet
+                                   auf Befehle. Befehle zur Kommunnikation mit anderen Knoten stehen zur
+                                   Verfügung, Befehle zur Kommunikation der Netzwerkparameter sind gesperrt.
+
+                    \item{busy:} Das Modul ist mit der Bearbeitung eines Befehls beschäftigt. Es stehen
+                                 keine Befehle zur Verfügung - jedoch können jederzeit Ereignisse 
+                                 empfangen werden.
+                \end{itemize}
+                                    
+                Grundsätzlich ist das \emph{SerialNet}-Protokoll synchron: Ein Befehl wird immer mit einem der beiden 
+                Ergebniscodes \emph{OK} und \emph{ERROR} beantwortet. Bei einigen Befehlen wie z.B. \emph{AT+WCHILDREN}
+                kann zusätzlich zum Ergebniscode eine ggf. sogar mehrzeilige Antwort erfolgen. Eine Antwort wird immer
+                durch Ausgabe eines Ergebniscodes beendet. Neben dieser synchronen Befehl-Antwort-Folge können jedoch
+                jederzeit auch asynchrone Events auftreten. Hierauf muss bei der Entwicklung eines Treibers zur 
+                Ansteuerung des Moduls besonders geachtet werden. Die wichtigsten \emph{SerialNet}-Befehle, ihre
+                Anwendbarkeit sowie die Art der Antwort sind in Tabelle~\ref{serialnet_befehle} dargestellt.
+                Tabelle~\ref{serialnet_events} beeinhaltet die wichtigstens \emph{SerialNet}-Events.
+
+                \begin{table}
+                    \begin{tabular}{llll}
+                        \textbf{Befehl}  & \textbf{Beschreibung}  & \textbf{Antwort} & \textbf{Anwendbarkeit}\\
+
+                        ATD           & Versenden von Daten               & Einfach & online-Zustand \\
+                        ATR           & Entfernten Befehl ausführen       & Komplex & online-Zustand \\
+                        AT+WCHILDREN  & Liste aller untergeordneter Nodes & Komplex & nur auf FFD\\
+                        AT+WPANID     & Setzen der PAN-Adresse            & Einfach & offline-Zustand \\
+                        AT+WCHMASK    & Setzen der Kanalmaske             & Einfach & offline-Zustand \\
+                        AT+WLEAVE     & Netzwerk verlassen                & Einfach & online-Zustand \\
+                        AT+WJOIN      & Netzwerk beitreten                & Einfach & offline-Zustand \\
+                        AT+WAUTONET   & Netzwerk automatisch beitreten    & Einfach & offline-Zustand \\
+                        AT+WROLE      & Rolle im Netzwerk Konfigurieren   & Einfach & offline-Zustand \\
+                        AT+WPWR       & Powermanagement konfigurieren     & Einfach & offline-Zustand \\
+                        AT+WSRC       & Netzwerkadresse konfigurieren     & Einfach & offline-Zustand \\
+                        AT+GSN        & Hardwareadresse konfigurieren     & Einfach & offline-Zustand \\
+                        AT+WWAIT      & Wartezeit auf Parameter fut ATD   & Einfach & offline-Zustand \\
+                    \end{tabular}
+                    \caption{Übersicht der wichtigsten \emph{SerialNet}-Befehle}
+                    \label{serialnet_befehle}
+                \end{table}
+
+                \begin{table}
+                    \begin{tabular}{lll}
+                        \textbf{Ereignis} & \textbf{Beschreibung} & \textbf{Parameter}\\
+                            DATA         & Daten empfangen & Adresse, Länge, Daten \\
+                            EVENT:JOINED & Netzwerkverbindung hergestellt & --- \\
+                            EVENT:LOST   & Netzwerkverbindung verloren & --- \\
+                     \end{tabular}
+                     \caption{Übersicht der \emph{SerialNet}-Ereignisse}
+                     \label{serialnet_events}
+                \end{table}
+
+
     \section{Kommunikation mit dem \emph{ZigBit}-Modul}\label{analyse_kommunikation_mit_zigbit_modul}
         \subsection{Problemstellung}
             Das \emph{SerialNet} Protokoll ist grundsätzlich synchron. Ein Programm, dass mit

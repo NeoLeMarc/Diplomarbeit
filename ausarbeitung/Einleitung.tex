@@ -3,14 +3,14 @@
 \pagenumbering{arabic} % Seitennummerierung durch arabische Ziffern
 \section{Motivation der Arbeit}
 
-Der Begriff „Massenanfall von Verletzten“ (MANV) versteht man ein Ereignis, bei dem innerhalb
+Unter dem Begriff „Massenanfall von Verletzten“ (MANV) versteht man ein Ereignis, bei dem innerhalb
 kurzer Zeit eine große Anzahl von Verletzten versorgt werden muss. Hierbei mögen einem zuerst
 Vorfälle wie die Terroranschläge am 11. September 2001, die Reaktorkatastrophe von Tschernobyl oder
 spektakuläre Naturereignisse wie der Hurrikan Katrina, die Flutkatastrophen der letzten Jahre oder die
 Erdbeben in Haiti in den Sinn kommen.
 Doch bereits Ereignisse geringeren Ausmaßes - wie z.B. ein Auffahrunfall auf der Autobahn, ein
-Zugunglück, eine Massenpanik bei einem Konzert oder starke Schneefälle, wie sie in den letzten
-Monaten aufgetreten sind - können den Rettungsdienst einer Region sehr schnell an die Grenzen seiner
+Zugunglück, eine Massenpanik bei einem Konzert oder starke Schneefälle, wie sie im vergangengen
+Winter aufgetreten sind - können den Rettungsdienst einer Region sehr schnell an die Grenzen seiner
 Leistungsfähigkeit bringen.
 Beispielhaft seien hier folgende Ereignisse der letzten Jahre und Jahrzehnte genannt:
 
@@ -35,17 +35,26 @@ Diese Einordnung ist notwendig, da meist nicht genügend Ressourcen (sowohl Mate
 Personal) vorhanden sind, um sofort alle Patienten zu versorgen. Daher gilt das Ziel, dass möglichst
 viele Patienten den Vorfall mit einem möglichst geringen Schaden überstehen. Um eine Zuteilung der
 vorhandenen Ressourcen gemäß dieses Ziels zu gewährleisten, erfolgt eine Einordnung der Patienten in
-4 Kategorien. 
+4 Kategorien:
 
-Obwohl diese Vorgehensweise eine schnelle Versorgung von Schwerverletzten gewährleistet, stellen
+\begin{itemize}
+    \item{Grün:} Patient ist ansprechbar und kann sich selbstständig vom Unfallort wegbewegen.
+    \item{Gelb:} Patient hat Behandlungsbedarf und kann sich nichtmehr selbstständig vom Unfallort entfernen, 
+                 befindet sich jedoch nicht in akuter Lebensgefahr.
+    \item{Rot:}  Patient befindet sich in einem akut Lebensbedrhlichen Zustand (z.B. Kreislaufstillstand, hoher
+                 Blutverlust) und benötigt sofortige medizinische Behandlung.
+    \item{Schwarz:} Patient ist verstorben.
+\end{itemize}
+
+Obwohl diese Vorgehensweise eine schnelle Versorgung von Schwerverletzten gewährleistet, stellt
 sich eine Reihe von Problemen:
 
 \begin{enumerate}
     \item Patienten können in die falsche Gruppe zugeordnet werden.
     \item Möglicherweise verschlechtert sich der Zustand eines Patienten nach seiner Einteilung in die Gruppe
-          T2 rapide, so dass dieser sofortiger Versorgung bedarf.
+          "`Gelb"' rapide, so dass dieser sofortiger Versorgung bedarf.
     \item Es besteht ein Konflikt zwischen sorgfältiger Untersuchung und zu wenig zur Verfügung stehender
-          Zeit.  Hierbei ist zu bemerken, dass die Sichtung immer noch ohne besondere technische Hilfsmittel
+          Zeit. Hierbei ist zu bemerken, dass die Sichtung immer noch ohne besondere technische Hilfsmittel
           stattfindet. Die Patienten werden mit Hilfe von einfachen Papierkarten markiert, die Überprüfung von
           Atmung, Puls und Blutdruck erfolgt durch einfache physische Methoden wie Anfassen, Hören und
           Beobachten.
@@ -62,19 +71,65 @@ den Einsatz in einem MANV-Szenario ungeeignet, da sie zu groß, zu teuer und zu 
 \section{Aufgaben und Ziele der Arbeit}
 Ziel dieser Arbeit ist die Entwicklung und prototypische Implementierung eines
 kabellosen Netzwerkes zur Überwachung von Patienten während eines MANVs. Als
-Ausgangsbasis hierfür dient der von Herrn Dr. Marc Jäger in \ref{diss_marc}
+Ausgangsbasis hierfür dient der von Herrn Dr. Marc Jäger in \cite{Marc}
 entwickelte Erste-Hilfe-Sensor. Hierbei soll der Sensor in die Lage versetzt
 werden, die Vitaldaten des angeschlossenen Patienten kabellos an eine zentrale
-Überwachungsstation zu übertragen. Die zu entwickelnde Lösung soll eine möglichst
+Überwachungsstation zu übertragen. Die zu entwickelnde Lösung soll eine
 große Anzahl von Teilnehmern unterstützen, zu gleich aber auch möglichst kostengünstig
 sein. Darüber hinaus soll sie möglichst stromsparend sein, damit der Erste-Hilfe-Sensor
-auch längere Zeit über eine möglichst kleine Batterie betrieben werden kann.\\
+auch längere Zeit über eine kleine Batterie (idealerweise eine Knopfzelle) betrieben 
+werden kann.\\
 \\
-Parallel zu dieser Arbeit wird von Herrn cand. inform Jan Tepelmann eine 
-Steurungssoftware für die Überwachungsstation des Netzwerkes entwickelt. Zu dieser
-Software soll eine Schnittstelle zur Verfügung gestellt werden, über die zum einen
+Parallel zu dieser Arbeit wird von Herrn cand. inform Jan Tepelmann in \cite{Jan} eine 
+Steurungssoftware ("`\emph{MANVSuite}"') für die Überwachungsstation des Netzwerkes 
+entwickelt. Zu dieser Software soll eine Schnittstelle zur Verfügung gestellt werden, über die zum einen
 die Vitaldaten ausgeliefert, zum anderen Befehle an die einzelnen Sensoren empfangen 
-werden. Diese Schnittstelle ist mittels CORBA zu realisieren.
+werden. Diese Schnittstelle soll netzwerkfähig sein. 
 
 \section{Gliederung und Vorgehensweise der Arbeit}
-...
+Zunächst wird in Kapitel~\ref{Grundlagen} eine kurze Einführung in die Grundlagen,
+die zum Verständnis dieser Arbeit wichtig sind gegeben. Dies ist insbesondere deshalb
+wichtig, da es sich um eine interdisziplinäre Arbeit zwischen Informatik und Elektrotechnik\\
+\\
+Im darauf folgenden Kapitel wird der aktuelle Stand der Technik genauerer Betrachtung
+unterzogen. Hierbei werden zunächst kabellose Netzwerkprotokolle betrachtet und auf
+ihre Eignung zur Lösung der gestellten Problemstellung untersucht. Hierbei erweist
+sich das \emph{ZigBee}-Protokoll als besonders geeignet. Daraufhin erfolgt
+ein kurzer Überblick über die Marktsituation bei Produkten zur kabellosen
+Patientenüberwachung. Im Abschluss des Kapitels werden einige verwandte Projekte
+vorgestellt und auf Ähnlichkeiten und Unterschiede untersucht.\\
+\\
+Aus dem Stand der Technik werden in Kapitel~\ref{Analyse} nun die Anforderungen an
+die zu entwickelnde Lösung aufgestellt. Anschliessend werden die Bauteile vorgestellt,
+die zur Implementierung der Lösung verwendet werden. Diese werden auf Ihre Eignung
+untersucht und es werden zu beachtende Eigenheiten herausgearbeitet. Für diese
+Eigenheiten werden verschiedene Lösungsmöglichkeiten vorgestellt und analysiert,
+welche im späteren Verlauf der Arbeit als Grundlage für Entwurf und Implementierung
+dienen werden.\\
+\\
+Der eigentliche Entwurf findet in Kapitel~\ref{Entwurf} statt. Hier wird zunächst
+ein grober Entwurf des Gesamtsystems durchgeführt, in dem zunächst die zentralen
+Komponenten der Lösung identifiziert werden. Im weiteren Verlauf des Kapitels
+wird jede dieser Komponenten einem feinere Entwurf unterzogen, so dass diese
+Implementiert werden können. Bei dem Entwurf wird zwischen \emph{Hardware}
+und \emph{Software} unterschieden.\\
+\\
+Kapitel~\ref{Implementierug} behandelt die praktische Umsetzung des theoretischen Entwurfs.
+Hier wird beschrieben, wie genau der Entwurf umgesetzt wurde. Ein Schwerpunkt bildet
+hier die Beschreibung der praktischen Probleme, die bei der Umsetzung aufgetreten sind, 
+und wie diese gelöst wurden. Zu diesem Kapitel gehört ausserdem eine \emph{CD} mit Software,
+die dieser Diplomarbeit beiliegt, sowie eine Reihe von Entwurfszeichnungen, Schaltplänen
+und Platinenlayouts, die sich in Anhang~\ref{anhang_diagramme} finden.\\
+\\
+In Kapitel~\ref{Ergebnissen} wird nun eine genaue Evaluierung der entwickelten Lösung 
+in Hinblick auf Übereinstimmung mit den in Kapitel~\ref{Analse} aufgestellten Anforderungen, 
+durchgeführt; die hieraus resultierenden Ergebnisse werden dann im Kapitel~\ref{Diskussion}
+diskutiert.\\
+\\
+Abschliessend wird der Inhalt dieser Arbeit in Kapitel~\ref{Ausblick} noch einmal zusammengefasst,
+und es werden im Rahmen eines Ausblicks Vorschläge gemacht, wie die in dieser Arbeit entwickelte
+Lösung weiter ausgebaut und verbessert werden kann.\\
+\\
+Abgerundet wird die Arbeit durch einen umfangreichen Anhang, in dem neben Schaltplänen und 
+Entwurfszeichnungen auch eine Hilfestellung zur Umsetzung der in der Arbeit entwickelten
+Lösung in ein fertiges Produkt geliefert werden.

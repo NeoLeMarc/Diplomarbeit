@@ -91,3 +91,12 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
           50~mm auf 56~mm und bietet noch viel Potential zur weiteren Optimierung der Größe (z.B. durch
           die beidseitige Platzierung von Bauteilen oder der Fertigung in 4-Schicht-Bauweise).
 \end{itemize}
+
+In dieser Arbeit nicht betrachtet wurde das Thema Datensicherheit und Verschlüsselung, welches alleine bereits
+umfangreich genug wäre, eine eigene Diplomarbeit zu rechtfertigen. Ursprünglich war geplant, die hardwareseitige
+Verschlüsselung der \emph{ZigBit}-Module einzusetzen. Leider ist diese Funktion jedoch nicht in die 
+\emph{SerialNet}-Firmware integriert, so dass zur Verwendung der Verschlüsselung eine Neuimplementierung der
+Firmware der \emph{ZigBit}-Firmware notwendig wäre, was den Rahmen dieser Arbeit sprengen würde. Daher wird
+sich in dieser Arbeit darauf beschränkt, in Abschnitt~\ref{Sicherheit} eine kurze Analyse des Problems und einige
+Vorschläge zur Lösung vorzustellen. Diese können dann bei einer späteren Umsetzung in ein Produkt als Grundlage
+dafür dienen, die notwendigen Sicherheitsmaßnahmen zu implementieren.
