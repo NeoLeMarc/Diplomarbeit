@@ -64,12 +64,13 @@
 \BOOKMARK [1][-]{section.3.3}{3.3 Produkte zur kabellosen Patienten\374berwachung}{chapter.3}
 \BOOKMARK [1][-]{section.3.4}{3.4 Verwandte Projekte zum Einsatz in MANV-Szenarien}{chapter.3}
 \BOOKMARK [0][]{chapter.4}{4 Analyse}{}
-\BOOKMARK [1][-]{section.4.1}{4.1 Kommunikation mit dem ZigBit-Modul}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Problemstellung}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Behandlung asynchron auftretender Ereignisse}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Behandlung von komplexen Antworten}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Kombination beider L\366sungen}{section.4.1}
-\BOOKMARK [1][-]{section.4.2}{4.2 Powermanagement}{chapter.4}
+\BOOKMARK [1][-]{section.4.1}{4.1 Anforderungen an ein kabelloses System zur \334berwachung von Patienten}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{4.2 Kommunikation mit dem ZigBit-Modul}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Problemstellung}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Behandlung asynchron auftretender Ereignisse}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 Behandlung von komplexen Antworten}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Kombination beider L\366sungen}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{4.3 Powermanagement}{chapter.4}
 \BOOKMARK [0][]{chapter.5}{5 Entwurf}{}
 \BOOKMARK [1][-]{section.5.1}{5.1 Gesamtsystem}{chapter.5}
 \BOOKMARK [1][-]{section.5.2}{5.2 Hardware}{chapter.5}
@@ -135,8 +136,8 @@
 \BOOKMARK [3][-]{subsubsection.9.2.3.3}{9.2.3.3 Schutz auf Applikationsebene}{subsection.9.2.3}
 \BOOKMARK [1][-]{section.9.3}{9.3 Verbesserung der Reichweite und St\366rsicherheit}{chapter.9}
 \BOOKMARK [2][-]{subsection.9.3.1}{9.3.1 Anderer Frequenzbereich}{section.9.3}
-\BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 Verwendung Leistungsst\344rkerer ZigBee-Module}{section.9.3}
-\BOOKMARK [2][-]{subsection.9.3.3}{9.3.3 Richtantennen f\374r Router}{section.9.3}
+\BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 Verwendung leistungsst\344rkerer ZigBee-Module und Antennen}{section.9.3}
+\BOOKMARK [2][-]{subsection.9.3.3}{9.3.3 Genauere Betrachtung des Bluetooth-Low-Energy-Standards}{section.9.3}
 \BOOKMARK [0][]{appendix.A}{A Pl\344ne und Diagramme}{}
 \BOOKMARK [0][]{appendix.B}{B Beschreibung der beigelegten Software}{}
 \BOOKMARK [1][-]{section.B.1}{B.1 MANV-Connector}{appendix.B}

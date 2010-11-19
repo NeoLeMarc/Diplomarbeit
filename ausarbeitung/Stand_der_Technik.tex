@@ -589,19 +589,27 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
            
 
         \subsubsection{Bluetooth Low Energy (ehemals Wibree)}\label{wibree}
-            Bluetooth Low Energy ist ein neuer Standard für WPANs, der mit dem Bluetooth 4.0 Standard eingeführt
-            wurde. Er definiert eine Datenübertragung mit bis zu 1 MBit/s (netto 0.26 MBit/s) bei einem Strombedarf,
-            der unter 20~mA liegen soll, wobei eine Reichweite von bis zu 100~m realisierbar sein soll.\\
-            Zum Zeitpunkt dieser Diplomarbeit befanden sich Funkchips des Bluetooth-Low-Energy-Standards noch in 
-            der frühen Testphase und waren auf dem Markt nicht erhältlich, so dass dieser Standard bei der Auswahl
-            eines geeigneten Funkprotokolls leider nicht in die engere Betrachtung gezogen werden konnte.
+            \emph{Bluetooth Low Energy} ist ein neuer Standard für WPANs, der mit dem \emph{Bluetooth-4.0}-Standard 
+            eingeführt wurde. Er definiert eine Datenübertragung mit bis zu 1~MBit/s (netto 0.26~MBit/s) bei einem 
+            Strombedarf, der unter 20~mA liegen soll, wobei angeblich eine Reichweite von bis zu 100~m erreicht werden 
+            kann.\\
+            Zum Zeitpunkt dieser Diplomarbeit befanden sich Funkchips des \emph{Bluetooth-Low-Energy}-Standards 
+            leider noch in der frühen Testphase und waren auf dem Markt nicht erhältlich, so dass dieser Standard 
+            bei der Auswahl eines geeigneten Funkprotokolls nicht in die engere Betrachtung gezogen werden konnte.
+            Diese Betrachtung wäre sicherlich interessant gewesen. Beim späteren Entwurf des Sensornetzwerkes
+            ist daher darauf Rücksicht zu nehmen, dass das Funkprotokoll nach Möglichkeit austauschbar gehalten wird,
+            so dass es später Möglich ist, die entworfene Lösung an geänderte Marktbedingungen anzupassen.
             
 
     \subsection{Weitere Protokolle}
         Neben den oben erwähnten Protokollen gibt es viele weitere kabellose Übertragungsprotokolle wie beispielsweise 
-        der kommende Wireless USB-Standards, WiMax, oder Mikrowellen-Richtfunk. Diese Protokolle sind jedoch für die
-        Übertragung mit hohen Datenraten ausgelegt (was in der Regel mit einer dementsprechend hohen Leisuntsaufnahme
-        einhergeht), und liegen damit ausserhalb des Fokus dieser Arbeit.
+        der kommende \emph{Wireless-USB}-Standards, \emph{WiMax}, oder Mikrowellen-Richtfunk. Diese Protokolle sind 
+        jedoch für die Übertragung mit hohen Datenraten ausgelegt (was in der Regel mit einer dementsprechend 
+        hohen Leisuntsaufnahme einhergeht), und liegen damit ausserhalb des Fokus dieser Arbeit. Auch nicht
+        berücksichtigt werden konnte der \emph{ANT+}-Standard, der sich aktuell vor allem im Bereich von Wellnessgeräten
+        wie z.B. Pulsuhren durchzusetzen scheint. Leider handelt es sich hierbei um eine proprietäre Lösung des 
+        Herstellers \emph{Dynastream}; entsprechende Bauteile sind momentan auf dem Deutschen Markt praktisch nicht
+        erhältlich.
 
 
     \subsection{Diskussion}

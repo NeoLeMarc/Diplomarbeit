@@ -3,6 +3,59 @@
 \chapter{Zusammenfassung und Ausblick}
 
 \section{Zusammenfassung}
+In dieser Arbeit wurde ein kabelloses Sensornetzwerk zur Überwachung von Patienten bei einem 
+Massenanfall von Verletzten (MANV) entworfen und implementiert. Zunächst wurden 
+verschiedene kabellose Sensornetzprotokolle vorgestellt und auf ihre Eignung als Grundlage für
+die Patientenüberwachung in einem MANV überprüft. Bereits in diesem Schritt wurde die Entscheidung
+getroffen, eine Lösung auf Basis des \emph{ZigBee}-Protokolles zu implementieren. Hierfür sprachen
+der geringste Stromverbrauch aller verfügbaren Lösungen, die hohe Störsicherheit sowie die
+gute Verfügbarkeit passender Hardware auf dem Markt. Es wurde weiterhin festgestellt, dass sich die
+Marktsituation in den kommenden Jahren auf Grund der Einführung neuer Standards wie \emph{ANT+},
+\emph{Bluetooth Low Energy} sowie \emph{Wireless USB} ändern könnte, so dass beim späteren Entwurf
+insbesondere auf die Austauschbarkeit des Netzwerkprotokolles zu achten ist. Im Anschluss daran wurden
+verschiedene aktuell auf dem Markt erhältliche Lösungen zur kabellosen Patientenüberwachungen betrachtet, 
+und mit den Erkenntnissen aus der Analyse der verschiedenen Netzwerkprotokolle auf ihre Eignung untersucht.
+Hierbei wurde festegestellt, dass alle betrachteten Lösungen eher für den Einsatz im Krankenhaus
+gedacht sind, und für den Einsatz in während eines MANVs nicht geeignet sind. Weiterhin wurden verwandte
+Projekte, die sich ebenfalls mit der technischen Patientenversorgung während eines MANVs beschäftigen
+vorgestellt, und die Ähnlichkeiten und Unterschiede gezeigt.\\
+Mit den aus der Betrachtung der Stand der Technik gewonnen Erkenntnissen konnte nun zur Analyse 
+übergegangen werden. Hier wurde zunächst eine Reihe von Anforderungen erarbeitet, die die zu entwerfende 
+Lösung erfüllen soll. Ausserdem wurden für den späteren Einsatz ausgewählte \emph{ZigBee}-Hardware 
+der Firma \emph{Atmel} untersucht, und es wurde eine Reihe von Eigenheiten im Kommunikationsprotokoll 
+zwischen \emph{ZigBee}-Modul und Mikrokontroller entdeckt, für die jeweils eine passende Lösung in 
+allgemeiner Form vorgestellt wurde.  Ausserdem wurden kurz die zwei verschiedenen Arten, 
+den Energiesparmodus der Module aufzurufen, erläutert, und sich dafür entschieden, dass der manuelle 
+Aufruf hier die bessere Lösung ist.\\
+Nach der Analyse folgte der Entwurf eines Systems zur Lösung der gestellten Aufgabe. Dieser erfolgte in 3 
+Schritten. Zunächst erfolgte der Entwurf des Gesamtsystems im groben. In Hinblick auf die in der Analyse
+gewünschten Austauschbarkeit des Funkprotokolls wurde entschieden, alle Designentscheidungen zu kapseln und
+so das System aus einzelnen, austauschbaren Komponenten aufzubauen. Im groben wurde hierbei zwischen
+einer Kontrollsoftware, der sogenannten \emph{MANVSuite}, der Hardware der Sensoren, in Form einer 
+Test- und Entwurfplatine (\emph{MANVNode}), einem \emph{USB-Stick} zur Verbindung zwischen Netzwerk und Computer
+sowie dem sogenannten \emph{MANVConnector}, der die Schnittstelle zwischen Hard- und Software bildet und zudem
+alle Hardwarespezifischen Designentscheidungen kapselt. Die \emph{MANVSuite} wurde in einer
+zu dieser Diplomarbeit parallel laufenden Studienarbeit von Herrn cand. inform Jan Tepelmann genauer entworfen
+und implementiert.\cite{Jan}\\
+Nach dem groben Entwurf folgt der Entwurf im feinen. Hierbei wurden Hardware (\emph{MANVNode} und \emph{USB-Stick})
+sowie Software (\emph{MANVConnector} und Firmware der \emph{MANVNode}) getrennt betrachtet.\\
+Auf Grundlage dieses Entwurfes wurde nun eine Implementierung durchgeführt. Die Vorgehensweise, welche Probleme
+dabei aufgetreten sind, und wie diese gelöst wurden ist Thema des Kapitels~\ref{implementierung}.
+Hier wird unter anderem beschrieben, welche Probleme bei der Bestückung der Platine der \emph{MANVNode} aufgetreten
+sind, wie der Zugriff auf die \emph{UART}-Schnittstelle des \emph{ADuC}-Mikrocontrollers in der Firmware
+realisiert wurde, wie von \emph{Java} aus auf den seriellen Port zugegriffen wird und wie die automatische
+Erkennung des \emph{USB-Sticks} auf dem Betriebssystem \emph{Linux} realisiert wurde.\\
+Nachdem die Implementierung abgeschlossen war, folgte eine Reihe von umfassenden Tests. Ziel hierbei war es,
+festzustellen, wie gut die vorgestellte Lösung die in der Analyse aufgestellten Anforderungen erfüllt. Neben
+Reichweite, Stromverbrauch und Erweiterbarkeit des Funknetzwerkes wurde hierzu auch die Leistungsfähigkeit der 
+Software in Hinblick auf Anzahl der Teilnehmer, Austauschbarkeit des \emph{MANVConnectors} und Interoperabilität
+zwischen \emph{MANVSuite}, \emph{MANVConnector} und Sensornetzwerkkeit intensiv untersucht. Alle Tests verliefen
+positiv, und die entworfene Lösung konnte in fast allen Punkten die Anforderungen, die in Abschnitt~\ref{anforderungen}
+aufgestellt wurden, erfüllen. Lediglich bei der Datensicherheit innerhalb des \emph{ZigBee}-Netzwerkes mussten
+Einschränkungen hingenommen werden, da die Firmware des Herstellers \emph{Atmel} nicht den versprochenen
+Funktionsumfang bereit stellen konnten. Dies wird in Abschnitt~\ref{Sicherheit} genauer untersucht, hier werden
+auch mehrere Vorschläge gemacht, wie dieses Problem gelöst werden kann. Die Arbeit wird abgerundet durch ein
+umfangreiches Softwarepaket inkl. Quellcode und Dokumentation, die die zeitnahe Realisierung als Prdodukt ermöglichen.
 
 \section{Sicherheit des Netzwerkes}
 \label{Sicherheit}
@@ -76,5 +129,28 @@ gegen das Netzwerk durchzuführen.
 
 \section{Verbesserung der Reichweite und Störsicherheit}
 \subsection{Anderer Frequenzbereich}
-\subsection{Verwendung Leistungsstärkerer \emph{ZigBee}-Module}
-\subsection{Richtantennen für Router}
+In dieser Arbeit wurden lediglich \emph{ZigBee}-Module, die im 2,4~GHz-\emph{ISM-Band} operieren, untersucht. Es gibt
+jedoch auch Module, die das 868 (Europa) bzw. 915~MHz-Band (USA) nutzen. Diese versprechen eine bessere Durchdringung
+von Hindernissen und damit eine bessere Reichweite und Störsicherheit. Diese Verbesserung kommt zum Preis von einer
+niedrigeren Datenrate (20 bzw. 40~kbit/sec) und ist zudem Länderspezifisch. In wie weit diese Einschränkungen problematisch
+sind wäre gesondert zu evaluieren, für den Einsatz in schwierigem Terrain könnte dieser Frequenzbereich jedoch einige
+Vorteile bieten.
+
+\subsection{Verwendung leistungsstärkerer \emph{ZigBee}-Module und Antennen}
+Für diese Arbeit war der Stromverbrauch der Module eines der wichtigsten Kriterien. Daher wurden Module mit der geringsten
+Leistungsaufnahme und damit auch der geringsten Sendeleistung für den Entwurf der Hardware verwendet. Neben diesen
+Modulen sind auf Varianten mit deutlich stärkerer Sendeleistung erhältlich. Diese kann meist sogar noch zusätzlich durch
+den Einsatz von externen Antennen verstärkt werden. Mit der entsprechenden Kombination aus Modul und Antenne lässt sich eine
+Sendeleistung erreichen, die mehr als 10 mal so hoch ist, wie die der in dieser Arbeit verwendeten Module. Dies ist 
+insbesondere für den Einsatz in \emph{ZigBee}-Routern interessant, da diese einfach mit einer größeren Stromquelle versehen
+werden können als die einzelnen Sensoren. Es wäre daher interessant zu evaluieren, wie sie dich Verwendung stärkerer Module
+sowie größerer Antennen in den Routern auf die erreichbare Reichweiten des Netzwerkes auswirkt.
+
+\subsection{Genauere Betrachtung des \emph{Bluetooth-Low-Energy}-Standards}
+Der \emph{Bluetooth-Low-Energy}-Standard verspricht eine interessante Alternative zum \emph{ZigBee}-Standard zu werden.
+Der einzige Grund, weshalb in dieser Arbeit keine genauere Betrachtung erfolgen konnte war die Nichtverfügbarkeit
+entsprechender Hardware zum Zeitpunkt der Anforderungsanalyse. Bereits im Februar 2010 wurde von der Firma 
+\emph{Nordic Semiconductors} unter der Bezeichnung \emph{ISP091201} ein entsprechendes Hardwaremodul angekündigt,
+dass jedoch bis jetzt (Stand Oktober 2010) nicht auf dem Markt erhältlich ist. Sobald entsprechende Module verfügbar
+sind, sollte eine erneute Evaluation erfolgen. Beim Entwurf der hier vorgestellten Lösung wurde eine spätere Änderung
+des Funkprotokolls eingeplant und bei der Implementierung entsprechend berücksichtigt.
