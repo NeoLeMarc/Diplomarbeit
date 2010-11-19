@@ -66,8 +66,9 @@
 
 \usepackage{nomencl}
 \usepackage{ifthen}
-\renewcommand{\nomname}{\chapter*{Abkürzungsverzeichnis}}
+\renewcommand{\nomname}{\chapter*{Glossar}}
 \makeglossary
+\makenomenclature
 
 
 %% Auskommentieren einer dieser Zeilen bewirkt, daß nur diese
@@ -157,7 +158,8 @@ Karlsruhe, 31.10.2010\\
 
 %%%------------------------------------------------GLOSSAR-----------------------------------------------------------------------------
 
-\chapter*{Glossar}
+%\chapter*{Glossar}
+\printnomenclature
 \addcontentsline{toc}{chapter}{Glossar}
 
 

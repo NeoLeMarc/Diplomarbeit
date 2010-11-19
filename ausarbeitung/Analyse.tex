@@ -4,6 +4,8 @@
         an das zu entwickelnde System:
         
         \begin{itemize}
+            \item{Integrierbarkeit:} Die zu entwickelnde Lösung soll in den \emph{Erste-Hilfe-Sensor}
+                                     integrierbar sein.
             \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, von Vitaldaten und Alarme  
                                              von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
                                              zugestellt und angezeigt werden. Bei bestehen er Netzwerkverbindung
@@ -29,8 +31,12 @@
         \end{itemize}
 
 \section{Der \emph{Analog Devices ADuC702X} Mikrocontroller}
-
     \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers}
+
+    Zentrale Komponente des \emph{Erste-Hilfe-Sensor}, welcher die Grundlage für die Sensoren im zu entwerfenden Netzwerk
+    bildet, ist der \emph{ADuC-7022}-Mikrocontroller. Es handelt sich hierbei um einen Vertreter einer ganzen Familie
+    von Mikrocontrollern der Firma \emph{Analog Devices}. Im folgenden eine kurze Übersicht über die Eigenschaften
+    dieser Mikrocontrollerfamilie.
 
     \subsection{Beschreibung}
         Mit der \emph{ADuC702X}-Familie bietet die Firma \emph{Analog Devices} eine Serie von voll integrierten 
@@ -69,6 +75,16 @@
 
 
 \section{Die Atmel ZigBit Familie}
+
+    Nachdem die Entscheidung getroffen wurde, \emph{ZigBee} als Funkprotokoll für das Netzwerk zu verwenden, muss
+    nun noch ein geeignetes Hardwarebauteil gefunden werden. Nach Analyse der auf dem Markt verfügbaren Bauteile
+    wurde die Entscheidung getroffen, ein komplett integriertes Modul zu kaufen, bei dem bereits alle 
+    \emph{HF}-Komponenten und Antenne aufgebracht sind. Passende Lösungen waren von den Firmen \emph{Digi}, 
+    \emph{Mikrochip}, \emph{Radicrafts} und \emph{Atmel} verfügbar. Letztendlich wurde die Entscheidung für
+    ein Modulityp der Firma \emph{Atmel} getroffen, da diese nicht nur die günstigsten betrachteten Module waren,
+    sondern mit der Ansteuerung über \emph{UART} mittels \emph{AT-Befehlen} auch am einfachsten anzusteuern waren.
+    Der hier verwendete Modultyp soll folgend kurz vorgestellt werden.
+
     \subsection{Hardware}
         \Abbildungps{!htb}{1}{diagramme/zigbit_bild.pdf}{zigbit_bild}{Das ZigBit-23-A2R-Modul}
         \Abbildungps{!htb}{1}{diagramme/zigbit_blockdiagramm.pdf}{zigbit_blockdiagramm}{Blockdiagramm des ZigBit-24-A2R-Moduls}

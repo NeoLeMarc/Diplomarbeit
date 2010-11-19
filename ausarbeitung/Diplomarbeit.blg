@@ -14,11 +14,6 @@ A level-1 auxiliary file: Praktische_Realisierung.aux
 A level-1 auxiliary file: Ergebnisse.aux
 A level-1 auxiliary file: Diskussion.aux
 A level-1 auxiliary file: Ausblick.aux
-Case mismatch error between cite keys jan and Jan
----line 2 of file Ausblick.aux
- : \citation{jan
- :              }
-I'm skipping whatever remains of this command
 A level-1 auxiliary file: Anhang.aux
 The style file: natdin.bst
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
@@ -82,4 +77,4 @@ warning$ -- 8
 while$ -- 91
 width$ -- 0
 write$ -- 247
-(There was 1 error message)
+(There were 13 warnings)
