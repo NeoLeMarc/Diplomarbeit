@@ -4,10 +4,8 @@ Wichtig:
 - Vorwort
 - Danksagung
 - Abstract
-- Einleitung reparieren
-- Gliederung der Arbeit
-- Ausblick
 - Glossar
+- Bildquellen angeben
 
 Kür:
 

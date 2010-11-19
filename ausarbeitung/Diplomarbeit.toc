@@ -54,22 +54,22 @@
 \contentsline {section}{\numberline {3.4}Verwandte Projekte zum Einsatz in MANV-Szenarien}{33}{section.3.4}
 \contentsline {chapter}{\numberline {4}Analyse}{35}{chapter.4}
 \contentsline {section}{\numberline {4.1}Anforderungen an ein kabelloses System zur \IeC {\"U}berwachung von Patienten}{35}{section.4.1}
-\contentsline {section}{\numberline {4.2}Der \emph {Analog Devices ADuC702X} Mikrocontroller}{35}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Beschreibung}{35}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Peripherie}{36}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Die Atmel ZigBit Familie}{37}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Hardware}{37}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Firmware}{38}{subsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.2.1}Bitcloud}{38}{subsubsection.4.3.2.1}
+\contentsline {section}{\numberline {4.2}Der \emph {Analog Devices ADuC702X} Mikrocontroller}{36}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Beschreibung}{36}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Peripherie}{37}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Die Atmel ZigBit Familie}{38}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Hardware}{38}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Firmware}{39}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Bitcloud}{39}{subsubsection.4.3.2.1}
 \contentsline {subsubsection}{\numberline {4.3.2.2}SerialNet}{39}{subsubsection.4.3.2.2}
 \contentsline {paragraph}{\numberline {4.3.2.2.1}\IeC {\"U}berblick}{39}{paragraph.4.3.2.2.1}
-\contentsline {paragraph}{\numberline {4.3.2.2.2}SerialNet AT-Protokoll}{39}{paragraph.4.3.2.2.2}
-\contentsline {section}{\numberline {4.4}Kommunikation mit dem \emph {ZigBit}-Modul}{40}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Problemstellung}{40}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Behandlung asynchron auftretender Ereignisse}{42}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Behandlung von komplexen Antworten}{44}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Kombination beider L\IeC {\"o}sungen}{45}{subsection.4.4.4}
-\contentsline {section}{\numberline {4.5}Powermanagement}{47}{section.4.5}
+\contentsline {paragraph}{\numberline {4.3.2.2.2}SerialNet AT-Protokoll}{40}{paragraph.4.3.2.2.2}
+\contentsline {section}{\numberline {4.4}Kommunikation mit dem \emph {ZigBit}-Modul}{42}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Problemstellung}{42}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Behandlung asynchron auftretender Ereignisse}{43}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Behandlung von komplexen Antworten}{45}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Kombination beider L\IeC {\"o}sungen}{46}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}Powermanagement}{48}{section.4.5}
 \contentsline {chapter}{\numberline {5}Entwurf}{51}{chapter.5}
 \contentsline {section}{\numberline {5.1}Gesamtsystem}{51}{section.5.1}
 \contentsline {section}{\numberline {5.2}Hardware}{53}{section.5.2}

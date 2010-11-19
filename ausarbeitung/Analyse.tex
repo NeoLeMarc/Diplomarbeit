@@ -1,6 +1,32 @@
 \chapter{Analyse}
     \section{Anforderungen an ein kabelloses System zur Überwachung von Patienten}
-    Austauschbarkeit beachten!
+        Nach Betrachtung des Standes der Technik ergeben sich folgende Anforderungen
+        an das zu entwickelnde System:
+        
+        \begin{itemize}
+            \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, von Vitaldaten und Alarme  
+                                             von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
+                                             zugestellt und angezeigt werden. Bei bestehen er Netzwerkverbindung
+                                             sollen keine Nachrichten verloren gehen. 
+            \item{Senden von Befehlen:} Das System soll in der Lage sein, Befehle an die Sensoren zu senden.
+                                        Diese sollen auf die empfangenen Befehle entsprechend reagieren. Es
+                                        soll möglich sein, neue Befehle zu einem späteren Zeitpunkt hinzuzufügen.
+            \item{Skalierbarkeit:} Das System soll sowohl in Anzahl der Sensoren als auch in der räumlichen 
+                                   Ausdehnung (Reichweite) skalierbar sein. Es sollen sowohl sehr kleine Netzwerke
+                                   als auch große Netzwerke realisierbar sein.
+            \item{Kostengünstig:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
+            \item{Niedriger Stromverbrauch:} Der Stromverbrauch der einzelnen Sensoren muss so gering sein, dass
+                                             der Betrieb über eine handliche Batterie über einen längeren 
+                                             Zeitraum möglich ist.
+            \item{Robust:} Das System soll möglichst unempfindlich gegenüber Störungen sein.
+            \item{Erweiterbar:} Die System soll Softwareseitig erweiterbar sein. Insbesondere soll es 
+                                möglich sein, ohne Veränderungen an der Software Schnittstellen
+                                zu anderen Systemen hinzuzufügen. 
+            \item{Anpassbar:} Das System soll an sich verändernde Rahmenbedingungen anpassbar sein. Insbesondere
+                              sollen alle technischen Details des Funkprotokolls so gekapselt werden, dass ein
+                              Austausch des Funkprotokolles lediglich an einer Stelle des Systems Änderungen
+                              erfordern.
+        \end{itemize}
 
 \section{Der \emph{Analog Devices ADuC702X} Mikrocontroller}
 
