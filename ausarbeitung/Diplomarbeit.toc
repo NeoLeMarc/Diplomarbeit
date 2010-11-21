@@ -10,7 +10,7 @@
 \contentsline {subsection}{\numberline {2.1.2}Frequenzspreizung}{8}{subsection.2.1.2}
 \contentsline {subsubsection}{\numberline {2.1.2.1}\IeC {\"U}bersicht}{8}{subsubsection.2.1.2.1}
 \contentsline {subsubsection}{\numberline {2.1.2.2}FHSS: Frequency Hoping Spread Spectrum}{9}{subsubsection.2.1.2.2}
-\contentsline {subsubsection}{\numberline {2.1.2.3}DSSS: Direct Sequence Spred Spectrum}{9}{subsubsection.2.1.2.3}
+\contentsline {subsubsection}{\numberline {2.1.2.3}DSSS: Direct Sequence Spread Spectrum}{9}{subsubsection.2.1.2.3}
 \contentsline {subsubsection}{\numberline {2.1.2.4}FHSS vs. DSSS}{9}{subsubsection.2.1.2.4}
 \contentsline {section}{\numberline {2.2}Java}{10}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}\IeC {\"U}bersicht}{10}{subsection.2.2.1}
@@ -155,5 +155,5 @@
 \contentsline {section}{\numberline {B.5}Platine}{118}{section.B.5}
 \contentsline {section}{\numberline {B.6}Simulator}{118}{section.B.6}
 \contentsline {section}{\numberline {B.7}Zigbit Firmware}{118}{section.B.7}
-\contentsline {chapter}{Glossar}{121}{appendix*.9}
-\contentsline {chapter}{Literaturverzeichnis}{122}{appendix*.9}
+\contentsline {chapter}{Glossar}{122}{appendix*.9}
+\contentsline {chapter}{Literaturverzeichnis}{123}{appendix*.9}

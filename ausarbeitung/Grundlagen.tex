@@ -38,7 +38,7 @@
             Bei der Verwendung von kabellosen Übertragungsprotokollen kann es zu einer Vielzahl von 
             Störungen kommen. Übliche Störquelle sind meist andere Protokolle, die im selben Band arbeiten,
             oder elektrische Geräte, die durch ihre Abstrahlung den Funkverkehr stören\footnote{Insbesondere
-            sind hier Mikrowellengeräte zu nennen, die im 2.4GHz Band arbeiten}. Aber auch Aufgrund von 
+            sind hier Mikrowellengeräte zu nennen, die im 2.4~GHz Band arbeiten}. Aber auch Aufgrund von 
             Mehrwegeausbreitung kann es zu Problemen kommen.\\
             \\
             Da diese Störungen meist nur auf einzelnen Frequenzen vorliegt, kann mit Hilfe der 
@@ -48,11 +48,13 @@
             Frequenz vor, kann das Nutzsignal trotzem noch erfolgreich empfangen werden.
 
         \subsubsection{FHSS: Frequency Hoping Spread Spectrum}\label{FHSS}
+            \nomenclature{FHSS}{Frequency Hoping Spread Spectrum.}
             Bei dem \textsl{FHSS}-Verfahren handelt es sich um die einfachste Möglichkeit, ein
             Signal zu spreizen. Hierbei wird einfach nach einer bestimmten Zeiteinheit die
             Sendefrequenz gewechselt, so dass eine Spreizung über ein Zeitintervall erreicht wird.
 
-        \subsubsection{DSSS: Direct Sequence Spred Spectrum}\label{DSSS}
+        \subsubsection{DSSS: Direct Sequence Spread Spectrum}\label{DSSS}
+            \nomenclature{DSSS}{Direct Sequence Spread Spectrum.}
             Bei dem \textsl{FHSSS}-Verfahren wird das Nutzsignal über einen breiten Frequenzbereich
             aufgefächert. Hierzu wird das Nutzsignal mit einem Spreizkode multipliziert. 
             Beim Empfang teilt der Empfänger nun das empfangene Signal durch diesen Spreizcode
@@ -84,49 +86,83 @@
 
 \section{Java}
     \subsection{Übersicht}
+        \nomenclature{Java}{Programmiersprache der Firma Sun Microsystems.}
+        \nomenclature{JVM}{Java Virtual Machine.}
+        \nomenclature{JRE}{Java Runtime Environment.} 
+        \nomenclature{Host}{Computer, der Dienste anbietet.}
+        \nomenclature{Linux}{Freies \emph{UNIX}-artiges Betriebssystem.}
+        \nomenclature{UNIX}{Familie von Mehrbenutzerbetriebssystemen.}
+        \nomenclature{MacOS}{Betriebssystem der Firma Apple Computer.}
+        \nomenclature{Windows}{Betriebssystemfamilie der Firma Microsoft.}
+        \nomenclature{VM}{Virtuelle Maschine.}
 
-        Java ist eine von Sun Microsystems entwickelte Technologie zur platformunabhängigen 
+        \emph{Java} ist eine von Sun Microsystems entwickelte Technologie zur platformunabhängigen 
         Erstellung von Programmen. Sie besteht aus einer Programmiersprache, die ebenfalls den Namen
-        Java trägt, einem Compiler (javac) sowie der Java-Laufzeitumgebung (Java-Runtime-Environment - JRE).
-        Die Java-Laufzeitumgebung besteht aus einer virtuellen Maschine, die die kompilierten Programme ausführt.
-        Dies bietet den Vorteil, dass bei einem Wechsel der Host-Platform (also z.B. von Windows auf Linux oder MacOS) 
-        bestehende Programme nicht neu Übersetzt werden müssen.\\
+        \emph{Java} trägt, einem Compiler (\emph{javac}) sowie der \emph{Java-Laufzeitumgebung} 
+        (\emph{Java-Runtime-Environment} - \emph{JRE}).
+        Die \emph{Java-Laufzeitumgebung} besteht aus einer virtuellen Maschine, die die kompilierten Programme ausführt.
+        Dies bietet den Vorteil, dass bei einem Wechsel der Host-Platform (also z.B. von \emph{Windows} auf \emph{Linux}
+        oder \emph{MacOS}) bestehende Programme nicht neu Übersetzt werden müssen.\\
 
     \subsection{Programmiersprache}
-        Java ist eine moderne, statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von C entlehnten 
-        Syntax erinnert Java auf den ersten Blick an C++. Bei genauerer Betrachtung unterscheiden sich diese beiden 
-        Sprachen jedoch stark. So bietet Java im Gegensatz zu C++ keine Mehrfachvererbung sondern verwendet sogenannte
-        Interfaces. Java wird mit einer großen Standardbibliothek ausgeliefert, die für sehr viele Standardaufgaben
-        (z.B. Threadverwaltung, Netzwerkkommunikation, GUI-Entwicklung\footnote{GUI: Graphical-User-Interface, dt. 
-        graphische Benutzerschnittstelle.} oder typische Datenstrukturen wie Listen und Hashmaps) bereits eine
-        passende Lösung mitbringt. Durch den integrierten Packaging-Macheanismus wird darüber hinaus die übersichtliche
+        \nomenclature{C}{Imperative Programmiersprache, insbesonders zur hardwarenahen Entwicklung.}
+        \nomenclature{C++}{Objektorientierte Programmiersprache auf Grundlage von \emph{C}.}
+        \nomenclature{Vererbung}{Mechanismus zur Wiederverwendung von Oberklassenimplementierung in einer Unterklasse.}
+        \nomenclature{Klasse}{Datenstruktur, die Eigenschaften, Attribute und Methoden eines Objektes beschreibt.}
+        \nomenclature{Interface}{Beschreibung der Schnittstelle eines Objektes über Signaturlisten.}
+        \nomenclature{Signatur}{Typ und Name einer Methode, sowie ihrer Parameter.}
+        \nomenclature{Thread}{Abführungsfolge innerhalb eines Prozesses. Es können mehrere Threads in einem Prozess 
+            existieren.}
+        \nomenclature{Prozess}{Menge von einem oder mehreren Threads inklusive eines dazugehörigen Speicherbereiches.}
+        \nomenclature{GUI}{Graphische Benutzeroberfläche.}
+        \nomenclature{Hash}{Datenstruktur, die aus Paaren aus Schlüsseln und Werten besteht. Auch bekannt als
+                            assoziatives Array oder Record.} 
+        \nomenclature{Cast}{Ändern des statischen Datentyp einer Variable auf einen anderen Typ.}
+        \emph{Java} ist eine moderne, statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von 
+        \emph{C} entlehnten Syntax erinnert \emph{Java} auf den ersten Blick an \emph{C++}. Bei genauerer 
+        Betrachtung unterscheiden sich diese beiden Sprachen jedoch stark. So bietet \emph{Java} im Gegensatz zu 
+        \emph{C++} keine Mehrfachvererbung sondern verwendet sogenannte \emph{Interfaces}. \emph{Java} wird mit einer 
+        großen Standardbibliothek ausgeliefert, die für sehr viele Standardaufgaben
+        (z.B. \emph{Threadverwaltung}, Netzwerkkommunikation, \emph{GUI}-Entwicklung\footnote{GUI: 
+         Graphical-User-Interface, dt.  graphische Benutzerschnittstelle.} oder typische Datenstrukturen wie Listen und
+         \emph{Hashmaps}) bereits eine
+        passende Lösung mitbringt. Durch den integrierten Paketmachenismus wird darüber hinaus die übersichtliche
         Gliederung des Quelltextes in Unterdateien ermöglicht.\\
-        Aufgrund der statischen Typisierung und der genau definierten Laufzeitumgebung eignet sich Java besonders
+        Aufgrund der statischen Typisierung und der genau definierten Laufzeitumgebung eignet sich \emph{Java} besonders
         gut zur Erstellung von zuverlässigen und fehlerarmen Programmen. Werden konsequent Interfaces verwendet und
-        typunsichere Downcasts vermieden, so können die meisten Fehler bereits durch den Compiler erkannt und abgefangen 
-        werden. Kann ein solches Programm ohne Fehler und Warnungen kompiliert werden, besteht eine hohe Chance,
+        typunsichere \emph{Downcasts} vermieden, so können die meisten Fehler bereits durch den Compiler erkannt und 
+        abgefangen werden. Kann ein solches Programm ohne Fehler und Warnungen kompiliert werden, besteht eine hohe Chance,
         dass auch Laufzeitfehler vermieden werden.\\
-        Insbeonsdere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt wird, 
-        ist die Verwendung von klar definierten Schnittstellen (Interfaces) besonders wichtig, da nur so eine korrekte
+        Insbsondere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt wird, 
+        ist die Verwendung von klar definierten Schnittstellen (\emph{Interfaces}) besonders wichtig, da nur so eine korrekte
         Funktionalität nach dem Zusammensetzen der einzelnen Teile gewährleistet werden kann.
 
 \section{Python}
-    Python ist eine moderne, leicht zu erlernende objektorientierte Skriptsprache, die mittlerweile unter fast
-    jedem UNIX-artigen Betriebssystem wie Linux, MacOS oder BSD zum Lieferumfang gehört. Darüber hinaus sind
-    auch fertige Pakete für Windows verfügbar. Python eignet sich daher besonders zum Schreiben von kleinen
-    bis mittelgroßen Skripten. In dieser Diplomarbeit wird Python für die Interaktion mit dem Betriebssystem
-    eingesetzt, wenn diese Aufgaben in Java entweder garnicht oder nur sehr schwierig zu Lösen wären. Beispiele
-    hierfür sind die automatische Erkennung von \emph{USB-Geräten} oder der Zugriff auf den seriellen Port.
-    Da Python eine sehr kompakte und verständliche Implementierung von Programmcode zulässt, wurde in dieser
+    \nomenclature{Python}{Objektorientierte Skriptsprache.}
+    \nomenclature{BSD}{\emph{UNIX}-artiges Betriebssystem.}
+    \nomenclature{USB}{Universal Serial Bus - Schnittstelle, die seit ca. 2000 an jedem PC vorhanden ist.}
+    \nomenclature{Skritpsprache}{Programmiersprache, deren Quellcode nicht kompiliert wird.}
+    \nomenclature{Kompilieren}{Übersetzen des Quellcodes eines Programms in ausführbaren Binärcode.}
+    \nomenclature{Pseudocode}{Vereinfachter Quellcode zur einfachen Beschreibung von Algorithmen.}
+    \emph{Python} ist eine moderne, leicht zu erlernende objektorientierte \emph{Skriptsprache}, die mittlerweile 
+    unter fast jedem \emph{UNIX}-artigen Betriebssystem wie \emph{Linux}, \emph{MacOS} oder \emph{BSD} zum Lieferumfang 
+    gehört. Darüber hinaus sind auch fertige Pakete für \emph{Windows} verfügbar. \emph{Python} eignet sich daher 
+    besonders zum Schreiben von kleinen
+    bis mittelgroßen Skripten. In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
+    eingesetzt, wenn diese Aufgaben in \emph{Java} entweder garnicht oder nur sehr schwierig zu Lösen wären. Beispiele
+    hierfür sind die automatische Erkennung von \emph{USB}-Geräten oder der Zugriff auf den seriellen Port.
+    Da \emph{Python} eine sehr kompakte und verständliche Implementierung von Programmcode zulässt, wurde in dieser
     Diplomarbeit weitestgehend versucht, auf Beispiele in Pseudocode zu verzichten, und statt dessen lauffähige
-    Python Programme zu verwenden. Dies ist nicht nur eindeutiger, sondern bietet gleichzeitig den Vorteil,
+    \emph{Python} Programme zu verwenden. Dies ist nicht nur eindeutiger, sondern bietet gleichzeitig den Vorteil,
     dass die meisten Programmbeispiele direkt in lauffähige Programme übernommen werden können.
 
 \section{Corba}
-    Corba (Common Object Request Broker Architecture) ist eine objektorientierte Middleware zur Verteilung von 
-    Objekten auf verschiedenen Rechnern innerhalb eines Netzwerkes. Das besondere hierbei ist, dass Corba
-    nicht an eine bestimmte Programmiersprache gebunden ist. Die einzelnen Objekte bzw. komponenten können
-    hierbei in jeder beliebigen Programmiersprache implementiert werden, die eine Corba-Anbindung besitzt.
+    \nomenclature{Corba}{Programmiersprachen-unabhängige Middleware.}
+    \nomenclature{Middleware}{Softwarelösung zum Zugriff auf von Objekten auf entfernten Rechnern.}
+    \emph{Corba} (\emph{Common Object Request Broker Architecture}) ist eine objektorientierte \emph{Middleware} 
+    zur Verteilung von Objekten auf verschiedenen Rechnern innerhalb eines Netzwerkes. Das besondere hierbei ist, 
+    dass \emph{Corba} nicht an eine bestimmte Programmiersprache gebunden ist. Die einzelnen Objekte bzw. Komponenten 
+    können hierbei in jeder beliebigen Programmiersprache implementiert werden, die eine \emph{Corba}-Anbindung besitzt.
     Im Rahmen dieser Diplomarbeit ist diese Programmiersprachenunabhängigkeit sehr wichtig, da bestimmte
-    Teile (z.B. die Graphische Oberfläche für Mobiltelefone oder die Ansteuerung des USB-Sticks) nicht in 
-    Java realisiert werden können, und statt dessen auf C++ sowie Python ausgewichen werden musste.
+    Teile (z.B. die Graphische Oberfläche für Mobiltelefone oder die Ansteuerung des \emph{USB-Sticks}) nicht in 
+    \emph{Java} realisiert werden können, und statt dessen auf \emph{C++} sowie \emph{Python} ausgewichen werden musste.
