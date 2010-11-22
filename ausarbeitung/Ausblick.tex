@@ -3,10 +3,11 @@
 \chapter{Zusammenfassung und Ausblick}
 
 \section{Zusammenfassung}
+\nomenclature{ANT+}{Proprietärer Funkstandard für die Datenübertragung im Nahbereich, z.B. für Pulsuhren.}
 In dieser Arbeit wurde ein kabelloses Sensornetzwerk zur Überwachung von Patienten bei einem 
-Massenanfall von Verletzten (MANV) entworfen und implementiert. Zunächst wurden 
+Massenanfall von Verletzten (\emph{MANV}) entworfen und implementiert. Zunächst wurden 
 verschiedene kabellose Sensornetzprotokolle vorgestellt und auf ihre Eignung als Grundlage für
-die Patientenüberwachung in einem MANV überprüft. Bereits in diesem Schritt wurde die Entscheidung
+die Patientenüberwachung in einem \emph{MANV} überprüft. Bereits in diesem Schritt wurde die Entscheidung
 getroffen, eine Lösung auf Basis des \emph{ZigBee}-Protokolles zu implementieren. Hierfür sprachen
 der geringste Stromverbrauch aller verfügbaren Lösungen, die hohe Störsicherheit sowie die
 gute Verfügbarkeit passender Hardware auf dem Markt. Es wurde weiterhin festgestellt, dass sich die
@@ -16,8 +17,8 @@ insbesondere auf die Austauschbarkeit des Netzwerkprotokolles zu achten ist. Im 
 verschiedene aktuell auf dem Markt erhältliche Lösungen zur kabellosen Patientenüberwachungen betrachtet, 
 und mit den Erkenntnissen aus der Analyse der verschiedenen Netzwerkprotokolle auf ihre Eignung untersucht.
 Hierbei wurde festegestellt, dass alle betrachteten Lösungen eher für den Einsatz im Krankenhaus
-gedacht sind, und für den Einsatz in während eines MANVs nicht geeignet sind. Weiterhin wurden verwandte
-Projekte, die sich ebenfalls mit der technischen Patientenversorgung während eines MANVs beschäftigen
+gedacht sind, und für den Einsatz in während eines \emph{MANVs} nicht geeignet sind. Weiterhin wurden verwandte
+Projekte, die sich ebenfalls mit der technischen Patientenversorgung während eines \emph{MANVs} beschäftigen
 vorgestellt, und die Ähnlichkeiten und Unterschiede gezeigt.\\
 Mit den aus der Betrachtung der Stand der Technik gewonnen Erkenntnissen konnte nun zur Analyse 
 übergegangen werden. Hier wurde zunächst eine Reihe von Anforderungen erarbeitet, die die zu entwerfende 
@@ -49,7 +50,7 @@ Nachdem die Implementierung abgeschlossen war, folgte eine Reihe von umfassenden
 festzustellen, wie gut die vorgestellte Lösung die in der Analyse aufgestellten Anforderungen erfüllt. Neben
 Reichweite, Stromverbrauch und Erweiterbarkeit des Funknetzwerkes wurde hierzu auch die Leistungsfähigkeit der 
 Software in Hinblick auf Anzahl der Teilnehmer, Austauschbarkeit des \emph{MANVConnectors} und Interoperabilität
-zwischen \emph{MANVSuite}, \emph{MANVConnector} und Sensornetzwerkkeit intensiv untersucht. Alle Tests verliefen
+zwischen \emph{MANVSuite}, \emph{MANVConnector} und Sensornetzwerk intensiv untersucht. Alle Tests verliefen
 positiv, und die entworfene Lösung konnte in fast allen Punkten die Anforderungen, die in Abschnitt~\ref{anforderungen}
 aufgestellt wurden, erfüllen. Lediglich bei der Datensicherheit innerhalb des \emph{ZigBee}-Netzwerkes mussten
 Einschränkungen hingenommen werden, da die Firmware des Herstellers \emph{Atmel} nicht den versprochenen
@@ -60,10 +61,10 @@ umfangreiches Softwarepaket inkl. Quellcode und Dokumentation, die die zeitnahe 
 \section{Sicherheit des Netzwerkes}
 \label{Sicherheit}
 \subsection{Aktueller Stand}
-Grundsätzlich unterstützt ZigBee eine 128-Bit AES-Verschlüsselung. Die SerialNet-Firmware der in dieser Diplomarbeit
-eingesetzten ZigBee-Module der Firma Atmel bietet jedoch in der aktuell vorliegenden Version (1.8.0) keine Möglichkeit,
-diese Verschlüsselung zu verwenden. Laut Auskunft des E-Mail Supportes der Firma Atmel ist dieses Feature auch für
-zukünftige Versionen nicht geplant.\\
+Grundsätzlich unterstützt \emph{ZigBee} eine 128-Bit \emph{AES}-Verschlüsselung. Die \emph{SerialNet-Firmware} der in 
+dieser Diplomarbeit eingesetzten \emph{ZigBee-Module} der Firma \emph{Atmel} bietet jedoch in der aktuell vorliegenden 
+Version (1.8.0) keine Möglichkeit, diese Verschlüsselung zu verwenden. Laut Auskunft des E-Mail Supportes der Firma 
+\emph{Atmel} ist dieses Feature auch für zukünftige Versionen nicht geplant.\\
 \\
 Da das Thema Sicherheit -- gerade für ein medizinisches Netzwerk -- natürlich eine nicht zu vernachlässigende Rolle spielt,
 An dieser Stelle sollen einigen Anregungen gegeben werden, wie eine Sicherheitskonzept für das entworfene Netzwerk aussehen 
@@ -73,21 +74,24 @@ könnte.
 
 \subsubsection{Ausspähen von Patientendaten}
 Aktuell werden über das Netzwerk Vitaldaten von Patienten (Puls und Atmung) pseudonym versendet. Als Pseudonym dient 
-hierbei die Hardware-Adresse des versendenden ZigBee-Moduls. Passives Mitschneiden der Daten ist so lange kein Problem,
+hierbei die Hardware-Adresse des versendenden \emph{ZigBee}-Moduls. Passives Mitschneiden der Daten ist so lange kein Problem,
 so lange sich keine Zuordnung zwischen der Identität des Patienten und der Hardware-Adresse des verwendeten Moduls
 herstellen lässt. Hierfür ist eine direkte räumliche Nähe zwischen Patient und Angreifer notwendig. 
-Während eines MANV-Szenarios sollte dies jedoch aktiv durch die Rettungskräftem, insbesondere durch die Absperrung durch
-die Polizei vor Ort verhindert werden. Sollte es einem Angreifer gelingen, nahe genug an das entsprechende Modul
+Während eines \emph{MANV}-Szenarios sollte dies jedoch aktiv durch die Rettungskräftem, insbesondere durch die Absperrung 
+durch die Polizei vor Ort verhindert werden. Sollte es einem Angreifer gelingen, nahe genug an das entsprechende Modul
 heranzukommen, um eine Zuordnung vorzunehmen, ist sowieso davon auszugehen, dass er auch in der Lage wäre, Bild oder
 Videoaufnahmen des Patienten herzustellen, was im Zweifelsfall eine deutlich größeren Eingriff in die Privatsphäre 
 darstellen würde.
 
 \subsubsection{Aktiver Angriff gegen das Netzwerk}
+\nomenclature{Replay}{Attacke, bei der legitime Datenpakete abgefangen, und zu einem späteren Zeitpunkt wieder ins
+                      Netzwerk eingegeben werden.}
 Ein größeres Problem als durch das passive Belauschen des Datenverkehrs geht von aktiven Angriffen gegen das Netzwerk
-aus. Innerhalb eines unverschlüsselten Netzwerkes kann ein Angreifer die Identität eines beliebigen ZigBee-Moduls 
+aus. Innerhalb eines unverschlüsselten Netzwerkes kann ein Angreifer die Identität eines beliebigen \emph{ZigBee}-Moduls 
 übernehmen; er hat somit die Möglichkeit entweder falsche Vitaldaten oder aber Befehle an die einzelne Sensoren zu
 versenden. Dies könnte im schlimmsten Falle bedeuten, dass Alarme im Netzwerk verloren gehen, und somit Patienten
-zu Schaden kommen. Da selbst bei aktivierter ZigBee-Verschlüsselung kein Schutz gegenüber Replay-Attacken besteht hätte
+zu Schaden kommen. Da selbst bei aktivierter \emph{ZigBee}-Verschlüsselung kein Schutz gegenüber 
+\emph{Replay}-Attacken besteht hätte
 ein Angreifer weiterhin die Möglichkeit, eine aufgefangene Statusnachricht oder einen aufgegangen Befehl beliebig oft
 wieder in das Netzwerk einzubringen und so eine Störung zu erreichen.
 
@@ -97,35 +101,43 @@ zum erliegen zu bringen. Im Falle eines unverschlüsselten Netzwerkes kann des e
 der Angreifer die Identität des Netzwerkkoordinators anzunehmen, und somit die Statusnachrichten ins Leere zu leiten. Eine
 andere Möglichkeit besteht darin, das Netzwerk mit Paketen zu überfluten, und so den Datenverkehr der anderen Teilnehmer
 zu blockieren. Aber auch bei Einsatz von Verschlüsselung ist eine Störung des Netzwerkes möglich. Hierzu muss ein Angreifer
-einfach mit sehr großer Sendeleistung auf allen ZigBee-Frequenzen senden, um diese somit zu blockieren. 
+einfach mit sehr großer Sendeleistung auf allen \emph{ZigBee}-Frequenzen senden, um diese somit zu blockieren. 
 
 \subsection{Abwehrmaßnahmen}
 
 \subsubsection{ZigBee-Verschlüsselung}
-Die verwendeten ZigBee-Module der Firma Atmel unterstützen hardwareseitig die im ZigBee-Standard definierte 128-Bit 
-AES-Verschlüsselung. Um diese einsetzen zu können, muss die momentan verwendete SerialNet-Firmware gegen eine eigene
-Firmware ausgetauscht werden. Atmel stellt hierzu einen ZigBee Pro basiertes SDK zur Verfügung, mit Hilfe dessen
-eine entsprechende Firmware mit vertretbarem Aufwand entwickelt werden kann. Hierbei bietet es sich an, einen an die
-SerialNet-Firmware angelehnten AT-Befehlssatz zu implementieren, um alle bestehenden Komponenten wie den MANV-Connector
-und die Firmware des ADuC-Mikrocontrollers weiterverwenden zu können.
+Die verwendeten \emph{ZigBee}-Module der Firma \emph{Atmel} unterstützen hardwareseitig die im 
+\emph{ZigBee}-Standard definierte 128-Bit 
+\emph{AES}-Verschlüsselung. Um diese einsetzen zu können, muss die momentan verwendete \emph{SerialNet-Firmware}
+gegen eine eigene Firmware ausgetauscht werden. \emph{Atmel} stellt hierzu einen \emph{ZigBee Pro} basiertes 
+\emph{SDK} zur Verfügung, mit Hilfe dessen eine entsprechende \emph{Firmware} mit vertretbarem Aufwand entwickelt 
+werden kann. Hierbei bietet es sich an, einen an die \emph{SerialNet-Firmware} angelehnten \emph{AT-Befehlssatz} zu 
+implementieren, um alle bestehenden Komponenten wie den \emph{MANV-Connector} und die Firmware des 
+\emph{ADuC-Mikrocontrollers} weiterverwenden zu können.
 
 \subsubsection{Befehlszähler}
-Die ZigBee-Verschlüsselung schützt nicht gegen Replay-Attacken. Eine einfache aber effektive Methode zur Abwehr solcher
+Die \emph{ZigBee}-Verschlüsselung schützt nicht gegen \emph{Replay}-Attacken. Eine einfache aber effektive Methode 
+zur Abwehr solcher
 Angriffe ist die Verwendung einer Sequenznummer. Hierbei wird jeder Nachricht eine fortlaufende Nummer hinzugefügt. 
 Der Empfänger führt nun eine Liste, in der für jeden Absender die zuletzt verwendete Sequenznummer enthalten ist.
 Nachrichten, die eine niedrigere Sequenznummer enthalten werden verworfen. Diese Methode lässt sich mit geringem
-Speicheraufwand ( O(N) für den Coordinator, O(1) für einen Endknoten) implementieren. Als Ort der Implementierung
-bietet sich entweder die Firmware des ADuC-Mikrocontrollers sowie der MANV-Connector oder aber direkt die ZigBit-Firmware
-an.
+Speicheraufwand ( O(N) für den \emph{Coordinator}, O(1) für einen Endknoten) implementieren. Als Ort der Implementierung
+bietet sich entweder die Firmware des \emph{ADuC-Mikrocontrollers} sowie der \emph{MANV-Connector} oder aber direkt 
+die \emph{ZigBit-Firmware} an.
 
 \subsubsection{Schutz auf Applikationsebene}
-Alternativ zur Modifikation der ZigBit-Firmware besteht auch die Möglichkeit, auf Applikationsebene zu Verschlüsseln.
-Sowohl für Java (OpenSSL) als auch für den ADuC-Mikrocontroller (WAKAN-Crypto-Toolkit) sind entsprechende Bibliotheken
-verfügbar. Eine Implementierung auf Applikationsebene hätte den Vorteil, dass keine Änderung an der ZigBit-Firmware
+\nomenclature{OpenSSL}{Open Source Bibliothek, die viele Verschlüsselungsverfahren implementiert.}
+\nomenclature{SSL}{Secure Socket Layer}
+\nomenclature{TLS}{Transport Layer Security -- Nachfolger von SSL.}
+\nomenclature{Denial-Of-Service}{Blockieren eines Dienstes durch Ausnutzen eines Softwarefehlers.}
+Alternativ zur Modifikation der \emph{ZigBit-Firmware} besteht auch die Möglichkeit, auf Applikationsebene zu Verschlüsseln.
+Sowohl für Java (OpenSSL) als auch für den \emph{ADuC-Mikrocontroller} (\emph{WAKAN-Crypto-Toolkit}) sind 
+entsprechende Bibliotheken
+verfügbar. Eine Implementierung auf Applikationsebene hätte den Vorteil, dass keine Änderung an der \emph{ZigBit-Firmware}
 notwendig wären, und daher ggf. einfacher durchzuführen ist. Von Nachteil ist jedoch, dass diese Lösung keinen Schutz
 gegen den Beitritt fremder Teilnehmer in das Netzwerk bietet. Zwar können diese keine Befehle schicken oder Daten ausspähen,
-allerdings ist es immer noch möglich, durch die Verwendung von gefälschten Absenderadressen eine Denial-Of-Service-Attacke
-gegen das Netzwerk durchzuführen. 
+allerdings ist es immer noch möglich, durch die Verwendung von gefälschten Absenderadressen eine 
+\emph{Denial-Of-Service-Attacke} gegen das Netzwerk durchzuführen. 
 
 \section{Verbesserung der Reichweite und Störsicherheit}
 \subsection{Anderer Frequenzbereich}

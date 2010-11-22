@@ -15,5 +15,7 @@ MAKEIDX_FLAGS="-o Diplomarbeit.nls -s nomencl.ist Diplomarbeit.nlo"
 include /usr/share/latex-mk/latex.gmk
 
 Diplomarbeit.nls: Diplomarbeit.nlo
-	pdflatex  Diplomarbeit.tex *.tex
 	makeindex -o Diplomarbeit.nls -s nomencl.ist Diplomarbeit.nlo
+
+Diplomarbeit.nlo:
+	pdflatex  Diplomarbeit.tex *.tex

@@ -101,7 +101,7 @@
 \contentsline {subsubsection}{\numberline {6.2.1.1}Zugriff auf UART}{71}{subsubsection.6.2.1.1}
 \contentsline {section}{\numberline {6.3}MANVConnector}{72}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Zugriff auf die serielle Schnittstelle}{72}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit}-USB-Sticks}{76}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit-USB-Sticks}}{76}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}CORBA-Anbindung}{79}{subsection.6.3.3}
 \contentsline {chapter}{\numberline {7}Ergebnisse}{81}{chapter.7}
 \contentsline {section}{\numberline {7.1}Realisierbarkeit}{81}{section.7.1}
@@ -155,5 +155,5 @@
 \contentsline {section}{\numberline {B.5}Platine}{118}{section.B.5}
 \contentsline {section}{\numberline {B.6}Simulator}{118}{section.B.6}
 \contentsline {section}{\numberline {B.7}Zigbit Firmware}{118}{section.B.7}
-\contentsline {chapter}{Glossar}{126}{appendix*.9}
-\contentsline {chapter}{Literaturverzeichnis}{127}{appendix*.9}
+\contentsline {chapter}{Glossar}{119}{section.B.7}
+\contentsline {chapter}{Literaturverzeichnis}{128}{appendix*.9}

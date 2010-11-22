@@ -4,7 +4,6 @@ Wichtig:
 - Vorwort
 - Danksagung
 - Abstract
-- Glossar
 - Bildquellen angeben
 
 Kür:
