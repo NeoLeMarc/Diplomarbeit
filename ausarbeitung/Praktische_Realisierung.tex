@@ -2,13 +2,16 @@
 %%%-----------------------------------------------UMSETZUNG/VORBEREITUNGEN-------------------------------------------------------------
 \chapter{Praktische Realisierung des Sensornetzes}\label{implementierung}
 
+In diesem Kapitel wird die Implementierung des Sensornetzwerkes beschrieben, welche Probleme dabei aufgetreten
+sind und wie diese gelöst wurden.
+
 \section{Hardware}
 \subsection{Anbindung des ZigBit-Moduls an den USB-Port}
 \nomenclature{IC}{Integrierter Schaltkreis}
 Das \emph{ZigBit}-Modul kann grundsätzlich entweder über \emph{SPI} oder \emph{UART} angesprochen werden. 
 Zur Realisierung des \emph{USB-Sticks} bietet sich die Verwendung des \emph{UARTs} an, da eine breite Palette 
 von fertigen \emph{ICs} zur Verfügung steht, mit deren Hilfe ein \emph{UART} an einen \emph{USB}-Bus angebunden werden 
-kann. Auf Seiten des Betriebssystems präsentiert sich der IC wie ein serieller Port und kann softwareseitig
+kann. Auf Seiten des Betriebssystems präsentiert sich der \emph{IC} wie ein serieller Port und kann softwareseitig
 wie ein solcher angesprochen werden. Die Firma \emph{Embedded Projects} bietet mit der \emph{USB-UART-Bridge}
 bereits eine fertige Lösung an, auf der ein entsprechender \emph{IC}, ein Spannungsregler für 3.3~V-Versorgungsspannung
 sowie ein \emph{USB-Anschluss} bereits integriert sind. Das \emph{ZigBit}-Modul wird nun auf die in 
