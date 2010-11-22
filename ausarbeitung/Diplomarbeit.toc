@@ -82,7 +82,7 @@
 \contentsline {subsection}{\numberline {5.2.4}LEDs}{57}{subsection.5.2.4}
 \contentsline {subsubsection}{\numberline {5.2.4.1}Beschreibung der einzelnen LEDs}{57}{subsubsection.5.2.4.1}
 \contentsline {subsubsection}{\numberline {5.2.4.2}Diagnosecodes}{57}{subsubsection.5.2.4.2}
-\contentsline {subsubsection}{\numberline {5.2.4.3}\emph {MANV-USB-Connector}}{58}{subsubsection.5.2.4.3}
+\contentsline {subsubsection}{\numberline {5.2.4.3}\emph {MANV-USB-Stick}}{58}{subsubsection.5.2.4.3}
 \contentsline {section}{\numberline {5.3}Software}{58}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}MANVNode Firmware}{58}{subsection.5.3.1}
 \contentsline {subsubsection}{\numberline {5.3.1.1}Funktionalit\IeC {\"a}t}{58}{subsubsection.5.3.1.1}
@@ -155,5 +155,5 @@
 \contentsline {section}{\numberline {B.5}Platine}{118}{section.B.5}
 \contentsline {section}{\numberline {B.6}Simulator}{118}{section.B.6}
 \contentsline {section}{\numberline {B.7}Zigbit Firmware}{118}{section.B.7}
-\contentsline {chapter}{Glossar}{124}{appendix*.9}
-\contentsline {chapter}{Literaturverzeichnis}{125}{appendix*.9}
+\contentsline {chapter}{Glossar}{126}{appendix*.9}
+\contentsline {chapter}{Literaturverzeichnis}{127}{appendix*.9}

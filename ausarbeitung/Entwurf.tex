@@ -49,11 +49,10 @@ zusammenwirken:
 \subsubsection{Beschreibung}
 \Abbildungps{!htb}{1.25}{diagramme/platine_manvnode-crop.pdf}{abbildung_manvnode}{Entwurf der Platine der MANVNode.}
 \Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Entwurf der Platine des USB-Sticks.}
-Die MANVNode ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
-ADuC-7026-Mikrocontroller der Firma Analog Devices sowie ein Atmel ZigBit-Funkmodul des Typs ATZB-24-A2. Die Platine 
-dient zur Simulation des Erste-Hilfe-Sensors. An Stelle einer echten Messung generiert die Platine Messwerte mit Hilfe 
-eines Zufallszahlen-Generators.
-Dier Generator kann in drei Zuständen beschrieben werden:
+Die \emph{MANVNode} ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
+\emph{ADuC-7026-Mikrocontroller} der Firma \emph{Analog Devices} sowie ein Atmel ZigBit-Funkmodul des Typs \emph{ATZB-24-A2}. 
+Die Platine dient zur Simulation des \emph{Erste-Hilfe-Sensors}. An Stelle einer echten Messung generiert die 
+Platine Messwerte mit Hilfe eines Zufallszahlen-Generators.  Dier Generator kann in drei Zuständen beschrieben werden:
 
 \begin{itemize}
     \item{Grün:} Simulation eines Patienten mit gutem Kreislaufzustand. Puls zwischen 60 und 120 Schlägen pro Minute, 
@@ -72,13 +71,15 @@ Durch die Kombination der drei LEDs werden zusätzlich Status- und Fehlerinforma
 Initialisierungsvorgangs ausgegeben.
 
 \subsection{Spannungsversorgung}
+\nomenclature{mF}{Millifarad}
+\nomenclature{LED}{Leuchtdiode}
 Um die Platine möglichst vielseitig einzusetzen wurde wert auf eine möglichst flexible Spannungsversorgung gelegt. Diese
 soll möglichst Robust gegenüber Spannungsschwankungen sein. Kern der Spannungsversorgung ist ein 
-Low-Dropout-Spannungsregler des Typs LP2980-3.3 der Firma National Semiconductor. Dieser liefert eine stabile
-3,3V Spannung bei einem maximalen Strom von 50mA. Die Eingangsspannung kann zwischen 2.1V bis 16V variiert werden.
-Die Spannungsversorgung kann damit z.B. über USB (5V-Versorgungsspannung), ein externes Netzteil oder eine 
-9V-Blockbatterie gespeist werden. Durch die hohe maximale Versorgungsspannung von 9V sind Schäden durch versehentliches
-anschließen eines falschen Netzteils weitestgehend ausgeschlossen. Die Spannungsversorgung ist zusätzlich mit einem 10mF 
+Low-Dropout-Spannungsregler des Typs \emph{LP2980-3.3} der Firma \emph{National Semiconductor}. Dieser liefert eine stabile
+3,3~V Spannung bei einem maximalen Strom von 50~mA. Die Eingangsspannung kann zwischen 2.1~V bis 16~V variiert werden.
+Die Spannungsversorgung kann damit z.B. über USB (5~V-Versorgungsspannung), ein externes Netzteil oder eine 
+9~V-Blockbatterie gespeist werden. Durch die hohe maximale Versorgungsspannung von 9~V sind Schäden durch versehentliches
+anschließen eines falschen Netzteils weitestgehend ausgeschlossen. Die Spannungsversorgung ist zusätzlich mit einem 10~mF 
 Kondensator stabilisiert.
 
 Zusätzlich wurde die die Spannungsversorgung weiter stabilisiert. Hierzu wurde jeder Spannungseingang aller Bauteile der
@@ -90,20 +91,22 @@ aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
 
 \subsubsection{Serielle Schnittstellen}
 Die \emph{MANVNode}-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
-Schnittstelle (JP1) vorhanden, welche der Standardbelegung des Programmierkabels des ADuC-7026-Evaluationsboards besitzt.
-Bereits vorhandene Programmierkabel können somit ohne weiteres zur Programmierung des Mikrocontrollers verwendet werden.
-Zusätzlich besthet die Möglichkeit, auf die serielle Schnittstelle des ZigBit-Moduls zuzugreifen, worüber das Herunterladen 
-von Firmware auf das Modul, sowie der Einstellung bestimmter Parameter wie der Netzwerkkennung des Gerätes möglich ist.
-Der Zugriff erfolgt ebenfalls über die Stiftleiste JP1, allerdings muss hierfür RX- und TX-Leitung des Programmierkabels 
-verdreht, und alle Jumper des Schalters S1 unterbrochen werden. 
+Schnittstelle (JP1) vorhanden, welche der Standardbelegung des Programmierkabels des \emph{ADuC-7026-Evaluationsboards}
+besitzt.  Bereits vorhandene Programmierkabel können somit ohne weiteres zur Programmierung des Mikrocontrollers 
+verwendet werden.  Zusätzlich besthet die Möglichkeit, auf die serielle Schnittstelle des \emph{ZigBit}-Moduls 
+zuzugreifen, worüber das Herunterladen von \emph{Firmware} auf das Modul, sowie der Einstellung bestimmter 
+Parameter wie der Netzwerkkennung des Gerätes möglich ist.
+Der Zugriff erfolgt ebenfalls über die Stiftleiste JP1, allerdings muss hierfür \emph{RX-} und \emph{TX}-Leitung des 
+Programmierkabels verdreht, und alle Jumper des Schalters S1 unterbrochen werden. 
 
 \subsubsection{JTAG}
 Die \emph{MANVNode}-Platine verfügt neben seriellen auch über eine JTAG-Schnittstelle. Diese ermöglich einen Zugriff mit
-gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder Kyle $\mu{}$Vision. Über die Schnittstelle kann sowohl 
-Programmierung als auch Debugging des ADuC-7026-Mikrocontrollers durchgeführt werden. Ein Zugriff auf das ZigBit
-Modul ist allerdings nur indirekt möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Consolenverbindung
-über den UART des ADuC-7026-Mikrocontrollers zu öffnen, so direkt mit dem ZigBit-Modul kommunikation möglich ist.}.
-Ein Zugriff über JTAG ist nicht vorgesehen.
+gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder \emph{Kyle} $\mu{}$Vision.
+Über die Schnittstelle kann sowohl Programmierung als auch Debugging des \emph{ADuC-7026-Mikrocontrollers}
+durchgeführt werden. Ein Zugriff auf das \emph{ZigBit} Modul ist allerdings nur indirekt 
+möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Consolenverbindung
+über den \emph{UART} des \emph{ADuC-7026-Mikrocontrollers} zu öffnen, so direkt mit dem \emph{ZigBit}-Modul 
+Kommunikation möglich ist.}.  Ein Zugriff über \emph{JTAG} ist nicht vorgesehen.
 
 \subsection{LEDs}
 
@@ -123,8 +126,8 @@ Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des
     
 
 \subsubsection{Diagnosecodes}
-Neben den oben dargestellten einfachen Signalisierungen hat die Firmware der \emph{MANVNode}-Platine die Möglichkeit, über die
-Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgende Codierung:
+Neben den oben dargestellten einfachen Signalisierungen hat die \emph{Firmware} der \emph{MANVNode}-Platine die 
+Möglichkeit, über die Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgende Codierung:
 
 \begin{itemize}
     \item{Led GREEN blinkt in 1-Sekunden-Perioden:} Der ADuC-7026-Mikrocontroller befindet sich im Bootmodus. Ein Reset des
@@ -143,28 +146,33 @@ Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgen
                                                         Funknetzwerk und der Powersafe-Modus ist aktiv.
 \end{itemize}
                                                         
-\subsubsection{\emph{MANV-USB-Connector}}
+\subsubsection{\emph{MANV-USB-Stick}}
 \Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
 
-Der \emph{MANV-USB-Connector} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen USB-Stick, der einen
-ZigBit-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das ZigBit-Modul mit Strom versorgen, sowie eine
-Umsetzung der UART-Schnittstelle des ZigBit-Moduls auf USB vornehmen. Für die Stromversorgung ist es notwendig, die 5V der
-USB-Schnittstelle auf die 3V des ZigBit-Moduls umzusetzen.
+Der \emph{MANV-USB-Stick} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen 
+\emph{USB-Stick}, der ein \emph{ZigBit}-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das 
+\emph{ZigBit}-Modul mit Strom versorgen, sowie eine Umsetzung der \emph{UART}-Schnittstelle des \emph{ZigBit}-Moduls 
+auf \emph{USB} vornehmen. Für die Stromversorgung ist es notwendig, die 5~V der
+\emph{USB}-Schnittstelle auf die 3~V des \emph{ZigBit}-Moduls umzusetzen.
 
 \section{Software}
 \subsection{MANVNode Firmware}
 
 \subsubsection{Funktionalität}
+\nomenclature{Busy-Waiting}{Warten auf ein Ereignis unter Verschwendung von Prozessorleistung.}
+\nomenclature{ISR}{Interrupt-Service-Routine}
+\nomenclature{Ringpuffer}{Datenstruktur, die sich selbst überschreibt, wenn sie über ein gewisses Maß gefüllt wurde.}
+\nomenclature{Treiber}{Softwareprogramm, dass die Ansteuerung eines Hardware-Gerätes übernimmt.}
 Die Firmware der \emph{MANVNode} dient dem Entwickeln und Testen eines Treibers für das \emph{ZigBit}-Modul. Dieser
 Treiber wird später in den Erste-Hilfe-Sensor integriert werden. Zusätzlich bietet die \emph{MANVNode} Funktionalität,
 die zur Simulation des Erste-Hilfe-Sensors gegenüber der \emph{MANVSuite} dient. Hierzu sollen neben dem 
 \emph{ZigBit}-Treiber folgende Funktionalitäten integriert werden:
 
 \begin{itemize}
-    \item Zufallszahlengenerator zum Senden zufälliger Messwerte
-    \item Änderung des Zustands des Zufallszahlengenerators über Tasterkj
-    \item Ansteuerung von LEDs zur Ausgabe des Zustands des Zufallszahlengenerators
-    \item Ansteuerung eines Piezzo-Summers zur Signalisierung von Alarmen
+    \item Zufallszahlengenerator zum Senden zufälliger Messwerte.
+    \item Änderung des Zustands des Zufallszahlengenerators über Taster.
+    \item Ansteuerung von LEDs zur Ausgabe des Zustands des Zufallszahlengenerators.
+    \item Ansteuerung eines Piezzo-Summers zur Signalisierung von Alarmen.
 \end{itemize}
 
 
@@ -239,7 +247,7 @@ Dieser Ablauf ist in Abbildung~\ref{zigbit_mainloop} als Ablaufdiagramm dargeste
 
 \subsection{MANVSuite}
 
-In dieser Arbeit wurde ein Java-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die 
+In dieser Arbeit wurde ein \emph{Java}-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die 
 Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite. 
 
 
@@ -247,21 +255,23 @@ Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite.
 \Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des \emph{MANVConnectors}}
 
 
-Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten die von dem \emph{MANV-USB-Connector} empfangen wurden in Corba-Events 
-umzusetzen, und an den \emph{MANVServer} weiterzuleiten. Andererseits empfängt sie Corba-Events vom \emph{MANVServer}, dekodiert
-diese und sendet diese in Form von Sensornetz Befehlen an die zuständigen \emph{MANVNodes} weiter.
+Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten die von dem \emph{MANV-USB-Connector} empfangen wurden in 
+\emph{Corba-Events} umzusetzen, und an den \emph{MANVServer} weiterzuleiten. Andererseits empfängt sie 
+\emph{Corba-Events} vom \emph{MANVServer}, dekodiert diese und sendet diese in Form von Sensornetz Befehlen an die 
+zuständigen \emph{MANVNodes} weiter.
 
-Bei der Kommunikation mit dem auf dem USB-Stick aufgebrachten ZigBee-Modul stellen sich grundsätzlich die selben 
-Synchronisierungsprobleme wie in der \emph{MANVFirmware}. Da der \emph{MANVConnector} jedoch alle Möglichkeiten der Java-Virtual-Machine
-nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
+Bei der Kommunikation mit dem auf dem \emph{USB-Stick} aufgebrachten \emph{ZigBee-Modul} stellen sich grundsätzlich 
+die selben Synchronisierungsprobleme wie in der \emph{MANVFirmware}. Da der \emph{MANVConnector} jedoch alle 
+Möglichkeiten der \emph{Java-Virtual-Machine} nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
 
-In der MANVFirmware werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Diese finden sich auch
-im MANVConnector wieder. Hierbei werden an Stelle von Ringpuffern priorisierte Warteschlangen, sogenannte Queues verwendet. 
+In der \emph{MANVFirmware} werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Diese 
+finden sich auch im \emph{MANVConnector} wieder. Hierbei werden an Stelle von Ringpuffern priorisierte Warteschlangen, 
+sogenannte Queues verwendet. 
 
 \begin{itemize}
-    \item{Die Command Queue:} In dieser Queue werden alle zu sendenden Befehle gespeichert.
-    \item{Die Event Queue:} In dieser Queue werden alle empfangenen Ereignisse gespeichert.
-    \item{Die Result Queue:} In dieser Queue werden alle bereits gesendeten Befehle zusammen mit dem
+    \item{Die \emph{Command Queue}:} In dieser Queue werden alle zu sendenden Befehle gespeichert.
+    \item{Die \emph{Event Queue}:} In dieser Queue werden alle empfangenen Ereignisse gespeichert.
+    \item{Die \emph{Result Queue}:} In dieser Queue werden alle bereits gesendeten Befehle zusammen mit dem
                              Resultat, das dieser Befehl hatte, gespeichert.
 \end{itemize}
 
@@ -269,46 +279,46 @@ Jedes Element der einzelnen Queues verfügt über eine Priorität; die Queues so
 Zugriff nach Priotität sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
 wie z.B. ein Alarm bevorzugt ausgeliefert werden.
 
-Der MANVConnector verfügt neben dem Hauptthread über drei weitere Threads:
+Der \emph{MANVConnector} verfügt neben dem Hauptthread über drei weitere Threads:
 
 \begin{itemize}
-    \item{SocketWriter:} Dieser Thread entnimmt Befehle aus der \textsl{CommandQueue} und sendet
-                         diese über den MANV-USB-Connector an das Sensornetz. Nun blockiert der
+    \item{SocketWriter:} Dieser Thread entnimmt Befehle aus der \emph{CommandQueue} und sendet
+                         diese über den \emph{MANV-USB-Stick} an das Sensornetz. Nun blockiert der
                          Thread so lange, bis das Ergebnis des Befehls zur Verfügung steht.
                          Sobald dies der Fall ist, wird der Befehl zusammen mit dem Ergebnis in
-                         die \textsl{ResultQueue} eingefügt.
+                         die \emph{ResultQueue} eingefügt.
     \item{SocketReader:} Dieser Thread empfängt Daten aus dem Sensornetz. Handelt es sich um ein
-                         Ergebnis, so wird dies dem \textsl{SocketWrite} signalisiert, und das
-                         Ergebnis zur Abholung durch den \textsl{SocketWriter} zur Verfügung
+                         Ergebnis, so wird dies dem \emph{SocketWrite} signalisiert, und das
+                         Ergebnis zur Abholung durch den \emph{SocketWriter} zur Verfügung
                          gestellt. Handelt es sich hingegen um einen Ereignis, so wird dieses
-                         in die \textsl{EventQueue} eingefügt.
-    \item{CorbaSender:} Dieser Thread ist für die Kommunikation mit MANVServer zuständig.
-                         Befehle, die vom MANVServer empfangen werden, werden für das 
-                         Sensornetz aufbereitet und in die CommandQueue eingestellt.
+                         in die \emph{EventQueue} eingefügt.
+    \item{CorbaSender:} Dieser Thread ist für die Kommunikation mit \emph{MANVServer} zuständig.
+                         Befehle, die vom \emph{MANVServer} empfangen werden, werden für das 
+                         Sensornetz aufbereitet und in die \emph{CommandQueue} eingestellt.
                          Ausserdem werden Ereignisse aus der \textsl{EventQueue} entnommen,
-                         in Corba-Events übersetzt und an den MANVServer zugestellt.
+                         in Corba-Events übersetzt und an den \emph{MANVServer} zugestellt.
 \end{itemize}                          
 
-Die Kommunikation der Threads untereinander findet komplett über die oben genannten Warteschlangen statt. Das 
-Zusammenwirken der Threads ist in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt:\\
+Die Kommunikation der \emph{Threads} untereinander findet komplett über die oben genannten Warteschlangen statt. Das 
+Zusammenwirken der \emph{Threads} ist in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt:\\
 
-Zunächst erzeugt der Hauptthread (\emph{MANVConnector.main}) die drei Warteschlangen. Dannach werden die beiden Threads
-\emph{SocketWriter} und \emph{SocketReader} erstellt. Dannach ruft der Hauptthread die \emph{CORBA}-Initialisierungsroutine 
-auf und startet den \emph{CorbaSender}-Thread.\\
+Zunächst erzeugt der Hauptthread (\emph{MANVConnector.main}) die drei Warteschlangen. Dannach werden die beiden 
+\emph{Threads} \emph{SocketWriter} und \emph{SocketReader} erstellt. Dannach ruft der 
+\emph{Hauptthread} die \emph{CORBA}-Initialisierungsroutine auf und startet den \emph{CorbaSender}-Thread.\\
 
-Beim Starten der Threads, wird sichergestellt, dass alle Zugriff auf alle drei Warteschlangen haben. Die konsequente 
-Verwendung der Warteschlangen zur Kommunikation der Threads untereinander löst bereits viele Synchronisierungsprobleme. 
-Grundsätzlich findet Kommunikation zwischen den Threads rein über die Warteschlangen statt. Einzige Ausnahme ist das 
-Abrufen des Ergebnisses eines gesendeten Kommandos. 
+Beim Starten der \emph{Threads}, wird sichergestellt, dass alle Zugriff auf alle drei Warteschlangen haben. Die konsequente 
+Verwendung der Warteschlangen zur Kommunikation der \emph{Threads} untereinander löst bereits viele 
+Synchronisierungsprobleme. Grundsätzlich findet Kommunikation zwischen den \emph{Threads} rein über die Warteschlangen 
+statt. Einzige Ausnahme ist das Abrufen des Ergebnisses eines gesendeten Kommandos. 
 
 \subsubsection{Synchronisierung der Befehlsübertragung}
 Bei der Befehlsübertragung muss darauf geachtet werden, dass ein Befehl erst dann gesendet werden darf,
 wenn die Abarbeitung aller vorherigen Befehle erfolgt ist, da sonst die Synchronität mit dem \emph{ZigBit}-Modul
-nicht mehr gewährleistet ist. Da innerhalb des \emph{MANVConnectors} das Senden in einem anderen Thread geschieht
+nicht mehr gewährleistet ist. Da innerhalb des \emph{MANVConnectors} das Senden in einem anderen \emph{Thread} geschieht
 als das Empfangen, erfordert dies besondere Massnahmen:\\
-Um die Synchronisation zu gewährleisten bietet der Thread \emph{SocketReader} eine Schnittstelle, über die der
+Um die Synchronisation zu gewährleisten bietet der \emph{Thread} \emph{SocketReader} eine Schnittstelle, über die der
 \emph{SocketSender} das Ergebnis des letzten gesendeten Befehls abholen kann. Diese Schnittstelle verwendet ein sogenanntes
-\emph{Latch}, also eine Art von Barriere, um den abholenden Thread so lange zu blockieren, bis eine Antwort vorliegt.
+\emph{Latch}, also eine Art von Barriere, um den abholenden \emph{Thread} so lange zu blockieren, bis eine Antwort vorliegt.
 Von dem \emph{SocketSender} wird nun verlangt, dass er nach jedem gesendeten Befehl diese Schnittstelle verwendet,
 um das Ergebnis des gerade gesendeten Befehls abzuholen. Da der Sender nun so lange, bis das Ergebnis vorliegt, blockiert ist,
 kann er auch keine weiteren Befehle senden. Hierdurch wird die geforderte Synchronisierung erreicht. Durch die \emph{JVM}

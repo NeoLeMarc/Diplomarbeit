@@ -32,6 +32,25 @@
 
 \section{Der \emph{Analog Devices ADuC702X} Mikrocontroller}
     \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers}
+    \nomenclature{ADuC}{Mikrocontrollerfamilie der Firma \emph{Analog Devices} auf \emph{ARM}-Basis.}
+    \nomenclature{ARM}{RISC-Prozessorarchitektur, die an verschiedene Hersteller in Lizenz implementiert wird.}
+    \nomenclature{RISC}{Reduced Instruction Set Computer.}
+    \nomenclature{A/D-Wandler}{Analog zu Digital Wandler.}
+    \nomenclature{DAC}{Digital zu Analog Wandler.}
+    \nomenclature{MIPS}{Million Instructions per Second}
+    \nomenclature{MSPS}{Million Samples per Second}
+    \nomenclature{SPI}{Serieller Bus zum Anbinden von Komponenten an Mikrocontroller.}
+    \nomenclature{$I^2C$}{Serieller Bus zum Anbinden von Komponenten an Mikrocontroller.}
+    \nomenclature{SRAM}{Statischer \emph{RAM} auf Basis von sogenannten Flip-Flop-Bausteinen. Benötigt im Gegensatz
+                        zu \emph{DRAM} kein periodisches Auffrischen des Inhalts.}
+    \nomenclature{DRAM}{Dynamischer \emph{RAM}, der periodisch aufgefrischt werden muss, um seinen Inhalt zu erhalten.}
+    \nomenclature{RAM}{Random Access Memory}
+    \nomenclature{PLA}{Programmierbare logische Anordnung}
+    \nomenclature{HF}{Hochfrequenz}
+    \nomenclature{UART}{Universal Asynchronous Receiver Transmitter}
+    \nomenclature{AT-Befehlssatz}{Satz von Befehlen, die ursprünglich für Modems entwickelt wurden.}
+
+                           
 
     Zentrale Komponente des \emph{Erste-Hilfe-Sensor}, welcher die Grundlage für die Sensoren im zu entwerfenden Netzwerk
     bildet, ist der \emph{ADuC-7022}-Mikrocontroller. Es handelt sich hierbei um einen Vertreter einer ganzen Familie
@@ -90,35 +109,45 @@
         \Abbildungps{!htb}{1}{diagramme/zigbit_blockdiagramm.pdf}{zigbit_blockdiagramm}{Blockdiagramm des ZigBit-24-A2R-Moduls}
 
         Atmel bietet unter dem Namen \emph{ZigBit} eine Palette von ZigBee-Modulen an. Diese Module sind in der
-        Ansteuerung identisch, unterscheiden sich jedoch vor allem in ihrer Reichweite. Unter der Bezeichnung ATZB-24-A2R
-        wird ein Modul für kurze Reichweiten angeboten. Besonderheit an diesem Modul ist, dass es bereits über zwei 
-        integrierte Antennen verfügt, so dass es ohne weitere Anpassungen in einem Hardware-Design verwendet werden kann.
-        Die ZigBit-Module enthalten einen IEE.802.15.4-Transceiver, einen \emph{ATmega1281}-Mikrocontroller sowie einen
-        128kB großen Flash-Speicher. Das Modul kann mittels \emph{UART}, \emph{SPI} oder \emph{$I^2C$} angesteuert werden.\\
+        Ansteuerung identisch, unterscheiden sich jedoch vor allem in ihrer Reichweite. Unter der Bezeichnung 
+        \emph{ATZB-24-A2R} wird ein Modul für kurze Reichweiten angeboten. Besonderheit an diesem Modul ist, 
+        dass es bereits über zwei integrierte Antennen verfügt, so dass es ohne weitere Anpassungen in einem 
+        Hardware-Design verwendet werden kann.
+        Die \emph{ZigBit}-Module enthalten einen \emph{IEEE 802.15.4-Transceiver}, einen 
+        \emph{ATmega1281}-Mikrocontroller sowie einen
+        128kB großen \emph{Flash}-Speicher. Das Modul kann mittels \emph{UART}, \emph{SPI} oder \emph{$I^2C$} angesteuert 
+        werden.\\
         \\
         Ursprünglich wurden die \emph{ZigBit}-Module von der Firma \emph{Meshnetics} entwickelt und verkauft; diese wurde 
         2009 von der Firma \emph{Atmel} gekauft und die Produkte in das Portfolio von \emph{Atme}l integriert.
 
     \subsection{Firmware}
         \subsubsection{Bitcloud}
-            BitCloud ist ein ZigBee-Pro zertifizierter Softwarestack von Atmel. Es werden die Module der \emph{ZigBit}-Familie
-            sowie die \emph{RZRAVEN} Evaluationskits unterstützt. BitCloud ist hierbei keine fertige Firmware, sondern 
-            Teil eines SDK, dass dazu dient, Anwender beim schnellen und einfachen Entwickeln eigener Firmware zu
-            unterstützen. Für Anwender, die selbst keine Firmware implementieren möchten, stellt \emph{SerialNet} eine
-            Alternative dar.
+            \nomenclature{SDK}{Software Development Kit}
+            \emph{BitCloud}  ist ein \emph{ZigBee-Pro} zertifizierter \emph{Softwarestack} von Atmel. Es werden die 
+            Module der \emph{ZigBit}-Familie
+            sowie die \emph{RZRAVEN Evaluationskits} unterstützt. \emph{BitCloud} ist hierbei keine fertige
+            \emph{Firmware}, sondern 
+            Teil eines \emph{SDK}, dass dazu dient, Anwender beim schnellen und einfachen Entwickeln eigener 
+            \emph{Firmware} zu unterstützen. Für Anwender, die selbst keine \emph{Firmware} implementieren möchten, 
+            stellt \emph{SerialNet} eine Alternative dar.
 
         \subsubsection{SerialNet}
+            \nomenclature{IO-Port}{Input/Output-Port}
 
             \paragraph{Überblick}
 
                 \emph{SerialNet} ist eine \emph{BitCloud} basierte Firmware, die von Atmel als fertiges Image angeboten
                 wird. Dieses kann auf dem \emph{ZigBit}-Modul installiert werden, wodurch die Notwendigkeit der 
                 Eigenentwicklung entfällt. \emph{SerialNet} bietet ein einfaches serielles Interface, dass sich mit
-                Hilfe von AT-Befehlen\footnote{Der AT-Befehlssatz war früher zur Steuerung von Modems weit verbreitet.} 
-                steuern lässt. Der Befehelssatz bietet Zugriff auf fast alle Module des ZigBit-Moduls wie z.B. das
-                Versenden und Empfangen von Daten, das schalten von IO-Ports eines entfernten ZigBit-Moduls sowie
+                Hilfe von \emph{AT-Befehlen}\footnote{Der AT-Befehlssatz war früher zur Steuerung von Modems weit 
+                verbreitet.} 
+                steuern lässt. Der Befehelssatz bietet Zugriff auf fast alle Module des \emph{ZigBit}-Moduls wie z.B. das
+                Versenden und Empfangen von Daten, das schalten von \emph{IO-Ports} eines entfernten 
+                \emph{ZigBit}-Moduls sowie
                 Konfiguration des Energiesparmodus. Nicht möglich ist derzeit eine Verwendung der im \emph{ZigBee}-Standard
-                definierten AES-Verschlüsselung, so dass eine Datenübertragung derzeit nur unverschlüsselt erfolgen kann.
+                definierten \emph{AES}-Verschlüsselung, so dass eine Datenübertragung derzeit nur 
+                unverschlüsselt erfolgen kann.
                 Für den Fokus dieser Diplomarbeit reicht eine unverschlüsselte Verbindung, für den produktiven Einsatz
                 müssen jedoch weitere Sicherheitsmaßnahmen ergriffen werden. Wie diese aussehen können ist in 
                 Abschnitt~\ref{Sicherheit} beschrieben. 
@@ -249,6 +278,7 @@ def sendeBefehl(befehl)
             Ereignisse können entweder direkt behandelt werden, oder zunächst in einer Liste zwischengespeichert
             werden, um sie zu einem späteren Zeitpunkt zu behandeln. Beide Verfahren haben sowohl Vor- als auch
             Nachteile:
+            \nomenclature{Deadlock}{Nichtmehr zu behebende Verklemmung von mindestens zwei \emph{Threads}}
 
             \begin{itemize}
                 \item{Direktes Behandeln von Events:} Dieses Verfahren hat den Vorteil, dass auf empfangene 
@@ -256,7 +286,7 @@ def sendeBefehl(befehl)
                 auf dem Bildschirm darstellen und es muss nicht erst auf die Beendigung des vorherigen
                 Befehls gewartet werden. Erfordert das behandelte Event den Zugriff auf das 
                 \emph{ZigBit}-Modul um z.B. den Empfang einer Nachricht zu quittieren, so ist eine
-                besondere Vorsicht erforderlich, da sonst entweder Verklemmungen ("'Deadlock"`) oder
+                besondere Vorsicht erforderlich, da sonst entweder Verklemmungen ("'\emph{Deadlock}"`) oder
                 ein Verlust der Synchronisierung auftreten kann\footnote{Eine mögliche Lösung ist die
                 Verwendung einer Warteschlange, in die die zu versendenden Daten eingereiht werden.}.
                 Dieses Verfahren eignet sich besonders für Systeme, in denen auf eingehende Ereignisse besonders
@@ -428,10 +458,10 @@ def sendeBefehl(befehl)
         Die Spannungsversorgung des Erste-Hilfe-Sensors erfolgt über Batterie. Da der Wechsel der Batterie
         während eines MANVs umständlich und zeitraubend ist, ist eine möglichst hohe Batterielaufzeit
         wünschenswert. Am besten wäre hierbei, wenn überhaupt kein Batteriewechsel notwendig wäre. Im
-        empfansbereiten Zustand braucht das \emph{ZigBit}-Modul laut Datenblatt einen Strom von 19mA.
+        empfansbereiten Zustand braucht das \emph{ZigBit}-Modul laut Datenblatt einen Strom von 19~mA.
         Zur Verringerung der Leistungsaufnahme bietet das \emph{ZigBit}-Modul einen Energiesparmodus,
         indem lediglich der interne Speicher gehalten und alle andere Hardware abgeschaltet wird. In
-        diesem Modus braucht das Modul laut Datenblatt weniger als $6\mu{}A$.\\
+        diesem Modus braucht das Modul laut Datenblatt weniger als $6~\mu{}A$.\\
         \\
         Zum Stromsparen wird das Modul periodisch für eine bestimmte Zeit in den
         Energiesparmodus versetzt. Während dieser Zeit kann das Modul weder von der Steurungssoftware angesprochen
@@ -439,7 +469,7 @@ def sendeBefehl(befehl)
         verloren gehen, werden vom nächstgelegenen Router alle Nachrichten an dieses Modul zwischengespeichert,
         bis dieses wieder im Empfangsbereiten Zustand ist. Bei Verwendung der \emph{SerialNet}-Firmware wird
         die Dauer des Verweilens im Energiesparmodus über den Befehl \emph{AT+WPWR} konfiguriert. Die Konfiguration
-        erfolgt in Schritten zu 100ms.\\
+        erfolgt in Schritten zu 100~ms.\\
         \\
         Zum Aufruf des Energiesparmodus bieten sich nun zwei Möglichkeiten:
 
@@ -460,7 +490,7 @@ def sendeBefehl(befehl)
         bietet die \emph{SerialNet}-Firmware die Möglichkeit, über die \emph{CTS}-Leitung der 
         \emph{UART}-Schnittstelle ihre Empfangsbereitschaft zu signalisieren. Die Steurungssoftware
         auf der Gegenseite muss hierzu vor jedem Senden den Zustand der \emph{CTS}-Leitung
-        kontrollieren, und darf nur senden, wenn der Zustand den Wert 0 hat. Damit die
+        kontrollieren, und darf nur senden, wenn der die \emph{CTS}-Leitung den Zustand 0 hat. Damit die
         \emph{SerialNet}-Firmware diesen Zustand korrekt kommuniziert, muss über den Befehl \emph{AT+IFC}
         die Flußkontrolle aktiviert werden. \\
         \\
