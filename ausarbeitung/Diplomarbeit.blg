@@ -28,6 +28,7 @@ Warning--entry type for "Vorlesung_Snelting" isn't style-file defined
 --line 163 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
 --line 174 of file Diplomarbeit.bib
+Warning--I didn't find a database entry for "BCM4326_Datasheet"
 Warning--empty number in zigbee_specification
 Warning--empty note in zigbee_specification
 Warning--empty number in ieee_zigbee
@@ -38,7 +39,7 @@ Warning--empty note in MANET
 Warning--empty year in BluetoothPower
 You've used 16 entries,
             4728 wiz_defined-function locations,
-            999 strings with 10079 characters,
+            1001 strings with 10113 characters,
 and the built_in function-call counts, 11080 in all, are:
 = -- 1097
 > -- 336
@@ -77,4 +78,4 @@ warning$ -- 8
 while$ -- 91
 width$ -- 0
 write$ -- 247
-(There were 13 warnings)
+(There were 14 warnings)

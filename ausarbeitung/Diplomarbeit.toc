@@ -51,7 +51,7 @@
 \contentsline {subsection}{\numberline {3.2.6}Weitere Protokolle}{30}{subsection.3.2.6}
 \contentsline {subsection}{\numberline {3.2.7}Diskussion}{30}{subsection.3.2.7}
 \contentsline {section}{\numberline {3.3}Produkte zur kabellosen Patienten\IeC {\"u}berwachung}{31}{section.3.3}
-\contentsline {section}{\numberline {3.4}Verwandte Projekte zum Einsatz in MANV-Szenarien}{33}{section.3.4}
+\contentsline {section}{\numberline {3.4}Verwandte Projekte zum Einsatz in MANV-Szenarien}{32}{section.3.4}
 \contentsline {chapter}{\numberline {4}Analyse}{35}{chapter.4}
 \contentsline {section}{\numberline {4.1}Anforderungen an ein kabelloses System zur \IeC {\"U}berwachung von Patienten}{35}{section.4.1}
 \contentsline {section}{\numberline {4.2}Der \emph {Analog Devices ADuC702X} Mikrocontroller}{36}{section.4.2}
@@ -155,5 +155,5 @@
 \contentsline {section}{\numberline {B.5}Platine}{118}{section.B.5}
 \contentsline {section}{\numberline {B.6}Simulator}{118}{section.B.6}
 \contentsline {section}{\numberline {B.7}Zigbit Firmware}{118}{section.B.7}
-\contentsline {chapter}{Glossar}{122}{appendix*.9}
-\contentsline {chapter}{Literaturverzeichnis}{123}{appendix*.9}
+\contentsline {chapter}{Glossar}{124}{appendix*.9}
+\contentsline {chapter}{Literaturverzeichnis}{125}{appendix*.9}
