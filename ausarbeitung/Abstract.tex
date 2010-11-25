@@ -1,31 +1,58 @@
 \chapter*{Abstract}
+\begin{small}
+In dieser Arbeit wird ein kabellose Sensornetzwerk zur Überwachung von Patienten bei einem 
+Massenanfall von Verletzten entworfen und implementiert. Als Grundlage dieser Entwicklung
+dient der von Herrn Dr. Marc Jäger in \cite{Marc} entwickelte \emph{Erste-Hilfe-Sensor}.
+Hierzu wird zunächst eine Untersuchung aller in Frage kommenden Funktechnologien vorgenommen,
+wobei ein besonderes Augenmerk auf Energieffizienz und Stabilität der Funktechnologie gelegt wird.
+Hierbei stellt sich \emph{ZigBee} als am besten geeignetes Protokoll heraus, und es wird entschieden,
+eine Umsetzung auf Basis eines \emph{ZigBee}-Moduls des Herstellers \emph{Atmel} durchzuführen. Hierzu
+wird dieses Modul einer genaueren Betrachtung unterzogen, und eine Reihe von Schwierigkeiten werden
+identifiziert. Für diese Schwierigkeiten werden allgemeingültige Lösungen entwickelt. Auf Basis dieser
+allgemeinen Lösungen werden später spezielle Lösungen für die \emph{Java-Plattform} sowie für den
+Mikrocontroller des \emph{Erste-Hilfe-Sensor} entwickelt.
+\\                    
+Bei der Entwicklung des Gesamtsystems wird ein komponentenbasierter Ansatz gewählt. Hierdurch wird nicht
+nur die Austauschbarkeit der einzelnen Komponenten erreicht, sondern auch die Verteilung dieser über
+mehrere Rechner ermöglicht. Für die Verbindung der einzelnen Komponenten zueinander werden 
+\emph{Corba}-Schnittstellen verwendet. Diese Schnittstellen sind so gestaltet, dass auch externe
+Software angebunden werden kann. Dies wird exemplarisch mit einer \emph{Weboberfläche} durchgeführt.
+Ausserdem wird eine Platine entwickelt, auf der das \emph{ZigBee}-Modul und der
+\emph{Mikrocontroller} des \emph{Erste-Hilfe-Sensors} integriert. Diese Platine wird zur 
+Entwicklung eines \emph{ZigBee}-Treibers für die Firmware des \emph{Erste-Hilfe-Sensors} verwendet.
+\\
+Das Gesamtsystem wird zum Abschluß eingehend evaluiert. Hierbei wird gezeigt, dass alle Komponenten
+erfolgreich miteinander interagieren. Außerdem wird der Stromverbrauch des \emph{ZigBee}-Modul 
+untersucht, und die Abhängigkeit von den Parametern des Energiesparmodus berechnet. Hierbei ergibt 
+sich ein Stromverbrauch von ca. 1,86~mA bei der Wahl von realistischen Parametern für den 
+Energiesparmodus.
 %\begin{small} -- Falls es nicht auf eine Seite passt darf die Schrift im Abstract kleiner gemacht werden, aber nur beim Abstract!
-... Die Zusammenfassung ("`Abstract"') ist nach dem Titel der zweitwichtigste Bestandteil einer
-wissenschaftlichen Arbeit. Sie sollten deshalb für die Zusammenfassung, ebenso wie für den
-Titel, besonders viel Mühe und Zeit verwenden, da die gesamte wissenschaftliche Arbeit nur
-von sehr wenigen Wissenschaftlern gelesen wird, die Zusammenfassung aber von vielen. Aus
-der Zusammenfassung muß hervorgehen, wovon die Arbeit handelt, worauf sie aufbaut, und
-vor allen Dingen, welche neuen Erkenntnisse gewonnen wurden. Die wichtigsten Ergebnisse
-der Arbeit müssen kurz und präzise aufgezählt werden. Es genügt nicht zu schreiben, daß dies
-und jenes in der Arbeit behandelt werden. Wichtig ist, daß die "`harten Fakten"', welche sich
-aus den Untersuchungen ergeben haben, aufgelistet sind.
-Handelt es sich um eine theoretische Arbeit, dann müssen Sie erwähnen, von welchen
-Gleichungen Sie ausgegangen sind und welche Näherungen Sie verwendet haben; bei einer
-experimentellen Arbeit müssen Sie erwähnen, welche Experimente Sie durchgeführt haben
-und eventuell auch, welche Auswertemethoden (falls nicht Standardmethoden) Sie verwendet
-haben.Beachten Sie, daß Ihre Arbeit von Wissenschaftlern unterschiedlicher Herkunft und
-Ausbildung gelesen wird. Bedenken Sie, daß sich auch Wissenschaftler für Ihre Arbeit
-interessieren können, die aus benachbarten Disziplinen stammen und nicht mit dem von Ihnen
-verwendeten wissenschaftlichen "`Jargon"' vertraut sind, oder solche, welche die in Ihrem Fach
-üblichen Abkürzungen nicht kennen. Deshalb soll die Zusammenfassung für alle
-(natur-)wissenschaftlich gebildeten Leser verständlich sein. Das bedingt, daß eventuell
-benutzte Abkürzungen erklärt werden müssen, und daß nur solche Begriffe vorkommen
-dürfen, die ein "`normaler"' Wissenschaftler üblicherweise kennt oder die er notfalls in einem
-Lexikon nachschlagen kann. 
-Die Zusammenfassung sollte keine Literaturhinweise enthalten. Die Zusammenfassung ist ein
-selbständiger Teil der Arbeit. Das bedeutet, daß die in der Zusammenfassung erklärten
-Abkürzungen im Hauptteil noch einmal erklärt werden müssen.
-Einerseits darf die Zusammenfassung nicht zu lang sein (max eine Seite), andererseits muß sie aber auch alle wichtigen
-Informationen über Ihre Untersuchungen enthalten. Auf präzise Formulierungen ist größten
-Wert zu legen. 
-%\end{small}
+%... Die Zusammenfassung ("`Abstract"') ist nach dem Titel der zweitwichtigste Bestandteil einer
+%wissenschaftlichen Arbeit. Sie sollten deshalb für die Zusammenfassung, ebenso wie für den
+%Titel, besonders viel Mühe und Zeit verwenden, da die gesamte wissenschaftliche Arbeit nur
+%von sehr wenigen Wissenschaftlern gelesen wird, die Zusammenfassung aber von vielen. Aus
+%der Zusammenfassung muß hervorgehen, wovon die Arbeit handelt, worauf sie aufbaut, und
+%vor allen Dingen, welche neuen Erkenntnisse gewonnen wurden. Die wichtigsten Ergebnisse
+%der Arbeit müssen kurz und präzise aufgezählt werden. Es genügt nicht zu schreiben, daß dies
+%und jenes in der Arbeit behandelt werden. Wichtig ist, daß die "`harten Fakten"', welche sich
+%aus den Untersuchungen ergeben haben, aufgelistet sind.
+%Handelt es sich um eine theoretische Arbeit, dann müssen Sie erwähnen, von welchen
+%Gleichungen Sie ausgegangen sind und welche Näherungen Sie verwendet haben; bei einer
+%experimentellen Arbeit müssen Sie erwähnen, welche Experimente Sie durchgeführt haben
+%und eventuell auch, welche Auswertemethoden (falls nicht Standardmethoden) Sie verwendet
+%haben.Beachten Sie, daß Ihre Arbeit von Wissenschaftlern unterschiedlicher Herkunft und
+%Ausbildung gelesen wird. Bedenken Sie, daß sich auch Wissenschaftler für Ihre Arbeit
+%interessieren können, die aus benachbarten Disziplinen stammen und nicht mit dem von Ihnen
+%verwendeten wissenschaftlichen "`Jargon"' vertraut sind, oder solche, welche die in Ihrem Fach
+%üblichen Abkürzungen nicht kennen. Deshalb soll die Zusammenfassung für alle
+%(natur-)wissenschaftlich gebildeten Leser verständlich sein. Das bedingt, daß eventuell
+%benutzte Abkürzungen erklärt werden müssen, und daß nur solche Begriffe vorkommen
+%dürfen, die ein "`normaler"' Wissenschaftler üblicherweise kennt oder die er notfalls in einem
+%Lexikon nachschlagen kann. 
+%Die Zusammenfassung sollte keine Literaturhinweise enthalten. Die Zusammenfassung ist ein
+%selbständiger Teil der Arbeit. Das bedeutet, daß die in der Zusammenfassung erklärten
+%Abkürzungen im Hauptteil noch einmal erklärt werden müssen.
+%Einerseits darf die Zusammenfassung nicht zu lang sein (max eine Seite), andererseits muß sie aber auch alle wichtigen
+%Informationen über Ihre Untersuchungen enthalten. Auf präzise Formulierungen ist größten
+%Wert zu legen. 
+\end{small}
