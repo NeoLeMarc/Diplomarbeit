@@ -110,18 +110,21 @@ verwendet.
 
 \subsection{Leistungsaufnahme im Normalbetrieb}\label{leistungsaufnahme_normalbetrieb}
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_router.jpg}{oszi_normalbetrieb_router}{Router oder Koordinator im Normalbetrieb. 
-    Der Stromverbrauch beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
-\Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknotens im Normalbetrieb ohne 
-    Energiesparmodus. Auffällig sind die \emph{Peaks}, in denen sich der Knoten im Empfangsmodus befindet. 
-        Die \emph{Peaks} haben eine 
-    Länge von 40~ms und einen Betrag von 23,4~mA. Ausserhalb eines \emph{Peaks} beträgt der Stromverbrauch 10,7~mA.
-    Insgesamt ergibt 
-    sich ein Mittelwert von 11,18~mA, was ca. 33,54~mW entspricht. Dies ist weniger als die Hälfte des Stromverbrauchs
-    eines Routers oder Koordinators.} 
+%    Der Stromverbrauch beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
+}   
+\Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknotens im Normalbetrieb ohne Energiesparmodus. 
+%        Auffällig sind die \emph{Peaks}, in denen sich der Knoten im Empfangsmodus befindet. 
+%        Die \emph{Peaks} haben eine 
+%    Länge von 40~ms und einen Betrag von 23,4~mA. Ausserhalb eines \emph{Peaks} beträgt der Stromverbrauch 10,7~mA.
+%    Insgesamt ergibt 
+%    sich ein Mittelwert von 11,18~mA, was ca. 33,54~mW entspricht. Dies ist weniger als die Hälfte des Stromverbrauchs
+%    eines Routers oder Koordinators.} 
+}
 \Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_normal.pdf}{spannungsverlauf_client_normal}{Analyse des 
     Spannungsverlaufs eines Clients im Normalbetrieb.}
 \Abbildungps{!htb}{0.75}{oszi/empfangen_details.jpg}{oszi_empfangen_details}{Detailaufnahme eines Empfangsmodus-\emph{Peaks}.
-    Erkennbar ist die Impulsbreite von 40ms.}
+%    Erkennbar ist die Impulsbreite von 40ms.
+}
 
 \nomenclature{Server}{Komponente, die einen Dienst anbietet.}
 \nomenclature{Client}{Komponente, die einen Dienst nutzt.}
@@ -174,14 +177,18 @@ ein Wert von 11,19~mA für $I_{Client}$ ergibt. Dies entspricht bei einer Versor
 von 33,57~mW.
 
 \subsection{Leistungsaufnahme bei Verwendung des Energiesparmodus}
-\Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Dieser Client ist gerade aus dem Energiesparmodus erwacht. 
-    Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
-    wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
-    Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.}
+\Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Aus dem Energiesparmodus erwachter Client.
+%   Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
+%   wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
+%   Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.
+}    
+
 \Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_energiesparmodus.pdf}{spannungsverlauf_client_energiesparmodus}{Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}
-\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Dieser Client nutzt das periodische Aufrufen
-    des Energiesparmodus. Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
-    Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
+\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Client der das periodische Aufrufen
+    des Energiesparmoduses nutzt.
+%   Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
+%   Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
+}
 
 \nomenclature{Serialnet}{\emph{Firmware} für die \emph{ZigBee}-Module der Herstellers \emph{Atmel}.}
 \nomenclature{BitCloud}{\emph{SDK} zur Erstellung von \emph{Firmware} für die \emph{ZigBee}-Module der Firma \emph{Atmel}.}
@@ -229,14 +236,19 @@ aufgeführt.
 \end{table}
 
 \subsection{Sonderfälle}\label{leistungsaufnahme_sonderfaelle}
-\Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Bei diesem Client wurde der Empfangsmodus deaktiviert. Der 
-    Stromverbrauch beträgt konstant 10,7~mA.}
-\Abbildungps{!htb}{0.75}{oszi/joined.jpg}{oszi_joined}{Beitrittsvorgang eines Clients in ein Netzwerk. Bevor der Client dem 
-    Netzwerk beigetreten ist, befindet er sich durchgehend im Empfangsmodus und benötigt 23,4~mA. Sobald er dem Netzwerk
-    beigetreten ist, entspricht entspricht der Stromverbrauch dem in Abbildung~\ref{oszi_normalbetrieb_client} dargestellten
-    Verhalten.} 
-\Abbildungps{!htb}{0.75}{oszi/joined2.jpg}{oszi_connection_lost}{Dieser Client hat kurzzeitig die Verbindung zum Netzwerk 
-    verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4~mA. benötigt.}
+\Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Client mit deaktiviertem Empfangsmodus.
+    %deaktiviert. Der 
+    %Stromverbrauch beträgt konstant 10,7~mA.}
+    }
+\Abbildungps{!htb}{0.75}{oszi/joined.jpg}{oszi_joined}{Beitrittsvorgang eines Clients in ein Netzwerk.
+    %Bevor der Client dem 
+    %Netzwerk beigetreten ist, befindet er sich durchgehend im Empfangsmodus und benötigt 23,4~mA. Sobald er dem Netzwerk
+    %beigetreten ist, entspricht entspricht der Stromverbrauch dem in Abbildung~\ref{oszi_normalbetrieb_client} dargestellten
+    %Verhalten.} 
+    }
+\Abbildungps{!htb}{0.75}{oszi/joined2.jpg}{oszi_connection_lost}{Client, der die Verbindung zum Netzwerk verloren hat.}
+%    Dieser Client hat kurzzeitig die Verbindung zum Netzwerk 
+%    verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4~mA. benötigt.}
 
 So lange ein Client keinem Netzwerk beigetreten ist, befindet er sich Dauerhaft im Empfangsmodus. Das selbe Verhalten liegt
 vor, wenn eine bestehende Netzwerkverbindung verloren gegangen ist. Wie in Abbildung~\ref{oszi_connection_lost} zu sehen
