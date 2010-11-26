@@ -1,4 +1,4 @@
-\chapter{Analyse}
+\chapter{Analyse}\label{Analyse}
 
 In diesem Kapitel wird eine Analyse der Problemstellung dieser Diplomarbeit vorgenommen. Hierzu 
 werden zunächst die Anforderungen analysiert, die an ein kabelloses System zur Überwachung von 
@@ -9,36 +9,36 @@ werden häufig auftretende Probleme aufgezeigt, und allgemeine Lösungen erarbei
 Lösungen werden in den späteren Kapitel als Grundlage für den Entwurf und die Implementierung
 der fertigen Lösung dienen.
 
-    \section{Anforderungen an ein kabelloses System zur Überwachung von Patienten}
-        Nach Betrachtung des Standes der Technik ergeben sich folgende Anforderungen
-        an das zu entwickelnde System:
-        
-        \begin{itemize}
-            \item{Integrierbarkeit:} Die zu entwickelnde Lösung soll in den \emph{Erste-Hilfe-Sensor}
-                                     integrierbar sein.
-            \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, von Vitaldaten und Alarme  
-                                             von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
-                                             zugestellt und angezeigt werden. Bei bestehen er Netzwerkverbindung
-                                             sollen keine Nachrichten verloren gehen. 
-            \item{Senden von Befehlen:} Das System soll in der Lage sein, Befehle an die Sensoren zu senden.
-                                        Diese sollen auf die empfangenen Befehle entsprechend reagieren. Es
-                                        soll möglich sein, neue Befehle zu einem späteren Zeitpunkt hinzuzufügen.
-            \item{Skalierbarkeit:} Das System soll sowohl in Anzahl der Sensoren als auch in der räumlichen 
-                                   Ausdehnung (Reichweite) skalierbar sein. Es sollen sowohl sehr kleine Netzwerke
-                                   als auch große Netzwerke realisierbar sein.
-            \item{Kostengünstig:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
-            \item{Niedriger Stromverbrauch:} Der Stromverbrauch der einzelnen Sensoren muss so gering sein, dass
-                                             der Betrieb über eine handliche Batterie über einen längeren 
-                                             Zeitraum möglich ist.
-            \item{Robust:} Das System soll möglichst unempfindlich gegenüber Störungen sein.
-            \item{Erweiterbar:} Die System soll Softwareseitig erweiterbar sein. Insbesondere soll es 
-                                möglich sein, ohne Veränderungen an der Software Schnittstellen
-                                zu anderen Systemen hinzuzufügen. 
-            \item{Anpassbar:} Das System soll an sich verändernde Rahmenbedingungen anpassbar sein. Insbesondere
-                              sollen alle technischen Details des Funkprotokolls so gekapselt werden, dass ein
-                              Austausch des Funkprotokolles lediglich an einer Stelle des Systems Änderungen
-                              erfordern.
-        \end{itemize}
+\section{Anforderungen an ein kabelloses System zur Überwachung von Patienten}\label{Anforderungen}
+    Nach Betrachtung des Standes der Technik ergeben sich folgende Anforderungen
+    an das zu entwickelnde System:
+    
+    \begin{itemize}
+        \item{Integrierbarkeit:} Die zu entwickelnde Lösung soll in den \emph{Erste-Hilfe-Sensor}
+                                 integrierbar sein.
+        \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, von Vitaldaten und Alarme  
+                                         von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
+                                         zugestellt und angezeigt werden. Bei bestehen er Netzwerkverbindung
+                                         sollen keine Nachrichten verloren gehen. 
+        \item{Senden von Befehlen:} Das System soll in der Lage sein, Befehle an die Sensoren zu senden.
+                                    Diese sollen auf die empfangenen Befehle entsprechend reagieren. Es
+                                    soll möglich sein, neue Befehle zu einem späteren Zeitpunkt hinzuzufügen.
+        \item{Skalierbarkeit:} Das System soll sowohl in Anzahl der Sensoren als auch in der räumlichen 
+                               Ausdehnung (Reichweite) skalierbar sein. Es sollen sowohl sehr kleine Netzwerke
+                               als auch große Netzwerke realisierbar sein.
+        \item{Kostengünstig:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
+        \item{Niedriger Stromverbrauch:} Der Stromverbrauch der einzelnen Sensoren muss so gering sein, dass
+                                         der Betrieb über eine handliche Batterie über einen längeren 
+                                         Zeitraum möglich ist.
+        \item{Robust:} Das System soll möglichst unempfindlich gegenüber Störungen sein.
+        \item{Erweiterbar:} Die System soll Softwareseitig erweiterbar sein. Insbesondere soll es 
+                            möglich sein, ohne Veränderungen an der Software Schnittstellen
+                            zu anderen Systemen hinzuzufügen. 
+        \item{Anpassbar:} Das System soll an sich verändernde Rahmenbedingungen anpassbar sein. Insbesondere
+                          sollen alle technischen Details des Funkprotokolls so gekapselt werden, dass ein
+                          Austausch des Funkprotokolles lediglich an einer Stelle des Systems Änderungen
+                          erfordern.
+    \end{itemize}
 
 \section{Der \emph{Analog Devices ADuC702X} Mikrocontroller}
     \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers}
@@ -352,7 +352,7 @@ def sendeBefehl(befehl)
             \label{behandlung_von_komplexen_antworten}
             Bei der Behandlung von komplexen Antworten kommt der Umstand zur Hilfe, dass bereits
             im Vorraus bekannt ist, welche Befehle eine komplexe Antwort erzeugen. Bei welchen Befehlen dies
-            der Fall ist kann aus Tabelle~\ref{zigbit_befehle} entnommen werden. Im Steuerprogramm kann beim
+            der Fall ist kann aus Tabelle~\ref{serialnet_befehle} entnommen werden. Im Steuerprogramm kann beim
             Parsen des Befehls daher entsprechend Rücksicht darauf genommen werden, ob eine einzeilige oder
             eine mehrzeilige Antwort erwartet wird. Komplexe Antworten werden immer mit einem Statuscode
             beendet, d.h. wenn eine komplexe Antwort erwartet wird, muss so lange vom \emph{ZigBit}-Modul

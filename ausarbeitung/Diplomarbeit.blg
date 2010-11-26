@@ -1,9 +1,7 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Diplomarbeit.aux
 A level-1 auxiliary file: Titel.aux
-A level-1 auxiliary file: Dank.aux
 A level-1 auxiliary file: Vorwort.aux
-A level-1 auxiliary file: Danksagung.aux
 A level-1 auxiliary file: Abstract.aux
 A level-1 auxiliary file: Einleitung.aux
 A level-1 auxiliary file: Grundlagen.aux
@@ -39,7 +37,7 @@ Warning--empty note in MANET
 Warning--empty year in BluetoothPower
 You've used 16 entries,
             4728 wiz_defined-function locations,
-            1001 strings with 10113 characters,
+            999 strings with 10091 characters,
 and the built_in function-call counts, 11080 in all, are:
 = -- 1097
 > -- 336

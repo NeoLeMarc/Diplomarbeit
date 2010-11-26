@@ -7,7 +7,7 @@ In diesem Kapitel wird der Stand der Technik von kabellosen Patientenüberwachun
 Hierzu wird zunächst in Abschnitt~\ref{kabellose_uebertragungsprotokolle} allgemein eine Reihe von potentiell
 geeigneten Übertraungsprotokollen vorgestellt und jeweils kurz diskutiert, ob und wie gut diese als 
 Basistechnologie für die Lösung der Problemstellung dieser Diplomarbeit geeignet sind. Im darauf folgenden
-Abschnitt~\ref{produkte_zu_patientenueberwachung} wird dann die aktuelle Marktsituation fertiger Produkte,
+Abschnitt~\ref{produkte_zur_patientenueberwachung} wird dann die aktuelle Marktsituation fertiger Produkte,
 die zur Überwachung von Patienten in einem \glossary{MANV}-Szenario in Frage kommen vorgestellt, und die Eignung dieser
 Produkte diskutiert. Den Abschluss dieses Kapitels bildet Abschnitt~\ref{verwandte_projekte}, in dem
 kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in Arbeit sind.
@@ -139,7 +139,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             Bereich oft ein Betrieb mit weniger Störungen als im 2,4~GHz-Bereich möglich ist.
             Es ist jedoch zu erwarten, dass sich dies in Zukunft ändern wird.
 
-        \subsubsection{Störsicherheit}\ref{WlanStoersicherheit}
+        \subsubsection{Störsicherheit}\label{WlanStoersicherheit}
             \nomenclature{Algorithmus}{Eindeutige Handlungsvorschrift, bzw. Anweisungsfolge zur Lösung
                                        eines Problems.}
             \nomenclature{Energy-Detection}{Überprüfen, ob ein Frequenzband frei ist, bevor es zur 
@@ -191,7 +191,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             \emph{Bluetooth} und \emph{WLAN}-Geräte oft aufeinadertreffen (z.B. weil an einem
             Notebook \emph{Bluetooth}-Maus und -Tastatur verwendet werden oder weil 
             ein \emph{PDA} z.B. Schnittstellen für beide Protokolle besitzt).
-            Wie in Abschnitt \ref{bluetooth} genauer erläutert besitzt \emph{Bluetooth}
+            Wie in Abschnitt \ref{Bluetooth} genauer erläutert besitzt \emph{Bluetooth}
             79 Kanäle, welche bis zu 1600 mal pro Sekunde gewechselt werden.
             Problematisch ist nun, dass 22 dieser Kanäle in das 
             \emph{IEEE 802.11b/g-Frequenzspektru}m fallen. Durch den häufigen
@@ -236,7 +236,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
             Für diese Arbeit sind vor allem der \emph{Bluetooth} und der \emph{ZigBee} Standard interessant. 
 
-        \subsubsection{IEEE 802.15.1: Bluetooth}
+        \subsubsection{IEEE 802.15.1: Bluetooth}\label{Bluetooth}
             \paragraph{Überblick}
                 \nomenclature{RS-232}{Übertragungsstandard für serielle Schnittstellen.}
                 \nomenclature{SIG}{Special Interest Group}
@@ -268,7 +268,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                                           Übertragungsraten bis 721~kbit/sec.
                     \item{\emph{Bluetooth 2.0}:} Einführung des \emph{EDR}\footnote{Enhanced Data Rate}-Modus mit bis zu
                                           3.0~MBit/sec (2.1~MBit/sec netto).
-                    \item{\emph{Bluetooth 2.1}:} Vereinfachung des Pairings (vgl. \ref{BlueetoothPairing}) durch 
+                    \item{\emph{Bluetooth 2.1}:} Vereinfachung des Pairings (vgl. \ref{BluetoothPairing}) durch 
                                           Einführung von SSP\footnote{Secure Simple Pairing}, Verbesserung
                                           der Sicherheit durch explizite Aushandlung der Verschlüsselung.
                     \item{\emph{Bluetooth 3.0}:} Einführung eines Hochgeschwindigkeits-Datenkanals auf Basis von
@@ -528,6 +528,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \nomenclature{Broadcast}{Datenpaket, das an alle Empfänger im Netzwerk gesendet wird.}
                 \nomenclature{CRC}{Cyclic Redundancy Check}
                 \nomenclature{Beacon}{dt. Leucht}feuer -- periodisches Bekanntmachen des Vorhandenseins des Netzwerkes.}
+
                 ZigBee verwendet zur Funkübertragung von Paketen den \emph{IEEE 802.15.4} Standard.
                 Dieser weisst große Ähnlichkeiten mit dem \emph{IEEE 802.11b} Standard (WLAN, vgl. 
                 Abschnitt~\ref{WlanStoersicherheit}) auf: Es werden mehrere Kanäle im
@@ -566,7 +567,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 erwarten, dass die Störungen auf den Kanälen im Randbereich der IEEE 802.11b Kanäle am geringsten --
                 wenn auch nicht komplett ausgeschlossen -- ist.
                 Ausserdem gibt es auf 4 Kanälen Überschneidungen mit \emph{Bluetooth}. Der genaue Zusammenhang ist
-                in Tabelle~\ref{ZigBee_Kanaele_Ueberschneidung} dargestellt.
+                in Tabelle~\ref{zigbee_wlan_kanaele} dargestellt.
 
                 \begin{table}
                     \begin{tabular}{lll}
@@ -588,9 +589,12 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                         25           & 13         & -\\
                         26           & 13         & -\\
                     \end{tabular}
-                    \label{zigbee_wlan_kanäle}
                     \caption{Überschneidungen zwischen ZigBee, WLAN und Bluetooth-Kanälen}
+                    \label{zigbee_wlan_kanaele}
                 \end{table}
+
+
+
 
                 \nomenclature{EEPROM}{Electrically Erasable Programmable Read-Only Memory}
                 \nomenclature{Flashspeicher}{Günstigere Variante eines \emph{EEPROMS}, das zur Massendatenspeicherung
@@ -634,7 +638,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 zu erwarten. Diese können einfach durch den automatischen Kanalwechsel des \emph{ZigBee}-Netzwerkes
                 umgangen werden.\\
 
-            \paragraph{Verschlüsselung}
+            \paragraph{Verschlüsselung}\label{ZigBee Sicherheit}
                 \nomenclature{AES}{Advanced Encryption Standard}
                 % http://www.willhackforsushi.com/presentations/toorcon11-wright.pdf 
                 \emph{ZigBee} unterstützt 128-Bit-\emph{AES}-Verschlüsselung. Hiermit können gesendete Nachrichten 

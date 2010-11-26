@@ -1,6 +1,6 @@
 %%%------------------------------------------------ZUSAMMENFASSUNG UND AUSBLICK------------------------------------------------------
 
-\chapter{Zusammenfassung und Ausblick}
+\chapter{Zusammenfassung und Ausblick}\label{Ausblick}
 
 \section{Zusammenfassung}
 \nomenclature{ANT+}{Proprietärer Funkstandard für die Datenübertragung im Nahbereich, z.B. für Pulsuhren.}
@@ -41,7 +41,7 @@ und implementiert.\cite{Jan}\\
 Nach dem groben Entwurf folgt der Entwurf im feinen. Hierbei wurden Hardware (\emph{MANVNode} und \emph{USB-Stick})
 sowie Software (\emph{MANVConnector} und Firmware der \emph{MANVNode}) getrennt betrachtet.\\
 Auf Grundlage dieses Entwurfes wurde nun eine Implementierung durchgeführt. Die Vorgehensweise, welche Probleme
-dabei aufgetreten sind, und wie diese gelöst wurden ist Thema des Kapitels~\ref{implementierung}.
+dabei aufgetreten sind, und wie diese gelöst wurden ist Thema des Kapitels~\ref{Implementierung}.
 Hier wird unter anderem beschrieben, welche Probleme bei der Bestückung der Platine der \emph{MANVNode} aufgetreten
 sind, wie der Zugriff auf die \emph{UART}-Schnittstelle des \emph{ADuC}-Mikrocontrollers in der Firmware
 realisiert wurde, wie von \emph{Java} aus auf den seriellen Port zugegriffen wird und wie die automatische
@@ -51,7 +51,7 @@ festzustellen, wie gut die vorgestellte Lösung die in der Analyse aufgestellten
 Reichweite, Stromverbrauch und Erweiterbarkeit des Funknetzwerkes wurde hierzu auch die Leistungsfähigkeit der 
 Software in Hinblick auf Anzahl der Teilnehmer, Austauschbarkeit des \emph{MANVConnectors} und Interoperabilität
 zwischen \emph{MANVSuite}, \emph{MANVConnector} und Sensornetzwerk intensiv untersucht. Alle Tests verliefen
-positiv, und die entworfene Lösung konnte in fast allen Punkten die Anforderungen, die in Abschnitt~\ref{anforderungen}
+positiv, und die entworfene Lösung konnte in fast allen Punkten die Anforderungen, die in Abschnitt~\ref{Anforderungen}
 aufgestellt wurden, erfüllen. Lediglich bei der Datensicherheit innerhalb des \emph{ZigBee}-Netzwerkes mussten
 Einschränkungen hingenommen werden, da die Firmware des Herstellers \emph{Atmel} nicht den versprochenen
 Funktionsumfang bereit stellen konnten. Dies wird in Abschnitt~\ref{Sicherheit} genauer untersucht, hier werden

@@ -8,7 +8,7 @@
 %                               %
 %-------------------------------%
 
-\documentclass[12pt]{wissdoc} %\textheight 23.0cm \textwidth 15.5cm
+\documentclass[12pt,a4paper,twoside,openright]{wissdoc} %\textheight 23.0cm \textwidth 15.5cm
 %\topmargin0cm \evensidemargin0cm \oddsidemargin0cm
 \setlength{\parindent}{0pt}
 \usepackage{a4,ngerman}
@@ -70,8 +70,8 @@
 \setlength{\nomlabelwidth}{.25\hsize}
 \renewcommand{\nomlabel}[1]{\emph{#1}}
 \setlength{\nomitemsep}{-\parsep}
-\makeglossary
-\makenomenclature
+%\makeglossary
+%\makenomenclature
 
 
 %% Auskommentieren einer dieser Zeilen bewirkt, daß nur diese
@@ -117,7 +117,7 @@
 \begin{document} 
 %%%-------------------------
 \include{Titel}
-\include{Dank}
+%\include{Dank}
 
 
 %\thispagestyle{empty}
@@ -129,7 +129,7 @@ Hiermit erkläre ich an Eides Statt, dass ich die vorliegende Diplomarbeit selbs
 Karlsruhe, 31.10.2010\\
 
 \include{Vorwort}
-\include{Danksagung}
+%\include{Danksagung}
 \include{Abstract}
 
 
@@ -155,24 +155,22 @@ Karlsruhe, 31.10.2010\\
 
 \begin{appendix}
 \include{Anhang}
-
 \end{appendix}
 
 
 %%%------------------------------------------------GLOSSAR-----------------------------------------------------------------------------
 
 %\chapter*{Glossar}
-\addcontentsline{toc}{chapter}{Glossar}
 \printnomenclature
+\addcontentsline{toc}{chapter}{Glossar}
 
 
 
 %%%------------------------------------------------KOMPLETTES LITERATURVERZEICHNIS NACH NORM------------------------------------------
-\clearpage
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \nocite{*} % Alle Einträge anzeigen
 \bibliography{Diplomarbeit}
 \bibliographystyle{natdin}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 
 \end{document}
 

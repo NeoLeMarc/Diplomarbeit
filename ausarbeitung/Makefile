@@ -19,3 +19,6 @@ Diplomarbeit.nls: Diplomarbeit.nlo
 
 Diplomarbeit.nlo:
 	pdflatex  Diplomarbeit.tex *.tex
+
+preview: Diplomarbeit.pdf preview/preview.pdf
+
