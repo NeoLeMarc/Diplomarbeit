@@ -15,7 +15,7 @@ verwendet, die auch im \emph{Erste-Hilfe-Sensor} zum Einsatz kommt, so dass die 
 Teile der \emph{Firmware} 1:1 übernommen werden können.
 
 \subsection{Interoperabilität aller Komponenten}
-\Abbildungps{!htb}{1}{diagramme/integrationstest_setup.jpg}{intergrationstest_setup}{Aufbau des Integrationstests.}
+\Abbildungps{!htb}{1}{diagramme/integrationstest_setup.jpg}{intergrationstest_setup}{Aufbau des \emph{Integrationstests}.}
 \Abbildungps{!htb}{1}{diagramme/integrationstest_gui.png}{intergrationstest_gui}{Screenshot der \emph{MANVGui} während des Integrationstests.}
 Da \emph{MANVSuite} und \emph{MANVConnector} in zwei verschiedenen Arbeiten (Vgl. \cite{Jan}) 
 entworfen wurden, muss die Interoperabilität zwischen allen Komponenten gezeigt werden. Hierzu
@@ -23,17 +23,18 @@ wurde ein umfassender Integrationstest durchgeführt.
 
 \subsubsection{Durchführung}
 \nomenclature{Setup}{Aufbau}
+\nomenclature{Virtuelle~Maschine}{In Software virtuell implementierter Computer.}
 In einem ersten Test wurde eine \emph{MANVNode} über den \emph{MANV-USB-Stick} an den \emph{MANV-Connector}
 angeschlossen und die \emph{MANVSuite} ausgeführt. Nun wurde gezeigt, dass sowohl Übertragung von \emph{MANVNode}
 zur \emph{MANVSuite} sowie umgekehrt die Übertragung von Befehlen von der \emph{MANVSuite} zu der \emph{MANVNode}
 funktionieren.\\
-In einem zweiten Test wurde nun obiges Setup durch das Hinzufügen von 4 weiteren \emph{MANVNodes} erweitert. Hierzu
+In einem zweiten Test wurde nun obiges \emph{Setup} durch das Hinzufügen von 4 weiteren \emph{MANVNodes} erweitert. Hierzu
 wurden auch wieder Daten in beide Richtungen übertragen. Hierbei wurde insbesondere darauf geachtet, dass sich die
 einzelnen \emph{MANVNodes} nicht untereinander stören, sowie dass alle Daten in der \emph{MANVSuite} korrekt zugeordnet
 und dargestellt wurden.\\
-Obiges Setup wurde nun um 5 \emph{ZigBee-Router} erweitert, und alle Tests wurden erneut durchgeführt.\\
+Obiges \emph{Setup} wurde nun um 5 \emph{ZigBee-Router} erweitert, und alle Tests wurden erneut durchgeführt.\\
 Im letzten Schritt wurde nun noch die Skalierbarkeit des Systems überprüft. Hierzu wurde mit Hilfe zweier Notebooks
-sowie dem Einsatz von Hardwarevirtualisierung jede Komponente auf eine eigene Virtuelle Maschine installiert. Diese
+sowie dem Einsatz von Hardwarevirtualisierung jede Komponente auf eine eigene \emph{Virtuelle Maschine} installiert. Diese
 wurden nun abwechselnd über beide Notebooks verteilt, so dass jede Kommunikation zwangsläufig über das Netzwerk
 stattfinden musste. Nun wurden alle obigen Tests noch einmal wiederholt.
 
@@ -52,7 +53,7 @@ erfolgreich demonstriert.
 
 \subsection{Anbindbarkeit an externe Software}\label{anbindbarkeit_an_externe_software}
 Zentrale Designentscheidung war die Verwendung einer offenen \emph{Corba}-Schnittstelle zur Anbindung
-von externer Software an die \emph{MANVSuite}. Dass dies effizient Durchführbar ist zeigt der folgende
+von externer Software an die \emph{MANVSuite}. Dass dies effizient durchführbar ist zeigt der folgende
 Test.
 
 \subsubsection{Durchführung}
@@ -176,7 +177,7 @@ wodurch sich mit einem Widerstand von
 ein Wert von 11,19~mA für $I_{Client}$ ergibt. Dies entspricht bei einer Versorgungsspannung von 3,0~V einer Leistungsaufnahme
 von 33,57~mW.
 
-\subsection{Leistungsaufnahme bei Verwendung des Energiesparmodus}
+\subsection{Leistungsaufnahme bei Verwendung des Energiesparmoduses.}
 \Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Aus dem Energiesparmodus erwachter Client.
 %   Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
 %   wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
@@ -193,9 +194,9 @@ von 33,57~mW.
 \nomenclature{Serialnet}{\emph{Firmware} für die \emph{ZigBee}-Module der Herstellers \emph{Atmel}.}
 \nomenclature{BitCloud}{\emph{SDK} zur Erstellung von \emph{Firmware} für die \emph{ZigBee}-Module der Firma \emph{Atmel}.}
 \nomenclature{Peak}{Lokales Maximum (oder je nach Messrichtung auch Minimum) eines Spannungsverlaufs.}
-Die Verwendung des Energiesparmodus~-- im Datenblatt auf als \emph{Sleepmode}, also Schlafmodus, bezeichnet~-- ist eine
+Die Verwendung des Energiesparmodus~-- im Datenblatt auch als \emph{Sleepmode}, also Schlafmodus, bezeichnet~-- ist eine
 Möglichkeit, den Stromverbrauch eines als Client konfigurierten \emph{ZigBit}-Moduls weiter zu reduzieren. Wie in 
-Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Stromverbrauch während des Energiesparmodus auf praktisch 
+Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Stromverbrauch während des Energiesparmoduses auf praktisch 
 0\footnote{Im Datenblatt ist ein Stromverbrauch von weniger als $6~\mu{}A$ angegeben.}. Sobald das Modul aus dem 
 Energiesparmodus in den Normalbetrieb zurück kehrt, wird sofort ein Empfangsvorgang gestartet. Bis zum nächsten Aufrufen des 
 Energiesparmoduses verhält sich das Modul wie in Abschnitt~\ref{ergebnis_normal} beschrieben. Der Energiesparmodus kann
@@ -277,7 +278,7 @@ Nun wurde der Abstand wieder so lange verringert, bis wieder 100\% der gesendete
 Ausserdem wurde als Gegenprobe ein Befehl an die \emph{MANVNode} gesendet, und die Antwort empfangen. 
 Als maximale Reichweite wurde nun die Entfernung gewertet, bei der gerade noch alle Pakete empfangen, 
 sowie alle Befehle erfolgreich gesendet werden konnten. Die Entfernung zwischen Notebook und 
-\emph{MANVNode} wurden nun mittels \emph{GPS} vermessen. Als maximale Reichweite ergaben sich hierbei eine Entfernung
+\emph{MANVNode} wurden nun mittels \emph{GPS} vermessen. Als maximale Reichweite ergab sich hierbei eine Entfernung
 von etwas über 50~m.\\
 Im nächsten Schritt wurde an die Position des Notebooks ein \emph{ZigBee}-Router aufgestellt, und sich von
 diesem wieder so weit entfernt, bis gerade noch alle Pakete empfangen werden konnten. Insgesamt konnte durch

@@ -83,7 +83,7 @@
 \BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 LEDs}{section.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.4.1}{5.2.4.1 Beschreibung der einzelnen LEDs}{subsection.5.2.4}
 \BOOKMARK [3][-]{subsubsection.5.2.4.2}{5.2.4.2 Diagnosecodes}{subsection.5.2.4}
-\BOOKMARK [3][-]{subsubsection.5.2.4.3}{5.2.4.3 MANV-USB-Stick}{subsection.5.2.4}
+\BOOKMARK [3][-]{subsubsection.5.2.4.3}{5.2.4.3 ZigBee-USB-Stick}{subsection.5.2.4}
 \BOOKMARK [1][-]{section.5.3}{5.3 Software}{chapter.5}
 \BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 MANVNode Firmware}{section.5.3}
 \BOOKMARK [3][-]{subsubsection.5.3.1.1}{5.3.1.1 Funktionalit\344t}{subsection.5.3.1}
@@ -116,7 +116,7 @@
 \BOOKMARK [3][-]{subsubsection.7.1.4.2}{7.1.4.2 Ergebnisse}{subsection.7.1.4}
 \BOOKMARK [1][-]{section.7.2}{7.2 Leistungsaufnahme des ZigBit-Moduls}{chapter.7}
 \BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Leistungsaufnahme im Normalbetrieb}{section.7.2}
-\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Leistungsaufnahme bei Verwendung des Energiesparmodus}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Leistungsaufnahme bei Verwendung des Energiesparmoduses.}{section.7.2}
 \BOOKMARK [2][-]{subsection.7.2.3}{7.2.3 Sonderf\344lle}{section.7.2}
 \BOOKMARK [1][-]{section.7.3}{7.3 Reichweite}{chapter.7}
 \BOOKMARK [2][-]{subsection.7.3.1}{7.3.1 Reichweite im Freien}{section.7.3}
@@ -144,11 +144,11 @@
 \BOOKMARK [2][-]{subsection.B.1.1}{B.1.1 Starten des Connectors}{section.B.1}
 \BOOKMARK [2][-]{subsection.B.1.2}{B.1.2 Kompilieren des Connectors}{section.B.1}
 \BOOKMARK [2][-]{subsection.B.1.3}{B.1.3 Verzeichnisstruktur des Quellcodes}{section.B.1}
-\BOOKMARK [3][-]{subsubsection.B.1.3.1}{B.1.3.1 Inhalt des Verzeichnises commands}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.2}{B.1.3.2 Inhalt des Verzeichnises corba}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.3}{B.1.3.3 Inhalt des Verzeichnisses events}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.4}{B.1.3.4 Inhalt der Verzeichnises results}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.5}{B.1.3.5 Inhalt des Verzeichnisses lib}{subsection.B.1.3}
+\BOOKMARK [3][-]{subsubsection.B.1.3.1}{B.1.3.1 Inhalt des Verzeichnises commands/}{subsection.B.1.3}
+\BOOKMARK [3][-]{subsubsection.B.1.3.2}{B.1.3.2 Inhalt des Verzeichnises corba/}{subsection.B.1.3}
+\BOOKMARK [3][-]{subsubsection.B.1.3.3}{B.1.3.3 Inhalt des Verzeichnisses events/}{subsection.B.1.3}
+\BOOKMARK [3][-]{subsubsection.B.1.3.4}{B.1.3.4 Inhalt der Verzeichnises results/}{subsection.B.1.3}
+\BOOKMARK [3][-]{subsubsection.B.1.3.5}{B.1.3.5 Inhalt des Verzeichnisses lib/}{subsection.B.1.3}
 \BOOKMARK [4][-]{paragraph.B.1.3.5.1}{B.1.3.5.1 Interface eines ZigBit-Knotens}{subsubsection.B.1.3.5}
 \BOOKMARK [1][-]{section.B.2}{B.2 Serial-To-Socket}{appendix.B}
 \BOOKMARK [1][-]{section.B.3}{B.3 Firmware}{appendix.B}

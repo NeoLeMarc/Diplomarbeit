@@ -13,7 +13,7 @@ an den Mikrocontroller zu senden. Da der für diese Tests eingesetzt \emph{ADuC-
 der selben Familie wie der in dem \emph{Erste-Hilfe-Sensor} verwendete \emph{Mikrocontroller} handelt,
 können diese Ergebnisse ohne weiteres auf die Hardware des \emph{Erste-Hilfe-Sensors} übertragen werden, 
 die Integrierbarkeit in diesen konnte somit gezeigt werden.\\
-Durch die erhöhte Leistungsaufnahme, insbesondere bei Lastspitzen (Peaks), muss eine Anpassung
+Durch die erhöhte Leistungsaufnahme, insbesondere bei Lastspitzen (\emph{Peaks}), muss eine Anpassung
 der Stromversorgung des \emph{Erste-Hilfe-Sensors} erfolgen, wenn das \emph{ZigBee}-Modul integriert
 werden soll. Die genaue Analyse auftretender Lastspitzen findet sich in Abschnitt~\ref{leistungsaufnahme_normalbetrieb}.
 Insbesondere sollten hierbei auch die Ergebnisse in Abschnitt~\ref{leistungsaufnahme_sonderfaelle} beachtet 
@@ -27,7 +27,7 @@ alle anderen Teile können ohne Änderung weiterverwendet werden.\\
 Durch die in Abschnitt~\ref{anbindbarkeit_an_externe_software} durchgeführte schnelle Umsetzung eines Adapters 
 zur Anbindung der \emph{MANVSuite} an eine Weboberfläche konnte gezeigt werden, dass durch die hohe Modularität
 und Einsatz der Komponententechnologie \emph{Corba} ein hohes Maß an Flexibilität und Adaptierbarkeit der
-Gesamtlösung erreicht, und eine Anbindung an bestehende Systeme mit geringem Aufwand realisiert werden kann.
+Gesamtlösung erreicht wird, und eine Anbindung an bestehende Systeme mit geringem Aufwand realisiert werden kann.
 Eine genauere Analyse und Evaluation der \emph{MANVSuite} inkl. der beschriebenen Schnittstellen findet sich
 in \cite{Jan}. In dieser verwandten Arbeit wird unter anderem gezeigt, wie eine Anbindung der \emph{MANVSuite}
 an ein Mobiltelefon des Herstellers Nokia erfolgen kann.\\
@@ -51,15 +51,15 @@ für die Überwachung einzelner Patienten als eine Art intelligenter Hausnotruf 
 \\
 Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in vielen Punkte ab:
 
-\nomenclature{Open Source}{Softwareprodukt, bei dem der Quellcode frei verfügbar ist.}
-\nomenclature{GPIO}{General Purpose Input Output.}
+\nomenclature{Open-Source}{Softwareprodukt, bei dem der Quellcode frei verfügbar ist.}
+\nomenclature{GPIO}{General Purpose Input Output}
 \begin{itemize}
     \item{Konsequenter Einsatz offener Standards:} In der gesamten Arbeit wurde konsequent auf den
           Einsatz offener Standards gesetzt. Bei der Verwendung von externen Softwarepaketen wurde
           darauf geachtet, dass es sich um \emph{Open-Source} Produkte handelt. Zur Implementierung
           wurde keinerlei proprietäre Technologie eingesetzt.
 
-    \item{Kapselung aller Platformspezifischen Designentscheidungen:} Alle Platformabhängige
+    \item{Kapselung aller Plattformspezifischen Designentscheidungen:} Alle Plattformabhängige
           Designentscheidungen wie die Ansteuerung der \emph{ZigBee}-Module oder der
           physische Zugriff auf die serielle Schnittstelle sind bewusst austauschbar gehalten.
           Hierzu wurden diese in Komponenten gekapselt und die Schnittstelle zwischen diesen
@@ -84,11 +84,11 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
           \emph{ZigBit}-Moduls verbunden ist (Details zur Implementierung in die Platine kann dem
           Schaltplan in Anhang~\ref{anhang_diagramme} entnommen werden). 
 
-    \item{Platformunabhängigkeit:} Durch den Einsatz platformunabhängiger Programmiersprachen wie \emph{Java}
+    \item{Plattformunabhängigkeit:} Durch den Einsatz plattformunabhängiger Programmiersprachen wie \emph{Java}
           und \emph{Python} sowie durch Hardwarevirtualisierung ist die vorgestellte Lösung auf
           einer breiten Palette von Systemen einsatzfähig.
 
-    \item{Platzsparend und Handlich:} Die hier vorgestellte Prototyp-Platine besitzt eine Abmessung von nur
+    \item{Platzsparend und handlich:} Die hier vorgestellte Prototyp-Platine besitzt eine Abmessung von nur
           50~mm auf 56~mm und bietet noch viel Potential zur weiteren Optimierung der Größe (z.B. durch
           die beidseitige Platzierung von Bauteilen oder der Fertigung in 4-Schicht-Bauweise).
 \end{itemize}

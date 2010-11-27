@@ -82,7 +82,7 @@
 \contentsline {subsection}{\numberline {5.2.4}LEDs}{57}{subsection.5.2.4}
 \contentsline {subsubsection}{\numberline {5.2.4.1}Beschreibung der einzelnen LEDs}{57}{subsubsection.5.2.4.1}
 \contentsline {subsubsection}{\numberline {5.2.4.2}Diagnosecodes}{57}{subsubsection.5.2.4.2}
-\contentsline {subsubsection}{\numberline {5.2.4.3}\emph {MANV-USB-Stick}}{58}{subsubsection.5.2.4.3}
+\contentsline {subsubsection}{\numberline {5.2.4.3}\emph {ZigBee-USB-Stick}}{58}{subsubsection.5.2.4.3}
 \contentsline {section}{\numberline {5.3}Software}{58}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}MANVNode Firmware}{58}{subsection.5.3.1}
 \contentsline {subsubsection}{\numberline {5.3.1.1}Funktionalit\IeC {\"a}t}{58}{subsubsection.5.3.1.1}
@@ -115,7 +115,7 @@
 \contentsline {subsubsection}{\numberline {7.1.4.2}Ergebnisse}{84}{subsubsection.7.1.4.2}
 \contentsline {section}{\numberline {7.2}Leistungsaufnahme des ZigBit-Moduls}{84}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Leistungsaufnahme im Normalbetrieb}{85}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Leistungsaufnahme bei Verwendung des Energiesparmodus}{88}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.2}Leistungsaufnahme bei Verwendung des Energiesparmoduses.}{88}{subsection.7.2.2}
 \contentsline {subsection}{\numberline {7.2.3}Sonderf\IeC {\"a}lle}{90}{subsection.7.2.3}
 \contentsline {section}{\numberline {7.3}Reichweite}{91}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}Reichweite im Freien}{92}{subsection.7.3.1}
@@ -143,11 +143,11 @@
 \contentsline {subsection}{\numberline {B.1.1}Starten des Connectors}{111}{subsection.B.1.1}
 \contentsline {subsection}{\numberline {B.1.2}Kompilieren des Connectors}{111}{subsection.B.1.2}
 \contentsline {subsection}{\numberline {B.1.3}Verzeichnisstruktur des Quellcodes}{112}{subsection.B.1.3}
-\contentsline {subsubsection}{\numberline {B.1.3.1}Inhalt des Verzeichnises commands}{112}{subsubsection.B.1.3.1}
-\contentsline {subsubsection}{\numberline {B.1.3.2}Inhalt des Verzeichnises corba}{112}{subsubsection.B.1.3.2}
-\contentsline {subsubsection}{\numberline {B.1.3.3}Inhalt des Verzeichnisses events}{113}{subsubsection.B.1.3.3}
-\contentsline {subsubsection}{\numberline {B.1.3.4}Inhalt der Verzeichnises results}{114}{subsubsection.B.1.3.4}
-\contentsline {subsubsection}{\numberline {B.1.3.5}Inhalt des Verzeichnisses lib}{115}{subsubsection.B.1.3.5}
+\contentsline {subsubsection}{\numberline {B.1.3.1}Inhalt des Verzeichnises \emph {commands/}}{112}{subsubsection.B.1.3.1}
+\contentsline {subsubsection}{\numberline {B.1.3.2}Inhalt des Verzeichnises \emph {corba/}}{112}{subsubsection.B.1.3.2}
+\contentsline {subsubsection}{\numberline {B.1.3.3}Inhalt des Verzeichnisses \emph {events/}}{113}{subsubsection.B.1.3.3}
+\contentsline {subsubsection}{\numberline {B.1.3.4}Inhalt der Verzeichnises \emph {results/}}{114}{subsubsection.B.1.3.4}
+\contentsline {subsubsection}{\numberline {B.1.3.5}Inhalt des Verzeichnisses \emph {lib/}}{115}{subsubsection.B.1.3.5}
 \contentsline {paragraph}{\numberline {B.1.3.5.1}Interface eines ZigBit-Knotens}{115}{paragraph.B.1.3.5.1}
 \contentsline {section}{\numberline {B.2}Serial-To-Socket}{116}{section.B.2}
 \contentsline {section}{\numberline {B.3}Firmware}{116}{section.B.3}

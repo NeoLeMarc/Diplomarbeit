@@ -13,67 +13,62 @@ A level-1 auxiliary file: Ergebnisse.aux
 A level-1 auxiliary file: Diskussion.aux
 A level-1 auxiliary file: Ausblick.aux
 A level-1 auxiliary file: Anhang.aux
-The style file: natdin.bst
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+The style file: itmalpha.bst
 Database file #1: Diplomarbeit.bib
 Warning--entry type for "alarm" isn't style-file defined
 --line 4 of file Diplomarbeit.bib
+Warning--entry type for "BCM4326_Datasheet" isn't style-file defined
+--line 24 of file Diplomarbeit.bib
+Warning--entry type for "Corscience" isn't style-file defined
+--line 128 of file Diplomarbeit.bib
 Warning--entry type for "WPANComparison" isn't style-file defined
---line 120 of file Diplomarbeit.bib
+--line 138 of file Diplomarbeit.bib
 Warning--entry type for "BluetoothPower" isn't style-file defined
---line 157 of file Diplomarbeit.bib
+--line 175 of file Diplomarbeit.bib
 Warning--entry type for "Vorlesung_Snelting" isn't style-file defined
---line 163 of file Diplomarbeit.bib
+--line 181 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
---line 174 of file Diplomarbeit.bib
-Warning--I didn't find a database entry for "BCM4326_Datasheet"
-Warning--empty number in zigbee_specification
-Warning--empty note in zigbee_specification
-Warning--empty number in ieee_zigbee
-Warning--empty note in ieee_zigbee
+--line 192 of file Diplomarbeit.bib
 Warning--empty school in Marc
-Warning--empty number in MANET
-Warning--empty note in MANET
-Warning--empty year in BluetoothPower
-You've used 16 entries,
-            4728 wiz_defined-function locations,
-            999 strings with 10091 characters,
-and the built_in function-call counts, 11080 in all, are:
-= -- 1097
-> -- 336
-< -- 267
-+ -- 341
-- -- 112
-* -- 837
-:= -- 1945
-add.period$ -- 24
-call.type$ -- 16
-change.case$ -- 85
-chr.to.int$ -- 16
-cite$ -- 24
-duplicate$ -- 297
-empty$ -- 801
-format.name$ -- 201
-if$ -- 2198
+You've used 18 entries,
+            2778 wiz_defined-function locations,
+            697 strings with 8121 characters,
+and the built_in function-call counts, 6125 in all, are:
+= -- 580
+> -- 293
+< -- 17
++ -- 94
+- -- 106
+* -- 346
+:= -- 1044
+add.period$ -- 58
+call.type$ -- 18
+change.case$ -- 96
+chr.to.int$ -- 18
+cite$ -- 19
+duplicate$ -- 241
+empty$ -- 455
+format.name$ -- 122
+if$ -- 1246
 int.to.chr$ -- 1
-int.to.str$ -- 1
-missing$ -- 62
-newline$ -- 112
-num.names$ -- 64
-pop$ -- 129
+int.to.str$ -- 0
+missing$ -- 13
+newline$ -- 95
+num.names$ -- 54
+pop$ -- 157
 preamble$ -- 1
-purify$ -- 117
+purify$ -- 129
 quote$ -- 0
-skip$ -- 544
+skip$ -- 249
 stack$ -- 0
-substring$ -- 820
-swap$ -- 59
-text.length$ -- 43
-text.prefix$ -- 0
+substring$ -- 156
+swap$ -- 24
+text.length$ -- 17
+text.prefix$ -- 16
 top$ -- 0
-type$ -- 184
-warning$ -- 8
-while$ -- 91
-width$ -- 0
-write$ -- 247
-(There were 14 warnings)
+type$ -- 162
+warning$ -- 1
+while$ -- 42
+width$ -- 23
+write$ -- 232
+(There were 8 warnings)

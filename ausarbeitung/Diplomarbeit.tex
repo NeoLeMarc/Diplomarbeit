@@ -25,7 +25,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{makeidx}
-\usepackage{natbib}
+%\usepackage{natbib}
 % \usepackage[dvips]{color}
 \usepackage{fancyhdr}
 \usepackage{color}
@@ -67,6 +67,8 @@
 \usepackage{nomencl}
 \usepackage{ifthen}
 \renewcommand{\nomname}{\chapter*{Glossar}}
+\makeglossary
+\makenomenclature
 \setlength{\nomlabelwidth}{.25\hsize}
 \renewcommand{\nomlabel}[1]{\emph{#1}}
 \setlength{\nomitemsep}{-\parsep}
@@ -169,7 +171,7 @@ Karlsruhe, 31.10.2010\\
 %%%------------------------------------------------KOMPLETTES LITERATURVERZEICHNIS NACH NORM------------------------------------------
 \nocite{*} % Alle Einträge anzeigen
 \bibliography{Diplomarbeit}
-\bibliographystyle{natdin}
+\bibliographystyle{itmalpha}
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 
 \end{document}

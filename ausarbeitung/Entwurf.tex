@@ -3,16 +3,16 @@
 %%%------------------------------------------------Entwurf -------------------------------------------------------------
 \chapter{Entwurf}\label{Entwurf}
 
-In diesem Kapitel wird der Entwurf der zu Implementierenden Lösung vorgenommen. Hierzu erfolgt zunächst des Gesamtsystems
+In diesem Kapitel wird der Entwurf der zu implementierenden Lösung vorgenommen. Hierzu erfolgt zunächst des Gesamtsystems
 im Groben. Dieses Gesamtsystem wird in einzelne Komponenten zerlegt, die danach einzeln genauer spezifiziert werden.
 Hierbei wird zwischen Hard- und Software unterschieden. Ein Teil der Softwarekomponenten werden parallel zu dieser 
 Arbeit in \cite{Jan} entworfen und implementiert.
 
 \section{Gesamtsystem}
 \Abbildungps{!htb}{1}{diagramme/Gesamtuebersicht.pdf}{abbildung_gesamtsystem}{Überblick über das Gesamtsystem}
-In dieser Arbeit wird ein Sensornetzwerk zur Patientenüberwachung entworfen. Dieses System besteht aus einer Kombination
+In dieser Arbeit wird ein System zur Patientenüberwachung entworfen. Dieses System besteht aus einer Kombination
 von Soft- und Hardware. Zur einfacheren Handhabung wird das System in mehrere Komponenten zerlegt, die einzeln entworfen
-und Implementiert werden. Zwischen den einzelnen Komponenten gibt es klar definierte Schnittstellen. Hierdurch ist
+und implementiert werden. Zwischen den einzelnen Komponenten gibt es klar definierte Schnittstellen. Hierdurch ist
 gewährleistet, dass die einzelnen Komponenten unabhängig voneinander entworfen und implementiert werden können. Noch nicht
 implementierte Komponenten können durch Simulatoren ersetzt werden, so dass bereits fertige Komponenten schon getestet
 werden können, ohne dass das Gesamtsystem komplett fertig gestellt werden muss. Dies gewährleistet ein frühzeitiges
@@ -22,29 +22,29 @@ Abbildung~\ref{abbildung_gesamtsystem} zeigt welche Komponenten in dem Gesamtsys
 zusammenwirken:
 
 \begin{itemize}
-    \item{Erste-Hilfe-Sensor:} Der eigentliche Sensor, der zur Überwachung der Patienten eingesetzt wird. Dieser 
+    \item{\emph{Erste-Hilfe-Sensor}:} Der eigentliche Sensor, der zur Überwachung der Patienten eingesetzt wird. Dieser 
                                wurde in \cite{Marc} entwickelt. In dieser Arbeit wird dieser Sensor um eine 
                                \emph{ZigBee}-Schnittstelle erweitert. Zur Simulation des erweiterten Sensors
                                wird eine Testplatine entwickelt, die sogeannte \emph{MANVNode}.
-    \item{\emph{ZigBee}-Router:} Die Router dienen zur Erweiterung der Reichweite des \emph{ZigBee}-Netzwerkes.
+    \item{\emph{ZigBee-Router}:} Die Router dienen zur Erweiterung der Reichweite des \emph{ZigBee}-Netzwerkes.
                                  Hierfür wird ein fertiges \emph{ZigBee}-Modul der Firma \emph{Atmel} verwendet.
-    \item{\emph{ZigBee-USB}-Stick:} Der \emph{USB}-Stick bildet die Hardwareschnittstelle zwischen Computer und 
+    \item{\emph{ZigBee-USB-Stick}:} Der \emph{USB}-Stick bildet die Hardwareschnittstelle zwischen Computer und 
                                     \emph{ZigBee}-Netzwerk. Das Design basiert auf einem \emph{ZigBee}-Router,
                                     der um eine \emph{USB}-Schnittstelle erweitert wird.
-    \item{\emph{MANVConnector}}: Der Connector fungiert als Adapter, der eine Übersetzung zwischen der 
+    \item{\emph{MANVConnector}:} Der Connector fungiert als Adapter, der eine Übersetzung zwischen der 
                                  Hardware des \emph{USB-Sticks} und der \emph{CORBA}-Schnittstelle der \emph{MANVSuite}
-                                 vornimmt. Vereinfacht handelt es sich um einen Treiber für den 
+                                 vornimmt. Vereinfacht gesprochen handelt es sich um einen Treiber für den 
                                  \emph{ZigBee-USB}-Stick. Der \emph{MANVConnector} kapselt alle Hardwarespezifischen
                                  Designentscheidungen. Soll später eine andere Funktschnittstelle wie z.B.
                                  \emph{Bluetooth} oder \emph{WLAN} verwendet werden, so muss lediglich
                                  der \emph{MANVConnector} ausgetauscht werden.
-    \item{\emph{MANVServer}}: Der \emph{MANVServer} verwaltet alle Informationen über das Sensornetzwerk. Hierzu
+    \item{\emph{MANVServer}:} Der \emph{MANVServer} verwaltet alle Informationen über das Sensornetz. Hierzu
                               wird eine relationale Datenbank verwendet. Er sorgt dafür, dass alle Informationen
                               an den entsprechenden Empfänger zugestellt werden. Die Kommunikation zwischen
                               \emph{MANVServer} und \emph{MANVConnector} erfolgt über \emph{CORBA}. Der 
                               \emph{MANVServer} wurde in \cite{Jan} entwickelt.
-    \item{\emph{Client-Anwendungen}}: Die Clientanwendungen, also \emph{MANVGui} und \emph{MANVMobileGui} bilden
-                                      die Benutzerschnittstelle des Sensornetzwerkes. Diese wurden ebenfalls
+    \item{\emph{Client-Anwendungen}:} Die Clientanwendungen, also \emph{MANVGui} und \emph{MANVMobileGui} bilden
+                                      die Benutzerschnittstelle des Sensornetzes. Diese wurden ebenfalls
                                       in \cite{Jan} entwickelt. 
 \end{itemize}
     
@@ -62,25 +62,27 @@ Platine Messwerte mit Hilfe eines Zufallszahlen-Generators.  Dier Generator kann
 \begin{itemize}
     \item{Grün:} Simulation eines Patienten mit gutem Kreislaufzustand. Puls zwischen 60 und 120 Schlägen pro Minute, 
                  Atemzüge pro Minute zwischen 12 und 15. Periodischer Versand der Meldung "`Zustand OK"'.von 
-    \item{Gelb:} Simulation eines Patienten mit beginnend kritischem aber noch nicht akut Lebensbedrohlichem 
+    \item{Gelb:} Simulation eines Patienten mit beginnend kritischem aber noch nicht akut lebensbedrohlichem 
                  Kreislaufzustand. Puls zwischen 120 und 180 Schlägen pro Minute, Atmung zwischen 60 und 80
                  Zügen pro Minute (Hyperventilation).
     \item{Rot:}  Simulation eines Patienten in kritischem Zustand mit Puls zwischen 0 und 10 (entsprechend
-                 Kammerflimmern oder Kreislaufstillstand) sowie Atmung zwischen (0 und 2) mit bestehndem
-                 akutem Handlungsbedarf. Priorisierte Generierung eienr Alarmmeldung.
+                 Kammerflimmern oder Kreislaufstillstand) sowie Atmung zwischen (0 und 2) mit bestehendem
+                 akutem Handlungsbedarf. Priorisierte Generierung einer Alarmmeldung.
 \end{itemize}
 
 Zur Einstellung und Wechsel der Zustände befinden sich 3 Schalter an der Platine. Der Zustand wird mit Hilfe von
-drei farbigen LEDs visualisiert. Zusätzlich kann über einen Piezzo-Summer ein Alarm auch akustisch wiedergegeben werden.
+drei farbigen LEDs visualisiert. Zusätzlich kann über einen Piezo-Summer ein Alarm auch akustisch wiedergegeben werden.
 Durch die Kombination der drei LEDs werden zusätzlich Status- und Fehlerinformationen der Platine während des 
 Initialisierungsvorgangs ausgegeben.
 
 \subsection{Spannungsversorgung}
 \nomenclature{mF}{Millifarad}
 \nomenclature{LED}{Leuchtdiode}
+\nomenclature{Low-Dropout}{Spannungsregler, der mit niedriger Differenz zwischen Eingangs- und 
+              Ausgansspannung arbeiten kann.}
 Um die Platine möglichst vielseitig einzusetzen wurde wert auf eine möglichst flexible Spannungsversorgung gelegt. Diese
-soll möglichst Robust gegenüber Spannungsschwankungen sein. Kern der Spannungsversorgung ist ein 
-Low-Dropout-Spannungsregler des Typs \emph{LP2980-3.3} der Firma \emph{National Semiconductor}. Dieser liefert eine stabile
+soll möglichst robust gegenüber Spannungsschwankungen sein. Kern der Spannungsversorgung ist ein 
+\emph{Low-Dropout-Spannungsregle}r des Typs \emph{LP2980-3.3} der Firma \emph{National Semiconductor}. Dieser liefert eine stabile
 3,3~V Spannung bei einem maximalen Strom von 50~mA. Die Eingangsspannung kann zwischen 2.1~V bis 16~V variiert werden.
 Die Spannungsversorgung kann damit z.B. über USB (5~V-Versorgungsspannung), ein externes Netzteil oder eine 
 9~V-Blockbatterie gespeist werden. Durch die hohe maximale Versorgungsspannung von 9~V sind Schäden durch versehentliches
@@ -89,7 +91,7 @@ Kondensator stabilisiert.
 
 Zusätzlich wurde die die Spannungsversorgung weiter stabilisiert. Hierzu wurde jeder Spannungseingang aller Bauteile der
 Platine mit einem 100nF Kondensator gepuffert. Diese sind möglichst nahe an den entsprechenden Versorgungspins angebracht.
-Kurzzeitige Spannungsabfälle, wie sie z.B. beim Schalten von LEDs, des Piezzo-Summers oder des Aufwachsens des ZigBee-Moduls
+Kurzzeitige Spannungsabfälle, wie sie z.B. beim Schalten von LEDs, des Piezo-Summers oder des Aufwachens des ZigBee-Moduls
 aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
 
 \subsection{Programmierschnittstellen}
@@ -98,7 +100,7 @@ aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
 Die \emph{MANVNode}-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
 Schnittstelle (JP1) vorhanden, welche der Standardbelegung des Programmierkabels des \emph{ADuC-7026-Evaluationsboards}
 besitzt.  Bereits vorhandene Programmierkabel können somit ohne weiteres zur Programmierung des Mikrocontrollers 
-verwendet werden.  Zusätzlich besthet die Möglichkeit, auf die serielle Schnittstelle des \emph{ZigBit}-Moduls 
+verwendet werden.  Zusätzlich besteht die Möglichkeit, auf die serielle Schnittstelle des \emph{ZigBit}-Moduls 
 zuzugreifen, worüber das Herunterladen von \emph{Firmware} auf das Modul, sowie der Einstellung bestimmter 
 Parameter wie der Netzwerkkennung des Gerätes möglich ist.
 Der Zugriff erfolgt ebenfalls über die Stiftleiste JP1, allerdings muss hierfür \emph{RX-} und \emph{TX}-Leitung des 
@@ -106,12 +108,12 @@ Programmierkabels verdreht, und alle Jumper des Schalters S1 unterbrochen werden
 
 \subsubsection{JTAG}
 Die \emph{MANVNode}-Platine verfügt neben seriellen auch über eine JTAG-Schnittstelle. Diese ermöglich einen Zugriff mit
-gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder \emph{Kyle} $\mu{}$Vision.
+gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder \emph{Kyle $\mu{}$Vision.}
 Über die Schnittstelle kann sowohl Programmierung als auch Debugging des \emph{ADuC-7026-Mikrocontrollers}
 durchgeführt werden. Ein Zugriff auf das \emph{ZigBit} Modul ist allerdings nur indirekt 
-möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Consolenverbindung
-über den \emph{UART} des \emph{ADuC-7026-Mikrocontrollers} zu öffnen, so direkt mit dem \emph{ZigBit}-Modul 
-Kommunikation möglich ist.}.  Ein Zugriff über \emph{JTAG} ist nicht vorgesehen.
+möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Konsolenverbindung
+über den \emph{UART} des \emph{ADuC-7026-Mikrocontrollers} zu öffnen, um direkt mit dem \emph{ZigBit}-Modul zu
+    kommunizieren.}.  Ein Zugriff über \emph{JTAG} ist nicht vorgesehen.
 
 \subsection{LEDs}
 
@@ -135,7 +137,7 @@ Neben den oben dargestellten einfachen Signalisierungen hat die \emph{Firmware} 
 Möglichkeit, über die Kombination obiger LEDs Diagnose und Fehlercodes auszugeben. Hierbei gilt folgende Codierung:
 
 \begin{itemize}
-    \item{Led GREEN blinkt in 1-Sekunden-Perioden:} Der ADuC-7026-Mikrocontroller befindet sich im Bootmodus. Ein Reset des
+    \item{GREEN blinkt in 1-Sekunden-Perioden:} Der ADuC-7026-Mikrocontroller befindet sich im Bootmodus. Ein Reset des
                                                     ZigBit-Moduls wurde durchgeführt und es wird nun auf Bereitschaft des Moduls
                                                     gewartet.
     \item{Zweimaliges Blinken von YELLOW:} Eine Verbindung mit dem ZigBit-Modul wurde erfolgreich aufgebaut, es wird nun eine 
@@ -147,14 +149,14 @@ Möglichkeit, über die Kombination obiger LEDs Diagnose und Fehlercodes auszuge
     \item{YELLOW leuchtet dauerhaft länger als 10 Sekunden und ZIGBIT-STATUS leuchte nicht:} Es liegt eine Funktionsstörung des
           ZigBit-Moduls vor.
     \item{ZIGBIT-STATUS leuchtet dauerhaft:} Verbindung mit Funknetzwerk wurde verloren oder Powersafe-Modus ist deaktiviert.
-    \item{ZIGBIT-STATUS blinkt im 2 Sekunden Interval:} Die Platine arbeitet Ordnungsgemäß, es besteht eine Verbindung mit dem
+    \item{ZIGBIT-STATUS blinkt im 2 Sekunden Intervall:} Die Platine arbeitet Ordnungsgemäß, es besteht eine Verbindung mit dem
                                                         Funknetzwerk und der Powersafe-Modus ist aktiv.
 \end{itemize}
                                                         
-\subsubsection{\emph{MANV-USB-Stick}}
+\subsubsection{\emph{ZigBee-USB-Stick}}
 \Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
 
-Der \emph{MANV-USB-Stick} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen 
+Der \emph{ZigBee-USB-Stick} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen 
 \emph{USB-Stick}, der ein \emph{ZigBit}-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das 
 \emph{ZigBit}-Modul mit Strom versorgen, sowie eine Umsetzung der \emph{UART}-Schnittstelle des \emph{ZigBit}-Moduls 
 auf \emph{USB} vornehmen. Für die Stromversorgung ist es notwendig, die 5~V der
@@ -253,14 +255,14 @@ Dieser Ablauf ist in Abbildung~\ref{zigbit_mainloop} als Ablaufdiagramm dargeste
 \subsection{MANVSuite}
 
 In dieser Arbeit wurde ein \emph{Java}-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die die 
-Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte MANVSuite. 
+Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte \emph{MANVSuite}. 
 
 
 \subsection{MANVConnector}
 \Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des \emph{MANVConnectors}}
 
 
-Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten die von dem \emph{MANV-USB-Connector} empfangen wurden in 
+Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten die von dem \emph{ZigBee-USB-Connector} empfangen wurden in 
 \emph{Corba-Events} umzusetzen, und an den \emph{MANVServer} weiterzuleiten. Andererseits empfängt sie 
 \emph{Corba-Events} vom \emph{MANVServer}, dekodiert diese und sendet diese in Form von Sensornetz Befehlen an die 
 zuständigen \emph{MANVNodes} weiter.
@@ -284,32 +286,32 @@ Jedes Element der einzelnen Queues verfügt über eine Priorität; die Queues so
 Zugriff nach Priotität sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
 wie z.B. ein Alarm bevorzugt ausgeliefert werden.
 
-Der \emph{MANVConnector} verfügt neben dem Hauptthread über drei weitere Threads:
+Der \emph{MANVConnector} verfügt neben dem Hauptthread über drei weitere \emph{Threads}:
 
 \begin{itemize}
-    \item{SocketWriter:} Dieser Thread entnimmt Befehle aus der \emph{CommandQueue} und sendet
-                         diese über den \emph{MANV-USB-Stick} an das Sensornetz. Nun blockiert der
-                         Thread so lange, bis das Ergebnis des Befehls zur Verfügung steht.
+    \item{\emph{SocketWriter}:} Dieser \emph{Thread} entnimmt Befehle aus der \emph{CommandQueue} und sendet
+                         diese über den \emph{ZigBee-USB-Stick} an das Sensornetz. Nun blockiert der
+                         \emph{Thread} so lange, bis das Ergebnis des Befehls zur Verfügung steht.
                          Sobald dies der Fall ist, wird der Befehl zusammen mit dem Ergebnis in
                          die \emph{ResultQueue} eingefügt.
-    \item{SocketReader:} Dieser Thread empfängt Daten aus dem Sensornetz. Handelt es sich um ein
+    \item{\emph{SocketReader}:} Dieser \emph{Thread} empfängt Daten aus dem Sensornetz. Handelt es sich um ein
                          Ergebnis, so wird dies dem \emph{SocketWrite} signalisiert, und das
-                         Ergebnis zur Abholung durch den \emph{SocketWriter} zur Verfügung
-                         gestellt. Handelt es sich hingegen um einen Ereignis, so wird dieses
+                         Ergebnis zur Abholung zur Verfügung gestellt. Handelt es sich hingegen um einen 
+                         Ereignis, so wird dieses
                          in die \emph{EventQueue} eingefügt.
-    \item{CorbaSender:} Dieser Thread ist für die Kommunikation mit \emph{MANVServer} zuständig.
+    \item{\emph{CorbaSender}:} Dieser \emph{Thread} ist für die Kommunikation mit \emph{MANVServer} zuständig.
                          Befehle, die vom \emph{MANVServer} empfangen werden, werden für das 
                          Sensornetz aufbereitet und in die \emph{CommandQueue} eingestellt.
                          Ausserdem werden Ereignisse aus der \textsl{EventQueue} entnommen,
-                         in Corba-Events übersetzt und an den \emph{MANVServer} zugestellt.
+                         in \emph{Corba-Events} übersetzt und an den \emph{MANVServer} zugestellt.
 \end{itemize}                          
 
 Die Kommunikation der \emph{Threads} untereinander findet komplett über die oben genannten Warteschlangen statt. Das 
 Zusammenwirken der \emph{Threads} ist in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt:\\
 
-Zunächst erzeugt der Hauptthread (\emph{MANVConnector.main}) die drei Warteschlangen. Dannach werden die beiden 
+Zunächst erzeugt der \emph{Hauptthread} (\emph{MANVConnector.main}) die drei Warteschlangen. Dannach werden die beiden 
 \emph{Threads} \emph{SocketWriter} und \emph{SocketReader} erstellt. Dannach ruft der 
-\emph{Hauptthread} die \emph{CORBA}-Initialisierungsroutine auf und startet den \emph{CorbaSender}-Thread.\\
+\emph{Hauptthread} die \emph{CORBA}-Initialisierungsroutine auf und startet den \emph{CorbaSender}-\emph{Thread}.\\
 
 Beim Starten der \emph{Threads}, wird sichergestellt, dass alle Zugriff auf alle drei Warteschlangen haben. Die konsequente 
 Verwendung der Warteschlangen zur Kommunikation der \emph{Threads} untereinander löst bereits viele 

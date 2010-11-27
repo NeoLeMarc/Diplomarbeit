@@ -2,7 +2,7 @@
 %%%-----------------------------------------------UMSETZUNG/VORBEREITUNGEN-------------------------------------------------------------
 \chapter{Praktische Realisierung des Sensornetzes}\label{Implementierung}
 
-In diesem Kapitel wird die Implementierung des Sensornetzwerkes beschrieben, welche Probleme dabei aufgetreten
+In diesem Kapitel wird die Implementierung des Sensornetzes beschrieben, welche Probleme dabei aufgetreten
 sind und wie diese gelöst wurden.
 
 \section{Hardware}
@@ -10,7 +10,7 @@ sind und wie diese gelöst wurden.
 \nomenclature{IC}{Integrierter Schaltkreis}
 Das \emph{ZigBit}-Modul kann grundsätzlich entweder über \emph{SPI} oder \emph{UART} angesprochen werden. 
 Zur Realisierung des \emph{USB-Sticks} bietet sich die Verwendung des \emph{UARTs} an, da eine breite Palette 
-von fertigen \emph{ICs} zur Verfügung steht, mit deren Hilfe ein \emph{UART} an einen \emph{USB}-Bus angebunden werden 
+von fertigen \emph{ICs} zur Verfügung steht, mit deren Hilfe ein \emph{UART} an einen \emph{USB-Bus} angebunden werden 
 kann. Auf Seiten des Betriebssystems präsentiert sich der \emph{IC} wie ein serieller Port und kann softwareseitig
 wie ein solcher angesprochen werden. Die Firma \emph{Embedded Projects} bietet mit der \emph{USB-UART-Bridge}
 bereits eine fertige Lösung an, auf der ein entsprechender \emph{IC}, ein Spannungsregler für 3.3~V-Versorgungsspannung
@@ -23,6 +23,7 @@ Stiftleiste huckepack auf die \emph{USB-UART-Bridge} aufgelötet werden, um die 
 \Abbildungps{!htb}{1}{diagramme/manvnode.jpg}{manvnode}{Fertig bestückte Platine der \emph{MANVNode.}}
 \nomenclature{nF}{Nanofarad}
 \nomenclature{Flashen}{Programmieren eines Flashspeichers}
+\nomenclature{Lötstopplack}{Auf Leiterplatten aufgetragene Lackschicht, die die Leiterbahnen schützt.}
 Die Herstellung der Platine für der \emph{MANVNode} stellte sich als problematischer heraus, als ursprünglich 
 angenommen. Zunächst wurde versucht, Prototypen der Platinen im Ätzverfahren selbst herzustellen. Aufgrund der 
 für die Durchführungen notwendigen Bohrungen war eine sehr genaue Ausrichtung der Oberseite mit der Unterseite 
@@ -31,27 +32,28 @@ sehr schnell ablösten. Nach einigen ersten Fehlversuchen wurde daher die Entsch
 von einem Auftragsfertigern herstellen zu lassen. Für die Prototypen wurde hierbei auf die Aufbringung von 
 Lötstopplack verzichtet, damit eventuelle Fehler im Layout später noch korrigiert werden können. Insgesamt waren
 zwei Iterationen notwendig, bis alle Fehler beseitigt waren. Am schwerwiegendsten war ein Fehler in der 
-Stromversorgung: Der \emph{ADuC-7026}-Mikrocontroller benötigt drei 470~nF-Kondensatoren zur Stabilisierung der
-Stromversorgung. Diese waren in den ersten beiden Versionen der Platine zu weit vom Mikrocontroller entfernt 
-aufgebracht worden. Dies führte dazu, dass der Mikrocontroller beim Flashvorgang, bei welchem ein Strom von fast
+Stromversorgung: Der \emph{ADuC-7026-Mikrocontroller} benötigt drei 470~nF-Kondensatoren zur Stabilisierung der
+Stromversorgung. Diese waren in den ersten beiden Versionen der Platine zu weit vom \emph{Mikrocontroller} entfernt 
+aufgebracht worden. Dies führte dazu, dass der \emph{Mikrocontroller} beim Flashvorgang, bei welchem ein Strom von fast
 40~mA benötigt wird, dazu neigt, spontan abzustürzen. Besonders ärgerlich hierbei war, dass der Fehler nur manchmal
-auftrat, wodurch er sehr schwer zu reproduzieren war. Nachdem der Abstand zwischen Mikrocontroller und Kondensatoren
-verringert wurde, traten diese Abstürze nichtmehr auf, und der Mikrocontroller funktionierte zuverlässig. Zusätzlich
-wurde ab Version 1.2 ein Uhrenquarz verwendet, welches das Timingverhalten der Platine verbessert. Ein weiteres
+auftrat, wodurch er sehr schwer zu reproduzieren war. Nachdem der Abstand zwischen \emph{Mikrocontroller} und Kondensatoren
+verringert wurde, traten diese Abstürze nichtmehr auf, und der \emph{Mikrocontroller} funktionierte zuverlässig. Zusätzlich
+wird ab Version 1.2 ein Uhrenquarz verwendet, welches das Timingverhalten der Platine verbessert. Ein weiteres
 Problem der Versionen bis Versionsnummer 1.2 war, dass die Signalleitungen zwischen \emph{ZigBit}-Modul und
-Mikrocontroller verdreht sind. Dieses Problem lässt sich zwar mit einer einfachen Drahtbrücke beheben, ist aber
+\emph{Mikrocontroller} verdreht sind. Dieses Problem lässt sich zwar mit einer einfachen Drahtbrücke beheben, ist aber
 natürlich trotzdem unschön. In der Hardwareversion 1.3 sind diese Probleme behoben. Diese Platine wurde auch bereits
 mit Lötstopplack gefertigt.  
 
 \section{Firmware}
 \subsection{Implementierung}
-\nomenclature{Crossworks}{Entwicklungsumgebung für Mikrocontroller-Firmware.}
+\nomenclature{Crossworks}{Entwicklungsumgebung für \emph{Mikrocontroller-Firmware}.}
 \nomenclature{Interrupt}{Unterbrechungsaufforderung. Die Abarbeitung des aktuellen Programmcodes wird sofort beendet,
                          und eine \emph{ISR} wird ausgeführt.}
+\nomenclature{Startup-Code}{Programmcode, der die Initialisierung eines \emph{Mikrocontrollers} durchführt.}
 Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das \emph{ZigBit}-Modul ergänzt. Die \emph{Firmware}
 wurde in der Programmiersprache \emph{C} geschrieben, und setzt direkt auf die Hardware des \emph{ADuC} auf. Es wurde 
 lediglich die von \emph{Rowley Crossworks} angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie
-Stringmanipulation, einen Interrupthandler und einen fertigen Startup-Code bietet.
+Stringmanipulation, einen Interrupthandler und einen fertigen \emph{Startup-Code} bietet.
 
 Die Entwicklung von Software für einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
 aus. Ein Großteil der Funktionalität, die man von der Entwicklung von Software für einen gewöhnlichen Mikrocomputer 
@@ -62,11 +64,11 @@ getriebenes Programmiermodell gelöst.
 
 Es werden folgende \emph{Interrupts} verwendet:
 
-\emph{Timer0}: Dieser Timer-Interrupt führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
+\emph{Timer0}: Dieser \emph{Timer-Interrupt} führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
 und eine Analyse der empfangenen Daten wird durchgeführt.
 
 \nomenclature{Piezo-Summer}{Elektrisches Bauteil, dass einen Summton generiert, sobald man eine Spannung anlegt.}
-\emph{Timer1}: Dieser Interrupt führt einige periodische Aufgaben durch. Zunächst werden die am Sensor vorhandenen
+\emph{Timer1}: Dieser \emph{Interrupt} führt einige periodische Aufgaben durch. Zunächst werden die am Sensor vorhandenen
 Taster abgefragt (Alarm stumm schalten, Alarm manuell auslösen etc.). Danach wird überprüft, in welchem Zustand
 der Sensor sich aktuell befindet, also z.B. ob ein Alarm aufgetreten ist, oder ob der Patient sich in einem
 guten Zustand befindet. Abhängig hiervon werden nun \emph{LEDs} und ein angeschlossener \emph{Piezo}-Summer geschaltet,
@@ -74,7 +76,7 @@ um den Zustand nach aussen zu signalisieren. Zu letzt wird noch überprüft, wan
 des Zustands des Sensors an die \emph{MANVSuite} erfolgt ist. Liegt dies länger als einen konfiguriertes Zeitintervall
 zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
 
-Ein weiteres Problem sind die sehr beschränkten Ressourcen des Mikrocontrollers. Insbesondere der Speicher ist
+Ein weiteres Problem sind die sehr beschränkten Ressourcen des \emph{Mikrocontrollers}. Insbesondere der Speicher ist
 mit 16~kB sehr knapp bemessen. 
 
 
@@ -89,14 +91,14 @@ Dies muss in der \emph{ISR} berücksichtigt werden, da sonst Ereignisse verloren
 Das eigentliche Senden und Empfangen erfolgt über die beiden Register \emph{COMRX} und \emph{COMTX}.
 Zum Senden wird hierzu ein einzelnes Zeichen in \emph{COMTX} gelegt. Nun muss eine gewisse Zeit gewartet
 werden, bis das Zeichen gesendet wurde, und das nächste Zeichen in \emph{COMTX} gelegt werden kann.
-FÜr das Empfangen wird das Register \emph{COMRX} in analoger Weise verwendet werden. Ob das nächste
+Für das Empfangen wird das Register \emph{COMRX} in analoger Weise verwendet. Ob das nächste
 Zeichen empfangen bzw. gesendet werden kann, kann mit Hilfe der Bits \emph{DR} (\emph{"`Data Ready"'} - Daten liegen vor)
 bzw. \emph{TEMT} (\emph{"`Transmit Buffer empty"'} - Daten können gesendet werden) bestimmt werden.
 
 Die einfachste Methode wäre hierbei, in einer Schleife \emph{Busy-Waiting} zu betreiben, und so lange zu warten,
-bis sich eins der beiden Bits verändert. Dies wäre jedoch sehr aufwendig und würde den Mikrocontroller 
+bis sich eins der beiden Bits verändert. Dies wäre jedoch sehr aufwendig und würde den \emph{Mikrocontroller}
 unnötig lange blockieren. Statt dessen wird der Zustand der beiden Register nur dann überprüft, wenn ein 
-UART-Interrupt aufgetreten ist.
+\emph{UART-Interrupt} aufgetreten ist.
 
 Zum Senden und Empfangen von Daten werden zwei Ringpuffer verwendet. Möchte ein Unterprogramm Daten senden,
 so greift es nicht direkt auf die \emph{UART}-Schnittstelle zu sondern legt diese Daten lediglich in den Sendepuffer.
@@ -106,9 +108,9 @@ ohne auf das fertige Senden der Daten warten zu müssen.
 \nomenclature{Idle-Task}{Aufgabe, die immer dann bearbeitet wird, wenn keine anderen Aufgaben anstehen.}
 Das Empfangen von Daten erfolgt analog. Jedesmal wenn ein Zeichen von der seriellen Schnitstelle empfangen
 wurde, wird dieses in den Empfangspuffer gelegt. Das Abarbeiten des Empfangspuffer erfolgt nun als \emph{Idle-Task}:
-Immer dann, wenn der Mikrocontroller gerade keine anderen Aufgaben erfüllen muss, wird der Empfangspuffer
+Immer dann, wenn der \emph{Mikrocontroller} gerade keine anderen Aufgaben erfüllen muss, wird der Empfangspuffer
 abgearbeitet und eventuell empfangene Befehle werden abgearbeitet. Dies kann natürlich jederzeit durch 
-die Abarbeitung von Interrupts unterbrochen werden.
+die Abarbeitung von \emph{Interrupts} unterbrochen werden.
 
 \section{MANVConnector}
 \nomenclature{Socket}{Softwareabstratkion einer Netzwerkverbindung, die sich verhält wie ein Dateizugriff.}
@@ -228,7 +230,7 @@ if __name__ == '__main__':
       server.serve_forever()
 \end{lstlisting}
 
-\nomenclature{Port}{Schnittstelle.}
+\nomenclature{Port}{Schnittstelle}
 Für die Überwachung von \emph{Socket} und seriellem \emph{Port} wird in diesem Programm der Systemaufruf
 \emph{select()} verwendet. Wird dieser aufgerufen, gibt das Programm so lange den \emph{Prozessor}
 für andere Programme frei, bis Daten empfangen wurden. Sobald dies der Fall ist, kehrt
@@ -298,14 +300,15 @@ def searchSYS(self):
     return devices
 \end{lstlisting}
 
-\emph{Debuggen}{Suchen und entfernen von Fehlern.}
+\nomenclature{Debuggen}{Suchen und entfernen von Fehlern.}
 Da an den \emph{USB-Bus} beliebige \emph{USB-Serial}-Geräte angeschlossen sein können\footnote{Während der Entwicklung
 was es nicht ungewöhnlich, dass bis zu 3 Geräte angeschlossen waren: Bei einem handelte es sich um den
-\emph{ZigBit-USB-Stick}, zwei weitere dienten zum \emph{Flashen} und \emph{Debuggen} der angeschlossenen Mikrocontroller.}, 
+\emph{ZigBit-USB-Stick}, zwei weitere dienten zum \emph{Flashen} und \emph{Debuggen} der angeschlossenen 
+\emph{Mikrocontroller}.}, 
 muss nun für jedes der angeschlossenen Geräte überprüft werden, ob es sich um ein \emph{ZigBit}-\emph{USB}-Stick
 handelt. Hierzu wird an das Gerät ein Befehl gesendet, der zur Abfrage der Versionsnummer der verwendeten
 \emph{Serialnet}-Firmware dient. Die Rückgabe wird nun mit dem erwarteten Wert verglichen. Hierzu wird das
-\emph{python-serial}-Modul verwendet::
+\emph{python-serial}-Modul verwendet:
 
 \begin{lstlisting}{frame=praktisch4}
 import serial
@@ -355,18 +358,18 @@ def testDevice(self, deviceName):
 \subsection{CORBA-Anbindung}
 \nomenclature{Nameserver}{Softwaredienst, der eine Übersetzung von Namen in Adressen vornimmt.}
 Die \emph{CORBA}-Anbindung des \emph{MANVConnectors} an den \emph{MANVServer} erfolgt über
-die in \cite{Jan} spezifizierten Interfaces. Dieses muss über den \emph{Java class Path}
+die in \cite{Jan} spezifizierten \emph{Interfaces}. Diese müssen über den \emph{Java class Path}
 eingebunden werden. Dies geschieht über den Parameter \emph{-cp} auf der Kommandozeile
 der \emph{JVM} bzw. des \emph{Java-Compilers}. Der \emph{Connector} schickt über die 
 \emph{Server\_Incoming}-Schnittstelle eingehende Daten und Ereignisse an den \emph{MANVServer}.
 Damit der \emph{MANVServer} umgekehrt auch Befehle an den \emph{MANVConnector} schicken kann,
 muss dieser selbst die \emph{Connector\_Commands}-Schnittstelle implementieren. Dies
-geschieht in der Klasse \emph{CommandsImpl} (Eine
+geschieht in der Klasse \emph{CommandsImpl}\footnote{Eine
 genaue Beschreibung der einzelnen Dateien, Klassen und Funktionalitäten findet sich in
-Anhang~\label{anhang_beschreibung_software}).\\
+Anhang~\label{anhang_beschreibung_software}.}.\\
 
 Zur Lokalisierung der einzelnen \emph{CORBA}-Schnittstellen dient der \emph{Nameserver}.
-Die Adresse des Nameservers muss im voraus bekannt sein. Meist läuft dieser auf dem selben Rechner
+Die Adresse des Nameservers muss im Voraus bekannt sein. Meist läuft dieser auf dem selben Rechner
 wie der \emph{MANVServer}. Die Adresse wird beim Start des \emph{MANVConnectors} als 
 Kommandozeilenparameter "`-ORBInitRef NameService"' übergeben\footnote{Wenn z.B. Nameserver, \emph{MANVServer}
 und \emph{MANVConnector} auf dem selben Rechner laufen, so lautet der entsprechende Parameter:

@@ -22,23 +22,23 @@ Projekte, die sich ebenfalls mit der technischen Patientenversorgung während ei
 vorgestellt, und die Ähnlichkeiten und Unterschiede gezeigt.\\
 Mit den aus der Betrachtung der Stand der Technik gewonnen Erkenntnissen konnte nun zur Analyse 
 übergegangen werden. Hier wurde zunächst eine Reihe von Anforderungen erarbeitet, die die zu entwerfende 
-Lösung erfüllen soll. Ausserdem wurden für den späteren Einsatz ausgewählte \emph{ZigBee}-Hardware 
+Lösung erfüllen soll. Außerdem wurden für den späteren Einsatz ausgewählte \emph{ZigBee}-Hardware 
 der Firma \emph{Atmel} untersucht, und es wurde eine Reihe von Eigenheiten im Kommunikationsprotokoll 
 zwischen \emph{ZigBee}-Modul und Mikrokontroller entdeckt, für die jeweils eine passende Lösung in 
 allgemeiner Form vorgestellt wurde.  Ausserdem wurden kurz die zwei verschiedenen Arten, 
 den Energiesparmodus der Module aufzurufen, erläutert, und sich dafür entschieden, dass der manuelle 
 Aufruf hier die bessere Lösung ist.\\
 Nach der Analyse folgte der Entwurf eines Systems zur Lösung der gestellten Aufgabe. Dieser erfolgte in 3 
-Schritten. Zunächst erfolgte der Entwurf des Gesamtsystems im groben. In Hinblick auf die in der Analyse
+Schritten: Zunächst erfolgte der Entwurf des Gesamtsystems im Groben. In Hinblick auf die in der Analyse
 gewünschten Austauschbarkeit des Funkprotokolls wurde entschieden, alle Designentscheidungen zu kapseln und
-so das System aus einzelnen, austauschbaren Komponenten aufzubauen. Im groben wurde hierbei zwischen
+so das System aus einzelnen, austauschbaren Komponenten aufzubauen. Im Groben wurde hierbei zwischen
 einer Kontrollsoftware, der sogenannten \emph{MANVSuite}, der Hardware der Sensoren, in Form einer 
 Test- und Entwurfplatine (\emph{MANVNode}), einem \emph{USB-Stick} zur Verbindung zwischen Netzwerk und Computer
 sowie dem sogenannten \emph{MANVConnector}, der die Schnittstelle zwischen Hard- und Software bildet und zudem
-alle Hardwarespezifischen Designentscheidungen kapselt. Die \emph{MANVSuite} wurde in einer
+alle hardwarespezifischen Designentscheidungen kapselt. Die \emph{MANVSuite} wurde in einer
 zu dieser Diplomarbeit parallel laufenden Studienarbeit von Herrn cand. inform Jan Tepelmann genauer entworfen
 und implementiert.\cite{Jan}\\
-Nach dem groben Entwurf folgt der Entwurf im feinen. Hierbei wurden Hardware (\emph{MANVNode} und \emph{USB-Stick})
+Nach dem Groben Entwurf folgt der Entwurf im Feinen. Hierbei wurden Hardware (\emph{MANVNode} und \emph{USB-Stick})
 sowie Software (\emph{MANVConnector} und Firmware der \emph{MANVNode}) getrennt betrachtet.\\
 Auf Grundlage dieses Entwurfes wurde nun eine Implementierung durchgeführt. Die Vorgehensweise, welche Probleme
 dabei aufgetreten sind, und wie diese gelöst wurden ist Thema des Kapitels~\ref{Implementierung}.
@@ -66,7 +66,7 @@ dieser Diplomarbeit eingesetzten \emph{ZigBee-Module} der Firma \emph{Atmel} bie
 Version (1.8.0) keine Möglichkeit, diese Verschlüsselung zu verwenden. Laut Auskunft des E-Mail Supportes der Firma 
 \emph{Atmel} ist dieses Feature auch für zukünftige Versionen nicht geplant.\\
 \\
-Da das Thema Sicherheit -- gerade für ein medizinisches Netzwerk -- natürlich eine nicht zu vernachlässigende Rolle spielt,
+Da das Thema Sicherheit -- gerade für ein medizinisches Netzwerk -- natürlich eine nicht zu vernachlässigende Rolle spielt.
 An dieser Stelle sollen einigen Anregungen gegeben werden, wie eine Sicherheitskonzept für das entworfene Netzwerk aussehen 
 könnte.
 
@@ -126,12 +126,12 @@ bietet sich entweder die Firmware des \emph{ADuC-Mikrocontrollers} sowie der \em
 die \emph{ZigBit-Firmware} an.
 
 \subsubsection{Schutz auf Applikationsebene}
-\nomenclature{OpenSSL}{Open Source Bibliothek, die viele Verschlüsselungsverfahren implementiert.}
+\nomenclature{OpenSSL}{Open-Source Bibliothek, die viele Verschlüsselungsverfahren implementiert.}
 \nomenclature{SSL}{Secure Socket Layer}
 \nomenclature{TLS}{Transport Layer Security -- Nachfolger von SSL.}
 \nomenclature{Denial-Of-Service}{Blockieren eines Dienstes durch Ausnutzen eines Softwarefehlers.}
 Alternativ zur Modifikation der \emph{ZigBit-Firmware} besteht auch die Möglichkeit, auf Applikationsebene zu Verschlüsseln.
-Sowohl für Java (OpenSSL) als auch für den \emph{ADuC-Mikrocontroller} (\emph{WAKAN-Crypto-Toolkit}) sind 
+Sowohl für Java (\emph{OpenSSL}) als auch für den \emph{ADuC-Mikrocontroller} (\emph{WAKAN-Crypto-Toolkit}) sind 
 entsprechende Bibliotheken
 verfügbar. Eine Implementierung auf Applikationsebene hätte den Vorteil, dass keine Änderung an der \emph{ZigBit-Firmware}
 notwendig wären, und daher ggf. einfacher durchzuführen ist. Von Nachteil ist jedoch, dass diese Lösung keinen Schutz
@@ -159,10 +159,10 @@ werden können als die einzelnen Sensoren. Es wäre daher interessant zu evaluie
 sowie größerer Antennen in den Routern auf die erreichbare Reichweiten des Netzwerkes auswirkt.
 
 \subsection{Genauere Betrachtung des \emph{Bluetooth-Low-Energy}-Standards}
-Der \emph{Bluetooth-Low-Energy}-Standard verspricht eine interessante Alternative zum \emph{ZigBee}-Standard zu werden.
+Der \emph{Bluetooth-Low-Energy}-Standard verspricht, eine interessante Alternative zum \emph{ZigBee}-Standard zu werden.
 Der einzige Grund, weshalb in dieser Arbeit keine genauere Betrachtung erfolgen konnte war die Nichtverfügbarkeit
 entsprechender Hardware zum Zeitpunkt der Anforderungsanalyse. Bereits im Februar 2010 wurde von der Firma 
 \emph{Nordic Semiconductors} unter der Bezeichnung \emph{ISP091201} ein entsprechendes Hardwaremodul angekündigt,
-dass jedoch bis jetzt (Stand Oktober 2010) nicht auf dem Markt erhältlich ist. Sobald entsprechende Module verfügbar
+dass jedoch bis jetzt (Stand: Oktober 2010) nicht auf dem Markt erhältlich ist. Sobald entsprechende Module verfügbar
 sind, sollte eine erneute Evaluation erfolgen. Beim Entwurf der hier vorgestellten Lösung wurde eine spätere Änderung
 des Funkprotokolls eingeplant und bei der Implementierung entsprechend berücksichtigt.

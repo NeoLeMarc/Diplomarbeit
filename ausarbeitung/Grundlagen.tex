@@ -2,7 +2,7 @@
 %%%------------------------------------------------Grundlagen------------------------------------------------------------------
 \chapter{Grundlagen}\label{Grundlagen}
 
-In diesem Kapitel werden die Grundlagen, die zum Verständnis dieser Arbeit in späteren Kapitel vorausgesetzten Grundlagen
+In diesem Kapitel werden die in späteren Kapitel vorausgesetzten Grundlagen
 erörtert. Hierzu gehören zum einen die Grundlagen der kabellosen Übertragung, zum anderen eine kurze Beschreibung der
 Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middleware}. 
 
@@ -24,10 +24,10 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         mit der Adresse des Empfängers. Nun wird jedes Paket einzeln über die Leitung verschickt. Hierbei landet
         es ggf. bei Zwischenempfängern, dies es jeweils zum nächsten Zwischenempfänger weiterleiten, bis der
         endgültige Empfänger erreicht ist. Da sich nun viele Empfänger eine Leitung teilen, kann eine deutlich bessere
-        Auslastung erziehlt werden. Jedoch können nun keine Garantieren mehr über die Reihenfolge, Zuverlässigkeit
+        Auslastung erzielt werden. Jedoch können nun keine Garantieren mehr über die Reihenfolge, Zuverlässigkeit
         sowie der einem Teilnehmer zur Verfügung stehenden Übertragungsrate getroffen werden.\\
         Diese Probleme können jedoch teilweise in höheren Protokollschichten (z.B. durch Nummerierung und Umsortieren 
-        der Pakete beim Empfänger) behandetl werden.
+        der Pakete beim Empfänger) behandelt werden.
 
         Bei der kabellosen Datenübertragung teilen sich alle Teilnehmer ein gemeinsames Medium, nämlich die 
         Trägerfrequenzen des verwendeten Funkprotokolls. Eine Vermittlung von einzelnen Leitungen scheidet 
@@ -42,17 +42,17 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             Bei der Verwendung von kabellosen Übertragungsprotokollen kann es zu einer Vielzahl von 
             Störungen kommen. Übliche Störquelle sind meist andere Protokolle, die im selben Band arbeiten,
             oder elektrische Geräte, die durch ihre Abstrahlung den Funkverkehr stören\footnote{Insbesondere
-            sind hier Mikrowellengeräte zu nennen, die im 2.4~GHz Band arbeiten}. Aber auch Aufgrund von 
+            sind hier Mikrowellengeräte zu nennen, die im 2.4~GHz Band arbeiten.}. Aber auch auf Grund von 
             Mehrwegeausbreitung kann es zu Problemen kommen.\\
             \\
             Da diese Störungen meist nur auf einzelnen Frequenzen vorliegt, kann mit Hilfe der 
-            Frequenzspreizung der Einfluß von Störungen reduziert wird. Die Idee ist, nicht mit
+            Frequenzspreizung der Einfluß von Störungen reduziert werden. Die Idee ist, nicht mit
             hoher Leistung auf einer einzelnen Frequenz zu senden, sondern die Leistung auf einen
             breiteren Frequenzbereich zu verteilen. Liegt nun eine Störung auf einer einzelnen
             Frequenz vor, kann das Nutzsignal trotzem noch erfolgreich empfangen werden.
 
         \subsubsection{FHSS: Frequency Hoping Spread Spectrum}\label{FHSS}
-            \nomenclature{FHSS}{Frequency Hoping Spread Spectrum.}
+            \nomenclature{FHSS}{Frequency Hoping Spread Spectrum}
             Bei dem \textsl{FHSS}-Verfahren handelt es sich um die einfachste Möglichkeit, ein
             Signal zu spreizen. Hierbei wird einfach nach einer bestimmten Zeiteinheit die
             Sendefrequenz gewechselt, so dass eine Spreizung über ein Zeitintervall erreicht wird.
@@ -91,14 +91,14 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
 \section{Java}
     \subsection{Übersicht}
         \nomenclature{Java}{Programmiersprache der Firma Sun Microsystems.}
-        \nomenclature{JVM}{Java Virtual Machine.}
-        \nomenclature{JRE}{Java Runtime Environment.} 
+        \nomenclature{JVM}{Java Virtual Machine}
+        \nomenclature{JRE}{Java Runtime Environment} 
         \nomenclature{Host}{Computer, der Dienste anbietet.}
         \nomenclature{Linux}{Freies \emph{UNIX}-artiges Betriebssystem.}
         \nomenclature{UNIX}{Familie von Mehrbenutzerbetriebssystemen.}
         \nomenclature{MacOS}{Betriebssystem der Firma Apple Computer.}
         \nomenclature{Windows}{Betriebssystemfamilie der Firma Microsoft.}
-        \nomenclature{VM}{Virtuelle Maschine.}
+        \nomenclature{VM}{Virtuelle Maschine}
 
         \emph{Java} ist eine von Sun Microsystems entwickelte Technologie zur platformunabhängigen 
         Erstellung von Programmen. Sie besteht aus einer Programmiersprache, die ebenfalls den Namen
@@ -106,7 +106,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         (\emph{Java-Runtime-Environment} - \emph{JRE}).
         Die \emph{Java-Laufzeitumgebung} besteht aus einer virtuellen Maschine, die die kompilierten Programme ausführt.
         Dies bietet den Vorteil, dass bei einem Wechsel der Host-Platform (also z.B. von \emph{Windows} auf \emph{Linux}
-        oder \emph{MacOS}) bestehende Programme nicht neu Übersetzt werden müssen.\\
+        oder \emph{MacOS}) bestehende Programme nicht neu übersetzt werden müssen.\\
 
     \subsection{Programmiersprache}
         \nomenclature{C}{Imperative Programmiersprache, insbesonders zur hardwarenahen Entwicklung.}
@@ -120,7 +120,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         \nomenclature{Prozess}{Menge von einem oder mehreren Threads inklusive eines dazugehörigen Speicherbereiches.}
         \nomenclature{GUI}{Graphische Benutzeroberfläche.}
         \nomenclature{Hash}{Datenstruktur, die aus Paaren aus Schlüsseln und Werten besteht. Auch bekannt als
-                            assoziatives Array oder Record.} 
+                            assoziatives \emph{Array} oder \emph{Record}.} 
         \nomenclature{Cast}{Ändern des statischen Datentyp einer Variable auf einen anderen Typ.}
         \emph{Java} ist eine moderne, statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von 
         \emph{C} entlehnten Syntax erinnert \emph{Java} auf den ersten Blick an \emph{C++}. Bei genauerer 
@@ -144,7 +144,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
 \section{Python}
     \nomenclature{Python}{Objektorientierte Skriptsprache.}
     \nomenclature{BSD}{\emph{UNIX}-artiges Betriebssystem.}
-    \nomenclature{USB}{Universal Serial Bus - Schnittstelle, die seit ca. 2000 an jedem PC vorhanden ist.}
+    \nomenclature{USB}{Universal Serial Bus -- Schnittstelle, die seit ca. 2000 an jedem PC vorhanden ist.}
     \nomenclature{Skritpsprache}{Programmiersprache, deren Quellcode nicht kompiliert wird.}
     \nomenclature{Kompilieren}{Übersetzen des Quellcodes eines Programms in ausführbaren Binärcode.}
     \nomenclature{Pseudocode}{Vereinfachter Quellcode zur einfachen Beschreibung von Algorithmen.}
@@ -153,7 +153,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     gehört. Darüber hinaus sind auch fertige Pakete für \emph{Windows} verfügbar. \emph{Python} eignet sich daher 
     besonders zum Schreiben von kleinen
     bis mittelgroßen Skripten. In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
-    eingesetzt, wenn diese Aufgaben in \emph{Java} entweder garnicht oder nur sehr schwierig zu Lösen wären. Beispiele
+    eingesetzt, wenn diese Aufgaben in \emph{Java} entweder garnicht oder nur sehr schwierig zu lösen wären. Beispiele
     hierfür sind die automatische Erkennung von \emph{USB}-Geräten oder der Zugriff auf den seriellen Port.
     Da \emph{Python} eine sehr kompakte und verständliche Implementierung von Programmcode zulässt, wurde in dieser
     Diplomarbeit weitestgehend versucht, auf Beispiele in Pseudocode zu verzichten, und statt dessen lauffähige
@@ -169,4 +169,4 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     können hierbei in jeder beliebigen Programmiersprache implementiert werden, die eine \emph{Corba}-Anbindung besitzt.
     Im Rahmen dieser Diplomarbeit ist diese Programmiersprachenunabhängigkeit sehr wichtig, da bestimmte
     Teile (z.B. die Graphische Oberfläche für Mobiltelefone oder die Ansteuerung des \emph{USB-Sticks}) nicht in 
-    \emph{Java} realisiert werden können, und statt dessen auf \emph{C++} sowie \emph{Python} ausgewichen werden musste.
+    \emph{Java} realisiert werden können, und statt dessen auf \emph{C++} sowie \emph{Python} ausgewichen werden muss.
