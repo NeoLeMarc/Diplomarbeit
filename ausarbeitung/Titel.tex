@@ -1,0 +1,59 @@
+%% Titelseite
+%% Vorlage $Id: titelseite.tex 54 2009-12-10 12:23:58Z bless $
+
+\def\usesf{}
+\let\usesf\sffamily % diese Zeile auskommentieren für normalen TeX Font
+
+\newsavebox{\Erstgutachter}
+\savebox{\Erstgutachter}{\usesf Prof.~Dr.~Armin~Bolz}
+\newsavebox{\Zweitgutachter}
+\savebox{\Zweitgutachter}{\usesf Prof.~Dr.~Rüdiger~Dillmann}
+
+\begin{titlepage}
+\setlength{\unitlength}{1pt}
+\begin{picture}(0,0)(85,730)
+\includegraphics[width=\paperwidth]{logos/KIT_Deckblatt}
+\end{picture}
+
+\thispagestyle{empty}
+
+%\begin{titlepage}
+%%\let\footnotesize\small \let\footnoterule\relax
+\begin{center}
+\hbox{}
+\vfill
+{\usesf
+{\huge\bfseries Entwurf und Implementierung eines\\
+                kabellosen Sensornetzes
+                zur Überwachung von Patienten\\
+                bei einem\\
+                Massenanfall von Verletzten\par}
+\vskip 1.8cm
+Diplomarbeit\\
+von\\[2mm]
+\vskip 1cm
+
+{\large\bfseries cand. inform. Marcel Noe\\}
+\vskip 1.2cm
+am Institut für Biomedizinische Technik\\
+der Fakultät für Elektro- und Informationstechnik\\
+%Universität Karlsruhe (TH)\\[2ex]
+\vskip 2cm
+\begin{tabular}{p{5.5cm}l}
+Erstgutachter: & \usebox{\Erstgutachter} \\
+Zweitgutachter: & \usebox{\Zweitgutachter} \\
+Betreuender~Mitarbeiter: & Dr.-Ing.~Marc~Jäger \\
+\end{tabular}
+\vskip 2cm
+Bearbeitungszeit:\qquad 01.~Mai~2010 -- 01.~November~2010
+}
+\end{center}
+\vfill
+\end{titlepage}
+%% Titelseite Ende
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "diplarb"
+%%% End: 
