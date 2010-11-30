@@ -1,8 +1,8 @@
 \chapter*{Abstract}
 \begin{small}
-In dieser Arbeit wird ein kabellose Sensornetzwerk zur Überwachung von Patienten bei einem 
+In dieser Arbeit wird ein kabelloses Sensornetzwerk zur Überwachung von Patienten bei einem 
 Massenanfall von Verletzten entworfen und implementiert. Als Grundlage dieser Entwicklung
-dient der von Herrn Dr. Marc Jäger in \cite{Marc} entwickelte \emph{Erste-Hilfe-Sensor}.
+dient der am IBT entwickelte \emph{Erste-Hilfe-Sensor}.
 Hierzu wird zunächst eine Untersuchung aller in Frage kommenden Funktechnologien vorgenommen,
 wobei ein besonderes Augenmerk auf Energieffizienz und Stabilität der Funktechnologie gelegt wird.
 Hierbei stellt sich \emph{ZigBee} als am besten geeignetes Protokoll heraus, und es wird entschieden,
@@ -10,19 +10,20 @@ eine Umsetzung auf Basis eines \emph{ZigBee}-Moduls des Herstellers \emph{Atmel}
 Dieses Modul wird einer genaueren Betrachtung unterzogen, und eine Reihe von Schwierigkeiten werden
 identifiziert. Für diese Schwierigkeiten werden allgemeingültige Lösungen entwickelt. Auf Basis dieser
 allgemeinen Lösungen werden später spezielle Lösungen für die \emph{Java-Plattform} sowie für den
-Mikrocontroller des \emph{Erste-Hilfe-Sensor} entwickelt.
+Mikrocontroller des \emph{Erste-Hilfe-Sensors} entwickelt.
 \\                    
 Bei der Entwicklung des Gesamtsystems wird ein komponentenbasierter Ansatz gewählt. Hierdurch wird nicht
-nur die Austauschbarkeit der einzelnen Komponenten erreicht, sondern auch die Verteilung dieser über
+nur die Austauschbarkeit der einzelnen Komponenten erreicht, sondern auch deren Verteilung über
 mehrere Rechner ermöglicht. Für die Verbindung der einzelnen Komponenten zueinander werden 
 \emph{Corba}-Schnittstellen verwendet. Diese Schnittstellen sind so gestaltet, dass auch externe
-Software angebunden werden kann. Dies wird exemplarisch mit einer \emph{Weboberfläche} durchgeführt.
-Ausserdem wird eine Platine entwickelt, auf der das \emph{ZigBee}-Modul und der
-\emph{Mikrocontroller} des \emph{Erste-Hilfe-Sensors} integriert. Diese Platine wird zur 
+Software angebunden werden kann. Die Anbindung exemplarisch am Beispiel einer \emph{Weboberfläche} 
+durchgeführt.
+Außerdem wird eine Platine entwickelt, auf der das \emph{ZigBee}-Modul und der
+\emph{Mikrocontroller} des \emph{Erste-Hilfe-Sensors} integriert sind. Diese Platine wird zur 
 Entwicklung eines \emph{ZigBee}-Treibers für die Firmware des \emph{Erste-Hilfe-Sensors} verwendet.
 \\
 Das Gesamtsystem wird zum Abschluß eingehend evaluiert. Hierbei wird gezeigt, dass alle Komponenten
-erfolgreich miteinander interagieren. Außerdem wird der Stromverbrauch des \emph{ZigBee}-Modul 
+erfolgreich miteinander interagieren. Außerdem wird der Stromverbrauch des \emph{ZigBee}-Moduls
 untersucht, und die Abhängigkeit von den Parametern des Energiesparmodus berechnet. Hierbei ergibt 
 sich ein Stromverbrauch von ca. 1,86~mA bei der Wahl von realistischen Parametern für den 
 Energiesparmodus.
