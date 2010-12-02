@@ -9,9 +9,9 @@ Darüber hinaus wurde gezeigt, dass eine Verbindung des verwendeten \emph{ZigBee
 mit dem \emph{ADuC}-Mikrocontroller möglich ist, und dass das so entstehende Gesamtsystem
 in der Lage ist, die zu überwachenden Vitaldaten zuverlässig an die Basistation zu übermitteln.
 Es wurde ebenfalls gezeigt, dass es möglich ist, Befehle über das \emph{ZigBee}-Netzwerk
-an den Mikrocontroller zu senden. Da der für diese Tests eingesetzt \emph{ADuC-7026}-Mikrocontroller
+an den Mikrocontroller zu senden. Da der für diese Tests eingesetzte \emph{ADuC-7026}-Mikrocontroller
 der selben Familie wie der in dem \emph{Erste-Hilfe-Sensor} verwendete \emph{Mikrocontroller} handelt,
-können diese Ergebnisse ohne weiteres auf die Hardware des \emph{Erste-Hilfe-Sensors} übertragen werden, 
+können diese Ergebnisse ohne weiteres auf die Hardware des \emph{Erste-Hilfe-Sensors} übertragen werden; 
 die Integrierbarkeit in diesen konnte somit gezeigt werden.\\
 Durch die erhöhte Leistungsaufnahme, insbesondere bei Lastspitzen (\emph{Peaks}), muss eine Anpassung
 der Stromversorgung des \emph{Erste-Hilfe-Sensors} erfolgen, wenn das \emph{ZigBee}-Modul integriert
@@ -19,21 +19,21 @@ werden soll. Die genaue Analyse auftretender Lastspitzen findet sich in Abschnit
 Insbesondere sollten hierbei auch die Ergebnisse in Abschnitt~\ref{leistungsaufnahme_sonderfaelle} beachtet 
 werden, die auftretende Sonderfälle beschreiben.\\
 \\
-Softwareseitig konnte gezeigt werden, dass eine vollständige Kapselung aller Hardwarespezifischen Teile
-in einer austauschbaren Komponente möglich ist. Dies bietet den Vorteil, dass alle bei einem Wechsel 
-der Technologie des Sensornetzwerk lediglich der \emph{MANVConnector} ausgewechselt werden muss,
+Softwareseitig konnte gezeigt werden, dass eine vollständige Kapselung aller hardwarespezifischen Teile
+in einer austauschbaren Komponente möglich ist. Dies bietet den Vorteil, dass bei einem Wechsel 
+der Technologie des Sensornetzwerks lediglich der \emph{MANVConnector} ausgewechselt werden muss,
 alle anderen Teile können ohne Änderung weiterverwendet werden.\\
 \\
 Durch die in Abschnitt~\ref{anbindbarkeit_an_externe_software} durchgeführte schnelle Umsetzung eines Adapters 
 zur Anbindung der \emph{MANVSuite} an eine Weboberfläche konnte gezeigt werden, dass durch die hohe Modularität
 und Einsatz der Komponententechnologie \emph{Corba} ein hohes Maß an Flexibilität und Adaptierbarkeit der
-Gesamtlösung erreicht wird, und eine Anbindung an bestehende Systeme mit geringem Aufwand realisiert werden kann.
+Gesamtlösung erreicht wird und eine Anbindung an bestehende Systeme mit geringem Aufwand realisiert werden kann.
 Eine genauere Analyse und Evaluation der \emph{MANVSuite} inkl. der beschriebenen Schnittstellen findet sich
 in \cite{Jan}. In dieser verwandten Arbeit wird unter anderem gezeigt, wie eine Anbindung der \emph{MANVSuite}
 an ein Mobiltelefon des Herstellers Nokia erfolgen kann.\\
 \\
 Als besonders positiv ist die Skalierbarkeit der Gesamtlösung zu bewerten: Die Verbindung der einzelnen Komponenten 
-untereinander ist Netzwerkfähig, im Extremfall kann jede
+untereinander ist netzwerkfähig, im Extremfall kann jede
 Komponente auf einem eigenen Rechner betrieben werden. Hierbei skaliert die Anforderung an die Hardware mit
 der Größe des zu verwaltenden Netzwerkes. Im Prinzip ist jedes linuxfähige Gerät mit mindestens 16~MB Speicher
 und einer \emph{USB-Schnittstelle}, für die eine Implementierung der \emph{Java Virtual Machine}\footnote{Hierbei muss
@@ -46,10 +46,10 @@ hardwarespezifische Teil des \emph{MANVConnectors} auf dem Gerät selbst ausgef�
 in \emph{Python} erfolgte lediglich aus Gründen der Einfachheit. Sollte kein \emph{Python} verfügbar sein,
 kann dieser Teil in jeder anderen Programmiersprache, die \emph{Socketverbindungen} erlaubt, neu implementiert werden.}. 
 Alle restlichen Teile der \emph{MANVSuite} können nachgelagert auf einem Server im Internet ausgeführt werden; 
-Die Verbindung der beiden Teile erfolgt über eine einfache \emph{Socketverbindung}. Diese Lösung bietet sich insbesondere 
+die Verbindung der beiden Teile erfolgt über eine einfache \emph{Socketverbindung}. Diese Lösung bietet sich insbesondere 
 für die Überwachung einzelner Patienten als eine Art intelligenter Hausnotruf an.\\
 \\
-Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in vielen Punkte ab:
+Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in vielen Punkten ab:
 
 \nomenclature{Open-Source}{Softwareprodukt, bei dem der Quellcode frei verfügbar ist.}
 \nomenclature{GPIO}{General Purpose Input Output}
@@ -59,19 +59,19 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
           darauf geachtet, dass es sich um \emph{Open-Source} Produkte handelt. Zur Implementierung
           wurde keinerlei proprietäre Technologie eingesetzt.
 
-    \item{Kapselung aller Plattformspezifischen Designentscheidungen:} Alle Plattformabhängige
+    \item{Kapselung aller plattformspezifischen Designentscheidungen:} Alle Plattformabhängigen
           Designentscheidungen wie die Ansteuerung der \emph{ZigBee}-Module oder der
           physische Zugriff auf die serielle Schnittstelle sind bewusst austauschbar gehalten.
           Hierzu wurden diese in Komponenten gekapselt und die Schnittstelle zwischen diesen
-          Komponenten wurde standardisiert. Bei Änderung einer dieser Entscheidung (z.B.
+          Komponenten wurde standardisiert. Bei Änderung einer dieser Entscheidungen (z.B.
           weil ein anderes Funkprotokoll oder ein anderes Betriebssystem zum Einsatz kommen soll)
           können diese einfach ausgetauscht werden, ohne den Rest des Systems anpassen zu 
           müssen.
 
     \item{Geringe Stückkosten:} Bei der Auswahl des Funkprotokolls wurde insbesondere auch auf den
           Preis der verfügbaren Hardwaremodule geachtet. Dieser bewegt sich selbst bei der
-          Einzelabnahme der Modul in einem Bereich unter 15\EUR{}. Auf den Einsatz teurer
-          Basisbauteile wie z.B. \emph{TinyOS} basierten Sensoren wurde konsequent verzichtet.
+          Einzelabnahme der Module in einem Bereich unter 15\EUR{}. Auf den Einsatz teurer
+          Basisbauteile wie z.B. \emph{TinyOS}-basierten Sensoren wurde konsequent verzichtet.
 
     \item{Geringe Leistungsaufnahme ("`Stromverbrauch"'):} Durch den Einsatz des von \emph{ZigBee}
           angebotenen Energiesparmodus konnte der mittlere Stromverbrauch auf einen Wert von ca. 
@@ -80,24 +80,24 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
     \item{Einfache Implementierbarkeit:} Zur Anbindung des \emph{ZigBit}-Moduls an den \emph{Erste-Hilfe-Sensor}
           sind lediglich vier Signalleitungen notwendig: \emph{UART\_RX}, \emph{UART\_TX}, 
           \emph{UART\_CTS}\footnote{UART\_RTS sollte auf Seite des \emph{ZigBit}-Moduls auf \emph{GND}
-              geführt werden.} sowie einer \emph{GPIO}-Leitung, die mit dem \emph{RESET}-Eingan des
-          \emph{ZigBit}-Moduls verbunden ist (Details zur Implementierung in die Platine kann dem
+              geführt werden.} sowie eine \emph{GPIO}-Leitung, die mit dem \emph{RESET}-Eingan des
+          \emph{ZigBit}-Moduls verbunden ist (Details zur Implementierung in die Platine können dem
           Schaltplan in Anhang~\ref{anhang_diagramme} entnommen werden). 
 
     \item{Plattformunabhängigkeit:} Durch den Einsatz plattformunabhängiger Programmiersprachen wie \emph{Java}
           und \emph{Python} sowie durch Hardwarevirtualisierung ist die vorgestellte Lösung auf
           einer breiten Palette von Systemen einsatzfähig.
 
-    \item{Platzsparend und handlich:} Die hier vorgestellte Prototyp-Platine besitzt eine Abmessung von nur
+    \item{Kompaktheit:} Die hier vorgestellte Prototyp-Platine besitzt eine Abmessung von nur
           50~mm auf 56~mm und bietet noch viel Potential zur weiteren Optimierung der Größe (z.B. durch
-          die beidseitige Platzierung von Bauteilen oder der Fertigung in 4-Schicht-Bauweise).
+          die beidseitige Platzierung von Bauteilen oder Fertigung in 4-Schicht-Bauweise).
 \end{itemize}
 
 In dieser Arbeit nicht betrachtet wurde das Thema Datensicherheit und Verschlüsselung, welches alleine bereits
 umfangreich genug wäre, eine eigene Diplomarbeit zu rechtfertigen. Ursprünglich war geplant, die hardwareseitige
 Verschlüsselung der \emph{ZigBit}-Module einzusetzen. Leider ist diese Funktion jedoch nicht in die 
-\emph{SerialNet}-Firmware integriert, so dass zur Verwendung der Verschlüsselung eine Neuimplementierung der
-Firmware der \emph{ZigBit-Firmware} notwendig wäre, was den Rahmen dieser Arbeit sprengen würde. Daher wird
-sich in dieser Arbeit darauf beschränkt, in Abschnitt~\ref{Sicherheit} eine kurze Analyse des Problems und einige
+\emph{SerialNet}-Firmware integriert. Daher wäre für die Verwendung der Verschlüsselung eine Neuimplementierung der
+\emph{ZigBit-Firmware} notwendig, was den Rahmen dieser Arbeit sprengen würde. Daher beschränkt 
+sich diese Arbeit darauf, in Abschnitt~\ref{Sicherheit} eine kurze Analyse des Problems und einige
 Vorschläge zur Lösung vorzustellen. Diese können dann bei einer späteren Umsetzung in ein Produkt als Grundlage
 dafür dienen, die notwendigen Sicherheitsmaßnahmen zu implementieren.
