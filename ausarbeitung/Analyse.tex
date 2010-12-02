@@ -5,7 +5,7 @@ werden zunächst die Anforderungen analysiert, die an ein kabelloses System zur 
 Patienten gestellt werden. Danach werden die eingesetzten Hardwarebausteine, konkret der
 \emph{ADuC-Mikrocontroller} sowie das \emph{ZigBee-Modul} der Firma \emph{Atmel} 
 inklusive der dazugehörigen \emph{SerialNet-Firmware} vorgestellt und untersucht. Hierbei 
-werden häufig auftretende Probleme aufgezeigt, und allgemeine Lösungen erarbeitet. Diese
+werden häufig auftretende Probleme aufgezeigt und allgemeine Lösungen erarbeitet. Diese
 Lösungen werden in den späteren Kapitel als Grundlage für den Entwurf und die Implementierung
 der fertigen Lösung dienen.
 
@@ -16,31 +16,33 @@ der fertigen Lösung dienen.
     \begin{itemize}
         \item{Integrierbarkeit:} Die zu entwickelnde Lösung soll in den \emph{Erste-Hilfe-Sensor}
                                  integrierbar sein.
-        \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, von Vitaldaten und Alarme  
+        \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, Vitaldaten und Alarme  
                                          von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
-                                         zugestellt und angezeigt werden. Bei bestehen er Netzwerkverbindung
+                                         zugestellt und angezeigt werden. Bei bestehen der Netzwerkverbindung
                                          sollen keine Nachrichten verloren gehen. 
         \item{Senden von Befehlen:} Das System soll in der Lage sein, Befehle an die Sensoren zu senden.
                                     Diese sollen auf die empfangenen Befehle entsprechend reagieren. Es
                                     soll möglich sein, neue Befehle zu einem späteren Zeitpunkt hinzuzufügen.
         \item{Skalierbarkeit:} Das System soll sowohl in Anzahl der Sensoren als auch in der räumlichen 
                                Ausdehnung (Reichweite) skalierbar sein. Es sollen sowohl sehr kleine Netzwerke
-                               als auch große Netzwerke realisierbar sein.
-        \item{Kostengünstig:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
+                               als auch große Netzwerke mit mehreren hundert Knoten realisierbar sein.
+        \item{Kosteneffizienz:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
         \item{Niedriger Stromverbrauch:} Der Stromverbrauch der einzelnen Sensoren muss so gering sein, dass
                                          der Betrieb über eine handliche Batterie über einen längeren 
-                                         Zeitraum möglich ist.
-        \item{Robust:} Das System soll möglichst unempfindlich gegenüber Störungen sein.
-        \item{Erweiterbar:} Die System soll Softwareseitig erweiterbar sein. Insbesondere soll es 
+                                         Zeitraum möglich ist. Ideal wäre, wenn sich eine Laufzeit von
+                                         mindestens 12 Stunden mit einer einzelnen Knopfzelle erreichen
+                                         liesse.
+        \item{Stabilität:} Das System soll möglichst unempfindlich gegenüber Störungen sein.
+        \item{Erweiterbarkeit:} Das System soll softwareseitig erweiterbar sein. Insbesondere soll es 
                             möglich sein, ohne Veränderungen an der Software Schnittstellen
                             zu anderen Systemen hinzuzufügen. 
-        \item{Anpassbar:} Das System soll an sich verändernde Rahmenbedingungen anpassbar sein. Insbesondere
+        \item{Anpassbarkeit:} Das System soll an sich verändernde Rahmenbedingungen anpassbar sein. Insbesondere
                           sollen alle technischen Details des Funkprotokolls so gekapselt werden, dass ein
-                          Austausch des Funkprotokolles lediglich an einer Stelle des Systems Änderungen
-                          erfordern.
+                          Austausch des Funkprotokolls lediglich an einer Stelle des Systems Änderungen
+                          erfordert.
     \end{itemize}
 
-\section{Der \emph{Analog Devices ADuC702X} Mikrocontroller}
+\section{Der \emph{Analog Devices ADuC702X}-Mikrocontroller}
     \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers}
     \nomenclature{ADuC}{Mikrocontrollerfamilie der Firma \emph{Analog Devices} auf \emph{ARM}-Basis.}
     \nomenclature{ARM}{RISC-Prozessorarchitektur, die von verschiedene Hersteller in Lizenz gefertigt wird.}
@@ -64,60 +66,59 @@ der fertigen Lösung dienen.
 
                            
 
-    Zentrale Komponente des \emph{Erste-Hilfe-Sensor}, welcher die Grundlage für die Sensoren im zu entwerfenden Netzwerk
+    Zentrale Komponente des \emph{Erste-Hilfe-Sensors}, welcher die Grundlage für die Sensoren im zu entwerfenden Netzwerk
     bildet, ist der \emph{ADuC-7022}-Mikrocontroller. Es handelt sich hierbei um einen Vertreter einer ganzen Familie
-    von Mikrocontrollern der Firma \emph{Analog Devices}. Im folgenden eine kurze Übersicht über die Eigenschaften
+    von Mikrocontrollern der Firma \emph{Analog Devices}. Es folgt eine kurze Übersicht über die Eigenschaften
     dieser Mikrocontrollerfamilie.
 
     \subsection{Beschreibung}
-        Mit der \emph{ADuC702X}-Familie bietet die Firma \emph{Analog Devices} eine Serie von voll integrierten 
+        Mit der \emph{ADuC702X}-Familie bietet die Firma \emph{Analog Devices} eine Serie voll integrierter 
         Mikrocontroller auf Basis der \emph{ARM7}-Architektur an. Diese Mikrocontroller zeichnen sich insbesondere 
-        durch ihre hohe Anzahl an A/D-Wandler-Kanälen an. So verfügt das Modell \emph{ADuC7026} beispielsweise
+        durch ihre hohe Anzahl an A/D-Wandler-Kanälen aus. So verfügt das Modell \emph{ADuC7026} beispielsweise
         über 16 A/D-Wandler-Kanäle mit einer Abtastrate von einer Million \emph{Samples} pro Sekunde bei einer 
         Auflösung von 12~Bit. Damit bietet jeder der 16 Kanäle eine Datenrate, die etwa dem 17fachen einer 
         gewöhnlichen Audio-CD entspricht.  Der Mikrocontroller selbst bietet bei einer Frequenz von 
-        41.78~MHz eine maximale Leistung von 41 Millionen Befehlen pro Sekunde (\emph{MIPS}). 
-        Zusätzlich sind auf dem Chip 8 kB \emph{SRAM} sowie 62kB-\emph{Flash}-Speicher vorhanden. Bei den Modellen
-        \emph{ADuC7026} und \emph{ADuC7027} ist zusätzlich ein externen Speicherbus vorhanden, über bis zu 512kB 
+        41,78~MHz eine maximale Leistung von 41 Millionen Befehlen pro Sekunde (\emph{MIPS}). 
+        Zusätzlich sind auf dem Chip 8~kB \emph{SRAM} sowie 62~kB \emph{Flash}-Speicher vorhanden. Bei den Modellen
+        \emph{ADuC7026} und \emph{ADuC7027} ist zusätzlich ein externer Speicherbus vorhanden, über den bis zu 512kB 
         zusätzlicher \emph{SRAM} angeschlossen werden kann. Bei größerem Speicherbedarf besteht die Möglichkeit, über 
         \emph{SPI} oder \emph{$I^2C$} weiteren \emph{SRAM} oder \emph{Flash}-Speicher anzuschliessen.
 
     \subsection{Peripherie}
-        Die Mikrocontroller der \emph{ADuC-702X}-Familie bieten standardmäßig folgende Peripherie:
+        Die Mikrocontroller der \emph{ADuC-702X}-Familie beinhaltet standardmäßig folgende Peripherie:
 
         \begin{itemize}
             \item{AD-Wandler:} Bis zu 16 Kanäle mit einer maximalen Abtastrate von 1~\emph{MSPS} bei einer Auflösung von 
                                12~Bit.
-            \item{DA-Wandler:} Je nach Typ 2, 3 oder vier Kanäle, mit einer Ausgansspannung zwischen 0 und 2,5~V mit einer
+            \item{DA-Wandler:} Je nach Typ 2, 3 oder vier Kanäle, mit einer Ausgangsspannung zwischen 0 und 2,5~V mit einer
                                Auflösung von 12~Bit.
-            \item{PWM-Generator:} Flexibler, 3-Phasen Pulsweitenmodulator (\emph{PWM}) der bis zu 3 Signalpaare 
+            \item{PWM-Generator:} Flexibler 3-Phasen Pulsweitenmodulator (\emph{PWM}), der bis zu 3 Signalpaare 
                                   gleichzeitig generieren kann.
-            \item{UART-Interface:} Serielle Schnittstelle (\emph(UART)) mit \emph{TTL}-Pegel.
+            \item{UART-Interface:} Serielle Schnittstelle (\emph{UART}) mit \emph{TTL}-Pegel.
             \item{SPI-Bus:} Schnittstelle zum Anbinden von bis zu 255 weiteren Peripheriekomponenten.
             \item{$I^2C-Bus$:} 2 \emph{$I^2C$}-Schnittstellen zur Anbindung weiterer Peripherie.
-            \item{PLA:} 2 Blöcke mit jeweils 8 \emph{PLA}-Elementen 
+            \item{PLA:} 2 Blöcke mit jeweils 8 \emph{PLA}-Elementen.
             \item{Timer:} 4 Allzwecktimer/Zähler.
         \end{itemize}
         
         Die einzelnen Modelle der \emph{ADuC-702X}-Familie unterscheiden sich vor allem durch die Anzahl vorhandener 
-        Pins (Bei dem kleinsten Modell \emph{ADuC-7019} stehen lediglich 40 Pins, beim größten 80 Pins zur Verfügung), 
-        die zudem mehrfach belegt sind. Dies bedeutet, dass es nicht Möglich ist, die gesamte Peripherie gleichzeitig zu 
+        Pins (bei dem kleinsten Modell \emph{ADuC-7019} stehen lediglich 40 Pins, beim größten 80 Pins zur Verfügung), 
+        die zudem mehrfach belegt sind. Dies bedeutet, dass es nicht möglich ist, die gesamte Peripherie gleichzeitig zu 
         verwenden. Je nach Anforderung ist ggf. die Verwendung eines größeren Modells notwendig. 
 
 
-\section{Die Atmel ZigBit Familie}
+\section{Die Atmel-\emph{ZigBit}-Familie}
 
     Nachdem die Entscheidung getroffen wurde, \emph{ZigBee} als Funkprotokoll für das Netzwerk zu verwenden, muss
     nun noch ein geeignetes Hardwarebauteil gefunden werden. Nach Analyse der auf dem Markt verfügbaren Bauteile
-    wurde die Entscheidung getroffen, ein komplett integriertes Modul zu kaufen, bei dem bereits alle 
+    wurde die Entscheidung getroffen, ein komplett integriertes Modul zu verwenden, bei dem bereits alle 
     \emph{HF}-Komponenten und Antenne aufgebracht sind. Passende Lösungen waren von den Firmen \emph{Digi}, 
     \emph{Mikrochip}, \emph{Radicrafts} und \emph{Atmel} verfügbar. Letztendlich wurde die Entscheidung für
-    ein Modul der Firma \emph{Atmel} getroffen, da diese nicht nur die günstigsten betrachteten Module waren,
+    ein Modul der Firma \emph{Atmel} getroffen, da diese nicht nur die günstigsten betrachteten Module,
     sondern mit der Ansteuerung über \emph{UART} mittels \emph{AT-Befehlen} auch am einfachsten anzusteuern waren.
-    Der hier verwendete Modultyp soll folgend kurz vorgestellt werden.
+    Der hier verwendete Modultyp soll nachfolgend kurz vorgestellt werden.
 
     \subsection{Hardware}
-        \Abbildungps{!htb}{1}{diagramme/zigbit_bild.pdf}{zigbit_bild}{Das ZigBit-23-A2R-Modul}
         \Abbildungps{!htb}{1}{diagramme/zigbit_blockdiagramm.pdf}{zigbit_blockdiagramm}{Blockdiagramm des ZigBit-24-A2R-Moduls}
 
         Atmel bietet unter dem Namen \emph{ZigBit} eine Palette von ZigBee-Modulen an. Diese Module sind in der
@@ -136,58 +137,57 @@ der fertigen Lösung dienen.
     \subsection{Firmware}
         \subsubsection{Bitcloud}
             \nomenclature{SDK}{Software Development Kit}
-            \emph{BitCloud}  ist ein \emph{ZigBee-Pro} zertifizierter \emph{Softwarestack} von Atmel. Es werden die 
+            \emph{BitCloud}  ist ein \emph{ZigBee-Pro}-zertifizierter \emph{Softwarestack} von Atmel. Es werden die 
             Module der \emph{ZigBit}-Familie
-            sowie die \emph{RZRAVEN Evaluationskits} unterstützt. \emph{BitCloud} ist hierbei keine fertige
+            sowie die \emph{RZRAVEN-Evaluationskits} unterstützt. \emph{BitCloud} ist hierbei keine fertige
             \emph{Firmware}, sondern 
-            Teil eines \emph{SDK}, dass dazu dient, Anwender beim schnellen und einfachen Entwickeln eigener 
+            Teil eines \emph{Software Development Kits (SDK)}, das dazu dient, Anwender beim schnellen und einfachen Entwickeln eigener 
             \emph{Firmware} zu unterstützen. Für Anwender, die selbst keine \emph{Firmware} implementieren möchten, 
-            stellt \emph{SerialNet} eine Alternative dar.
+            stellt das im folgenden Abschnitt beschriebene \emph{SerialNet} eine Alternative dar.
 
         \subsubsection{SerialNet}
             \nomenclature{IO-Port}{Input/Output-Port}
 
             \paragraph{Überblick}
-
-                \emph{SerialNet} ist eine \emph{BitCloud} basierte \emph{Firmware}, die von Atmel als fertiges Image angeboten
+                \emph{SerialNet} ist eine \emph{BitCloud}-basierte \emph{Firmware}, die von Atmel als fertiges Image\footnote{Binäres Speicherabbild,
+                    das ohne Anpassung in den Speicher des \emph{ZigBit}-Moduls programmiert werden kann.} angeboten
                 wird. Dieses kann auf dem \emph{ZigBit}-Modul installiert werden, wodurch die Notwendigkeit der 
-                Eigenentwicklung entfällt. \emph{SerialNet} bietet ein einfaches serielles Interface, dass sich mit
+                Eigenentwicklung entfällt. \emph{SerialNet} bietet ein einfaches serielles Interface, das sich mit
                 Hilfe von \emph{AT-Befehlen}\footnote{Der AT-Befehlssatz war früher zur Steuerung von Modems weit 
                 verbreitet.} 
-                steuern lässt. Der Befehelssatz bietet Zugriff auf fast alle Module des \emph{ZigBit}-Moduls wie z.B. das
-                Versenden und Empfangen von Daten, das schalten von \emph{IO-Ports} eines entfernten 
-                \emph{ZigBit}-Moduls sowie
-                Konfiguration des Energiesparmodus. Nicht möglich ist derzeit eine Verwendung der im \emph{ZigBee}-Standard
+                steuern lässt. Der Befehlssatz bietet Zugriff auf fast alle Module des \emph{ZigBit}-Moduls wie z.B. das
+                Versenden und Empfangen von Daten, das Schalten von \emph{IO-Ports} eines entfernten 
+                \emph{ZigBit}-Moduls sowie die
+                Konfiguration des Energiesparmodus. Nicht möglich ist derzeit die Verwendung der im \emph{ZigBee}-Standard
                 definierten \emph{AES}-Verschlüsselung, so dass eine Datenübertragung derzeit nur 
                 unverschlüsselt erfolgen kann.
-                Für den Fokus dieser Diplomarbeit reicht eine unverschlüsselte Verbindung, für den produktiven Einsatz
-                müssen jedoch weitere Sicherheitsmaßnahmen ergriffen werden. Wie diese aussehen können ist in 
-                Abschnitt~\ref{Sicherheit} beschrieben. 
+                Daher müssen für den produktiven Einsatz weitere Sicherheitsmaßnahmen ergriffen werden. Wie diese aussehen 
+                können, ist in Abschnitt~\ref{Sicherheit} beschrieben. 
 
             \paragraph{SerialNet AT-Protokoll}
 
                 \Abbildungps{!htb}{1.00}{diagramme/serialnet_protokoll.pdf}{serialnet_protokoll}{Darstellung des SerialNet-Protokolls als Zustandsautomat}
 
                 Das SerialNet AT-Protokoll lässt sich vereinfacht als Zustandsautomat mit 3 Zuständen darstellen
-                (Vgl. Abbildung~\ref{serialnet_protokoll})\footnote{Zur exakten Darstellung müsste ein weitere 
+                (vgl. Abbildung~\ref{serialnet_protokoll})\footnote{Zur exakten Darstellung müssten weitere 
                     Zustände eingeführt werden, die das Bearbeiten von Befehlen im \emph{offline}-Modus repräsentieren. 
-                    Ausserdem wird der Übergang von \emph{offline} zu \emph{online} eigentlich durch eine 
+                    Ausserdem wird der Übergang von \emph{offline} zu \emph{online} eigentlich durch ein 
                     \emph{EVENT\_JOINED}-Ereignis ausgelöst, und müsste daher durch einen Epsilon-Übergang dargestellt
-                    werden. Diese Details sind jedoch für die Verständnis der prinzipiellen Funktionsweise des 
+                    werden. Diese Details sind jedoch für das Verständnis der prinzipiellen Funktionsweise des 
                     Befehlssatzes unwesentlich.}:
 
                 \begin{itemize}
-                    \item{\emph{offline}:} Es besteht keine Verbindung zu eine \emph{ZigBee}-Netzwerk. Befehle
+                    \item{\emph{offline}:} Es besteht keine Verbindung zu einem \emph{ZigBee}-Netzwerk. Befehle
                                     zur Kommunikation mit anderen Knoten sind nicht verfügbar. 
-                                    Ein Zugriff zur Konfiguration der Netzwerkparameter wie 
-                                    Netzwerk- und Hardwareadresse sind verfügbar. 
+                                    Ein Zugriff auf die Konfiguration der Netzwerkparameter wie 
+                                    Netzwerk- und Hardwareadresse ist verfügbar. 
 
-                    \item{\emph{online}:} Das Modul ist Betriebsbereit, mit einem Netzwerk verbunden und wartet
+                    \item{\emph{online}:} Das Modul ist betriebsbereit, mit einem Netzwerk verbunden und wartet
                                    auf Befehle. Befehle zur Kommunnikation mit anderen Knoten stehen zur
                                    Verfügung, Befehle zur Kommunikation der Netzwerkparameter sind gesperrt.
 
                     \item{\emph{busy}:} Das Modul ist mit der Bearbeitung eines Befehls beschäftigt. Es stehen
-                                 keine Befehle zur Verfügung - jedoch können jederzeit Ereignisse 
+                                 keine Befehle zur Verfügung\,--\,jedoch können jederzeit Ereignisse 
                                  empfangen werden.
                 \end{itemize}
                                     
@@ -198,7 +198,7 @@ der fertigen Lösung dienen.
                 jederzeit auch asynchrone Events auftreten. Hierauf muss bei der Entwicklung eines Treibers zur 
                 Ansteuerung des Moduls besonders geachtet werden. Die wichtigsten \emph{SerialNet}-Befehle, ihre
                 Anwendbarkeit sowie die Art der Antwort sind in Tabelle~\ref{serialnet_befehle} dargestellt.
-                Tabelle~\ref{serialnet_events} beeinhaltet die wichtigstens \emph{SerialNet}-Events.
+                Tabelle~\ref{serialnet_events} beinhaltet die wichtigsten \emph{SerialNet}-Events.
 
                 \begin{table}
                     \begin{tabular}{llll}
@@ -212,7 +212,7 @@ der fertigen Lösung dienen.
                         AT+WLEAVE     & Netzwerk verlassen                & Einfach & online-Zustand \\
                         AT+WJOIN      & Netzwerk beitreten                & Einfach & offline-Zustand \\
                         AT+WAUTONET   & Netzwerk automatisch beitreten    & Einfach & offline-Zustand \\
-                        AT+WROLE      & Rolle im Netzwerk Konfigurieren   & Einfach & offline-Zustand \\
+                        AT+WROLE      & Rolle im Netzwerk konfigurieren   & Einfach & offline-Zustand \\
                         AT+WPWR       & Powermanagement konfigurieren     & Einfach & offline-Zustand \\
                         AT+WSRC       & Netzwerkadresse konfigurieren     & Einfach & offline-Zustand \\
                         AT+GSN        & Hardwareadresse konfigurieren     & Einfach & offline-Zustand \\
@@ -236,8 +236,8 @@ der fertigen Lösung dienen.
 
     \section{Kommunikation mit dem \emph{ZigBit}-Modul}\label{analyse_kommunikation_mit_zigbit_modul}
         \subsection{Problemstellung}
-            Das \emph{SerialNet}-Protokoll ist grundsätzlich synchron. Ein Programm, dass mit
-            einem \emph{ZigBit}-Modul kommuniziert lässt sich daher am einfachsten nach folgendem
+            Das \emph{SerialNet}-Protokoll ist grundsätzlich synchron. Ein Programm, das mit
+            einem \emph{ZigBit}-Modul kommunizieren lässt sich daher am einfachsten nach folgendem
             Muster aufbauen:
 
             \begin{lstlisting}{frame=analyse1}
@@ -266,19 +266,19 @@ def sendeBefehl(befehl)
                           bis zu einer halben Minute dauern\footnote{Dies tritt insbesondere dann auf, wenn eine
                           synchrone Datenübertragung zu einem entfernten Knoten durchgeführt werden soll, der sich
                           selbst gerade im Energiesparmodus befindet. Der sendende Knoten ist hierbei so lange
-                          blockiert, bis entweder der Empfang der Daten quittiert wurde, oder aber ein 
-                          \emph{Timeout} aufgetreten ist}. Während das Steuerungprogramm auf die Quittierung des 
+                          blockiert, bis entweder der Empfang der Daten quittiert wurde oder aber ein 
+                          \emph{Timeout} aufgetreten ist}. Während das Steuerungsprogramm auf die Quittierung des 
                           Befehls mit einer Status-Meldung wartet, können asynchrone Ereignisse auftreten.
-                          Im oben abgebildeten Programm würde dieses Ereigniss fälschlicherweise als Antwort
+                          Im oben abgebildeten Programm würde ein solches Ereignis fälschlicherweise als Antwort
                           auf den gesendeten Befehl interpretiert werden. Dies hätte zur Folge, dass nun 
-                          Steurungsprogramm und \emph{ZigBit}-Modul nicht mehr synchron zueinander ("`out-of-sync"') 
+                          Steuerungsprogramm und \emph{ZigBit}-Modul nicht mehr synchron zueinander ("`out-of-sync"') 
                           sind.
 
                 \item{Komplexe Rückgabewerte:} Bestimmte Befehle der \emph{SerialNet-Firmware} liefern nicht nur
-                         einen einfachen Statuscode sondern eine komplexe, Mehrzeilige Antwort zurück. Auch hier ergibt
-                         sich bei obigem Programm wieder das Problem, dass dieses bereits nach der ersten Zeile
+                         einen einfachen Statuscode, sondern eine komplexe, mehrzeilige Antwort zurück. 
+                         Bei obigem Programm ergibt sich das Problem, dass dieses bereits nach der ersten Zeile
                          fälschlicherweise davon ausgehen würde, dass die Antwort abgeschlossen wäre, obwohl noch weitere
-                         Zeilen folgen können. Auch in diesem Falle wären Steurungsprogramm und \emph{ZigBit}-Modul nichtmehr
+                         Zeilen folgen können. Auch in diesem Falle wären Steuerungsprogramm und \emph{ZigBit}-Modul nicht mehr
                          synchron zueinander.
             \end{enumerate}
 
@@ -286,45 +286,45 @@ def sendeBefehl(befehl)
             \label{behandlung_asynchron_auftretender_ereignisse}
 
             Um asynchrone Ereignisse behandeln zu können, müssen diese zunächst erkannt werden. Dies kann mit
-            Hilfe einer Liste aller Ereignisse und Statuscodes geschehen. In diesem Falle wird so lange
+            Hilfe einer Liste aller möglichen Ereignisse und Statuscodes geschehen. In diesem Falle wird so lange
             von dem \emph{ZigBit}-Modul gelesen, bis ein Statuscode empfangen wurde. Zwischendurch empfangene
-            Ereignisse können entweder direkt behandelt werden, oder zunächst in einer Liste zwischengespeichert
+            Ereignisse können entweder direkt behandelt, oder zunächst in einer Liste zwischengespeichert
             werden, um sie zu einem späteren Zeitpunkt zu behandeln. Beide Verfahren haben sowohl Vor- als auch
             Nachteile:
             \nomenclature{Deadlock}{Nicht mehr zu behebende Verklemmung von mindestens zwei \emph{Threads}.}
 
             \begin{itemize}
-                \item{Direktes Behandeln von Events:} Dieses Verfahren hat den Vorteil, dass auf empfangene 
+                \item{Direktes Behandeln von Ereignissen:} Dieses Verfahren hat den Vorteil, dass auf empfangene 
                 Ereignisse sofort reagiert werden kann; so lässt sich z.B. ein empfangener Alarm direkt
                 auf dem Bildschirm darstellen und es muss nicht erst auf die Beendigung des vorherigen
-                Befehls gewartet werden. Erfordert das behandelte Event den Zugriff auf das 
-                \emph{ZigBit}-Modul um z.B. den Empfang einer Nachricht zu quittieren, so ist 
-                besondere Vorsicht erforderlich, da sonst entweder Verklemmungen (\emph{Deadlock}) oder
-                ein Verlust der Synchronisierung auftreten kann\footnote{Eine mögliche Lösung ist die
+                Befehls gewartet werden. Erfordert das behandelte Ereignis den Zugriff auf das 
+                \emph{ZigBit}-Modul, um z.B. den Empfang einer Nachricht zu quittieren, so ist 
+                besondere Vorsicht erforderlich, da sonst entweder Verklemmungen (\emph{Deadlocks}) oder
+                ein Verlust der Synchronisierung auftreten können\footnote{Eine mögliche Lösung ist die
                 Verwendung einer Warteschlange, in die die zu versendenden Daten eingereiht werden.}.
                 Dieses Verfahren eignet sich besonders für Systeme, in denen auf eingehende Ereignisse besonders
                 schnell reagiert werden muss.
 
-                \item{Einreihen von Ereignisse in eine Warteschlange:} Diese Verfahren hat den Vorteil, dass
+                \item{Einreihen von Ereignissen in eine Warteschlange:} Diese Verfahren hat den Vorteil, dass
                 es sehr einfach umgesetzt werden kann. Alle Ereignisse, die während der Bearbeitung eines Befehls
-                auftreten werden zunächst in eine Warteschlange eingereiht. Mit der Abarbeitung der Ereignisse
+                auftreten, werden zunächst in eine Warteschlange eingereiht. Mit der Abarbeitung der Ereignisse
                 wird so lange gewartet, bis der laufende Befehl abgeschlossen wurde. Während der Abarbeitung der
                 Ereignisse muss dann keine Rücksicht mehr darauf genommen werden, in welchem Zustand sich das
-                \emph{ZigBit}-Modul befindet, da es sich nach Abarbeitung eines Befehls sicher im Betriebsbereiten
-                Zustand befindet\footnote{Ausnahme hiervon ist, wenn zwischenzeitlich die Netzwerkverbindung verloren
-                gegangen ist, was natürlich gesondert behandelt werden muss.}. Nachteilig ist, dass Ereignisse
+                \emph{ZigBit}-Modul befindet, da es sich nach Abarbeitung eines Befehls sicher im betriebsbereiten
+                Zustand befindet\footnote{Ausnahme hiervon ist, der zwischenzeitliche Verlust der Netzwerkverbindung,
+                    der natürlich gesondert behandelt werden muss.} Nachteilig ist, dass Ereignisse
                 erst behandelt werden, wenn Befehle komplett abgearbeitet wurden. Bei Ereignissen, zu deren Bearbeitung
-                nicht auf das \emph{ZigBit}-Modul zugegriffen werden muss bedeutet dies eine unnötige Verzögerung.
+                nicht auf das \emph{ZigBit}-Modul zugegriffen werden muss, bedeutet dies eine unnötige Verzögerung.
                 Dieses Verfahren eignet sich daher eher für Systeme, in denen deutlich mehr Befehle als Ereignisse
                 auftreten.
             \end{itemize}
 
             Durch die Verwendung von \emph{Multithreading} kann darüber hinaus eine Kombination aus beiden Verfahren
             verwenden werden. In diesem Fall wird von einem \emph{Thread} aus die Bearbeitung der Befehle, inkl. des
-            Befüllens der Ereigniswareteschlange vorgenommen, während von einem anderen \emph{Thread} aus diese Warteschlange
+            Befüllens der Ereigniswarteschlange vorgenommen, während von einem anderen \emph{Thread} aus diese Warteschlange
             parallel dazu abgearbeitet wird.\\
             \\
-            Das folgende Pseudocode-Programm zeigt exemplarisch das Behandeln von Events über das Einreihen in
+            Das folgende Pseudocode-Programm zeigt exemplarisch das Behandeln von Ereignissen über das Einreihen in
             Warteschlangen:
 
             \begin{lstlisting}{frame=analyse2}
@@ -354,8 +354,8 @@ def sendeBefehl(befehl)
         \subsection{Behandlung von komplexen Antworten}
             \label{behandlung_von_komplexen_antworten}
             Bei der Behandlung von komplexen Antworten kommt der Umstand zur Hilfe, dass bereits
-            im Vorraus bekannt ist, welche Befehle eine komplexe Antwort erzeugen. Bei welchen Befehlen dies
-            der Fall ist kann aus Tabelle~\ref{serialnet_befehle} entnommen werden. Im Steuerprogramm kann beim
+            im Voraus bekannt ist, welche Befehle eine komplexe Antwort erzeugen. Bei welchen Befehlen dies
+            der Fall ist, kann aus Tabelle~\ref{serialnet_befehle} entnommen werden. Im Steuerprogramm kann beim
             Parsen des Befehls daher entsprechend Rücksicht darauf genommen werden, ob eine einzeilige oder
             eine mehrzeilige Antwort erwartet wird. Komplexe Antworten werden immer mit einem Statuscode
             beendet, d.h. wenn eine komplexe Antwort erwartet wird, muss so lange vom \emph{ZigBit}-Modul
@@ -398,12 +398,12 @@ def sendeBefehl(befehl)
         \subsection{Kombination beider Lösungen}
 
         Kombiniert man die Lösungen aus Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} und 
-        Abschnitt~\ref{behandlung_von_komplexen_antworten} ergibt sich ein weiteres Problem: Bei der
+        Abschnitt~\ref{behandlung_von_komplexen_antworten}, ergibt sich ein weiteres Problem: Bei der
         Lösung aus Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} wird davon ausgegangen, 
         dass alle Ergebnisse, bei denen es sich nicht um Statuscodes handelt, Ereignisse sind. Diese Annahme
         ist jedoch hinfällig, sobald komplexe Antworten vom ZigBit Modul empfangen werden. Daher muss hierbei
-        jede Antwort einer genaueren Prüfung unternommen werden, ob es sich hierbei um einen Status Code, 
-        ein Event oder eine Komplexe Antwort handelt. Hierbei kann eine einfache Mustererkennung verwendet
+        jede Antwort einer genaueren Prüfung unterzogen werden, ob es sich hierbei um einen Statuscode, 
+        ein Event oder eine komplexe Antwort handelt. Hierbei kann eine einfache Mustererkennung verwendet
         werden.
 
 
@@ -471,7 +471,7 @@ def sendeBefehl(befehl)
         Die Spannungsversorgung des Erste-Hilfe-Sensors erfolgt über Batterie. Da der Wechsel der Batterie
         während eines MANVs umständlich und zeitraubend ist, ist eine möglichst hohe Batterielaufzeit
         wünschenswert. Am besten wäre hierbei, wenn überhaupt kein Batteriewechsel notwendig wäre. Im
-        empfansbereiten Zustand braucht das \emph{ZigBit}-Modul laut Datenblatt einen Strom von 19~mA.
+        empfangsbereiten Zustand braucht das \emph{ZigBit}-Modul laut Datenblatt einen Strom von 19~mA.
         Zur Verringerung der Leistungsaufnahme bietet das \emph{ZigBit}-Modul einen Energiesparmodus,
         indem lediglich der interne Speicher gehalten und alle andere Hardware abgeschaltet wird. In
         diesem Modus braucht das Modul laut Datenblatt weniger als $6~\mu{}A$.\\
@@ -480,7 +480,7 @@ def sendeBefehl(befehl)
         Energiesparmodus versetzt. Während dieser Zeit kann das Modul weder von der Steurungssoftware angesprochen
         werden, noch können Daten vom Netzwerk empfangen werden. Damit in dieser Zeit keine Informationen
         verloren gehen, werden vom nächstgelegenen Router alle Nachrichten an dieses Modul zwischengespeichert,
-        bis dieses wieder im Empfangsbereiten Zustand ist. Bei Verwendung der \emph{SerialNet-Firmware} wird
+        bis dieses wieder im empfangsbereiten Zustand ist. Bei Verwendung der \emph{SerialNet-Firmware} wird
         die Dauer des Verweilens im Energiesparmodus über den Befehl \emph{AT+WPWR} konfiguriert. Die Konfiguration
         erfolgt in Schritten zu 100~ms.\\
         \\
@@ -493,20 +493,20 @@ def sendeBefehl(befehl)
 
             \item{Manuelles Aufrufen des Energiesparmodus:} Alternativ zum automatischen Aufrufen kann
             der Energiesparmodus über den Befehl \emph{AT+WSLEEP} auch manuell aufgerufen werden. Dies
-            kann entweder entweder Alternativ zum automatischen Aufrufen oder als Ergänzung verwendet
+            kann entweder entweder alternativ zum automatischen Aufrufen oder als Ergänzung verwendet
             werden.
 
         \end{itemize}
 
-        Bei der Verwendung des Energiesparmoduses muss sichergestellt werden, dass keine Informationen,
+        Bei der Verwendung des Energiesparmodus muss sichergestellt werden, dass keine Informationen,
         die über die \emph{UART}-Schnittstelle an das Modul gesendet werden, verloren gehen. Hierzu 
         bietet die \emph{SerialNet-Firmware} die Möglichkeit, über die \emph{CTS}-Leitung der 
         \emph{UART}-Schnittstelle ihre Empfangsbereitschaft zu signalisieren. Die Steurungssoftware
         auf der Gegenseite muss hierzu vor jedem Senden den Zustand der \emph{CTS}-Leitung
-        kontrollieren, und darf nur senden, wenn der die \emph{CTS}-Leitung den Zustand 0 hat. Damit die
+        kontrollieren, und darf nur senden, wenn die \emph{CTS}-Leitung den Zustand 0 hat. Damit die
         \emph{SerialNet-Firmware} diesen Zustand korrekt kommuniziert, muss über den Befehl \emph{AT+IFC}
-        die Flußkontrolle aktiviert werden. \\
+        die Flusskontrolle aktiviert werden. \\
         \\
-        Zu beachten ist, dass die Konfiguration des Energiesparmodueses bei allen Teilnehmern des Netzes
-        (also auch auf \emph{Routern} und \emph{Coordinatoren}) gleich sein sollte. Der eigentliche Energeisparmodus steht
+        Zu beachten ist, dass die Konfiguration des Energiesparmodus bei allen Teilnehmern des Netzes
+        (also auch auf \emph{Routern} und \emph{Coordinatoren}) gleich sein sollte. Der eigentliche Energiesparmodus steht
         allerdings nur auf Endknoten, also \emph{RFD}s zur Verfügung.
