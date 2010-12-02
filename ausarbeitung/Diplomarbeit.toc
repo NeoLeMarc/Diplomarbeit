@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {3.2.4}WLAN}{15}{subsection.3.2.4}
 \contentsline {subsubsection}{\numberline {3.2.4.1}\IeC {\"U}bersicht}{15}{subsubsection.3.2.4.1}
 \contentsline {subsubsection}{\numberline {3.2.4.2}IEEE 802.11b}{15}{subsubsection.3.2.4.2}
-\contentsline {subsubsection}{\numberline {3.2.4.3}IEEE 802.11g}{16}{subsubsection.3.2.4.3}
+\contentsline {subsubsection}{\numberline {3.2.4.3}IEEE-802.11g}{16}{subsubsection.3.2.4.3}
 \contentsline {subsubsection}{\numberline {3.2.4.4}IEEE 802.11a}{16}{subsubsection.3.2.4.4}
 \contentsline {subsubsection}{\numberline {3.2.4.5}St\IeC {\"o}rsicherheit}{16}{subsubsection.3.2.4.5}
 \contentsline {subsubsection}{\numberline {3.2.4.6}Leistungsaufnahme}{18}{subsubsection.3.2.4.6}
@@ -54,16 +54,16 @@
 \contentsline {section}{\numberline {3.4}Verwandte Projekte zum Einsatz in MANV-Szenarien}{32}{section.3.4}
 \contentsline {chapter}{\numberline {4}Analyse}{35}{chapter.4}
 \contentsline {section}{\numberline {4.1}Anforderungen an ein kabelloses System zur \IeC {\"U}berwachung von Patienten}{35}{section.4.1}
-\contentsline {section}{\numberline {4.2}Der \emph {Analog Devices ADuC702X} Mikrocontroller}{36}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Beschreibung}{36}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.2}Der \emph {Analog Devices ADuC702X}-Mikrocontroller}{36}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Beschreibung}{37}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Peripherie}{37}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Die Atmel ZigBit Familie}{38}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Hardware}{38}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Firmware}{40}{subsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.2.1}Bitcloud}{40}{subsubsection.4.3.2.1}
+\contentsline {section}{\numberline {4.3}Die Atmel-\emph {ZigBit}-Familie}{38}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Hardware}{39}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Firmware}{39}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Bitcloud}{39}{subsubsection.4.3.2.1}
 \contentsline {subsubsection}{\numberline {4.3.2.2}SerialNet}{40}{subsubsection.4.3.2.2}
 \contentsline {paragraph}{\numberline {4.3.2.2.1}\IeC {\"U}berblick}{40}{paragraph.4.3.2.2.1}
-\contentsline {paragraph}{\numberline {4.3.2.2.2}SerialNet AT-Protokoll}{41}{paragraph.4.3.2.2.2}
+\contentsline {paragraph}{\numberline {4.3.2.2.2}SerialNet AT-Protokoll}{40}{paragraph.4.3.2.2.2}
 \contentsline {section}{\numberline {4.4}Kommunikation mit dem \emph {ZigBit}-Modul}{43}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Problemstellung}{43}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Behandlung asynchron auftretender Ereignisse}{44}{subsection.4.4.2}
@@ -84,7 +84,7 @@
 \contentsline {subsubsection}{\numberline {5.2.4.2}Diagnosecodes}{57}{subsubsection.5.2.4.2}
 \contentsline {subsubsection}{\numberline {5.2.4.3}\emph {ZigBee-USB-Stick}}{58}{subsubsection.5.2.4.3}
 \contentsline {section}{\numberline {5.3}Software}{58}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}MANVNode Firmware}{58}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.1}MANVNode-Firmware}{58}{subsection.5.3.1}
 \contentsline {subsubsection}{\numberline {5.3.1.1}Funktionalit\IeC {\"a}t}{58}{subsubsection.5.3.1.1}
 \contentsline {subsubsection}{\numberline {5.3.1.2}Ansteuerung des ZigBit-Moduls}{60}{subsubsection.5.3.1.2}
 \contentsline {subsubsection}{\numberline {5.3.1.3}Ansteuerung des UARTs}{60}{subsubsection.5.3.1.3}
