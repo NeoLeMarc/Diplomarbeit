@@ -4,10 +4,10 @@
 
 \chapter{Ergebnisse}\label{Ergebnisse}
 \section{Realisierbarkeit}
-\subsection{Integrierbarkeit in Erste-Hilfe-Sensor}
+\subsection{Integrierbarkeit in den \emph{Erste-Hilfe-Sensor}}
 \nomenclature{MANVNode}{Test- und Entwicklungsplatine für den kabellosen \emph{Erste-Hilfe-Sensor}.}
-Die \emph{MANVNode} dient neben Ihrer Funktion als Test- und Entwicklungsplatine für die Firmware zur 
-Ansteuerung der \emph{ZigBit}-Module als Nachweis der Integrierbarkeit der in dieser Arbeit vorgestellten
+Die \emph{MANVNode} dient\,--\,neben ihrer Funktion als Test- und Entwicklungsplatine für die Firmware zur 
+Ansteuerung der \emph{ZigBit}-Module\,--\,als Nachweis der Integrierbarkeit der in dieser Arbeit vorgestellten
 Lösung in den \emph{Erste-Hilfe-Sensor}. Hierzu wurde beim Entwurf darauf geachtet, dass neben dem
 \emph{ZigBit}-Modul keine weiteren Hardwarebauteile notwendig sind, die nicht auf der Platine des
 \emph{Erste-Hilfe-Sensors} vorhanden sind. Darüber hinaus wurde die selbe Mikrocontroller-Architektur
@@ -17,7 +17,7 @@ Teile der \emph{Firmware} 1:1 übernommen werden können.
 \subsection{Interoperabilität aller Komponenten}
 \Abbildungps{!htb}{1}{diagramme/integrationstest_setup.jpg}{intergrationstest_setup}{Aufbau des \emph{Integrationstests}.}
 \Abbildungps{!htb}{1}{diagramme/integrationstest_gui.png}{intergrationstest_gui}{Screenshot der \emph{MANVGui} während des Integrationstests.}
-Da \emph{MANVSuite} und \emph{MANVConnector} in zwei verschiedenen Arbeiten (Vgl. \cite{Jan}) 
+Da \emph{MANVSuite} und \emph{MANVConnector} in zwei verschiedenen Arbeiten (vgl. \cite{Jan}) 
 entworfen wurden, muss die Interoperabilität zwischen allen Komponenten gezeigt werden. Hierzu
 wurde ein umfassender Integrationstest durchgeführt.
 
@@ -25,8 +25,8 @@ wurde ein umfassender Integrationstest durchgeführt.
 \nomenclature{Setup}{Aufbau}
 \nomenclature{Virtuelle~Maschine}{In Software virtuell implementierter Computer.}
 In einem ersten Test wurde eine \emph{MANVNode} über den \emph{MANV-USB-Stick} an den \emph{MANV-Connector}
-angeschlossen und die \emph{MANVSuite} ausgeführt. Nun wurde gezeigt, dass sowohl Übertragung von \emph{MANVNode}
-zur \emph{MANVSuite} sowie umgekehrt die Übertragung von Befehlen von der \emph{MANVSuite} zu der \emph{MANVNode}
+angeschlossen und die \emph{MANVSuite} ausgeführt. Nun wurde gezeigt, dass sowohl die Übertragung von der \emph{MANVNode}
+zur \emph{MANVSuite} als auch umgekehrt die Übertragung von Befehlen von der \emph{MANVSuite} zu der \emph{MANVNode}
 funktionieren.\\
 In einem zweiten Test wurde nun obiges \emph{Setup} durch das Hinzufügen von 4 weiteren \emph{MANVNodes} erweitert. Hierzu
 wurden auch wieder Daten in beide Richtungen übertragen. Hierbei wurde insbesondere darauf geachtet, dass sich die
@@ -44,16 +44,16 @@ Alle Tests konnten erfolgreich durchgeführt werden. Die Interoperabilität alle
 
 \subsection{Austauschbarkeit des \emph{MANVConnectors}}
 Zur Demonstation der Austauschbarkeit des \emph{MANVConnectors} wurde in \cite{Jan} ein Simulator für den 
-\emph{MANVConnector} geschrieben. Dieser Implementiert die selbe \emph{Corba}-Schnittstelle wie der richtige
-\emph{MANVConnector}, führt jedoch keine Kommunikation über das Netzwerk durch. Statt dessen besitzt
-der Simulator eine Graphische Benutzeroberfläche, über die zum einen Ereignisse von Hand ausgelöst, zum
-anderen Empfangene Befehle in einem Fenster dargestellt werden können. Die Übertragung von Daten wurde
+\emph{MANVConnector} geschrieben. Dieser implementiert die selbe \emph{Corba}-Schnittstelle wie der 
+\emph{MANVConnector}, führt jedoch keine Kommunikation über das Netzwerk durch. Stattdessen besitzt
+der Simulator eine graphische Benutzeroberfläche, über die zum einen Ereignisse von Hand ausgelöst, zum
+anderen empfangene Befehle in einem Fenster dargestellt werden können. Die Übertragung von Daten wurde
 in beide Richtungen erfolgreich getestet, die Austauschbarkeit des \emph{MANVConnectors} damit
 erfolgreich demonstriert.
 
 \subsection{Anbindbarkeit an externe Software}\label{anbindbarkeit_an_externe_software}
 Zentrale Designentscheidung war die Verwendung einer offenen \emph{Corba}-Schnittstelle zur Anbindung
-von externer Software an die \emph{MANVSuite}. Dass dies effizient durchführbar ist zeigt der folgende
+von externer Software an die \emph{MANVSuite}. Dass dies effizient durchführbar ist, zeigt der folgende
 Test.
 
 \subsubsection{Durchführung}
@@ -69,14 +69,14 @@ Test.
 \nomenclature{Symbian}{Betriebssystem für ein Nokia Handy.}
 Zum Nachweis der Anbindbarkeit von externer Software über die \emph{Corba}-Schnittstelle wurde entschieden,
 eine Schnittstelle zu einem \emph{Webinterface} zu implementieren. Das \emph{Webinterface} selbst ist
-eine einfache \emph{HTML}-Seite, die über \emph{Javascript} eine Graphische Benutzeroberfläche für das
-Sensornetzwerk implementiert. Muss nun zunächst mit Daten aus dem Sensornetzwerk versorgt werden. Hierzu
-findet das sogenannte \emph{JSON}-Format Anwendung. Ausserdem muss es möglich sein, Befehle an das
+eine einfache \emph{HTML}-Seite, die über \emph{Javascript} eine graphische Benutzeroberfläche für das
+Sensornetzwerk implementiert. Dieses muss nun zunächst mit Daten aus dem Sensornetzwerk versorgt werden. Hierzu
+findet das sogenannte \emph{JSON}-Format Verwendung. Außerdem muss es möglich sein, Befehle an das
 Sensornetzwerk zu senden. Dieser werden über spezielle \emph{HTTP-GET}-Anfragen kodiert. Insgesamt wird
 diese Vorgehensweise auch als \emph{AJAX} bezeichnet und bildet die Grundlage der \emph{Web-2.0}-Technologie.
-Insgesamt musste also ein Adapter von \emph{Corba} zu \emph{AJAX} realisiert werden. Die Details dieser
+Es musste also ein Adapter von \emph{Corba} zu \emph{AJAX} realisiert werden. Die Details dieser
 Implementierung sind in Anhang~\ref{anhang_beschreibung_software} beschrieben.\\
-Darüber hinaus wird in \cite{Jan} beschriebenen, wie ein \emph{Symbian} basiertes \emph{Nokia}-Mobiltelefon 
+Darüber hinaus wird in \cite{Jan} beschrieben, wie ein \emph{Symbian}-basiertes \emph{Nokia}-Mobiltelefon 
 an die \emph{MANVSuite} angebunden wird. Hierzu wurde eine in \emph{C++} programmierte Lösung 
 eingesetzt.
 
@@ -94,15 +94,14 @@ Anbindung sogar über Plattform- und Programmiersprachengrenzen hinweg realisier
 \nomenclature{R}{Widerstand.}
 \nomenclature{I}{Strom.}
 \nomenclature{Shunt}{Niederohmiger Widerstand zur Messung von Strömen mit einem Spannungsmessgerät.}
-\label{ergebnis_normal}
 Zur Bestimmung der Leistungsaufnahme~-- umgangssprachlich auch Strom\-ver\-brauch genannt~-- wurden mehrere Messungen 
 durchgeführt.
-Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmoduses sehr stark schwankt, sind herkömmliche Messungen
+Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmodus sehr stark schwankt, sind herkömmliche Messungen
 z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall über einem 
 Shunt-Wi\-der\-stand durchgeführt. Dieser wurde in die Stromversorgung des \emph{ZigBit}-Moduls eingebracht. Der 
 Spannungsabfall über diesem Widerstand wurde nun sowohl mit einem \emph{Oszilloskop} als auch mit einem \emph{Multimeter}
-gemessen. Hierzu wurde zunächst die Form des Spannungsverlaufes analysiert. Dann wurden einzelne Messpunkte innerhalb 
-des Spannungsverlaufs bestimmt, für die nun der Wert der abfallenden Spannung bestimmt wurde. Über das Ohmsche-Gesetz 
+gemessen. Hierzu wurde zunächst die Form des Spannungsverlaufs analysiert. Dann wurden einzelne Messpunkte innerhalb 
+des Spannungsverlaufs bestimmt, für die nun der Wert der abfallenden Spannung gemessen wurde. Über das Ohmsche Gesetz 
 konnte nun aus der abfallenden
 Spannung die Stromstärke bestimmt werden. Für die einzelnen Messungen wurde ein Oszilloskop der Marke \emph{Tektronix}, 
 Modell \emph{TDS2002B} verwendet. Die Messungen wurden zusätzlich mit einem Multimeter verifiziert,
@@ -110,10 +109,11 @@ um Kalibrationsfehler des \emph{Oszilloskops} auszuschliessen. Als Shunt wurde e
 verwendet.
 
 \subsection{Leistungsaufnahme im Normalbetrieb}\label{leistungsaufnahme_normalbetrieb}
+\label{ergebnis_normal}
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_router.jpg}{oszi_normalbetrieb_router}{Router oder Koordinator im Normalbetrieb. 
 %    Der Stromverbrauch beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
 }   
-\Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknotens im Normalbetrieb ohne Energiesparmodus. 
+\Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknoten im Normalbetrieb ohne Energiesparmodus. 
 %        Auffällig sind die \emph{Peaks}, in denen sich der Knoten im Empfangsmodus befindet. 
 %        Die \emph{Peaks} haben eine 
 %    Länge von 40~ms und einen Betrag von 23,4~mA. Ausserhalb eines \emph{Peaks} beträgt der Stromverbrauch 10,7~mA.
@@ -130,19 +130,19 @@ verwendet.
 \nomenclature{Server}{Komponente, die einen Dienst anbietet.}
 \nomenclature{Client}{Komponente, die einen Dienst nutzt.}
 Als Normalbetrieb wurde der Zustand angenommen, in dem das \emph{ZigBit}-Modul einem \emph{ZigBee}-Netzwerk beigetreten
-ist, und der Energiesparmodus nicht zur Anwendung kommt. Bei der Messung wurde schnell klar, dass sich hierbei die
+ist und der Energiesparmodus nicht zur Anwendung kommt. Bei der Messung wurde schnell klar, dass sich hierbei die
 Funktionsweise von eines \emph{FFD} (also \emph{Router} und \emph{Connector}) drastisch von der eines \emph{RFD}s (also 
 eines Clients) 
 unterscheiden. Ein \emph{FFD} befindet sich immer im Empfangsmodus, d.h. es hat immer eine maximale Leistungsaufnahme. 
 Die entsprechende Messung ist in Abbildung~\ref{oszi_normalbetrieb_router} zu erkennen. Hier wurde ein Spannungsabfall
-von 473~mV gemessen, was bei dem verwendeten Messwiderstand einem Strom von 23,5~mA oder ca. 70~mW entspricht.\\
-Komplett anders ist hingegen das Verhalten eines Clients. Betrachtet man die Messung in
-Abbildung~\ref{oszi_normalbetrieb_client} ist eine Basislinie von 215~mV mit periodischen \emph{Peaks} erkennbar. 
-In Abbildung~\ref{oszi_empfangen_details} ist eine Detailmessung eines solchen \emph{Peaks} zu sehen.  Gut zu Erkennen ist zum 
+von 473~mV gemessen, was bei dem verwendeten Messwiderstand einem Strom von 23,5~mA oder einer Leistungsaufnahme ca. 70~mW entspricht.\\
+Komplett anders ist hingegen das Verhalten eines Clients. Betrachtet man die entsprechende Messung in
+Abbildung~\ref{oszi_normalbetrieb_client}, ist eine Basislinie von 215~mV mit periodischen \emph{Peaks} erkennbar. 
+In Abbildung~\ref{oszi_empfangen_details} ist eine Detailmessung eines solchen \emph{Peaks} zu sehen.  Gut zu erkennen ist zum 
 einen der Betrag des Spannungsabfalls von rund 473~mV sowie einer Dauer von genau 40~ms. Zwischen den \emph{Peaks} kehrt der 
 Spannungabfall für genau eine Sekunde auf den Wert der Basislinie, also 215~mV zurück, auf die wieder ein \emph{Peak} folgt.
 Der Wert von 473~mV legt die Vermutung nahe, dass es sich bei den \emph{Peaks} um einen periodischen Empfangsvorgang handelt,
-d.h. das das \emph{ZigBit}-Modul jede Sekunde für genau 40~ms Empfangsbereit ist. Diese Vermutung konnte durch weitere
+d.h. das das \emph{ZigBit}-Modul jede Sekunde für genau 40~ms empfangsbereit ist. Diese Vermutung konnte durch weitere
 Tests bestätigt werden. Zur Bestimmung des Stromverbrauchs eines Clients ergibt sich daher folgende Rechnung:
 
 \begin{align}
@@ -164,7 +164,7 @@ Setzt man nun folgende Werte
 in Formel~\ref{eqn:UClient} ein, folgt für den Spannungsabfall
 
 \begin{align*}
-    &U_{Client} = \frac{1000\,\text{ms} \cdot 215\,\text{mV} + 40\,\text{ms} \cdot 470\text{mV}}{1000\,\text{ms} + 40,\text{ms}} = 224,9\,\text{mV}
+    &U_{Client} = \frac{1000\,\text{ms} \cdot 215\,\text{mV} + 40\,\text{ms} \cdot 470\,\text{mV}}{1000\,\text{ms} + 40\,\text{ms}} = 224,9\,\text{mV}
 \end{align*}
 
 wodurch sich mit einem Widerstand von 
@@ -175,9 +175,9 @@ wodurch sich mit einem Widerstand von
 \end{center}
 
 ein Wert von 11,19~mA für $I_{Client}$ ergibt. Dies entspricht bei einer Versorgungsspannung von 3,0~V einer Leistungsaufnahme
-von 33,57~mW.
+von ca. 33,6~mW.
 
-\subsection{Leistungsaufnahme bei Verwendung des Energiesparmoduses.}
+\subsection{Leistungsaufnahme bei Verwendung des Energiesparmodus.}
 \Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Aus dem Energiesparmodus erwachter Client.
 %   Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
 %   wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
@@ -185,8 +185,8 @@ von 33,57~mW.
 }    
 
 \Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_energiesparmodus.pdf}{spannungsverlauf_client_energiesparmodus}{Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}
-\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Client der das periodische Aufrufen
-    des Energiesparmoduses nutzt.
+\Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Client, der das periodische Aufrufen
+    des Energiesparmodus nutzt.
 %   Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
 %   Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
 }
@@ -196,20 +196,20 @@ von 33,57~mW.
 \nomenclature{Peak}{Lokales Maximum (oder je nach Messrichtung auch Minimum) eines Spannungsverlaufs.}
 Die Verwendung des Energiesparmodus~-- im Datenblatt auch als \emph{Sleepmode}, also Schlafmodus, bezeichnet~-- ist eine
 Möglichkeit, den Stromverbrauch eines als Client konfigurierten \emph{ZigBit}-Moduls weiter zu reduzieren. Wie in 
-Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Stromverbrauch während des Energiesparmoduses auf praktisch 
+Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Stromverbrauch während des Energiesparmodus auf praktisch 
 0\footnote{Im Datenblatt ist ein Stromverbrauch von weniger als $6~\mu{}A$ angegeben.}. Sobald das Modul aus dem 
-Energiesparmodus in den Normalbetrieb zurück kehrt, wird sofort ein Empfangsvorgang gestartet. Bis zum nächsten Aufrufen des 
-Energiesparmoduses verhält sich das Modul wie in Abschnitt~\ref{ergebnis_normal} beschrieben. Der Energiesparmodus kann
+Energiesparmodus in den Normalbetrieb zurückkehrt, wird sofort ein Empfangsvorgang gestartet. Bis zum nächsten Aufrufen des 
+Energiesparmodus verhält sich das Modul wie in Abschnitt~\ref{ergebnis_normal} beschrieben. Der Energiesparmodus kann
 entweder manuell\footnote{z.B. mit dem Befehl \emph{AT+WSLEEP} bei Verwendung der \emph{Serialnet-Firmware}.} oder in einem 
 einstellbaren Intervall periodisch aufgerufen werden. Der Spannungsabfall während des periodischen Aufrufens ist in
 Abbildung~\ref{oszi_powersave_periodic} zu sehen. Bei der Betriebsart des periodischen Aufrufens wird über zwei Parameter,
-$t_{sleep}$ und $t_{awake}$ die Dauer der Schlaf- bzw. Wachphase angegeben. Der Parameter $t_{awake}$ darf hierbei die Dauer
-einer Empfangsphase, also 40~ms nicht unterschreiten. Für $t_{sleep}$ gilt eine Mindestdauer von 100~ms.\\
-Interessant ist nun die Bestimmung des durchschnittlichen Stromverbrauchs bei Verwendung des Energiesparmoduses
+$t_{sleep}$ und $t_{awake}$, die Dauer der Schlaf- bzw. Wachphase angegeben. Der Parameter $t_{awake}$ darf hierbei die Dauer
+einer Empfangsphase, also 40~ms, nicht unterschreiten. Für $t_{sleep}$ gilt eine Mindestdauer von 100~ms.\\
+Interessant ist nun die Bestimmung des durchschnittlichen Stromverbrauchs bei Verwendung des Energiesparmodus
 in Abhängigkeit von den Parametern $t_{awake}$ und $t_{sleep}$. In erster Näherung kann für den Stromverbrauch im Wachzustand
-Gleichung~\ref{eqn:IClient} verwendet werden\footnote{Dies ist eingentlich nicht ganz korrekt: Der Übergang zwischen 
-Basislinie und \emph{Peak} ist nicht stetig. Zur genauen Bestimmung des Stromverbrauchs müssten die einzelnen Intervalle 
-eigentlich diskret betrachtet werden. Allerdings ist der sich hieraus ergebende Fehler so gering, dass er in der Praxis zu 
+Gleichung~\ref{eqn:IClient} verwendet werden\footnote{Dies ist eigentlich nicht ganz korrekt.
+Zur genauen Bestimmung des Stromverbrauchs müssten die einzelnen Intervalle 
+eigentlich einzeln betrachtet werden. Allerdings ist der sich hieraus ergebende Fehler so gering, dass er in der Praxis zu 
 vernachlässigen ist.}. Insgesamt ergibt sich der Stromverbrauch zu:
 
 \begin{equation}
@@ -251,12 +251,12 @@ aufgeführt.
 %    Dieser Client hat kurzzeitig die Verbindung zum Netzwerk 
 %    verloren. In dieser Zeit befand er sich im Dauerempfangsmodus und hat 23,4~mA. benötigt.}
 
-So lange ein Client keinem Netzwerk beigetreten ist, befindet er sich Dauerhaft im Empfangsmodus. Das selbe Verhalten liegt
+So lange ein Client keinem Netzwerk beigetreten ist befindet er sich dauerhaft im Empfangsmodus. Das selbe Verhalten liegt
 vor, wenn eine bestehende Netzwerkverbindung verloren gegangen ist. Wie in Abbildung~\ref{oszi_connection_lost} zu sehen
-ist, steigt der Stromverbrauch in diesem Fall dauerhaft auf 23,4~mA an. Dazu kommt, dass so lange keine Verbindung zu
-einem Netzwerk besteht keine Nutzung des Energiesparmoduses möglich ist. Dies kann eine Steigerung des durchschnittlichen
-Stromverbrauchs um über Faktor 10 bedeuten, was eine entsprechend schnelle Entladung der verwendeten Stromquelle bedeuten
-kann. Es ist daher wichtig, darauf zu achten, dass alle verwendeten Sensoren möglichst selten die Verbindung zum 
+ist, steigt der Stromverbrauch in diesem Fall dauerhaft auf 23,4~mA an. Dazu kommt, dass keine Nutzung des Energiesparmodus
+möglich ist, so lange keine Verbindung zu einem Netzwerk besteht. Dies kann eine Steigerung des durchschnittlichen
+Stromverbrauchs um mehr als den Faktor 10 bewirken, was eine entsprechend schnelle Entladung der verwendeten Stromquelle bedeutet.
+Es ist daher wichtig, darauf zu achten, dass alle verwendeten Sensoren möglichst selten die Verbindung zum 
 Netzwerk verlieren.
 
 
@@ -264,28 +264,28 @@ Netzwerk verlieren.
 Zur Bestimmung der Reichweite wurden sowohl innerhalb von Gebäuden als auch im Freien Messungen durchgeführt. 
 Es wurde schnell klar, dass die Ergebnisse sehr stark von den Gegebenheiten der Umgebung sowie der Höhe von
 Sender und Empfänger abhängig sind. Optimale Ergebnisse sind bei direkter Sichtverbindung
-sowie einer Höhe von mindestens 1~m über dem Boden für Sender und Empfänger erreichen. 
+sowie einer Höhe von mindestens 1~m über dem Boden für Sender und Empfänger zu erreichen. 
 Unterhalb des Senders sollten sich möglichst keine Metalle befinden, als besonders schlecht hat sich die 
-Positionierung des Senders auf dem Dach eines PKWs erwiesen. 
+Positionierung des Senders auf dem Dach eines PKW erwiesen. 
 
 \subsection{Reichweite im Freien}
 \nomenclature{PKW}{Personenkraftwagen.}
 Alle Tests zur Reichweite im Freien wurden auf dem Geländer der Westhochschule der Universität Karlsruhe (TH)
-durchgeführt. Hierzu wurde eine \emph{MANVNode} auf einem Pfosten in einer Höhe von einem Meter angebracht,
+durchgeführt. Hierzu wurde eine \emph{MANVNode} auf einem Pfosten in einer Höhe von einem Meter angebracht
 und auf periodisches Senden bei maximaler Sendeleistung konfiguriert.  Nun wurde ein Notebook mit einem 
 \emph{MANV-USB-Stick} so lange von der \emph{MANVNode} entfernt, bis keine Pakete mehr empfangen wurden.
 Nun wurde der Abstand wieder so lange verringert, bis wieder 100\% der gesendeten Pakete empfangen wurde.
-Ausserdem wurde als Gegenprobe ein Befehl an die \emph{MANVNode} gesendet, und die Antwort empfangen. 
+Außerdem wurde als Gegenprobe ein Befehl an die \emph{MANVNode} gesendet und die Antwort empfangen. 
 Als maximale Reichweite wurde nun die Entfernung gewertet, bei der gerade noch alle Pakete empfangen, 
 sowie alle Befehle erfolgreich gesendet werden konnten. Die Entfernung zwischen Notebook und 
 \emph{MANVNode} wurden nun mittels \emph{GPS} vermessen. Als maximale Reichweite ergab sich hierbei eine Entfernung
 von etwas über 50~m.\\
-Im nächsten Schritt wurde an die Position des Notebooks ein \emph{ZigBee}-Router aufgestellt, und sich von
-diesem wieder so weit entfernt, bis gerade noch alle Pakete empfangen werden konnten. Insgesamt konnte durch
-die Verwendung von zwei \emph{Routern} eine Gesamtreichweite von ca. 180~m erreicht werden, so dass sich eine 
-durchschnittliche Reichweitenverlängerung von 50-70~m pro \emph{Router} ausgegangen werden kann.\\
+Im nächsten Schritt wurde an die Position des Notebooks ein \emph{ZigBee}-Router aufgestellt, und die Entfernung zu
+diesem so lange vergrößert, bis gerade noch alle Pakete empfangen werden konnten. Insgesamt konnte durch
+die Verwendung von zwei \emph{Routern} eine Gesamtreichweite von ca. 180~m erreicht werden, so dass von einer 
+durchschnittlichen Reichweitenverlängerung von 50-70~m pro \emph{Router} ausgegangen werden kann.\\
 Deutliche Einschränkungen bei der Reichweite traten auf, sobald sich Hindernisse wie Container, Häuser oder 
-PKWs in der Sichtverbindung zwischen Sender und Empfänger befanden. Diese ließen sich jedoch durch geschicktes
+PKW in der Sichtverbindung zwischen Sender und Empfänger befanden. Diese ließen sich jedoch durch geschicktes
 Positionieren der \emph{Router} sehr gut umgehen, so dass auch hier hohe Reichweiten erzielbar waren. 
 
 \subsection{Reichweite innerhalb geschlossener Räume}
