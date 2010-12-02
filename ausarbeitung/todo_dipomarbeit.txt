@@ -1,13 +1,1 @@
-
-Wichtig:
-
-- Vorwort
-- Danksagung
-- Abstract
-- Bildquellen angeben
-
-Kür:
-
-- Gluetexte in Kapitel einfügen
-- Lesen und Verständlicher machen
-- Literatur anpassen und Wahllos Zitierungen einpflegen
+- Gedankenstriche durch \,--\, ersetzen

@@ -5,16 +5,16 @@
 \section{Einleitung}
 In diesem Kapitel wird der Stand der Technik von kabellosen Patientenüberwachungstechnologien untersucht. 
 Hierzu wird zunächst in Abschnitt~\ref{kabellose_uebertragungsprotokolle} allgemein eine Reihe von potentiell
-geeigneten Übertraungsprotokollen vorgestellt und jeweils kurz diskutiert, ob und wie gut diese als 
+geeigneten Übertragungsprotokollen vorgestellt und jeweils kurz diskutiert, ob und wie gut diese als 
 Basistechnologie für die Lösung der Problemstellung dieser Diplomarbeit geeignet sind. Im darauf folgenden
 Abschnitt~\ref{produkte_zur_patientenueberwachung} wird dann die aktuelle Marktsituation fertiger Produkte,
-die zur Überwachung von Patienten in einem \emph{MANV}-Szenario in Frage kommen vorgestellt, und die Eignung dieser
+die zur Überwachung von Patienten in einem \emph{MANV}-Szenario in Frage kommen, vorgestellt und die Eignung dieser
 Produkte diskutiert. Den Abschluss dieses Kapitels bildet Abschnitt~\ref{verwandte_projekte}, in dem
 kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in Arbeit sind.
 
 \section{Kabellose Übertragungsprotokolle}\label{kabellose_uebertragungsprotokolle}
     \subsection{Einführung}
-        In diesem Abschnitt werden die gängisten Funkprotokolle kurz vorgestellt. Insbesondere wird erläutert,
+        In diesem Abschnitt werden die gängigsten Funkprotokolle kurz vorgestellt. Insbesondere wird erläutert,
         inwieweit das entsprechende Protokoll als Grundlage für das zu entwickelnde Sensornetz geeignet ist.
 
         Mit Ausnahme von \emph{DECT} und \emph{GSM} bzw. \emph{UMTS} ist diesen Protokollen gemein, dass 
@@ -33,9 +33,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
         Bei \emph{DECT} (\emph{"`Digital Enhanced Cordless Telecommunications"'}) handelt es sich um einen Standard, 
         der vor allem zur Anbindung von Schnurlostelefonen an eine Basisstation gedacht ist\footnote{Es gibt
-        jedoch auch weitere Anwendungen wie z.B. Babyfone.}. 
+        jedoch auch weitere Anwendungen wie z.B. Babyfon.}. 
 
-        In Europa wird einn eigenes Frequenzband im Bereich von 1800 bis 1900~MHz verwendet, in dem 10 
+        In Europa wird ein eigenes Frequenzband im Bereich von 1800 bis 1900~MHz verwendet, in dem 10 
         Kanäle zur Verfügung stehen. Pro Kanal können maximal 32~kbit Nutzdaten pro Sekunde übertragen
         werden. Die maximal zulässige Sendeleistung beträgt 250~mW, womit eine Reichweite von ca. 30-50~m 
         in Gebäuden und ca. 300~m im Freien realisiert werden kann. Jede Basisstation kann
@@ -43,9 +43,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
         Beim Einsatz außerhalb Europas muss bedacht werden, dass die Verwendung der Frequenzen von
         1800 bis 1900~MHz hier evtl. nicht zulässig ist. In diesem Fall muss auf das \emph{ISM}-Band 
-        ausgewichen werden, welches sich hier mit anderen Anwendungen geteilt werden mus.
+        ausgewichen werden, welches  mit anderen Anwendungen geteilt werden muss.
 
-        \emph{DECT} bietet eine optionale Verschlüsselung der Nutzdaten, welche jedoch im Jahr 2009 geknackt 
+        \emph{DECT} bietet eine optionale Verschlüsselung der Nutzdaten, welche jedoch im Jahr 2009 gebrochen 
         wurde, so dass \emph{DECT} mittlerweile als unsicher gelten muss.
 
         Aufgrund der geringen Nutzdatenmenge sowie der Einschränkung auf 6 Teilnehmer ist
@@ -60,19 +60,19 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         Es handelt sich um eine zellenbasierte Technologie, die im Falle von \emph{GSM} Frequenzen im
         900~MHz- und im 1,8~GHz-Band verwendet. Für \emph{UMTS} stehen insgesamt 19 Bänder im Bereich von 777~MHz 
         bis 2,2~GHz zur Verfügung. Die Kommunikation findet zwischen einem Mobiltelefon und einer
-        Basisstation statt, wobei die maximale Sendeleistung 2~W (im Falle von GSM) bzw 250~mW (im Falle
+        Basisstation statt, wobei die maximale Sendeleistung 2~W (im Falle von GSM) bzw. 250~mW (im Falle
         von UMTS) beträgt. Mit \emph{GSM}-900 können im Freien bei Sichtkontakt Reichweiten bis zu 35~km erreicht
         werden.\\
         \\
         Die Frequenzen für \emph{GSM} und \emph{UMTS} sind fest dem jeweiligen Netzbetreiber zugeordnet. Der Preis
-        für einen Frequenzbereich ist sehr teuer. Bei der Versteigerung der \emph{UMTS}-Frequenzen im 
+        für einen Frequenzbereich ist sehr hoch. Bei der Versteigerung der \emph{UMTS}-Frequenzen im 
         Jahr 2000 wurden Preise von bis zu 8 Milliarden Euro pro Lizenz erreicht. 
 
     \subsection{WLAN}\label{wlan}
         \nomenclature{IEEE}{Institute of Electrical and Electronics Engineers}
         \nomenclature{Access-Point}{Zentrale Station (Zugangspunkt) eines Kabellosen Netzwerks.} 
         \nomenclature{Peer-to-Peer}{Verbindung zwischen zwei oder mehr Teilnehmern, bei denen jeder Teilnehmer
-                                    gleichberechtigt ist}
+                                    gleichberechtigt ist.}
         \nomenclature{MBit}{Megabit}
         \nomenclature{kBit}{Kilobit}
 
@@ -96,48 +96,49 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
             Der \emph{Infrastruktur-Modus} bietet gegenüber dem \emph{Ad-Hoc-Modus} klare Vorteile: Im Gegensatz
             zum \emph{Ad-hoc-Modus} ist es nicht notwendig, dass alle Stationen sich gegenseitig empfangen
-            müssen, es reicht aus, wenn der \emph{Acces-Point} empfangen werden kann. Hierdurch ist eine
+            müssen; es reicht aus, wenn der \emph{Acces-Point} empfangen werden kann. Hierdurch ist eine
             größere Ausbreitung des Netzwerks möglich als im \emph{Ad-Hoc-Modus}. 
 
-            Es werden verschiedene Datenübertragungsraten unterstützt. Standardmässig wird
+            Es werden verschiedene Datenübertragungsraten unterstützt. Standardmäßig wird
             immer die größtmögliche Übertragungsrate gewählt, die störungsfrei verwendet
             werden kann. Je weiter sich die Stationen voneinander entfernen, desto geringer
-            wird die Übertragungsrate, bis schliesslich die niedrigste mögliche Übertragungsrate von
+            wird die Übertragungsrate, bis schließlich die niedrigste mögliche Übertragungsrate von
             1~MBit/sec erreicht ist.
 
-            Es gibt eine ganze Menge von Unterstandards, die sich durch zulässige Frequenzen, 
+            Es gibt eine ganze Reihe von Unterstandards, die sich durch zulässige Frequenzen, 
             Übertragungsraten und Sendeleistung unterscheiden. Teilweise ist auch Kanalbündelung 
             vorgesehen. Nicht jeder Standard kann in jedem Land eingesetzt werden, und die meisten
             Endgeräte unterstützen nur eine Teilmenge dieser Standards. Hier sollen nur die
             wichtigsten drei Standards erwähnt werden.
 
         \subsubsection{IEEE 802.11b}
-            Bei \emph{IEEE 802.11b} handelt es sich um den ältesten \emph{WLAN}-Standard, der bereits 1999 
-            spezifiziert wurde. Dieser Standard wird praktisch von jedem \emph{WLAN}-fähigen 
+            Bei \emph{IEEE 802.11b} handelt es sich um den ältesten \emph{WLAN}-Standard mit praktischer
+            Bedeutung, der bereits 1999 spezifiziert wurde. Dieser Standard wird praktisch von jedem 
+            \emph{WLAN}-fähigen 
             Endgerät unterstützt. Die Kommunikation findet im \emph{ISM}-Band im Bereich von 2.4~GHz
             statt. Je nach Land sind 11-14 Kanäle möglich, die sich jedoch teilweise überlappen.
-            Dies führt dazu, dass maximal 3 Netzwerke ohne Störungen gleichzeitig betrieben werden
+            Dies führt dazu, dass maximal 3 Netzwerke in einem Gebiet ohne Störungen gleichzeitig betrieben werden
             können. Die maximale Sendeleistung beträgt 100~mW. Es sind Übertragungsraten von 
             5,5 bis 11~MBit/sec (brutto) möglich. Die Nettoübertragungsrate beträgt ca. 50\% der
             Bruttorate. Es sind Reichweiten bis 40~m (Innen) bzw. 100~m (Im Freien) möglich\cite{WirelessNetworking}.
 
-        \subsubsection{IEEE 802.11g}
-            Der \emph{IEEE 802.11g} Standard stellt eine Erweiterung des \emph{IEEE 802.11b} Standards dar.
+        \subsubsection{IEEE-802.11g}
+            Der \emph{IEEE-802.11g}-Standard stellt eine Erweiterung des \emph{IEEE-802.11b}-Standards dar.
             Wesentliche Neuerung ist eine Erhöhung der Bruttodatenrate von 11 auf 54~MBit/sec,
             von denen netto ca. 40\% zur Verfügung stehen. Erwähnenswert ist, dass die
-            beiden Standards interoperabel sind, d.h. ein \emph{IEEE 802.11b} Gerät kann einem
+            beiden Standards interoperabel sind, d.h. ein \emph{IEEE-802.11b}-Gerät kann einem
             \emph{IEEE 802.11g} Netzwerk beitreten und umgekehrt. Dies ist auch der Grund, weshalb
             dieser Standard momentan am weitesten verbreitet ist.
 
         \subsubsection{IEEE 802.11a}
-            Der \emph{IEEE 802.11a} Standard verwendet Frequenzen im 5~GHz Bereich. Er ist daher
+            Der \emph{IEEE 802.11a} Standard verwendet Frequenzen im 5-GHz-Bereich. Er ist daher
             inkompatibel zum \emph{IEEE 802.11b/g} Standard. Je nach Frequenzband sind 
-            Sendeleistungen zwischen 30 und 1000~mW zulässig. Mit dem passenden Frequenzband
-            sind daher höhere Reichweiten als mit dem \emph{IEEE 802.11b/g} Standard möglich.
+            Sendeleistungen zwischen 30~mW und 1000~mW zulässig. Mit dem passenden Frequenzband
+            sind daher höhere Reichweiten als mit dem \emph{IEEE-802.11b/g}-Standard möglich.
             Die Bruttodatenrate beträgt bis zu 54~MBit/sec. 
-            Ein Vorteil des \emph{IEEE 802.11a} Standards ist die Kommunikation im 5~GHz Bereich.
-            Aktuell ist dieser Bereich noch wenig genutzt, so dass in diesem
-            Bereich oft ein Betrieb mit weniger Störungen als im 2,4~GHz-Bereich möglich ist.
+            Ein Vorteil des \emph{IEEE-802.11a}-Standards ist die Kommunikation im 5~GHz Bereich.
+            Aktuell ist dieser Bereich noch wenig genutzt, so dass dort
+            oft ein Betrieb mit weniger Störungen als im 2,4~GHz-Bereich möglich ist.
             Es ist jedoch zu erwarten, dass sich dies in Zukunft ändern wird.
 
         \subsubsection{Störsicherheit}\label{WlanStoersicherheit}
@@ -151,9 +152,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             \nomenclature{CTS}{Clear to Send}
 
             \emph{IEEE 802.11} verwendet den \emph{CSMA/CA}\footnote{Carrier Sense Multiple Access with 
-            Collision Avoidance. dt.: Gemeinsamer Medienzugriff mit Kollisionsvermeidung}-\emph{Algorithmus}
-            zur Störungsbehandlung. Möchte ein Station senden, so muss diese zunächst
-            für einige Zeit lauschen, ob der zu verwendende Kanal auch wirklich frei ist.
+            Collision Avoidance. dt.: Gemeinsamer Medienzugriff mit Kollisionsvermeidung.}-\emph{Algorithmus}
+            zur Kontrolle des Medienzugriffs. Möchte eine Station senden, so muss diese zunächst
+            für einige Zeit lauschen, ob der zu verwendende Kanal auch wirklich frei ist
             (\emph{Energy-Detection}).
             Ist der Kanal belegt, so wartet sie eine zufällige Zeit, bis sie erneut versucht,
             auf den Kanal zuzugreifen. Wichtig hierbei ist, dass es bei Funkprotokollen nicht
@@ -176,9 +177,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             \nomenclature{Bluetooth}{Kabelloser Übertragungsstandard für \emph{WPANs}.}
             Bei dem Einsatz der in \emph{IEEE 802.11i} definierten Verschlüsselungsverfahren
             (\emph{WEP}\footnote{Die Sicherheit von \emph{WEP} ist bereits seit einigen Jahren
-             kompromitiert. Es sollte nichtmehr verwendet werden}, \emph{WPA} oder \emph{WPA2}) wird
-            lediglich die Nutzdaten des Paketes verschlüsselt. Die \emph{CTS/RTS}-Pakete können
-            weiterhin erkannt werden, so dass die Kollisionsverhinderung auch dann
+             kompromittiert. Es sollte nicht mehr verwendet werden.}, \emph{WPA} oder \emph{WPA2}) werden 
+            lediglich die Nutzdaten des Paketes verschlüsselt. Die \emph{RTS/CTS}-Pakete können
+            weiterhin erkannt werden, so dass die Kollisionsvermeidung auch dann
             funktioniert, wenn die Pakete nicht entschlüsselt werden können (Diese 
             Situation ist z.B. in Mietshäusern oft anzutreffen, wo mehrere 
             unterschiedliche \emph{WLAN}s auf dem selben Kanal senden). Jedoch geht dies
@@ -189,23 +190,23 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             eingesetzt, um schmallbandige Störungen auszufiltern. \\
             \\
             Ein häufiges Problem ist die Störung durch \emph{Bluetooth}, da 
-            \emph{Bluetooth} und \emph{WLAN}-Geräte oft aufeinadertreffen (z.B. weil an einem
+            \emph{Bluetooth} und \emph{WLAN}-Geräte oft aufeinandertreffen (z.B. weil an einem
             Notebook \emph{Bluetooth}-Maus und -Tastatur verwendet werden oder weil 
             ein \emph{PDA} z.B. Schnittstellen für beide Protokolle besitzt).
-            Wie in Abschnitt \ref{Bluetooth} genauer erläutert besitzt \emph{Bluetooth}
+            Wie in Abschnitt \ref{Bluetooth} genauer erläutert, besitzt \emph{Bluetooth}
             79 Kanäle, welche bis zu 1600 mal pro Sekunde gewechselt werden.
             Problematisch ist nun, dass 22 dieser Kanäle in das 
             \emph{IEEE 802.11b/g-Frequenzspektru}m fallen. Durch den häufigen
-            Kanalwechsel, die geringeren Übertragungsraten so die 
-            Möglichkeit, den Wechsel auf belegte Kanäle zu vermeiden ist diese
+            Kanalwechsel, die geringeren Übertragungsraten sowie die 
+            Möglichkeit, den Wechsel auf belegte Kanäle zu vermeiden, ist diese
             Störung für \emph{Bluetooth} deutlich unproblematischer als für \emph{WLAN}.
             Je nach Implementierung kann dies zu einer deutlichen Reduktion
-            der Übertragungsrate des \emph{WLANs} führen; ausserdem kann die Wartezeit
+            der Übertragungsrate des \emph{WLANs} führen; außerdem kann die Wartezeit
             für das erfolgreiche Senden von Paketen deutlich ansteigen.
             Dies hat die \emph{IEEE} dazu veranlasst, eine eigene Arbeitsgruppe
             zu gründen, die sich mit dem Problem der gegenseitigen Störung
-            von \emph{WLAN} und \emph{Bluetooth} zu beschäftigen. Die Ergebnisse dieser
-            Arbeitsgruppe spiegeln sich im \emph{IEEE 802.15.2} Standard wieder.
+            von \emph{WLAN} und \emph{Bluetooth} beschäftigt. Die Ergebnisse dieser
+            Arbeitsgruppe spiegeln sich im Standard \emph{IEEE 802.15.2} wider.
 
         \subsubsection{Leistungsaufnahme}
             Der Energiebedarf für \emph{WLAN} ist relativ hoch. Beispielsweise benötigt der
@@ -235,7 +236,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \item{IEEE 802.15.4:} \emph{WPANs} mit niedriger Datenübertragungsraten
             \end{itemize}
 
-            Für diese Arbeit sind vor allem der \emph{Bluetooth} und der \emph{ZigBee} Standard interessant. 
+            Für diese Arbeit sind vor allem der \emph{Bluetooth-} und der \emph{ZigBee}-Standard interessant. 
 
         \subsubsection{IEEE 802.15.1: Bluetooth}\label{Bluetooth}
             \paragraph{Überblick}
@@ -244,19 +245,19 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \nomenclature{AFH}{Adaptive frequency hopping}
                 \nomenclature{EDR}{Enhanced Data Rate}
                 \nomenclature{SSP}{Secure Simple Pairing}
-                \emph{Bluetooth} wurde ursprünglich von dem Mobilfunkhersteller \emph{Ericcson} als Ersatz für
-                \emph{RS-232}-Verbindungen entwickelt. Die Entwicklung des Bluetooth Standards erfolgt
+                \emph{Bluetooth} wurde ursprünglich durch den Mobilfunkhersteller \emph{Ericcson} als Ersatz für
+                \emph{RS-232}-Verbindungen entwickelt. Die Entwicklung des \emph{Bluetooth}-Standards erfolgt
                 heute unter der Regie der \emph{Bluetooth Special Interest Group} (\emph{Bluetooth SIG}).
                 Version 1.1 des \emph{Bluetooth}-Standard wurde 
                 von der \emph{IEEE} als \emph{IEEE 802.15.1-2002} übernommen. Nach Veröffentlichen einer
-                weiteren Version \emph{IEEE 802.15.1-2005}, die dem \emph{Bluetooth 1.2} Standard entspricht,
+                weiteren Version \emph{IEEE 802.15.1-2005}, die dem \emph{Bluetooth-1.2}-Standard entspricht,
                 wurde von der \emph{IEEE} jedoch beschlossen, nicht weiter mit der \emph{Bluetooth SIG}
-                zu kooperiern, so dass es keine weiteren Versionen des \emph{IEEE 802.15.1} Standards 
-                geben wird. Aktuell ist Version 4.0 des \emph{Bluetooth} Standards, wobei jedoch die
-                meisten Geräte nur geringere Standards (typischerweise 2.0 oder 2.1) unterstützen.
-                Für den \emph{Bluetooth 4.0} Standard existiert zum Zeitpunkt dieser Arbeit keine 
+                zu kooperiern, so dass es keine weiteren Versionen des \emph{IEEE-802.15.1}-Standards 
+                geben wird. Aktuell ist Version 4.0 des \emph{Bluetooth}-Standards, wobei jedoch die
+                meisten Geräte nur ältere Standards (typischerweise 2.0 oder 2.1) unterstützen.
+                Für den \emph{Bluetooth-4.0}-Standard existiert zum Zeitpunkt dieser Arbeit keine 
                 Implementierung auf dem Markt.\\
-                Die wichtigsten Meilensteine der \emph{Bluetooth}-Entwicklung kann folgendermaßen
+                Die wichtigsten Meilensteine der \emph{Bluetooth}-Entwicklung können folgendermaßen
                 zusammengefasst werden:
 
                 \begin{itemize}
@@ -268,8 +269,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                                           die Verwendung von \emph{AFH}\footnote{Adaptive frequency hopping spread spectrum},
                                           Übertragungsraten bis 721~kbit/sec.
                     \item{\emph{Bluetooth 2.0}:} Einführung des \emph{EDR}\footnote{Enhanced Data Rate}-Modus mit bis zu
-                                          3.0~MBit/sec (2.1~MBit/sec netto).
-                    \item{\emph{Bluetooth 2.1}:} Vereinfachung des Pairings (vgl. \ref{BluetoothPairing}) durch 
+                                          3,0~MBit/sec (2,1~MBit/sec netto).
+                    \item{\emph{Bluetooth 2.1}:} Vereinfachung des Pairings (vgl. Abschnitt~\ref{BluetoothPairing}) durch 
                                           Einführung von SSP\footnote{Secure Simple Pairing}, Verbesserung
                                           der Sicherheit durch explizite Aushandlung der Verschlüsselung.
                     \item{\emph{Bluetooth 3.0}:} Einführung eines Hochgeschwindigkeits-Datenkanals auf Basis von
@@ -285,7 +286,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 von Mobiltelefonen, Telefongespräche die über Headsets geführt werden etc.) zugegriffen
                 werden kann. \emph{Bluetooth} verwendet hierfür das Konzept des Pairings, also der Paarung. Bevor zwei 
                 \emph{Bluetooth}-Geräte miteinander kommunizieren können, müssen sie gepaart werden. Um dies 
-                durchzuführen muss zunächst die Identität der zu paarenden Geräte bestätigt werden.
+                durchzuführen, muss zunächst die Identität der zu paarenden Geräte bestätigt werden.
                 Hierzu gibt es zwei verschiedene Verfahren:
 
                 \nomenclature{PIN}{Persönliche Identifikationsnummer}
@@ -304,14 +305,14 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                                                   die \emph{PIN} komplett ausgelassen werden\footnote{Die
                                                   Verbindung erfolgt trotzdem verschlüsselt,
                                                   allerdings sind nun \emph{Man-in-the-middle}-Angriffe 
-                                                  möglich} oder es wird an beiden Geräten eine
+                                                  möglich.} oder es wird an beiden Geräten eine
                                                   Nummer angezeigt, deren Gleichheit einfach
                                                   nur noch bestätigt werden muss.
                 \end{itemize}
 
-                Ist diese Überprüfung erfolgreich generieren beide Geräte einen kryptographischen
+                Ist diese Überprüfung erfolgreich, generieren beide Geräte einen kryptographischen
                 Schlüssel und die weitere Kommunikation erfolgt verschlüsselt. Sobald zwei
-                Geräte gepaart wurden können sie miteinander kommunizieren ohne eine erneute
+                Geräte gepaart wurden, können sie miteinander kommunizieren, ohne eine erneute
                 Paarung durchführen zu müssen.
 
             \paragraph{Reichweite}
@@ -320,14 +321,14 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
                 \begin{itemize}
                     \item{Klasse 1:} maximale Sendeleistung: 100~mW, Reichweite ca. 100~m
-                    \item{Klasse 2:} maximale Sendeleistung: 2.5~mW, Reichweite ca. 10~m
-                    \item{Klasse 3:} maximale Sendeleistung:   1~mw, Reichweite ca. 1~m
+                    \item{Klasse 2:} maximale Sendeleistung: 2,5~mW, Reichweite ca. 10~m
+                    \item{Klasse 3:} maximale Sendeleistung:   1~mW, Reichweite ca. 1~m
                 \end{itemize}
 
                 Diese Einteilung dient unter anderem der Datensicherheit. Da z.B. 
                 ein Headset in der Regel nur die Distanz zwischen Kopf und Tasche
-                des Anwenders überbrücken muss reicht hier die Verwendung eines Klasse 2
-                Gerätes. Durch die Einschränkung der Sendeleistung wird nicht nur die
+                des Anwenders überbrücken muss, reicht hier die Verwendung eines 
+                Klasse-2-Gerätes. Durch die Einschränkung der Sendeleistung wird nicht nur die
                 Akkulaufzeit der Geräte erhöht, sondern auch die Wahrscheinlichkeit,
                 dass ein Angreifer die gesendeten Daten empfangen kann, verringert.\\
                 \\
@@ -345,27 +346,27 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \begin{itemize}
                     \item{\emph{Bluetooth 1.1}:} 721~kbit/sec
                     \item{\emph{Bluetooth 2.0}:} 3.0~MBit/sec
-                    \item{\emph{Bluetooth 3.0}:} 24~Mbit/sec (über einen 802.11 Kanal)
+                    \item{\emph{Bluetooth 3.0}:} 24~Mbit/sec (über einen \emph{IEEE-802.11}-Kanal)
                 \end{itemize}
 
             \paragraph{Störsicherheit}
                 \emph{Bluetooth} verwendet einen Frequenzbereich von 2,402 - 2,480~GHz. Innerhalb
                 dieses Bereiches werden 79 verschiedene Kanäle definiert. Zur Minimierung
                 von Störungen wird sogenannts \textsl{Channel-Hopping} verwendet. Hierbei
-                wird der verwendete Kanal bis zu 1600 mal pro Sekunde gewechselt. Mit dem
-                \emph{Bluetooth 1.2} Standard wurde das verbesserte  
+                wird der verwendete Kanal bis zu 1600mal pro Sekunde gewechselt. Mit dem
+                \emph{Bluetooth-1.2}-Standard wurde das verbesserte  
                 \emph{AFH}\footnote{Adaptive frequency-hopping spread spectrum}-Verfahren 
-                eingeführt, welches gestörte Kanäle erkennt, und eine Verwendung
-                dieser vermeidet.\\
+                eingeführt, welches gestörte Kanäle erkennt und deren Verwendung
+                vermeidet.\\
                 \\
                 Insbesondere \emph{WLAN}-Netzwerke und \emph{Bluetooth}-Netzwerke stören sich 
                 gegenseitig. Wie in Abschnitt \ref{WlanStoersicherheit} bereits
-                erläutert wird \emph{WLAN} deutlich stärker durch \emph{Bluetooth} gestört
+                erläutert, wird \emph{WLAN} deutlich stärker durch \emph{Bluetooth} gestört,
                 als dies umgekehrt der Fall wäre. Tritt eine Störung auf einem
                 Kanal auf, versucht das \emph{AFH}-Verfahren die Verwendung dieses
                 Kanals zu vermeiden. Hierdurch sinkt zwar die erreichbare
-                Datenübertragungsrate, allerdings kann eine Kommunikation mit
-                verminderter Übertragungsrate weiterhin stattfinden.\\
+                Datenübertragungsrate, eine Kommunikation kann allerdings weiter 
+                stattfinden.
                  \\
                  Es ist festzustellen, dass \emph{Bluetooth} -- insbesondere im Vergleich
                  zu \emph{WLAN} -- recht robust gegenüber Störungen ist.
@@ -389,18 +390,18 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
                 Da nur 7 Slaves gleichzeitig aktiv sein dürfen, befinden sich 
                 alle übrigen Slaves im sogenannten "`Parkzustand"'. Erst wenn
-                ein Slave vom Master explizit dazu aufgeforder wird, darf er in den
+                ein Slave vom Master explizit dazu aufgefordert wird, darf er in den
                 aktiven Zustand wechseln. \\
                 \\
-                Um die Anzahl der aktiven Geräte in einem Netzwerk zu erhöhen
+                Um die Anzahl der aktiven Geräte in einem Netzwerk zu erhöhen,
                 gibt es die Möglichkeit, ein sogenanntes \emph{Scatternet} zu bilden.
                 Hierbei handelt es sich um die Verbindung von mehreren \emph{Piconets}
                 mit jeweils maximal 8 Geräten zu einem größeren Verbund. Hierbei
-                leitet jeweils ein Gerät, das in jeweils 2 der \emph{Piconetze}
+                leitet jeweils ein Gerät, das mit jeweils 2 der \emph{Piconetze}
                 verbunden ist, Pakete vom einen Netz in das andere Netz über.
                 Im Vergeleich zu \emph{Piconetzen} kann hiermit eine deutlich höhere
                 Anzahl von Geräten unterstützt werden. Durch die Verkettung 
-                der Netzes kann es jedoch vorkommen, dass einzelne Pakete
+                der Netze kann es jedoch vorkommen, dass einzelne Pakete
                 eine relativ hohe Anzahl von \emph{Piconetzen} durchqueren müssen,
                 um ihr Ziel zu erreichen.
             \paragraph{Leistungsaufnahme}
@@ -414,19 +415,19 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 einem \emph{Slave} angefordert hat. Die Leistungsaufnahme
                 eines \emph{Slaves} der Klasse 2 beträgt laut \cite{BluetoothPower}
                 durchschnittlich 56,63~mW, was bei 3,3~V ca 16,6~mA entspricht.
-                Für Klasse 1 Geräte ist die Leistungsaufnahme noch höher, 
+                Für Klasse-1-Geräte ist die Leistungsaufnahme noch höher, 
                 da alleine die Sendeleistung schon 100~mW beträgt.
                 \emph{Power-Management} in \emph{Bluetooth}-Netzen ist schwierig. Zwar sind
                 einige \emph{Standby-Modi} vorgesehen (\emph{Hold}, \emph{Sniff} und \emph{Park}), allerdings
                 muss dem Master erst mitgeteilt werden, dass die entsprechende
                 Station für ein bestimmtes Zeitintervall nicht erreichbar ist.
-                Befindet sich ein Gerät im Standby-Modus kann es bis zu 3 Sekunden
-                dauern, bis es wieder Sendebereit ist. Da diese Einschränkungen
+                Befindet sich ein Gerät im Standby-Modus, kann es bis zu 3 Sekunden
+                dauern, bis es wieder sendebereit ist. Da diese Einschränkungen
                 den Betrieb von Geräten mit geringer Energieversorgung
                 praktisch unmöglich machen, wurde von der \emph{Bluetooth-SIG}
                 ein eigener Standard für diese Geräteklasse mit dem Namen
-                \emph{"`Bluetooth Low Energy"'} verabschiedet. Mehr dazu siehe
-                Abschnitt~\ref{wibree}.
+                \emph{"`Bluetooth Low Energy"'} verabschiedet (siehe
+                Abschnitt~\ref{wibree}).
 
         \subsubsection{IEEE 802.15.4: ZigBee}
 
@@ -449,22 +450,22 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \\
                 Es ist wichtig, dass \emph{ZigBee} nicht das selbe ist wie \emph{IEEE 802.15.4.}
                 \emph{IEEE 802.15.4} definiert lediglich die unteren beiden Schichten des
-                OSI-Modells, also die Sicherungs- (\emph{MAC}) und die Physikalische-Schicht 
+                OSI-Modells, also die Sicherungs- (\emph{MAC}) und die physische Schicht 
                 (\emph{PHY}).\\
                 Bei \emph{ZigBee} handelt es sich hingegen um einen kompletten Protokollstapel,
-                der den beiden Schichten von \emph{IEEE 802.15.4} um 3 weiter Schichten,
+                der die beiden Schichten von \emph{IEEE 802.15.4} um 3 weiter Schichten,
                 namentlich Vermittlungs-, Verschlüsslungs und Anwendungsschicht 
                 ergänzt.  \\
                 \\
                 Es ist möglich, einen \emph{IEEE 802.15.4}-\emph{Transceiver} ohne den Einsatz
                 von \emph{ZigBee} zu betreiben. Die Verwendung von \emph{ZigBee} bietet jedoch
-                den Vorteil, dass alle Netzwerkrelevanten Aufgaben wie Routing,
+                den Vorteil, dass alle netzwerkrelevanten Aufgaben wie Routing,
                 Übertragungssicherung und Adressierung von Anwendungen bereits
-                durch den \emph{ZigBee}-\emph{Stack} erfolgen, und nicht extra vom Entwickler
-                implementiert werden müssen. Die Verwdung von durch die
+                durch den \emph{ZigBee}-\emph{Stack} erfolgen und nicht extra vom Entwickler
+                implementiert werden müssen. Die Verwendung von durch die
                 \emph{ZigBee-Alliance} zertifizierten Modulen bietet zudem den
-                Vorteil der Interoperabilität von Modulen von anderen Herstellen,
-                sofern diese \emph{ZigBee} zertifiziert sind.
+                Vorteil der Interoperabilität mit Modulen von anderen Herstellen,
+                sofern diese \emph{ZigBee}-zertifiziert sind.
 
             \paragraph{Netzstruktur}
                 \nomenclature{FFD}{Full Function Device}
@@ -475,7 +476,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                     \item{\emph{FFD:}} Full Function Devices: Diese Geräte implementieren
                                 den vollen \emph{ZigBee-Stack}. Hierzu ist es notwendig,
                                 dass diese immer erreichbar sind; die Verwendung
-                                des Energiesparmudus ist nicht möglich.
+                                des Energiesparmodus ist nicht möglich.
                     \item{\emph{RFD}:} Reduced Function Devices: Diese Geräte implementieren
                                 nur einen Teil des \emph{ZigBee-Stacks}. Sie müssen nicht
                                 immer ereichbar sein und können den Energiesparmodus
@@ -484,7 +485,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
                 Es ist lediglich die Kommunikation zwischen \emph{RFD} und \emph{FFD} sowie zwischen
                 zwei \emph{FFDs} möglich. Zwei \emph{RFDs} sind nicht in der Lage, direkt miteinander
-                zu kommunizieren sondern müssen den Umweg über ein \emph{FFD} nehmen.\\
+                zu kommunizieren, sondern müssen den Umweg über ein \emph{FFD} nehmen.\\
                 \\
                 Neben den Geräteklassen unterscheiden sich die einzelnen Stationen durch
                 die Rollen, die sie im Netzwerk einnehmen:
@@ -497,17 +498,17 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                                         Er ist der Knoten, der das Netzwerk errichtet hat
                                         und ist für die Kontrolle des Netzwerks zuständig.
                                         In einem Netzwerk kann es immer nur einen Koordinator
-                                        geben. Der Koordinator ist immer automatisch auch
-                                        ein Router. Die Rolle des Koordinators kann nur von einem
+                                        geben. Der Koordinator beinhaltet immer auch
+                                        die Funktionalität eines Routers. Die Rolle des Koordinators kann nur von einem
                                         \emph{FFD} übernommen werden.
                     \item{Router (\emph{ZR}):} Router sind in einem Netzwerk für die Weiterleitung von
                                    Paketen zuständig. Es kann beliebig viele Router in einem
                                    Netzwerk geben. Die Rolle eines Routers kann nur von einem
                                    \emph{FFD} übernommen werden.
-                    \item{Endknoten (\emph{ZED}):} Alle Geräte die nicht Koordinator oder Router sind,
+                    \item{Endknoten (\emph{ZED}):} Alle Geräte, die nicht Koordinator oder Router sind,
                                             sind automatisch Endknoten. Diese leiten keine Pakete
                                             weiter und sind immer an einem Router angemeldet.
-                                            Es handelt sich hierbei immer um ein \emph{RFD}.
+                                            Es handelt sich hierbei immer um \emph{RFDs}.
                 \end{itemize}
 
                 Die Topologie des Netzwerkes wird von den Knoten automatisch bestimmt. Können
@@ -531,63 +532,64 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \nomenclature{CRC}{Cyclic Redundancy Check}
                 \nomenclature{Beacon}{dt. Leuchtfeuer -- periodisches Bekanntmachen des Vorhandenseins des Netzwerkes.}
 
-                ZigBee verwendet zur Funkübertragung von Paketen den \emph{IEEE 802.15.4} Standard.
-                Dieser weisst große Ähnlichkeiten mit dem \emph{IEEE 802.11b} Standard (WLAN, vgl. 
+                ZigBee verwendet zur Funkübertragung von Paketen den \emph{IEEE-802.15.4}-Standard.
+                Dieser weist große Ähnlichkeiten mit dem \emph{IEEE-802.11b}-Standard (WLAN, vgl. 
                 Abschnitt~\ref{WlanStoersicherheit}) auf: Es werden mehrere Kanäle im
-                2.4~GHz Band spezifiziert. In Nordamerika stehen 10 weitere Kanäle im 900~MHz-Band
-                zur Verfügung, die allerdings eine reduzierte Datenrate von 40~kBit/sec besitzen. 
-                Darüber hinaus gibt es noch einen Kanal im 868~MHz-Band, der allerdings nur in Europa
-                verwendet werden darf, und auch nur über 20~kBit/sec verfügt. Zur Übertragung wird auch bei 
+                2.4-GHz-Band spezifiziert. In Nordamerika stehen 10 weitere Kanäle im 900-MHz-Band
+                zur Verfügung, die allerdings eine reduzierte Datenrate von 40~kBit/sec zulassen. 
+                Darüber hinaus gibt es noch einen Kanal im 868-MHz-Band, der allerdings nur in Europa
+                verwendet werden darf, und bei dem auch nur 20~kBit/sec verwendet werden können. Zur Übertragung wird auch bei 
                 \emph{IEEE 802.15.4} Frequenzspreizung nach dem \emph{DSSS}-Verfahren betrieben. Zum Medienzugriff
                 wird \emph{CSMA/CA} verwendet.\\
                 \\
-                Zusätzlich spezifiziert \emph{ZigBee} auf höherer Ebene eine Reihe von Fehlerbehandlungsroutinen:
+                Zusätzlich spezifiziert \emph{ZigBee} in der Vermittlungsschicht (\emph{NWK}) eine Reihe von Fehlerbehandlungsroutinen:
                 So wird jedes empfangene Paket -- mit der Ausnahme von Broadcasts\footnote{Rundrufe, also
                 Pakete, die an alle Stationen gleichzeitig verschickt werden.} -- mit einer Antwort
                 an den Sender quittiert. Erhält der Sender innerhalb einer bestimmten Zeitspanne
                 keine Antwort, so sendet er das verlorene Paket erneut. Darüber hinaus gibt es in jedem
-                Datenpaket eine \emph{CRC}-Prüfsumme, mit Hilfe derer einfache Bitfehler erkannt werden können.
+                Datenpaket eine \emph{CRC}-Prüfsumme, mit deren Hilfe einfache Bitfehler erkannt werden können.
                 Auch in diesem Fall wird das Paket erneut übertragen. Hierbei sollte jedoch bemerkt werden,
-                dass eine \emph{CRC}-Verfahren keinen Schutz gegen absichtliche Manipulation bietet. Dies kann
+                dass ein \emph{CRC}-Verfahren keinen Schutz gegen absichtliche Manipulation bietet. Dies kann
                 mit Hilfe der in Abschnitt~\ref{ZigBee Sicherheit} beschriebenen kryptographischen Verfahren
                 verhindert werden.\\
                 \\
                 Ein \emph{ZigBee}-Netzwerk kann optional ein sogenanntes \emph{Beacon} (dt. Leuchtfeuer) verwenden. Hierbei
-                handelt es sich um ein Signal, dass Periodisch vom Koordinator ausgesendet wird. Mithilfe
-                dieses Signals wird die Sendezeit in feste Zeitschlitze eingeteilt. Hiermit ist es möglich, 
-                einzelnen Stationen einen garantierten Zeitschlitz (\emph{GTS}) zuzuweisen, in denen niemand anderes
+                handelt es sich um ein Paket, das periodisch vom Koordinator ausgesendet wird. Mit Hilfe
+                dieses Pakets wird die Sendezeit in feste Zeitschlitze eingeteilt. Hiermit ist es möglich, 
+                einzelnen Stationen einen garantierten Zeitschlitz (\emph{GTS}) zuzuweisen, in dem niemand anderes
                 senden darf. Dies ist insbesondere für Echtzeitanwendungen interessant. Da zum Zeitpunkt des
-                versenden des \emph{Beacons} jedoch alle Stationen empfangsbereit sein müssen, ergeben sich 
+                Versendens des \emph{Beacons} jedoch alle Stationen empfangsbereit sein müssen, ergeben sich 
                 Einschränkungen für die Batterielaufzeit. Die Verwendung von \emph{Beacons} schützt nicht gegen
-                Störungen durch nicht \emph{ZigBee}-Geräte wie \emph{WLANS} oder \emph{Bluetooth}.\\
+                Störungen durch Nicht-\emph{ZigBee}-Geräte wie \emph{WLANs} oder \emph{Bluetooth}.\\
                 \\
-                Da die Kanäle ausserhalb des 2,4~GHz Bandes eine für diese Arbeit zu geringe Übertragungsrate
-                besitzen, sollen im folgenden nur die 15 Kanäle im 2,4~GHz Band betrachtet werden:\\
+                Da eine Nutzung der Kanäle außerhalb des 2,4-GHz-Bandes nicht in jedem Land gestattet ist,
+                sollen im folgenden nur die 15 Kanäle im 2,4-GHz-Band betrachtet werden:\\
                 \\
-                Von den 15 zur Verfügung stehenden Kanälen überschneiden sich 11 mit den 3 überschneidungsfreien 
-                \emph{IEEE 802.11b} 1, 6 und 11 in Nordamerika bzw. 13 mit den Kanälen 1, 7 und 13 in Europa. Es ist zu 
-                erwarten, dass die Störungen auf den Kanälen im Randbereich der IEEE 802.11b Kanäle am geringsten --
-                wenn auch nicht komplett ausgeschlossen -- ist.
+                Von den 15 zur Verfügung stehenden \emph{ZigBee}-Kanälen überschneiden sich 11 Kanäle mit den 3 überschneidungsfreien 
+                \emph{IEEE-802.11b}-Kanälen (Kanal 1, Kanal 6 und Kanal 11) in Nordamerika. In Europa überschneiden sich sogar 13 \emph{ZigBee}-Kanäle
+                mit den \emph{IEEE-802.11b}-Kanälen Kanal 1, Kanal 7 und Kanal 13 in Europa. Es ist zu 
+                erwarten, dass die Störungen auf den Kanälen im Randbereich der \emph{IEEE-802.11b}-Kanäle am geringsten --
+                wenn auch nicht komplett ausgeschlossen -- sind.
                 Ausserdem gibt es auf 4 Kanälen Überschneidungen mit \emph{Bluetooth}. Der genaue Zusammenhang ist
                 in Tabelle~\ref{zigbee_wlan_kanaele} dargestellt.
 
                 \begin{table}
                     \begin{tabular}{lll}
-                        \textbf{ZigBee-Kanal} & \textbf{WLAN-Kanal} & \textbf{Bluetooth Frequenz} \\
+                        \textbf{ZigBee-Kanal} & \textbf{WLAN-Kanal} & \textbf{Bluetooth-Frequenz} \\
                         11           & 1          & -\\
                         12           & 1          & -\\
                         13           & 1          & -\\
-                        14           & 1          & 2420 GHz\\
+                        14           & 1          & 2,420 GHz\\
                         15           & -          & -\\
                         16           & 7          & -\\
                         17           & 7          & -\\
-                        18           & 7          & 2439 GHz\\
+                        18           & 7          & 2,439 GHz\\
                         19           & 7          & -\\
                         20           & 7          & -\\
                         21           & -          & -\\
                         22           & 13         & -\\
                         23           & 13         & -\\
-                        24           & 13         & 2471 GHz\\
+                        24           & 13         & 2,471 GHz\\
                         25           & 13         & -\\
                         26           & 13         & -\\
                     \end{tabular}
@@ -603,9 +605,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                                              verwendet werden kann.}
                 Ein \emph{ZigBee}-Netzwerk ist in der Lage, dynamisch den verwendeten Kanal zu wechseln, sobald die
                 Störungen auf einem Kanal zu groß werden. Hierzu wird im \emph{EEPROM} des \emph{ZigBee}-Gerätes kein fester
-                Kanal sondern eine Liste aller erlaubten Kanäle eingestellt. Dies bedeutet, dass bei der
+                Kanal, sondern eine Liste aller erlaubten Kanäle eingestellt. Dies bedeutet, dass bei der
                 richtigen Konfiguration des \emph{ZigBee}-Netzwerkes ein einzelnes \emph{WLAN} durch einen einfachen 
-                Signalwechsel umgangen werden kann. Problematisch wird es jedoch, wenn mehrere \emph{WLANs} auf mehrere 
+                Kanalwechsel umgangen werden kann. Problematisch wird es jedoch, wenn mehrere \emph{WLANs} auf mehreren
                 verschiedenen Kanälen gleichzeitig auftreten. Hierdurch kann es zu einer signifikaten Abnahme der im 
                 \emph{ZigBee}-Netzwerk möglichen Übertragungsrate kommen. Eine mögliche Lösung wäre in diesem Falle, die 
                 \emph{WLANs} auf die \emph{WLAN}-Kanäle 1, 7 und 13 einzuschränken, so dass für das 
@@ -613,18 +615,18 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 stehen. Alternativ können an Stelle der \emph{WLAN}-Kanäle 7 und 13 die \emph{WLAN}-Kanäle 6 und 11 
                 verwendet werden, so dass für das \emph{ZigBee}-Netzwerk die Kanäle 25 und 26 frei werden.\\
                 Wenn für das \emph{ZigBee}-Netzwerk sowieso nur ein Teil der zur Verfügung stehenden Übertragungsrate benutzt
-                wird und auch das \emph{WLAN} nur teilweise ausgelastet ist, ist zu erwarten, dass durch die Verwendung
+                wird und auch die \emph{WLANs} nur teilweise ausgelastet sind, ist zu erwarten, dass durch die Verwendung
                 des \emph{CSMA/CA}-Verfahrens genügend freie Zeitschlitze gefunden werden können, um selbst bei einer
-                hoher \emph{WLAN}-Dichte noch erfolgreich senden zu können.\\
+                hohen \emph{WLAN}-Dichte noch erfolgreich senden zu können.\\
                 \\
                 Die Störungen durch \emph{Bluetooth} sind als weniger problematisch zu bewerten. Durch das von 
                 \emph{Bluetooth} verwendeten \emph{FHSS}-Verfahren besteht selbst im ungünstigsten Fall 
                 (Verwendung von sich überschneidenden Kanälen im \emph{ZigBee}-Netz, volle Ausschöpfung der 
                  Übertragungsrate im \emph{ZigBee}-Netz) nur eine maximale Kollisionswahrscheinlichkeit von ca. 
                 4\% (3 von 79 Frequenzsprüngen -- unter der Annahme, dass auch
-                das \emph{ZigBee}-Netzwerk in dieser Zeit drei mal den Kanal wechselt). Dies kann durch die Fehlerbehandlung
-                von \emph{ZigBee} durch eine erneute Übertragung des kollidierten Paketes einfach behandelt werden. Verwendet
-                das \emph{Bluetooth}-Netzwerk darüber hinaus das \emph{AFH}-Verfahren ist es in der Lage die Störung zu
+                das \emph{ZigBee}-Netzwerk in dieser Zeit dreimal den Kanal wechselt). Dies kann von der \emph{ZigBee}-Fehlerbehandlung
+                durch eine erneute Übertragung des kollidierten Paketes einfach behandelt werden. Verwendet
+                das \emph{Bluetooth}-Netzwerk darüber hinaus das \emph{AFH}-Verfahren, ist es in der Lage die Störung zu
                 erkennen und den betroffenen Kanal im weiteren Verlauf zu meiden.\\
                 \\
                 Eine weitere Quelle von Störungen sind Mikrowellenöfen. Diese verwenden typischerweise
@@ -634,8 +636,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Auslastungsgrad (\emph{Duty-Cycle}) von bis zu 50\% haben, ergäbe sich schlimmstenfalls eine Halbierung der
                 zur Verfügung stehenden Übertragungsrate.\cite{ZigBeeFarahani}\\
                 \\
-                Die letzte zu erwartende Quelle von Störungen geht von \emph{DECT} Telefonen aus. Da diese in Europa
-                jedoch nicht im 2,4~GHz sondern im 1,8~GHz-Band arbeiten, stellt dies nur ausserhalb der EU ein
+                Die letzte zu erwartende Quelle von Störungen geht von \emph{DECT}-Telefonen aus. Da diese in Europa
+                jedoch nicht im 2,4-GHz- sondern im 1,8-GHz-Band arbeiten, stellt dies nur außerhalb der EU ein
                 Problem dar. Hierbei sind schmalbandige Störungen mit einer Signalstärke von bis zu 30~dBm 
                 zu erwarten. Diese können einfach durch den automatischen Kanalwechsel des \emph{ZigBee}-Netzwerkes
                 umgangen werden.\\
@@ -644,11 +646,11 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \nomenclature{AES}{Advanced Encryption Standard}
                 % http://www.willhackforsushi.com/presentations/toorcon11-wright.pdf 
                 \emph{ZigBee} unterstützt 128-Bit-\emph{AES}-Verschlüsselung. Hiermit können gesendete Nachrichten 
-                gegen Manipulation sowie unberechtigter Kenntnisnahme geschützt werden. Aufgrund von Designschwächen 
+                gegen Manipulation sowie unberechtigte Kenntnisnahme geschützt werden. Aufgrund von Entwurfsfehlern 
                 im Standard ist dieser Schutz jedoch nur als rudimentär zu bewerten. Beispielsweise ist
                 kein Schutz gegen \emph{Replay}-Attacken vorgesehen, so dass z.B. Befehle abgefangen und beliebig oft
-                wieder in der Netzwerk eingeschleust werden können. Es ist daher sinnvoll, auf höherer 
-                Protokollebene weitere Schutzmaßnahmen vorzusehen, um sich erfolgreich gegen Angriffe zu
+                wieder in das Netzwerk eingeschleust werden können. Es ist daher sinnvoll, auf höherer 
+                Pro\-to\-koll\-ebene weitere Schutzmaßnahmen vorzusehen, um sich erfolgreich gegen Angriffe zu
                 schützen.
 
             \paragraph{Leistungsaufnahme}
@@ -657,9 +659,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 vom Typ \emph{ATZB-24-A2R} der Firma \emph{Atmel} betrachtet. Diese Modul verfügt über einen 
                 Energiesparmodus.  In diesem Modus wird lediglich der interne Speicher mit Energie versorgt, alle 
                 weitere Hardware wird abgeschaltet. In diesem Modus hat das Gerät (laut Hersteller) einen Strombedarf 
-                von weniger als 6~$\mu{}A$. Befindet sich das Gerät nicht im Energiesparmodus und ist empfangsbereit 
-                werden 19~mA benötigt, sendet das Gerät sind 18~mA notwendig.\\
-                Durch den Energiesparmodus lassen sich große Einsparungen erreichen, allerdings kann dieser nur von 
+                von weniger als 6~$\mu{}A$. Befindet sich das Gerät nicht im Energiesparmodus und ist empfangsbereit, 
+                werden 19~mA benötigt; sendet das Gerät sind 18~mA notwendig.\\
+                Durch den Energiesparmodus lassen sich große Einsparungen erreichen. Allerdings kann dieser nur von 
                 \emph{RFDs} verwendet werden, da \emph{FFDs} immer empfangsbereit sein müssen. Zur Übertragung von 
                 Nachrichten wird in diesem Fall von den \emph{RFDs} ein Polling-Verfahren verwendet: Der Elternknoten des 
                 \emph{FFDs} (in den meisten Fällen also der nächstgelegene Router) speichert eine an das \emph{RFD}
@@ -670,25 +672,25 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
         \subsubsection{Bluetooth Low Energy (ehemals Wibree)}\label{wibree}
             \emph{Bluetooth Low Energy} ist ein neuer Standard für \emph{WPANs}, der mit dem \emph{Bluetooth-4.0}-Standard 
-            eingeführt wurde. Er definiert eine Datenübertragung mit bis zu 1~MBit/s (netto 0.26~MBit/s) bei einem 
-            Strombedarf, der unter 20~mA liegen soll, wobei angeblich eine Reichweite von bis zu 100~m erreicht werden 
+            eingeführt wurde. Er definiert eine Datenübertragung mit bis zu 1~MBit/s (netto 0,26~MBit/s) bei einem 
+            Strombedarf, der unter 20~mA liegen soll, wobei laut Spezifikation eine Reichweite von bis zu 100~m erreicht werden 
             kann.\\
             Zum Zeitpunkt dieser Diplomarbeit befanden sich Funkchips des \emph{Bluetooth-Low-Energy}-Standards 
             leider noch in der frühen Testphase und waren auf dem Markt nicht erhältlich, so dass dieser Standard 
             bei der Auswahl eines geeigneten Funkprotokolls nicht in die engere Betrachtung gezogen werden konnte.
-            Diese Betrachtung wäre sicherlich interessant gewesen. Beim späteren Entwurf des Sensornetzwerkes
+            Beim späteren Entwurf des Sensornetzwerkes
             ist daher darauf Rücksicht zu nehmen, dass das Funkprotokoll nach Möglichkeit austauschbar gehalten wird,
-            so dass es später Möglich ist, die entworfene Lösung an geänderte Marktbedingungen anzupassen.
+            so dass es später möglich ist, die entworfene Lösung an geänderte Marktbedingungen anzupassen.
             
 
     \subsection{Weitere Protokolle}
         Neben den oben erwähnten Protokollen gibt es viele weitere kabellose Übertragungsprotokolle wie beispielsweise 
-        der kommende \emph{Wireless-USB}-Standards, \emph{WiMax}, oder Mikrowellen-Richtfunk. Diese Protokolle sind 
+        der kommende \emph{Wireless-USB}-Standard, \emph{WiMax}, oder Mikrowellen-Richtfunk. Diese Protokolle sind 
         jedoch für die Übertragung mit hohen Datenraten ausgelegt (was in der Regel mit einer dementsprechend 
-        hohen Leisuntsaufnahme einhergeht), und liegen damit ausserhalb des Fokus dieser Arbeit. Auch nicht
+        hohen Leistungsaufnahme einhergeht), und liegen damit außerhalb des Fokus dieser Arbeit. Ebenfalls nicht
         berücksichtigt werden konnte der \emph{ANT+}-Standard, der sich aktuell vor allem im Bereich von Wellnessgeräten
         wie z.B. Pulsuhren durchzusetzen scheint. Leider handelt es sich hierbei um eine proprietäre Lösung des 
-        Herstellers \emph{Dynastream}; entsprechende Bauteile sind momentan auf dem Deutschen Markt praktisch nicht
+        Herstellers \emph{Dynastream}; entsprechende Bauteile sind momentan auf dem deutschen Markt praktisch nicht
         erhältlich.
 
 
@@ -696,12 +698,12 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         \nomenclature{Firmware}{Software, die fest in ein Hardware-Gerät eingebettet ist.}
         Von den oben genannten Standards scheidet \emph{GSM/UMTS} von vorne herein aufgrund der hohen Betriebskosten aus.
         Auch der \emph{DECT}-Standard kommt nicht in Frage, da die Teilnehmerzahl auf 6 Geräte pro Basisstation beschränkt
-        ist.  Der \emph{WLAN} Standard ist zwar grundsätzlich für eine solche Aufgabe geeignet, allerdings fällt der 
+        ist.  Der \emph{WLAN}-Standard ist zwar grundsätzlich für eine solche Aufgabe geeignet, allerdings fällt der 
         Strombedarf mit über 100~mA für den Einsatz im \emph{Erste-Hilfe-Sensor} zu hoch aus. Von der Leistungsaufnahme 
         prinzipiell möglich wäre der Einsatz von \emph{Bluetooth}, wobei insbesondere der kommende 
         \emph{Bluetooth Low Energy} Standard interessant ist. Auch die
-        hohe Störsicherheit wäre ein weitere Punkt, der für \emph{Bluetooth} spräche. Problematisch ist jedoch die 
-        Einschränkung, dass pro \emph{Bluetooth-Piconetz} immer nur 7 Slaves aktiv sein können, dies ist für die 
+        hohe Störsicherheit wäre ein weiterer Punkt, der für \emph{Bluetooth} spräche. Problematisch ist jedoch die 
+        Einschränkung, dass pro \emph{Bluetooth-Piconetz} immer nur 7 Slaves aktiv sein können. Dies ist für die 
         Anforderungen dieser Diplomarbeit deutlich zu wenig.\\
         \\
         Letztendlich erweist sich der \emph{ZigBee}-Standard als am besten für die gewünschte Anwendung geeignet. 
@@ -713,16 +715,16 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         \emph{Routing} wird komplett durch die \emph{Firmware} der \emph{ZigBee}-Module übernommen, so dass dieses 
         nicht erst implementiert werden muss. Der Strombedarf
         der Module ist mit maximal 19~mA so gering, dass eine Versorgung über Batterien ohne weiteres möglich ist.
-        Dieser Strombedarf lässt sich durch die Verwendung des Energiesparmoduses weiter senken.
+        Dieser Strombedarf lässt sich durch die Verwendung des Energiesparmodus weiter senken.
 
 \section{Produkte zur kabellosen Patientenüberwachung}\label{produkte_zur_patientenueberwachung}
-\Abbildungps{!htb}{1}{diagramme/Corbelt.jpg}{corbelt}{\emph{CorBELT} der FIrma \emph{CORScience}}
-\Abbildungps{!htb}{1}{diagramme/kabellose_pulsoximetrie.jpg}{kabellose_pulsoximetrie}{Kabelloses Pulsoxymetriesystem der Firma Nonin.}
+%\Abbildungps{!htb}{1}{diagramme/Corbelt.jpg}{corbelt}{\emph{CorBELT} der FIrma \emph{CORScience}}
+%\Abbildungps{!htb}{1}{diagramme/kabellose_pulsoximetrie.jpg}{kabellose_pulsoximetrie}{Kabelloses Pulsoxymetriesystem der Firma Nonin.}
 
 \nomenclature{Monitor}{Gerät zur Überwachung von Vitaldaten von Patienten.}
 \nomenclature{EKG}{Elektrokardiogramm -- Überwachung der Herztätigkeit durch Ableiten elektrischer Signale.}
 Auf dem Markt ist eine breite Palette an kabellosen Produkten zur Patientenüberwachung vorhanden. Die meisten davon setzen
-entweder \emph{Bluetooth} oder proprietäre Protokolle wie \emph{Z-Wave} zur Funkübertragung ein, \emph{ZigBee} ist bisher in
+entweder \emph{Bluetooth} oder proprietäre Protokolle wie \emph{Z-Wave} zur Funkübertragung ein; \emph{ZigBee} ist bisher in
 keinem Medizinprodukt auf dem Markt zu finden. Fast alle dieser Systeme sind dazu konzipiert, lediglich einen einzelnen 
 Patienten zu überwachen. Die Funktechnologie dient hier vor allem dazu, die Anzahl der Kabel zwischen Patient und Monitoren 
 zu reduzieren, um so die Mobilität des Patienten zu erhöhen. Besonders häufig sind kabellose EKG-Geräte, Pulsoximeter oder 
@@ -732,39 +734,40 @@ Ein Beispiel für ein solches Produkt ist der \emph{CorBELT} der Firma \emph{Cor
 um ein 1-Kanal EKG mit integriertem Beschleunigungssensor in Form eines Brustgurtes. Das System ist in der
 Lage, eine Vielzahl von Herzproblemen zu erkennen, und 
 eignet sich daher besonders für Patienten mit bekannten
-Herzerkrakungen. Das System hat einen integrierten Beschleunigungssensor, um Bewegungsartefakte auszufiltern.\cite{Corscience}
+Herzerkrankungen. Das System hat einen integrierten Beschleunigungssensor, um Bewegungsartefakte auszufiltern.\cite{Corscience}
 \\
 \\
-Von diversen Herstellern wie \emph{Dräger Medical}, \emph{Philips}, \emph{GE} und \emph{WelchAllyn} existieren eine 
-Reihe \emph{Bluetooth}-basierten Überwachungslösungen. Diese sind allerdings meist weniger als portables Gerät, als viel 
+Von diversen Herstellern wie \emph{Dräger Medical}, \emph{Philips}, \emph{GE} und \emph{WelchAllyn} existiert eine 
+Reihe \emph{Bluetooth}-basierter Überwachungslösungen. Diese sind allerdings meist weniger als portables Gerät, als viel 
 mehr als stationäre Überwachungslösung im Krankenhaus gedacht. Die \emph{Bluetooth}-Technik dient hier vor allem dazu, 
-möglichst wenige Kabel zum Patienten zu führen, was das Handling (z.B. bei der Patientenwäsche oder beim Wenden)
+möglichst wenige Kabel zum Patienten zu führen, was den Umgang (z.B. bei der Patientenwäsche oder beim Wenden)
 erheblich erleichtert. Keine dieser Technologien ist jedoch für den Einsatz in einem \emph{MANV}-Szenario
 geeignet.
        
 
 \section{Verwandte Projekte zum Einsatz in MANV-Szenarien}\label{verwandte_projekte}
-\Abbildungps{!htb}{1}{diagramme/sogro.jpg}{sogro}{Datenarmbänder und Handgerät des \emph{SOGRO} Projektes.}
+%\Abbildungps{!htb}{1}{diagramme/sogro.jpg}{sogro}{Datenarmbänder und Handgerät des \emph{SOGRO} Projektes.}
 \nomenclature{GPS}{Global Positioning System -- Ein Sattelitennavigationssystem.}
 \nomenclature{TinyOS}{Open-Source-Betriebssystem für Sensornetzwerke.}
-Neben dieser Arbeit beschäftigen sich Bundesweit mehrere verwandte Projekte ebenfalls mit der Problematik
+Neben dieser Arbeit beschäftigen sich mehrere verwandte Projekte ebenfalls mit der Problematik
 der effizienten Patientenversorgung während eines \emph{MANVs}.\\
 \\
-Bei dem Projekt \emph{SOGRO MANV 500} (Sofortrettung bei Großschadenslagen mit einem Massenanfall von 500 Verletzten),
-an welchem unter anderem die Universität Paderborn beteiligt ist, beschäftigt man sich insbesondere mit der effizienten
+Bei dem Projekt \emph{SOGRO MANV 500} (Sofortrettung bei Großschadenslagen mit einem Massenanfall von 500 Verletzten)
+beschäftigt, man sich insbesondere mit der effizienten
 Kennzeichnung und Lokalisierung von Patienten. Hierzu wird den Patienten ein Armband mit integriertem \emph{GPS}-Peilsender 
 und Datenspeicher angelegt, auf dem dann die Diagnose digital gespeichert wird. Eine automatische Überwachung ist bei
 diesem Projekt allerdings derzeit nicht vorgesehen.\cite{sogro}\\
 \\            
 Eine weiteres Projekt, das sich mit der technischen Unterstützung von Rettungskräften bei einem \emph{MANV}
 beschäftigt ist \emph{A.L.A.R.M.} (Adaptive Lösungsplattform zur Aktiven technischen Unterstützung beim Retten von 
-Menschenleben) der Berliner Charité. Im Moment sind nur recht wenige Informationen zu diesem Projekt verfügbar, diese
-deuten jedoch darauf hin, dass es sich eher um die Schaffung von einheitlichen Prozessen und Ablaufplanung als um eine
+Menschenleben). Im Moment sind nur recht wenige Informationen zu diesem Projekt verfügbar; diese
+deuten jedoch darauf hin, dass es bei dem Projekt eher um die Schaffung von einheitlichen Prozessen und Ablaufplanung als um eine
 konkrete technische Lösung geht.\cite{alarm}\\
 \\
-Einen sehr ähnlichen Ansatz wie diese Diplomarbeit wird in dem \emph{AID-N} ("`AID-N: The Advanced Health and Disaster 
+Ein ähnlicher Ansatz wie in dieser Diplomarbeit wird in dem \emph{AID-N} ("`AID-N: The Advanced Health and Disaster 
 Aid Network: A Light-Weight Wireless Medical System for Triage"') verfolgt.\cite{aid-n}. Bei diesem Ansatz wird 
-intensiv auf die \emph{TinyOS}-Platform aufgebaut und es kommt wird eine \emph{IEEE 802.15.4} basierte Lösung eingesetzt. 
-Leider scheint dieses Projekt seit mehreren Jahren eingeschlafen sein, auf der Webseite sind seit 2007 keine Änderungen 
+intensiv auf die \emph{TinyOS}-Plattform aufgebaut, und wird eine \emph{IEEE-802.15.4}-basierte Lösung eingesetzt. 
+Leider scheint dieses Projekt seit mehreren Jahren nicht weiter verfolgt zu werden; auf der Webseite sind seit 2007 keine Änderungen 
 mehr vorgenommen worden. Auch wurde hier nicht auf Aspekte der industriellen Fertigung der einzelnen Knoten, d.h. 
-insbesondere Kompaktheit und Kosteneffektivität eingegangen.
+insbesondere Kompaktheit und Kosteneffektivität eingegangen. Insgesamt handelt es sich um eine technisch sehr 
+interessante Arbeit, die jedoch durch ihren anderen Fokus die Anforderungen dieser Diplomarbeit nicht erfüllen kann.
