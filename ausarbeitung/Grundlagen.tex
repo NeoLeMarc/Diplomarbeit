@@ -10,29 +10,29 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     \subsection{Paketvermittelte Übertragung}
         Bei der Übertragung von Daten kann grundsätzlich zwischen der Paket- und der Leitungsvermittlung unterschieden 
         werden. Bei der Leitungsvermittlung wird für jeden Kommunikationsvorgang eine eigene Leitung verwendet. 
-        Meist wird diesee Leitung zu Beginn der Kommunikation auf- und beim Ende wieder abgebaut. Hierbei wird
+        Meist wird diese Leitung zu Beginn der Kommunikation auf- und beim Ende wieder abgebaut. Hierbei wird
         meist ein fester Weg vorgegeben, den die zu sendenden Daten zwischen zwei Partnern zurücklegen. Über diesen Kanal
         gesendete Daten kommen beim Empfänger in genau der selben Reihenfolge an, wie sie vom Sender gesendet wurden.
         Auch steht meist eine garantierte Mindestübertragungsrate zur Verfügung. \\
-        Diesen Vorteilen stehen eine Reihe von Nachteilen gegenüber. Für Aufbau und Betrieb der Leitung muss ein gewisser
+        Diesen Vorteilen steht eine Reihe von Nachteilen gegenüber. Für Aufbau und Betrieb der Leitung muss ein gewisser
         Aufwand betrieben werden. Wenn Übertragungsraten garantiert werden, stehen diese ggf. nicht für andere 
         Anwendungen zur Verfügung. Wird die Kapazität der Leitung nicht ausgeschöpft, so bleiben diese Reserven 
         ungenutzt und verfallen.\\
         \\
         Anders verhält sich die Paketvermittlung. In diesem Szenario teilen sich alle Teilnehmer eine gemeinsame
-        Leitung. Möchte nun ein Teilnehmer Daten senden, so teilt er diese in kleine Pakete auf, und versieht diese
-        mit der Adresse des Empfängers. Nun wird jedes Paket einzeln über die Leitung verschickt. Hierbei landet
-        es ggf. bei Zwischenempfängern, dies es jeweils zum nächsten Zwischenempfänger weiterleiten, bis der
+        Leitung. Möchte nun ein Teilnehmer Daten senden, so teilt er sie in kleine Pakete auf und versieht diese
+        mit der Adresse des Empfängers. Nun wird jedes Paket einzeln über die Leitung verschickt. Hierbei passiert 
+        es ggf. eine Reihe von Zwischenstationen, die es jeweils zur nächsten Zwischenstation weiterleiten, bis der
         endgültige Empfänger erreicht ist. Da sich nun viele Empfänger eine Leitung teilen, kann eine deutlich bessere
-        Auslastung erzielt werden. Jedoch können nun keine Garantieren mehr über die Reihenfolge, Zuverlässigkeit
-        sowie der einem Teilnehmer zur Verfügung stehenden Übertragungsrate getroffen werden.\\
+        Auslastung erzielt werden. Jedoch können nun keine Garantien mehr über die Reihenfolge, Zuverlässigkeit
+        sowie die einem Teilnehmer zur Verfügung stehende Übertragungsrate gegeben werden.\\
         Diese Probleme können jedoch teilweise in höheren Protokollschichten (z.B. durch Nummerierung und Umsortieren 
         der Pakete beim Empfänger) behandelt werden.
 
         Bei der kabellosen Datenübertragung teilen sich alle Teilnehmer ein gemeinsames Medium, nämlich die 
         Trägerfrequenzen des verwendeten Funkprotokolls. Eine Vermittlung von einzelnen Leitungen scheidet 
-        prinzipbedingt aus, da es nicht möglich ist, einzelne Teilnehmer am senden auf einer Frequenz zu 
-        hindern, daher bietet sich die Verwendung eines paketvermittelten Übertragungsprotokolls für kabellose
+        prinzipbedingt aus, da es nicht möglich ist, einzelne Teilnehmer am Senden auf einer Frequenz zu 
+        hindern. Daher bietet sich die Verwendung eines paketvermittelten Übertragungsprotokolls für kabellose
         Netzwerke besonders an.
         
     \subsection{Frequenzspreizung}
@@ -40,12 +40,12 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         \Abbildungps{!htb}{1.2}{diagramme/frequenzspreizung_dss-crop.pdf}{frequenzspreizung_dsss}{Frequenzspreizung mit dem \emph{DSSS}-Verfahren}
         \subsubsection{Übersicht}
             Bei der Verwendung von kabellosen Übertragungsprotokollen kann es zu einer Vielzahl von 
-            Störungen kommen. Übliche Störquelle sind meist andere Protokolle, die im selben Band arbeiten,
+            Störungen kommen. Übliche Störquellen sind andere Protokolle, die im selben Band arbeiten,
             oder elektrische Geräte, die durch ihre Abstrahlung den Funkverkehr stören\footnote{Insbesondere
-            sind hier Mikrowellengeräte zu nennen, die im 2.4~GHz Band arbeiten.}. Aber auch auf Grund von 
+            sind hier Mikrowellengeräte zu nennen, die im 2.4-GHz-Band arbeiten.}. Aber auch auf Grund von 
             Mehrwegeausbreitung kann es zu Problemen kommen.\\
             \\
-            Da diese Störungen meist nur auf einzelnen Frequenzen vorliegt, kann mit Hilfe der 
+            Da diese Störungen meist nur auf einzelnen Frequenzen vorliegen, kann mit Hilfe der 
             Frequenzspreizung der Einfluß von Störungen reduziert werden. Die Idee ist, nicht mit
             hoher Leistung auf einer einzelnen Frequenz zu senden, sondern die Leistung auf einen
             breiteren Frequenzbereich zu verteilen. Liegt nun eine Störung auf einer einzelnen
@@ -54,16 +54,16 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         \subsubsection{FHSS: Frequency Hoping Spread Spectrum}\label{FHSS}
             \nomenclature{FHSS}{Frequency Hoping Spread Spectrum}
             Bei dem \textsl{FHSS}-Verfahren handelt es sich um die einfachste Möglichkeit, ein
-            Signal zu spreizen. Hierbei wird einfach nach einer bestimmten Zeiteinheit die
+            Signal zu spreizen. Hierbei wird einfach nach einer bestimmten Zeiteidauer die
             Sendefrequenz gewechselt, so dass eine Spreizung über ein Zeitintervall erreicht wird.
 
         \subsubsection{DSSS: Direct Sequence Spread Spectrum}\label{DSSS}
             \nomenclature{DSSS}{Direct Sequence Spread Spectrum.}
-            Bei dem \textsl{FHSSS}-Verfahren wird das Nutzsignal über einen breiten Frequenzbereich
+            Bei dem \textsl{DSSS}-Verfahren wird das Nutzsignal über einen breiten Frequenzbereich
             aufgefächert. Hierzu wird das Nutzsignal mit einem Spreizkode multipliziert. 
             Beim Empfang teilt der Empfänger nun das empfangene Signal durch diesen Spreizcode
             und erhält so das ursprüngliche Signal. Störungen werden hingegen durch die 
-            Operation deutlich erkennbar, und können einfach ausgefiltert werden.
+            Operation deutlich erkennbar und können einfach ausgefiltert werden.
         \subsubsection{FHSS vs. DSSS}\label{FHSSvsDSSS}
             \textsl{FHSS} besitzt gegenüber \textsl{DSSS} den Vorteil, dass es mit weniger Hardware
             realisiert werden kann. 
@@ -74,10 +74,10 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             \\
             \textsl{DSSS} ist im Vergleich zu \textsl{FHSS} weniger anfällig gegenüber
             schmallbandigen Störungen, da diese komplett ausgefiltert werden können, 
-            wohingegen es beim \textsl{FHSS}-Verfahren zu Paketverlusen kommen kann.
+            wohingegen es beim \textsl{FHSS}-Verfahren zu Paketverlusten kommen kann.
             Liegt jedoch eine breitbandige Störung vor, so ist mit \textsl{FHSS}
-            meist noch eine -- wenn auch mit geringerer Übertragungsrate -- Kommunikation
-            möglich, wenn diese mit dem \textsl{DSSS}-Verfahren bereits zum erliegen gekommen ist.\\
+            meist noch eine Kommunikation -- wenn auch mit geringerer Übertragungsrate -- 
+            möglich, wenn diese mit dem \textsl{DSSS}-Verfahren bereits zum Erliegen gekommen ist.\\
             \\
             Da das \textsl{DSSS}-Verfahren die Gesamtleistung auf ein breites Spektrum auffächert,
             verursacht es weniger Störungen bei anderen Anwendungen, die im selben Frequenzbereich
@@ -125,19 +125,19 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         \emph{Java} ist eine moderne, statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von 
         \emph{C} entlehnten Syntax erinnert \emph{Java} auf den ersten Blick an \emph{C++}. Bei genauerer 
         Betrachtung unterscheiden sich diese beiden Sprachen jedoch stark. So bietet \emph{Java} im Gegensatz zu 
-        \emph{C++} keine Mehrfachvererbung sondern verwendet sogenannte \emph{Interfaces}. \emph{Java} wird mit einer 
+        \emph{C++} keine Mehrfachvererbung, sondern verwendet sogenannte \emph{Interfaces}. \emph{Java} wird mit einer 
         großen Standardbibliothek ausgeliefert, die für sehr viele Standardaufgaben
         (z.B. \emph{Threadverwaltung}, Netzwerkkommunikation, \emph{GUI}-Entwicklung\footnote{GUI: 
-         Graphical-User-Interface, dt.  graphische Benutzerschnittstelle.} oder typische Datenstrukturen wie Listen und
+         \emph{Graphical User Interface}, dt.  graphische Benutzerschnittstelle.} oder typische Datenstrukturen wie Listen und
          \emph{Hashmaps}) bereits eine
-        passende Lösung mitbringt. Durch den integrierten Paketmachenismus wird darüber hinaus die übersichtliche
+        passende Lösung mitbringt. Durch den integrierten Paketmechanismus wird darüber hinaus die übersichtliche
         Gliederung des Quelltextes in Unterdateien ermöglicht.\\
         Aufgrund der statischen Typisierung und der genau definierten Laufzeitumgebung eignet sich \emph{Java} besonders
         gut zur Erstellung von zuverlässigen und fehlerarmen Programmen. Werden konsequent Interfaces verwendet und
         typunsichere \emph{Downcasts} vermieden, so können die meisten Fehler bereits durch den Compiler erkannt und 
         abgefangen werden. Kann ein solches Programm ohne Fehler und Warnungen kompiliert werden, besteht eine hohe Chance,
         dass auch Laufzeitfehler vermieden werden.\\
-        Insbsondere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt wird, 
+        Insbsondere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt werden, 
         ist die Verwendung von klar definierten Schnittstellen (\emph{Interfaces}) besonders wichtig, da nur so eine korrekte
         Funktionalität nach dem Zusammensetzen der einzelnen Teile gewährleistet werden kann.
 
@@ -153,11 +153,11 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     gehört. Darüber hinaus sind auch fertige Pakete für \emph{Windows} verfügbar. \emph{Python} eignet sich daher 
     besonders zum Schreiben von kleinen
     bis mittelgroßen Skripten. In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
-    eingesetzt, wenn diese Aufgaben in \emph{Java} entweder garnicht oder nur sehr schwierig zu lösen wären. Beispiele
+    eingesetzt, wenn diese Aufgaben in \emph{Java} entweder gar nicht oder nur sehr schwierig zu lösen wären. Beispiele
     hierfür sind die automatische Erkennung von \emph{USB}-Geräten oder der Zugriff auf den seriellen Port.
     Da \emph{Python} eine sehr kompakte und verständliche Implementierung von Programmcode zulässt, wurde in dieser
     Diplomarbeit weitestgehend versucht, auf Beispiele in Pseudocode zu verzichten, und statt dessen lauffähige
-    \emph{Python} Programme zu verwenden. Dies ist nicht nur eindeutiger, sondern bietet gleichzeitig den Vorteil,
+    \emph{Python}-Programme zu verwenden. Dies ist nicht nur eindeutiger, sondern bietet gleichzeitig den Vorteil,
     dass die meisten Programmbeispiele direkt in lauffähige Programme übernommen werden können.
 
 \section{Corba}
