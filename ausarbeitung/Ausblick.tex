@@ -90,7 +90,7 @@ aus. Innerhalb eines unverschlüsselten Netzwerkes kann ein Angreifer die Identi
 übernehmen; er hat somit die Möglichkeit, entweder falsche Vitaldaten oder aber Befehle an die einzelne Sensoren zu
 versenden. Dies könnte im schlimmsten Falle bedeuten, dass Alarme im Netzwerk verloren gehen, und somit Patienten
 zu Schaden kommen. Da selbst bei aktivierter \emph{ZigBee}-Verschlüsselung kein Schutz gegenüber 
-\emph{Replay}-Attacken besteht, hätte
+\emph{Replay}-Angriffen besteht, hätte
 ein Angreifer weiterhin die Möglichkeit, eine aufgefangene Statusnachricht oder einen aufgegangen Befehl beliebig oft
 wieder in das Netzwerk einzubringen und so eine Störung zu erreichen.
 
@@ -115,7 +115,7 @@ implementieren, um alle bestehenden Komponenten wie den \emph{MANV-Connector} un
 \emph{ADuC-Mikrocontrollers} weiterverwenden zu können.
 
 \subsubsection{Befehlszähler}
-Die \emph{ZigBee}-Verschlüsselung schützt nicht gegen \emph{Replay}-Attacken. Eine einfache aber effektive Methode 
+Die \emph{ZigBee}-Verschlüsselung schützt nicht gegen \emph{Replay}-Angriffe. Eine einfache aber effektive Methode 
 zur Abwehr solcher
 Angriffe ist die Verwendung einer Sequenznummer. Hierbei wird jeder Nachricht eine fortlaufende Nummer hinzugefügt. 
 Der Empfänger führt nun eine Liste, in der für jeden Absender die zuletzt verwendete Sequenznummer enthalten ist.
