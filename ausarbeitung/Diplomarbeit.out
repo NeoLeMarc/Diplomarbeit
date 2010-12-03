@@ -106,7 +106,7 @@
 \BOOKMARK [2][-]{subsection.6.3.3}{6.3.3 CORBA-Anbindung}{section.6.3}
 \BOOKMARK [0][]{chapter.7}{7 Ergebnisse}{}
 \BOOKMARK [1][-]{section.7.1}{7.1 Realisierbarkeit}{chapter.7}
-\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Integrierbarkeit in Erste-Hilfe-Sensor}{section.7.1}
+\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Integrierbarkeit in den Erste-Hilfe-Sensor}{section.7.1}
 \BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Interoperabilit\344t aller Komponenten}{section.7.1}
 \BOOKMARK [3][-]{subsubsection.7.1.2.1}{7.1.2.1 Durchf\374hrung}{subsection.7.1.2}
 \BOOKMARK [3][-]{subsubsection.7.1.2.2}{7.1.2.2 Ergebnisse}{subsection.7.1.2}
@@ -116,7 +116,7 @@
 \BOOKMARK [3][-]{subsubsection.7.1.4.2}{7.1.4.2 Ergebnisse}{subsection.7.1.4}
 \BOOKMARK [1][-]{section.7.2}{7.2 Leistungsaufnahme des ZigBit-Moduls}{chapter.7}
 \BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Leistungsaufnahme im Normalbetrieb}{section.7.2}
-\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Leistungsaufnahme bei Verwendung des Energiesparmoduses.}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Leistungsaufnahme bei Verwendung des Energiesparmodus.}{section.7.2}
 \BOOKMARK [2][-]{subsection.7.2.3}{7.2.3 Sonderf\344lle}{section.7.2}
 \BOOKMARK [1][-]{section.7.3}{7.3 Reichweite}{chapter.7}
 \BOOKMARK [2][-]{subsection.7.3.1}{7.3.1 Reichweite im Freien}{section.7.3}
@@ -133,7 +133,7 @@
 \BOOKMARK [2][-]{subsection.9.2.3}{9.2.3 Abwehrma\337nahmen}{section.9.2}
 \BOOKMARK [3][-]{subsubsection.9.2.3.1}{9.2.3.1 ZigBee-Verschl\374sselung}{subsection.9.2.3}
 \BOOKMARK [3][-]{subsubsection.9.2.3.2}{9.2.3.2 Befehlsz\344hler}{subsection.9.2.3}
-\BOOKMARK [3][-]{subsubsection.9.2.3.3}{9.2.3.3 Schutz auf Applikationsebene}{subsection.9.2.3}
+\BOOKMARK [3][-]{subsubsection.9.2.3.3}{9.2.3.3 Schutz auf Anwendungsebene}{subsection.9.2.3}
 \BOOKMARK [1][-]{section.9.3}{9.3 Verbesserung der Reichweite und St\366rsicherheit}{chapter.9}
 \BOOKMARK [2][-]{subsection.9.3.1}{9.3.1 Anderer Frequenzbereich}{section.9.3}
 \BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 Verwendung leistungsst\344rkerer ZigBee-Module und Antennen}{section.9.3}

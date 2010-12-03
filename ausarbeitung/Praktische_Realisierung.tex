@@ -22,7 +22,7 @@ Stiftleiste huckepack auf die \emph{USB-UART-Bridge} aufgelötet werden, um die 
 \Abbildungps{!htb}{0.75}{diagramme/usbstick_makro.png}{usbstick}{\emph{MANV-USB-Stick}.}
 \Abbildungps{!htb}{1}{diagramme/manvnode.jpg}{manvnode}{Fertig bestückte Platine der \emph{MANVNode.}}
 \nomenclature{nF}{Nanofarad}
-\nomenclature{Flashen}{Programmieren eines Flashspeichers}
+\nomenclature{Flashen}{Programmieren eines Flashspeichers.}
 \nomenclature{Lötstopplack}{Auf Leiterplatten aufgetragene Lackschicht, die die Leiterbahnen schützt.}
 Die Herstellung der Platine für die \emph{MANVNode} stellte sich als problematischer heraus, als ursprünglich 
 angenommen. Zunächst wurde versucht, Prototypen der Platinen im Ätzverfahren selbst herzustellen. Aufgrund der 
@@ -105,7 +105,7 @@ so greift es nicht direkt auf die \emph{UART}-Schnittstelle zu, sondern legt die
 Das eigentliche Senden wird nun vom \emph{UART-Interrupthandler} durchgeführt; das Unterprogramm kann weiter arbeiten,
 ohne auf das fertige Senden der Daten warten zu müssen.
 
-\nomenclature{Idle-Task}{Aufgabe, die immer dann bearbeitet wird, wenn keine anderen Aufgaben anstehen.}
+\nomenclature{Idle Task}{Aufgabe, die immer dann bearbeitet wird, wenn keine anderen Aufgaben anstehen.}
 Das Empfangen von Daten erfolgt analog. Jedesmal, wenn ein Zeichen von der seriellen Schnitstelle empfangen
 wurde, wird dieses in den Empfangspuffer gelegt. Das Abarbeiten des Empfangspuffers erfolgt nun als \emph{Idle-Task}:
 Immer dann, wenn der \emph{Mikrocontroller} gerade keine anderen Aufgaben erfüllen muss, wird der Empfangspuffer
@@ -113,7 +113,7 @@ abgearbeitet und eventuell empfangene Befehle werden ausgeführt. Dies kann nat�
 die Behandlung von \emph{Interrupts} unterbrochen werden.
 
 \section{MANVConnector}
-\nomenclature{Socket}{Softwareabstratkion einer Netzwerkverbindung, die sich verhält wie ein Dateizugriff.}
+\nomenclature{Socket}{Softwareabstraktion einer Netzwerkverbindung die sich verhält wie ein Dateizugriff.}
 \subsection{Zugriff auf die serielle Schnittstelle}
 Der Zugriff auf die serielle Schnittstelle mittels Java bringt einige praktische Probleme mit sich.
 Der \emph{Java}-Standard bietet von Haus aus keine Möglichkeit, auf die serielle Schnittstelle zuzugreifen.
@@ -300,7 +300,7 @@ def searchSYS(self):
     return devices
 \end{lstlisting}
 
-\nomenclature{Debuggen}{Suchen und entfernen von Fehlern.}
+\nomenclature{Debuggen}{Suchen und Entfernen von Fehlern.}
 Da an den \emph{USB-Bus} beliebige \emph{USB-Serial}-Geräte angeschlossen sein können\footnote{Während der Entwicklung
 was es nicht ungewöhnlich, dass bis zu 3 Geräte angeschlossen waren: Bei einem handelte es sich um den
 \emph{ZigBit-USB-Stick}, zwei weitere dienten zum \emph{Flashen} und \emph{Debuggen} der angeschlossenen 

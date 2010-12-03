@@ -105,7 +105,7 @@
 \contentsline {subsection}{\numberline {6.3.3}CORBA-Anbindung}{79}{subsection.6.3.3}
 \contentsline {chapter}{\numberline {7}Ergebnisse}{81}{chapter.7}
 \contentsline {section}{\numberline {7.1}Realisierbarkeit}{81}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Integrierbarkeit in Erste-Hilfe-Sensor}{81}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.1}Integrierbarkeit in den \emph {Erste-Hilfe-Sensor}}{81}{subsection.7.1.1}
 \contentsline {subsection}{\numberline {7.1.2}Interoperabilit\IeC {\"a}t aller Komponenten}{81}{subsection.7.1.2}
 \contentsline {subsubsection}{\numberline {7.1.2.1}Durchf\IeC {\"u}hrung}{81}{subsubsection.7.1.2.1}
 \contentsline {subsubsection}{\numberline {7.1.2.2}Ergebnisse}{83}{subsubsection.7.1.2.2}
@@ -115,7 +115,7 @@
 \contentsline {subsubsection}{\numberline {7.1.4.2}Ergebnisse}{84}{subsubsection.7.1.4.2}
 \contentsline {section}{\numberline {7.2}Leistungsaufnahme des ZigBit-Moduls}{84}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Leistungsaufnahme im Normalbetrieb}{85}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Leistungsaufnahme bei Verwendung des Energiesparmoduses.}{88}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.2}Leistungsaufnahme bei Verwendung des Energiesparmodus.}{88}{subsection.7.2.2}
 \contentsline {subsection}{\numberline {7.2.3}Sonderf\IeC {\"a}lle}{90}{subsection.7.2.3}
 \contentsline {section}{\numberline {7.3}Reichweite}{91}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}Reichweite im Freien}{92}{subsection.7.3.1}
@@ -132,7 +132,7 @@
 \contentsline {subsection}{\numberline {9.2.3}Abwehrma\IeC {\ss }nahmen}{103}{subsection.9.2.3}
 \contentsline {subsubsection}{\numberline {9.2.3.1}ZigBee-Verschl\IeC {\"u}sselung}{103}{subsubsection.9.2.3.1}
 \contentsline {subsubsection}{\numberline {9.2.3.2}Befehlsz\IeC {\"a}hler}{103}{subsubsection.9.2.3.2}
-\contentsline {subsubsection}{\numberline {9.2.3.3}Schutz auf Applikationsebene}{103}{subsubsection.9.2.3.3}
+\contentsline {subsubsection}{\numberline {9.2.3.3}Schutz auf Anwendungsebene}{103}{subsubsection.9.2.3.3}
 \contentsline {section}{\numberline {9.3}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{104}{section.9.3}
 \contentsline {subsection}{\numberline {9.3.1}Anderer Frequenzbereich}{104}{subsection.9.3.1}
 \contentsline {subsection}{\numberline {9.3.2}Verwendung leistungsst\IeC {\"a}rkerer \emph {ZigBee}-Module und Antennen}{104}{subsection.9.3.2}

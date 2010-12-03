@@ -83,7 +83,7 @@ Videoaufnahmen des Patienten herzustellen, was im Zweifelsfall eine deutlich gr�
 darstellen würde.
 
 \subsubsection{Aktiver Angriff gegen das Netzwerk}
-\nomenclature{Replay}{Attacke, bei der legitime Datenpakete abgefangen, und zu einem späteren Zeitpunkt wieder ins
+\nomenclature{Replay}{Angriff, bei der legitime Datenpakete abgefangen und zu einem späteren Zeitpunkt wieder ins
                       Netzwerk eingegeben werden.}
 Ein größeres Problem als vom passiven Belauschen des Datenverkehrs geht von aktiven Angriffen gegen das Netzwerk
 aus. Innerhalb eines unverschlüsselten Netzwerkes kann ein Angreifer die Identität eines beliebigen \emph{ZigBee}-Moduls 
@@ -125,10 +125,11 @@ bietet sich entweder die Firmware des \emph{ADuC-Mikrocontrollers} sowie der \em
 die \emph{ZigBit-Firmware} an.
 
 \subsubsection{Schutz auf Anwendungsebene}
-\nomenclature{OpenSSL}{Open-Source Bibliothek, die viele Verschlüsselungsverfahren implementiert.}
+\nomenclature{OpenSSL}{Open Source Bibliothek, die viele Verschlüsselungsverfahren implementiert.}
 \nomenclature{SSL}{Secure Socket Layer}
 \nomenclature{TLS}{Transport Layer Security -- Nachfolger von SSL.}
-\nomenclature{Denial-Of-Service}{Blockieren eines Dienstes durch Ausnutzen eines Softwarefehlers.}
+\nomenclature{Denial-Of-Service}{Blockieren eines Dienstes durch Überfluten mit Anfragen oder Ausnutzen eines 
+                                Softwarefehlers.}
 Alternativ zur Modifikation der \emph{ZigBit-Firmware} besteht auch die Möglichkeit, auf Anwendungsebene zu verschlüsseln.
 Sowohl für Java (\emph{OpenSSL}) als auch für den \emph{ADuC-Mikrocontroller} (\emph{WAKAN-Crypto-Toolkit}) sind 
 entsprechende Bibliotheken
