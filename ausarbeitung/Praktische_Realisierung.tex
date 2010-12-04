@@ -2,13 +2,20 @@
 %%%-----------------------------------------------UMSETZUNG/VORBEREITUNGEN-------------------------------------------------------------
 \chapter{Praktische Realisierung des Sensornetzes}\label{Implementierung}
 
-In diesem Kapitel wird die Implementierung des Sensornetzes beschrieben, welche Probleme dabei aufgetreten
-sind und wie diese gelöst wurden.
+In diesem Kapitel wird die Implementierung des Sensornetzes, dabei auftretende Probleme sowie deren Lösungen, beschreiben.
 
 \section{Hardware}
+Nachfolgend wird die praktische Umsetzung der zwei verschiedenen Hardwarekomponenten, also des \emph{MANV-USB-Sticks} und der
+\emph{MANVNode} beschrieben. In beiden Fällen musste hierzu ein \emph{ZigBit}-Modul mit einer anderen 
+Hardwarekomponente verbunden werden. Dies kann grundsätzlich entweder über \emph{SPI} oder \emph{UART} erfolgen.
+Bei \emph{SPI} handelt es sich um einen seriellen Bus, der besonders im Bereich der Mikrocontroller verbreitet ist,
+und zur Anbindung von weiterer Peripherie dient. \emph{UART} war hingegen vor allem als serielle Schnittstellen
+an \emph{PCs} verbreitet, und wurde hauptsächlich für die Anbindung von Modems verwendet. Heutzutage wurde diese
+Schnittstelle weitestgehend von \emph{USB} verdrängt. Beim Einsatz der \emph{SerialNet}-Firmware scheidet die
+Anbindung über \emph{SPI} jedoch aus, da dies von der Firmware nicht unterstützt wird.
+
 \subsection{Anbindung des ZigBit-Moduls an den USB-Port}
 \nomenclature{IC}{Integrierter Schaltkreis}
-Das \emph{ZigBit}-Modul kann grundsätzlich entweder über \emph{SPI} oder \emph{UART} angesprochen werden. 
 Zur Realisierung des \emph{USB-Sticks} bietet sich die Verwendung des \emph{UARTs} an, da eine breite Palette 
 von fertigen \emph{ICs} zur Verfügung steht, mit deren Hilfe ein \emph{UART} an einen \emph{USB-Bus} angebunden werden 
 kann. Auf Seiten des Betriebssystems präsentiert sich der \emph{IC} wie ein serieller Port und kann softwareseitig
@@ -24,44 +31,36 @@ Stiftleiste huckepack auf die \emph{USB-UART-Bridge} aufgelötet werden, um die 
 \nomenclature{nF}{Nanofarad}
 \nomenclature{Flashen}{Programmieren eines Flashspeichers.}
 \nomenclature{Lötstopplack}{Auf Leiterplatten aufgetragene Lackschicht, die die Leiterbahnen schützt.}
-Die Herstellung der Platine für die \emph{MANVNode} stellte sich als problematischer heraus, als ursprünglich 
-angenommen. Zunächst wurde versucht, Prototypen der Platinen im Ätzverfahren selbst herzustellen. Aufgrund der 
-für die Durchführungen notwendigen Bohrungen war eine sehr genaue Ausrichtung der Oberseite mit der Unterseite 
-der Platine notwendig. Außerdem war diese Platine sehr empfindlich, so dass sich Leiterbahnen beim Löten
-sehr schnell ablösten. Nach einigen ersten Fehlversuchen wurde daher die Entscheidung getroffen, die Platinen
-von einem Auftragsfertiger herstellen zu lassen. Für die Prototypen wurde hierbei auf die Aufbringung von 
-Lötstopplack verzichtet, damit eventuelle Fehler im Layout später noch korrigiert werden können. Insgesamt waren
-zwei Iterationen notwendig, bis alle Fehler beseitigt waren. Am schwerwiegendsten war ein Fehler in der 
-Stromversorgung: Der \emph{ADuC-7026-Mikrocontroller} benötigt drei 470~nF-Kondensatoren zur Stabilisierung der
+Auch bei der \emph{MANVNode} erfolgt eine Anbindung des \emph{ZigBit}-Moduls über \emph{UART}. Hierbei muss
+beachtet werden, dass der \emph{UART} auch für das Flashen des Microcontrollers benötigt wird. Daher verfügt
+die Platine über eine Reihe von Jumpern, mit denen das \emph{ZigBit}-Modul vom \emph{UART} abgetrennt werden
+kann.\\
+        \\
+Der \emph{ADuC-7026-Mikrocontroller} benötigt drei 470~nF-Kondensatoren zur Stabilisierung der
 Stromversorgung. Diese waren in den ersten beiden Versionen der Platine zu weit vom \emph{Mikrocontroller} entfernt 
-aufgebracht worden. Dies führte dazu, dass der \emph{Mikrocontroller} beim Flashvorgang, bei welchem ein Strom von fast
-40~mA benötigt wird, dazu neigt, spontan abzustürzen. Besonders ärgerlich hierbei war, dass der Fehler nur manchmal
-auftrat, wodurch er sehr schwer zu reproduzieren war. Nachdem der Abstand zwischen \emph{Mikrocontroller} und Kondensatoren
-verringert wurde, traten diese Abstürze nicht mehr auf, und der \emph{Mikrocontroller} funktionierte zuverlässig. Zusätzlich
-wird ab Version 1.2 ein Uhrenquarz verwendet, welches das Timingverhalten der Platine verbessert. Ein weiteres
-Problem der Versionen bis Versionsnummer 1.2 war, dass die Signalleitungen zwischen \emph{ZigBit}-Modul und
-\emph{Mikrocontroller} vertauscht sind. Dieses Problem lässt sich zwar mit einer einfachen Drahtbrücke beheben, ist aber
-natürlich trotzdem unschön. In der Hardwareversion 1.3 sind diese Probleme behoben. Diese Platine wurde auch bereits
-mit Lötstopplack gefertigt.  
+aufgebracht worden, was dazu führte, dass der \emph{Mikrocontroller} beim Flashvorgang, dazu neigte, spontan 
+abzustürzen. Dieser Fehler konnte durch die Verringerung des Abstandes zwischen Mikrocontroller und 
+Kondensatoren behoben werden.
+
 
 \section{Firmware}
-\subsection{Implementierung}
-\nomenclature{Crossworks}{Entwicklungsumgebung für \emph{Mikrocontroller-Firmware}.}
-\nomenclature{Interrupt}{Unterbrechungsaufforderung. Die Abarbeitung des aktuellen Programmcodes wird sofort beendet,
-                         und eine \emph{ISR} wird ausgeführt.}
-\nomenclature{Startup-Code}{Programmcode, der die Initialisierung eines \emph{Mikrocontrollers} durchführt.}
 Die Firmware des Erste-Hilfe-Sensors wurde um einen Treiber für das \emph{ZigBit}-Modul ergänzt. Die \emph{Firmware}
 wurde in der Programmiersprache \emph{C} geschrieben, und setzt direkt auf die Hardware des \emph{ADuC} auf. Es wurde 
 lediglich die von \emph{Rowley Crossworks} angebotene Standardbibliothek verwendet, die einige praktische Funktionen wie
 Stringmanipulation, einen Interrupthandler und einen fertigen \emph{Startup-Code} bietet.
-
 Die Entwicklung von Software für einen Microcontroller zeichnet sich durch die Abwesenheit eines Betriebssystems 
 aus. Ein Großteil der Funktionalität, die man von der Entwicklung von Software für einen gewöhnlichen Mikrocomputer 
 gewohnt ist, ist schlichtweg nicht vorhanden. Hier sind insbesondere eine automatische Speicherverwaltung sowie
 \emph{Threads} und \emph{Prozesse} zu \emph{erwähnen}. Da der \emph{Erste-Hilfe-Sensor} viele Aufgaben gleichzeitig 
 erfüllen muss, stellt dies eine ernst zu nehmende Herausforderung dar. Das Problem wurde durch ein
-\emph{Interrupt}-getriebenes Programmiermodell gelöst.
+\emph{Interrupt}-getriebenes Programmiermodell gelöst. Zu beachten sind hierbei die sehr beschränkten Ressourcen
+des \emph{Mikrocontrollers}. Insbesondere der Speicher ist mit 16~kB sehr knapp bemessen. 
 
+\subsection{Verwendete Interrupts}
+\nomenclature{Crossworks}{Entwicklungsumgebung für \emph{Mikrocontroller-Firmware}.}
+\nomenclature{Interrupt}{Unterbrechungsaufforderung. Die Abarbeitung des aktuellen Programmcodes wird sofort beendet,
+                         und eine \emph{ISR} wird ausgeführt.}
+\nomenclature{Startup-Code}{Programmcode, der die Initialisierung eines \emph{Mikrocontrollers} durchführt.}
 Es werden folgende \emph{Interrupts} verwendet:
 
 \emph{Timer0}: Dieser \emph{Timer-Interrupt} führt die Patientenüberwachung durch. Die einzelnen Sensoren werden abgefragt,
@@ -74,11 +73,8 @@ der Sensor sich aktuell befindet, also z.B. ob ein Alarm aufgetreten ist oder ob
 guten Zustand befindet. Abhängig hiervon werden nun \emph{LEDs} und ein angeschlossener \emph{Piezo}-Summer geschaltet,
 um den Zustand nach außen zu signalisieren. Zuletzt wird noch überprüft, wann zuletzt eine Übertragung
 des Zustands des Sensors an die \emph{MANVSuite} erfolgt ist. Liegt dies länger als ein konfiguriertes Zeitintervall
-zurück, so wird eine Übertragung des aktuellen Zustands veranlasst.
-
-Ein weiteres Problem sind die sehr beschränkten Ressourcen des \emph{Mikrocontrollers}. Insbesondere der Speicher ist
-mit 16~kB sehr knapp bemessen. 
-
+zurück, so wird eine Übertragung des aktuellen Zustands veranlasst. Ein sinnvolle Länge für dieses Zeitintervall
+ist ein Wert von 5-10~s.
 
 \subsubsection{Zugriff auf UART}
 Der \emph{ADuC} verfügt über einen \emph{UART-Interrupt}, welcher eine Statusänderung des \emph{UARTs} signalisiert. 
@@ -113,6 +109,11 @@ abgearbeitet und eventuell empfangene Befehle werden ausgeführt. Dies kann nat�
 die Behandlung von \emph{Interrupts} unterbrochen werden.
 
 \section{MANVConnector}
+
+Die folgenden Abschnitte beschreiben, wie der Zugriff vom \emph{MANVConnector} auf den \emph{MANV-USB-Stick} 
+konkret erfolgt. Der \emph{MANV-USB-Stick} verhält sich hierbei dem Betriebssystem gegenüber wie eine serielle 
+Schnittstelle.
+
 \nomenclature{Socket}{Softwareabstraktion einer Netzwerkverbindung die sich verhält wie ein Dateizugriff.}
 \subsection{Zugriff auf die serielle Schnittstelle}
 Der Zugriff auf die serielle Schnittstelle mittels Java bringt einige praktische Probleme mit sich.
@@ -158,7 +159,6 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
         self.serial.close()
 
     def tunnel(self):
-        ## Beginn des Tunnelmodus.
         ## Weiterleiten von Daten:
         ## Socket -> Serial
         ## Serial -> Socket
@@ -282,7 +282,9 @@ def searchUSB(self):
 \end{lstlisting}
 
 Wenn am \emph{USB-Bus} kein entsprechendes Gerät gefunden wurde, kann bereits jetzt die Suche abgebrochen werden.
-Wird jedoch ein passendes Gerät gefunden, müssen zunächst alle passenden \emph{Device-Nodes} im
+Wird jedoch ein passendes Gerät gefunden, müssen zunächst alle passenden \emph{Device-Nodes}\footnote{Unter UNIX
+verhalten sich Hardwaregeräte grundsätzlich wie Dateien und finden sich daher im Dateisystem unterhalb
+des Verzeichnisses \emph{/dev} als virtuelle Datei wieder. Eine solche Datei wird als \emph{Device-Node} bezeichnet.} im
 \emph{/dev}-Verzeichnis gefunden werden. Hierzu bietet sich eine Suche im \emph{/sys}-Dateisystem an. Hierfür sind keine
 externen Module notwendig, es können die normalen Dateisystem-Operationen des \emph{OS}-Moduls verwendet werden:
 
@@ -345,9 +347,13 @@ def testDevice(self, deviceName):
 
                     ## Es wurde kein ZigBit-Modul erkannt
                     return False
+            else:
+                ## Antwort hatte falsches Format -> Es handelt sich
+                ## nicht um ein ZigBit-Modul
+                return False
+
         else:
-            ## Antwort hatte falsches Format -> Es handelt sich
-            ## nicht um ein ZigBit-Modul
+            ## Keine Antwort empfangen
             return False
 
     ## Fehler beim Zugriff auf serielle Schnittstelle

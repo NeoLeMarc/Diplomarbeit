@@ -3,6 +3,12 @@
 %%%------------------------------------------------ERGEBNISSE(KEINE BEWERTUNG)----------------------------------------------------
 
 \chapter{Ergebnisse}\label{Ergebnisse}
+
+In diesem Kapitel wird die entwickelte Lösung einer ausführlichen Evaluation unterzogen. Die sich hierbei
+ergebenden Ergebnisse werden lediglich faktisch dargestellt, eine Bewertung erfolgt an dieser Stelle nicht;
+diese wird in Kapitel~\ref{Diskussion} separat vorgenommen.
+
+
 \section{Realisierbarkeit}
 \subsection{Integrierbarkeit in den \emph{Erste-Hilfe-Sensor}}
 \nomenclature{MANVNode}{Test- und Entwicklungsplatine für den kabellosen \emph{Erste-Hilfe-Sensor}.}
@@ -32,9 +38,9 @@ In einem zweiten Test wurde nun obiges \emph{Setup} durch das Hinzufügen von 4 
 wurden auch wieder Daten in beide Richtungen übertragen. Hierbei wurde insbesondere darauf geachtet, dass sich die
 einzelnen \emph{MANVNodes} nicht untereinander stören, sowie dass alle Daten in der \emph{MANVSuite} korrekt zugeordnet
 und dargestellt wurden.\\
-Obiges \emph{Setup} wurde nun um 5 \emph{ZigBee-Router} erweitert, und alle Tests wurden erneut durchgeführt.\\
+Obiges \emph{Setup} wurde nun um 5 \emph{ZigBee-Router} erweitert und alle Tests wurden erneut durchgeführt.\\
 Im letzten Schritt wurde nun noch die Skalierbarkeit des Systems überprüft. Hierzu wurde mit Hilfe zweier Notebooks
-sowie dem Einsatz von Hardwarevirtualisierung jede Komponente auf eine eigene \emph{Virtuelle Maschine} installiert. Diese
+sowie dem Einsatz von Hardwarevirtualisierung jede Softwarekomponente auf eine eigene \emph{Virtuelle Maschine} installiert. Diese
 wurden nun abwechselnd über beide Notebooks verteilt, so dass jede Kommunikation zwangsläufig über das Netzwerk
 stattfinden musste. Nun wurden alle obigen Tests noch einmal wiederholt.
 
@@ -52,7 +58,7 @@ in beide Richtungen erfolgreich getestet, die Austauschbarkeit des \emph{MANVCon
 erfolgreich demonstriert.
 
 \subsection{Anbindbarkeit an externe Software}\label{anbindbarkeit_an_externe_software}
-Zentrale Designentscheidung war die Verwendung einer offenen \emph{Corba}-Schnittstelle zur Anbindung
+Eine zentrale Designentscheidung war die Verwendung einer offenen \emph{Corba}-Schnittstelle zur Anbindung
 von externer Software an die \emph{MANVSuite}. Dass dies effizient durchführbar ist, zeigt der folgende
 Test.
 
@@ -70,9 +76,10 @@ Test.
 Zum Nachweis der Anbindbarkeit von externer Software über die \emph{Corba}-Schnittstelle wurde entschieden,
 eine Schnittstelle zu einem \emph{Webinterface} zu implementieren. Das \emph{Webinterface} selbst ist
 eine einfache \emph{HTML}-Seite, die über \emph{Javascript} eine graphische Benutzeroberfläche für das
-Sensornetzwerk implementiert. Dieses muss nun zunächst mit Daten aus dem Sensornetzwerk versorgt werden. Hierzu
-findet das sogenannte \emph{JSON}-Format Verwendung. Außerdem muss es möglich sein, Befehle an das
-Sensornetzwerk zu senden. Dieser werden über spezielle \emph{HTTP-GET}-Anfragen kodiert. Insgesamt wird
+Sensornetzwerk implementiert. Dieses muss nun zunächst mit Daten aus dem Sensornetzwerk versorgt werden. 
+Dazu stellt dieses \emph{Javascript} einmal pro Sekunde eine Verbindung zum \emph{Webserver} her
+und holt die Daten im \emph{JSON}-Format ab. Befehle, die an das Sensornetzwerk gesendet werden,
+werden über spezielle \emph{HTTP-GET}-Anfragen kodiert. Insgesamt wird
 diese Vorgehensweise auch als \emph{AJAX} bezeichnet und bildet die Grundlage der \emph{Web-2.0}-Technologie.
 Es musste also ein Adapter von \emph{Corba} zu \emph{AJAX} realisiert werden. Die Details dieser
 Implementierung sind in Anhang~\ref{anhang_beschreibung_software} beschrieben.\\
@@ -97,15 +104,15 @@ Anbindung sogar über Plattform- und Programmiersprachengrenzen hinweg realisier
 Zur Bestimmung der Leistungsaufnahme~-- umgangssprachlich auch Strom\-ver\-brauch genannt~-- wurden mehrere Messungen 
 durchgeführt.
 Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmodus sehr stark schwankt, sind herkömmliche Messungen
-z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall über einem 
-Shunt-Wi\-der\-stand durchgeführt. Dieser wurde in die Stromversorgung des \emph{ZigBit}-Moduls eingebracht. Der 
+z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall an einem 
+Widerstand durchgeführt. Dieser wurde in die Stromversorgung des \emph{ZigBit}-Moduls eingebracht. Der 
 Spannungsabfall über diesem Widerstand wurde nun sowohl mit einem \emph{Oszilloskop} als auch mit einem \emph{Multimeter}
 gemessen. Hierzu wurde zunächst die Form des Spannungsverlaufs analysiert. Dann wurden einzelne Messpunkte innerhalb 
-des Spannungsverlaufs bestimmt, für die nun der Wert der abfallenden Spannung gemessen wurde. Über das Ohmsche Gesetz 
+des Spannungsverlaufs ausgewählt, für die nun der Wert der abfallenden Spannung gemessen wurde. Über das Ohmsche Gesetz 
 konnte nun aus der abfallenden
 Spannung die Stromstärke bestimmt werden. Für die einzelnen Messungen wurde ein Oszilloskop der Marke \emph{Tektronix}, 
 Modell \emph{TDS2002B} verwendet. Die Messungen wurden zusätzlich mit einem Multimeter verifiziert,
-um Kalibrationsfehler des \emph{Oszilloskops} auszuschliessen. Als Shunt wurde ein Widerstand mit einem Wert von $20,1\,\Omega$
+um Kalibrationsfehler des \emph{Oszilloskops} auszuschliessen. Es wurde ein Widerstand mit einem Wert von $20,1\,\Omega$
 verwendet.
 
 \subsection{Leistungsaufnahme im Normalbetrieb}\label{leistungsaufnahme_normalbetrieb}
@@ -152,7 +159,7 @@ Tests bestätigt werden. Zur Bestimmung des Stromverbrauchs eines Clients ergibt
     \label{eqn:IClient}
 \end{align}
 
-Setzt man nun folgende Werte 
+Setzt man nun die gemessenen Werte 
 
 \begin{center}
     $t_{Basislinie} = 1000\,\text{ms}$,\quad
@@ -263,7 +270,7 @@ Netzwerk verlieren.
 \section{Reichweite}
 Zur Bestimmung der Reichweite wurden sowohl innerhalb von Gebäuden als auch im Freien Messungen durchgeführt. 
 Es wurde schnell klar, dass die Ergebnisse sehr stark von den Gegebenheiten der Umgebung sowie der Höhe von
-Sender und Empfänger abhängig sind. Optimale Ergebnisse sind bei direkter Sichtverbindung
+Sender und Empfänger abhängig sind. Die größte Reichweite ist bei direkter Sichtverbindung
 sowie einer Höhe von mindestens 1~m über dem Boden für Sender und Empfänger zu erreichen. 
 Unterhalb des Senders sollten sich möglichst keine Metalle befinden, als besonders schlecht hat sich die 
 Positionierung des Senders auf dem Dach eines PKW erwiesen. 
@@ -280,7 +287,7 @@ Als maximale Reichweite wurde nun die Entfernung gewertet, bei der gerade noch a
 sowie alle Befehle erfolgreich gesendet werden konnten. Die Entfernung zwischen Notebook und 
 \emph{MANVNode} wurden nun mittels \emph{GPS} vermessen. Als maximale Reichweite ergab sich hierbei eine Entfernung
 von etwas über 50~m.\\
-Im nächsten Schritt wurde an die Position des Notebooks ein \emph{ZigBee}-Router aufgestellt, und die Entfernung zu
+Im nächsten Schritt wurde an die Position des Notebooks ein \emph{ZigBee}-Router aufgestellt und die Entfernung zu
 diesem so lange vergrößert, bis gerade noch alle Pakete empfangen werden konnten. Insgesamt konnte durch
 die Verwendung von zwei \emph{Routern} eine Gesamtreichweite von ca. 180~m erreicht werden, so dass von einer 
 durchschnittlichen Reichweitenverlängerung von 50-70~m pro \emph{Router} ausgegangen werden kann.\\
