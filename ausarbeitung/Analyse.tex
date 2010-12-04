@@ -14,8 +14,8 @@ der fertigen Lösung dienen.
     an das zu entwickelnde System:
     
     \begin{itemize}
-        \item{Integrierbarkeit:} Die zu entwickelnde Lösung soll in den \emph{Erste-Hilfe-Sensor}
-                                 integrierbar sein.
+        \item{Kompatibilität:} Die zu entwickelnde Lösung soll mit dem \emph{Erste-Hilfe-Sensor}
+                               zusammenarbeiten.
         \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, Vitaldaten und Alarme  
                                          von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
                                          zugestellt und angezeigt werden. Bei bestehen der Netzwerkverbindung
@@ -32,7 +32,11 @@ der fertigen Lösung dienen.
                                          Zeitraum möglich ist. Ideal wäre, wenn sich eine Laufzeit von
                                          mindestens 12 Stunden mit einer einzelnen Knopfzelle erreichen
                                          liesse.
-        \item{Stabilität:} Das System soll möglichst unempfindlich gegenüber Störungen sein.
+        \item{Stabilität:} Das System soll möglichst unempfindlich gegenüber Störungen sein. Bei einfachen
+                           Störungen des Funkverkehrs sollen verlorene Pakete neu Übertragen werden.
+                           Schlägt diese Übertragung wiederholt fehl, soll eine Warnmeldung an der Überwachungsstation 
+                           angezeigt werden. Es soll ebenfalls gewarnt werden, wenn ein Sensor die Netzwerkverbindung
+                           verloren hat oder aus anderen Gründen (z.B. leere Batterie) nicht mehr erreichbar ist.
         \item{Erweiterbarkeit:} Das System soll softwareseitig erweiterbar sein. Insbesondere soll es 
                             möglich sein, ohne Veränderungen an der Software Schnittstellen
                             zu anderen Systemen hinzuzufügen. 
@@ -85,7 +89,7 @@ der fertigen Lösung dienen.
         \emph{SPI} oder \emph{$I^2C$} weiteren \emph{SRAM} oder \emph{Flash}-Speicher anzuschliessen.
 
     \subsection{Peripherie}
-        Die Mikrocontroller der \emph{ADuC-702X}-Familie beinhaltet standardmäßig folgende Peripherie:
+        In die Mikrocontroller der \emph{ADuC-702X}-Familie ist standardmäßig folgende Peripherie integriert:
 
         \begin{itemize}
             \item{AD-Wandler:} Bis zu 16 Kanäle mit einer maximalen Abtastrate von 1~\emph{MSPS} bei einer Auflösung von 
@@ -102,16 +106,16 @@ der fertigen Lösung dienen.
         \end{itemize}
         
         Die einzelnen Modelle der \emph{ADuC-702X}-Familie unterscheiden sich vor allem durch die Anzahl vorhandener 
-        Pins (bei dem kleinsten Modell \emph{ADuC-7019} stehen lediglich 40 Pins, beim größten 80 Pins zur Verfügung), 
-        die zudem mehrfach belegt sind. Dies bedeutet, dass es nicht möglich ist, die gesamte Peripherie gleichzeitig zu 
+        Pins. Bei dem kleinsten Modell \emph{ADuC-7019} stehen lediglich 40 Pins, beim größten 80 Pins zur Verfügung. 
+        Diese Pins sind zudem mehrfach belegt. Daher ist es nicht möglich, die gesamte Peripherie gleichzeitig zu 
         verwenden. Je nach Anforderung ist ggf. die Verwendung eines größeren Modells notwendig. 
 
 
 \section{Die Atmel-\emph{ZigBit}-Familie}
 
-    Nachdem die Entscheidung getroffen wurde, \emph{ZigBee} als Funkprotokoll für das Netzwerk zu verwenden, muss
-    nun noch ein geeignetes Hardwarebauteil gefunden werden. Nach Analyse der auf dem Markt verfügbaren Bauteile
-    wurde die Entscheidung getroffen, ein komplett integriertes Modul zu verwenden, bei dem bereits alle 
+    Nachdem die Entscheidung getroffen wurde, \emph{ZigBee} als Funktechnologie für das Netzwerk zu verwenden, muss
+    nun noch ein geeignetes Hardwarebauteil gefunden werden. Da die Herstellung von \emph{HF}\footnote{Hochfrequenz}-Komponenten
+    eine sehr langwierige und komplexe Aufgabe ist, wurde die Entscheidung getroffen, ein komplett integriertes Modul zu verwenden, bei dem bereits alle 
     \emph{HF}-Komponenten und Antenne aufgebracht sind. Passende Lösungen waren von den Firmen \emph{Digi}, 
     \emph{Mikrochip}, \emph{Radicrafts} und \emph{Atmel} verfügbar. Letztendlich wurde die Entscheidung für
     ein Modul der Firma \emph{Atmel} getroffen, da diese nicht nur die günstigsten betrachteten Module,
@@ -124,15 +128,12 @@ der fertigen Lösung dienen.
         Atmel bietet unter dem Namen \emph{ZigBit} eine Palette von ZigBee-Modulen an. Diese Module sind in der
         Ansteuerung identisch, unterscheiden sich jedoch vor allem in ihrer Reichweite. Unter der Bezeichnung 
         \emph{ATZB-24-A2R} wird ein Modul für kurze Reichweiten angeboten. Besonderheit an diesem Modul ist, 
-        dass es bereits über zwei integrierte Antennen verfügt, so dass es ohne weitere Anpassungen in einem 
-        Hardware-Design verwendet werden kann.
+        dass es bereits über zwei integrierte Antennen verfügt, so dass für den Betrieb keine weiteren Bauteile
+        notwendig sind.
         Die \emph{ZigBit}-Module enthalten einen \emph{IEEE 802.15.4-Transceiver}, einen 
         \emph{ATmega1281}-Mikrocontroller sowie einen
         128kB großen \emph{Flash}-Speicher. Das Modul kann mittels \emph{UART}, \emph{SPI} oder \emph{$I^2C$} angesteuert 
         werden.\\
-        \\
-        Ursprünglich wurden die \emph{ZigBit}-Module von der Firma \emph{Meshnetics} entwickelt und verkauft; diese wurde 
-        2009 von der Firma \emph{Atmel} gekauft und die Produkte in das Portfolio von \emph{Atme}l integriert.
 
     \subsection{Firmware}
         \subsubsection{Bitcloud}
@@ -362,7 +363,7 @@ def sendeBefehl(befehl)
             gelesen werden, bis ein Statuscode empfangen wird. Auch hierbei muss natürlich darauf geachtet
             werden, dass zwischen einzelnen Zeilen einer Antwort Ereignisse auftreten können, die entsprechend
             der in Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} vorgestellten Lösung behandelt 
-            werden müssen.
+            werden müssen. Das folgende Pseudocode-Programm zeigt, wie komplexe Antworten behandelt werden können:
 
             \begin{lstlisting}{frame=analyse3}
 def sendeBefehl(befehl)
@@ -400,7 +401,7 @@ def sendeBefehl(befehl)
         Kombiniert man die Lösungen aus Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} und 
         Abschnitt~\ref{behandlung_von_komplexen_antworten}, ergibt sich ein weiteres Problem: Bei der
         Lösung aus Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} wird davon ausgegangen, 
-        dass alle Ergebnisse, bei denen es sich nicht um Statuscodes handelt, Ereignisse sind. Diese Annahme
+        dass alle gelesenen Zeilen, bei denen es sich nicht um Statuscodes handelt, Ereignisse sind. Diese Annahme
         ist jedoch hinfällig, sobald komplexe Antworten vom ZigBit Modul empfangen werden. Daher muss hierbei
         jede Antwort einer genaueren Prüfung unterzogen werden, ob es sich hierbei um einen Statuscode, 
         ein Event oder eine komplexe Antwort handelt. Hierbei kann eine einfache Mustererkennung verwendet
@@ -470,8 +471,13 @@ def sendeBefehl(befehl)
     \section{Powermanagement}\label{analyse_powermanagement}
         Die Spannungsversorgung des Erste-Hilfe-Sensors erfolgt über Batterie. Da der Wechsel der Batterie
         während eines MANVs umständlich und zeitraubend ist, ist eine möglichst hohe Batterielaufzeit
-        wünschenswert. Am besten wäre hierbei, wenn überhaupt kein Batteriewechsel notwendig wäre. Im
-        empfangsbereiten Zustand braucht das \emph{ZigBit}-Modul laut Datenblatt einen Strom von 19~mA.
+        wünschenswert. Am besten wäre hierbei, wenn überhaupt kein Batteriewechsel notwendig wäre. Konkret
+        bedeutet dies, dass mit einer Batterie eine Laufzeit von mindestens 12 Stunden erreichbar sein muss.
+        Eine typische Lithium-Knopfzelle vom Typ \emph{CR-2023} verfügt über eine Kapazität von ca. 240~mAh.
+        Bei einer Laufzeit von 12 Stunden ergibt sich hieraus, dass der Strombedarf des \emph{ZigBit}-Moduls
+        im Mittel 20~mA nicht überschreiten darf. Im empfangsbereiten Zustand braucht das \emph{ZigBit}-Modul 
+        laut Datenblatt einen Strom von 19~mA, ist also grundsätzlich zur Erfüllung dieser Anforderung
+        geeignet\footnote{In dieser Betrachtung ist der Strombedarf des \emph{Erste-Hilfe-Sensors} nicht berücksichtigt.}.
         Zur Verringerung der Leistungsaufnahme bietet das \emph{ZigBit}-Modul einen Energiesparmodus,
         indem lediglich der interne Speicher gehalten und alle andere Hardware abgeschaltet wird. In
         diesem Modus braucht das Modul laut Datenblatt weniger als $6~\mu{}A$.\\
@@ -508,5 +514,6 @@ def sendeBefehl(befehl)
         die Flusskontrolle aktiviert werden. \\
         \\
         Zu beachten ist, dass die Konfiguration des Energiesparmodus bei allen Teilnehmern des Netzes
-        (also auch auf \emph{Routern} und \emph{Coordinatoren}) gleich sein sollte. Der eigentliche Energiesparmodus steht
-        allerdings nur auf Endknoten, also \emph{RFD}s zur Verfügung.
+        (also auch auf \emph{Routern} und \emph{Coordinatoren}) gleich sein sollte, damit Nachrichten
+        an Knoten, die sich im Energiesparmodus befinden, auf den Routern lange genug zwischengespeichert werden.
+        Der eigentliche Energiesparmodus steht allerdings nur auf Endknoten, also \emph{RFD}s zur Verfügung.

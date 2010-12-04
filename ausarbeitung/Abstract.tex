@@ -2,7 +2,8 @@
 \begin{small}
 In dieser Arbeit wird ein kabelloses Sensornetzwerk zur Überwachung von Patienten bei einem 
 Massenanfall von Verletzten entworfen und implementiert. Als Grundlage dieser Entwicklung
-dient der am IBT entwickelte \emph{Erste-Hilfe-Sensor}.
+dient der am IBT entwickelte \emph{Erste-Hilfe-Sensor}, der mit einem neuartigen kapazitiven
+Verfahren Puls und Atmung eines Patienten überwacht.
 Hierzu wird zunächst eine Untersuchung aller in Frage kommenden Funktechnologien vorgenommen,
 wobei ein besonderes Augenmerk auf Energieffizienz und Stabilität der Funktechnologie gelegt wird.
 Hierbei stellt sich \emph{ZigBee} als am besten geeignetes Protokoll heraus, und es wird entschieden,
@@ -23,10 +24,10 @@ Außerdem wird eine Platine entwickelt, auf der das \emph{ZigBee}-Modul und der
 Entwicklung eines \emph{ZigBee}-Treibers für die Firmware des \emph{Erste-Hilfe-Sensors} verwendet.
 \\
 Das Gesamtsystem wird zum Abschluß eingehend evaluiert. Hierbei wird gezeigt, dass alle Komponenten
-erfolgreich miteinander interagieren. Außerdem wird der Stromverbrauch des \emph{ZigBee}-Moduls
+erfolgreich miteinander interagieren. Außerdem wird die Leistungsaufnahme des \emph{ZigBee}-Moduls
 untersucht, und die Abhängigkeit von den Parametern des Energiesparmodus berechnet. Hierbei ergibt 
-sich ein Stromverbrauch von ca. 1,86~mA bei der Wahl von realistischen Parametern für den 
-Energiesparmodus.
+sich ein Strom von ca. 1,86~mA bei der Wahl von realistischen Parametern für den 
+Energiesparmodus. Dies entspricht einer Leistungsaufnahme von ca 5,6~mW.
 %\begin{small} -- Falls es nicht auf eine Seite passt darf die Schrift im Abstract kleiner gemacht werden, aber nur beim Abstract!
 %... Die Zusammenfassung ("`Abstract"') ist nach dem Titel der zweitwichtigste Bestandteil einer
 %wissenschaftlichen Arbeit. Sie sollten deshalb für die Zusammenfassung, ebenso wie für den

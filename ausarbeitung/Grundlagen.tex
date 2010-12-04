@@ -9,8 +9,8 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
 \section{Grundlagen der kabellosen Übetragung}
     \subsection{Paketvermittelte Übertragung}
         Bei der Übertragung von Daten kann grundsätzlich zwischen der Paket- und der Leitungsvermittlung unterschieden 
-        werden. Bei der Leitungsvermittlung wird für jeden Kommunikationsvorgang eine eigene Leitung verwendet. 
-        Meist wird diese Leitung zu Beginn der Kommunikation auf- und beim Ende wieder abgebaut. Hierbei wird
+        werden. Bei der Leitungsvermittlung wird für jeden Kommunikationsvorgang ein eigener Kanal verwendet. 
+        Meist wird dieser Kanal zu Beginn der Kommunikation auf- und beim Ende wieder abgebaut. Hierbei wird
         meist ein fester Weg vorgegeben, den die zu sendenden Daten zwischen zwei Partnern zurücklegen. Über diesen Kanal
         gesendete Daten kommen beim Empfänger in genau der selben Reihenfolge an, wie sie vom Sender gesendet wurden.
         Auch steht meist eine garantierte Mindestübertragungsrate zur Verfügung. \\
@@ -55,7 +55,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             \nomenclature{FHSS}{Frequency Hoping Spread Spectrum}
             Bei dem \textsl{FHSS}-Verfahren handelt es sich um die einfachste Möglichkeit, ein
             Signal zu spreizen. Hierbei wird einfach nach einer bestimmten Zeiteidauer die
-            Sendefrequenz gewechselt, so dass eine Spreizung über ein Zeitintervall erreicht wird.
+            Sendefrequenz gewechselt, so dass eine Spreizung über den Zeitverlauf erreicht wird.
 
         \subsubsection{DSSS: Direct Sequence Spread Spectrum}\label{DSSS}
             \nomenclature{DSSS}{Direct Sequence Spread Spectrum.}
@@ -65,7 +65,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             und erhält so das ursprüngliche Signal. Störungen werden hingegen durch die 
             Operation deutlich erkennbar und können einfach ausgefiltert werden.
         \subsubsection{FHSS vs. DSSS}\label{FHSSvsDSSS}
-            \textsl{FHSS} besitzt gegenüber \textsl{DSSS} den Vorteil, dass es mit weniger Hardware
+            \textsl{FHSS} besitzt gegenüber \textsl{DSSS} den Vorteil, dass es mit geringerem Aufwand
             realisiert werden kann. 
             Dies wird jedoch mit einem höheren Aufwand in der Software erkauft: Kommt es auf einer
             Frequenz zu einer Störung, so geht oft das aktuell gesendete Datenpaket verloren.
@@ -122,7 +122,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         \nomenclature{Hashmap}{Datenstruktur, die aus Paaren aus Schlüsseln und Werten besteht. Auch bekannt als
                             assoziatives \emph{Array} oder \emph{Record}.} 
         \nomenclature{Cast}{Ändern des statischen Datentyps einer Variable auf einen anderen Typ.}
-        \emph{Java} ist eine moderne, statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von 
+        \emph{Java} ist eine statisch typisierte, objektorientierte Programmiersprache. Aufgrund der von 
         \emph{C} entlehnten Syntax erinnert \emph{Java} auf den ersten Blick an \emph{C++}. Bei genauerer 
         Betrachtung unterscheiden sich diese beiden Sprachen jedoch stark. So bietet \emph{Java} im Gegensatz zu 
         \emph{C++} keine Mehrfachvererbung, sondern verwendet sogenannte \emph{Interfaces}. \emph{Java} wird mit einer 
@@ -139,7 +139,9 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         dass auch Laufzeitfehler vermieden werden.\\
         Insbsondere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt werden, 
         ist die Verwendung von klar definierten Schnittstellen (\emph{Interfaces}) besonders wichtig, da nur so eine korrekte
-        Funktionalität nach dem Zusammensetzen der einzelnen Teile gewährleistet werden kann.
+        Funktionalität nach dem Zusammensetzen der einzelnen Teile gewährleistet werden kann. Diese Vorgehensweise nennt
+        man auch \emph{Design by Contract}. Java bietet eine Reihe von Sprachkonstrukte, um \emph{Design by Contract}
+        zu unterstützen.
 
 \section{Python}
     \nomenclature{Python}{Objektorientierte Skriptsprache.}
@@ -148,15 +150,16 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     \nomenclature{Skripstprache}{Programmiersprache, deren Quellcode nicht kompiliert wird.}
     \nomenclature{Kompilieren}{Übersetzen des Quellcodes eines Programms in ausführbaren Binärcode.}
     \nomenclature{Pseudocode}{Vereinfachter Quellcode zur einfachen Beschreibung von Algorithmen.}
-    \emph{Python} ist eine moderne, leicht zu erlernende objektorientierte \emph{Skriptsprache}, die mittlerweile 
+    \emph{Python} ist eine moderne, leicht zu erlernende objektorientierte \emph{Skriptsprache}\footnote{Programmiersprache,
+        bei der Programme nicht kompiliert, d.h. in Maschinencode übersetzt, sondern interpretiert werden.}, die mittlerweile 
     unter fast jedem \emph{UNIX}-artigen Betriebssystem wie \emph{Linux}, \emph{MacOS} oder \emph{BSD} zum Lieferumfang 
     gehört. Darüber hinaus sind auch fertige Pakete für \emph{Windows} verfügbar. \emph{Python} eignet sich daher 
     besonders zum Schreiben von kleinen
-    bis mittelgroßen Skripten. In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
+    bis mittelgroßen Skripten\footnote{Programme, die nicht kompiliert sondern interpretiert werden.}. In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
     eingesetzt, wenn diese Aufgaben in \emph{Java} entweder gar nicht oder nur sehr schwierig zu lösen wären. Beispiele
     hierfür sind die automatische Erkennung von \emph{USB}-Geräten oder der Zugriff auf den seriellen Port.
     Da \emph{Python} eine sehr kompakte und verständliche Implementierung von Programmcode zulässt, wurde in dieser
-    Diplomarbeit weitestgehend versucht, auf Beispiele in Pseudocode zu verzichten, und statt dessen lauffähige
+    Diplomarbeit weitestgehend auf Beispiele in Pseudocode verzichtet, und statt dessen lauffähige
     \emph{Python}-Programme zu verwenden. Dies ist nicht nur eindeutiger, sondern bietet gleichzeitig den Vorteil,
     dass die meisten Programmbeispiele direkt in lauffähige Programme übernommen werden können.
 

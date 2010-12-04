@@ -80,7 +80,7 @@
 \BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 Programmierschnittstellen}{section.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.3.1}{5.2.3.1 Serielle Schnittstellen}{subsection.5.2.3}
 \BOOKMARK [3][-]{subsubsection.5.2.3.2}{5.2.3.2 JTAG}{subsection.5.2.3}
-\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 LEDs}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 LED-Anzeige}{section.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.4.1}{5.2.4.1 Beschreibung der einzelnen LEDs}{subsection.5.2.4}
 \BOOKMARK [3][-]{subsubsection.5.2.4.2}{5.2.4.2 Diagnosecodes}{subsection.5.2.4}
 \BOOKMARK [3][-]{subsubsection.5.2.4.3}{5.2.4.3 ZigBee-USB-Stick}{subsection.5.2.4}

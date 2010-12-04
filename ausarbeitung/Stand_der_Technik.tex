@@ -16,9 +16,16 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
     \subsection{Einführung}
         In diesem Abschnitt werden die gängigsten Funkprotokolle kurz vorgestellt. Insbesondere wird erläutert,
         inwieweit das entsprechende Protokoll als Grundlage für das zu entwickelnde Sensornetz geeignet ist.
+        Kommt diese Untersuchung zu einem positiven Ergebnis, wird eine genauere Betrachtung der Störsicherheit
+        vorgenommen. Hierbei wird insbesondere auf die Störungen durch \emph{WLAN}- und \emph{Bluetooth}-Geräte
+        eingegangen, da diese Technologien mittlerweile eine weite Verbreitung in Mobiltelefonen gefunden
+        haben, und somit eine Störung durch die Mobiltelefone der Unfallopfer und Helfer zu erwarten ist. Außerdem
+        ist geplant, ein \emph{WLAN}-Netzwerk für die Koordination des Überwachungssystems einzusetzen, so dass
+        auch hier auf gegenseitige Störungen geachtet werden muss.
 
         Mit Ausnahme von \emph{DECT} und \emph{GSM} bzw. \emph{UMTS} ist diesen Protokollen gemein, dass 
-        sie Frequenzen aus dem \emph{ISM}-Band verwenden. 
+        sie Frequenzen aus dem \emph{ISM}-Band\footnote{Mehrere Frequenzbänder, für deren Benutzung eine allgemeine 
+            Betriebserlaubnis ausreicht.} verwenden. 
         \nomenclature{ISM-Band}{\emph{Industrial, Scientific and Medical Band} -- Mehrere Frequenzbänder, 
                            für deren Benutzung eine allgemeine Betriebserlaubnis ausreicht.}
 
@@ -90,14 +97,17 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                                             empfangen können.
                 \item{Ad-hoc-Modus:} Diese Betriebsmodus kommt ohne zentrale Komponente aus. Es wird eine
                                      \emph{Peer-to-Peer}-Verbindung zwischen allen am Netzwerk teilnehmenden 
-                                     Stationen aufgebaut. Hierzu ist es notwendig, dass alle Stationen
-                                     sich gegenseitig empfangen können.
+                                     Stationen aufgebaut. Dieser Modus funktioniert nur dann gut, wenn sich
+                                     alle Stationen gegenseitig empfangen können. Wenn dies nicht der Fall ist,
+                                     muss weitere Aufwand betrieben werden, um Kollisionen im Netzwerk zu
+                                     vermeiden (vgl. RTS/CTS in Abschnitt~\ref{WlanStoersicherheit}).
+                                     
             \end{itemize}
 
             Der \emph{Infrastruktur-Modus} bietet gegenüber dem \emph{Ad-Hoc-Modus} klare Vorteile: Im Gegensatz
             zum \emph{Ad-hoc-Modus} ist es nicht notwendig, dass alle Stationen sich gegenseitig empfangen
-            müssen; es reicht aus, wenn der \emph{Acces-Point} empfangen werden kann. Hierdurch ist eine
-            größere Ausbreitung des Netzwerks möglich als im \emph{Ad-Hoc-Modus}. 
+            müssen; es reicht aus, wenn der \emph{Acces-Point} empfangen werden kann. Hierdurch kann der
+            Datenverkehr im Netzwerk besser koordiniert werden als im \emph{Ad-Hoc-Modus}. 
 
             Es werden verschiedene Datenübertragungsraten unterstützt. Standardmäßig wird
             immer die größtmögliche Übertragungsrate gewählt, die störungsfrei verwendet
@@ -120,7 +130,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             Dies führt dazu, dass maximal 3 Netzwerke in einem Gebiet ohne Störungen gleichzeitig betrieben werden
             können. Die maximale Sendeleistung beträgt 100~mW. Es sind Übertragungsraten von 
             5,5 bis 11~MBit/sec (brutto) möglich. Die Nettoübertragungsrate beträgt ca. 50\% der
-            Bruttorate. Es sind Reichweiten bis 40~m (Innen) bzw. 100~m (Im Freien) möglich\cite{WirelessNetworking}.
+            Bruttorate; die restliche Übertragungsrate wird für die Koordination des Datenverkehrs
+            benötigt. Es sind Reichweiten bis 40~m (Innen) bzw. 100~m (Im Freien) möglich\cite{WirelessNetworking}.
 
         \subsubsection{IEEE-802.11g}
             Der \emph{IEEE-802.11g}-Standard stellt eine Erweiterung des \emph{IEEE-802.11b}-Standards dar.
@@ -158,9 +169,12 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             (\emph{Energy-Detection}).
             Ist der Kanal belegt, so wartet sie eine zufällige Zeit, bis sie erneut versucht,
             auf den Kanal zuzugreifen. Wichtig hierbei ist, dass es bei Funkprotokollen nicht
-            möglich ist, eine Kollision zu erkennen um eine bestehende Übertragung abzubrechen,
+            möglich ist, eine Kollision zu erkennen\footnote{Dies liegt an der Tatsache, dass 
+                für Senden und Empfangen der selbe Transceiver verwendet wird. 
+            Daher kann ein Knoten entweder nur Senden oder nur Empfangen. Für das Feststellen einer Kollision müsste er
+            jedoch beide Operationen gleichzeitig durchführen können.}.um eine bestehende Übertragung abzubrechen,
             wie es z.B. bei \textsl{Ethernet} der Fall ist. Zur Vermeidung von Kollisionen
-            kann bei \emph{IEEE 802.11} daher zusätzlich zu \emph{CSMA/CA} eine Art Token-Passing einesetzt
+            kann bei \emph{IEEE 802.11} daher zusätzlich zu \emph{CSMA/CA} eine koordinierte Sendefreigabe eingesetzt
             werden. Hier kommt \emph{RTS/CTS} zum Einsatz: Möchte eine Station ein großes Datenpaket
             senden, so sendet diese zuerst ein \emph{RTS}-Paket\footnote{Ready to send} an den Empfänger, 
             welcher dies mit einem \emph{CTS}-Paket\footnote{Clear to send} quittiert. Erst wenn das
@@ -362,7 +376,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Insbesondere \emph{WLAN}-Netzwerke und \emph{Bluetooth}-Netzwerke stören sich 
                 gegenseitig. Wie in Abschnitt \ref{WlanStoersicherheit} bereits
                 erläutert, wird \emph{WLAN} deutlich stärker durch \emph{Bluetooth} gestört,
-                als dies umgekehrt der Fall wäre. Tritt eine Störung auf einem
+                als dies umgekehrt der Fall ist. Tritt eine Störung auf einem
                 Kanal auf, versucht das \emph{AFH}-Verfahren die Verwendung dieses
                 Kanals zu vermeiden. Hierdurch sinkt zwar die erreichbare
                 Datenübertragungsrate, eine Kommunikation kann allerdings weiter 
@@ -448,7 +462,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Wenn die Sensoren dazu noch in einer hohen Stückzahl verteilt werden
                 sollen, sind möglichst geringe Hardwarekosten notwendig.
                 \\
-                Es ist wichtig, dass \emph{ZigBee} nicht das selbe ist wie \emph{IEEE 802.15.4.}
+                Zu beachten ist, dass \emph{ZigBee} nicht das selbe ist wie \emph{IEEE 802.15.4.}
                 \emph{IEEE 802.15.4} definiert lediglich die unteren beiden Schichten des
                 OSI-Modells, also die Sicherungs- (\emph{MAC}) und die physische Schicht 
                 (\emph{PHY}).\\
@@ -461,7 +475,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 von \emph{ZigBee} zu betreiben. Die Verwendung von \emph{ZigBee} bietet jedoch
                 den Vorteil, dass alle netzwerkrelevanten Aufgaben wie Routing,
                 Übertragungssicherung und Adressierung von Anwendungen bereits
-                durch den \emph{ZigBee}-\emph{Stack} erfolgen und nicht extra vom Entwickler
+                durch den \emph{ZigBee}-\emph{Stack} erfolgen und daher nicht vom Entwickler
                 implementiert werden müssen. Die Verwendung von durch die
                 \emph{ZigBee-Alliance} zertifizierten Modulen bietet zudem den
                 Vorteil der Interoperabilität mit Modulen von anderen Herstellen,
@@ -660,7 +674,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Energiesparmodus.  In diesem Modus wird lediglich der interne Speicher mit Energie versorgt, alle 
                 weitere Hardware wird abgeschaltet. In diesem Modus hat das Gerät (laut Hersteller) einen Strombedarf 
                 von weniger als 6~$\mu{}A$. Befindet sich das Gerät nicht im Energiesparmodus und ist empfangsbereit, 
-                werden 19~mA benötigt; sendet das Gerät sind 18~mA notwendig.\\
+                werden 19~mA benötigt; sendet das Gerät sind 18~mA\footnote{Dass für das Senden weniger
+                    Energie benötigt wird als für das Empfangen mag auf den ersten Blick kontraintuitiv 
+                    erscheinen, ist aber durch den Filteraufwand beim Empfangen zu erklären.} notwendig.\\
                 Durch den Energiesparmodus lassen sich große Einsparungen erreichen. Allerdings kann dieser nur von 
                 \emph{RFDs} verwendet werden, da \emph{FFDs} immer empfangsbereit sein müssen. Zur Übertragung von 
                 Nachrichten wird in diesem Fall von den \emph{RFDs} ein Polling-Verfahren verwendet: Der Elternknoten des 
@@ -698,7 +714,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         \nomenclature{Firmware}{Software, die fest in ein Hardware-Gerät eingebettet ist.}
         Von den oben genannten Standards scheidet \emph{GSM/UMTS} von vorne herein aufgrund der hohen Betriebskosten aus.
         Auch der \emph{DECT}-Standard kommt nicht in Frage, da die Teilnehmerzahl auf 6 Geräte pro Basisstation beschränkt
-        ist.  Der \emph{WLAN}-Standard ist zwar grundsätzlich für eine solche Aufgabe geeignet, allerdings fällt der 
+        ist. \emph{WLAN} ist zwar grundsätzlich für eine solche Aufgabe geeignet, allerdings fällt der 
         Strombedarf mit über 100~mA für den Einsatz im \emph{Erste-Hilfe-Sensor} zu hoch aus. Von der Leistungsaufnahme 
         prinzipiell möglich wäre der Einsatz von \emph{Bluetooth}, wobei insbesondere der kommende 
         \emph{Bluetooth Low Energy} Standard interessant ist. Auch die
@@ -723,13 +739,17 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
 \nomenclature{Monitor}{Gerät zur Überwachung von Vitaldaten von Patienten.}
 \nomenclature{EKG}{Elektrokardiogramm -- Überwachung der Herztätigkeit durch Ableiten elektrischer Signale.}
-Auf dem Markt ist eine breite Palette an kabellosen Produkten zur Patientenüberwachung vorhanden. Die meisten davon setzen
+Auf dem Markt ist eine breite Palette an kabellosen Produkten zur Patientenüberwachung vorhanden. Dies  davon setzen
 entweder \emph{Bluetooth} oder proprietäre Protokolle wie \emph{Z-Wave} zur Funkübertragung ein; \emph{ZigBee} ist bisher in
-keinem Medizinprodukt auf dem Markt zu finden. Fast alle dieser Systeme sind dazu konzipiert, lediglich einen einzelnen 
+keinem Medizinprodukt auf dem Markt zu finden: Fast alle dieser Systeme sind\,--\,im Gegensatz zu den Anforderungen dieser
+Arbeit\,--\,dazu konzipiert, lediglich einen einzelnen 
 Patienten zu überwachen. Die Funktechnologie dient hier vor allem dazu, die Anzahl der Kabel zwischen Patient und Monitoren 
-zu reduzieren, um so die Mobilität des Patienten zu erhöhen. Besonders häufig sind kabellose EKG-Geräte, Pulsoximeter oder 
-invasive Blutdruckmessgeräte anzutreffen. \\
-\\             
+zu reduzieren, um so die Mobilität des Patienten zu erhöhen. Die hohe Teilnehmerzahl von \emph{ZigBee} bietet für die 
+Überwachung eines einzelnen Patienten keine Vorteile, sondern bedeutet vielmehr einen zusätzlichen Aufwand, so dass Lösungen
+wie \emph{Bluetooth} in diesem Fall deutlich praktikabler sind.
+
+Besonders häufig sind kabellose EKG-Geräte, Pulsoximeter oder 
+invasive Blutdruckmessgeräte anzutreffen.              
 Ein Beispiel für ein solches Produkt ist der \emph{CorBELT} der Firma \emph{Corscience}. Es handelt sich dabei
 um ein 1-Kanal EKG mit integriertem Beschleunigungssensor in Form eines Brustgurtes. Das System ist in der
 Lage, eine Vielzahl von Herzproblemen zu erkennen, und 

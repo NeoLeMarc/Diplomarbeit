@@ -69,7 +69,7 @@ Platine Messwerte mit Hilfe eines Zufallszahlen-Generators. Der Generator kann i
                  akutem Handlungsbedarf. Priorisierte Generierung einer Alarmmeldung.
 \end{itemize}
 
-Zur Einstellung und zum Wechsel der Zustände befinden sich 3 Schalter an der Platine. Der Zustand wird mit Hilfe von
+Zur Einstellung und zum Wechsel der Zustände befinden sich 3 Taster an der Platine. Der Zustand wird mit Hilfe von
 drei farbigen LEDs visualisiert. Zusätzlich kann über einen Piezo-Summer ein Alarm auch akustisch wiedergegeben werden.
 Durch die Kombination der drei LEDs werden zusätzlich Status- und Fehlerinformationen der Platine während des 
 Initialisierungsvorgangs ausgegeben.
@@ -114,7 +114,7 @@ möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Konsolenverbind
 über den \emph{UART} des \emph{ADuC-7026-Mikrocontrollers} zu öffnen, um direkt mit dem \emph{ZigBit}-Modul zu
     kommunizieren.}.  Ein Zugriff über \emph{JTAG} ist nicht vorgesehen.
 
-\subsection{LEDs}
+\subsection{LED-Anzeige}
 
 \subsubsection{Beschreibung der einzelnen LEDs}
 Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen.
@@ -187,7 +187,10 @@ Das \emph{ZigBit}-Modul ist via \emph{UART} mit der \emph{MANVNode} verbunden un
 angesprochen.
 
 \subsubsection{Ansteuerung des UARTs}
-Zur Vermeidung von \emph{Busy-Waiting} soll der Treiber für den \emph{UART}s als Interrupt-Service-Routine (ISR)
+Zur Vermeidung von \emph{Busy-Waiting}\footnote{Warten auf ein Ereignis unter Verschwendung von Prozessorleistung.}
+soll der Treiber für den \emph{UART}s als Interrupt-Service-Routine\footnote{Ein Interrupt ist eine von der Hardware
+ausgelöste Unterbrechungsanforderung der Software, welche zum sofortigen Aufruf einer entsprechenden \emph{Interrupt Service Routine}
+führt. Nach Beendigung dieser Routine wird die Bearbeitung an der Stelle der Unterbrechung fortgesetzt.} (ISR)
 realisiert werden. Die Kommunikation zwischen Firmware und \emph{UART}-Treiber erfolgt über Ringpuffer:
 Zu sendende Daten werden von der Firmware in den Sendepuffer gelegt. Sobald der \emph{UART} sendebereit ist, 
 soll der \emph{UART}-Treiber die zu sendenden Daten zeilenweise aus dem Ringpuffer entnehmen und an
@@ -223,8 +226,8 @@ beschriebenen Synchronisationsprobleme. Hierbei soll wie folgt vorgegangen werde
     So bleibt eine Synchronisation mit dem \emph{ZigBit}-Modul in jedem Fall gewährleistet.
 \end{itemize}
 
-Die \emph{SerialNet}-Firmware bietet die Möglichkeit, den Energiesparmodus entweder manuell oder aber in einer 
-konfigurierbaren Periode automatisch aufzurufen (vgl. Abschnitt~\ref{analyse_powermanagement}). Für die
+Die \emph{SerialNet}-Firmware bietet die Möglichkeit, den Energiesparmodus entweder manuell oder aber  
+periodisch (mit konfigurierbaren Abständen und Dauer) aufzurufen (vgl. Abschnitt~\ref{analyse_powermanagement}). Für die
 \emph{MANVNode}-Firmware wird der manuelle Aufruf verwendet, da dieser deutlich flexibler und einfacher zu
 implementieren ist als der automatische Modus: Sobald die Übertragung der Zustandsdaten abgeschlossen ist und
 alle empfangenen Befehle abgearbeitet wurden, ruft die Firmware über den Befehl \emph{AT+WSLEEP} den Energiesparmodus
@@ -270,8 +273,8 @@ Bei der Kommunikation mit dem auf dem \emph{USB-Stick} aufgebrachten \emph{ZigBe
 die selben Synchronisierungsprobleme wie in der \emph{MANVFirmware}. Da der \emph{MANVConnector} jedoch alle 
 Möglichkeiten der \emph{Java Virtual Machine} nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
 
-In der \emph{MANVFirmware} werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Diese 
-finden sich auch im \emph{MANVConnector} wieder. Hierbei werden an Stelle von Ringpuffern priorisierte Warteschlangen, 
+In der \emph{MANVFirmware} werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Dieser 
+Ansatz findet sich auch im \emph{MANVConnector} wieder. Hierbei werden jedoch an Stelle von Ringpuffern priorisierte Warteschlangen, 
 sogenannte Queues verwendet. 
 
 \begin{itemize}
