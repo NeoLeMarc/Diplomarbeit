@@ -19,57 +19,61 @@ Warning--entry type for "alarm" isn't style-file defined
 --line 4 of file Diplomarbeit.bib
 Warning--entry type for "BCM4326_Datasheet" isn't style-file defined
 --line 25 of file Diplomarbeit.bib
-Warning--entry type for "Python" isn't style-file defined
+Warning--entry type for "aduc_datasheet" isn't style-file defined
 --line 34 of file Diplomarbeit.bib
+Warning--entry type for "zigbit_datasheet" isn't style-file defined
+--line 43 of file Diplomarbeit.bib
+Warning--entry type for "Python" isn't style-file defined
+--line 53 of file Diplomarbeit.bib
 Warning--entry type for "RC-Network" isn't style-file defined
---line 51 of file Diplomarbeit.bib
+--line 70 of file Diplomarbeit.bib
 Warning--entry type for "Corscience" isn't style-file defined
---line 173 of file Diplomarbeit.bib
+--line 192 of file Diplomarbeit.bib
 Warning--entry type for "Bluetooth" isn't style-file defined
---line 184 of file Diplomarbeit.bib
+--line 203 of file Diplomarbeit.bib
 Warning--entry type for "BlueSniper" isn't style-file defined
---line 193 of file Diplomarbeit.bib
+--line 212 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
---line 277 of file Diplomarbeit.bib
-You've used 29 entries,
+--line 296 of file Diplomarbeit.bib
+You've used 31 entries,
             2778 wiz_defined-function locations,
-            767 strings with 10305 characters,
-and the built_in function-call counts, 9999 in all, are:
-= -- 963
-> -- 439
-< -- 29
-+ -- 136
-- -- 156
-* -- 530
-:= -- 1656
-add.period$ -- 105
-call.type$ -- 29
-change.case$ -- 145
-chr.to.int$ -- 29
-cite$ -- 29
-duplicate$ -- 409
-empty$ -- 793
-format.name$ -- 188
-if$ -- 2087
+            775 strings with 10597 characters,
+and the built_in function-call counts, 10571 in all, are:
+= -- 1019
+> -- 455
+< -- 31
++ -- 140
+- -- 160
+* -- 552
+:= -- 1742
+add.period$ -- 111
+call.type$ -- 31
+change.case$ -- 153
+chr.to.int$ -- 31
+cite$ -- 31
+duplicate$ -- 433
+empty$ -- 849
+format.name$ -- 196
+if$ -- 2211
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 24
-newline$ -- 162
-num.names$ -- 87
-pop$ -- 271
+newline$ -- 172
+num.names$ -- 93
+pop$ -- 293
 preamble$ -- 1
-purify$ -- 201
+purify$ -- 213
 quote$ -- 0
-skip$ -- 403
+skip$ -- 431
 stack$ -- 0
-substring$ -- 261
-swap$ -- 47
-text.length$ -- 29
-text.prefix$ -- 27
+substring$ -- 275
+swap$ -- 49
+text.length$ -- 31
+text.prefix$ -- 29
 top$ -- 0
-type$ -- 261
+type$ -- 283
 warning$ -- 0
-while$ -- 69
-width$ -- 34
-write$ -- 398
-(There were 8 warnings)
+while$ -- 73
+width$ -- 36
+write$ -- 422
+(There were 10 warnings)

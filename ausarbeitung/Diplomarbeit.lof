@@ -5,8 +5,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces \emph {ZigBee}-Stack (Quelle: Wikipedia)}}{24}{figure.3.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Blockdiagramm des \emph {ADuC7026}-Mikrocontrollers}}{37}{figure.4.1}
-\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Blockdiagramm des ZigBit-24-A2R-Moduls}}{39}{figure.4.2}
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Blockdiagramm des \emph {ADuC7026}-Mikrocontrollers (Quelle: Analog Devices)}}{37}{figure.4.1}
+\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Blockdiagramm des ZigBit-24-A2R-Moduls (Quelle: Atmel)}}{39}{figure.4.2}
 \contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Darstellung des SerialNet-Protokolls als Zustandsautomat}}{41}{figure.4.3}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{52}{figure.5.1}

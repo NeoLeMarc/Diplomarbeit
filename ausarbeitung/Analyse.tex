@@ -47,7 +47,7 @@ der fertigen Lösung dienen.
     \end{itemize}
 
 \section{Der \emph{Analog Devices ADuC702X}-Mikrocontroller}
-    \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers}
+    \Abbildungps{!htb}{1}{diagramme/aduc_blockdiagramm.pdf}{aduc_blockdiagramm}{Blockdiagramm des \emph{ADuC7026}-Mikrocontrollers (Quelle: Analog Devices)}
     \nomenclature{ADuC}{Mikrocontrollerfamilie der Firma \emph{Analog Devices} auf \emph{ARM}-Basis.}
     \nomenclature{ARM}{RISC-Prozessorarchitektur, die von verschiedene Herstellern in Lizenz gefertigt wird.}
     \nomenclature{RISC}{Reduced Instruction Set Computer.}
@@ -86,7 +86,7 @@ der fertigen Lösung dienen.
         Zusätzlich sind auf dem Chip 8~kB \emph{SRAM} sowie 62~kB \emph{Flash}-Speicher vorhanden. Bei den Modellen
         \emph{ADuC7026} und \emph{ADuC7027} ist zusätzlich ein externer Speicherbus vorhanden, über den bis zu 512kB 
         zusätzlicher \emph{SRAM} angeschlossen werden kann. Bei größerem Speicherbedarf besteht die Möglichkeit, über 
-        \emph{SPI} oder \emph{$I^2C$} weiteren \emph{SRAM} oder \emph{Flash}-Speicher anzuschliessen.
+        \emph{SPI} oder \emph{$I^2C$} weiteren \emph{SRAM} oder \emph{Flash}-Speicher anzuschliessen. \cite{aduc_datasheet}
 
     \subsection{Peripherie}
         In die Mikrocontroller der \emph{ADuC-702X}-Familie ist standardmäßig folgende Peripherie integriert:
@@ -123,7 +123,7 @@ der fertigen Lösung dienen.
     Der hier verwendete Modultyp soll nachfolgend kurz vorgestellt werden.
 
     \subsection{Hardware}
-        \Abbildungps{!htb}{1}{diagramme/zigbit_blockdiagramm.pdf}{zigbit_blockdiagramm}{Blockdiagramm des ZigBit-24-A2R-Moduls}
+        \Abbildungps{!htb}{1}{diagramme/zigbit_blockdiagramm.pdf}{zigbit_blockdiagramm}{Blockdiagramm des ZigBit-24-A2R-Moduls (Quelle: Atmel)}
 
         Atmel bietet unter dem Namen \emph{ZigBit} eine Palette von ZigBee-Modulen an. Diese Module sind in der
         Ansteuerung identisch, unterscheiden sich jedoch vor allem in ihrer Reichweite. Unter der Bezeichnung 
@@ -133,7 +133,7 @@ der fertigen Lösung dienen.
         Die \emph{ZigBit}-Module enthalten einen \emph{IEEE 802.15.4-Transceiver}, einen 
         \emph{ATmega1281}-Mikrocontroller sowie einen
         128kB großen \emph{Flash}-Speicher. Das Modul kann mittels \emph{UART}, \emph{SPI} oder \emph{$I^2C$} angesteuert 
-        werden.\\
+        werden. \cite{zigbit_datasheet}
 
     \subsection{Firmware}
         \subsubsection{Bitcloud}
