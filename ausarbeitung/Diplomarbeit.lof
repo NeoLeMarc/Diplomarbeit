@@ -14,7 +14,7 @@
 \contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{55}{figure.5.3}
 \contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{59}{figure.5.4}
 \contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{62}{figure.5.5}
-\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{63}{figure.5.6}
+\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{64}{figure.5.6}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces \emph {MANV-USB-Stick}.}}{69}{figure.6.1}
 \contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{70}{figure.6.2}

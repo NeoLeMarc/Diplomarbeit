@@ -88,11 +88,11 @@
 \contentsline {section}{\numberline {5.3}Software}{58}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}MANVNode-Firmware}{58}{subsection.5.3.1}
 \contentsline {subsubsection}{\numberline {5.3.1.1}Funktionalit\IeC {\"a}t}{58}{subsubsection.5.3.1.1}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Ansteuerung des ZigBit-Moduls}{59}{subsubsection.5.3.1.2}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Ansteuerung des ZigBit-Moduls}{60}{subsubsection.5.3.1.2}
 \contentsline {subsubsection}{\numberline {5.3.1.3}Ansteuerung des UARTs}{60}{subsubsection.5.3.1.3}
 \contentsline {subsubsection}{\numberline {5.3.1.4}Ansteuerung des ZigBit-Modul}{60}{subsubsection.5.3.1.4}
-\contentsline {subsection}{\numberline {5.3.2}MANVSuite}{62}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}MANVConnector}{62}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.2}MANVSuite}{63}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}MANVConnector}{63}{subsection.5.3.3}
 \contentsline {subsubsection}{\numberline {5.3.3.1}Synchronisierung der Befehls\IeC {\"u}bertragung}{65}{subsubsection.5.3.3.1}
 \contentsline {chapter}{\numberline {6}Praktische Realisierung des Sensornetzes}{67}{chapter.6}
 \contentsline {section}{\numberline {6.1}Hardware}{67}{section.6.1}
