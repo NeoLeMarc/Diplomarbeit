@@ -19,49 +19,57 @@ Warning--entry type for "alarm" isn't style-file defined
 --line 4 of file Diplomarbeit.bib
 Warning--entry type for "BCM4326_Datasheet" isn't style-file defined
 --line 25 of file Diplomarbeit.bib
+Warning--entry type for "Python" isn't style-file defined
+--line 34 of file Diplomarbeit.bib
+Warning--entry type for "RC-Network" isn't style-file defined
+--line 51 of file Diplomarbeit.bib
 Warning--entry type for "Corscience" isn't style-file defined
---line 106 of file Diplomarbeit.bib
+--line 173 of file Diplomarbeit.bib
+Warning--entry type for "Bluetooth" isn't style-file defined
+--line 184 of file Diplomarbeit.bib
+Warning--entry type for "BlueSniper" isn't style-file defined
+--line 193 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
---line 188 of file Diplomarbeit.bib
-You've used 19 entries,
+--line 277 of file Diplomarbeit.bib
+You've used 29 entries,
             2778 wiz_defined-function locations,
-            716 strings with 8781 characters,
-and the built_in function-call counts, 6854 in all, are:
-= -- 669
-> -- 314
-< -- 19
-+ -- 100
-- -- 114
-* -- 384
-:= -- 1160
-add.period$ -- 74
-call.type$ -- 19
-change.case$ -- 101
-chr.to.int$ -- 19
-cite$ -- 19
-duplicate$ -- 282
-empty$ -- 510
-format.name$ -- 132
-if$ -- 1420
+            767 strings with 10305 characters,
+and the built_in function-call counts, 9999 in all, are:
+= -- 963
+> -- 439
+< -- 29
++ -- 136
+- -- 156
+* -- 530
+:= -- 1656
+add.period$ -- 105
+call.type$ -- 29
+change.case$ -- 145
+chr.to.int$ -- 29
+cite$ -- 29
+duplicate$ -- 409
+empty$ -- 793
+format.name$ -- 188
+if$ -- 2087
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 20
-newline$ -- 111
-num.names$ -- 57
-pop$ -- 151
+missing$ -- 24
+newline$ -- 162
+num.names$ -- 87
+pop$ -- 271
 preamble$ -- 1
-purify$ -- 136
+purify$ -- 201
 quote$ -- 0
-skip$ -- 270
+skip$ -- 403
 stack$ -- 0
-substring$ -- 191
-swap$ -- 36
-text.length$ -- 19
-text.prefix$ -- 18
+substring$ -- 261
+swap$ -- 47
+text.length$ -- 29
+text.prefix$ -- 27
 top$ -- 0
-type$ -- 165
+type$ -- 261
 warning$ -- 0
-while$ -- 47
-width$ -- 23
-write$ -- 272
-(There were 4 warnings)
+while$ -- 69
+width$ -- 34
+write$ -- 398
+(There were 8 warnings)

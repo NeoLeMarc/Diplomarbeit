@@ -36,8 +36,8 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         Netzwerke besonders an.
         
     \subsection{Frequenzspreizung}
-        \Abbildungps{!htb}{1}{diagramme/frequenzspreizung_fhss-crop.pdf}{frequenzspreizung_fhss}{Frequenzspreizung mit dem \emph{FHSS}-Verfahren}
-        \Abbildungps{!htb}{1}{diagramme/frequenzspreizung_dss-crop.pdf}{frequenzspreizung_dsss}{Frequenzspreizung mit dem \emph{DSSS}-Verfahren}
+        \Abbildungps{!htb}{1}{diagramme/frequenzspreizung_fhss-crop.pdf}{frequenzspreizung_fhss}{Frequenzspreizung mit dem \emph{FHSS}-Verfahren (Frei nach Farahani)}
+        \Abbildungps{!htb}{1}{diagramme/frequenzspreizung_dss-crop.pdf}{frequenzspreizung_dsss}{Frequenzspreizung mit dem \emph{DSSS}-Verfahren (Nach Farahani)}
         \subsubsection{Übersicht}
             Bei der Verwendung von kabellosen Übertragungsprotokollen kann es zu einer Vielzahl von 
             Störungen kommen. Übliche Störquellen sind andere Protokolle, die im selben Band arbeiten,
@@ -56,6 +56,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             Bei dem \textsl{FHSS}-Verfahren handelt es sich um die einfachste Möglichkeit, ein
             Signal zu spreizen. Hierbei wird einfach nach einer bestimmten Zeiteidauer die
             Sendefrequenz gewechselt, so dass eine Spreizung über den Zeitverlauf erreicht wird.
+            \cite{RC-Network}
 
         \subsubsection{DSSS: Direct Sequence Spread Spectrum}\label{DSSS}
             \nomenclature{DSSS}{Direct Sequence Spread Spectrum.}
@@ -64,6 +65,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             Beim Empfang teilt der Empfänger nun das empfangene Signal durch diesen Spreizcode
             und erhält so das ursprüngliche Signal. Störungen werden hingegen durch die 
             Operation deutlich erkennbar und können einfach ausgefiltert werden.
+            \cite{RC-Network} \cite{ZigBeeFarahani}
         \subsubsection{FHSS vs. DSSS}\label{FHSSvsDSSS}
             \textsl{FHSS} besitzt gegenüber \textsl{DSSS} den Vorteil, dass es mit geringerem Aufwand
             realisiert werden kann. 
@@ -106,7 +108,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         (\emph{Java-Runtime-Environment} - \emph{JRE}).
         Die \emph{Java-Laufzeitumgebung} besteht aus einer virtuellen Maschine, die die kompilierten Programme ausführt.
         Dies bietet den Vorteil, dass bei einem Wechsel der Host-Plattform (also z.B. von \emph{Windows} auf \emph{Li\-nux}
-        oder \emph{MacOS}) bestehende Programme nicht neu übersetzt werden müssen.\\
+        oder \emph{MacOS}) bestehende Programme nicht neu übersetzt werden müssen. \cite{Java_Insel}
 
     \subsection{Programmiersprache}
         \nomenclature{C}{Imperative Programmiersprache, insbesonders zur hardwarenahen Entwicklung.}
@@ -136,12 +138,12 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
         gut zur Erstellung von zuverlässigen und fehlerarmen Programmen. Werden konsequent Interfaces verwendet und
         typunsichere \emph{Downcasts} vermieden, so können die meisten Fehler bereits durch den Compiler erkannt und 
         abgefangen werden. Kann ein solches Programm ohne Fehler und Warnungen kompiliert werden, besteht eine hohe Chance,
-        dass auch Laufzeitfehler vermieden werden.\\
+        dass auch Laufzeitfehler vermieden werden. \cite{Java_Insel}
         Insbsondere wenn mehrere Teilaspekte eines Programms von verschiedenen Programmierern umgesetzt werden, 
         ist die Verwendung von klar definierten Schnittstellen (\emph{Interfaces}) besonders wichtig, da nur so eine korrekte
         Funktionalität nach dem Zusammensetzen der einzelnen Teile gewährleistet werden kann. Diese Vorgehensweise nennt
         man auch \emph{Design by Contract}. Java bietet eine Reihe von Sprachkonstrukte, um \emph{Design by Contract}
-        zu unterstützen.
+        zu unterstützen. \cite{Foo}
 
 \section{Python}
     \nomenclature{Python}{Objektorientierte Skriptsprache.}
@@ -155,7 +157,9 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     unter fast jedem \emph{UNIX}-artigen Betriebssystem wie \emph{Linux}, \emph{MacOS} oder \emph{BSD} zum Lieferumfang 
     gehört. Darüber hinaus sind auch fertige Pakete für \emph{Windows} verfügbar. \emph{Python} eignet sich daher 
     besonders zum Schreiben von kleinen
-    bis mittelgroßen Skripten\footnote{Programme, die nicht kompiliert sondern interpretiert werden.}. In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
+    bis mittelgroßen Skripten\footnote{Programme, die nicht kompiliert sondern interpretiert werden.}. \cite{Python}
+    \\
+    In dieser Diplomarbeit wird \emph{Python} für die Interaktion mit dem Betriebssystem
     eingesetzt, wenn diese Aufgaben in \emph{Java} entweder gar nicht oder nur sehr schwierig zu lösen wären. Beispiele
     hierfür sind die automatische Erkennung von \emph{USB}-Geräten oder der Zugriff auf den seriellen Port.
     Da \emph{Python} eine sehr kompakte und verständliche Implementierung von Programmcode zulässt, wurde in dieser
@@ -170,6 +174,7 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     zur Verteilung von Objekten auf verschiedenen Rechnern innerhalb eines Netzwerkes. Das besondere hierbei ist, 
     dass \emph{Corba} nicht an eine bestimmte Programmiersprache gebunden ist. Die einzelnen Objekte bzw. Komponenten 
     können hierbei in jeder beliebigen Programmiersprache implementiert werden, die eine \emph{Corba}-Anbindung besitzt.
+    \cite{Disos}
     Im Rahmen dieser Diplomarbeit ist diese Programmiersprachenunabhängigkeit sehr wichtig, da bestimmte
     Teile (z.B. die Graphische Oberfläche für Mobiltelefone oder die Ansteuerung des \emph{USB-Sticks}) nicht in 
     \emph{Java} realisiert werden können, und statt dessen auf \emph{C++} sowie \emph{Python} ausgewichen werden muss.

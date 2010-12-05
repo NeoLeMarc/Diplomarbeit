@@ -29,11 +29,11 @@
 \contentsline {subsubsection}{\numberline {3.2.4.1}\IeC {\"U}bersicht}{15}{subsubsection.3.2.4.1}
 \contentsline {subsubsection}{\numberline {3.2.4.2}IEEE 802.11b}{16}{subsubsection.3.2.4.2}
 \contentsline {subsubsection}{\numberline {3.2.4.3}IEEE-802.11g}{16}{subsubsection.3.2.4.3}
-\contentsline {subsubsection}{\numberline {3.2.4.4}IEEE 802.11a}{17}{subsubsection.3.2.4.4}
+\contentsline {subsubsection}{\numberline {3.2.4.4}IEEE 802.11a}{16}{subsubsection.3.2.4.4}
 \contentsline {subsubsection}{\numberline {3.2.4.5}St\IeC {\"o}rsicherheit}{17}{subsubsection.3.2.4.5}
 \contentsline {subsubsection}{\numberline {3.2.4.6}Leistungsaufnahme}{18}{subsubsection.3.2.4.6}
-\contentsline {subsection}{\numberline {3.2.5}WPAN: Wireless Personal Area Networks}{19}{subsection.3.2.5}
-\contentsline {subsubsection}{\numberline {3.2.5.1}\IeC {\"U}bersicht}{19}{subsubsection.3.2.5.1}
+\contentsline {subsection}{\numberline {3.2.5}WPAN: Wireless Personal Area Networks}{18}{subsection.3.2.5}
+\contentsline {subsubsection}{\numberline {3.2.5.1}\IeC {\"U}bersicht}{18}{subsubsection.3.2.5.1}
 \contentsline {subsubsection}{\numberline {3.2.5.2}IEEE 802.15}{19}{subsubsection.3.2.5.2}
 \contentsline {subsubsection}{\numberline {3.2.5.3}IEEE 802.15.1: Bluetooth}{19}{subsubsection.3.2.5.3}
 \contentsline {paragraph}{\numberline {3.2.5.3.1}\IeC {\"U}berblick}{19}{paragraph.3.2.5.3.1}
@@ -157,4 +157,4 @@
 \contentsline {section}{\numberline {B.5}Platine}{122}{section.B.5}
 \contentsline {section}{\numberline {B.6}Simulator}{123}{section.B.6}
 \contentsline {section}{\numberline {B.7}Zigbit Firmware}{123}{section.B.7}
-\contentsline {chapter}{Literaturverzeichnis}{127}{appendix*.9}
+\contentsline {chapter}{Literaturverzeichnis}{128}{appendix*.9}

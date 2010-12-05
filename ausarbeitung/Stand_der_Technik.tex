@@ -51,9 +51,10 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         Beim Einsatz außerhalb Europas muss bedacht werden, dass die Verwendung der Frequenzen von
         1800 bis 1900~MHz hier evtl. nicht zulässig ist. In diesem Fall muss auf das \emph{ISM}-Band 
         ausgewichen werden, welches  mit anderen Anwendungen geteilt werden muss.
+        \cite{etsi_dect}
 
         \emph{DECT} bietet eine optionale Verschlüsselung der Nutzdaten, welche jedoch im Jahr 2009 gebrochen 
-        wurde, so dass \emph{DECT} mittlerweile als unsicher gelten muss.
+        wurde, so dass \emph{DECT} mittlerweile als unsicher gelten muss. \cite{dedected}
 
         Aufgrund der geringen Nutzdatenmenge sowie der Einschränkung auf 6 Teilnehmer ist
         \emph{DECT} für den Einsatz als Sensornetz-Protokoll nicht geeignet.
@@ -69,11 +70,11 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         bis 2,2~GHz zur Verfügung. Die Kommunikation findet zwischen einem Mobiltelefon und einer
         Basisstation statt, wobei die maximale Sendeleistung 2~W (im Falle von GSM) bzw. 250~mW (im Falle
         von UMTS) beträgt. Mit \emph{GSM}-900 können im Freien bei Sichtkontakt Reichweiten bis zu 35~km erreicht
-        werden.\\
+        werden. \cite{Mobilfunk}
         \\
         Die Frequenzen für \emph{GSM} und \emph{UMTS} sind fest dem jeweiligen Netzbetreiber zugeordnet. Der Preis
-        für einen Frequenzbereich ist sehr hoch. Bei der Versteigerung der \emph{UMTS}-Frequenzen im 
-        Jahr 2000 wurden Preise von bis zu 8 Milliarden Euro pro Lizenz erreicht. 
+        für einen Frequenzbereich ist sehr hoch. Bei der Versteigerung der \emph{UMTS}-Frequenzen im  
+        Jahr 2000 wurden Preise von bis zu 8 Milliarden Euro pro Lizenz erreicht. \cite{umts_versteigerung} 
 
     \subsection{WLAN}\label{wlan}
         \nomenclature{IEEE}{Institute of Electrical and Electronics Engineers}
@@ -86,7 +87,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         \subsubsection{Übersicht}
             \emph{WLAN} oder \emph{Wi-Fi} bezeichnet den heute gängigen Standard eines Funkprotokolls zum Aufbau
             von kabellosen lokalen Netzwerken. Es gibt mehrere Versionen des Standards, die verbreitetsten
-            sind \emph{IEEE 802.11a, IEEE 802.11b/g} und \emph{IEEE 802.11n}. 
+            sind \emph{IEEE 802.11a, IEEE 802.11b/g} und \emph{IEEE 802.11n}. \cite{ieee_wlan}
 
             Es sind zwei Betriebsmodi möglich:
 
@@ -268,9 +269,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 wurde von der \emph{IEEE} jedoch beschlossen, nicht weiter mit der \emph{Bluetooth SIG}
                 zu kooperiern, so dass es keine weiteren Versionen des \emph{IEEE-802.15.1}-Standards 
                 geben wird. Aktuell ist Version 4.0 des \emph{Bluetooth}-Standards, wobei jedoch die
-                meisten Geräte nur ältere Standards (typischerweise 2.0 oder 2.1) unterstützen.
-                Für den \emph{Bluetooth-4.0}-Standard existiert zum Zeitpunkt dieser Arbeit keine 
-                Implementierung auf dem Markt.\\
+                meisten Geräte nur ältere Standards (typischerweise 2.0 oder 2.1) unterstützen. \cite{Bluetooth} 
+                \\
+                    \\
                 Die wichtigsten Meilensteine der \emph{Bluetooth}-Entwicklung können folgendermaßen
                 zusammengefasst werden:
 
@@ -327,7 +328,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Ist diese Überprüfung erfolgreich, generieren beide Geräte einen kryptographischen
                 Schlüssel und die weitere Kommunikation erfolgt verschlüsselt. Sobald zwei
                 Geräte gepaart wurden, können sie miteinander kommunizieren, ohne eine erneute
-                Paarung durchführen zu müssen.
+                Paarung durchführen zu müssen. \cite{Bluetooth}
 
             \paragraph{Reichweite}
                 Bluetooth definiert drei verschiedene Klassen von Geräten mit jeweils
@@ -349,8 +350,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 % Quelle: Def con
                 Es bleibt allerdings festzustellen, dass mit Hilfe von geeigneten
                 Antennen die Reichweite von \emph{Bluetooth} signifikant gesteigert werden
-                kann. So ist es z.B. einer Gruppe von Hackern gelungen, mit Hilfe von
-                Richtantennen mit \emph{Bluetooth} eine Distanz von über 800~m zu überbrücken.
+                kann. So lassen sich mit Hilfe der \emph{BlueSniper}-Richtantenne selbst mit
+                Klasse-2-Geräten Distanzen von über 800~m überbrücken. \cite{BlueSniper}
 
             \paragraph{Übertragungsrate}
                 Die Übertragungsrate von \emph{Bluetooth} hängt natürlich von Faktoren wie
@@ -451,7 +452,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \nomenclature{Stack}{Stapel, entweder als Datenstruktur in einer Programmiersprache,
                                      Stapelspeicher eines Prozessors oder im Sinne eines 
                                      Protokollstapels.}
-                \Abbildungps{!htb}{0.5}{diagramme/Zigbee_stack.pdf}{zigbee_stack}{\emph{ZigBee}-Stack}
+                \Abbildungps{!htb}{0.5}{diagramme/Zigbee_stack.pdf}{zigbee_stack}{\emph{ZigBee}-Stack (Quelle: Wikipedia)}
                 Bei \emph{IEEE 802.15.4} handelt es sich um einen Standard für 
                 zuverlässige, drahtlose Kommunikation mit niedriger Übertragungsrate
                 bei hoher Reichweite, niedriger Leistungsaufnahme und geringem Stückpreis.\\
@@ -462,14 +463,13 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Wenn die Sensoren dazu noch in einer hohen Stückzahl verteilt werden
                 sollen, sind möglichst geringe Hardwarekosten notwendig.
                 \\
-                Zu beachten ist, dass \emph{ZigBee} nicht das selbe ist wie \emph{IEEE 802.15.4.}
+                Zu beachten ist, dass \emph{ZigBee} nicht das selbe ist wie \emph{IEEE 802.15.4.}\\
                 \emph{IEEE 802.15.4} definiert lediglich die unteren beiden Schichten des
                 OSI-Modells, also die Sicherungs- (\emph{MAC}) und die physische Schicht 
-                (\emph{PHY}).\\
-                Bei \emph{ZigBee} handelt es sich hingegen um einen kompletten Protokollstapel,
+                (\emph{PHY}).Bei \emph{ZigBee} handelt es sich hingegen um einen kompletten Protokollstapel,
                 der die beiden Schichten von \emph{IEEE 802.15.4} um 3 weiter Schichten,
                 namentlich Vermittlungs-, Verschlüsslungs und Anwendungsschicht 
-                ergänzt.  \\
+                ergänzt. \cite{zigbee_specification}   \\
                 \\
                 Es ist möglich, einen \emph{IEEE 802.15.4}-\emph{Transceiver} ohne den Einsatz
                 von \emph{ZigBee} zu betreiben. Die Verwendung von \emph{ZigBee} bietet jedoch
@@ -585,7 +585,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Pakete, die an alle Stationen gleichzeitig verschickt werden.}\,--\,mit einer Antwort
                 an den Sender quittiert. Erhält der Sender innerhalb einer bestimmten Zeitspanne
                 keine Antwort, so sendet er das verlorene Paket erneut. Darüber hinaus gibt es in jedem
-                Datenpaket eine \emph{CRC}-Prüfsumme, mit deren Hilfe einfache Bitfehler erkannt werden können.
+                Datenpaket eine \emph{CRC}-Prüfsumme, mit deren Hilfe Übertragungsfehler erkannt werden können.
                 Auch in diesem Fall wird das Paket erneut übertragen. Hierbei sollte jedoch bemerkt werden,
                 dass ein \emph{CRC}-Verfahren keinen Schutz gegen absichtliche Manipulation bietet. Dies kann
                 mit Hilfe der in Abschnitt~\ref{ZigBee Sicherheit} beschriebenen kryptographischen Verfahren
@@ -689,8 +689,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         \subsubsection{Bluetooth Low Energy (ehemals Wibree)}\label{wibree}
             \emph{Bluetooth Low Energy} ist ein neuer Standard für \emph{WPANs}, der mit dem \emph{Bluetooth-4.0}-Standard 
             eingeführt wurde. Er definiert eine Datenübertragung mit bis zu 1~MBit/s (netto 0,26~MBit/s) bei einem 
-            Strombedarf, der unter 20~mA liegen soll, wobei laut Spezifikation eine Reichweite von bis zu 100~m erreicht werden 
-            kann.\\
+            Strombedarf, der unter 20~mA liegen soll, wobei laut Spezifikation eine Reichweite von bis zu 100~m erreicht 
+            werden kann. \cite{Bluetooth}\\
             Zum Zeitpunkt dieser Diplomarbeit befanden sich Funkchips des \emph{Bluetooth-Low-Energy}-Standards 
             leider noch in der frühen Testphase und waren auf dem Markt nicht erhältlich, so dass dieser Standard 
             bei der Auswahl eines geeigneten Funkprotokolls nicht in die engere Betrachtung gezogen werden konnte.
@@ -712,6 +712,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 
     \subsection{Diskussion}
         \nomenclature{Firmware}{Software, die fest in ein Hardware-Gerät eingebettet ist.}
+        \nomenclature{Mesh-Netzwerk}{Vermaschtes Netzwerke, meist in Verbindung mit mobilen Ad-Hoc Netzwerken,
+                                     bei denen einzelne Knoten spontan Netzwerke bilden.}
         Von den oben genannten Standards scheidet \emph{GSM/UMTS} von vorne herein aufgrund der hohen Betriebskosten aus.
         Auch der \emph{DECT}-Standard kommt nicht in Frage, da die Teilnehmerzahl auf 6 Geräte pro Basisstation beschränkt
         ist. \emph{WLAN} ist zwar grundsätzlich für eine solche Aufgabe geeignet, allerdings fällt der 
