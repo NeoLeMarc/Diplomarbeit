@@ -14,37 +14,38 @@
 \contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{55}{figure.5.3}
 \contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{59}{figure.5.4}
 \contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{62}{figure.5.5}
-\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{64}{figure.5.6}
+\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Klassendiagramm der Threads des \emph {MANVConnectors}}}{64}{figure.5.6}
+\contentsline {figure}{\numberline {\relax 5.7}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{65}{figure.5.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces \emph {MANV-USB-Stick}.}}{69}{figure.6.1}
-\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{70}{figure.6.2}
-\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Komponentendiagramm der \emph {CORBA}-Schnittstellen. (Quelle: Jan Tepelmann)}}{80}{figure.6.3}
+\contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces \emph {MANV-USB-Stick}.}}{71}{figure.6.1}
+\contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{72}{figure.6.2}
+\contentsline {figure}{\numberline {\relax 6.3}{\ignorespaces Komponentendiagramm der \emph {CORBA}-Schnittstellen. (Quelle: Jan Tepelmann)}}{82}{figure.6.3}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Diagramm des Aufbaus des \emph {Integrationstests}.}}{84}{figure.7.1}
-\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Photo des Aufbaus des \emph {Integrationstests}.}}{85}{figure.7.2}
-\contentsline {figure}{\numberline {\relax 7.3}{\ignorespaces Screenshot der \emph {MANVGui} w\IeC {\"a}hrend des Integrationstests.}}{86}{figure.7.3}
-\contentsline {figure}{\numberline {\relax 7.4}{\ignorespaces Router oder Koordinator im Normalbetrieb. }}{88}{figure.7.4}
-\contentsline {figure}{\numberline {\relax 7.5}{\ignorespaces Endknoten im Normalbetrieb ohne Energiesparmodus. }}{88}{figure.7.5}
-\contentsline {figure}{\numberline {\relax 7.6}{\ignorespaces Analyse des Spannungsverlaufs eines Clients im Normalbetrieb.}}{89}{figure.7.6}
-\contentsline {figure}{\numberline {\relax 7.7}{\ignorespaces Detailaufnahme eines Empfangsmodus-\emph {Peaks}. }}{89}{figure.7.7}
-\contentsline {figure}{\numberline {\relax 7.8}{\ignorespaces Aus dem Energiesparmodus erwachter Client. }}{91}{figure.7.8}
-\contentsline {figure}{\numberline {\relax 7.9}{\ignorespaces Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}}{91}{figure.7.9}
-\contentsline {figure}{\numberline {\relax 7.10}{\ignorespaces Client, der das periodische Aufrufen des Energiesparmodus nutzt. }}{92}{figure.7.10}
-\contentsline {figure}{\numberline {\relax 7.11}{\ignorespaces Client mit deaktiviertem Empfangsmodus. }}{94}{figure.7.11}
-\contentsline {figure}{\numberline {\relax 7.12}{\ignorespaces Beitrittsvorgang eines Clients in ein Netzwerk. }}{94}{figure.7.12}
-\contentsline {figure}{\numberline {\relax 7.13}{\ignorespaces Client, der die Verbindung zum Netzwerk verloren hat.}}{95}{figure.7.13}
+\contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Diagramm des Aufbaus des \emph {Integrationstests}.}}{86}{figure.7.1}
+\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Photo des Aufbaus des \emph {Integrationstests}.}}{87}{figure.7.2}
+\contentsline {figure}{\numberline {\relax 7.3}{\ignorespaces Screenshot der \emph {MANVGui} w\IeC {\"a}hrend des Integrationstests.}}{88}{figure.7.3}
+\contentsline {figure}{\numberline {\relax 7.4}{\ignorespaces Router oder Koordinator im Normalbetrieb. }}{90}{figure.7.4}
+\contentsline {figure}{\numberline {\relax 7.5}{\ignorespaces Endknoten im Normalbetrieb ohne Energiesparmodus. }}{90}{figure.7.5}
+\contentsline {figure}{\numberline {\relax 7.6}{\ignorespaces Analyse des Spannungsverlaufs eines Clients im Normalbetrieb.}}{91}{figure.7.6}
+\contentsline {figure}{\numberline {\relax 7.7}{\ignorespaces Detailaufnahme eines Empfangsmodus-\emph {Peaks}. }}{91}{figure.7.7}
+\contentsline {figure}{\numberline {\relax 7.8}{\ignorespaces Aus dem Energiesparmodus erwachter Client. }}{93}{figure.7.8}
+\contentsline {figure}{\numberline {\relax 7.9}{\ignorespaces Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}}{93}{figure.7.9}
+\contentsline {figure}{\numberline {\relax 7.10}{\ignorespaces Client, der das periodische Aufrufen des Energiesparmodus nutzt. }}{94}{figure.7.10}
+\contentsline {figure}{\numberline {\relax 7.11}{\ignorespaces Client mit deaktiviertem Empfangsmodus. }}{96}{figure.7.11}
+\contentsline {figure}{\numberline {\relax 7.12}{\ignorespaces Beitrittsvorgang eines Clients in ein Netzwerk. }}{96}{figure.7.12}
+\contentsline {figure}{\numberline {\relax 7.13}{\ignorespaces Client, der die Verbindung zum Netzwerk verloren hat.}}{97}{figure.7.13}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{112}{figure.A.1}
-\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}: Stromversorgung.}}{113}{figure.A.2}
-\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {JTAG}.}}{114}{figure.A.3}
-\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Schaltplan der \emph {MANVNode}: Mikrocontroller.}}{115}{figure.A.4}
-\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {ZigBit}-Modul.}}{116}{figure.A.5}
-\contentsline {figure}{\numberline {\relax A.6}{\ignorespaces Schaltplan der \emph {MANVNode}: Benutzerschnittstelle.}}{117}{figure.A.6}
-\contentsline {figure}{\numberline {\relax A.7}{\ignorespaces Oberseite der Platine der MANVNode.}}{118}{figure.A.7}
-\contentsline {figure}{\numberline {\relax A.8}{\ignorespaces Unterseite der Platine der MANVNode.}}{119}{figure.A.8}
-\contentsline {figure}{\numberline {\relax A.9}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Linke Seite)}}{120}{figure.A.9}
-\contentsline {figure}{\numberline {\relax A.10}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Rechte Seite)}}{121}{figure.A.10}
-\contentsline {figure}{\numberline {\relax A.11}{\ignorespaces Klassendiagramm des MANV-Connectors (Vollst\IeC {\"a}ndig).}}{122}{figure.A.11}
+\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{114}{figure.A.1}
+\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}: Stromversorgung.}}{115}{figure.A.2}
+\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {JTAG}.}}{116}{figure.A.3}
+\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Schaltplan der \emph {MANVNode}: Mikrocontroller.}}{117}{figure.A.4}
+\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {ZigBit}-Modul.}}{118}{figure.A.5}
+\contentsline {figure}{\numberline {\relax A.6}{\ignorespaces Schaltplan der \emph {MANVNode}: Benutzerschnittstelle.}}{119}{figure.A.6}
+\contentsline {figure}{\numberline {\relax A.7}{\ignorespaces Oberseite der Platine der MANVNode.}}{120}{figure.A.7}
+\contentsline {figure}{\numberline {\relax A.8}{\ignorespaces Unterseite der Platine der MANVNode.}}{121}{figure.A.8}
+\contentsline {figure}{\numberline {\relax A.9}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Linke Seite)}}{122}{figure.A.9}
+\contentsline {figure}{\numberline {\relax A.10}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Rechte Seite)}}{123}{figure.A.10}
+\contentsline {figure}{\numberline {\relax A.11}{\ignorespaces Klassendiagramm des MANV-Connectors (Vollst\IeC {\"a}ndig).}}{124}{figure.A.11}
 \addvspace {10\p@ }
