@@ -1,5 +1,7 @@
-\contentsline {chapter}{Abbildungsverzeichnis}{XIV}{chapter*.5}
-\contentsline {chapter}{Tabellenverzeichnis}{XV}{chapter*.6}
+\contentsline {chapter}{Abbildungsverzeichnis}{XIV}{chapter*.4}
+\contentsline {chapter}{Tabellenverzeichnis}{XV}{chapter*.5}
+\contentsline {chapter}{Quellcodeverzeichnis}{XVII}{chapter*.6}
+\contentsline {chapter}{Glossar}{XXVIII}{chapter*.8}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation der Arbeit}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Aufgaben und Ziele der Arbeit}{3}{section.1.2}
@@ -11,10 +13,10 @@
 \contentsline {subsubsection}{\numberline {2.1.2.1}\IeC {\"U}bersicht}{8}{subsubsection.2.1.2.1}
 \contentsline {subsubsection}{\numberline {2.1.2.2}FHSS: Frequency Hoping Spread Spectrum}{9}{subsubsection.2.1.2.2}
 \contentsline {subsubsection}{\numberline {2.1.2.3}DSSS: Direct Sequence Spread Spectrum}{9}{subsubsection.2.1.2.3}
-\contentsline {subsubsection}{\numberline {2.1.2.4}FHSS vs. DSSS}{9}{subsubsection.2.1.2.4}
+\contentsline {subsubsection}{\numberline {2.1.2.4}FHSS vs. DSSS}{10}{subsubsection.2.1.2.4}
 \contentsline {section}{\numberline {2.2}Java}{10}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}\IeC {\"U}bersicht}{10}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Programmiersprache}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.2}Programmiersprache}{11}{subsection.2.2.2}
 \contentsline {section}{\numberline {2.3}Python}{11}{section.2.3}
 \contentsline {section}{\numberline {2.4}Corba}{12}{section.2.4}
 \contentsline {chapter}{\numberline {3}Stand der Technik}{13}{chapter.3}
@@ -27,22 +29,22 @@
 \contentsline {subsubsection}{\numberline {3.2.4.1}\IeC {\"U}bersicht}{15}{subsubsection.3.2.4.1}
 \contentsline {subsubsection}{\numberline {3.2.4.2}IEEE 802.11b}{16}{subsubsection.3.2.4.2}
 \contentsline {subsubsection}{\numberline {3.2.4.3}IEEE-802.11g}{16}{subsubsection.3.2.4.3}
-\contentsline {subsubsection}{\numberline {3.2.4.4}IEEE 802.11a}{16}{subsubsection.3.2.4.4}
+\contentsline {subsubsection}{\numberline {3.2.4.4}IEEE 802.11a}{17}{subsubsection.3.2.4.4}
 \contentsline {subsubsection}{\numberline {3.2.4.5}St\IeC {\"o}rsicherheit}{17}{subsubsection.3.2.4.5}
 \contentsline {subsubsection}{\numberline {3.2.4.6}Leistungsaufnahme}{18}{subsubsection.3.2.4.6}
-\contentsline {subsection}{\numberline {3.2.5}WPAN: Wireless Personal Area Networks}{18}{subsection.3.2.5}
-\contentsline {subsubsection}{\numberline {3.2.5.1}\IeC {\"U}bersicht}{18}{subsubsection.3.2.5.1}
+\contentsline {subsection}{\numberline {3.2.5}WPAN: Wireless Personal Area Networks}{19}{subsection.3.2.5}
+\contentsline {subsubsection}{\numberline {3.2.5.1}\IeC {\"U}bersicht}{19}{subsubsection.3.2.5.1}
 \contentsline {subsubsection}{\numberline {3.2.5.2}IEEE 802.15}{19}{subsubsection.3.2.5.2}
 \contentsline {subsubsection}{\numberline {3.2.5.3}IEEE 802.15.1: Bluetooth}{19}{subsubsection.3.2.5.3}
 \contentsline {paragraph}{\numberline {3.2.5.3.1}\IeC {\"U}berblick}{19}{paragraph.3.2.5.3.1}
 \contentsline {paragraph}{\numberline {3.2.5.3.2}Pairing}{20}{paragraph.3.2.5.3.2}
 \contentsline {paragraph}{\numberline {3.2.5.3.3}Reichweite}{21}{paragraph.3.2.5.3.3}
-\contentsline {paragraph}{\numberline {3.2.5.3.4}\IeC {\"U}bertragungsrate}{21}{paragraph.3.2.5.3.4}
+\contentsline {paragraph}{\numberline {3.2.5.3.4}\IeC {\"U}bertragungsrate}{22}{paragraph.3.2.5.3.4}
 \contentsline {paragraph}{\numberline {3.2.5.3.5}St\IeC {\"o}rsicherheit}{22}{paragraph.3.2.5.3.5}
 \contentsline {paragraph}{\numberline {3.2.5.3.6}Anzahl Teilnehmer}{22}{paragraph.3.2.5.3.6}
 \contentsline {paragraph}{\numberline {3.2.5.3.7}Leistungsaufnahme}{23}{paragraph.3.2.5.3.7}
-\contentsline {subsubsection}{\numberline {3.2.5.4}IEEE 802.15.4: ZigBee}{23}{subsubsection.3.2.5.4}
-\contentsline {paragraph}{\numberline {3.2.5.4.1}\IeC {\"U}bersicht}{23}{paragraph.3.2.5.4.1}
+\contentsline {subsubsection}{\numberline {3.2.5.4}IEEE 802.15.4: ZigBee}{24}{subsubsection.3.2.5.4}
+\contentsline {paragraph}{\numberline {3.2.5.4.1}\IeC {\"U}bersicht}{24}{paragraph.3.2.5.4.1}
 \contentsline {paragraph}{\numberline {3.2.5.4.2}Netzstruktur}{25}{paragraph.3.2.5.4.2}
 \contentsline {paragraph}{\numberline {3.2.5.4.3}St\IeC {\"o}rsicherheit}{26}{paragraph.3.2.5.4.3}
 \contentsline {paragraph}{\numberline {3.2.5.4.4}Verschl\IeC {\"u}sselung}{29}{paragraph.3.2.5.4.4}
@@ -56,14 +58,14 @@
 \contentsline {section}{\numberline {4.1}Anforderungen an ein kabelloses System zur \IeC {\"U}berwachung von Patienten}{35}{section.4.1}
 \contentsline {section}{\numberline {4.2}Der \emph {Analog Devices ADuC702X}-Mikrocontroller}{36}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Beschreibung}{37}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Peripherie}{37}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.2}Peripherie}{38}{subsection.4.2.2}
 \contentsline {section}{\numberline {4.3}Die Atmel-\emph {ZigBit}-Familie}{38}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Hardware}{39}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Firmware}{39}{subsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.2.1}Bitcloud}{39}{subsubsection.4.3.2.1}
+\contentsline {subsection}{\numberline {4.3.2}Firmware}{40}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Bitcloud}{40}{subsubsection.4.3.2.1}
 \contentsline {subsubsection}{\numberline {4.3.2.2}SerialNet}{40}{subsubsection.4.3.2.2}
 \contentsline {paragraph}{\numberline {4.3.2.2.1}\IeC {\"U}berblick}{40}{paragraph.4.3.2.2.1}
-\contentsline {paragraph}{\numberline {4.3.2.2.2}SerialNet AT-Protokoll}{40}{paragraph.4.3.2.2.2}
+\contentsline {paragraph}{\numberline {4.3.2.2.2}SerialNet AT-Protokoll}{41}{paragraph.4.3.2.2.2}
 \contentsline {section}{\numberline {4.4}Kommunikation mit dem \emph {ZigBit}-Modul}{43}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Problemstellung}{43}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Behandlung asynchron auftretender Ereignisse}{44}{subsection.4.4.2}
@@ -86,7 +88,7 @@
 \contentsline {section}{\numberline {5.3}Software}{58}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}MANVNode-Firmware}{58}{subsection.5.3.1}
 \contentsline {subsubsection}{\numberline {5.3.1.1}Funktionalit\IeC {\"a}t}{58}{subsubsection.5.3.1.1}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Ansteuerung des ZigBit-Moduls}{60}{subsubsection.5.3.1.2}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Ansteuerung des ZigBit-Moduls}{59}{subsubsection.5.3.1.2}
 \contentsline {subsubsection}{\numberline {5.3.1.3}Ansteuerung des UARTs}{60}{subsubsection.5.3.1.3}
 \contentsline {subsubsection}{\numberline {5.3.1.4}Ansteuerung des ZigBit-Modul}{60}{subsubsection.5.3.1.4}
 \contentsline {subsection}{\numberline {5.3.2}MANVSuite}{62}{subsection.5.3.2}
@@ -97,11 +99,11 @@
 \contentsline {subsection}{\numberline {6.1.1}Anbindung des ZigBit-Moduls an den USB-Port}{67}{subsection.6.1.1}
 \contentsline {subsection}{\numberline {6.1.2}Herstellung und Best\IeC {\"u}ckung der Platine der \emph {MANVNode}}{68}{subsection.6.1.2}
 \contentsline {section}{\numberline {6.2}Firmware}{68}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Verwendete Interrupts}{69}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.1}Verwendete Interrupts}{70}{subsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.1.1}Zugriff auf UART}{71}{subsubsection.6.2.1.1}
 \contentsline {section}{\numberline {6.3}MANVConnector}{72}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Zugriff auf die serielle Schnittstelle}{72}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit-USB-Sticks}}{75}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.2}Automatische Erkennung des \emph {ZigBit-USB-Sticks}}{76}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}CORBA-Anbindung}{79}{subsection.6.3.3}
 \contentsline {chapter}{\numberline {7}Ergebnisse}{81}{chapter.7}
 \contentsline {section}{\numberline {7.1}Realisierbarkeit}{81}{section.7.1}
@@ -110,50 +112,49 @@
 \contentsline {subsubsection}{\numberline {7.1.2.1}Durchf\IeC {\"u}hrung}{82}{subsubsection.7.1.2.1}
 \contentsline {subsubsection}{\numberline {7.1.2.2}Ergebnisse}{83}{subsubsection.7.1.2.2}
 \contentsline {subsection}{\numberline {7.1.3}Austauschbarkeit des \emph {MANVConnectors}}{83}{subsection.7.1.3}
-\contentsline {subsection}{\numberline {7.1.4}Anbindbarkeit an externe Software}{83}{subsection.7.1.4}
+\contentsline {subsection}{\numberline {7.1.4}Anbindbarkeit an externe Software}{84}{subsection.7.1.4}
 \contentsline {subsubsection}{\numberline {7.1.4.1}Durchf\IeC {\"u}hrung}{84}{subsubsection.7.1.4.1}
 \contentsline {subsubsection}{\numberline {7.1.4.2}Ergebnisse}{84}{subsubsection.7.1.4.2}
 \contentsline {section}{\numberline {7.2}Leistungsaufnahme des ZigBit-Moduls}{84}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Leistungsaufnahme im Normalbetrieb}{85}{subsection.7.2.1}
 \contentsline {subsection}{\numberline {7.2.2}Leistungsaufnahme bei Verwendung des Energiesparmodus.}{88}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Sonderf\IeC {\"a}lle}{90}{subsection.7.2.3}
-\contentsline {section}{\numberline {7.3}Reichweite}{91}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Reichweite im Freien}{92}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Reichweite innerhalb geschlossener R\IeC {\"a}ume}{93}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.2.3}Sonderf\IeC {\"a}lle}{91}{subsection.7.2.3}
+\contentsline {section}{\numberline {7.3}Reichweite}{93}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Reichweite im Freien}{93}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Reichweite innerhalb geschlossener R\IeC {\"a}ume}{94}{subsection.7.3.2}
 \contentsline {chapter}{\numberline {8}Diskussion}{95}{chapter.8}
-\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{99}{chapter.9}
-\contentsline {section}{\numberline {9.1}Zusammenfassung}{99}{section.9.1}
-\contentsline {section}{\numberline {9.2}Sicherheit des Netzwerkes}{101}{section.9.2}
-\contentsline {subsection}{\numberline {9.2.1}Aktueller Stand}{101}{subsection.9.2.1}
-\contentsline {subsection}{\numberline {9.2.2}Angriffsszenarien}{101}{subsection.9.2.2}
-\contentsline {subsubsection}{\numberline {9.2.2.1}Aussp\IeC {\"a}hen von Patientendaten}{101}{subsubsection.9.2.2.1}
-\contentsline {subsubsection}{\numberline {9.2.2.2}Aktiver Angriff gegen das Netzwerk}{102}{subsubsection.9.2.2.2}
-\contentsline {subsubsection}{\numberline {9.2.2.3}St\IeC {\"o}rung des Netzwerkes}{102}{subsubsection.9.2.2.3}
-\contentsline {subsection}{\numberline {9.2.3}Abwehrma\IeC {\ss }nahmen}{103}{subsection.9.2.3}
-\contentsline {subsubsection}{\numberline {9.2.3.1}ZigBee-Verschl\IeC {\"u}sselung}{103}{subsubsection.9.2.3.1}
-\contentsline {subsubsection}{\numberline {9.2.3.2}Befehlsz\IeC {\"a}hler}{103}{subsubsection.9.2.3.2}
-\contentsline {subsubsection}{\numberline {9.2.3.3}Schutz auf Anwendungsebene}{103}{subsubsection.9.2.3.3}
-\contentsline {section}{\numberline {9.3}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{104}{section.9.3}
-\contentsline {subsection}{\numberline {9.3.1}Anderer Frequenzbereich}{104}{subsection.9.3.1}
-\contentsline {subsection}{\numberline {9.3.2}Verwendung leistungsst\IeC {\"a}rkerer \emph {ZigBee}-Module und Antennen}{104}{subsection.9.3.2}
-\contentsline {subsection}{\numberline {9.3.3}Genauere Betrachtung des \emph {Bluetooth-Low-Energy}-Standards}{104}{subsection.9.3.3}
-\contentsline {chapter}{\numberline {A}Pl\IeC {\"a}ne und Diagramme}{107}{appendix.A}
-\contentsline {chapter}{\numberline {B}Beschreibung der beigelegten Software}{111}{appendix.B}
-\contentsline {section}{\numberline {B.1}MANV-Connector}{111}{section.B.1}
-\contentsline {subsection}{\numberline {B.1.1}Starten des Connectors}{111}{subsection.B.1.1}
-\contentsline {subsection}{\numberline {B.1.2}Kompilieren des Connectors}{111}{subsection.B.1.2}
-\contentsline {subsection}{\numberline {B.1.3}Verzeichnisstruktur des Quellcodes}{112}{subsection.B.1.3}
-\contentsline {subsubsection}{\numberline {B.1.3.1}Inhalt des Verzeichnises \emph {commands/}}{112}{subsubsection.B.1.3.1}
-\contentsline {subsubsection}{\numberline {B.1.3.2}Inhalt des Verzeichnises \emph {corba/}}{112}{subsubsection.B.1.3.2}
-\contentsline {subsubsection}{\numberline {B.1.3.3}Inhalt des Verzeichnisses \emph {events/}}{113}{subsubsection.B.1.3.3}
-\contentsline {subsubsection}{\numberline {B.1.3.4}Inhalt der Verzeichnises \emph {results/}}{114}{subsubsection.B.1.3.4}
-\contentsline {subsubsection}{\numberline {B.1.3.5}Inhalt des Verzeichnisses \emph {lib/}}{115}{subsubsection.B.1.3.5}
-\contentsline {paragraph}{\numberline {B.1.3.5.1}Interface eines ZigBit-Knotens}{115}{paragraph.B.1.3.5.1}
-\contentsline {section}{\numberline {B.2}Serial-To-Socket}{116}{section.B.2}
-\contentsline {section}{\numberline {B.3}Firmware}{116}{section.B.3}
-\contentsline {section}{\numberline {B.4}MANV-Web}{118}{section.B.4}
-\contentsline {section}{\numberline {B.5}Platine}{118}{section.B.5}
-\contentsline {section}{\numberline {B.6}Simulator}{118}{section.B.6}
-\contentsline {section}{\numberline {B.7}Zigbit Firmware}{118}{section.B.7}
-\contentsline {chapter}{Glossar}{128}{appendix*.8}
-\contentsline {chapter}{Literaturverzeichnis}{131}{appendix*.9}
+\contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{101}{chapter.9}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{101}{section.9.1}
+\contentsline {section}{\numberline {9.2}Sicherheit des Netzwerkes}{103}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Aktueller Stand}{103}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Angriffsszenarien}{104}{subsection.9.2.2}
+\contentsline {subsubsection}{\numberline {9.2.2.1}Aussp\IeC {\"a}hen von Patientendaten}{104}{subsubsection.9.2.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2.2}Aktiver Angriff gegen das Netzwerk}{104}{subsubsection.9.2.2.2}
+\contentsline {subsubsection}{\numberline {9.2.2.3}St\IeC {\"o}rung des Netzwerkes}{104}{subsubsection.9.2.2.3}
+\contentsline {subsection}{\numberline {9.2.3}Abwehrma\IeC {\ss }nahmen}{105}{subsection.9.2.3}
+\contentsline {subsubsection}{\numberline {9.2.3.1}ZigBee-Verschl\IeC {\"u}sselung}{105}{subsubsection.9.2.3.1}
+\contentsline {subsubsection}{\numberline {9.2.3.2}Befehlsz\IeC {\"a}hler}{105}{subsubsection.9.2.3.2}
+\contentsline {subsubsection}{\numberline {9.2.3.3}Schutz auf Anwendungsebene}{106}{subsubsection.9.2.3.3}
+\contentsline {section}{\numberline {9.3}Verbesserung der Reichweite und St\IeC {\"o}rsicherheit}{106}{section.9.3}
+\contentsline {subsection}{\numberline {9.3.1}Anderer Frequenzbereich}{106}{subsection.9.3.1}
+\contentsline {subsection}{\numberline {9.3.2}Verwendung leistungsst\IeC {\"a}rkerer \emph {ZigBee}-Module und Antennen}{107}{subsection.9.3.2}
+\contentsline {subsection}{\numberline {9.3.3}Genauere Betrachtung des \emph {Bluetooth-Low-Energy}-Stan\discretionary {-}{}{}dards}{107}{subsection.9.3.3}
+\contentsline {chapter}{\numberline {A}Pl\IeC {\"a}ne und Diagramme}{109}{appendix.A}
+\contentsline {chapter}{\numberline {B}Beschreibung der beigelegten Software}{115}{appendix.B}
+\contentsline {section}{\numberline {B.1}MANV-Connector}{115}{section.B.1}
+\contentsline {subsection}{\numberline {B.1.1}Starten des Connectors}{115}{subsection.B.1.1}
+\contentsline {subsection}{\numberline {B.1.2}Kompilieren des Connectors}{115}{subsection.B.1.2}
+\contentsline {subsection}{\numberline {B.1.3}Verzeichnisstruktur des Quellcodes}{116}{subsection.B.1.3}
+\contentsline {subsubsection}{\numberline {B.1.3.1}Inhalt des Verzeichnises \emph {commands/}}{116}{subsubsection.B.1.3.1}
+\contentsline {subsubsection}{\numberline {B.1.3.2}Inhalt des Verzeichnises \emph {corba/}}{116}{subsubsection.B.1.3.2}
+\contentsline {subsubsection}{\numberline {B.1.3.3}Inhalt des Verzeichnisses \emph {events/}}{117}{subsubsection.B.1.3.3}
+\contentsline {subsubsection}{\numberline {B.1.3.4}Inhalt der Verzeichnises \emph {results/}}{118}{subsubsection.B.1.3.4}
+\contentsline {subsubsection}{\numberline {B.1.3.5}Inhalt des Verzeichnisses \emph {lib/}}{119}{subsubsection.B.1.3.5}
+\contentsline {paragraph}{\numberline {B.1.3.5.1}Interface eines ZigBit-Knotens}{119}{paragraph.B.1.3.5.1}
+\contentsline {section}{\numberline {B.2}Serial-To-Socket}{120}{section.B.2}
+\contentsline {section}{\numberline {B.3}Firmware}{121}{section.B.3}
+\contentsline {section}{\numberline {B.4}MANV-Web}{122}{section.B.4}
+\contentsline {section}{\numberline {B.5}Platine}{122}{section.B.5}
+\contentsline {section}{\numberline {B.6}Simulator}{123}{section.B.6}
+\contentsline {section}{\numberline {B.7}Zigbit Firmware}{123}{section.B.7}
+\contentsline {chapter}{Literaturverzeichnis}{127}{appendix*.9}

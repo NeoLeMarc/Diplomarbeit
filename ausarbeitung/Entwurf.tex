@@ -9,7 +9,7 @@ Hierbei wird zwischen Hard- und Software unterschieden. Ein Teil der Softwarekom
 Arbeit in \cite{Jan} entworfen und implementiert.
 
 \section{Gesamtsystem}
-\Abbildungps{!htb}{1}{diagramme/Gesamtuebersicht.pdf}{abbildung_gesamtsystem}{Überblick über das Gesamtsystem}
+\Abbildungps{!htbp}{1}{diagramme/Gesamtuebersicht.pdf}{abbildung_gesamtsystem}{Überblick über das Gesamtsystem}
 In dieser Arbeit wird ein System zur Patientenüberwachung entworfen. Dieses System besteht aus einer Kombination
 von Soft- und Hardware. Zwischen den einzelnen Komponenten gibt es klar definierte Schnittstellen. Hierdurch ist
 gewährleistet, dass die einzelnen Komponenten unabhängig voneinander entworfen und implementiert werden können. Noch nicht
@@ -31,7 +31,7 @@ zusammenwirken:
                                     \emph{ZigBee}-Netzwerk. Das Design basiert auf einem \emph{ZigBee}-Router,
                                     der um eine \emph{USB}-Schnittstelle erweitert wird.
     \item{\emph{MANVConnector}:} Der Connector fungiert als Adapter, der eine Übersetzung zwischen der 
-                                 Hardware des \emph{USB-Sticks} und der \emph{CORBA}-Schnittstelle der \emph{MANVSuite}
+                                 Hardware des \emph{USB-Sticks} und der \emph{CORBA}-Schnittstelle der \emph{MANV\-Suite}
                                  vornimmt. Vereinfacht gesprochen handelt es sich um einen Treiber für den 
                                  \emph{ZigBee-USB}-Stick. Der \emph{MANVConnector} kapselt alle hardwarespezifischen
                                  Designentscheidungen. Soll später eine andere Funkschnittstelle wie z.B.
@@ -51,7 +51,7 @@ zusammenwirken:
 \section{Hardware}
 \subsection{MANVNode}
 \subsubsection{Beschreibung}
-\Abbildungps{!htb}{1.25}{diagramme/platine_manvnode-crop.pdf}{abbildung_manvnode}{Entwurf der Platine der MANVNode.}
+\Abbildungps{!htb}{1}{diagramme/platine_manvnode-crop.pdf}{abbildung_manvnode}{Entwurf der Platine der MANVNode.}
 \Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Entwurf der Platine des USB-Sticks.}
 Die \emph{MANVNode} ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
 \emph{ADuC-7026-Mikrocontroller} der Firma \emph{Analog Devices} sowie ein Atmel ZigBit-Funkmodul des Typs \emph{ATZB-24-A2}. 
@@ -81,7 +81,7 @@ Initialisierungsvorgangs ausgegeben.
               Ausgangsspannung arbeiten kann.}
 Um die Platine möglichst vielseitig einsetzen zu können, wurde Wert auf eine möglichst flexible Spannungsversorgung gelegt. Diese
 soll möglichst robust gegenüber Spannungsschwankungen sein. Kern der Spannungsversorgung ist ein 
-\emph{Low-Dropout-Spannungsregle}r des Typs \emph{LP2980-3.3} der Firma \emph{National Semiconductor}. Dieser liefert eine stabile
+\emph{Low-Dropout-Span\-nungs\-reg\-ler} des Typs \emph{LP2980-3.3} der Firma \emph{National Semiconductor}. Dieser liefert eine stabile
 3,3-V-Spannung bei einem maximalen Strom von 50~mA. Die Eingangsspannung kann zwischen 2,1~V und 16~V variiert werden.
 Die Spannungsversorgung kann damit z.B. über USB (5~V-Versorgungsspannung), ein externes Netzteil oder eine 
 9~V-Blockbatterie gespeist werden. Durch die hohe maximale Versorgungsspannung von 9~V sind Schäden durch versehentliches
@@ -202,7 +202,7 @@ Dies entspricht der Semantik einer gepufferten, nicht blockierenden Ein-/Ausgabe
 \subsubsection{Ansteuerung des ZigBit-Modul}
 Die Ansteuerung des \emph{ZigBit}-Moduls soll in folgenden Schritten erfolgen: 
 
-\begin{lstlisting}{frame=entwurfZigBit1}
+\begin{lstlisting}{Firmware: Ansteuerung des ZigBit Moduls}
 Uebertrage aktuellen Status
 Werte Antwort aus
 Arbeite empfangene Befehle ab
@@ -240,7 +240,7 @@ Befehl mit dem Statuscode \emph{OK} quittiert, sobald das \emph{ZigBit}-Modul wi
 
 Insgesamt ergibt sich für die Ansteuerung des \emph{ZigBit}-Moduls folgender Ablauf:
 
-\begin{lstlisting}{frame=entwurfZigBit2}
+\begin{lstlisting}{Firmware: Ansteuerung des ZigBit Moduls inkl. Ereignissbehandlung}
 Uebertrage aktuellen Status
 Wiederhole:
     Antwort von ZigBit-Modul lesen
@@ -261,7 +261,7 @@ Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte \emph{MANVSuite}.
 
 
 \subsection{MANVConnector}
-\Abbildungps{!htb}{1.25}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des \emph{MANVConnectors}}
+\Abbildungps{!htb}{1}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des \emph{MANVConnectors}}
 
 
 Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten, die von dem \emph{ZigBee-USB-Connector} empfangen wurden, in 

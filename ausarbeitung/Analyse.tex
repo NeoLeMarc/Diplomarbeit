@@ -27,7 +27,7 @@ der fertigen Lösung dienen.
                                Ausdehnung (Reichweite) skalierbar sein. Es sollen sowohl sehr kleine Netzwerke
                                als auch große Netzwerke mit mehreren hundert Knoten realisierbar sein.
         \item{Kosteneffizienz:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
-        \item{Niedriger Stromverbrauch:} Der Stromverbrauch der einzelnen Sensoren muss so gering sein, dass
+        \item{Niedriger Strombedarf:} Der Strombedarf der einzelnen Sensoren muss so gering sein, dass
                                          der Betrieb über eine handliche Batterie über einen längeren 
                                          Zeitraum möglich ist. Ideal wäre, wenn sich eine Laufzeit von
                                          mindestens 12 Stunden mit einer einzelnen Knopfzelle erreichen
@@ -203,7 +203,7 @@ der fertigen Lösung dienen.
 
                 \begin{table}
                     \begin{tabular}{llll}
-                        \textbf{Befehl}  & \textbf{Beschreibung}  & \textbf{Antwort} & \textbf{Anwendbarkeit}\\
+                        \textbf{Befehl}  & \textbf{Beschreibung}  & \textbf{Antwort} & \textbf{Anwendbark.}\\
 
                         ATD           & Versenden von Daten               & Einfach & online-Zustand \\
                         ATR           & Entfernten Befehl ausführen       & Komplex & online-Zustand \\
@@ -241,7 +241,7 @@ der fertigen Lösung dienen.
             einem \emph{ZigBit}-Modul kommunizieren lässt sich daher am einfachsten nach folgendem
             Muster aufbauen:
 
-            \begin{lstlisting}{frame=analyse1}
+            \begin{lstlisting}{Kommunikation mit dem ZigBit Modul}
 def sendeBefehl(befehl)
     # Senden des Befehls
     serialPort.send(befehl)
@@ -328,7 +328,7 @@ def sendeBefehl(befehl)
             Das folgende Pseudocode-Programm zeigt exemplarisch das Behandeln von Ereignissen über das Einreihen in
             Warteschlangen:
 
-            \begin{lstlisting}{frame=analyse2}
+            \begin{lstlisting}{Befehle in Warteschlange einreihen}
 eventQueue = []
 
 def sendeBefehl(befehl)
@@ -365,14 +365,15 @@ def sendeBefehl(befehl)
             der in Abschnitt~\ref{behandlung_asynchron_auftretender_ereignisse} vorgestellten Lösung behandelt 
             werden müssen. Das folgende Pseudocode-Programm zeigt, wie komplexe Antworten behandelt werden können:
 
-            \begin{lstlisting}{frame=analyse3}
+            \begin{lstlisting}{Komplexe Antworten behandeln}
 def sendeBefehl(befehl)
     ## Senden des Befehls
     serialPort.send(befehl.getCmd())
 
     if befehl.resultIsComplex():
         ## Komplexe Antwort wird erwartet
-        ## So lange lesen, bis ein Status-Code empfangen wurde
+        ## So lange lesen, bis ein Status-Code empfangen
+        ## wurde
         complexResult = []
         statusString = ''
 
@@ -384,7 +385,8 @@ def sendeBefehl(befehl)
 
     else:
         ## Antwort vom ZigBit-Modul lesen.
-        ## (Blockiert so lange, bis Antwort empfangen wurde)
+        ## (Blockiert so lange, bis Antwort empfangen 
+        ## wurde)
         statusString = serialPort.readLine()
 
         ## Antwort interpretieren
@@ -408,7 +410,7 @@ def sendeBefehl(befehl)
         werden.
 
 
-            \begin{lstlisting}{frame=analyse4}
+            \begin{lstlisting}{Komplexe Antworten und Asynchrone Ereignisse behandeln}
 eventQueue = []
 
 def getResultType(input):
@@ -432,7 +434,8 @@ def sendeBefehl(befehl)
         statusString = serialPort.readLine()
 
         ## Komplexe Antwort wird erwartet
-        ## So lange lesen, bis ein Status-Code empfangen wurde
+        ## So lange lesen, bis ein Status-Code 
+        ## empfangen wurde
         complexResult = []
         
         while getResultType(statusString) != 'Status code':
@@ -443,14 +446,15 @@ def sendeBefehl(befehl)
 
             statusString = serialPort.readLine()
 
-        ## Ende Erreicht. Nun noch den statusCode anhaengen und
-        ## Ergebnis zurueckliefern
+        ## Ende Erreicht. Nun noch den statusCode anhaengen
+        ## und Ergebnis zurueckliefern
         complexResult.append(statusString)
         return complexResult
 
     else:
         ## Antwort vom ZigBit-Modul lesen.
-        ## (Blockiert so lange, bis Antwort empfangen wurde)
+        ## (Blockiert so lange, bis Antwort
+        ## empfangen wurde)
         statusString = serialPort.readLine()
 
         # Events behandeln 

@@ -20,23 +20,23 @@
 \contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{70}{figure.6.2}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 7.1}{\ignorespaces Aufbau des \emph {Integrationstests}.}}{82}{figure.7.1}
-\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Screenshot der \emph {MANVGui} w\IeC {\"a}hrend des Integrationstests.}}{82}{figure.7.2}
+\contentsline {figure}{\numberline {\relax 7.2}{\ignorespaces Screenshot der \emph {MANVGui} w\IeC {\"a}hrend des Integrationstests.}}{83}{figure.7.2}
 \contentsline {figure}{\numberline {\relax 7.3}{\ignorespaces Router oder Koordinator im Normalbetrieb. }}{85}{figure.7.3}
 \contentsline {figure}{\numberline {\relax 7.4}{\ignorespaces Endknoten im Normalbetrieb ohne Energiesparmodus. }}{86}{figure.7.4}
 \contentsline {figure}{\numberline {\relax 7.5}{\ignorespaces Analyse des Spannungsverlaufs eines Clients im Normalbetrieb.}}{86}{figure.7.5}
 \contentsline {figure}{\numberline {\relax 7.6}{\ignorespaces Detailaufnahme eines Empfangsmodus-\emph {Peaks}. }}{87}{figure.7.6}
-\contentsline {figure}{\numberline {\relax 7.7}{\ignorespaces Aus dem Energiesparmodus erwachter Client. }}{88}{figure.7.7}
-\contentsline {figure}{\numberline {\relax 7.8}{\ignorespaces Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}}{88}{figure.7.8}
-\contentsline {figure}{\numberline {\relax 7.9}{\ignorespaces Client, der das periodische Aufrufen des Energiesparmodus nutzt. }}{89}{figure.7.9}
+\contentsline {figure}{\numberline {\relax 7.7}{\ignorespaces Aus dem Energiesparmodus erwachter Client. }}{89}{figure.7.7}
+\contentsline {figure}{\numberline {\relax 7.8}{\ignorespaces Analyse des Spannungsverlaufs eines Clients bei Nutzung des Energiesparmodus.}}{89}{figure.7.8}
+\contentsline {figure}{\numberline {\relax 7.9}{\ignorespaces Client, der das periodische Aufrufen des Energiesparmodus nutzt. }}{90}{figure.7.9}
 \contentsline {figure}{\numberline {\relax 7.10}{\ignorespaces Client mit deaktiviertem Empfangsmodus. }}{91}{figure.7.10}
-\contentsline {figure}{\numberline {\relax 7.11}{\ignorespaces Beitrittsvorgang eines Clients in ein Netzwerk. }}{91}{figure.7.11}
+\contentsline {figure}{\numberline {\relax 7.11}{\ignorespaces Beitrittsvorgang eines Clients in ein Netzwerk. }}{92}{figure.7.11}
 \contentsline {figure}{\numberline {\relax 7.12}{\ignorespaces Client, der die Verbindung zum Netzwerk verloren hat.}}{92}{figure.7.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{107}{figure.A.1}
-\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}.}}{108}{figure.A.2}
-\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Oberseite der Platine der MANVNode.}}{109}{figure.A.3}
-\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Unterseite der Platine der MANVNode.}}{109}{figure.A.4}
-\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Klassendiagramm des MANV-Connectors.}}{110}{figure.A.5}
+\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{110}{figure.A.1}
+\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}.}}{111}{figure.A.2}
+\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Oberseite der Platine der MANVNode.}}{112}{figure.A.3}
+\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Unterseite der Platine der MANVNode.}}{113}{figure.A.4}
+\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Klassendiagramm des MANV-Connectors.}}{114}{figure.A.5}
 \addvspace {10\p@ }

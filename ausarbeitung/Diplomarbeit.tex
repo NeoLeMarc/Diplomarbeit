@@ -8,7 +8,7 @@
 %                               %
 %-------------------------------%
 
-\documentclass[12pt,a4paper,twoside,openright]{wissdoc} %\textheight 23.0cm \textwidth 15.5cm
+\documentclass{wissdoc} %\textheight 23.0cm \textwidth 15.5cm
 %\topmargin0cm \evensidemargin0cm \oddsidemargin0cm
 \setlength{\parindent}{0pt}
 \usepackage{a4,ngerman}
@@ -27,6 +27,7 @@
 \usepackage{makeidx}
 %\usepackage{natbib}
 % \usepackage[dvips]{color}
+\usepackage{color}
 \usepackage{fancyhdr}
 \usepackage{color}
 \usepackage{pstricks}
@@ -36,16 +37,42 @@
 \usepackage{pdfpages}
 \usepackage{amsmath}
 \usepackage{listings}
+ \definecolor{middlegray}{rgb}{0.5,0.5,0.5}
+ \definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+ \definecolor{orange}{rgb}{0.8,0.3,0.3}
+ \definecolor{yac}{rgb}{0.6,0.6,0.1}
 \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt}
 \lstset{language=python}
+ \lstset{
+   basicstyle=\small\ttfamily,
+   keywordstyle=\bfseries\ttfamily\color{orange},
+   stringstyle=\color{blue}\ttfamily,
+   commentstyle=\color{middlegray}\ttfamily,
+   emph={square}, 
+   emphstyle=\color{blue}\texttt,
+   emph={[2]root,base},
+   emphstyle={[2]\color{yac}\texttt},
+   showstringspaces=false,
+   flexiblecolumns=false,
+   tabsize=2,
+   numbers=left,
+   numberstyle=\tiny,
+   numberblanklines=false,
+   stepnumber=1,
+   numbersep=10pt,
+   xleftmargin=15pt
+ }
 \makeatletter \renewcommand{\fps@figure}{htbp} \makeatother
 \renewcommand{\textfraction}{.1} 
 \setlength{\parindent}{0em}
 \renewcommand{\baselinestretch}{1.2}
+%\KOMAoptions{twoside,BCOR=5mm,DIV=11}
+\KOMAoptions{twoside,BCOR=5mm,DIV=12,footinclude=false,headinclude=true}
+\recalctypearea
 
 % Graphiken sollen nicht so oft auf Leeren Seiten stehen
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\textfraction}{0.1}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
 
 % Macros, nicht unbedingt notwendig
 \input{macros}
@@ -75,6 +102,9 @@
 %\makeglossary
 %\makenomenclature
 
+
+%% Quellcodeverzeichnis
+\renewcommand\lstlistlistingname{Quellcodeverzeichnis}
 
 %% Auskommentieren einer dieser Zeilen bewirkt, daß nur diese
 %% eine Datei übersetzt wird
@@ -125,14 +155,14 @@
 %\thispagestyle{empty}
 \chapter*{} 
 \pagenumbering{Roman}% Seitennummerierung durch arabische Ziffern
-\vspace*{11.5cm} {\setlength{\parindent}{0pt}\textbf{Eidesstattliche Erklärung}\\
+\vspace*{10.5cm} {\setlength{\parindent}{0pt}\textbf{Eidesstattliche Erklärung}\\
 Hiermit erkläre ich an Eides Statt, dass ich die vorliegende Diplomarbeit selbständig und ohne unzulässige fremde Hilfsmittel angefertigt habe. Die verwendeten Literaturquellen sind im Literaturverzeichnis vollständig angegeben. Die Arbeit wurde in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde zur Erlangung eines akademischen Grades vorgelegt.\\ 
 
 Karlsruhe, 31.10.2010\\
 
+\include{Abstract}
 \include{Vorwort}
 %\include{Danksagung}
-\include{Abstract}
 
 
 %%%------------------------------------------------INHALTS-,ABBILDUNGS-,TABELLENVERZEICHNIS-------------------------------------------
@@ -142,6 +172,18 @@ Karlsruhe, 31.10.2010\\
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoftables
 \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
+
+%%%------------------------------------------------GLOSSAR-----------------------------------------------------------------------------
+
+%\chapter{Glossar}
+\markboth{Glossar}{}
+\printnomenclature
+\addcontentsline{toc}{chapter}{Glossar}
+
+
+
 
 \include{Einleitung}
 \include{Grundlagen}
@@ -158,13 +200,6 @@ Karlsruhe, 31.10.2010\\
 \begin{appendix}
 \include{Anhang}
 \end{appendix}
-
-
-%%%------------------------------------------------GLOSSAR-----------------------------------------------------------------------------
-
-%\chapter*{Glossar}
-\printnomenclature
-\addcontentsline{toc}{chapter}{Glossar}
 
 
 

@@ -17,7 +17,7 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01] % Sorry, wir brauchen LaTeX2e!
 \ProvidesClass{wissdoc}[2007/01/18 Roland Bless - Wissenschaftliches Dokument]
-\LoadClass[a4paper,12pt,titlepage]{scrbook} % diese Klasse basiert auf ``book''
+\LoadClass[a4paper,12pt,titlepage,twopage,openright]{scrbook} % diese Klasse basiert auf ``book''
 \RequirePackage{ngerman}[1998/07/08] % (V2.5e) Neue Rechtschreibung!
 %\RequirePackage{german}[1998/07/08] % alte Rechtschreibung (>=V2.5e von german.sty)
 \usepackage[T1]{fontenc}      % T1-encoded fonts: auch Wörter mit Umlauten trennen
@@ -25,7 +25,7 @@
 \usepackage{ae}               % almost european, virtueller T1-Font
 \usepackage[final]{graphicx}  % um Graphiken einzubinden
 \usepackage{makeidx}          % wir wollen auch einen Index
-\usepackage[a4paper]{geometry} % Seitenränder einstellen leichtgemacht
+%\usepackage[a4paper]{geometry} % Seitenränder einstellen leichtgemacht
 \usepackage{fancyhdr}         % definiere einfache Headings (mindestens V 1.99c
                               % notwendig)
 \usepackage{array}          % fuer aufwändigere Tabellen
@@ -119,7 +119,7 @@
 %\usepackage{float} %z.B. \floatstyle{ruled}
 
 %% Seitengröße mit geometry-Paket einstellen
-\geometry{left=3cm,right=3cm,top=23mm,bottom=25mm,head=14.5pt}
+%\geometry{left=3cm,right=3cm,top=23mm,bottom=25mm,head=14.5pt,inner=40mm}
 
 %% Stil
 \parindent 0cm                     % Absatzanfang wird nicht eingerückt

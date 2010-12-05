@@ -1,6 +1,10 @@
 
 %%%------------------------------------------------STAND DER TECHNIK------------------------------------------------------------------
 \chapter{Pläne und Diagramme}\label{anhang_diagramme}
+    In diesem Kapitel werden Schaltpläne, Platinenlayouts und \emph{UML}-Diagramme der in dieser Arbeit 
+    entworfenen Komponenten bereitgestellt. Mit Hilfe dieser Pläne und Diagramme kann die Konstruktion 
+    der Komponenten nachvollzogen werden und ggf. ein Nachbau erfolgen.
+
     \Abbildungps{!htb}{0.4}{diagramme/schaltplan_usbstick.pdf}{label}{Schaltplan des \emph{USB-Sticks}.}
     \Abbildungps{!htb}{1.05}{diagramme/schaltplan_manvnode.pdf}{label}{Schaltplan der \emph{MANVNode}.}
     \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_top.pdf}{label}{Oberseite der Platine der MANVNode.}
@@ -12,8 +16,12 @@
     \end{sidewaysfigure}
 
 \chapter{Beschreibung der beigelegten Software}\label{anhang_beschreibung_software}
-    \section{MANV-Connector}
 
+    In diesem Kapitel wird die beigelegte Software beschrieben. Außerdem wird eine
+    kurze Erläuterung gegeben, welche Funktionalität wo implementiert ist, und an
+    welcher Stelle für den produktiven Einsatz ggf. noch Anpassungen erfolgen müssen.
+
+    \section{MANV-Connector}
     Im Verzeichnis "`connector"' auf der beigelegten CD befinden sich
     Quellcode und Binaries des \emph{MANV-Connectors}. Zum Kompilieren
     und Starten des Connectors wird das Script "`start.sh"' verwendet.
@@ -67,7 +75,7 @@
 
     \subsubsection{Inhalt des Verzeichnises \emph{corba/}}
 
-    In dem Verzeichniss \emph{corba/} findet sich der Glue-Code der Implementierung der \emph{Corba}-Schnittstelle
+    In dem Verzeichniss \emph{corba/} findet sich der Quellcoode der Implementierung der \emph{Corba}-Schnittstelle
     zum \emph{MANV}-Server. Die einzelnen Dateien haben folgende Funktion:
 
     \begin{itemize}
@@ -98,7 +106,9 @@
             \item{\emph{isImportant()}:} Unterscheidet wichtige von unwichtigen Ereignissen. Nur wichtige Ereignisse werden über 
                                   die \emph{CORBA}-Schnittstelle an den \emph{MANV-Server} weitergeleitet. Unwichtige 
                                   Ereignisse sind nur für die interne Verarbeitung im \emph{MANV-Connector} relevant. 
-            \item{\emph{fromString()}:}  Factory-Methode, die aus einem \emph{SerialNet}-String ein \emph{MANV\-Event} erstellt. 
+            \item{\emph{fromString()}:}  Factory\footnote{Eine Fectory-Methode übernimmt das 
+                                                 Erstellen von Objekten.}-Methode, die aus einem 
+                                                 \emph{SerialNet}-String ein \emph{MANV\-Event} erstellt. 
                                   Liefer automatisch eine Instanz einer Unterklasse von \emph{MANV\-Event} zurück.
             \item{\emph{createCorbaMessages()}:} Bereitet ein \emph{MANVEvent} für den Transport über die 
                                           \emph{CORBA}-Schnittstelle zum \emph{MANV-Server} vor. Hierzu werden ein oder 
@@ -123,8 +133,9 @@
     In dem Verzeichnis \emph{results/} befinden sich alle Klassen, die auf gesendete \emph{SerialNet}-Befehle empfangene 
     Antworten repräsentieren. Diese sind von der Basisklasse \emph{MANVResult} abgeleitet, welche wiederum eine Unterklasse 
     von \emph{MANVEvent} ist.  Damit besitzt diese Klasse alle Eigenschaften und Methoden, die auch die 
-    Klasse \emph{MANVEvent} besitzt; insbesondere handelt es sich hierbei selbst wieder um eine priorisierte Nachricht. 
-    Zusätzlich werden folgende Methoden neu eingeführt:
+    Klasse \emph{MANVEvent} besitzt; insbesondere handelt es sich hierbei selbst wieder um eine Unterklasse
+    von \emph{MANVPrioritized}. 
+    Zusätzlich zu den von den Oberklassen ererbten Methoden werden folgende Methoden neu eingeführt:
 
     \begin{itemize}
         \item{\emph{getData()}:} Liefert die von der \emph{SerialNet-Firmware} empfangenen Daten in Stringform zurück. 
@@ -153,9 +164,9 @@
     \begin{itemize}
         \item{\emph{iZigBit}:} Interface für einen entfernten \emph{ZigBit}-Knoten. Diese werden nochmal weiter
                         in vollwertige Knoten (\emph{ZigBit}, im wesentlichen also die \emph{MANV-Nodes})
-                        und Knoten, von denen nur Daten empfangen werden können (\emph{readonlyZigBit)})
+                        und Knoten, von denen nur Daten empfangen werden können (\emph{readonlyZigBit})
                         unterschieden.
-        \item{\emph{MANVPrioritized}:} Allgemeine Oberklasse für priorisierte Entitäten wie z.B. \emph{MANVCommand},
+        \item{\emph{MANVPrioritized}:} Allgemeine Oberklasse für priorisierte Entitäten wie z.B.\\ \emph{MA\-NV\-Command},
                                 \emph{MANVEvent} oder \emph{MANVResult}. Diese Entitäten enthalten 
                                 sowohl eine numerische Priorität als auch eine \emph{compareTo()}-Operation,
                                 über die eine Sortierung vorgenommen werden kann.
@@ -175,16 +186,19 @@
 
     \paragraph{Interface eines ZigBit-Knotens}
 
-    Das Interface \emph{iZigBit} definiert folgende Methoden:
+    Es ist nicht immer möglich, Daten an einen \emph{ZigBit}-Knoten zu senden. Daher gibt
+    es zwei Arten von \emph{ZigBit}-Knoten: \emph{ZigBit} und {ReadonlyZigBit}. Um diese trotzdem
+    generisch ansprechen zu können, implementieren beide das Interface \emph{iZigBit}. Dieses definiert folgende Methoden:
 
     \begin{itemize}
         \item{\emph{getNodeID()}:} Liefert die logische Adresse (\emph{WSRC}) eines Knotens zurück.
         \item{\emph{getMacID()}:} Liefert die Hardware-Adresse (\emph{GSN}) eines Knotens zurück.
         \item{\emph{sendData()}:} Sendet Daten an einen Knoten. Blockiert so lange, bis die Bearbeitung des
-                           Befehls abgeschlossen ist.
+                           Befehls abgeschlossen ist. Wird diese Operation auf einem \emph{ReadonlyZigBit} wird
+                           kein Versand der Daten ausgeführt und statt dessen ein Fehler zurückgegeben.
         \item{\emph{isendData()}:} Senden von Daten an einen Knoten. Kehrt sofort zurück, ohne auf die Bearbeitung
-                            des Befehls zu warten.
-        \item{\emph{toggleAlertStatus()}:} Umschalten des Alarmstatus einer \emph{MANV-Node}.
+                            des Befehls zu warten. 
+        \item{\emph{toggleAlertStatus()}:} Umschalten des Alarmstatus einer \emph{MANV-Node}. Keine Funktionalität
         \item{\emph{disableAlert()}:} Deaktivieren des Alarms einer \emph{MANV-Node}.
         \item{\emph{enableAlert()}:} Aktivieren des Alarms einer \emph{MANV-Node}.
         \item{\emph{muteAlert()}:} Alarm stummschalten.
@@ -217,7 +231,7 @@
         \item{\emph{isr.c}:}  Definition der verwendeten \emph{Interrupt-Service-Routinen}, also Behandlungsroutinen
                        für auftretende \emph{Interrupts}. Ist unter anderem für die Ansteuerung des \emph{UART} 
                        verantwortlich.
-        \item{\emph{random.c}:} Implementierung eines sehr einfachen Pseudo-Zufallszahlengenerators.
+        \item{\emph{random.c}:} Implementierung eines sehr einfachen Pseudozufallszahlengenerators.
         \item{\emph{ringpuffer.c}:} Implementierung der Datenstruktur "`Ringpuffer"'. Diese kann 5 Zeilen
                              von jeweils 80 Zeichen Länge speichern. Werden mehr als 5 Zeilen in die
                              Datenstruktur gelegt, dann wird das älteste Element überschrieben.
@@ -258,7 +272,7 @@
 
     \section{MANV-Web}
     Im Verzeichnis \emph{manvweb/} befinden sich die Quelldateien des Webinterfaces der
-    \emph{MANVSuite}. Dabei verteilt sich die Funktionalität auf folgende Unterdateien:
+    \emph{MANV\-Suite}. Dabei verteilt sich die Funktionalität auf folgende Unterdateien:
 
     \begin{itemize}
         \item{\emph{MANVWeb}:} Einstiegsklasse des Webservers. Stellt die \emph{CORBA}-Verbindung her
@@ -283,7 +297,9 @@
     \emph{MANVNode}-Simulator. Dieser kann dazu verwendet werden, mit Hilfe
     eines \emph{MANV-USB-Sticks}, \emph{MANVNodes} zu simulieren. Beim Start des
     Simulators muss diesem die Adresse des seriellen Ports, auf dem sich der
-    \emph{USB-Stick} befindet, übergeben werden.
+    \emph{USB-Stick} befindet, übergeben werden. Das Format ist Betriebssystem spezifisch. Unter
+    Linux wird einfach der Dateiname der entsprechenden \emph{Device-Node} (z.B. \emph{/dev/ttyUSB1}) 
+    angegeben, unter Windows der Name des \emph{COM-Ports} (z.B. \emph{COM1:}).
 
     \section{Zigbit Firmware}
     In dem Verzeichnis \emph{ZigBit-Firmware} befindet sich eine aktuelle Kopie der

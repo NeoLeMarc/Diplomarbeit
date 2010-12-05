@@ -1,8 +1,8 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Diplomarbeit.aux
 A level-1 auxiliary file: Titel.aux
-A level-1 auxiliary file: Vorwort.aux
 A level-1 auxiliary file: Abstract.aux
+A level-1 auxiliary file: Vorwort.aux
 A level-1 auxiliary file: Einleitung.aux
 A level-1 auxiliary file: Grundlagen.aux
 A level-1 auxiliary file: Stand_der_Technik.aux
@@ -22,46 +22,46 @@ Warning--entry type for "BCM4326_Datasheet" isn't style-file defined
 Warning--entry type for "Corscience" isn't style-file defined
 --line 106 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
---line 167 of file Diplomarbeit.bib
-You've used 17 entries,
+--line 188 of file Diplomarbeit.bib
+You've used 19 entries,
             2778 wiz_defined-function locations,
-            701 strings with 8249 characters,
-and the built_in function-call counts, 6146 in all, are:
-= -- 595
-> -- 285
-< -- 16
-+ -- 92
-- -- 104
-* -- 347
-:= -- 1044
-add.period$ -- 65
-call.type$ -- 17
-change.case$ -- 92
-chr.to.int$ -- 17
-cite$ -- 17
-duplicate$ -- 250
-empty$ -- 454
-format.name$ -- 118
-if$ -- 1268
+            716 strings with 8781 characters,
+and the built_in function-call counts, 6854 in all, are:
+= -- 669
+> -- 314
+< -- 19
++ -- 100
+- -- 114
+* -- 384
+:= -- 1160
+add.period$ -- 74
+call.type$ -- 19
+change.case$ -- 101
+chr.to.int$ -- 19
+cite$ -- 19
+duplicate$ -- 282
+empty$ -- 510
+format.name$ -- 132
+if$ -- 1420
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 17
-newline$ -- 99
-num.names$ -- 51
-pop$ -- 139
+missing$ -- 20
+newline$ -- 111
+num.names$ -- 57
+pop$ -- 151
 preamble$ -- 1
-purify$ -- 123
+purify$ -- 136
 quote$ -- 0
-skip$ -- 241
+skip$ -- 270
 stack$ -- 0
-substring$ -- 177
-swap$ -- 33
-text.length$ -- 16
-text.prefix$ -- 15
+substring$ -- 191
+swap$ -- 36
+text.length$ -- 19
+text.prefix$ -- 18
 top$ -- 0
-type$ -- 147
+type$ -- 165
 warning$ -- 0
-while$ -- 42
-width$ -- 22
-write$ -- 241
+while$ -- 47
+width$ -- 23
+write$ -- 272
 (There were 4 warnings)

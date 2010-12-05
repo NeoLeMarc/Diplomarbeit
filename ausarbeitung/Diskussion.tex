@@ -10,12 +10,13 @@ mit dem \emph{ADuC}-Mikrocontroller möglich ist, und dass das so entstehende Ge
 in der Lage ist, die zu überwachenden Vitaldaten zuverlässig an die Basistation zu übermitteln.
 Es wurde ebenfalls gezeigt, dass es möglich ist, Befehle über das \emph{ZigBee}-Netzwerk
 an den Mikrocontroller zu senden. Da der für diese Tests eingesetzte \emph{ADuC-7026}-Mikrocontroller
-der selben Familie wie der in dem \emph{Erste-Hilfe-Sensor} verwendete \emph{Mikrocontroller} handelt,
+der selben Familie wie der in dem \emph{Erste-Hilfe-Sensor} verwendete \emph{Mikrocontroller} angehört,
 können diese Ergebnisse ohne weiteres auf die Hardware des \emph{Erste-Hilfe-Sensors} übertragen werden; 
 die Integrierbarkeit in diesen konnte somit gezeigt werden.\\
-Durch die erhöhte Leistungsaufnahme, insbesondere bei Lastspitzen (\emph{Peaks}), muss eine Anpassung
-der Stromversorgung des \emph{Erste-Hilfe-Sensors} erfolgen, wenn das \emph{ZigBee}-Modul integriert
-werden soll. Die genaue Analyse auftretender Lastspitzen findet sich in Abschnitt~\ref{leistungsaufnahme_normalbetrieb}.
+Die durch die Integration des \emph{ZigBit}-Moduls in den \emph{Erste-Hilfe-Senosr} erhöhte Leistungsaufnahme, 
+insbesondere bei Lastspitzen (\emph{Peaks}), muss beachtet werden. Eventuell muss hier eine Anpassung der 
+Stromversorgung des \emph{Erste-Hilfe-Sensors} erfolgen.
+Die genaue Analyse auftretender Lastspitzen findet sich in Abschnitt~\ref{leistungsaufnahme_normalbetrieb}.
 Insbesondere sollten hierbei auch die Ergebnisse in Abschnitt~\ref{leistungsaufnahme_sonderfaelle} beachtet 
 werden, die auftretende Sonderfälle beschreiben.\\
 \\
@@ -32,8 +33,12 @@ Eine genauere Analyse und Evaluation der \emph{MANVSuite} inkl. der beschriebene
 in \cite{Jan}. In dieser verwandten Arbeit wird unter anderem gezeigt, wie eine Anbindung der \emph{MANVSuite}
 an ein Mobiltelefon des Herstellers Nokia erfolgen kann.\\
 \\
-Als besonders positiv ist die Skalierbarkeit der Gesamtlösung zu bewerten: Die Verbindung der einzelnen Komponenten 
-untereinander ist netzwerkfähig, im Extremfall kann jede
+Als besonders positiv ist die Skalierbarkeit der Gesamtlösung zu bewerten: Durch Rechnung konnte gezeigt werden,
+dass das \emph{ZigBee}-Netzwerk zumindest theoretisch in der Lage ist, eine hinreichend große Anzahl an Sensoren
+zu unterstützen. Aus Kostengründen musste der praktische Test in dieser Arbeit 12 Module beschränkt werden, entsprechende
+praktische Tests müssen daher vor dem Praxiseinsatz nachgeholt werden.
+Lastprobleme sind auf Seiten der Überwachungssoftware nicht zu erwarten, da
+die die Verbindung der Softwarekomponenten untereinander netzwerkfähig ist; im Extremfall kann jede
 Komponente auf einem eigenen Rechner betrieben werden. Hierbei skaliert die Anforderung an die Hardware mit
 der Größe des zu verwaltenden Netzwerkes. Im Prinzip ist jedes linuxfähige Gerät mit mindestens 16~MB Speicher
 und einer \emph{USB-Schnittstelle}, für die eine Implementierung der \emph{Java Virtual Machine}\footnote{Hierbei muss
@@ -47,12 +52,14 @@ in \emph{Python} erfolgte lediglich aus Gründen der Einfachheit. Sollte kein \e
 kann dieser Teil in jeder anderen Programmiersprache, die \emph{Socketverbindungen} erlaubt, neu implementiert werden.}. 
 Alle restlichen Teile der \emph{MANVSuite} können nachgelagert auf einem Server im Internet ausgeführt werden; 
 die Verbindung der beiden Teile erfolgt über eine einfache \emph{Socketverbindung}. Diese Lösung bietet sich insbesondere 
-für die Überwachung einzelner Patienten als eine Art intelligenter Hausnotruf an.\\
+für die Überwachung einzelner Patienten als eine Art intelligenter Hausnotruf an. Eine nähere Betrachtung dieser
+Anwendung erfolgt in \cite{AAL}.
+\\
 \\
 Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in vielen Punkten ab:
 
 \nomenclature{Open Source}{Softwareprodukt, bei dem der Quellcode frei verfügbar ist.}
-\nomenclature{GPIO}{General Purpose Input Output}
+\nomenclature{GPIO}{General Purpose Input/Output}
 \begin{itemize}
     \item{Konsequenter Einsatz offener Standards:} In der gesamten Arbeit wurde konsequent auf den
           Einsatz offener Standards gesetzt. Bei der Verwendung von externen Softwarepaketen wurde
@@ -73,31 +80,45 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
           Einzelabnahme der Module in einem Bereich unter 15\EUR{}. Auf den Einsatz teurer
           Basisbauteile wie z.B. \emph{TinyOS}-basierten Sensoren wurde konsequent verzichtet.
 
-    \item{Geringe Leistungsaufnahme ("`Stromverbrauch"'):} Durch den Einsatz des von \emph{ZigBee}
-          angebotenen Energiesparmodus konnte der mittlere Stromverbrauch auf einen Wert von ca. 
-          1,86~mA gesenkt werden.
+    \item{Geringe Leistungsaufnahme ("`Strombedarf"'):} Durch den Einsatz des von \emph{ZigBee}
+          angebotenen Energiesparmodus konnte der mittlere Strombedarf auf einen Wert von ca. 
+          1,86~mA gesenkt werden. Dies bedeutet eine Steigerung der Stromaufnahme des 
+          \emph{Erste-Hilfe-Sensors} um ca. 10\%. Selbst bei der Verwendung von Knopfzellen ergibt
+          sich somit rechnerisch noch eine für den \emph{MANV}-Einsatz mehr als ausreichende Laufzeit.
 
     \item{Einfache Implementierbarkeit:} Zur Anbindung des \emph{ZigBit}-Moduls an den \emph{Erste-Hilfe-Sensor}
           sind lediglich vier Signalleitungen notwendig: \emph{UART\_RX}, \emph{UART\_TX}, 
           \emph{UART\_CTS}\footnote{UART\_RTS sollte auf Seite des \emph{ZigBit}-Moduls auf \emph{GND}
-              geführt werden.} sowie eine \emph{GPIO}-Leitung, die mit dem \emph{RESET}-Eingan des
+              geführt werden.} sowie eine \emph{GPIO}\footnote{General Purpose Input/Output: 
+              Generische Ein/Ausgabe-Leitung}-Leitung, 
+              die mit dem \emph{RESET}-Eingan des
           \emph{ZigBit}-Moduls verbunden ist (Details zur Implementierung in die Platine können dem
           Schaltplan in Anhang~\ref{anhang_diagramme} entnommen werden). 
 
     \item{Plattformunabhängigkeit:} Durch den Einsatz plattformunabhängiger Programmiersprachen wie \emph{Java}
-          und \emph{Python} sowie durch Hardwarevirtualisierung ist die vorgestellte Lösung auf
+          und \emph{Python} sowie durch Virtualisierung\footnote{Die Virtualisierung dient dazu, die
+              eingesetzte Software auf einer möglichst großen Palette von Systemen ausführbar zu machen. Sie
+              soll aber auch den Installationsaufwand für die Software verringern, der insbesonders durch den
+              eingesetzten Datenbankservern relativ hoch ist. Für den späteren produktiven Einsatz wäre zu
+              überlegen, diesen Datenbankserver direkt als Bibliothek in die Software einzubetten. Eine
+              genauere Diskussion dieses Themas findet sich in \cite{Jan}.} ist die vorgestellte Lösung auf
           einer breiten Palette von Systemen einsatzfähig.
 
     \item{Kompaktheit:} Die hier vorgestellte Prototyp-Platine besitzt eine Abmessung von nur
           50~mm auf 56~mm und bietet noch viel Potential zur weiteren Optimierung der Größe (z.B. durch
           die beidseitige Platzierung von Bauteilen oder Fertigung in 4-Schicht-Bauweise).
+
+    \item{Anzahl Teilnehmer:} Laut Spezifikation ist \emph{ZigBit} ohne weiteres in der Lage, eine ausreichend
+                              große Anzahl von Teilnehmern zu unterstützen. Diese Angaben konnten rechnerisch
+                              bestätigt werden. Praktisch wurde ein Test mit 12 Teilnehmern erfolgreich durchgeführt.
 \end{itemize}
 
 In dieser Arbeit nicht betrachtet wurde das Thema Datensicherheit und Verschlüsselung, welches alleine bereits
 umfangreich genug wäre, eine eigene Diplomarbeit zu rechtfertigen. Ursprünglich war geplant, die hardwareseitige
 Verschlüsselung der \emph{ZigBit}-Module einzusetzen. Leider ist diese Funktion jedoch nicht in die 
-\emph{SerialNet}-Firmware integriert. Daher wäre für die Verwendung der Verschlüsselung eine Neuimplementierung der
+\emph{SerialNet}-Firmware integriert und es standen auch keine fertig nutzbaren \emph{SerialNet}-Alternativen zur Verfügung. 
+Daher wäre für die Verwendung der Verschlüsselung eine Neuimplementierung der
 \emph{ZigBit-Firmware} notwendig, was den Rahmen dieser Arbeit sprengen würde. Daher beschränkt 
-sich diese Arbeit darauf, in Abschnitt~\ref{Sicherheit} eine kurze Analyse des Problems und einige
+sich diese Arbeit darauf, in Abschnitt~\ref{Sicherheit} eine Analyse des Problems und 
 Vorschläge zur Lösung vorzustellen. Diese können dann bei einer späteren Umsetzung in ein Produkt als Grundlage
-dafür dienen, die notwendigen Sicherheitsmaßnahmen zu implementieren.
+dienen, die notwendigen Sicherheitsmaßnahmen zu implementieren.

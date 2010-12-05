@@ -130,7 +130,7 @@ Python implementiert, welche unter vielen \emph{UNIX}-artigen Betriebssystemen w
 \emph{BSD} und co.  bereits zur Standardinstallation gehört. Lediglich das \emph{PySerial}-Modul muss nachinstalliert werden.
 % TODO: Hier Zitat des PySerial Moduls
 
-\begin{lstlisting}{frame=praktisch1}
+\begin{lstlisting}{Seriellen Port auf Socket umleiten}
 #!/usr/bin/env python -OO
 # MANV-Sensor - Serial to socket
 # for Java to ZigBit connector 
@@ -138,7 +138,8 @@ Python implementiert, welche unter vielen \emph{UNIX}-artigen Betriebssystemen w
 PORT = 4711 ## Port fuer Socketverbindung.
 import serial, socket, select, sys, SocketServer, time
 
-class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
+class MANVSerialToSocketHandler(SocketServer.\
+        BaseRequestHandler):
 
     def handle(self):
         ## Handler-Hook, in den der SocketServer einsteigt
@@ -150,9 +151,10 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
 
     def openSerial(self):
         ## Serielle Schnittstelle oeffnen.
-        ## Welche das genau ist, wird auf der Kommandozeile als 
-        ## Parameter uebergeben.
-        self.serial = serial.Serial(sys.argv[1], 38400, timeout=1)
+        ## Welche das genau ist, wird auf der Kommandozeile  
+        ## als Parameter uebergeben.
+        self.serial = serial.Serial(sys.argv[1], 38400, 
+                                    timeout=1)
 
     def shutdown(self):
         ## Socket-Verbidung wird geschlossen -> aufraeumen
@@ -166,21 +168,23 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
         print "Entering tunnel mode"
 
         while not end:
-            ## Select verwenden, um socket und seriellen Port 
-            ## ressourcensparend zu ueberwachen. Funktioniert
-            ## leider nur unter UNIX.
-            readylist = select.select((self.request, self.serial),
-                                      (), ())
+            ## Select verwenden, um socket und seriellen  
+            ## Port ressourcensparend zu ueberwachen. 
+            ## Funktioniert leider nur unter UNIX.
+            readylist = select.select((self.request, 
+                                       self.serial),
+                                       (), ())
 
             ## Behandeln aller empfangenen Daten
             for readysocket in readylist[0]:
 
-                ## Fallunterscheidung zwischen seriellem Port und 
-                ## Socket, da hier die Semantik unterschiedlich ist.
+                ## Fallunterscheidung zwischen seriellem 
+                ## Port und Socket, da hier die 
+                ## Semantik unterschiedlich ist.
                 if readysocket == self.serial:
 
-                    ## Daten  wurden auf seriellem Port empfangen
-                    ## -> auf socket schreiben.
+                    ## Daten  wurden auf seriellem Port 
+                    ## empfangen -> auf socket schreiben.
                     data = self.serial.read(1024)
                     self.request.send(data)
 
@@ -197,8 +201,9 @@ class MANVSerialToSocketHandler(SocketServer.BaseRequestHandler):
                         ## EOF empfangen -> shutdown
                         end = True
 
-                ## select hat etwas zurueck geliefert, das weder 
-                ## Socket noch serieller Port ist -> shutdown
+                ## select hat etwas zurueck geliefert, das 
+                ## weder Socket noch serieller Port ist
+                ## -> shutdown
                 else:
                     data = ""
                     end = True
@@ -260,7 +265,7 @@ verwendeten \emph{IC} vom Typ \emph{cp210x} durchsucht. Dieser hat die Herstelle
 Produktkennung \emph{0xEA60}. Unter Python steht mit \emph{python-usb} eine geeignete Schnittstelle zu
 \emph{libusb} zur Verfügung.
 
-\begin{lstlisting}{frame=praktisch2}
+\begin{lstlisting}{USB-Bus durchsuchen}
 import usb
 def searchUSB(self):
 
@@ -271,10 +276,12 @@ def searchUSB(self):
         for dev in bus.devices:
 
             ## Betrachten der Vendor-ID und der Produkt-ID
-            if dev.idVendor == 0x10c4 and dev.idProduct == 0xea60:
+            if dev.idVendor == 0x10c4 and \
+               dev.idProduct == 0xea60:
                
-                ## Ein entsprechendes Geraet wurde gefunden,
-                ## wir geben dieses zurueck 
+                ## Ein entsprechendes Geraet wurde 
+                ## gefunden wir geben dieses 
+                ## zurueck 
                 return (bus.dirname, dev.filename)
    
     print "No devices found on USB-Bus."
@@ -288,14 +295,15 @@ des Verzeichnisses \emph{/dev} als virtuelle Datei wieder. Eine solche Datei wir
 \emph{/dev}-Verzeichnis gefunden werden. Hierzu bietet sich eine Suche im \emph{/sys}-Dateisystem an. Hierfür sind keine
 externen Module notwendig, es können die normalen Dateisystem-Operationen des \emph{OS}-Moduls verwendet werden:
 
-\begin{lstlisting}{frame=praktisch3}
+\begin{lstlisting}{Devicenode lokalisieren}
 import os
 def searchSYS(self):
 
     ## Suchen aller usb-serial-Geraete ueber /sys 
     devices = []
 
-    for device in os.listdir('/sys/bus/usb-serial/devices'):
+    for device in \
+        os.listdir('/sys/bus/usb-serial/devices'):
         ## Alle Geraete in Rueckgabe einfuegen
         devices.append(device)
 
@@ -312,7 +320,7 @@ handelt. Hierzu wird an das Gerät ein Befehl gesendet, der zur Abfrage der Vers
 \emph{Serialnet}-Firmware dient. Die Rückgabe wird nun mit dem erwarteten Wert verglichen. Hierzu wird das
 \emph{python-serial}-Modul verwendet:
 
-\begin{lstlisting}{frame=praktisch4}
+\begin{lstlisting}{ZigBit-Modul erkennen}
 import serial
 def testDevice(self, deviceName):
     ret = []
@@ -320,9 +328,10 @@ def testDevice(self, deviceName):
     ## Versuch, eine Verbindung aufzubauen und die 
     ## Versionskennung der Serialnet-Firmware abzufragen. 
     try:
-        ser = serial.Serial("/dev/%s" % deviceName, 38400, timeout=3)
-        ser.write("ATI\r\n") ## ATI - Befehl zum Anfragen der
-                             ## Versionsnummer
+        ser = serial.Serial("/dev/%s" % deviceName, 38400,\
+                            timeout=3)
+        ser.write("ATI\r\n") ## ATI - Befehl zum Anfragen
+                             ## der Versionsnummer
         out = ser.read(74)
         
         ## Wurde ueberhaupt eine Antwort empfangen? 
@@ -348,8 +357,9 @@ def testDevice(self, deviceName):
                     ## Es wurde kein ZigBit-Modul erkannt
                     return False
             else:
-                ## Antwort hatte falsches Format -> Es handelt sich
-                ## nicht um ein ZigBit-Modul
+                ## Antwort hatte falsches Format -> Es 
+                ## handelt sich nicht um ein 
+                ## ZigBit-Modul
                 return False
 
         else:
@@ -368,7 +378,7 @@ die in \cite{Jan} spezifizierten \emph{Interfaces}. Diese müssen über den \emp
 eingebunden werden. Dies geschieht über den Parameter \emph{-cp} auf der Kommandozeile
 der \emph{JVM} bzw. des \emph{Java-Compilers}. Der \emph{Connector} schickt über die 
 \emph{Server\_Incoming}-Schnittstelle eingehende Daten und Ereignisse an den \emph{MANVServer}.
-Damit der \emph{MANVServer} umgekehrt auch Befehle an den \emph{MANVConnector} schicken kann,
+Damit der \emph{MANV\-Server} umgekehrt auch Befehle an den \emph{MANVConnector} schicken kann,
 muss dieser selbst die \emph{Connector\_Commands}-Schnittstelle implementieren. Dies
 geschieht in der Klasse \emph{CommandsImpl}\footnote{Eine
 genaue Beschreibung der einzelnen Dateien, Klassen und Funktionalitäten findet sich in

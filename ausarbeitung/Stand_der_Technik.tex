@@ -26,7 +26,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         Mit Ausnahme von \emph{DECT} und \emph{GSM} bzw. \emph{UMTS} ist diesen Protokollen gemein, dass 
         sie Frequenzen aus dem \emph{ISM}-Band\footnote{Mehrere Frequenzbänder, für deren Benutzung eine allgemeine 
             Betriebserlaubnis ausreicht.} verwenden. 
-        \nomenclature{ISM-Band}{\emph{Industrial, Scientific and Medical Band} -- Mehrere Frequenzbänder, 
+        \nomenclature{ISM-Band}{\emph{Industrial, Scientific and Medical Band}\,--\,Mehrere Frequenzbänder, 
                            für deren Benutzung eine allgemeine Betriebserlaubnis ausreicht.}
 
     \subsection{DECT}
@@ -36,7 +36,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
         \nomenclature{m}{Meter}
         \nomenclature{MHz}{Megahertz}
         \nomenclature{W}{Watt}
-        \nomenclature{DECT}{Digital Enhanced Cordless Telecommunications -- Standard für festnetzgebundene Funktelefone.}
+        \nomenclature{DECT}{Digital Enhanced Cordless Telecommunications\,--\,Standard für festnetzgebundene Funktelefone.}
 
         Bei \emph{DECT} (\emph{"`Digital Enhanced Cordless Telecommunications"'}) handelt es sich um einen Standard, 
         der vor allem zur Anbindung von Schnurlostelefonen an eine Basisstation gedacht ist\footnote{Es gibt
@@ -184,9 +184,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
             dürfen.\\
             \\
             %Quelle: IEEE Standard
-            \nomenclature{WEP}{Wired Equivalent Privacy -- Nicht mehr zeitgemäßes Verschlüsselungsverfahren für
+            \nomenclature{WEP}{Wired Equivalent Privacy\,--\,Nicht mehr zeitgemäßes Verschlüsselungsverfahren für
                                \emph{WLAN}-Netzwerke.}
-            \nomenclature{WPA}{Wi-Fi Protected Access -- Neuer Verschlüsselungsstandard 
+            \nomenclature{WPA}{Wi-Fi Protected Access\,--\,Neuer Verschlüsselungsstandard 
                                für \emph{WLAN}-Netzwerke.}
             \nomenclature{Bluetooth}{Kabelloser Übertragungsstandard für \emph{WPANs}.}
             Bei dem Einsatz der in \emph{IEEE 802.11i} definierten Verschlüsselungsverfahren
@@ -382,8 +382,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 Datenübertragungsrate, eine Kommunikation kann allerdings weiter 
                 stattfinden.
                  \\
-                 Es ist festzustellen, dass \emph{Bluetooth} -- insbesondere im Vergleich
-                 zu \emph{WLAN} -- recht robust gegenüber Störungen ist.
+                 Es ist festzustellen, dass \emph{Bluetooth}\,--\,insbesondere im Vergleich
+                 zu \emph{WLAN}\,--\,recht robust gegenüber Störungen ist.
 
             \paragraph{Anzahl Teilnehmer}
                 Sobald zwei oder mehr Geräte miteinader verbunden sind, formen diese ein
@@ -419,7 +419,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 eine relativ hohe Anzahl von \emph{Piconetzen} durchqueren müssen,
                 um ihr Ziel zu erreichen.
             \paragraph{Leistungsaufnahme}
-                \nomenclature{Power-Management}{Energieverwaltung -- Maßnahmen um Energie zu sparen.}
+                \nomenclature{Power-Management}{Energieverwaltung\,--\,Maßnahmen um Energie zu sparen.}
                 Die genaue Leistungsaufnahme eines \emph{Bluetooth}-Gerätes hängt von 
                 einigen Faktoren ab. Den größten Einfluß hat die Rolle des 
                 Gerätes: Die Leistungsaufnahme eines \emph{Slaves} ist
@@ -544,7 +544,31 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \nomenclature{Multicast}{Datenpaket mit mehreren bestimmten Empfängern.}
                 \nomenclature{Broadcast}{Datenpaket, das an alle Empfänger im Netzwerk gesendet wird.}
                 \nomenclature{CRC}{Cyclic Redundancy Check}
-                \nomenclature{Beacon}{dt. Leuchtfeuer -- periodisches Bekanntmachen des Vorhandenseins des Netzwerks.}
+                \nomenclature{Beacon}{dt. Leuchtfeuer\,--\,periodisches Bekanntmachen des Vorhandenseins des Netzwerks.}
+
+                \begin{table}[!t]
+                    \begin{tabular}[!t]{lll}
+                        \textbf{ZigBee-Kanal} & \textbf{WLAN-Kanal} & \textbf{Bluetooth-Frequenz} \\
+                        11           & 1          & -\\
+                        12           & 1          & -\\
+                        13           & 1          & -\\
+                        14           & 1          & 2,420 GHz\\
+                        15           & -          & -\\
+                        16           & 7          & -\\
+                        17           & 7          & -\\
+                        18           & 7          & 2,439 GHz\\
+                        19           & 7          & -\\
+                        20           & 7          & -\\
+                        21           & -          & -\\
+                        22           & 13         & -\\
+                        23           & 13         & -\\
+                        24           & 13         & 2,471 GHz\\
+                        25           & 13         & -\\
+                        26           & 13         & -\\
+                    \end{tabular}
+                    \caption{Überschneidungen zwischen ZigBee, WLAN und Bluetooth-Kanälen}
+                    \label{zigbee_wlan_kanaele}
+                \end{table}
 
                 ZigBee verwendet zur Funkübertragung von Paketen den \emph{IEEE-802.15.4}-Standard.
                 Dieser weist große Ähnlichkeiten mit dem \emph{IEEE-802.11b}-Standard (WLAN, vgl. 
@@ -557,8 +581,8 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 wird \emph{CSMA/CA} verwendet.\\
                 \\
                 Zusätzlich spezifiziert \emph{ZigBee} in der Vermittlungsschicht (\emph{NWK}) eine Reihe von Fehlerbehandlungsroutinen:
-                So wird jedes empfangene Paket -- mit der Ausnahme von Broadcasts\footnote{Rundrufe, also
-                Pakete, die an alle Stationen gleichzeitig verschickt werden.} -- mit einer Antwort
+                So wird jedes empfangene Paket\,--\,mit der Ausnahme von Broadcasts\footnote{Rundrufe, also
+                Pakete, die an alle Stationen gleichzeitig verschickt werden.}\,--\,mit einer Antwort
                 an den Sender quittiert. Erhält der Sender innerhalb einer bestimmten Zeitspanne
                 keine Antwort, so sendet er das verlorene Paket erneut. Darüber hinaus gibt es in jedem
                 Datenpaket eine \emph{CRC}-Prüfsumme, mit deren Hilfe einfache Bitfehler erkannt werden können.
@@ -583,33 +607,9 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \emph{IEEE-802.11b}-Kanälen (Kanal 1, Kanal 6 und Kanal 11) in Nordamerika. In Europa überschneiden sich sogar 13 \emph{ZigBee}-Kanäle
                 mit den \emph{IEEE-802.11b}-Kanälen Kanal 1, Kanal 7 und Kanal 13 in Europa. Es ist zu 
                 erwarten, dass die Störungen auf den Kanälen im Randbereich der \emph{IEEE-802.11b}-Kanäle am geringsten --
-                wenn auch nicht komplett ausgeschlossen -- sind.
+                wenn auch nicht komplett ausgeschlossen\,--\,sind.
                 Außerdem gibt es auf 4 Kanälen Überschneidungen mit \emph{Bluetooth}. Der genaue Zusammenhang ist
                 in Tabelle~\ref{zigbee_wlan_kanaele} dargestellt.
-
-                \begin{table}
-                    \begin{tabular}{lll}
-                        \textbf{ZigBee-Kanal} & \textbf{WLAN-Kanal} & \textbf{Bluetooth-Frequenz} \\
-                        11           & 1          & -\\
-                        12           & 1          & -\\
-                        13           & 1          & -\\
-                        14           & 1          & 2,420 GHz\\
-                        15           & -          & -\\
-                        16           & 7          & -\\
-                        17           & 7          & -\\
-                        18           & 7          & 2,439 GHz\\
-                        19           & 7          & -\\
-                        20           & 7          & -\\
-                        21           & -          & -\\
-                        22           & 13         & -\\
-                        23           & 13         & -\\
-                        24           & 13         & 2,471 GHz\\
-                        25           & 13         & -\\
-                        26           & 13         & -\\
-                    \end{tabular}
-                    \caption{Überschneidungen zwischen ZigBee, WLAN und Bluetooth-Kanälen}
-                    \label{zigbee_wlan_kanaele}
-                \end{table}
 
 
 
@@ -637,7 +637,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
                 \emph{Bluetooth} verwendeten \emph{FHSS}-Verfahren besteht selbst im ungünstigsten Fall 
                 (Verwendung von sich überschneidenden Kanälen im \emph{ZigBee}-Netz, volle Ausschöpfung der 
                  Übertragungsrate im \emph{ZigBee}-Netz) nur eine maximale Kollisionswahrscheinlichkeit von ca. 
-                4\% (3 von 79 Frequenzsprüngen -- unter der Annahme, dass auch
+                4\% (3 von 79 Frequenzsprüngen\,--\,unter der Annahme, dass auch
                 das \emph{ZigBee}-Netzwerk in dieser Zeit dreimal den Kanal wechselt). Dies kann von der \emph{ZigBee}-Fehlerbehandlung
                 durch eine erneute Übertragung des kollidierten Paketes einfach behandelt werden. Verwendet
                 das \emph{Bluetooth}-Netzwerk darüber hinaus das \emph{AFH}-Verfahren, ist es in der Lage die Störung zu
@@ -738,7 +738,7 @@ kurz auf ähnliche Projekte eingegangen wird, die momentan an anderer Stelle in 
 %\Abbildungps{!htb}{1}{diagramme/kabellose_pulsoximetrie.jpg}{kabellose_pulsoximetrie}{Kabelloses Pulsoxymetriesystem der Firma Nonin.}
 
 \nomenclature{Monitor}{Gerät zur Überwachung von Vitaldaten von Patienten.}
-\nomenclature{EKG}{Elektrokardiogramm -- Überwachung der Herztätigkeit durch Ableiten elektrischer Signale.}
+\nomenclature{EKG}{Elektrokardiogramm\,--\,Überwachung der Herztätigkeit durch Ableiten elektrischer Signale.}
 Auf dem Markt ist eine breite Palette an kabellosen Produkten zur Patientenüberwachung vorhanden. Dies  davon setzen
 entweder \emph{Bluetooth} oder proprietäre Protokolle wie \emph{Z-Wave} zur Funkübertragung ein; \emph{ZigBee} ist bisher in
 keinem Medizinprodukt auf dem Markt zu finden: Fast alle dieser Systeme sind\,--\,im Gegensatz zu den Anforderungen dieser
@@ -767,7 +767,7 @@ geeignet.
 
 \section{Verwandte Projekte zum Einsatz in MANV-Szenarien}\label{verwandte_projekte}
 %\Abbildungps{!htb}{1}{diagramme/sogro.jpg}{sogro}{Datenarmbänder und Handgerät des \emph{SOGRO} Projektes.}
-\nomenclature{GPS}{Global Positioning System -- Ein Satellitennavigationssystem.}
+\nomenclature{GPS}{Global Positioning System\,--\,Ein Satellitennavigationssystem.}
 \nomenclature{TinyOS}{Open-Source-Betriebssystem für Sensornetzwerke.}
 Neben dieser Arbeit beschäftigen sich mehrere verwandte Projekte ebenfalls mit der Problematik
 der effizienten Patientenversorgung während eines \emph{MANVs}.\\

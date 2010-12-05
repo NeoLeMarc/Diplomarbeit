@@ -71,7 +71,7 @@ Test.
 \nomenclature{Webserver}{Software, die Webseiten ausliefert.}
 \nomenclature{AJAX}{Technologie zur Realisierung von Benutzeroberflächen auf Basis von Webseiten unter
                     Einsatz von \emph{Javascript} und \emph{JSON}.}
-\nomenclature{HTTP}{Hypertext Transfer Protocol -- Protokoll zur Übertragung von Webseiten.}
+\nomenclature{HTTP}{Hypertext Transfer Protocol\,--\,Protokoll zur Übertragung von Webseiten.}
 \nomenclature{Symbian}{Betriebssystem für ein Nokia-Handys.}
 Zum Nachweis der Anbindbarkeit von externer Software über die \emph{Corba}-Schnittstelle wurde entschieden,
 eine Schnittstelle zu einem \emph{Webinterface} zu implementieren. Das \emph{Webinterface} selbst ist
@@ -83,7 +83,7 @@ werden über spezielle \emph{HTTP-GET}-Anfragen kodiert. Insgesamt wird
 diese Vorgehensweise auch als \emph{AJAX} bezeichnet und bildet die Grundlage der \emph{Web-2.0}-Technologie.
 Es musste also ein Adapter von \emph{Corba} zu \emph{AJAX} realisiert werden. Die Details dieser
 Implementierung sind in Anhang~\ref{anhang_beschreibung_software} beschrieben.\\
-Darüber hinaus wird in \cite{Jan} beschrieben, wie ein \emph{Symbian}-basiertes \emph{Nokia}-Mobiltelefon 
+Darüber hinaus wird in \cite{Jan} beschrieben, wie ein \emph{Symbian}-basiertes \emph{Nokia}-Mo\-bil\-te\-le\-fon 
 an die \emph{MANVSuite} angebunden wird. Hierzu wurde eine in \emph{C++} programmierte Lösung 
 eingesetzt.
 
@@ -103,7 +103,7 @@ Anbindung sogar über Plattform- und Programmiersprachengrenzen hinweg realisier
 \nomenclature{Shunt}{Niederohmiger Widerstand zur Messung von Strömen mit einem Spannungsmessgerät.}
 Zur Bestimmung der Leistungsaufnahme~-- umgangssprachlich auch Strom\-ver\-brauch genannt~-- wurden mehrere Messungen 
 durchgeführt.
-Da der Stromverbrauch insbesondere bei Einsatz des Energiesparmodus sehr stark schwankt, sind herkömmliche Messungen
+Da der Strombedarf insbesondere bei Einsatz des Energiesparmodus sehr stark schwankt, sind herkömmliche Messungen
 z.B. über ein Multimeter nicht geeignet. Daher wurde eine indirekte Messung über den Spannungsabfall an einem 
 Widerstand durchgeführt. Dieser wurde in die Stromversorgung des \emph{ZigBit}-Moduls eingebracht. Der 
 Spannungsabfall über diesem Widerstand wurde nun sowohl mit einem \emph{Oszilloskop} als auch mit einem \emph{Multimeter}
@@ -118,14 +118,14 @@ verwendet.
 \subsection{Leistungsaufnahme im Normalbetrieb}\label{leistungsaufnahme_normalbetrieb}
 \label{ergebnis_normal}
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_router.jpg}{oszi_normalbetrieb_router}{Router oder Koordinator im Normalbetrieb. 
-%    Der Stromverbrauch beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
+%    Der Strombedarf beträgt hierbei konstant 23,4~mA, was ca. 70~mW entspricht.} 
 }   
 \Abbildungps{!htb}{0.75}{oszi/normalbetrieb_client.jpg}{oszi_normalbetrieb_client}{Endknoten im Normalbetrieb ohne Energiesparmodus. 
 %        Auffällig sind die \emph{Peaks}, in denen sich der Knoten im Empfangsmodus befindet. 
 %        Die \emph{Peaks} haben eine 
-%    Länge von 40~ms und einen Betrag von 23,4~mA. Ausserhalb eines \emph{Peaks} beträgt der Stromverbrauch 10,7~mA.
+%    Länge von 40~ms und einen Betrag von 23,4~mA. Ausserhalb eines \emph{Peaks} beträgt der Strombedarf 10,7~mA.
 %    Insgesamt ergibt 
-%    sich ein Mittelwert von 11,18~mA, was ca. 33,54~mW entspricht. Dies ist weniger als die Hälfte des Stromverbrauchs
+%    sich ein Mittelwert von 11,18~mA, was ca. 33,54~mW entspricht. Dies ist weniger als die Hälfte des Strombedarfs
 %    eines Routers oder Koordinators.} 
 }
 \Abbildungps{!htb}{1}{diagramme/spannungsverlauf_client_normal.pdf}{spannungsverlauf_client_normal}{Analyse des 
@@ -150,7 +150,7 @@ einen der Betrag des Spannungsabfalls von rund 473~mV sowie einer Dauer von gena
 Spannungabfall für genau eine Sekunde auf den Wert der Basislinie, also 215~mV zurück, auf die wieder ein \emph{Peak} folgt.
 Der Wert von 473~mV legt die Vermutung nahe, dass es sich bei den \emph{Peaks} um einen periodischen Empfangsvorgang handelt,
 d.h. das das \emph{ZigBit}-Modul jede Sekunde für genau 40~ms empfangsbereit ist. Diese Vermutung konnte durch weitere
-Tests bestätigt werden. Zur Bestimmung des Stromverbrauchs eines Clients ergibt sich daher folgende Rechnung:
+Tests bestätigt werden. Zur Bestimmung des Strombedarfs eines Clients ergibt sich daher folgende Rechnung:
 
 \begin{align}
     U_{Client} &= \frac{t_{Basislinie} \cdot U_{Basislinie} + t_{Peak} \cdot U_{Peak}}{t_{Basisline} + t_{Peak}}
@@ -186,7 +186,7 @@ von ca. 33,6~mW.
 
 \subsection{Leistungsaufnahme bei Verwendung des Energiesparmodus.}
 \Abbildungps{!htb}{0.75}{oszi/erwachen_1.jpg}{oszi_erwachen}{Aus dem Energiesparmodus erwachter Client.
-%   Erkennbar ist, dass während der Schlafphase der Stromverbrauch praktisch auf 0 sinkt. Direkt nach dem Erwachen
+%   Erkennbar ist, dass während der Schlafphase der Strombedarf praktisch auf 0 sinkt. Direkt nach dem Erwachen
 %   wird ein Empfangsvorgang durchgeführt; die danach folgende Phase ist analgo zu Abbildung~\ref{oszi_normalbetrieb_client}.
 %   Gut zu Erkennen ist, dass der Energiesparmodus praktisch keinen zusätzlichen Overhead bedeutet.
 }    
@@ -195,16 +195,16 @@ von ca. 33,6~mW.
 \Abbildungps{!htb}{0.75}{oszi/powersave_periodic.jpg}{oszi_powersave_periodic}{Client, der das periodische Aufrufen
     des Energiesparmodus nutzt.
 %   Die Schlafphase hat hier eine Länge von 5 Sekunden, die Wachphase ist genau 1 Sekunde lang. Der
-%   Stromverbrauch beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
+%   Strombedarf beträgt im Mittel nur noch 1,86mA, was ca. 5,58mW entspricht.}
 }
 
 \nomenclature{Serialnet}{\emph{Firmware} für die \emph{ZigBee}-Module der Herstellers \emph{Atmel}.}
 \nomenclature{BitCloud}{\emph{SDK} zur Erstellung von \emph{Firmware} für die \emph{ZigBee}-Module der Firma \emph{Atmel}.}
 \nomenclature{Peak}{Lokales Maximum (oder je nach Messrichtung auch Minimum) eines Spannungsverlaufs.}
 Die Verwendung des Energiesparmodus~-- im Datenblatt auch als \emph{Sleepmode}, also Schlafmodus, bezeichnet~-- ist eine
-Möglichkeit, den Stromverbrauch eines als Client konfigurierten \emph{ZigBit}-Moduls weiter zu reduzieren. Wie in 
-Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Stromverbrauch während des Energiesparmodus auf praktisch 
-0\footnote{Im Datenblatt ist ein Stromverbrauch von weniger als $6~\mu{}A$ angegeben.}. Sobald das Modul aus dem 
+Möglichkeit, den Strombedarf eines als Client konfigurierten \emph{ZigBit}-Moduls weiter zu reduzieren. Wie in 
+Abbildung~\ref{oszi_erwachen} zu sehen ist, sinkt der Strombedarf während des Energiesparmodus auf praktisch 
+0\footnote{Im Datenblatt ist ein Strombedarf von weniger als $6~\mu{}A$ angegeben.}. Sobald das Modul aus dem 
 Energiesparmodus in den Normalbetrieb zurückkehrt, wird sofort ein Empfangsvorgang gestartet. Bis zum nächsten Aufrufen des 
 Energiesparmodus verhält sich das Modul wie in Abschnitt~\ref{ergebnis_normal} beschrieben. Der Energiesparmodus kann
 entweder manuell\footnote{z.B. mit dem Befehl \emph{AT+WSLEEP} bei Verwendung der \emph{Serialnet-Firmware}.} oder in einem 
@@ -212,18 +212,18 @@ einstellbaren Intervall periodisch aufgerufen werden. Der Spannungsabfall währe
 Abbildung~\ref{oszi_powersave_periodic} zu sehen. Bei der Betriebsart des periodischen Aufrufens wird über zwei Parameter,
 $t_{sleep}$ und $t_{awake}$, die Dauer der Schlaf- bzw. Wachphase angegeben. Der Parameter $t_{awake}$ darf hierbei die Dauer
 einer Empfangsphase, also 40~ms, nicht unterschreiten. Für $t_{sleep}$ gilt eine Mindestdauer von 100~ms.\\
-Interessant ist nun die Bestimmung des durchschnittlichen Stromverbrauchs bei Verwendung des Energiesparmodus
-in Abhängigkeit von den Parametern $t_{awake}$ und $t_{sleep}$. In erster Näherung kann für den Stromverbrauch im Wachzustand
+Interessant ist nun die Bestimmung des durchschnittlichen Strombedarfs bei Verwendung des Energiesparmodus
+in Abhängigkeit von den Parametern $t_{awake}$ und $t_{sleep}$. In erster Näherung kann für den Strombedarf im Wachzustand
 Gleichung~\ref{eqn:IClient} verwendet werden\footnote{Dies ist eigentlich nicht ganz korrekt.
-Zur genauen Bestimmung des Stromverbrauchs müssten die einzelnen Intervalle 
+Zur genauen Bestimmung des Strombedarfs müssten die einzelnen Intervalle 
 eigentlich einzeln betrachtet werden. Allerdings ist der sich hieraus ergebende Fehler so gering, dass er in der Praxis zu 
-vernachlässigen ist.}. Insgesamt ergibt sich der Stromverbrauch zu:
+vernachlässigen ist.}. Insgesamt ergibt sich der Strombedarf zu:
 
 \begin{equation}
    I_{Powersave} = \frac{I_{Client} \cdot t_{awake}}{t_{awake} + t_{sleep}}
 \end{equation}
 
-In Tabelle~\ref{werte_Ipowersave} ist der Stromverbrauch für einige exemplarische Werte von $t_{sleep}$ und $t_{awake}$ 
+In Tabelle~\ref{werte_Ipowersave} ist der Strombedarf für einige exemplarische Werte von $t_{sleep}$ und $t_{awake}$ 
 aufgeführt.
 
 \begin{table}
@@ -246,12 +246,12 @@ aufgeführt.
 \subsection{Sonderfälle}\label{leistungsaufnahme_sonderfaelle}
 \Abbildungps{!htb}{0.75}{oszi/not_joined.jpg}{oszi_not_joined}{Client mit deaktiviertem Empfangsmodus.
     %deaktiviert. Der 
-    %Stromverbrauch beträgt konstant 10,7~mA.}
+    %Strombedarf beträgt konstant 10,7~mA.}
     }
 \Abbildungps{!htb}{0.75}{oszi/joined.jpg}{oszi_joined}{Beitrittsvorgang eines Clients in ein Netzwerk.
     %Bevor der Client dem 
     %Netzwerk beigetreten ist, befindet er sich durchgehend im Empfangsmodus und benötigt 23,4~mA. Sobald er dem Netzwerk
-    %beigetreten ist, entspricht entspricht der Stromverbrauch dem in Abbildung~\ref{oszi_normalbetrieb_client} dargestellten
+    %beigetreten ist, entspricht entspricht der Strombedarf dem in Abbildung~\ref{oszi_normalbetrieb_client} dargestellten
     %Verhalten.} 
     }
 \Abbildungps{!htb}{0.75}{oszi/joined2.jpg}{oszi_connection_lost}{Client, der die Verbindung zum Netzwerk verloren hat.}
@@ -260,9 +260,9 @@ aufgeführt.
 
 So lange ein Client keinem Netzwerk beigetreten ist befindet er sich dauerhaft im Empfangsmodus. Das selbe Verhalten liegt
 vor, wenn eine bestehende Netzwerkverbindung verloren gegangen ist. Wie in Abbildung~\ref{oszi_connection_lost} zu sehen
-ist, steigt der Stromverbrauch in diesem Fall dauerhaft auf 23,4~mA an. Dazu kommt, dass keine Nutzung des Energiesparmodus
+ist, steigt der Strombedarf in diesem Fall dauerhaft auf 23,4~mA an. Dazu kommt, dass keine Nutzung des Energiesparmodus
 möglich ist, so lange keine Verbindung zu einem Netzwerk besteht. Dies kann eine Steigerung des durchschnittlichen
-Stromverbrauchs um mehr als den Faktor 10 bewirken, was eine entsprechend schnelle Entladung der verwendeten Stromquelle bedeutet.
+Strombedarfs um mehr als den Faktor 10 bewirken, was eine entsprechend schnelle Entladung der verwendeten Stromquelle bedeutet.
 Es ist daher wichtig, darauf zu achten, dass alle verwendeten Sensoren möglichst selten die Verbindung zum 
 Netzwerk verlieren.
 

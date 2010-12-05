@@ -5,78 +5,87 @@
 \section{Zusammenfassung}
 \nomenclature{ANT+}{Proprietärer Funkstandard für die Datenübertragung im Nahbereich, z.B. für Pulsuhren.}
 In dieser Arbeit wurde ein kabelloses Sensornetzwerk zur Überwachung von Patienten bei einem 
-Massenanfall von Verletzten (\emph{MANV}) entworfen und implementiert. Zunächst wurden 
-verschiedene kabellose Sensornetzprotokolle vorgestellt und auf ihre Eignung als Grundlage für
-die Patientenüberwachung bei einem \emph{MANV} überprüft. Bereits in diesem Schritt wurde die Entscheidung
+Massenanfall von Verletzten (\emph{MANV}) entworfen und implementiert. Es wurden 
+mehrere kabellose Sensornetzprotokolle vorgestellt und es fand eine Tauglichkeitsprüfung dieser statt.
+Bereits in diesem Schritt wurde die Entscheidung
 getroffen, eine Lösung auf Basis des \emph{ZigBee}-Protokolles zu implementieren. Hierfür sprachen
-der geringste Stromverbrauch aller verfügbaren Lösungen, die hohe Störsicherheit sowie die
+der geringste Strombedarf aller verfügbaren Lösungen, die hohe Störsicherheit sowie die
 gute Verfügbarkeit passender Hardware auf dem Markt. Es wurde weiterhin festgestellt, dass sich die
 Marktsituation in den kommenden Jahren auf Grund der Einführung neuer Standards wie \emph{ANT+},
 \emph{Bluetooth Low Energy} sowie \emph{Wireless USB} ändern könnte, so dass beim späteren Entwurf
 insbesondere auf die Austauschbarkeit des Netzwerkprotokolles zu achten ist. Im Anschluss daran wurden
 verschiedene aktuell auf dem Markt erhältliche Lösungen zur kabellosen Patientenüberwachung betrachtet 
 und mit den Erkenntnissen aus der Analyse der verschiedenen Netzwerkprotokolle auf ihre Eignung untersucht.
-Hierbei wurde festegestellt, dass alle betrachteten Lösungen eher für den Einsatz im Krankenhaus
+Hierbei wurde festgestellt, dass alle betrachteten Lösungen eher für den Einsatz im Krankenhaus
 gedacht und für den Einsatz während eines \emph{MANVs} nicht geeignet sind. Weiterhin wurden verwandte
 Projekte vorgestellt, die sich ebenfalls mit der technischen Patientenversorgung während eines \emph{MANVs} beschäftigen
 und die Ähnlichkeiten und Unterschiede gezeigt.\\
 Mit den aus der Betrachtung der Stand der Technik gewonnenen Erkenntnissen konnte nun zur Analyse 
 übergegangen werden. Hier wurde zunächst eine Reihe von Anforderungen erarbeitet, die die zu entwerfende 
-Lösung erfüllen soll. Außerdem wurd für den späteren Einsatz ausgewählte \emph{ZigBee}-Hardware 
+Lösung erfüllen soll. Als besonders wichtig sind hierbei eine hohe Teilnehmerzahl (mehrere hundert), 
+ein geringer Strombedarf sowie eine ausreichend hohe Reichweite zu nennen. 
+Außerdem wurde die für den späteren Einsatz ausgewählte \emph{ZigBee}-Hardware 
 der Firma \emph{Atmel} untersucht, und es wurde eine Reihe von Eigenheiten im Kommunikationsprotokoll 
 zwischen \emph{ZigBee}-Modul und Mikrokontroller entdeckt, für die jeweils eine passende Lösung in 
 allgemeiner Form vorgestellt wurde.  Außerdem wurden kurz die zwei verschiedenen Arten, 
 den Energiesparmodus der Module aufzurufen, erläutert, und der manuelle Aufruf als bessere Lösung ausgewählt.\\
 Nach der Analyse folgte der Entwurf eines Systems zur Lösung der gestellten Aufgabe. Dieser erfolgte in 3 
 Schritten: Zunächst erfolgte der Entwurf des Gesamtsystems im Groben. In Hinblick auf die in der Analyse
-gewünschte Austauschbarkeit des Funkprotokolls wurde entschieden, alle Designentscheidungen zu kapseln und
-so das System aus einzelnen, austauschbaren Komponenten aufzubauen. Im Groben wurde hierbei zwischen
-einer Kontrollsoftware, der sogenannten \emph{MANVSuite}, der Hardware der Sensoren, in Form einer 
-Test- und Entwurfplatine (\emph{MANVNode}), einem \emph{USB-Stick} zur Verbindung zwischen Netzwerk und Computer
-sowie dem sogenannten \emph{MANVConnector}, der die Schnittstelle zwischen Hard- und Software bildet und zudem
-alle hardwarespezifischen Designentscheidungen kapselt. Die \emph{MANVSuite} wurde in einer
-zu dieser Diplomarbeit parallel laufenden Studienarbeit von Herrn cand. inform Jan Tepelmann genauer entworfen
-und implementiert.\cite{Jan}\\
+gewünschte Austauschbarkeit des Funkprotokolls wurde entschieden, wichtige Designentscheidungen zu kapseln und
+so das System aus einzelnen, austauschbaren Komponenten aufzubauen. Im Groben erfolgte eine Aufteilung in 
+einer Kontrollsoftware (\emph{MANVSuite}), einer Test- und Entwurfplatine (\emph{MANVNode}), 
+dem \emph{MANV-USB-Stick}, sowie der Schnittstelle zwischen Hard- und Software (\emph{MANVConnector}).\\
+\\
+Die \emph{MANVSuite} wurde in einer zu dieser Diplomarbeit parallel laufenden Studienarbeit von 
+Herrn cand. inform Jan Tepelmann genauer entworfen und implementiert (\cite{Jan}).\\
+\\
 Nach dem groben Entwurf folgt der Entwurf im Feinen. Hierbei wurden Hardware (\emph{MANVNode} und \emph{USB-Stick})
 sowie Software (\emph{MANVConnector} und Firmware der \emph{MANVNode}) getrennt betrachtet.\\
-Auf Grundlage dieses Entwurfs wurde nun eine Implementierung durchgeführt. Die Vorgehensweise, 
-dabei auftretenden Probleme und deren Lösung ist Thema des Kapitels~\ref{Implementierung}.
-Hier wird unter anderem beschrieben, welche Probleme bei der Bestückung der Platine der \emph{MANVNode} aufgetreten
-sind, wie der Zugriff auf die \emph{UART}-Schnittstelle des \emph{ADuC}-Mikrocontrollers in der Firmware
-realisiert wurde, wie von \emph{Java} aus auf den seriellen Port zugegriffen wird und wie die automatische
-Erkennung des \emph{USB-Sticks} auf dem Betriebssystem \emph{Linux} realisiert wurde.\\
-Nachdem die Implementierung abgeschlossen war, folgte eine Reihe von umfassenden Tests. Ziel hierbei war es,
+\\
+Auf Grundlage dieses Entwurfs wurde nun eine Implementierung durchgeführt. 
+Bei der Bestückung der Platine der \emph{MANVNode} sind einige Probleme mit der Stromversorgung aufgetreten,
+die jedoch durch eine Änderung des Platinenlayouts behoben werden konnten. Außerdem waren praktische
+Probleme, wie die automatische Erkennung des \emph{MANV-USB-Sticks}, sowie der Zugriff auf den seriellen Port
+mittels Java zu lösen. In beiden Fällen konnte durch die Kapselung von betriebssystemspezifischem Code in
+\emph{Python}-Skripte Abhilfe geschaffen werden. \\
+Die Implementierung wurde einer Reihe von Tests unterzogen. Ziel hierbei war es,
 festzustellen, wie gut die vorgestellte Lösung die in der Analyse aufgestellten Anforderungen erfüllt. Neben
-Reichweite, Stromverbrauch und Erweiterbarkeit des Funknetzwerkes wurde hierzu auch die Leistungsfähigkeit der 
+Reichweite, Strombedarf und Erweiterbarkeit des Funknetzwerks wurde hierzu auch die Leistungsfähigkeit der 
 Software in Hinblick auf Anzahl der Teilnehmer, Austauschbarkeit des \emph{MANVConnectors} und Interoperabilität
-zwischen \emph{MANVSuite}, \emph{MANVConnector} und Sensornetzwerk intensiv untersucht. Alle Tests verliefen
-positiv, und die entworfene Lösung konnte in fast allen Punkten die Anforderungen, die in Abschnitt~\ref{Anforderungen}
-aufgestellt wurden, erfüllen. Lediglich bei der Datensicherheit innerhalb des \emph{ZigBee}-Netzwerkes mussten
+zwischen \emph{MANVSuite}, \emph{MANVConnector} und Sensornetzwerk intensiv untersucht. 
+Besondere Augenmerk lag bei dieser Untersuchung auf der Interoperabilität aller Komponenten, die durch 
+Integrationgstests und Austausch einzelner Teile gezeigt werden konnte. Außerdem wurde die Strombedarf der 
+\emph{ZigBee}-Module sowie deren Reichweite eingehend untersucht. Eine Betrachtung der Anzahl der Benutzer
+erfolgte analytisch anhand des \emph{ZigBee}-Standards. Durch diese Tests konnte gezeigt werden, dass die
+Lösung die anfangs Erhobenen Anforderungen erfüllen kann.  
+Lediglich bei der Datensicherheit innerhalb des \emph{ZigBee}-Netzwerkes müssen 
 Einschränkungen hingenommen werden, da die Firmware des Herstellers \emph{Atmel} nicht den versprochenen
-Funktionsumfang bereit stellen konnte. Dies wird in Abschnitt~\ref{Sicherheit} genauer untersucht. Hier werden
+Funktionsumfang bereit stellt. Dies wird in Abschnitt~\ref{Sicherheit} genauer untersucht. Hier werden
 auch mehrere Vorschläge gemacht, wie dieses Problem gelöst werden kann. Die Arbeit wird abgerundet durch ein
 umfangreiches Softwarepaket inkl. Quellcode und Dokumentation, die die zeitnahe Realisierung als Produkt ermöglichen.
 
 \section{Sicherheit des Netzwerkes}
 \label{Sicherheit}
+Das Thema Sicherheit spielt\,--\,gerade für ein medizinisches Netzwerk\,--\,eine nicht zu vernachlässigende Rolle.
+Daher sollen an dieser Stelle einige Anregungen gegeben werden, wie ein Sicherheitskonzept für das entworfene Netzwerk 
+aussehen könnte.
+
 \subsection{Aktueller Stand}
 Grundsätzlich unterstützt \emph{ZigBee} eine 128-Bit \emph{AES}-Verschlüsselung. Die \emph{SerialNet-Firmware} der in 
 dieser Diplomarbeit eingesetzten \emph{ZigBee-Module} der Firma \emph{Atmel} bietet jedoch in der aktuell vorliegenden 
 Version (1.8.0) keine Möglichkeit, diese Verschlüsselung zu verwenden. Laut Auskunft des E-Mail-Supports der Firma 
 \emph{Atmel} ist dieses Feature auch für zukünftige Versionen nicht geplant.\\
-\\
-Das Thema Sicherheit spielt -- gerade für ein medizinisches Netzwerk -- eine nicht zu vernachlässigende Rolle.
-Daher sollen an dieser Stelle einige Anregungen gegeben werden, wie ein Sicherheitskonzept für das entworfene Netzwerk aussehen 
-könnte.
-
 \subsection{Angriffsszenarien}
+
+Zur Beurteilung der Gefahrenlage, sowie zur Entwicklung von Abwehrmaßnahmen erfolgt zunächst eine Betrachtung von
+möglichen Angriffsszenarien. 
 
 \subsubsection{Ausspähen von Patientendaten}
 Aktuell werden über das Netzwerk Vitaldaten von Patienten (Puls und Atmung) pseudonym versendet. Als Pseudonym dient 
 hierbei die Hardware-Adresse des versendenden \emph{ZigBee}-Moduls. Passives Mitschneiden der Daten ist so lange kein Problem,
 so lange sich keine Zuordnung zwischen der Identität des Patienten und der Hardware-Adresse des verwendeten Moduls
 herstellen lässt. Hierfür ist eine direkte räumliche Nähe zwischen Patient und Angreifer notwendig. 
-Während eines \emph{MANV}-Szenarios sollte dies jedoch aktiv durch die Rettungskräftem, insbesondere durch die Absperrung 
+Während eines \emph{MANV}-Szenarios sollte dies jedoch aktiv durch die Rettungskräften, insbesondere durch die Absperrung 
 durch die Polizei vor Ort verhindert werden. Sollte es einem Angreifer gelingen, nahe genug an das entsprechende Modul
 heranzukommen, um eine Zuordnung vorzunehmen, ist sowieso davon auszugehen, dass er auch in der Lage wäre, Bild oder
 Videoaufnahmen des Patienten herzustellen, was im Zweifelsfall eine deutlich größeren Eingriff in die Privatsphäre 
@@ -104,11 +113,15 @@ einfach mit sehr großer Sendeleistung auf allen \emph{ZigBee}-Frequenzen senden
 
 \subsection{Abwehrmaßnahmen}
 
+Zur Abwehr der vorgestellten Angriffsszenarien kommen eine Reihe von Abwehrmaßnahmen in Betracht. Diese werden im
+folgenden kurz vorgestellt und auf Ihre Eignung untersucht.
+
 \subsubsection{ZigBee-Verschlüsselung}
 Die verwendeten \emph{ZigBee}-Module der Firma \emph{Atmel} unterstützen hardwareseitig die im 
-\emph{ZigBee}-Standard definierte 128-Bit-\emph{AES}-Verschlüsselung. 
-Um diese einsetzen zu können, muss die momentan verwendete \emph{SerialNet-Firmware}
-gegen eine eigene Firmware ausgetauscht werden. \emph{Atmel} stellt hierzu einen \emph{ZigBee-Pro}-basiertes 
+\emph{ZigBee}-Standard definierte 128-Bit-\emph{AES}-Verschlüsselung. Die Integrität der Nachricht wird hierbei durch
+die Bildung einer Prüfsumme sichergestellt. Um die Verschlüsselung einsetzen zu können, muss die momentan 
+verwendete \emph{SerialNet-Firmware} gegen eine eigene Firmware ausgetauscht werden. \emph{Atmel} 
+stellt hierzu einen \emph{ZigBee-Pro}-basiertes 
 \emph{SDK} zur Verfügung, mit dessen Hilfe eine entsprechende \emph{Firmware} mit vertretbarem Aufwand entwickelt 
 werden kann. Hierbei bietet es sich an, einen an die \emph{SerialNet-Firmware} angelehnten \emph{AT-Befehlssatz} zu 
 implementieren, um alle bestehenden Komponenten wie den \emph{MANV-Connector} und die Firmware des 
@@ -127,7 +140,7 @@ die \emph{ZigBit-Firmware} an.
 \subsubsection{Schutz auf Anwendungsebene}
 \nomenclature{OpenSSL}{Open Source Bibliothek, die viele Verschlüsselungsverfahren implementiert.}
 \nomenclature{SSL}{Secure Socket Layer}
-\nomenclature{TLS}{Transport Layer Security -- Nachfolger von SSL.}
+\nomenclature{TLS}{Transport Layer Security\,--\,Nachfolger von SSL.}
 \nomenclature{Denial-Of-Service}{Blockieren eines Dienstes durch Überfluten mit Anfragen oder Ausnutzen eines 
                                 Softwarefehlers.}
 Alternativ zur Modifikation der \emph{ZigBit-Firmware} besteht auch die Möglichkeit, auf Anwendungsebene zu verschlüsseln.
@@ -140,6 +153,11 @@ allerdings ist es immer noch möglich, durch die Verwendung von gefälschten Abs
 \emph{Denial-Of-Service-Angriff} gegen das Netzwerk durchzuführen. 
 
 \section{Verbesserung der Reichweite und Störsicherheit}
+Die in dieser Arbeit eingesetzten \emph{ZigBee}-Module verfügen über eingebaute Antenne sowie eine sehr 
+niedrige Sendeleistung von nur 1~mW. Damit einhergehend ist eine begrenzte Reichweite. Die Störsicherheit dieser Module
+ist zwar bereits sehr gut, allerdings kann diese weiter erhöht werden. Im Folgenden werden einige Möglichkeiten
+vorgestellt, wie diese Ziele zu erreichen sind.
+
 \subsection{Anderer Frequenzbereich}
 In dieser Arbeit wurden lediglich \emph{ZigBee}-Module, die im 2,4~GHz-\emph{ISM-Band} operieren, untersucht. Es gibt
 jedoch auch Module, die das 868- (Europa) bzw. 915-MHz-Band (USA) nutzen. Diese versprechen eine bessere Durchdringung
@@ -149,16 +167,16 @@ sind, wäre gesondert zu evaluieren. Für den Einsatz in schwierigem Terrain kö
 Vorteile bieten.
 
 \subsection{Verwendung leistungsstärkerer \emph{ZigBee}-Module und Antennen}
-Für diese Arbeit war der Stromverbrauch der Module eines der wichtigsten Kriterien. Daher wurden Module mit der geringsten
+Für diese Arbeit war der Strombedarf der Module eines der wichtigsten Kriterien. Daher wurden Module mit der geringsten
 Leistungsaufnahme und damit auch der geringsten Sendeleistung für den Entwurf der Hardware verwendet. Neben diesen
 Modulen sind auch Varianten mit deutlich höherer Sendeleistung erhältlich. Diese kann meist sogar noch zusätzlich durch
-den Einsatz von externen Antennen verstärkt werden. Mit der entsprechenden Kombination aus Modul und Antenne lässt sich eine
+den Einsatz von externen Antennen verbessert werden. Mit der entsprechenden Kombination aus Modul und Antenne lässt sich eine
 Sendeleistung erreichen, die mehr als 10mal so hoch ist, wie diejenige der in dieser Arbeit verwendeten Module. Dies ist 
 insbesondere für den Einsatz in \emph{ZigBee}-Routern interessant, da diese einfach mit einer größeren Stromquelle versehen
 werden können als die einzelnen Sensoren. Es wäre daher interessant zu evaluieren, wie sich die Verwendung 
 leistungsfähigerer Module sowie größerer Antennen in den Routern auf die erreichbare Reichweiten des Netzwerkes auswirkt.
 
-\subsection{Genauere Betrachtung des \emph{Bluetooth-Low-Energy}-Standards}
+\subsection{Genauere Betrachtung des \emph{Bluetooth-Low-Energy}-Stan\-dards}
 Der \emph{Bluetooth-Low-Energy}-Standard verspricht, eine interessante Alternative zum \emph{ZigBee}-Standard zu werden.
 Der einzige Grund, weshalb in dieser Arbeit keine genauere Betrachtung erfolgen konnte, war die Nichtverfügbarkeit
 entsprechender Hardware zum Zeitpunkt der Anforderungsanalyse. Bereits im Februar 2010 wurde von der Firma 

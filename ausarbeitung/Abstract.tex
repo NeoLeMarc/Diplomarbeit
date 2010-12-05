@@ -1,34 +1,44 @@
-\chapter*{Abstract}
+\null\newpage
+\Huge\textbf{Abstract}\normalsize\\\\
+\vspace{-0.5cm}
+
 \begin{small}
-In dieser Arbeit wird ein kabelloses Sensornetzwerk zur Überwachung von Patienten bei einem 
-Massenanfall von Verletzten entworfen und implementiert. Als Grundlage dieser Entwicklung
-dient der am IBT entwickelte \emph{Erste-Hilfe-Sensor}, der mit einem neuartigen kapazitiven
-Verfahren Puls und Atmung eines Patienten überwacht.
-Hierzu wird zunächst eine Untersuchung aller in Frage kommenden Funktechnologien vorgenommen,
-wobei ein besonderes Augenmerk auf Energieffizienz und Stabilität der Funktechnologie gelegt wird.
-Hierbei stellt sich \emph{ZigBee} als am besten geeignetes Protokoll heraus, und es wird entschieden,
-eine Umsetzung auf Basis eines \emph{ZigBee}-Moduls des Herstellers \emph{Atmel} durchzuführen. 
-Dieses Modul wird einer genaueren Betrachtung unterzogen, und eine Reihe von Schwierigkeiten werden
-identifiziert. Für diese Schwierigkeiten werden allgemeingültige Lösungen entwickelt. Auf Basis dieser
-allgemeinen Lösungen werden später spezielle Lösungen für die \emph{Java-Plattform} sowie für den
-Mikrocontroller des \emph{Erste-Hilfe-Sensors} entwickelt.
+Bei einem Massenanfall von Verletzten (MANV) kommt es oft zu personellen Engpässen, so dass eine
+ausreichende Überwachung der Patienten nicht gewährleistet ist. 
+Abhilfe kann der am IBT entwickelte \emph{Erste-Hilfe-Sensor} schaffen, der mit einem neuartigen 
+Verfahren Puls und Atmung eines einzelnen Patienten überwacht. Zur Überwachung \emph{mehrerer} Patienten 
+muss ein kabelloses Netzwerk aus diesen Sensoren gebildet werden.
+Entsprechende Netzwerktechnologien existieren zwar, müssen aber in die bestehende Lösung integriert 
+und um eine geeignete Überwachungssoftware ergänzt werden. Dies ist Aufgabe der vorliegenden Arbeit.
+Hierzu wird zunächst eine Untersuchung aller in Frage kommenden Funktechnologien unter besonderem 
+Augenmerk auf Energieeffizienz und Stabilität vorgenommen.
+\emph{ZigBee} stellt sich als bestgeeignetes Protokoll heraus, und es wird entschieden,
+eine Umsetzung auf Basis eines Moduls des Herstellers \emph{Atmel} durchzuführen. 
+Bei dessen genauerer Betrachtung werden einige Schwierigkeiten 
+identifiziert\,--\,beispielsweise das Auftreten von asynchronen Ereignissen, das zum 
+Synchronisationsverlust führen kann.
+Lösungen für diese Schwierigkeiten werden gefunden und an Überwachungssoftware sowie \emph{Erste-Hilfe-Sensor} 
+konkret umgesetzt.
 \\                    
-Bei der Entwicklung des Gesamtsystems wird ein komponentenbasierter Ansatz gewählt. Hierdurch wird nicht
-nur die Austauschbarkeit der einzelnen Komponenten erreicht, sondern auch deren Verteilung über
-mehrere Rechner ermöglicht. Für die Verbindung der einzelnen Komponenten zueinander werden 
-\emph{Corba}-Schnittstellen verwendet. Diese Schnittstellen sind so gestaltet, dass auch externe
-Software angebunden werden kann. Die Anbindung exemplarisch am Beispiel einer \emph{Weboberfläche} 
-durchgeführt.
-Außerdem wird eine Platine entwickelt, auf der das \emph{ZigBee}-Modul und der
-\emph{Mikrocontroller} des \emph{Erste-Hilfe-Sensors} integriert sind. Diese Platine wird zur 
-Entwicklung eines \emph{ZigBee}-Treibers für die Firmware des \emph{Erste-Hilfe-Sensors} verwendet.
+Zur Gewährleistung einer hohen Flexibilität wird ein komponentenbasierter Ansatz gewählt. 
+Hierdurch wird nicht nur die Austauschbarkeit der einzelnen Komponenten\,--\,z.B. der eingesetzten
+Funktechnologie\,--\,erreicht, sondern auch deren Verteilung über mehrere Rechner ermöglicht. 
+Auf diesem Weg wird sowohl die Skalierbarkeit erhöht als auch eine Grundlage für verbesserte
+Ausfallsicherheit geschaffen.
+Die Verbindung der einzelnen Komponenten wird über \emph{Corba}-Schnittstellen realisiert. 
+Diese sind so gestaltet, dass auch externe Software angebunden werden kann. Exemplarisch gezeigt wird dies
+am Beispiel einer \emph{Weboberfläche}. Damit wird gleichzeitig die Verwendung von Mobiltelefonen
+als Endgeräte zur Patientenüberwachung ermöglicht, ohne dass eine Installation von Software auf diesen Geräten
+notwendig ist.
+Darüber hinaus wird eine Platine entwickelt, auf der das \emph{ZigBee}-Modul und der
+\emph{Mikrocontroller} des \emph{Erste-Hilfe-Sensors} integriert sind. Sie dient als Werkzeug
+zur Firmware-Entwicklung für den erweiterten \emph{Erste-Hilfe-Sensor} und ist gleichzeitig auch Testumgebung.
 \\
-Das Gesamtsystem wird zum Abschluß eingehend evaluiert. Hierbei wird gezeigt, dass alle Komponenten
-erfolgreich miteinander interagieren. Außerdem wird die Leistungsaufnahme des \emph{ZigBee}-Moduls
-untersucht, und die Abhängigkeit von den Parametern des Energiesparmodus berechnet. Hierbei ergibt 
-sich ein Strom von ca. 1,86~mA bei der Wahl von realistischen Parametern für den 
-Energiesparmodus. Dies entspricht einer Leistungsaufnahme von ca 5,6~mW.
-%\begin{small} -- Falls es nicht auf eine Seite passt darf die Schrift im Abstract kleiner gemacht werden, aber nur beim Abstract!
+Bei einer eingehenden Evaluierung des Gesamtsystems wird die Interoperabilität aller Komponenten gezeigt. 
+Außerdem wird die Leistungsaufnahme des \emph{ZigBee}-Moduls in Abhängigkeit von den Parametern des 
+Energiesparmodus untersucht. Insgesamt zeigt sich, dass Laufzeit, Reichweite und die erreichbare Anzahl an 
+Sensoren für MANV-Szenarien mit hunderten von Verletzten ausreichend sind.
+%\begin{small}\,--\,Falls es nicht auf eine Seite passt darf die Schrift im Abstract kleiner gemacht werden, aber nur beim Abstract!
 %... Die Zusammenfassung ("`Abstract"') ist nach dem Titel der zweitwichtigste Bestandteil einer
 %wissenschaftlichen Arbeit. Sie sollten deshalb für die Zusammenfassung, ebenso wie für den
 %Titel, besonders viel Mühe und Zeit verwenden, da die gesamte wissenschaftliche Arbeit nur
