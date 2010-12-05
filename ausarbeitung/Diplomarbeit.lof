@@ -35,8 +35,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{110}{figure.A.1}
-\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}.}}{111}{figure.A.2}
-\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Oberseite der Platine der MANVNode.}}{112}{figure.A.3}
-\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Unterseite der Platine der MANVNode.}}{113}{figure.A.4}
-\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Klassendiagramm des MANV-Connectors.}}{114}{figure.A.5}
+\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}: Stromversorgung.}}{111}{figure.A.2}
+\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {JTAG}.}}{112}{figure.A.3}
+\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Schaltplan der \emph {MANVNode}: Mikrocontroller.}}{113}{figure.A.4}
+\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {ZigBit}-Modul.}}{114}{figure.A.5}
+\contentsline {figure}{\numberline {\relax A.6}{\ignorespaces Schaltplan der \emph {MANVNode}: Benutzerschnittstelle.}}{115}{figure.A.6}
+\contentsline {figure}{\numberline {\relax A.7}{\ignorespaces Oberseite der Platine der MANVNode.}}{116}{figure.A.7}
+\contentsline {figure}{\numberline {\relax A.8}{\ignorespaces Unterseite der Platine der MANVNode.}}{117}{figure.A.8}
+\contentsline {figure}{\numberline {\relax A.9}{\ignorespaces Klassendiagramm des MANV-Connectors.}}{118}{figure.A.9}
 \addvspace {10\p@ }
