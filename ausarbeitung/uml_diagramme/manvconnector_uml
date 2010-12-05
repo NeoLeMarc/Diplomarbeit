@@ -58,9 +58,9 @@ beginfig(1);
 
 
     
-    leftToRight.top(100)(iZigBit, MANVConnector);
+    leftToRight.top(240)(iZigBit, MANVConnector);
     topToBottom(45)(iZigBit, readonlyZigBit);
-    leftToRight.top(45)(readonlyZigBit, ZigBit);
+    leftToRight.top(150)(readonlyZigBit, ZigBit);
 
     drawObjects(MANVConnector, iZigBit, readonlyZigBit, ZigBit);
     link(inheritance)(pathStepY(readonlyZigBit.n, iZigBit.s, 20));
@@ -131,7 +131,8 @@ beginfig(1);
 
     topToBottom(45)(Thread, SocketWriter);
     topToBottom(45)(SocketWriter, BlockingQueueMANVEvent);
-    leftToRight.top(45)(SocketReader, SocketWriter, CorbaSender);
+    leftToRight.top(130)(SocketReader, SocketWriter);
+    leftToRight.top(45)(SocketWriter, CorbaSender);
     drawObjects(Thread, SocketReader, SocketWriter, CorbaSender);
     link(inheritance)(pathStepY(SocketReader.n, Thread.s, 20));
     link(inheritance)(pathStepY(SocketWriter.n, Thread.s, 20));
@@ -218,7 +219,7 @@ beginfig(1);
             "+isImportant: boolean",
             "+createCorbaMessages: AbstractList<CorbaMessageContainer>");
 
-    leftToRight.top(90)(MANVResult, MANVDataReceived);
+    leftToRight.top(200)(MANVResult, MANVDataReceived);
     leftToRight.top(45)(MANVDataReceived, MANVChildLost, MANVChildJoined);
     drawObjects(MANVDataReceived, MANVChildLost, MANVChildJoined);
     link(inheritance)(pathStepY(MANVDataReceived.n, MANVEvent.s, 20));
@@ -253,7 +254,7 @@ beginfig(1);
             "+getChildList(commandQueue: BlockingQueue<MANVCommand>",
             "+addSubResult(result: MANVResult)");
 
-    leftToRight.top(45)(MANVChildrenList, MANVGsn, MANVStatusMessage);
+    leftToRight.top(130)(MANVChildrenList, MANVGsn, MANVStatusMessage);
     drawObjects(MANVGsn, MANVChildrenList);
     link(inheritance)(pathStepY(MANVGsn.n, MANVResult.s, 20));
     link(inheritance)(pathStepY(MANVChildrenList.n, MANVResult.s, 20));
@@ -431,6 +432,16 @@ beginfig(1);
 
 endfig;
 end
+
+
+
+
+
+
+
+
+
+
 
 
 
