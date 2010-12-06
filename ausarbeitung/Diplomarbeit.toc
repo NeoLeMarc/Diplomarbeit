@@ -93,7 +93,7 @@
 \contentsline {subsubsection}{\numberline {5.3.1.4}Ansteuerung des ZigBit-Modul}{60}{subsubsection.5.3.1.4}
 \contentsline {subsection}{\numberline {5.3.2}MANVSuite}{63}{subsection.5.3.2}
 \contentsline {subsection}{\numberline {5.3.3}MANVConnector}{63}{subsection.5.3.3}
-\contentsline {subsubsection}{\numberline {5.3.3.1}Synchronisierung der Befehls\IeC {\"u}bertragung}{66}{subsubsection.5.3.3.1}
+\contentsline {subsubsection}{\numberline {5.3.3.1}Synchronisierung der Befehls\IeC {\"u}bertragung}{68}{subsubsection.5.3.3.1}
 \contentsline {chapter}{\numberline {6}Praktische Realisierung des Sensornetzes}{69}{chapter.6}
 \contentsline {section}{\numberline {6.1}Hardware}{69}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}Anbindung des ZigBit-Moduls an den USB-Port}{69}{subsection.6.1.1}

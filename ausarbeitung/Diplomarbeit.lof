@@ -14,8 +14,10 @@
 \contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{55}{figure.5.3}
 \contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{59}{figure.5.4}
 \contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{62}{figure.5.5}
-\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Klassendiagramm der Threads des \emph {MANVConnectors}}}{64}{figure.5.6}
-\contentsline {figure}{\numberline {\relax 5.7}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{65}{figure.5.7}
+\contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Klassendiagramm der \emph {ZigBit}-Klassen}}{63}{figure.5.6}
+\contentsline {figure}{\numberline {\relax 5.7}{\ignorespaces Klassendiagramm der Ereignisse und Ergebnisse des \emph {MANVConnectors}.}}{64}{figure.5.7}
+\contentsline {figure}{\numberline {\relax 5.8}{\ignorespaces Klassendiagramm der Threads des \emph {MANVConnectors}}}{65}{figure.5.8}
+\contentsline {figure}{\numberline {\relax 5.9}{\ignorespaces Interaktion der einzelnen Threads des \emph {MANVConnectors}}}{66}{figure.5.9}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 6.1}{\ignorespaces \emph {MANV-USB-Stick}.}}{71}{figure.6.1}
 \contentsline {figure}{\numberline {\relax 6.2}{\ignorespaces Fertig best\IeC {\"u}ckte Platine der \emph {MANVNode.}}}{72}{figure.6.2}
