@@ -15,7 +15,9 @@ der fertigen Lösung dienen.
     
     \begin{itemize}
         \item{Kompatibilität:} Die zu entwickelnde Lösung soll mit dem \emph{Erste-Hilfe-Sensor}
-                               zusammenarbeiten.
+                               zusammenarbeiten. Hierzu ist es erforderlich, dass der Mikrocontroller
+                               des Sensors in die Lage versetzt wird, mit dem Sensornetzwerk zu
+                               kommunizieren.
         \item{Empfangen von Vitaldaten:} Das System muss in der Lage sein, Vitaldaten und Alarme  
                                          von den Sensoren zu empfangen. Diese müssen möglichst zeitnah
                                          zugestellt und angezeigt werden. Bei bestehen der Netzwerkverbindung
@@ -26,7 +28,7 @@ der fertigen Lösung dienen.
         \item{Skalierbarkeit:} Das System soll sowohl in Anzahl der Sensoren als auch in der räumlichen 
                                Ausdehnung (Reichweite) skalierbar sein. Es sollen sowohl sehr kleine Netzwerke
                                als auch große Netzwerke mit mehreren hundert Knoten realisierbar sein.
-        \item{Kosteneffizienz:} Die Kosten für die einzelnen Sensoren sollen möglichst gering sein.
+        \item{Kosteneffizienz:} Die Kosten für die Erweiterung der Sensoren sollen möglichst gering sein.
         \item{Niedriger Strombedarf:} Der Strombedarf der einzelnen Sensoren muss so gering sein, dass
                                          der Betrieb über eine handliche Batterie über einen längeren 
                                          Zeitraum möglich ist. Ideal wäre, wenn sich eine Laufzeit von
@@ -38,8 +40,8 @@ der fertigen Lösung dienen.
                            angezeigt werden. Es soll ebenfalls gewarnt werden, wenn ein Sensor die Netzwerkverbindung
                            verloren hat oder aus anderen Gründen (z.B. leere Batterie) nicht mehr erreichbar ist.
         \item{Erweiterbarkeit:} Das System soll softwareseitig erweiterbar sein. Insbesondere soll es 
-                            möglich sein, ohne Veränderungen an der Software Schnittstellen
-                            zu anderen Systemen hinzuzufügen. 
+                            möglich sein, ohne Veränderungen an der Software Schnittstellen (z.B. in Form einer
+                            Weboberfläche) zu anderen Systemen hinzuzufügen. 
         \item{Anpassbarkeit:} Das System soll an sich verändernde Rahmenbedingungen anpassbar sein. Insbesondere
                           sollen alle technischen Details des Funkprotokolls so gekapselt werden, dass ein
                           Austausch des Funkprotokolls lediglich an einer Stelle des Systems Änderungen
@@ -476,8 +478,7 @@ def sendeBefehl(befehl)
         Die Spannungsversorgung des Erste-Hilfe-Sensors erfolgt über Batterie. Da der Wechsel der Batterie
         während eines MANVs umständlich und zeitraubend ist, ist eine möglichst hohe Batterielaufzeit
         wünschenswert. Am besten wäre hierbei, wenn überhaupt kein Batteriewechsel notwendig wäre. Konkret
-        bedeutet dies, dass mit einer Batterie eine Laufzeit von mindestens 12 Stunden erreichbar sein muss.
-        Eine typische Lithium-Knopfzelle vom Typ \emph{CR-2023} verfügt über eine Kapazität von ca. 240~mAh.
+        bedeutet dies, dass mit einer Batterie eine Laufzeit von mindestens 12 Stunden erreichbar sein sollte.
         Bei einer Laufzeit von 12 Stunden ergibt sich hieraus, dass der Strombedarf des \emph{ZigBit}-Moduls
         im Mittel 20~mA nicht überschreiten darf. Im empfangsbereiten Zustand braucht das \emph{ZigBit}-Modul 
         laut Datenblatt einen Strom von 19~mA, ist also grundsätzlich zur Erfüllung dieser Anforderung

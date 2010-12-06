@@ -267,6 +267,21 @@ Strombedarfs um mehr als den Faktor 10 bewirken, was eine entsprechend schnelle 
 Es ist daher wichtig, darauf zu achten, dass alle verwendeten Sensoren möglichst selten die Verbindung zum 
 Netzwerk verlieren.
 
+\subsection{Batterielaufzeit}
+In Abschnitt~\ref{analyse_powermanagement} wurde bereits eine grobe Überschlagsrechnung der Batterielaufzeit
+Anhand der Werte aus dem Datenblatt vorgenommen. Diese sollen nun mit den oben gemessenen Werten konkretisiert
+werden. Als Strombedarf des \emph{Erste-Hilfe-Sensors} werden hierzu die in \cite{Marco} gemessenen Werte von
+16,8~mA angenommen. Als Stromquelle soll eine Knopfzelle vom Typ \emph{CR2032} mit einer Kapazität von 240~mAh 
+dienen\footnote{Die nachfolgenden Berechnungen gehen von einer Entladung der Batterie unter idealen Bedingungen aus. 
+Nicht berücksichtigt sind daher Verringerungen der Ladung durch die Entnahme zu großer Ströme. Dies muss in der
+Stromversorgung des \emph{Erste-Hilfe-Sensors} entsprechend berücksichtigt werden.}. Unter 
+idealen Bedingungen ergibt sich für den \emph{Erste-Hilfe-Sensor} alleine eine Laufzeit von 14,3~Stunden.\\
+Ohne Verwendung des Energiesparmodus wurde für den Strombedarf des \emph{ZigBit}-Moduls ein mittlerer Strombedarf von 
+11,2~mA. In Verbindung mit dem \emph{Erste-Hilfe-Sensor} ergibt sich ein Gesamtstrombedarf von 28~mA, was einer
+Laufzeit von 8,5 Stunden entspricht.\\
+Für den Energiesparmoduses in einer 5:1-Konfiguration ergibt sich laut Tabelle~\ref{werte_Ipowersave} eine Absenkung
+des Strombedarfs des \emph{ZigBit}-Moduls auf 1,86~mA, woraus sich in Verbindung mit dem \emph{Erste-Hilfe-Sensor}
+ein Gesamtbedarf von rund 18.7~mA ergibt. Dies entspricht einer Laufzeit von ca. 12,8 Stunden.\\
 
 \section{Reichweite}
 Zur Bestimmung der Reichweite wurden sowohl innerhalb von Gebäuden als auch im Freien Messungen durchgeführt. 

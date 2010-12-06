@@ -35,45 +35,45 @@ Warning--entry type for "BlueSniper" isn't style-file defined
 --line 212 of file Diplomarbeit.bib
 Warning--entry type for "sogro" isn't style-file defined
 --line 296 of file Diplomarbeit.bib
-You've used 31 entries,
+You've used 32 entries,
             2778 wiz_defined-function locations,
-            775 strings with 10597 characters,
-and the built_in function-call counts, 10571 in all, are:
-= -- 1019
-> -- 455
-< -- 31
-+ -- 140
-- -- 160
-* -- 552
-:= -- 1742
-add.period$ -- 111
-call.type$ -- 31
-change.case$ -- 153
-chr.to.int$ -- 31
-cite$ -- 31
-duplicate$ -- 433
-empty$ -- 849
-format.name$ -- 196
-if$ -- 2211
+            780 strings with 10857 characters,
+and the built_in function-call counts, 10863 in all, are:
+= -- 1048
+> -- 463
+< -- 32
++ -- 142
+- -- 162
+* -- 566
+:= -- 1791
+add.period$ -- 115
+call.type$ -- 32
+change.case$ -- 157
+chr.to.int$ -- 32
+cite$ -- 32
+duplicate$ -- 448
+empty$ -- 874
+format.name$ -- 200
+if$ -- 2272
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 24
-newline$ -- 172
-num.names$ -- 93
-pop$ -- 293
+missing$ -- 26
+newline$ -- 178
+num.names$ -- 96
+pop$ -- 299
 preamble$ -- 1
-purify$ -- 213
+purify$ -- 219
 quote$ -- 0
-skip$ -- 431
+skip$ -- 444
 stack$ -- 0
-substring$ -- 275
-swap$ -- 49
-text.length$ -- 31
-text.prefix$ -- 29
+substring$ -- 282
+swap$ -- 50
+text.length$ -- 32
+text.prefix$ -- 30
 top$ -- 0
-type$ -- 283
+type$ -- 290
 warning$ -- 0
-while$ -- 73
-width$ -- 36
-write$ -- 422
+while$ -- 75
+width$ -- 37
+write$ -- 437
 (There were 10 warnings)

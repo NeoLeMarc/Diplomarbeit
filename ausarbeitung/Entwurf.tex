@@ -48,15 +48,12 @@ zusammenwirken:
 \end{itemize}
     
 
-\section{Hardware}
-\subsection{MANVNode}
-\subsubsection{Beschreibung}
+\section{MANVNode}
 \Abbildungps{!htb}{1}{diagramme/platine_manvnode-crop.pdf}{abbildung_manvnode}{Entwurf der Platine der MANVNode.}
-\Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Entwurf der Platine des USB-Sticks.}
 Die \emph{MANVNode} ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
 \emph{ADuC-7026-Mikrocontroller} der Firma \emph{Analog Devices} sowie ein Atmel ZigBit-Funkmodul des Typs \emph{ATZB-24-A2}. 
 Die Platine dient zur Simulation des \emph{Erste-Hilfe-Sensors}. An Stelle einer echten Messung generiert die 
-Platine Messwerte mit Hilfe eines Zufallszahlen-Generators. Der Generator kann in drei Zuständen betrieben werden:
+Platine Messwerte mit Hilfe eines Zufallszahlen-Generators. Mit diesem Generator können folgende Zustände generiert werden:
 
 \begin{itemize}
     \item{Grün:} Simulation eines Patienten mit gutem Kreislaufzustand. Puls zwischen 60 und 120 Schlägen pro Minute, 
@@ -74,7 +71,13 @@ drei farbigen LEDs visualisiert. Zusätzlich kann über einen Piezo-Summer ein A
 Durch die Kombination der drei LEDs werden zusätzlich Status- und Fehlerinformationen der Platine während des 
 Initialisierungsvorgangs ausgegeben.
 
-\subsection{Spannungsversorgung}
+\subsection{Hardware}
+
+Die \emph{MANVNode} wird als Platine in \emph{SMD-Bausweise} realisiert. Das Layout dieser Platine wurde mit Hilfe des 
+Programms \emph{Cadsoft Eagle} entworfen. In Abbildung~\ref{abbildung_manvnode} ist der Entwurf dieser Platine zu sehen.
+Im Folgenden werden die einzelnen Aspekte des Entwurfs erläutert.
+
+\subsubsection{Spannungsversorgung}
 \nomenclature{mF}{Millifarad}
 \nomenclature{LED}{Leuchtdiode}
 \nomenclature{Low-Dropout}{Spannungsregler, der mit niedriger Differenz zwischen Ein\-gangs- und 
@@ -92,8 +95,6 @@ Zusätzlich wurde die die Spannungsversorgung weiter stabilisiert. Hierzu wurde 
 Platine mit einem 100nF Kondensator gepuffert. Diese sind möglichst nahe an den entsprechenden Versorgungspins angebracht.
 Kurzzeitige Spannungsabfälle, wie sie z.B. beim Schalten von LEDs, des Piezo-Summers oder des Aufwachens des ZigBee-Moduls
 aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
-
-\subsection{Programmierschnittstellen}
 
 \subsubsection{Serielle Schnittstellen}
 Die \emph{MANVNode}-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
@@ -114,9 +115,7 @@ möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Konsolenverbind
 über den \emph{UART} des \emph{ADuC-7026-Mikrocontrollers} zu öffnen, um direkt mit dem \emph{ZigBit}-Modul zu
     kommunizieren.}.  Ein Zugriff über \emph{JTAG} ist nicht vorgesehen.
 
-\subsection{LED-Anzeige}
-
-\subsubsection{Beschreibung der einzelnen LEDs}
+\subsubsection{LED-Anzeige}
 Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen.
 \begin{itemize}
     \item{PWR:} Diese LED befindet sich direkt in der Spannungsversorgung der Platine. Sie leuchtet, sobald
@@ -131,7 +130,7 @@ Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des
                  
     
 
-\subsubsection{Diagnosecodes}
+\paragraph{Diagnosecodes}
 Neben den oben dargestellten einfachen Signalisierungen hat die \emph{Firmware} der \emph{MANVNode}-Platine die 
 Möglichkeit, über die Kombination obiger LEDs Diagnose- und Fehlercodes auszugeben. Hierbei gilt folgende Codierung:
 
@@ -151,20 +150,9 @@ Möglichkeit, über die Kombination obiger LEDs Diagnose- und Fehlercodes auszug
     \item{ZIGBIT-STATUS blinkt im 2-Sekunden-Abstand:} Die Platine arbeitet ordnungsgemäß, es besteht eine Verbindung mit dem
                                                         Funknetzwerk und der Powersafe-Modus ist aktiv.
 \end{itemize}
-                                                        
-\subsubsection{\emph{ZigBee-USB-Stick}}
-\Abbildungps{!htb}{0.30}{diagramme/Ansteuerung-USB-Stick.pdf}{label}{Datenfluss zwischen Server und Netzwerk}
 
-Der \emph{ZigBee-USB-Stick} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen 
-\emph{USB-Stick}, der ein \emph{ZigBit}-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das 
-\emph{ZigBit}-Modul mit Strom versorgen sowie eine Umsetzung der \emph{UART}-Schnittstelle des \emph{ZigBit}-Moduls 
-auf \emph{USB} vornehmen. Für die Stromversorgung ist es notwendig, die 5~V der
-\emph{USB}-Schnittstelle auf die 3~V des \emph{ZigBit}-Moduls umzusetzen.
+\subsection{Firmware}
 
-\section{Software}
-\subsection{MANVNode-Firmware}
-
-\subsubsection{Funktionalität}
 \nomenclature{Busy-Waiting}{Warten auf ein Ereignis unter Verschwendung von Prozessorleistung.}
 \nomenclature{ISR}{Interrupt-Service-Routine}
 \nomenclature{Ringpuffer}{Datenstruktur, die sich selbst überschreibt, wenn sie über ein gewisses Maß gefüllt wurde.}
@@ -182,10 +170,6 @@ die zur Simulation des Erste-Hilfe-Sensors gegenüber der \emph{MANVSuite} dient
 \end{itemize}
 
 
-\subsubsection{Ansteuerung des ZigBit-Moduls}
-Das \emph{ZigBit}-Modul ist via \emph{UART} mit der \emph{MANVNode} verbunden und wird über das \emph{SerialNet}-Protokoll
-angesprochen.
-
 \subsubsection{Ansteuerung des UARTs}
 Zur Vermeidung von \emph{Busy-Waiting}\footnote{Warten auf ein Ereignis unter Verschwendung von Prozessorleistung.}
 soll der Treiber für den \emph{UART}s als Interrupt-Service-Routine\footnote{Ein Interrupt ist eine von der Hardware
@@ -200,7 +184,9 @@ Dies entspricht der Semantik einer gepufferten, nicht blockierenden Ein-/Ausgabe
 % Hier Tannenbaum zitieren
 
 \subsubsection{Ansteuerung des ZigBit-Modul}
-Die Ansteuerung des \emph{ZigBit}-Moduls soll in folgenden Schritten erfolgen: 
+\Abbildungps{!htb}{0.7}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{zigbit_mainloop}{Ablauf der Ansteuerung des \emph{ZigBit}-Moduls in der \emph{ZigBit-Firmware}.}
+Das \emph{ZigBit}-Modul ist via \emph{UART} mit der \emph{MANVNode} verbunden und wird über das \emph{SerialNet}-Protokoll
+angesprochen. Der Ablauf ist hierbei wie folgt: 
 
 \begin{lstlisting}{Firmware: Ansteuerung des ZigBit Moduls}
 Uebertrage aktuellen Status
@@ -252,15 +238,30 @@ Aktiviere den Energiesparmodus
 \end{lstlisting}
 
 Dieser Ablauf ist in Abbildung~\ref{zigbit_mainloop} als Ablaufdiagramm dargestellt.
-\Abbildungps{!htb}{0.7}{diagramme/Flussdiagramm-Firmware-Mainloop.pdf}{zigbit_mainloop}{Ablauf der Ansteuerung des \emph{ZigBit}-Moduls.}
 
-\subsection{MANVSuite}
+\section{\emph{ZigBee-USB-Stick}}\label{usb_stick}
+\Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Entwurf der Platine des USB-Sticks.}
+Der \emph{ZigBee-USB-Stick} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen 
+\emph{USB-Stick}, der ein \emph{ZigBit}-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das 
+\emph{ZigBit}-Modul mit Strom versorgen sowie eine Umsetzung der \emph{UART}-Schnittstelle des \emph{ZigBit}-Moduls 
+auf \emph{USB} vornehmen. Für die Stromversorgung ist es notwendig, die 5~V der
+\emph{USB}-Schnittstelle auf die 3~V des \emph{ZigBit}-Moduls umzusetzen.
 
-In dieser Arbeit wurde ein \emph{Java}-Treiber (MANVConnector) entworfen und implemtiert. Dieser Treiber realisiert die 
-Anbindung an die von Herrn Tepelmann in \cite{Jan} entwickelte \emph{MANVSuite}. 
+\section{MANVSuite}
+\Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{datenfluss_manvsuite}{Datenfluss zwischen den einzelnen Kompnenten des Gesamtsystems.}
 
+In der vorliegenden Diplomarbeit wird der \emph{Java}-Treiber 
+(\emph{MANVConnector}) entworfen und implemtiert, der die Schnittstelle zwischen \emph{MANV-Suite} und 
+\emph{ZigBee-USB-Stick} bildet. Entwurf und Implementierung der \emph{MANVSuite} selbst erfolgt in \cite{Jan}. 
+Abbildung~\ref{datenfluss_manvsuite} beschreibt den Datenfluss zwischen \emph{MANVSuite},  \emph{MANVConnectors} und \emph{MANVNode}:
+Der \emph{MANVServer} ist Teil der \emph{MANVSuite}. Er dient als Vermittlungsstelle zwischen den einzelnen 
+Softwarekomponenten, die mittels \emph{Corba} an diesen angebunden sind. Eine dieser Komponenten ist der \emph{MANVConnector},
+der in Abschnitt~\ref{MANVConnector} genauer beschrieben wird. Dieser greift mittels einer seriellen Schnittstelle 
+(in der Abbildung als \emph{TTY-Verbindung} bezeichnet) auf den in Abschnitt~\ref{usb_stick} beschriebene
+\emph{ZigBee-USB-Stick} zu, welcher wiederum die Verbindung zu dem \emph{ZigBee-Netzwerk herstellt}. Auf diese Weise kommt die
+Verbindung zwischen \emph{MANVSuite} und \emph{MANVNode} zu Stande.
 
-\subsection{MANVConnector}
+\section{MANVConnector}\label{MANVConnector}
 \Abbildungps{!htb}{1.0}{uml_diagramme/manvconnector_uml_zigbit.pdf}{klassendiagramm_zigbit}{Klassendiagramm der \emph{ZigBit}-Klassen}
 \Abbildungps{!htb}{1.0}{uml_diagramme/manvconnector_uml_events.pdf}{klassendiagramm_events}{Klassendiagramm der Ereignisse und Ergebnisse des \emph{MANVConnectors}.}
 \begin{sidewaysfigure}
@@ -330,7 +331,7 @@ Verwendung der Warteschlangen zur Kommunikation der \emph{Threads} untereinander
 Synchronisierungsprobleme. Grundsätzlich findet Kommunikation zwischen den \emph{Threads} rein über die Warteschlangen 
 statt. Einzige Ausnahme ist das Abrufen des Ergebnisses eines gesendeten Kommandos. 
 
-\subsubsection{Synchronisierung der Befehlsübertragung}
+\subsection{Synchronisierung der Befehlsübertragung}
 Bei der Befehlsübertragung muss darauf geachtet werden, dass ein Befehl erst dann gesendet werden darf,
 wenn die Abarbeitung aller vorherigen Befehle erfolgt ist, da sonst die Synchronität mit dem \emph{ZigBit}-Modul
 nicht mehr gewährleistet ist. Da innerhalb des \emph{MANVConnectors} das Senden in einem anderen \emph{Thread} geschieht

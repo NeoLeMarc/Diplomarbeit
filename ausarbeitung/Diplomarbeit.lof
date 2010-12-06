@@ -11,9 +11,9 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber das Gesamtsystem}}{52}{figure.5.1}
 \contentsline {figure}{\numberline {\relax 5.2}{\ignorespaces Entwurf der Platine der MANVNode.}}{54}{figure.5.2}
-\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{55}{figure.5.3}
-\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Datenfluss zwischen Server und Netzwerk}}{59}{figure.5.4}
-\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls.}}{62}{figure.5.5}
+\contentsline {figure}{\numberline {\relax 5.3}{\ignorespaces Ablauf der Ansteuerung des \emph {ZigBit}-Moduls in der \emph {ZigBit-Firmware}.}}{59}{figure.5.3}
+\contentsline {figure}{\numberline {\relax 5.4}{\ignorespaces Entwurf der Platine des USB-Sticks.}}{61}{figure.5.4}
+\contentsline {figure}{\numberline {\relax 5.5}{\ignorespaces Datenfluss zwischen den einzelnen Kompnenten des Gesamtsystems.}}{62}{figure.5.5}
 \contentsline {figure}{\numberline {\relax 5.6}{\ignorespaces Klassendiagramm der \emph {ZigBit}-Klassen}}{63}{figure.5.6}
 \contentsline {figure}{\numberline {\relax 5.7}{\ignorespaces Klassendiagramm der Ereignisse und Ergebnisse des \emph {MANVConnectors}.}}{64}{figure.5.7}
 \contentsline {figure}{\numberline {\relax 5.8}{\ignorespaces Klassendiagramm der Threads des \emph {MANVConnectors}}}{65}{figure.5.8}
@@ -39,15 +39,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{114}{figure.A.1}
-\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}: Stromversorgung.}}{115}{figure.A.2}
-\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {JTAG}.}}{116}{figure.A.3}
-\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Schaltplan der \emph {MANVNode}: Mikrocontroller.}}{117}{figure.A.4}
-\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {ZigBit}-Modul.}}{118}{figure.A.5}
-\contentsline {figure}{\numberline {\relax A.6}{\ignorespaces Schaltplan der \emph {MANVNode}: Benutzerschnittstelle.}}{119}{figure.A.6}
-\contentsline {figure}{\numberline {\relax A.7}{\ignorespaces Oberseite der Platine der MANVNode.}}{120}{figure.A.7}
-\contentsline {figure}{\numberline {\relax A.8}{\ignorespaces Unterseite der Platine der MANVNode.}}{121}{figure.A.8}
-\contentsline {figure}{\numberline {\relax A.9}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Linke Seite)}}{122}{figure.A.9}
-\contentsline {figure}{\numberline {\relax A.10}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Rechte Seite)}}{123}{figure.A.10}
-\contentsline {figure}{\numberline {\relax A.11}{\ignorespaces Klassendiagramm des MANV-Connectors (Vollst\IeC {\"a}ndig).}}{124}{figure.A.11}
+\contentsline {figure}{\numberline {\relax A.1}{\ignorespaces Schaltplan des \emph {USB-Sticks}.}}{116}{figure.A.1}
+\contentsline {figure}{\numberline {\relax A.2}{\ignorespaces Schaltplan der \emph {MANVNode}: Stromversorgung.}}{117}{figure.A.2}
+\contentsline {figure}{\numberline {\relax A.3}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {JTAG}.}}{118}{figure.A.3}
+\contentsline {figure}{\numberline {\relax A.4}{\ignorespaces Schaltplan der \emph {MANVNode}: Mikrocontroller.}}{119}{figure.A.4}
+\contentsline {figure}{\numberline {\relax A.5}{\ignorespaces Schaltplan der \emph {MANVNode}: \emph {ZigBit}-Modul.}}{120}{figure.A.5}
+\contentsline {figure}{\numberline {\relax A.6}{\ignorespaces Schaltplan der \emph {MANVNode}: Benutzerschnittstelle.}}{121}{figure.A.6}
+\contentsline {figure}{\numberline {\relax A.7}{\ignorespaces Oberseite der Platine der MANVNode.}}{122}{figure.A.7}
+\contentsline {figure}{\numberline {\relax A.8}{\ignorespaces Unterseite der Platine der MANVNode.}}{123}{figure.A.8}
+\contentsline {figure}{\numberline {\relax A.9}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Linke Seite)}}{124}{figure.A.9}
+\contentsline {figure}{\numberline {\relax A.10}{\ignorespaces Klassendiagramm des \emph {MANV-Connectors} (Rechte Seite)}}{125}{figure.A.10}
+\contentsline {figure}{\numberline {\relax A.11}{\ignorespaces Klassendiagramm des MANV-Connectors (Vollst\IeC {\"a}ndig).}}{126}{figure.A.11}
 \addvspace {10\p@ }
