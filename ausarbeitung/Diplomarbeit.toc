@@ -112,11 +112,12 @@
 \contentsline {section}{\numberline {7.2}Leistungsaufnahme des ZigBit-Moduls}{89}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Leistungsaufnahme im Normalbetrieb}{90}{subsection.7.2.1}
 \contentsline {subsection}{\numberline {7.2.2}Leistungsaufnahme bei Verwendung des Energiesparmodus.}{93}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Sonderf\IeC {\"a}lle}{95}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Batterielaufzeit}{96}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.3}Sonderf\IeC {\"a}lle}{96}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Batterielaufzeit}{97}{subsection.7.2.4}
 \contentsline {section}{\numberline {7.3}Reichweite}{98}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}Reichweite im Freien}{98}{subsection.7.3.1}
 \contentsline {subsection}{\numberline {7.3.2}Reichweite innerhalb geschlossener R\IeC {\"a}ume}{99}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Maximale Teilnehmerzahl des Netzwerke}{99}{section.7.4}
 \contentsline {chapter}{\numberline {8}Diskussion}{101}{chapter.8}
 \contentsline {chapter}{\numberline {9}Zusammenfassung und Ausblick}{107}{chapter.9}
 \contentsline {section}{\numberline {9.1}Zusammenfassung}{107}{section.9.1}

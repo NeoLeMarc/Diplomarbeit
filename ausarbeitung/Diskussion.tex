@@ -33,11 +33,13 @@ Eine genauere Analyse und Evaluation der \emph{MANVSuite} inkl. der beschriebene
 in \cite{Jan}. In dieser verwandten Arbeit wird unter anderem gezeigt, wie eine Anbindung der \emph{MANVSuite}
 an ein Mobiltelefon des Herstellers Nokia erfolgen kann.\\
 \\
-Als besonders positiv ist die Skalierbarkeit der Gesamtlösung zu bewerten: Durch Rechnung konnte gezeigt werden,
-dass das \emph{ZigBee}-Netzwerk zumindest theoretisch in der Lage ist, eine hinreichend große Anzahl an Sensoren
-zu unterstützen. Aus Kostengründen musste der praktische Test in dieser Arbeit 12 Module beschränkt werden, entsprechende
-praktische Tests müssen daher vor dem Praxiseinsatz nachgeholt werden.
-Lastprobleme sind auf Seiten der Überwachungssoftware nicht zu erwarten, da
+Als besonders positiv ist die Skalierbarkeit der Gesamtlösung zu bewerten: Zwar musste aus Kostengründen 
+der praktische Skalierbarkeitstest auf 12 Module beschränkt werden.  Durch eine analytische Betrachtung konnte 
+jedoch gezeigt werden, dass das \emph{ZigBee}-Netzwerk zumindest theoretisch in der Lage ist, mindestens 1250 Sensoren
+zu unterstützen, was selbst
+für ein sehr großes \emph{MANV}-Szenario ausreichen würde.  Entsprechende
+praktische Tests müssen vor dem Praxiseinsatz natürlich nachgeholt werden.
+Auch auf Softwareseite sind keine Lastprobleme zu erwarten, da
 die die Verbindung der Softwarekomponenten untereinander netzwerkfähig ist; im Extremfall kann jede
 Komponente auf einem eigenen Rechner betrieben werden. Hierbei skaliert die Anforderung an die Hardware mit
 der Größe des zu verwaltenden Netzwerkes. Im Prinzip ist jedes linuxfähige Gerät mit mindestens 16~MB Speicher
@@ -83,8 +85,10 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
     \item{Geringe Leistungsaufnahme ("`Strombedarf"'):} Durch den Einsatz des von \emph{ZigBee}
           angebotenen Energiesparmodus konnte der mittlere Strombedarf auf einen Wert von ca. 
           1,86~mA gesenkt werden. Dies bedeutet eine Steigerung der Stromaufnahme des 
-          \emph{Erste-Hilfe-Sensors} um ca. 10\%. Selbst bei der Verwendung von Knopfzellen ergibt
-          sich somit rechnerisch noch eine für den \emph{MANV}-Einsatz mehr als ausreichende Laufzeit.
+          \emph{Erste-Hilfe-Sensors} um ca. 10\%. 
+          Laut der Analyse in Abschnitt~\ref{batterielaufzeit} ist selbst mit einer einfachen Knopfzelle
+          eine Laufzeit von über 12 Stunden zu erreichen, was für einen \emph{MANV}-Einsatz mehr als
+          ausreichend ist.
 
     \item{Einfache Implementierbarkeit:} Zur Anbindung des \emph{ZigBit}-Moduls an den \emph{Erste-Hilfe-Sensor}
           sind lediglich vier Signalleitungen notwendig: \emph{UART\_RX}, \emph{UART\_TX}, 
@@ -108,9 +112,9 @@ Vom bisherigen Stand der Technik hebt sich die hier vorgestellte Lösung in viel
           50~mm auf 56~mm und bietet noch viel Potential zur weiteren Optimierung der Größe (z.B. durch
           die beidseitige Platzierung von Bauteilen oder Fertigung in 4-Schicht-Bauweise).
 
-    \item{Anzahl Teilnehmer:} Laut Spezifikation ist \emph{ZigBit} ohne weiteres in der Lage, eine ausreichend
-                              große Anzahl von Teilnehmern zu unterstützen. Diese Angaben konnten rechnerisch
-                              bestätigt werden. Praktisch wurde ein Test mit 12 Teilnehmern erfolgreich durchgeführt.
+    \item{Anzahl Teilnehmer:} Laut der Betrachtung in Abschnitt~\ref{maximale_teilnehmerzahl} wird eine ausreichend
+                              große Anzahl von Teilnehmern zu unterstützen. Dies reicht selbst für sehr große
+                              \emph{MANV}-Szenarien gut aus.
 \end{itemize}
 
 In dieser Arbeit nicht betrachtet wurde das Thema Datensicherheit und Verschlüsselung, welches alleine bereits

@@ -160,6 +160,18 @@ Tests bestätigt werden. Zur Bestimmung des Strombedarfs eines Clients ergibt si
     \label{eqn:IClient}
 \end{align}
 
+Wobei die einzelnen Formelsymbole folgende Bedeutung haben:
+
+\begin{tabular}{ll}
+$U_{Client}     $ & Durchschnittlicher Spannungabfall am Messwiderstand beim Betrieb \\&des Clients\\
+$t_{Basislinie} $ & Dauer der Basislinie \\
+$U_{Basislinie} $ & Spannungsabfall der Basislinie \\
+$t_{Peak}       $ & Dauer eines Peaks\\ 
+$U_{Peak}       $ & Spannungsabfall am Messwiderstand während eines Peaks \\
+$I_{Client}     $ & Strombedarf eines Clients \\
+$R_{Shunt}      $ & Betrag des Messwiderstands\\
+\end{tabular}
+
 Setzt man nun die gemessenen Werte 
 
 \begin{center}
@@ -267,7 +279,7 @@ Strombedarfs um mehr als den Faktor 10 bewirken, was eine entsprechend schnelle 
 Es ist daher wichtig, darauf zu achten, dass alle verwendeten Sensoren möglichst selten die Verbindung zum 
 Netzwerk verlieren.
 
-\subsection{Batterielaufzeit}
+\subsection{Batterielaufzeit}\label{batterielaufzeit}
 In Abschnitt~\ref{analyse_powermanagement} wurde bereits eine grobe Überschlagsrechnung der Batterielaufzeit
 Anhand der Werte aus dem Datenblatt vorgenommen. Diese sollen nun mit den oben gemessenen Werten konkretisiert
 werden. Als Strombedarf des \emph{Erste-Hilfe-Sensors} werden hierzu die in \cite{Marco} gemessenen Werte von
@@ -318,3 +330,33 @@ Reichweite aus. Eine generische Aussage über die Reichweite innerhalb geschloss
 sehr schwer zu treffen. Diese hängt meist auch weniger von der Entfernung als von der Anzahl der
 Wände zwischen Sender- und Empfänger ab. In diversen Tests hat sich hierbei ergeben, dass eine
 Kommunikation durch zwei nicht tragende Wände hindurch gerade noch möglich ist.
+
+\section{Maximale Teilnehmerzahl des Netzwerke}\label{maximale_teilnehmerzahl}
+
+Eine praktische Messung der Teilnehmerzahl ist aus Kostengründen in einer Diplomarbeit natürlich nicht durchführbar. Daher
+soll an dieser Stelle eine analytische Betrachtung erfolgen. Diese wird in Form einer Worst-Case Abschätzung durchgeführt, 
+d.h. für alle Parameter werden die schlechtest möglichen Werte angenommen.\\
+\\
+Grundsätzlich gilt folgender Zusammenhang:
+
+\begin{equation}
+   Anzahl_{Teilnehmer} = \frac{Datenrate_{Netzwerk}}{Datenrate_{Teilnehmer}}
+   \label{anzahl_teilnehmer}
+\end{equation}
+
+In dem Szenario überträgt jeder Teilnehmer alle 5~Sekunden ein Datenpaket, das den aktuellen Zustand beinhaltet.
+Laut \cite{zigbee_specification} hat ein \emph{ZigBee}-Datenpaket eine maximale Größe von 128~Byte. Damit ergibt sich für die
+benötigte Datenrate eines Teilnehmers:
+
+\begin{equation}
+    Datenrate_{Teilnehmer} = \frac{128\,\text{Byte}}{5\,\text{s}} = \frac{1024\,\text{Bit}}{5\,\text{s}} \approx \frac{0,2\,\text{kBit}}{\text{s}}
+\end{equation}
+
+Laut \cite{zigbee_specification} gilt: $Datenrate_{Netzwerk} = 250\,\text{kBit/s}$. Setzt man diese Werte nun in 
+Gleichung~\ref{anzahl_teilnehmer} ergibt sich für die maximale Anzahl von Teilnehmern:
+
+\begin{equation}
+    Anzahl_{Teilnehmer} = \frac{250\,\text{kBit/s}}{0,2\,\text{kBit/s}} = 1250
+\end{equation}
+
+Unter Worst-Case-Bedingungen ergibt sich also eine maximale Anzahl von 1250 Teilnehmern.
