@@ -1,30 +1,5 @@
 
 %%%------------------------------------------------STAND DER TECHNIK------------------------------------------------------------------
-\chapter{Pläne und Diagramme}\label{anhang_diagramme}
-    In diesem Kapitel werden Schaltpläne, Platinenlayouts und \emph{UML}-Diagramme der in dieser Arbeit 
-    entworfenen Komponenten bereitgestellt. Mit Hilfe dieser Pläne und Diagramme kann die Konstruktion 
-    der Komponenten nachvollzogen werden und ggf. ein Nachbau erfolgen.
-
-    \Abbildungps{!htb}{0.4}{diagramme/schaltplan_usbstick.pdf}{label}{Schaltplan des \emph{USB-Sticks}.}
-    \Abbildungps{!htb}{1}{diagramme/schaltplan_manvnode_power-crop.pdf}{label}{Schaltplan der \emph{MANVNode}: Stromversorgung.}
-    \Abbildungps{!htb}{0.5}{diagramme/schaltplan_manvnode_jtag-crop.pdf}{label}{Schaltplan der \emph{MANVNode}: \emph{JTAG}.}
-    \Abbildungps{!htb}{1}{diagramme/schaltplan_manvnode_aduc-crop.pdf}{label}{Schaltplan der \emph{MANVNode}: Mikrocontroller.}
-    \Abbildungps{!htb}{1}{diagramme/schaltplan_manvnode_zigbit-crop.pdf}{label}{Schaltplan der \emph{MANVNode}: \emph{ZigBit}-Modul.}
-    \Abbildungps{!htb}{1}{diagramme/schaltplan_manvnode_interface-crop.pdf}{label}{Schaltplan der \emph{MANVNode}: Benutzerschnittstelle.}
-    \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_top.pdf}{label}{Oberseite der Platine der MANVNode.}
-    \Abbildungps{!htb}{0.75}{diagramme/platine_manvnode_bottom.pdf}{label}{Unterseite der Platine der MANVNode.}
-    \Abbildungps{!htb}{1.20}{uml_diagramme/manvconnector_uml_links.pdf}{label}{Klassendiagramm des \emph{MANV-Connectors} (Linke Seite)}
-    \Abbildungps{!htb}{1.20}{uml_diagramme/manvconnector_uml_rechts.pdf}{label}{Klassendiagramm des \emph{MANV-Connectors} (Rechte Seite)}
-
-    \begin{sidewaysfigure}
-            \includegraphics*[width=1\textwidth]{uml_diagramme/manvconnector_uml.pdf}
-            \caption{Klassendiagramm des MANV-Connectors (Vollständig).}
-            \label{klassendiagramm_manvconnector}
-    \end{sidewaysfigure}
-
-
-
-
 \chapter{Beschreibung der beigelegten Software}\label{anhang_beschreibung_software}
 
     In diesem Kapitel wird die beigelegte Software beschrieben. Außerdem wird eine
@@ -102,7 +77,7 @@
                                 bereits in \emph{MessageContainer} verpackt.
     \end{itemize}
 
-    \subsubsection{Inhalt des Verzeichnisses \emph{events/}}
+    \subsubsection{Inhalt des Verzeichnisses \emph{events/}}\label{anhang_events}
     
     Im Verzeichnis \emph{events/} befinden sich die Klassen, welche Ereignisse repräsentieren, die von dem 
     \emph{ZigBee}-Netzwerk empfangen wurden. Alle Ereignis-Klassen sind von der Klasse \emph{MANVEvent} abgeleitet 
@@ -166,7 +141,7 @@
                         \emph{MAC}-Adresse.
     \end{itemize}
 
-    \subsubsection{Inhalt des Verzeichnisses \emph{lib/}}
+    \subsubsection{Inhalt des Verzeichnisses \emph{lib/}}\label{anhang_lib}
 
     In dem Verzeichnis \emph{lib/} finden sich alle die Klassen, welche nicht in obiges Einordnungsschema passen. 
     Hierbei handelt es sich insbesondere um Helferklassen, die in den obigen Klassen verwendet werden:
@@ -194,11 +169,9 @@
     \end{itemize}
 
 
-    \paragraph{Interface eines ZigBit-Knotens}
+    \paragraph{Interface eines ZigBit-Knotens}\label{anhang_zigbit}
 
-    Es ist nicht immer möglich, Daten an einen \emph{ZigBit}-Knoten zu senden. Daher gibt
-    es zwei Arten von \emph{ZigBit}-Knoten: \emph{ZigBit} und {ReadonlyZigBit}. Um diese trotzdem
-    generisch ansprechen zu können, implementieren beide das Interface \emph{iZigBit}. Dieses definiert folgende Methoden:
+    Das \emph{Interface} eines \emph{ZihBit}-Knotens definiert folgende Methoden:
 
     \begin{itemize}
         \item{\emph{getNodeID()}:} Liefert die logische Adresse (\emph{WSRC}) eines Knotens zurück.

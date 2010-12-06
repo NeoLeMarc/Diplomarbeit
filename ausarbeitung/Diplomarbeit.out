@@ -11,48 +11,41 @@
 \BOOKMARK [1][-]{section.2.1}{2.1 Grundlagen der kabellosen \334betragung}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Paketvermittelte \334bertragung}{section.2.1}
 \BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Frequenzspreizung}{section.2.1}
-\BOOKMARK [3][-]{subsubsection.2.1.2.1}{2.1.2.1 \334bersicht}{subsection.2.1.2}
-\BOOKMARK [3][-]{subsubsection.2.1.2.2}{2.1.2.2 FHSS: Frequency Hoping Spread Spectrum}{subsection.2.1.2}
-\BOOKMARK [3][-]{subsubsection.2.1.2.3}{2.1.2.3 DSSS: Direct Sequence Spread Spectrum}{subsection.2.1.2}
-\BOOKMARK [3][-]{subsubsection.2.1.2.4}{2.1.2.4 FHSS vs. DSSS}{subsection.2.1.2}
+\BOOKMARK [3][-]{subsubsection.2.1.2.1}{2.1.2.1 FHSS: Frequency Hoping Spread Spectrum}{subsection.2.1.2}
+\BOOKMARK [3][-]{subsubsection.2.1.2.2}{2.1.2.2 DSSS: Direct Sequence Spread Spectrum}{subsection.2.1.2}
+\BOOKMARK [3][-]{subsubsection.2.1.2.3}{2.1.2.3 FHSS vs. DSSS}{subsection.2.1.2}
 \BOOKMARK [1][-]{section.2.2}{2.2 Java}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 \334bersicht}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Programmiersprache}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Programmiersprache}{section.2.2}
 \BOOKMARK [1][-]{section.2.3}{2.3 Python}{chapter.2}
 \BOOKMARK [1][-]{section.2.4}{2.4 Corba}{chapter.2}
 \BOOKMARK [0][]{chapter.3}{3 Stand der Technik}{}
 \BOOKMARK [1][-]{section.3.1}{3.1 Einleitung}{chapter.3}
 \BOOKMARK [1][-]{section.3.2}{3.2 Kabellose \334bertragungsprotokolle}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Einf\374hrung}{section.3.2}
-\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 DECT}{section.3.2}
-\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 GSM/UMTS}{section.3.2}
-\BOOKMARK [2][-]{subsection.3.2.4}{3.2.4 WLAN}{section.3.2}
-\BOOKMARK [3][-]{subsubsection.3.2.4.1}{3.2.4.1 \334bersicht}{subsection.3.2.4}
-\BOOKMARK [3][-]{subsubsection.3.2.4.2}{3.2.4.2 IEEE 802.11b}{subsection.3.2.4}
-\BOOKMARK [3][-]{subsubsection.3.2.4.3}{3.2.4.3 IEEE-802.11g}{subsection.3.2.4}
-\BOOKMARK [3][-]{subsubsection.3.2.4.4}{3.2.4.4 IEEE 802.11a}{subsection.3.2.4}
-\BOOKMARK [3][-]{subsubsection.3.2.4.5}{3.2.4.5 St\366rsicherheit}{subsection.3.2.4}
-\BOOKMARK [3][-]{subsubsection.3.2.4.6}{3.2.4.6 Leistungsaufnahme}{subsection.3.2.4}
-\BOOKMARK [2][-]{subsection.3.2.5}{3.2.5 WPAN: Wireless Personal Area Networks}{section.3.2}
-\BOOKMARK [3][-]{subsubsection.3.2.5.1}{3.2.5.1 \334bersicht}{subsection.3.2.5}
-\BOOKMARK [3][-]{subsubsection.3.2.5.2}{3.2.5.2 IEEE 802.15}{subsection.3.2.5}
-\BOOKMARK [3][-]{subsubsection.3.2.5.3}{3.2.5.3 IEEE 802.15.1: Bluetooth}{subsection.3.2.5}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.1}{3.2.5.3.1 \334berblick}{subsubsection.3.2.5.3}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.2}{3.2.5.3.2 Pairing}{subsubsection.3.2.5.3}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.3}{3.2.5.3.3 Reichweite}{subsubsection.3.2.5.3}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.4}{3.2.5.3.4 \334bertragungsrate}{subsubsection.3.2.5.3}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.5}{3.2.5.3.5 St\366rsicherheit}{subsubsection.3.2.5.3}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.6}{3.2.5.3.6 Anzahl Teilnehmer}{subsubsection.3.2.5.3}
-\BOOKMARK [4][-]{paragraph.3.2.5.3.7}{3.2.5.3.7 Leistungsaufnahme}{subsubsection.3.2.5.3}
-\BOOKMARK [3][-]{subsubsection.3.2.5.4}{3.2.5.4 IEEE 802.15.4: ZigBee}{subsection.3.2.5}
-\BOOKMARK [4][-]{paragraph.3.2.5.4.1}{3.2.5.4.1 \334bersicht}{subsubsection.3.2.5.4}
-\BOOKMARK [4][-]{paragraph.3.2.5.4.2}{3.2.5.4.2 Netzstruktur}{subsubsection.3.2.5.4}
-\BOOKMARK [4][-]{paragraph.3.2.5.4.3}{3.2.5.4.3 St\366rsicherheit}{subsubsection.3.2.5.4}
-\BOOKMARK [4][-]{paragraph.3.2.5.4.4}{3.2.5.4.4 Verschl\374sselung}{subsubsection.3.2.5.4}
-\BOOKMARK [4][-]{paragraph.3.2.5.4.5}{3.2.5.4.5 Leistungsaufnahme}{subsubsection.3.2.5.4}
-\BOOKMARK [3][-]{subsubsection.3.2.5.5}{3.2.5.5 Bluetooth Low Energy \(ehemals Wibree\)}{subsection.3.2.5}
-\BOOKMARK [2][-]{subsection.3.2.6}{3.2.6 Weitere Protokolle}{section.3.2}
-\BOOKMARK [2][-]{subsection.3.2.7}{3.2.7 Diskussion}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 DECT}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 GSM/UMTS}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 WLAN}{section.3.2}
+\BOOKMARK [3][-]{subsubsection.3.2.3.1}{3.2.3.1 IEEE 802.11b}{subsection.3.2.3}
+\BOOKMARK [3][-]{subsubsection.3.2.3.2}{3.2.3.2 IEEE-802.11g}{subsection.3.2.3}
+\BOOKMARK [3][-]{subsubsection.3.2.3.3}{3.2.3.3 IEEE 802.11a}{subsection.3.2.3}
+\BOOKMARK [3][-]{subsubsection.3.2.3.4}{3.2.3.4 St\366rsicherheit}{subsection.3.2.3}
+\BOOKMARK [3][-]{subsubsection.3.2.3.5}{3.2.3.5 Leistungsaufnahme}{subsection.3.2.3}
+\BOOKMARK [2][-]{subsection.3.2.4}{3.2.4 WPAN: Wireless Personal Area Networks}{section.3.2}
+\BOOKMARK [3][-]{subsubsection.3.2.4.1}{3.2.4.1 IEEE 802.15}{subsection.3.2.4}
+\BOOKMARK [3][-]{subsubsection.3.2.4.2}{3.2.4.2 IEEE 802.15.1: Bluetooth}{subsection.3.2.4}
+\BOOKMARK [4][-]{paragraph.3.2.4.2.1}{3.2.4.2.1 Pairing}{subsubsection.3.2.4.2}
+\BOOKMARK [4][-]{paragraph.3.2.4.2.2}{3.2.4.2.2 Reichweite}{subsubsection.3.2.4.2}
+\BOOKMARK [4][-]{paragraph.3.2.4.2.3}{3.2.4.2.3 \334bertragungsrate}{subsubsection.3.2.4.2}
+\BOOKMARK [4][-]{paragraph.3.2.4.2.4}{3.2.4.2.4 St\366rsicherheit}{subsubsection.3.2.4.2}
+\BOOKMARK [4][-]{paragraph.3.2.4.2.5}{3.2.4.2.5 Anzahl Teilnehmer}{subsubsection.3.2.4.2}
+\BOOKMARK [4][-]{paragraph.3.2.4.2.6}{3.2.4.2.6 Leistungsaufnahme}{subsubsection.3.2.4.2}
+\BOOKMARK [3][-]{subsubsection.3.2.4.3}{3.2.4.3 IEEE 802.15.4: ZigBee}{subsection.3.2.4}
+\BOOKMARK [4][-]{paragraph.3.2.4.3.1}{3.2.4.3.1 Netzstruktur}{subsubsection.3.2.4.3}
+\BOOKMARK [4][-]{paragraph.3.2.4.3.2}{3.2.4.3.2 St\366rsicherheit}{subsubsection.3.2.4.3}
+\BOOKMARK [4][-]{paragraph.3.2.4.3.3}{3.2.4.3.3 Verschl\374sselung}{subsubsection.3.2.4.3}
+\BOOKMARK [4][-]{paragraph.3.2.4.3.4}{3.2.4.3.4 Leistungsaufnahme}{subsubsection.3.2.4.3}
+\BOOKMARK [3][-]{subsubsection.3.2.4.4}{3.2.4.4 Bluetooth Low Energy \(ehemals Wibree\)}{subsection.3.2.4}
+\BOOKMARK [2][-]{subsection.3.2.5}{3.2.5 Weitere Protokolle}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.6}{3.2.6 Diskussion}{section.3.2}
 \BOOKMARK [1][-]{section.3.3}{3.3 Produkte zur kabellosen Patienten\374berwachung}{chapter.3}
 \BOOKMARK [1][-]{section.3.4}{3.4 Verwandte Projekte zum Einsatz in MANV-Szenarien}{chapter.3}
 \BOOKMARK [0][]{chapter.4}{4 Analyse}{}
@@ -65,8 +58,7 @@
 \BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Firmware}{section.4.3}
 \BOOKMARK [3][-]{subsubsection.4.3.2.1}{4.3.2.1 Bitcloud}{subsection.4.3.2}
 \BOOKMARK [3][-]{subsubsection.4.3.2.2}{4.3.2.2 SerialNet}{subsection.4.3.2}
-\BOOKMARK [4][-]{paragraph.4.3.2.2.1}{4.3.2.2.1 \334berblick}{subsubsection.4.3.2.2}
-\BOOKMARK [4][-]{paragraph.4.3.2.2.2}{4.3.2.2.2 SerialNet AT-Protokoll}{subsubsection.4.3.2.2}
+\BOOKMARK [4][-]{paragraph.4.3.2.2.1}{4.3.2.2.1 SerialNet AT-Protokoll}{subsubsection.4.3.2.2}
 \BOOKMARK [1][-]{section.4.4}{4.4 Kommunikation mit dem ZigBit-Modul}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Problemstellung}{section.4.4}
 \BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Behandlung asynchron auftretender Ereignisse}{section.4.4}
@@ -88,7 +80,10 @@
 \BOOKMARK [1][-]{section.5.3}{5.3 ZigBee-USB-Stick}{chapter.5}
 \BOOKMARK [1][-]{section.5.4}{5.4 MANVSuite}{chapter.5}
 \BOOKMARK [1][-]{section.5.5}{5.5 MANVConnector}{chapter.5}
-\BOOKMARK [2][-]{subsection.5.5.1}{5.5.1 Synchronisierung der Befehls\374bertragung}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.1}{5.5.1 Threads}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.2}{5.5.2 Repr\344sentation eines ZigBit-Moduls}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.3}{5.5.3 Synchronisierung der Befehls\374bertragung}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.4}{5.5.4 Ergebnisse und Ereignisse}{section.5.5}
 \BOOKMARK [0][]{chapter.6}{6 Praktische Realisierung des Sensornetzes}{}
 \BOOKMARK [1][-]{section.6.1}{6.1 Hardware}{chapter.6}
 \BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 Anbindung des ZigBit-Moduls an den USB-Port}{section.6.1}
@@ -136,22 +131,21 @@
 \BOOKMARK [2][-]{subsection.9.3.1}{9.3.1 Anderer Frequenzbereich}{section.9.3}
 \BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 Verwendung leistungsst\344rkerer ZigBee-Module und Antennen}{section.9.3}
 \BOOKMARK [2][-]{subsection.9.3.3}{9.3.3 Genauere Betrachtung des Bluetooth-Low-Energy-Standards}{section.9.3}
-\BOOKMARK [0][]{appendix.A}{A Pl\344ne und Diagramme}{}
-\BOOKMARK [0][]{appendix.B}{B Beschreibung der beigelegten Software}{}
-\BOOKMARK [1][-]{section.B.1}{B.1 MANV-Connector}{appendix.B}
-\BOOKMARK [2][-]{subsection.B.1.1}{B.1.1 Starten des Connectors}{section.B.1}
-\BOOKMARK [2][-]{subsection.B.1.2}{B.1.2 Kompilieren des Connectors}{section.B.1}
-\BOOKMARK [2][-]{subsection.B.1.3}{B.1.3 Verzeichnisstruktur des Quellcodes}{section.B.1}
-\BOOKMARK [3][-]{subsubsection.B.1.3.1}{B.1.3.1 Inhalt des Verzeichnises commands/}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.2}{B.1.3.2 Inhalt des Verzeichnises corba/}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.3}{B.1.3.3 Inhalt des Verzeichnisses events/}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.4}{B.1.3.4 Inhalt der Verzeichnises results/}{subsection.B.1.3}
-\BOOKMARK [3][-]{subsubsection.B.1.3.5}{B.1.3.5 Inhalt des Verzeichnisses lib/}{subsection.B.1.3}
-\BOOKMARK [4][-]{paragraph.B.1.3.5.1}{B.1.3.5.1 Interface eines ZigBit-Knotens}{subsubsection.B.1.3.5}
-\BOOKMARK [1][-]{section.B.2}{B.2 Serial-To-Socket}{appendix.B}
-\BOOKMARK [1][-]{section.B.3}{B.3 Firmware}{appendix.B}
-\BOOKMARK [1][-]{section.B.4}{B.4 MANV-Web}{appendix.B}
-\BOOKMARK [1][-]{section.B.5}{B.5 Platine}{appendix.B}
-\BOOKMARK [1][-]{section.B.6}{B.6 Simulator}{appendix.B}
-\BOOKMARK [1][-]{section.B.7}{B.7 Zigbit Firmware}{appendix.B}
+\BOOKMARK [0][]{appendix.A}{A Beschreibung der beigelegten Software}{}
+\BOOKMARK [1][-]{section.A.1}{A.1 MANV-Connector}{appendix.A}
+\BOOKMARK [2][-]{subsection.A.1.1}{A.1.1 Starten des Connectors}{section.A.1}
+\BOOKMARK [2][-]{subsection.A.1.2}{A.1.2 Kompilieren des Connectors}{section.A.1}
+\BOOKMARK [2][-]{subsection.A.1.3}{A.1.3 Verzeichnisstruktur des Quellcodes}{section.A.1}
+\BOOKMARK [3][-]{subsubsection.A.1.3.1}{A.1.3.1 Inhalt des Verzeichnises commands/}{subsection.A.1.3}
+\BOOKMARK [3][-]{subsubsection.A.1.3.2}{A.1.3.2 Inhalt des Verzeichnises corba/}{subsection.A.1.3}
+\BOOKMARK [3][-]{subsubsection.A.1.3.3}{A.1.3.3 Inhalt des Verzeichnisses events/}{subsection.A.1.3}
+\BOOKMARK [3][-]{subsubsection.A.1.3.4}{A.1.3.4 Inhalt der Verzeichnises results/}{subsection.A.1.3}
+\BOOKMARK [3][-]{subsubsection.A.1.3.5}{A.1.3.5 Inhalt des Verzeichnisses lib/}{subsection.A.1.3}
+\BOOKMARK [4][-]{paragraph.A.1.3.5.1}{A.1.3.5.1 Interface eines ZigBit-Knotens}{subsubsection.A.1.3.5}
+\BOOKMARK [1][-]{section.A.2}{A.2 Serial-To-Socket}{appendix.A}
+\BOOKMARK [1][-]{section.A.3}{A.3 Firmware}{appendix.A}
+\BOOKMARK [1][-]{section.A.4}{A.4 MANV-Web}{appendix.A}
+\BOOKMARK [1][-]{section.A.5}{A.5 Platine}{appendix.A}
+\BOOKMARK [1][-]{section.A.6}{A.6 Simulator}{appendix.A}
+\BOOKMARK [1][-]{section.A.7}{A.7 Zigbit Firmware}{appendix.A}
 \BOOKMARK [0][]{appendix*.9}{Literaturverzeichnis}{}

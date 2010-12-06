@@ -5,8 +5,9 @@
 In diesem Kapitel wird die Implementierung des Sensornetzes, dabei auftretende Probleme sowie deren Lösungen, beschreiben.
 
 \section{Hardware}
-Nachfolgend wird die praktische Umsetzung der zwei verschiedenen Hardwarekomponenten, also des \emph{MANV-USB-Sticks} und der
-\emph{MANVNode} beschrieben. In beiden Fällen musste hierzu ein \emph{ZigBit}-Modul mit einer anderen 
+Nachfolgend wird die praktische Umsetzung der zwei verschiedenen Hardwarekomponenten, also des \emph{MANV-USB-Sticks} 
+(Abbildung~\ref{usbstick}) und der
+\emph{MANVNode} (Abbildung~\ref{manvnode}) beschrieben. In beiden Fällen musste hierzu ein \emph{ZigBit}-Modul mit einer anderen 
 Hardwarekomponente verbunden werden. Dies kann grundsätzlich entweder über \emph{SPI} oder \emph{UART} erfolgen.
 Bei \emph{SPI} handelt es sich um einen seriellen Bus, der besonders im Bereich der Mikrocontroller verbreitet ist,
 und zur Anbindung von weiterer Peripherie dient. \emph{UART} war hingegen vor allem als serielle Schnittstellen
@@ -383,7 +384,8 @@ Damit der \emph{MANV\-Server} umgekehrt auch Befehle an den \emph{MANVConnector}
 muss dieser selbst die \emph{Connector\_Commands}-Schnittstelle implementieren. Dies
 geschieht in der Klasse \emph{CommandsImpl}\footnote{Eine
 genaue Beschreibung der einzelnen Dateien, Klassen und Funktionalitäten findet sich in
-Anhang~\label{anhang_beschreibung_software}.}.\\
+Anhang~\ref{anhang_beschreibung_software}.}.\\
+Die Interfaces der einzelnen Komponenten sind in Abbildung~\ref{corba} dargestellt.\\
 
 Zur Lokalisierung der einzelnen \emph{CORBA}-Schnittstellen dient der \emph{Nameserver}.
 Die Adresse des Nameservers muss im Voraus bekannt sein. Meist läuft dieser auf dem selben Rechner

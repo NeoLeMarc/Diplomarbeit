@@ -21,8 +21,8 @@ verwendet, die auch im \emph{Erste-Hilfe-Sensor} zum Einsatz kommt, so dass die 
 Teile der \emph{Firmware} 1:1 übernommen werden können.
 
 \subsection{Interoperabilität aller Komponenten}
-\Abbildungps{!htb}{1}{diagramme/versuchsaufbau_integrationstest.pdf}{intergrationstest_setup_diagramm}{Diagramm des Aufbaus des \emph{Integrationstests}.}
-\Abbildungps{!htb}{1}{diagramme/integrationstest_setup.jpg}{intergrationstest_setup_diagramm}{Photo des Aufbaus des \emph{Integrationstests}.}
+\Abbildungps{!htb}{1}{diagramme/versuchsaufbau_integrationstest.pdf}{integrationstest_setup_diagramm}{Diagramm des Aufbaus des \emph{Integrationstests}.}
+\Abbildungps{!htb}{1}{diagramme/integrationstest_setup.jpg}{integrationstest_setup_photo}{Photo des Aufbaus des \emph{Integrationstests}.}
 \Abbildungps{!htb}{1}{diagramme/integrationstest_gui.png}{intergrationstest_gui}{Screenshot der \emph{MANVGui} während des Integrationstests.}
 Da \emph{MANVSuite} und \emph{MANVConnector} in zwei verschiedenen Arbeiten (vgl. \cite{Jan}) 
 entworfen wurden, muss die Interoperabilität zwischen allen Komponenten gezeigt werden. Hierzu
@@ -43,7 +43,8 @@ Obiges \emph{Setup} wurde nun um 5 \emph{ZigBee-Router} erweitert und alle Tests
 Im letzten Schritt wurde nun noch die Skalierbarkeit des Systems überprüft. Hierzu wurde mit Hilfe zweier Notebooks
 sowie dem Einsatz von Hardwarevirtualisierung jede Softwarekomponente auf eine eigene \emph{Virtuelle Maschine} installiert. Diese
 wurden nun abwechselnd über beide Notebooks verteilt, so dass jede Kommunikation zwangsläufig über das Netzwerk
-stattfinden musste. Nun wurden alle obigen Tests noch einmal wiederholt.
+stattfinden musste. Nun wurden alle obigen Tests noch einmal wiederholt. Der genaue Aufbau dieses Versuchs kann dem
+Diagramm in Abbildung~\ref{integrationstest_setup_diagramm} entnommen werden.
 
 \subsubsection{Ergebnisse}
 Alle Tests konnten erfolgreich durchgeführt werden. Die Interoperabilität aller Komponenten sowie die Verteilbarkeit
@@ -68,7 +69,7 @@ Test.
 \nomenclature{Webbrowser}{Programm zum Anzeigen von Webseiten.}
 \nomenclature{Browser}{Siehe \emph{Webbrowser}.}
 \nomenclature{Webinterface}{Graphische Benutzeroberfläche auf Basis einer Webseite.}
-\nomenclature{JSON}{Datenübertragungsformat von Webservern zu \emph{Webbrowsern}.}
+\nomenclature{JSON}{Javascript-basiertes Datenübertragungsformat von Webservern zu \emph{Webbrowsern}.}
 \nomenclature{Webserver}{Software, die Webseiten ausliefert.}
 \nomenclature{AJAX}{Technologie zur Realisierung von Benutzeroberflächen auf Basis von Webseiten unter
                     Einsatz von \emph{Javascript} und \emph{JSON}.}

@@ -48,11 +48,15 @@ zusammenwirken:
 \end{itemize}
     
 
-\section{MANVNode}
+\section{MANVNode}\label{entwurf_manvnode}
+\Abbildungps{!htbp}{1}{diagramme/schaltplan_manvnode_aduc-crop.pdf}{schaltplan_manvnode_aduc}{Schaltplan der \emph{MANVNode}: Mikrocontroller.}
+\Abbildungps{!htb}{1}{diagramme/schaltplan_manvnode_zigbit-crop.pdf}{schaltplan_manvnode_zigbit}{Schaltplan der \emph{MANVNode}: \emph{ZigBit}-Modul.}
 \Abbildungps{!htb}{1}{diagramme/platine_manvnode-crop.pdf}{abbildung_manvnode}{Entwurf der Platine der MANVNode.}
 Die \emph{MANVNode} ist eine Test- und Entwicklungsplatine zum Test der Sensornetzes. Auf ihr befindet sich ein 
 \emph{ADuC-7026-Mikrocontroller} der Firma \emph{Analog Devices} sowie ein Atmel ZigBit-Funkmodul des Typs \emph{ATZB-24-A2}. 
-Die Platine dient zur Simulation des \emph{Erste-Hilfe-Sensors}. An Stelle einer echten Messung generiert die 
+Die Platine dient zur Simulation des \emph{Erste-Hilfe-Sensors}. Die Beschaltung dieser Bauteile findet sich in 
+Abbildung~\ref{schaltplan_manvnode_aduc} sowie Abbildung~\ref{schaltplan_manvnode_zigbit}.
+An Stelle einer echten Messung generiert die 
 Platine Messwerte mit Hilfe eines Zufallszahlen-Generators. Mit diesem Generator können folgende Zustände generiert werden:
 
 \begin{itemize}
@@ -78,11 +82,13 @@ Programms \emph{Cadsoft Eagle} entworfen. In Abbildung~\ref{abbildung_manvnode} 
 Im Folgenden werden die einzelnen Aspekte des Entwurfs erläutert.
 
 \subsubsection{Spannungsversorgung}
+\Abbildungps{!htb}{0.75}{diagramme/schaltplan_manvnode_power-crop.pdf}{schaltplan_manvnode_power}{Schaltplan der Spannungsversorgung der \emph{MANVNode}.}
 \nomenclature{mF}{Millifarad}
 \nomenclature{LED}{Leuchtdiode}
 \nomenclature{Low-Dropout}{Spannungsregler, der mit niedriger Differenz zwischen Ein\-gangs- und 
               Ausgangsspannung arbeiten kann.}
-Um die Platine möglichst vielseitig einsetzen zu können, wurde Wert auf eine möglichst flexible Spannungsversorgung gelegt. Diese
+Um die Platine möglichst vielseitig einsetzen zu können, wurde Wert auf eine möglichst flexible Spannungsversorgung gelegt. 
+Diese
 soll möglichst robust gegenüber Spannungsschwankungen sein. Kern der Spannungsversorgung ist ein 
 \emph{Low-Dropout-Span\-nungs\-reg\-ler} des Typs \emph{LP2980-3.3} der Firma \emph{National Semiconductor}. Dieser liefert eine stabile
 3,3-V-Spannung bei einem maximalen Strom von 50~mA. Die Eingangsspannung kann zwischen 2,1~V und 16~V variiert werden.
@@ -94,7 +100,8 @@ Anschließen eines falschen Netzteils weitestgehend ausgeschlossen. Die Spannung
 Zusätzlich wurde die die Spannungsversorgung weiter stabilisiert. Hierzu wurde jeder Spannungseingang aller Bauteile der
 Platine mit einem 100nF Kondensator gepuffert. Diese sind möglichst nahe an den entsprechenden Versorgungspins angebracht.
 Kurzzeitige Spannungsabfälle, wie sie z.B. beim Schalten von LEDs, des Piezo-Summers oder des Aufwachens des ZigBee-Moduls
-aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen.
+aus dem Stromsparmodus auftreten können, werden so zuverlässig abgefangen. Der Schaltplan der Spannungsversorgung der
+\emph{MANVNode} findet sich in Abbildung~\ref{schaltplan_manvnode_power}. 
 
 \subsubsection{Serielle Schnittstellen}
 Die \emph{MANVNode}-Platine verfügt über mehrere seriellen Schnittstellen. Im äußeren Bereich der Platine ist eine serielle 
@@ -107,7 +114,9 @@ Der Zugriff erfolgt ebenfalls über die Stiftleiste JP1, allerdings müssen hier
 Programmierkabels vertauscht und alle Jumper des Schalters S1 unterbrochen werden. 
 
 \subsubsection{JTAG}
-Die \emph{MANVNode}-Platine verfügt neben der seriellen auch über eine JTAG-Schnittstelle. Diese ermöglich einen Zugriff mit
+\Abbildungps{!htb}{0.5}{diagramme/schaltplan_manvnode_jtag-crop.pdf}{schaltplan_manvnode_jtag}{Schaltplan der \emph{MANVNode}: \emph{JTAG}.}
+Die \emph{MANVNode}-Platine verfügt neben der seriellen auch über eine JTAG-Schnittstelle. Die Beschaltung dieser ist in
+Abbildung~\ref{schaltplan_manvnode_jtag} zu sehen. Diese ermöglich einen Zugriff mit
 gängigen Programmierwerkzeugen wie z.B. Eclipse, Crossworks oder \emph{Kyle $\mu{}$Vision.}
 Über die Schnittstelle kann sowohl Programmierung als auch Debugging des \emph{ADuC-7026-Mikrocontrollers}
 durchgeführt werden. Ein Zugriff auf das \emph{ZigBit} Modul ist allerdings nur indirekt 
@@ -116,7 +125,8 @@ möglich\footnote{Einige Werkzeuge bieten die Möglichkeit, eine Konsolenverbind
     kommunizieren.}.  Ein Zugriff über \emph{JTAG} ist nicht vorgesehen.
 
 \subsubsection{LED-Anzeige}
-Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen.
+\Abbildungps{!htb}{1}{diagramme/schaltplan_manvnode_interface-crop.pdf}{schaltplan_manvnode_interface}{Schaltplan der \emph{MANVNode}: LED-Anzeige und Taster.}
+Die \emph{MANVNode}-Platine verfügt insgesamt über 6 LEDs, die zur Anzeige des aktuellen Zustands sowie zur Fehlerdiagnose dienen. Die Beschaltung dieser LEDs findet sich in Abbildung~\ref{schaltplan_manvnode_interface}.
 \begin{itemize}
     \item{PWR:} Diese LED befindet sich direkt in der Spannungsversorgung der Platine. Sie leuchtet, sobald
                 die Platine mit Spannung versorgt wird. 
@@ -240,14 +250,21 @@ Aktiviere den Energiesparmodus
 Dieser Ablauf ist in Abbildung~\ref{zigbit_mainloop} als Ablaufdiagramm dargestellt.
 
 \section{\emph{ZigBee-USB-Stick}}\label{usb_stick}
+\Abbildungps{!htb}{0.4}{diagramme/schaltplan_usbstick.pdf}{schaltplan_usbstick}{Schaltplan des \emph{USB-Sticks}.}
 \Abbildungps{!htb}{0.4}{diagramme/platine_usbstick-crop.pdf}{platine_usbstick}{Entwurf der Platine des USB-Sticks.}
 Der \emph{ZigBee-USB-Stick} ist die Schnittstelle zwischen Sensornetz und Computer. Es handelt sich um einen 
 \emph{USB-Stick}, der ein \emph{ZigBit}-Modul beinhaltet. Zusätzlich sind zwei weitere Bauteile enthalten, die das 
 \emph{ZigBit}-Modul mit Strom versorgen sowie eine Umsetzung der \emph{UART}-Schnittstelle des \emph{ZigBit}-Moduls 
 auf \emph{USB} vornehmen. Für die Stromversorgung ist es notwendig, die 5~V der
-\emph{USB}-Schnittstelle auf die 3~V des \emph{ZigBit}-Moduls umzusetzen.
+\emph{USB}-Schnittstelle auf die 3~V des \emph{ZigBit}-Moduls umzusetzen. Der Platinenentwurf des \emph{USB}-Sticks 
+ist in Abbildung~\ref{platine_usbstick} abgebildet.\\
+
+In Verbindung mit einer Stromquelle wie z.B.
+einer Batterie oder eines \emph{USB}-Netzteil dient der \emph{ZigBee-USB-Stick} gleichzeitig auch als \emph{ZigBee}-Router.
+Der Betriebsmodus kann hierzu einfach mit Hilfe des Befehls \emph{AT+WROLE=1} auf den Routerbetrieb umgestellt werden.
 
 \section{MANVSuite}
+\nomenclature{UML}{\emph{Unified Modeling Language\,--\,Graphische Modelierungssprache zum Entwurf von Software.}}
 \Abbildungps{!htb}{0.25}{diagramme/Ansteuerung-USB-Stick.pdf}{datenfluss_manvsuite}{Datenfluss zwischen den einzelnen Kompnenten des Gesamtsystems.}
 
 In der vorliegenden Diplomarbeit wird der \emph{Java}-Treiber 
@@ -262,14 +279,6 @@ der in Abschnitt~\ref{MANVConnector} genauer beschrieben wird. Dieser greift mit
 Verbindung zwischen \emph{MANVSuite} und \emph{MANVNode} zu Stande.
 
 \section{MANVConnector}\label{MANVConnector}
-\Abbildungps{!htb}{1.0}{uml_diagramme/manvconnector_uml_zigbit.pdf}{klassendiagramm_zigbit}{Klassendiagramm der \emph{ZigBit}-Klassen}
-\Abbildungps{!htb}{1.0}{uml_diagramme/manvconnector_uml_events.pdf}{klassendiagramm_events}{Klassendiagramm der Ereignisse und Ergebnisse des \emph{MANVConnectors}.}
-\begin{sidewaysfigure}
-        \includegraphics*[width=1\textwidth]{uml_diagramme/manvconnector_uml_threads.pdf}
-        \caption{Klassendiagramm der Threads des \emph{MANVConnectors}}
-        \label{klassendiagramm_manvconnector_threads}
-\end{sidewaysfigure}
-
 \Abbildungps{!htb}{1.1}{diagramme/manv_connector_sequenzdiagramm_main.pdf}{sequenzdiagramm_manvconnector}{Interaktion der einzelnen Threads des \emph{MANVConnectors}}
 
 
@@ -277,28 +286,12 @@ Verbindung zwischen \emph{MANVSuite} und \emph{MANVNode} zu Stande.
 Der \emph{MANVConnector} hat einerseits die Aufgabe, Daten, die von dem \emph{ZigBee-USB-Connector} empfangen wurden, in 
 \emph{Corba-Events} umzusetzen und an den \emph{MANVServer} weiterzuleiten. Andererseits empfängt sie 
 \emph{Corba-Events} vom \emph{MANVServer}, dekodiert diese und sendet sie in Form von Sensornetz-Befehlen an die 
-zuständigen \emph{MANVNodes} weiter.
+zuständigen \emph{MANVNodes} weiter. Das vollständige \emph{UML}-Klassendiagramm findet sich in 
+Abbildung~\ref{klassendiagramm_manvconnector}.
 
-Bei der Kommunikation mit dem auf dem \emph{USB-Stick} aufgebrachten \emph{ZigBee-Modul} stellen sich grundsätzlich 
-die selben Synchronisierungsprobleme wie in der \emph{MANVFirmware}. Da der \emph{MANVConnector} jedoch alle 
-Möglichkeiten der \emph{Java Virtual Machine} nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
-
-In der \emph{MANVFirmware} werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Dieser 
-Ansatz findet sich auch im \emph{MANVConnector} wieder. Hierbei werden jedoch an Stelle von Ringpuffern priorisierte Warteschlangen, 
-sogenannte Queues verwendet. 
-
-\begin{itemize}
-    \item{Die \emph{Command Queue}:} In dieser Queue werden alle zu sendenden Befehle gespeichert.
-    \item{Die \emph{Event Queue}:} In dieser Queue werden alle empfangenen Ereignisse gespeichert.
-    \item{Die \emph{Result Queue}:} In dieser Queue werden alle bereits gesendeten Befehle zusammen mit dem
-                             Resultat, das dieser Befehl hatte, gespeichert.
-\end{itemize}
-
-Jedes Element der einzelnen Queues verfügt über eine Priorität; die Queues sorgen dafür, dass der
-Zugriff nach Priotität sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
-wie z.B. Alarme bevorzugt ausgeliefert werden.
-
-Der \emph{MANVConnector} verfügt neben dem Hauptthread über drei weitere \emph{Threads}:
+\subsection{Threads}
+Wie aus Abbildung~\ref{klassendiagramm_manvconnector_threads} zu entnehmen ist, verfügt der \emph{MANVConnector} 
+neben dem Hauptthread über drei weitere \emph{Threads}: 
 
 \begin{itemize}
     \item{\emph{SocketWriter}:} Dieser \emph{Thread} entnimmt Befehle aus der \emph{CommandQueue} und sendet
@@ -331,7 +324,36 @@ Verwendung der Warteschlangen zur Kommunikation der \emph{Threads} untereinander
 Synchronisierungsprobleme. Grundsätzlich findet Kommunikation zwischen den \emph{Threads} rein über die Warteschlangen 
 statt. Einzige Ausnahme ist das Abrufen des Ergebnisses eines gesendeten Kommandos. 
 
+\subsection{Repräsentation eines \emph{ZigBit}-Moduls}
+\Abbildungps{!htb}{1.0}{uml_diagramme/manvconnector_uml_zigbit.pdf}{klassendiagramm_zigbit}{Klassendiagramm der \emph{ZigBit}-Klassen}
+Abbildung~\ref{klassendiagramm_zigbit} zeigt die Klassenrepräsentation der \emph{ZigBit}-Module. 
+Da es nicht immer möglich ist, Daten an einen \emph{ZigBit}-Knoten zu senden (dies ist z.B. dann der Fall,
+wenn es sich um einen Router handelt), gibt
+es zwei Arten von \emph{ZigBit}-Knoten: \emph{ZigBit} und \emph{readonlyZigBit}. Um diese trotzdem
+generisch ansprechen zu können, implementieren beide das Interface \emph{iZigBit}. Eine genauere Beschreibung der
+Attribute und Methoden der \emph{ZigBit}-Klassen findet sich in Abschnitt~\ref{anhang_zigbit}.
+
+
 \subsection{Synchronisierung der Befehlsübertragung}
+Bei der Kommunikation mit dem auf dem \emph{USB-Stick} aufgebrachten \emph{ZigBee-Modul} stellen sich grundsätzlich 
+die selben Synchronisierungsprobleme wie in der \emph{MANVFirmware}. Da der \emph{MANVConnector} jedoch alle 
+Möglichkeiten der \emph{Java Virtual Machine} nutzen kann, lassen sich diese deutlich einfacher und eleganter lösen. 
+
+In der \emph{MANVFirmware} werden hierzu mehrere Ringpuffer verwendet, welche die empfangenen Daten speichern. Dieser 
+Ansatz findet sich auch im \emph{MANVConnector} wieder. Hierbei werden jedoch an Stelle von Ringpuffern priorisierte Warteschlangen, 
+sogenannte Queues verwendet. 
+
+\begin{itemize}
+    \item{Die \emph{Command Queue}:} In dieser Queue werden alle zu sendenden Befehle gespeichert.
+    \item{Die \emph{Event Queue}:} In dieser Queue werden alle empfangenen Ereignisse gespeichert.
+    \item{Die \emph{Result Queue}:} In dieser Queue werden alle bereits gesendeten Befehle zusammen mit dem
+                             Resultat, das dieser Befehl hatte, gespeichert.
+\end{itemize}
+
+Jedes Element der einzelnen Queues verfügt über eine Priorität; die Queues sorgen dafür, dass der
+Zugriff nach Priotität sortiert erfolgt. Hierdurch wird sicher gestellt, dass wichtige Ereignisse
+wie z.B. Alarme bevorzugt ausgeliefert werden.
+
 Bei der Befehlsübertragung muss darauf geachtet werden, dass ein Befehl erst dann gesendet werden darf,
 wenn die Abarbeitung aller vorherigen Befehle erfolgt ist, da sonst die Synchronität mit dem \emph{ZigBit}-Modul
 nicht mehr gewährleistet ist. Da innerhalb des \emph{MANVConnectors} das Senden in einem anderen \emph{Thread} geschieht
@@ -342,4 +364,36 @@ Um die Synchronisation zu gewährleisten, bietet der \emph{Thread} \emph{SocketR
 Von dem \emph{SocketSender} wird nun verlangt, dass er nach jedem gesendeten Befehl diese Schnittstelle verwendet,
 um das Ergebnis des gerade gesendeten Befehls abzuholen. Da der Sender nun so lange, bis das Ergebnis vorliegt, blockiert ist,
 kann er auch keine weiteren Befehle senden. Hierdurch wird die geforderte Synchronisierung erreicht. Durch die \emph{JVM}
-ist ein korrektes Verhalten des \emph{Latches} sowie der zur Priorisierung verwendeten Warteschlangen garantiert.
+ist ein korrektes Verhalten des \emph{Latches} sowie der zur Priorisierung verwendeten Warteschlangen garantiert. 
+Dieser Sachverhalt ist auch nochmal in Abbildung~\ref{sequenzdiagramm_manvconnector} dargestellt.\\
+Die vom \emph{SocketReader} gelesenen Ergebnisse und Ereignisse werden selbst wieder durch Objekte repräsentiert.
+
+\subsection{Ergebnisse und Ereignisse}
+\Abbildungps{!htb}{1.0}{uml_diagramme/manvconnector_uml_events.pdf}{klassendiagramm_events}{Klassendiagramm der Ereignisse und Ergebnisse des \emph{MANVConnectors}.}
+Wie aus Abbildung~\ref{klassendiagramm_events} zu entnehmen ist, wird zwischen folgenden Ergebnissen und Ereignissen 
+unterschieden:
+
+\begin{itemize}
+    \item{MANVEvent:} Allgemeines Event.
+    \item{MANVChildJoined:} Ein neuer Sensor hat das Netzwerk betreten.
+    \item{MANVChildLost:} Ein Sensor hat die Verbindung zum Netzwerk verloren.
+    \item{MANVDataReceived:} Es wurden Daten von einem Sensor empfangen.
+    \item{MANVStatusMessage:} Es wurde eine Satusnachricht von einem Sensor empfangen. Diese beinhaltet neben dem
+                              Alarmzustand Werte für Puls- und Atemfrequenz.
+    \item{MANVResult:} Allgemeines Ergebnis eines gesendeten Befehls.
+    \item{MANVChildrenList:} Enthält eine Liste mit Kindknoten als Ergebnis auf den Befehl \emph{AT+WCHILDREN}.
+    \item{MANVGsn:} Enthält die \emph{GSN} (Hardwareadresse) eines entfernten Knotens.
+\end{itemize}
+
+Eine genauere Beschreibung der Attribute und Methoden dieser Klassen erfolgt in Abschnitt~\ref{anhang_events}. 
+\Abbildungps{!htb}{1.20}{uml_diagramme/manvconnector_uml_links.pdf}{klassendiagramm_manvconnector}{Klassendiagramm des \emph{MANV-Connectors} (Linke Seite)}
+\Abbildungps{!htb}{1.20}{uml_diagramme/manvconnector_uml_rechts.pdf}{klassendiagramm_manvconnector_2}{Klassendiagramm des \emph{MANV-Connectors} (Rechte Seite)}
+
+
+\begin{sidewaysfigure}
+        \includegraphics*[width=1\textwidth]{uml_diagramme/manvconnector_uml_threads.pdf}
+        \caption{Klassendiagramm der Threads des \emph{MANVConnectors}}
+        \label{klassendiagramm_manvconnector_threads}
+\end{sidewaysfigure}
+
+

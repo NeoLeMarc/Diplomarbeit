@@ -1,12 +1,27 @@
 
 %%%------------------------------------------------Grundlagen------------------------------------------------------------------
 \chapter{Grundlagen}\label{Grundlagen}
+\nomenclature{OSI-Modell}{Generisches Schichtenmodell von Netzwerkprotokollen. Definiert 7 Schichten. Jede Schicht ist greift
+                          nur auf die Dienste der direkt darunterliegenden Schicht zu und bietet wiederum Dienste für die
+                          darüber liegende Schicht an. Dies ermöglicht einen modularen Aufbau von Netzwerkprotokollen,
+                          da die Schichten unabhängig voneinander ausgetauscht werden können. In praktisch eingesetzten
+                          Netzwerkprotokollen sind meist nicht alle 7 Schichten implementiert.}
+\nomenclature{Schicht}{Siehe OSI-Modell.}
+\nomenclature{Klasse}{Abstraktes Modell eines Objektes in der objektorientierten Programmierung. Definiert Methoden und
+                      Attribute eines Objektes.}
+\nomenclature{Objekt}{Instanz einer Klasse. Kapselt Daten und Programmcode zum Zugriff dieser Daten in einer 
+                      gemeinsamen Datenstruktur. Hierdurch wird die konkrete Implementierung hinter eine Schnittstelle
+                      versteckt und wird damit austauschbar.}
+\nomenclature{OOP}{Objektorientierte Programmierung: Programmierung mit Hilfe von Klassen, Objekten und Vererbung.}
 
 In diesem Kapitel werden die in späteren Kapitel vorausgesetzten Grundlagen
 erörtert. Hierzu gehören zum einen die Grundlagen der kabellosen Übertragung, zum anderen eine kurze Beschreibung der
 Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middleware}. 
 
 \section{Grundlagen der kabellosen Übetragung}
+    Zum besseren Verständnis der in dieser Arbeit beschriebenen kabellosen Übertragungsprotokolle werden in diesem
+    Abschnitt einige Grundbegriffe der kabellosen Übertragung erklärt.
+
     \subsection{Paketvermittelte Übertragung}
         Bei der Übertragung von Daten kann grundsätzlich zwischen der Paket- und der Leitungsvermittlung unterschieden 
         werden. Bei der Leitungsvermittlung wird für jeden Kommunikationsvorgang ein eigener Kanal verwendet. 
@@ -38,7 +53,6 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
     \subsection{Frequenzspreizung}
         \Abbildungps{!htb}{1}{diagramme/frequenzspreizung_fhss-crop.pdf}{frequenzspreizung_fhss}{Frequenzspreizung mit dem \emph{FHSS}-Verfahren (Frei nach Farahani)}
         \Abbildungps{!htb}{1}{diagramme/frequenzspreizung_dss-crop.pdf}{frequenzspreizung_dsss}{Frequenzspreizung mit dem \emph{DSSS}-Verfahren (Nach Farahani)}
-        \subsubsection{Übersicht}
             Bei der Verwendung von kabellosen Übertragungsprotokollen kann es zu einer Vielzahl von 
             Störungen kommen. Übliche Störquellen sind andere Protokolle, die im selben Band arbeiten,
             oder elektrische Geräte, die durch ihre Abstrahlung den Funkverkehr stören\footnote{Insbesondere
@@ -91,7 +105,6 @@ Programmiersprachen \emph{Java} und \emph{Python} sowie der \emph{Corba-Middlewa
             besser geeignet ist.
 
 \section{Java}
-    \subsection{Übersicht}
         \nomenclature{Java}{Programmiersprache der Firma Sun Microsystems.}
         \nomenclature{JVM}{Java Virtual Machine}
         \nomenclature{JRE}{Java Runtime Environment} 
