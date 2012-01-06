@@ -95,26 +95,6 @@
     \end{columns}
 \end{frame}
 
-\subsection{Triage}
-\begin{frame}
-    \frametitle{Motivation: Triage}
-
-    \begin{columns}[T]
-         \begin{column}{8cm}
-            \begin{itemize}
-                \item Bar
-                \item Foo
-                \item Bar
-            \end{itemize}
-        \end{column}
-
-       \begin{column}{3cm}
-        \end{column}
-    \end{columns}
-
-    \vspace{0.3cm} \begin{center}{\bf $\Longrightarrow$ Technische Hilfsmittel können Fehler verringern.}\end{center}
-\end{frame}
-
 \section{Medizinische Grundlagen}
 \subsection{Anatomie des Menschen: Nerven}
 \begin{frame}
@@ -143,15 +123,67 @@
 \section{Messtechnik}
 \subsection{Ableitung von elektrischen Signalen}
 \begin{frame}
+    \frametitle{Ein- und Auskopplung elektrischer Signale}
+    \begin{alertblock}{Problem: Reizweiterleitung im Körper basiert auf Ionenleitung.}
+        Natrium, Kalium, Calcium, Magnesium, Chlorid, Phosphat und Hydrogencarbonat 
+    \end{alertblock}
+    \begin{exampleblock}{Lösung: Verwendung entsprechender Elektroden.}
+        % Quelle: seniorenland.de
+        \includegraphics[height=4cm]{images/elektroden.jpg}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Störsignale}
     \includegraphics[height=7cm]{images/ekg_multimeter1.png}
 \end{frame}
 
 \begin{frame}
-    \includegraphics[width=12cm]{images/filter_notch.jpg}
+    \frametitle{Behandlung von Störsignalen}
+    \begin{exampleblock}{Vorschlag: Erdung des Patienten}
+        Durch die Erdung des Patienten wird ein gemeinsames Bezugspotenzial zwischen 
+        Patient und Messgerät hergestellt. Störsignale werden symmetrisch eingekoppelt
+        und verschwinden somit.
+    \end{exampleblock}
+
+    \begin{alertblock}{Problem: Gefährlich!}
+        Im Falle eines Kurzschlusses können hohe Ströme durch den Patienten fließen.
+        $\rightarrow{}$ Potenziell tödlich und daher mittlerweile verboten.\\
+        Früher jedoch oft angewendet.
+    \end{alertblock}
 \end{frame}
 
 \begin{frame}
-    \includegraphics[width=12cm]{images/abtastrate_300.jpg}
+    \frametitle{Behandlung von Störsignalen}
+    \begin{exampleblock}{Bezugspotentialsteuerung (Driven right leg)}
+        Das Störsignal wird in der Messchaltung abgeleitet und invertiert an den
+        Patienten zurückgegeben. \\
+        $\rightarrow{}$ Störung und Gegensignal heben sich gegenseitig auf.
+        
+        % Source: ti.com
+        \includegraphics[width=12cm]{images/legdrive.jpg} 
+    \end{exampleblock}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Behandlung von Störsignalen}
+     \begin{exampleblock}{Ausfiltern des 50Hz Störsignals mit einem Notchfilter}
+        Mit Hilfe einer Bandsperre mit einer Sperrfrequenz von 50Hz wird das 
+        Störsignal ausgefiltert.
+        \includegraphics[width=12cm]{images/filter_notch.jpg}
+     \end{exampleblock}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Behandlung von Störsignalen}
+     \begin{exampleblock}{Hochpaßfilter}
+        Ausfilterung von Signalen mit einer Frequenz von über 50Hz. 
+        \includegraphics[width=12cm]{images/abtastrate_300.jpg}
+     \end{exampleblock}
 \end{frame}
 
 \subsection{Das EKG}
