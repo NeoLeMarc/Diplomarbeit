@@ -78,18 +78,19 @@
 \section{Einführung}
 \subsection{Motivation}
 \begin{frame}
-    \frametitle{Intensivstation}
+    \frametitle{Biomedizinische Technik}
 
     \begin{columns}[T]
         \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/its.jpg}
+            \includegraphics[width=5cm]{images/ekg_fancy.jpg}\\
+            \includegraphics[width=5cm]{images/its.jpg}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foo 
-                \item Bar 
-                \item Foobar 
+                \item Patienten überwachen 
+                \item Krankheiten diagnostizieren
+                \item Leben retten
             \end{itemize}
         \end{column}
     \end{columns}
@@ -102,26 +103,49 @@
 \end{frame}
 
 \begin{frame}
-    \includegraphics[height=8cm]{images/Aktionspotential.jpg}
+    \begin{center}
+        \includegraphics[height=8cm]{images/Aktionspotential.jpg}
+    \end{center}
 \end{frame}
 
 \begin{frame}
-    \includegraphics[height=7.5cm]{images/synaptischer_spalt.jpg}
+    \begin{center}
+        \includegraphics[height=7.5cm]{images/synaptischer_spalt.jpg}
+    \end{center}
 \end{frame}
 
 
 \subsection{Anatomie des Menschen: Blutgefäße}
 \begin{frame}
-    \includegraphics[height=7.5cm]{images/blutkreislauf.jpg}
+    \begin{center}
+        \includegraphics[height=7.5cm]{images/blutkreislauf.jpg}
+    \end{center}
 \end{frame}
 
 \subsection{Anatomie des Menschen: Herz}
 \begin{frame}
-    \includegraphics[height=7.5cm]{images/herz.png}
+    \begin{center}
+        \includegraphics[height=7.5cm]{images/herz.png}
+    \end{center}
 \end{frame}
 
 \begin{frame}
-    \includegraphics[height=7.5cm]{images/reizleitungssystem.png}
+
+    \begin{columns}
+        \begin{column}{5cm}
+            \includegraphics[height=7.5cm]{images/reizleitungssystem.png}
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item Spontane Depolarisation:
+                \item Sinusknoten: 40-200 Schläge pro Minute 
+                \item AV-Knoten: 40-50 Schläge pro Minute
+                \item His-Bündel: 20-30 Schläge pro Minute
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
 
@@ -134,19 +158,39 @@
     \end{alertblock}
     \begin{exampleblock}{Lösung: Verwendung entsprechender Elektroden.}
         % Quelle: seniorenland.de
-        \includegraphics[height=4cm]{images/elektroden.jpg}
+        \begin{figure}
+            \includegraphics[height=4cm]{images/elektroden.jpg}
+            \hspace{0.5cm}
+            \includegraphics[height=4cm]{images/electrodes2.jpg}
+        \end{figure}
     \end{exampleblock}
 \end{frame}
 
 \begin{frame}
     \frametitle{Instrumentierungsverstärker}
-    \includegraphics[height=6cm]{images/instrumentierungsverstaerker.png}
+    \begin{center}
+        \includegraphics[height=6cm]{images/instrumentierungsverstaerker.png}
+    \end{center}
 \end{frame}
 
 
 \begin{frame}
     \frametitle{Störsignale}
-    \includegraphics[height=7cm]{images/ekg_multimeter1.png}
+    \begin{columns}
+        \begin{column}{6cm}
+            \includegraphics[height=3.5cm]{images/ekg_multimeter1.png}
+        \end{column}
+
+        \begin{column}{6cm}
+            \begin{itemize}
+                \item "50Hz Brummen"
+                \item Kapazitive Einkopplung (Unglücklicherweise direkt in den Patienten \\$\rightarrow$ Schirmung wirkungslos)
+                \item Unzureichend geglättete Versorgungsspannung \\$\rightarrow$ Batterien, Kondensatorglättung, Galvanische Trennung
+
+                \item Induktive Einkopplung\\$\rightarrow$ Schirmung
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -195,6 +239,7 @@
      \end{exampleblock}
 \end{frame}
 
+\section{Geräte}
 \subsection{Das EKG}
 \begin{frame}
     \frametitle{Ein Standard-EKG}
@@ -203,7 +248,9 @@
 
 \begin{frame}
     \frametitle{EKG-Komplex}
-    \includegraphics[width=8cm]{images/ekg_komplex.png}
+    \begin{center}
+        \includegraphics[width=8cm]{images/ekg_komplex.png}
+    \end{center}
 \end{frame}
 
 \begin{frame}
@@ -215,7 +262,22 @@
 
 \begin{frame}
     \frametitle{Positionierung der Elektroden}
-    \includegraphics[height=7.5cm]{images/ableitung.png}
+
+    \begin{columns}[T]
+        \begin{column}{5cm}
+            \includegraphics[height=7.5cm]{images/ableitung.png}
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item 12 Kanäle:
+                \item Einthoven I, II, III (Extremitäten)
+                \item Goldberger aVR, aVL, aVF (Extremitäten)
+                \item Wilson V1-V6 (Brustwand)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
 \begin{frame}
@@ -250,22 +312,47 @@
 
 \begin{frame}
     \frametitle{Biphasischer Schock} 
-    \begin{figure}
-        \includegraphics[width=5.5cm]{images/electrode_position.jpg}    
-        \hspace{0.5cm}
-        \includegraphics[width=5.5cm]{images/shock.png}
-    \end{figure}
+
+    \begin{columns}[T]
+        \begin{column}{6cm}
+            \includegraphics[width=5.5cm]{images/electrode_position.jpg}    
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item 150-360 Joule 
+                \item 1,5 Ampere 
+                \item 750 Volt 
+                \item Depolarisierung von über 70\% des Myokards
+            \end{itemize}
+            \includegraphics[width=5.5cm]{images/shock.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
     \frametitle{Defi-Schaltung} 
-    \includegraphics[width=6cm]{images/defib.pdf}
+    \begin{center}
+        \includegraphics[width=10cm]{images/defib.pdf}
+    \end{center}
 \end{frame}
 
 \subsection{Herzschrittmacher}
 \begin{frame}
     \frametitle{AV-Block}
-    \includegraphics[width=6cm]{images/avb.png}
+    \begin{columns}[T]
+        \begin{column}{6cm}
+            \includegraphics[width=6cm]{images/avb.png}
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item 1. Grad: Erregungsleitung verzögert 
+                \item 2. Grad: 2:1, 3:1 oder 4:1 Block 
+                \item 3. Grad: Keine Übertragung mehr zwischen Vorhof und Kammern 
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -316,10 +403,6 @@
 \begin{frame}
     \frametitle{Fraktale Elektroden}
     \includegraphics[width=8cm]{images/fractal2.jpg}
-\end{frame}
-
-\subsection{Pulsoximetrie}
-\begin{frame}
 \end{frame}
 
 \subsection{Fragen}
