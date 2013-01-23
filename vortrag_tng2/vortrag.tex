@@ -81,15 +81,15 @@
     \frametitle{Was ist ein Sensornetz?}
 
     \begin{columns}[T]
-        \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/certicom_sensor_nets_fig2.png}\\
+        \begin{column}{7cm}
+            \includegraphics[width=7cm]{images/certicom_sensor_nets_fig2.png}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item Netzwerk aus vielen verteilten Sensorknoten 
+                \item Oft ad-hoc vernetzt 
+                \item Energieversorgung meist über Batterie 
             \end{itemize}
         \end{column}
     \end{columns}
@@ -120,75 +120,82 @@
                 \item 244 GHz
             \end{itemize}
         \end{column}
+        \begin{column}{4cm}
+            \begin{itemize}
+                \item In den meisten Ländern für jeden frei verwendbare Frequenzbänder
+                \item Alle kabellosen Consumerprodukte verwenden eines der ISM-Bänder
+                \item Verwendung anderer Frequenzen benötigt spezielle Lizenzen
+            \end{itemize}
+        \end{column}
     \end{columns}
 \end{frame}
 
 
 \subsection{Eigenschaften verschiedener Frequenzbänder}
+\begin{frame}
+    \frametitle{Eigenschaften verschiedener Frequenzbänder}
+
+    Grundsätzlich: Je höher die Frequenz, desto höher die Datenübertragungsraten. Aber desto schlechter auch 
+    Reichweite ein Eindringtiefe.
+\end{frame}
+
 \subsubsection{900 MHz}
 \begin{frame}
     \frametitle{900 MHz}
+
+    \begin{itemize}
+           \item ca. 2,6 fache Reichweite wie 2,4GHz
+           \item Bandbreite: 26 MHz (1/3 wie im 2,4GHz Band)
+           \item Nur in Region 2 (Hauptsächlich Amerika. \bf{nicht}) Europa
+    \end{itemize}
 \end{frame}
 
 \subsubsection{2.4 GHz}
 \begin{frame}
     \frametitle{2.4 GHz Band}
+
+    \begin{itemize}
+           \item Reichweite ungerichtet bis ca. 100m 
+           \item Maximal zulässige Sendeleistung: 100mW 
+           \item Weltweit zulässig 
+           \item Bandbreite: 100MHz
+    \end{itemize}
+
 \end{frame}
 
 \subsubsection{5 GHz}
 \begin{frame}
     \frametitle{5 GHz}
+
+    \begin{itemize}
+           \item Maximal zulässige Sendeleistung: 1W, daher theoretisch höhere Reichweite als 2,4GHz 
+           \item Weltweit zulässig (Ausgenommen bestimmte Kanäle, z.B. in Japan)
+           \item DFS und TPC zwingend vogeschrieben, um militärische Anwendungen nicht zu stören
+           \item Bandbreite: 150MHz
+           \item Weniger "Betrieb" als im 2,4GHz Band
+    \end{itemize}
 \end{frame}
 
 
 \subsection{Frequenzspreizung}
-\subsubsection{Prinzip}
 \begin{frame}
-    \frametitle{Prinzip der Frequenzspreizung}
+    \frametitle{Frequenzspreizung}
 
-    \begin{columns}[T]
-        \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/diplomarbeit/frequenzspreizung_dss.pdf}\\
-        \end{column}
-    \end{columns}
+    \includegraphics[width=8cm]{images/ism_congest.png}\\
 \end{frame}
 
 \subsubsection{FHSS: Frequency Hopping Spread Spectrum}
 \begin{frame}
     \frametitle{FHSS: Frequency Hopping Spread Spectrum}
 
-    \begin{columns}[T]
-        \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/diplomarbeit/frequenzspreizung_fhss.pdf}\\
-        \end{column}
-
-        \begin{column}{7cm}
-            \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
-            \end{itemize}
-        \end{column}
-    \end{columns}
+    \includegraphics[width=8cm]{images/diplomarbeit/frequenzspreizung_fhss.pdf}\\
 \end{frame}
 
 \subsubsection{DSSS: Direct Sequence Spread Spectrum}
 \begin{frame}
     \frametitle{FHSS: Frequency Hopping Spread Spectrum}
 
-    \begin{columns}[T]
-        \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/diplomarbeit/frequenzspreizung_dss.pdf}\\
-        \end{column}
-
-        \begin{column}{7cm}
-            \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
-            \end{itemize}
-        \end{column}
-    \end{columns}
+    \includegraphics[width=8cm]{images/diplomarbeit/frequenzspreizung_dss.pdf}\\
 \end{frame}
 
 \section{Verschiedene Technologien}
@@ -198,15 +205,19 @@
 
     \begin{columns}[T]
         \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/wifi_logo.jpeg}\\
-            \includegraphics[width=5cm]{images/wifi.jpeg}\\
+            \includegraphics[width=3cm]{images/wifi_logo.jpeg}\\
+            \includegraphics[width=3cm]{images/wifi.jpeg}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item 2,4GHz und 5GHz 
+                \item Übertragungsraten bis 150Mbit/sec
+                \item Reichweiten ungerichtet bis ca. 100m, bei Sichtverbindung mit externer Antenne sogar bis 300m
+                \item Richtfunk bis ca. 40km
+                \item Je nach Standard: Verwendung von DSSS, FHSS und OFDM
+                \item Relativ hoher Leistungsbedarf: 100mA zum Empfangen, 190mA zum Senden 
+                \item Ad-Hoc Modus möglich
             \end{itemize}
         \end{column}
     \end{columns}
@@ -220,16 +231,22 @@
 
     \begin{columns}[T]
 
-        \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/bluetooth_logo.jpeg}\\
-            \includegraphics[width=5cm]{images/headset.jpeg}\\
+        \begin{column}{7cm}
+            \includegraphics[width=3cm]{images/bluetooth_logo.jpeg}\\
+            \includegraphics[width=3cm]{images/headset.jpeg}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item 2,4GHz
+                \item Übertragungsraten bis 2,1MBit/sec
+                \item Reichweite bis 10m (Class 3), 50m (Class 2), 100m (Class 3) 
+                \item FHSS
+                \item Leistungsbedarf ca. 56,7mW (16,6mA) für ein Class 2 Slave
+                \item Maximal 255 Teilnehmer
+                \item Jedoch nur 7 gleichzeitig aktive Slaves
+                \item 1 Master
+                \item Teilnehmer müssen gepaired werden
             \end{itemize}
         \end{column}
     \end{columns}
@@ -248,9 +265,14 @@
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item 868MHz (nur Europa), 900MHz (nur Amerika) und 2,4GHz (weltweit)
+                \item 1mW Sendeleistung 
+                \item Reichweite bis ca. 100 Meter 
+                \item DSSS
+                \item Übertragungsrate: 20kbit/sec (868MHz), 40kbit/sec (900MHz), 250kbit/sec (2,4GHz)
+                \item 19mA im Betrieb, 6µA im Sleep-Modus (Nur auf RFDs)
+                \item FFDs (Full Functional Devices) und RFDs (Reduced Functional Devices)
+                \item Mesh-Netzwerk bei Verwendung von FFDs als Router möglich.
             \end{itemize}
         \end{column}
     \end{columns}
