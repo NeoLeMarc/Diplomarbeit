@@ -85,7 +85,7 @@
             \includegraphics[width=7cm]{images/certicom_sensor_nets_fig2.png}\\
         \end{column}
 
-        \begin{column}{7cm}
+        \begin{column}{4cm}
             \begin{itemize}
                 \item Netzwerk aus vielen verteilten Sensorknoten 
                 \item Oft ad-hoc vernetzt 
@@ -100,11 +100,11 @@
 
 
 \section{Grundlagen der kabellosen Datenübertragung}
-\subsection{Das ISM Band}
+\subsection{Die ISM Bänder}
 \begin{frame}
-    \frametitle{Das ISM Band}
+    \frametitle{Die ISM Bänder}
       \begin{columns}[T]
-        \begin{column}{7cm}
+        \begin{column}{3cm}
             \begin{itemize}
                 \item 6,765 MHz
                 \item 13,553 MHz
@@ -120,7 +120,7 @@
                 \item 244 GHz
             \end{itemize}
         \end{column}
-        \begin{column}{4cm}
+        \begin{column}{5cm}
             \begin{itemize}
                 \item In den meisten Ländern für jeden frei verwendbare Frequenzbänder
                 \item Alle kabellosen Consumerprodukte verwenden eines der ISM-Bänder
@@ -146,7 +146,7 @@
     \begin{itemize}
            \item ca. 2,6 fache Reichweite wie 2,4GHz
            \item Bandbreite: 26 MHz (1/3 wie im 2,4GHz Band)
-           \item Nur in Region 2 (Hauptsächlich Amerika. \bf{nicht}) Europa
+           \item Nur in Region 2 (Hauptsächlich Amerika. {\bf nicht} Europa)
     \end{itemize}
 \end{frame}
 
@@ -179,23 +179,23 @@
 
 \subsection{Frequenzspreizung}
 \begin{frame}
-    \frametitle{Frequenzspreizung}
+    \frametitle{Frequenzspreizung: Motivation}
 
-    \includegraphics[width=8cm]{images/ism_congest.png}\\
+    \includegraphics[width=12cm]{images/ism_congest.png}\\
 \end{frame}
 
 \subsubsection{FHSS: Frequency Hopping Spread Spectrum}
 \begin{frame}
     \frametitle{FHSS: Frequency Hopping Spread Spectrum}
 
-    \includegraphics[width=8cm]{images/diplomarbeit/frequenzspreizung_fhss.pdf}\\
+    \includegraphics[width=13cm]{images/diplomarbeit/frequenzspreizung_fhss.pdf}\\
 \end{frame}
 
 \subsubsection{DSSS: Direct Sequence Spread Spectrum}
 \begin{frame}
-    \frametitle{FHSS: Frequency Hopping Spread Spectrum}
+    \frametitle{DSSS: Direct Sequence Spread Spectrum}
 
-    \includegraphics[width=8cm]{images/diplomarbeit/frequenzspreizung_dss.pdf}\\
+    \includegraphics[width=14cm]{images/diplomarbeit/frequenzspreizung_dss.pdf}\\
 \end{frame}
 
 \section{Verschiedene Technologien}
@@ -204,12 +204,13 @@
     \frametitle{IEEE 802.11: WLAN}
 
     \begin{columns}[T]
-        \begin{column}{5cm}
+        \begin{column}{3cm}
             \includegraphics[width=3cm]{images/wifi_logo.jpeg}\\
+            \vspace{1cm}
             \includegraphics[width=3cm]{images/wifi.jpeg}\\
         \end{column}
 
-        \begin{column}{7cm}
+        \begin{column}{8cm}
             \begin{itemize}
                 \item 2,4GHz und 5GHz 
                 \item Übertragungsraten bis 150Mbit/sec
@@ -231,12 +232,13 @@
 
     \begin{columns}[T]
 
-        \begin{column}{7cm}
+        \begin{column}{3cm}
             \includegraphics[width=3cm]{images/bluetooth_logo.jpeg}\\
+            \vspace{1cm}
             \includegraphics[width=3cm]{images/headset.jpeg}\\
         \end{column}
 
-        \begin{column}{7cm}
+        \begin{column}{8cm}
             \begin{itemize}
                 \item 2,4GHz
                 \item Übertragungsraten bis 2,1MBit/sec
@@ -259,18 +261,18 @@
     \begin{columns}[T]
 
         \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/zigbee_development_big1.jpg}\\
             \includegraphics[width=5cm]{images/diplomarbeit/Zigbee_stack.pdf}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
+                \item Protokollstack auf Basis von IEEE 802.15.4
                 \item 868MHz (nur Europa), 900MHz (nur Amerika) und 2,4GHz (weltweit)
                 \item 1mW Sendeleistung 
                 \item Reichweite bis ca. 100 Meter 
                 \item DSSS
                 \item Übertragungsrate: 20kbit/sec (868MHz), 40kbit/sec (900MHz), 250kbit/sec (2,4GHz)
-                \item 19mA im Betrieb, 6µA im Sleep-Modus (Nur auf RFDs)
+                \item 19mA im Betrieb, 6$µ$A im Sleep-Modus (Nur auf RFDs)
                 \item FFDs (Full Functional Devices) und RFDs (Reduced Functional Devices)
                 \item Mesh-Netzwerk bei Verwendung von FFDs als Router möglich.
             \end{itemize}
@@ -279,24 +281,6 @@
 \end{frame}
 
 \section{Marktübersicht 2013}
-\subsection{Verschiedene Module}
-\begin{frame}
-    \frametitle{ZigBee Module}
-\end{frame}
-
-\begin{frame}
-    \frametitle{ZigBit}
-\end{frame}
-
-\begin{frame}
-    \frametitle{XBee Pro}
-\end{frame}
-
-\begin{frame}
-    \frametitle{freescale MC13202}
-\end{frame}
-
-
 \subsection{National Instruments}
 \begin{frame}
     \frametitle{NI wireless sensor networks}
@@ -309,9 +293,11 @@
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item Programmierbare Ethernet und Wlan Gateways verfügbar 
+                \item Knoten mit 4 digitalen und 4 analogen Eingängen
+                \item Anbindung an LabVIEW
+                \item Proprietäres Protokoll auf Basis von IEEE 802.15.4 
+                \item Relativ teuer: ca. 500 Euro pro Sensorknoten
             \end{itemize}
         \end{column}
     \end{columns}
@@ -324,15 +310,19 @@
     \begin{columns}[T]
 
         \begin{column}{5cm}
-            \includegraphics[width=5cm]{images/libelium/installation.png}\\
-            \includegraphics[width=5cm]{images/libelium/title_frontpage_description_eng.png}\\
+            \includegraphics[width=4cm]{images/libelium/installation.png}\\
+            \includegraphics[width=4cm]{images/libelium/title_frontpage_description_eng.png}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item Sensornetzprodukte auf ZigBee Basis 
+                \item Sowohl als kostengünstige Entwicklerboards als auch als fertige Komplettlösung verfügbar 
+                \item Unabhängige Energieversorgung über Solarzellen 
+                \item Multiprotokoll-Gateways mit ZigBee, Wlan und Bluetooth
+                \item Opensource Software 
+                \item Lösungen für Smartcities
+                \item Reichweite nach Herstellerangabe zwischen 7 und 14km
             \end{itemize}
         \end{column}
     \end{columns}
@@ -340,22 +330,86 @@
          
 
 \subsection{Zum selber basteln}
-\begin{frame}
-    \frametitle{Zum selber basteln}
-\end{frame}
 
 \begin{frame}
     \frametitle{Arduino}
+
+    \begin{columns}[T]
+
+        \begin{column}{5cm}
+            \includegraphics[width=5cm]{images/arduino/arduino-xbee-shield-c-xbee.jpg}\\
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item ZigBee Schild für Arduino
+                \item Sockel für ein Digi International XBee Pro
+                \item Preis für Modul und Schild zusammen unter 40 Euro
+                \item XBee Module sind in verschiedenen Ausführungen erhältlich, die teilweise 
+                      Pin-kompatibel sind
+                \item Hergestellt von Libelium, Grundlage für die kommerziellen Waspmotes
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Rasperry Pi}
+    \frametitle{Raspberry Pi}
+
+    \begin{columns}[T]
+
+        \begin{column}{5cm}
+            \includegraphics[width=5cm]{images/raspberry_pi/raspberry_xbee.JPG}\\
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item Verwendung des Arduino ZigBee Schild mit Hilfe der Raspberry Pi to Arduino Shield.
+                \item Preis für den Adapter: 40 Euro
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{ZigBit}
+
+    \begin{columns}[T]
+
+        \begin{column}{5cm}
+            \includegraphics[width=5cm]{images/ZDM-A1281-A2_offen.png}\\
+            \includegraphics[width=5cm]{images/zigbit_2.jpg}\\
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+                \item Kombination aus IEEE.802.15.4 Radios mit einem ATmega1281V Mikrocontroller
+                \item 30 GPIO Leitungen
+                \item UART, USART, I2C, SPI, 1-Wire, 4 ADCs, JTAG
+                \item Stückpreis um die 14 Euro
+                \item Mit etwas Geschick im Löten praktisch schon ein komplettes Starterkit.
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \section{Security}
 \subsection{ZigBee: WEP Reloaded}
 \begin{frame}
     \frametitle{ZigBee: WEP Reloaded}
+
+    \begin{columns}[T]
+
+        \begin{column}{5cm}
+        \end{column}
+
+        \begin{column}{7cm}
+            \begin{itemize}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
 \subsection{Kisbee}
