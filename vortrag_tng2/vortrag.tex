@@ -402,10 +402,19 @@
     \begin{columns}[T]
 
         \begin{column}{5cm}
+            \includegraphics[width=5cm]{images/scheunentor.jpg}\\
         \end{column}
 
         \begin{column}{7cm}
             \begin{itemize}
+                \item Theoretisch 128-Bit-AES Verschlüsselung
+                \item Aber oft managelhaftes Key-Management:
+                \item Jedes Device in einem Netzwerk hat den selben PSK
+                \item Keys können mittels JTAG extrahiert werden
+                \item Oft schlecht gewählte Keys
+                \item Kein Schutz gegen Replay Attacken
+                \item Known-Plaintext Attacken möglich
+                \item Besser: Security auf Application Layer. Aber: Auf einem 8-Bit Mikrocontroller...
             \end{itemize}
         \end{column}
     \end{columns}
@@ -425,9 +434,9 @@
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item Projekt von den Kismet Autoren zum Angriff auf ZigBee Netze
+                \item Läuft auf Android
+                \item ZigBee Device kann per Bluetooth oder USB angebunden werden
             \end{itemize}
         \end{column}
     \end{columns}
@@ -445,9 +454,12 @@
 
         \begin{column}{7cm}
             \begin{itemize}
-                \item Foor 
-                \item Bar 
-                \item Bal 
+                \item Idee: Low cost devices, das in der Lage ist, auf praktisch allen verwendeten Frequenzen zu 
+                    Senden und zu Empfangen
+                \item Damit werden auch Attacken auf Protokolle ausserhalb des ISM-Bandes möglich (z.B. GSM)
+                \item Oder auf NFC, RFID...
+                \item Integration in GNURadio
+                \item Alle Bauteile sind auf kompatibilität mit OpenSourceSoftware sowie Robustheit ausgelegt
             \end{itemize}
         \end{column}
     \end{columns}
@@ -458,20 +470,51 @@
 \subsection{Smart dust}
 \begin{frame}
     \frametitle{Smart dust}
+
+    \begin{columns}[T]
+
+        \begin{column}{10cm}
+            \includegraphics[width=10cm]{images/smart_dust.jpg}\\
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
 \subsection{Meine Kleidung funkt!}
 \begin{frame}
     \frametitle{Meine Kleidung funkt!}
+
+    \begin{columns}[T]
+
+        \begin{column}{10cm}
+            \includegraphics[width=10cm]{images/rfid_kleidung.jpg}\\
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
-\subsection{Fiat tenebrae: Gebäudeautomatisierung und smart metering}
+\subsection{Tracking}
 \begin{frame}
-    \frametitle{Gebäudeautomatisierung, Smart metering}
+    \frametitle{Tracking}
+
+    \begin{columns}[T]
+
+        \begin{column}{10cm}
+            \includegraphics[width=10cm]{images/libelium/bluetooth_street_wifi_bt_shops.png}\\
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\subsection{Dr Seltsam: Oder wie die Bombe lernte, mich zu lieben}
+\section{Further reading}
 \begin{frame}
-    \frametitle{Militärische Anwendungen}
+    \frametitle{Further Reading}
+
+    https://dev.noetech.net/svn/diplomarbeit/
+    \\
+    User: anonymous \\
+    Passwort: anonymous
 \end{frame}
+
+
+
 \end{document}
